@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Your New Jekyll Site</title>
+        <title>Ruby on Rails チュートリアル 5 章 | アセットパイプライン</title>
         <meta name="viewport" content="width=device-width">
 
         <!-- syntax highlighting CSS -->
@@ -16,9 +16,9 @@
 		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
 
 	</head>
-
+	
 	<body>
-        
+    
         <div id="mobile-sticky-menu">
 	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
 	<img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" />
@@ -109,54 +109,93 @@
 
 </div>
 
-        
-		<div class="site">			
 
-			<div id="contents">
+        <div class="site">
 
-				<!-- title -->
-				<!-- Header -->
+			<!-- title -->
+			<!-- Header -->
 <header>
 <h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
 	<hr />
 </header>
 
+			<div id="contents">
+				
 				<div id="main">
-					<!-- This loops through the paginated posts -->
-					
-						<h3><a href="/ruby/2014/04/28/jekyll-plugin-deprecate-keeper.html">Jekyll にて記事の deprecate フラグを立てるプラグインを作成しました</a></h3>
-						<p class="author">
-							<span class="date">2014-04-28 17:00:00 -0700</span>
-						</p>
-						<div class="content">
-							<p>最近、ブログを Jekyll で自分のブログを作成しています。それに伴ってプログラミングのライブラリに関する記事等、ある程度時間が立つとその記事の内容を保証できない類の記事を管理するプラグインを書いてみました。</p>
+					<h3><a href="">Ruby on Rails チュートリアル 5 章 | アセットパイプライン</a></h3>
+					<p class="author">
+						<span class="date">2013-11-17 18:44:00 -0800</span>
+					</p>
+		      		
+					<div class="post">
+						<p>急遽、勉強しなくちゃいけなくなった Ruby on Rails の個人的なまとめ。今回はアセットパイプライン関係。
+<a href="http://railstutorial.jp/chapters/filling-in-the-layout#top">http://railstutorial.jp/chapters/filling-in-the-layout#top</a></p>
 
-						</div>
-						<p><a href="/ruby/2014/04/28/jekyll-plugin-deprecate-keeper.html">...More</a></p>
-						<hr />
-					
-						<h3><a href="/machine%20learning/2014/04/27/Logistic-Regression-Algorithm.html">Logistic Regression Algorithm（ロジスティック回帰）[機械学習]</a></h3>
-						<p class="author">
-							<span class="date">2014-04-27 10:34:49 -0700</span>
-						</p>
-						<div class="content">
-							<p>今まで線形モデルの Perceptron[link] と Linear Regression[link] に関して勉強してきました。今回は、新しい線形モデルである Logistic Regression に関して勉強したので、Python で実装しました。</p>
+<p>Rails 3.0と、その後のバージョンの最も大きな違いの1つは、CSS、JavaScript、画像などの静的コンテンツの生産と管理を大幅に強化する「アセットパイプライン」です。アセットパイプラインは、Railsの流儀を守りながら多大な変化をもたらしますが、一般的なRails開発者の視点からは、アセットディレクトリ、マニフェストファイル、プリプロセッサエンジンという、3つの主要な機能が理解の対象。</p>
 
-						</div>
-						<p><a href="/machine%20learning/2014/04/27/Logistic-Regression-Algorithm.html">...More</a></p>
-						<hr />
-					
-						<h3><a href="/tips/2014/04/17/vim-vimtutor.html">初めての vim に最適な vimtutor</a></h3>
-						<p class="author">
-							<span class="date">2014-04-17 21:12:00 -0700</span>
-						</p>
-						<div class="content">
-							<p>vimtutor にあった vim のコマンドをまとめました。正直に告白すると、今まで vim に3度以上も挫折してきました。vim にチャレンジしても、思うように動かず、ビープ音でどんどんストレスが溜まり、結局いつものエディタに戻ってしまうという残念な感じでした。ずっと憧れはあり、そんな時に、なんとなく vimtutor を読みながらコマンドをいじってるとだいぶストレスが減ってきました。基本が大事ですね。いきなり画面を分割したり、カッコつけてもダメでした。vimtutor には、7つのレッスンがあるのですが、そこで使われたコマンドを忘れないためにもここに書いておきます。</p>
+<h3 id="toc_0">アセットディレクトリ</h3>
 
-						</div>
-						<p><a href="/tips/2014/04/17/vim-vimtutor.html">...More</a></p>
-						<hr />
-					
+<table><thead>
+<tr>
+<th>file</th>
+<th>desc</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>app/assets</td>
+<td>現在のアプリケーション固有のアセット</td>
+</tr>
+<tr>
+<td>lib/assets</td>
+<td>あなたの開発チームによって作成されたライブラリ用のアセット</td>
+</tr>
+<tr>
+<td>vendor/assets</td>
+<td>サードパーティのアセット</td>
+</tr>
+</tbody></table>
+
+<h3 id="toc_1">マニフェストファイル</h3>
+
+<p>適切にアセットディレクトリにファイルを配置すれば、マニフェストファイルによって一つにファイルのように扱うことができる。 実際にまとめるのは Sprokects gem の役割。app/assets/stylesheets/application.css はマニフェストファイルの例。</p>
+
+<blockquote>
+<blockquote>
+<p>*= require_tree .</p>
+</blockquote>
+</blockquote>
+
+<p>はapp/assets/stylesheetsのサブディレクトリを含む全ての CSS をインクルードする。ドットも必須。</p>
+
+<blockquote>
+<blockquote>
+<p>*= require_self</p>
+</blockquote>
+</blockquote>
+
+<p>application.css自身の CSS 記述もインクルードする。</p>
+
+<h3 id="toc_2">プリプロセッサエンジン</h3>
+
+<p>必要なアセットをディレクトリに配置してまとめた後、Railsはさまざまなプリプロセッサエンジンを介してそれらを実行し、ブラウザに配信できるようにそれらをマニフェストファイルを用いて結合し、サイトテンプレート用に準備します。Railsは、どのプリプロセッサを使用するかを、ファイル名の拡張子を使用して判断します。最も一般的な拡張子は、Sass用の.scss、CoffeeScript用の.coffee、埋め込みRuby (ERb) 用の.erbです。</p>
+
+<h3 id="toc_3">その他</h3>
+
+<p>この章を読みながら、ローカルを作業していた時は問題なかったが、Heroku にデプロイした時にCSS等が効かなかった。その時にこのページを参考にし、いくつかの修正をするとローカルと同じ結果を得ることができた。
+<a href="http://stackoverflow.com/questions/18839662/invalid-css-on-rails-app-michael-hartl-tutorial">http://stackoverflow.com/questions/18839662/invalid-css-on-rails-app-michael-hartl-tutorial</a></p>
+
+<p>config/environments/production.rb を以下のように変更</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># Do not fallback to assets pipeline if a precompiled asset is missed.</span>
+<span class="lineno">2</span> <span class="c1"># config.assets.compile = false</span>
+</code></pre></div>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># Generate digests for assets URLs.</span>
+<span class="lineno">2</span> <span class="c1"># config.assets.digest = true</span>
+</code></pre></div>
+
+					</div>
+
 				</div>
 
 				<div id="sub">
@@ -215,22 +254,13 @@
 <h4>Work</h4>			   
 <p>Coming soon... maybe.</p>
 				</div>
-				
+
 			</div>
 
-			<!-- Pagination links -->
-			<div class="pagination">
-				
-				<span class="previous">Previous</span>
-				
-				<span class="page_number ">Page: 1 of 19</span>
-				
-				<a href="/page2" class="next">Next</a>
-				
-			</div>
-	   </div>   
 
-	   		<div class="footer">
+		</div>
+
+				<div class="footer">
 		   <div class="footer_inner">
 			   <div class="contact">
 				   <h4>About</h4>
@@ -316,6 +346,6 @@
   	});
 
 </script>
-	  
-    </body>
+
+	</body>
 </html>

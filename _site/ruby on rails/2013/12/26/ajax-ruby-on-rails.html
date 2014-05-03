@@ -1,0 +1,359 @@
+	<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Ajaxによるページ部分更新 [ Ruby on Rails ]</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+		<link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/jquery.sidr.dark.css">
+		<link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+
+	</head>
+	
+	<body>
+    
+        <div id="mobile-sticky-menu">
+	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
+	<img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" />
+</div>
+
+<div id="sidr">
+	<!-- Your content -->
+	<!-- <h4>Share</h4> -->
+
+	<h4>Category</h4>
+	<ul>
+	   
+		   <li>
+		   		<a href="/categories/objective-c">objective-c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/other">other</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/node-js">node.js</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/tips">tips</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/html5">html5</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/algorithms">algorithms</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/machine-learning">machine learning</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/c">c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby">ruby</a>
+		   </li>
+	   
+    </ul>
+	<h4>Archive</h4>
+	<ul>
+		
+			<li>
+				<a href="/2013/08/">2013/08</a>
+			</li>
+		
+			<li>
+				<a href="/2013/09/">2013/09</a>
+			</li>
+		
+			<li>
+				<a href="/2013/11/">2013/11</a>
+			</li>
+		
+			<li>
+				<a href="/2013/12/">2013/12</a>
+			</li>
+		
+			<li>
+				<a href="/2014/01/">2014/01</a>
+			</li>
+		
+			<li>
+				<a href="/2014/03/">2014/03</a>
+			</li>
+		
+			<li>
+				<a href="/2014/04/">2014/04</a>
+			</li>
+		
+	</ul>
+
+	<img src="/images/me.png" alt="me" />
+
+</div>
+
+
+        <div class="site">
+
+			<!-- title -->
+			<!-- Header -->
+<header>
+<h1><a href="http://localhost:4000/"><img src="/images/title.png" alt="logo" /></a></h1>
+	<hr />
+</header>
+
+			<div id="contents">
+				
+				<div id="main">
+					<h3><a href="">Ajaxによるページ部分更新 [ Ruby on Rails ]</a></h3>
+					<p class="author">
+						<span class="date">2013-12-26 03:14:00 -0800</span>
+					</p>
+		      		
+					<div class="post">
+						<p>Ajax を使ってウェブサイトの一部分のみを更新する方法です。Ajaxを使うことにより、ページ遷移をなしで、DBと通信しながらページコンテンツの一部を変更することができます。今回は、&lt;select&gt;の&lt;option&gt;が変更されるたびにページの一部を変更するという機能を実装してみます。実装方法は違うかもしれませんが、<a href="http://www.assist.org/web-assist/welcome.html">http://www.assist.org/web-assist/welcome.html</a> と同じような処理です。 </p>
+
+<h3 id="toc_0">htmlページの準備</h3>
+
+<p>まずは、DBとの通信のトリガーになる&lt;select&gt;をページに追加します。ユーザーがページの&lt;select&gt;を変更すると、&lt;select&gt;のonchange()が起動します。onchange()からのちほど作成するカスタム関数を呼び出し、その関数からDBとの通信を発動します。そして、ページのコンテンツを変更します。</p>
+
+<div class="highlight"><pre><code class="erb"><span class="lineno">1</span> <span class="x"># test.html.erb</span>
+<span class="lineno">2</span> <span class="cp">&lt;%=</span> <span class="n">collection_select</span><span class="p">(</span><span class="ss">:major</span><span class="p">,</span> <span class="ss">:id</span><span class="p">,</span> <span class="vi">@majors</span><span class="p">,</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span>  <span class="p">{</span><span class="ss">:prompt</span> <span class="o">=&gt;</span> <span class="s2">&quot;Please select your major&quot;</span><span class="p">},{</span><span class="ss">:onchange</span> <span class="o">=&gt;</span> <span class="s2">&quot;changeMajor()&quot;</span> <span class="p">})</span> <span class="cp">%&gt;</span><span class="x"></span>
+</code></pre></div>
+
+<p>これにより、 @majors に格納されている major モデルの id と name がそれぞれ value と&lt;option&gt;&lt;/option&gt;に動的に記述されます。valueはサーバーに送信される値で、&lt;option&gt;&lt;/option&gt;はページに表示される文字列です。ここでは :prompt オプションにより何も表示されていない時には “Please select your major” と表示されるます。onchange() メソッドではこれから自分で作成する changeMajor()メソッドを&lt;select&gt;の&lt;option&gt;が変更されるたびに呼び出されます。また&lt;select&gt;のhtml属性idはmajor_idとなります。</p>
+
+<div class="highlight"><pre><code class="erb"><span class="lineno">1</span> <span class="x"># test.html.erb </span>
+<span class="lineno">2</span> <span class="x">&lt;div id=&quot;classList&quot; style=&quot;display: inline;&quot;&gt;</span>
+<span class="lineno">3</span> <span class="x">    </span><span class="cp">&lt;%=</span> <span class="n">render</span> <span class="ss">:partial</span> <span class="o">=&gt;</span> <span class="s1">&#39;classList_body&#39;</span> <span class="cp">%&gt;</span><span class="x"></span>
+<span class="lineno">4</span> <span class="x">&lt;/div&gt;  </span>
+</code></pre></div>
+
+<p>この箇所がDBとの通信が終わった時に変更される箇所です。のちほど <em>classList_body.html.erb というファイルは作成します。&lt;select&gt;が変更されDBとの通信ごとに</em>classList_body.html.erb が新しくレンダリングされるということですね。</p>
+
+<h3 id="toc_1">onchange で呼ばれる Javascript 関数の準備</h3>
+
+<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span> <span class="c1">// test.html.erb </span>
+<span class="lineno"> 2</span> <span class="c1">// onchange メソッド</span>
+<span class="lineno"> 3</span> <span class="kd">function</span> <span class="nx">changeMajor</span><span class="p">(){</span>
+<span class="lineno"> 4</span>      <span class="kd">var</span> <span class="nx">select</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;major_id&#39;</span><span class="p">);</span>
+<span class="lineno"> 5</span>      <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span>  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;major_id&#39;</span><span class="p">).</span><span class="nx">options</span><span class="p">;</span>
+<span class="lineno"> 6</span>      <span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">item</span><span class="p">(</span><span class="nx">select</span><span class="p">.</span><span class="nx">selectedIndex</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+<span class="lineno"> 7</span>      <span class="kd">var</span> <span class="nx">universityID</span> <span class="o">=</span> <span class="o">&lt;%=</span> <span class="err">@</span><span class="nx">student</span><span class="p">.</span><span class="nx">universities</span><span class="p">.</span><span class="nx">first</span><span class="p">.</span><span class="nx">id</span> <span class="o">%&gt;</span><span class="p">;</span>
+<span class="lineno"> 8</span>  
+<span class="lineno"> 9</span>      <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+<span class="lineno">10</span>           <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;/students/listEachClass&quot;</span><span class="p">,</span>
+<span class="lineno">11</span>           <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+<span class="lineno">12</span>           <span class="nx">data</span><span class="o">:</span> <span class="s1">&#39;id=&lt;%= @student.id %&gt;&amp;majorID=&#39;</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s1">&#39;&amp;universityID=&#39;</span> <span class="o">+</span> <span class="nx">universityID</span>
+<span class="lineno">13</span>      <span class="p">})</span>
+<span class="lineno">14</span> <span class="p">}</span> 
+</code></pre></div>
+
+<p>これが呼び出されるchangeMajor()メソッドです。ポイントは後半の$.ajaxですね。送信するurlと通信方法の指定、そしてコントローラー側が受け取る値をdataで指定しています。前半のJSはもう少しスマートな方法がありそうですね。。。JSはいつもやっつけになってしまいます。</p>
+
+<h3 id="toc_2">通信ごとに呼ばれるパーシャルの準備</h3>
+
+<div class="highlight"><pre><code class="erb"><span class="lineno">1</span> <span class="x">#_classList_body.html.erb  </span>
+<span class="lineno">2</span> <span class="x">&lt;p&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@universityID</span> <span class="cp">%&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="lineno">3</span> <span class="x">&lt;p&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@majorID</span> <span class="cp">%&gt;</span><span class="x">&lt;/p&gt; </span>
+</code></pre></div>
+
+<p>今回はとてもシンプルです。この@universityID と@majorID はコントローラーで作成される変数？です。onchagenメソッドで選択されている&lt;select&gt;の値がサーバーに送信され、コントローラーで作成された変数を後ほど作成するJavascriptファイルからこのパーシャルをレンダリングする際に、それらの値を渡すことで、このパーシャルの中で使うことができます。</p>
+
+<h3 id="toc_3">Javascriptファイルの準備</h3>
+
+<div class="highlight"><pre><code class="erb"><span class="lineno">1</span> <span class="x"># listEachClass.js.erb</span>
+<span class="lineno">2</span> <span class="x"># 上記のtest.html.erbがあるviewフォルダにこのファイルを作成</span>
+<span class="lineno">3</span> <span class="x">$(&quot;#classList&quot;).html(&quot;</span><span class="cp">&lt;%=</span> <span class="n">escape_javascript</span><span class="p">(</span><span class="n">render</span> <span class="s1">&#39;classList_body&#39;</span><span class="p">,</span> <span class="ss">:majorID</span> <span class="o">=&gt;</span> <span class="vi">@majorID</span><span class="p">,</span> <span class="ss">:universityID</span> <span class="o">=&gt;</span> <span class="vi">@universityID</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="x">&quot;);</span>
+</code></pre></div>
+
+<p>ここでは上記の test.html.erb で指定した id=classList &lt;div&gt;に 2 で作成したパーシャルをレンダリングするということを記述しています。render する際に、コントローラーで作成された変数をパーシャルで使えるように渡しています。</p>
+
+<h3 id="toc_4">コントローラーの準備</h3>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="k">def</span> <span class="nf">listEachClass</span>
+<span class="lineno">2</span>     <span class="nb">puts</span> <span class="s2">&quot;==== Here is the listEachClass!! ====&quot;</span>
+<span class="lineno">3</span>     <span class="vi">@majorID</span> <span class="o">=</span> <span class="n">params</span><span class="o">[</span><span class="ss">:majorID</span><span class="o">].</span><span class="n">to_i</span>
+<span class="lineno">4</span>     <span class="vi">@universityID</span> <span class="o">=</span> <span class="n">params</span><span class="o">[</span><span class="ss">:universityID</span><span class="o">].</span><span class="n">to_i</span>
+<span class="lineno">5</span>  
+<span class="lineno">6</span>     <span class="nb">puts</span> <span class="vi">@majorID</span>
+<span class="lineno">7</span>     <span class="nb">puts</span> <span class="vi">@universityID</span>
+<span class="lineno">8</span> <span class="k">end</span> 
+</code></pre></div>
+
+<p>コントローラーはみなさん思い思いの処理をしていただければいいと思います。params[:majorID] やparams[:universityID] と記述することにより、1で作成したchangeMajor()のdataで渡された値を参照することができます。ここでは単に数値にしてそれをログに表示させているだけです。何もしていませんね。</p>
+
+<p>以上です。</p>
+
+					</div>
+
+				</div>
+
+				<div id="sub">
+				   <h4>About</h4>
+<p><u>Kazuya Kobayshi</u><br />
+- I'm a once law student trying to be computer geek.<br />
+- ギークになりたい。<br />
+<a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a></p>
+<h4>Elsewhere</h4>
+<p>
+   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+   <a href="https://github.com/kzykbys">Github</a></p>
+<h4>Category</h4>
+<p>|
+   
+	   <a href="/categories/objective-c">objective-c</a> | 
+   
+	   <a href="/categories/other">other</a> | 
+   
+	   <a href="/categories/node-js">node.js</a> | 
+   
+	   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
+   
+	   <a href="/categories/tips">tips</a> | 
+   
+	   <a href="/categories/html5">html5</a> | 
+   
+	   <a href="/categories/algorithms">algorithms</a> | 
+   
+	   <a href="/categories/machine-learning">machine learning</a> | 
+   
+	   <a href="/categories/c">c</a> | 
+   
+	   <a href="/categories/ruby">ruby</a> | 
+   
+</p>
+<h4>Archive</h4>
+   <p>|
+   
+		<a href="/2013/08/">2013/08</a> | 
+   
+		<a href="/2013/09/">2013/09</a> | 
+   
+		<a href="/2013/11/">2013/11</a> | 
+   
+		<a href="/2013/12/">2013/12</a> | 
+   
+		<a href="/2014/01/">2014/01</a> | 
+   
+		<a href="/2014/03/">2014/03</a> | 
+   
+		<a href="/2014/04/">2014/04</a> | 
+   
+</p>
+<h4>Work</h4>			   
+<p>Coming soon... maybe.</p>
+				</div>
+
+			</div>
+
+
+		</div>
+
+				<div class="footer">
+		   <div class="footer_inner">
+			   <div class="contact">
+				   <h4>About</h4>
+				   <p><u>Kazuya Kobayshi</u><br />
+				   - I'm a once law student trying to be computer geek.<br />
+				   - ギークになりたい。<br />
+				   <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a></p>
+				   <h4>Social</h4>
+				   <p>
+					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+					   <a href="https://github.com/kzykbys">Github</a></p>
+				   <h4>Category</h4>
+				   <p>|
+					   
+						   <a href="/categories/objective-c">objective-c</a> | 
+					   
+						   <a href="/categories/other">other</a> | 
+					   
+						   <a href="/categories/node-js">node.js</a> | 
+					   
+						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
+					   
+						   <a href="/categories/tips">tips</a> | 
+					   
+						   <a href="/categories/html5">html5</a> | 
+					   
+						   <a href="/categories/algorithms">algorithms</a> | 
+					   
+						   <a href="/categories/machine-learning">machine learning</a> | 
+					   
+						   <a href="/categories/c">c</a> | 
+					   
+						   <a href="/categories/ruby">ruby</a> | 
+					   
+				   </p>
+				   <h4>Archive</h4>
+					   <p>|
+					   
+	    					<a href="/2013/08/">2013/08</a> | 
+	    			   
+	    					<a href="/2013/09/">2013/09</a> | 
+	    			   
+	    					<a href="/2013/11/">2013/11</a> | 
+	    			   
+	    					<a href="/2013/12/">2013/12</a> | 
+	    			   
+	    					<a href="/2014/01/">2014/01</a> | 
+	    			   
+	    					<a href="/2014/03/">2014/03</a> | 
+	    			   
+	    					<a href="/2014/04/">2014/04</a> | 
+	    			   
+    			   </p>
+				   <h4>Work</h4>			   
+				   <p>Coming soon... maybe.</p>
+			   </div>
+		   </div>
+	   	</div>
+
+	   	<!-- jQuery -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>	  
+	  	<!-- Sdir (slide menu for small screen) -->
+<script>
+/*! Sidr - v1.2.1 - 2013-11-06
+ * https://github.com/artberri/sidr
+ * Copyright (c) 2013 Alberto Varela; Licensed MIT */
+(function(e){var t=!1,i=!1,n={isUrl:function(e){var t=RegExp("^(https?:\\/\\/)?((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|((\\d{1,3}\\.){3}\\d{1,3}))(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*(\\?[;&a-z\\d%_.~+=-]*)?(\\#[-a-z\\d_]*)?$","i");return t.test(e)?!0:!1},loadContent:function(e,t){e.html(t)},addPrefix:function(e){var t=e.attr("id"),i=e.attr("class");"string"==typeof t&&""!==t&&e.attr("id",t.replace(/([A-Za-z0-9_.\-]+)/g,"sidr-id-$1")),"string"==typeof i&&""!==i&&"sidr-inner"!==i&&e.attr("class",i.replace(/([A-Za-z0-9_.\-]+)/g,"sidr-class-$1")),e.removeAttr("style")},execute:function(n,s,a){"function"==typeof s?(a=s,s="sidr"):s||(s="sidr");var r,d,l,c=e("#"+s),u=e(c.data("body")),f=e("html"),p=c.outerWidth(!0),g=c.data("speed"),h=c.data("side"),m=c.data("displace"),v=c.data("onOpen"),y=c.data("onClose"),x="sidr"===s?"sidr-open":"sidr-open "+s+"-open";if("open"===n||"toggle"===n&&!c.is(":visible")){if(c.is(":visible")||t)return;if(i!==!1)return o.close(i,function(){o.open(s)}),void 0;t=!0,"left"===h?(r={left:p+"px"},d={left:"0px"}):(r={right:p+"px"},d={right:"0px"}),u.is("body")&&(l=f.scrollTop(),f.css("overflow-x","hidden").scrollTop(l)),m?u.addClass("sidr-animating").css({width:u.width(),position:"absolute"}).animate(r,g,function(){e(this).addClass(x)}):setTimeout(function(){e(this).addClass(x)},g),c.css("display","block").animate(d,g,function(){t=!1,i=s,"function"==typeof a&&a(s),u.removeClass("sidr-animating")}),v()}else{if(!c.is(":visible")||t)return;t=!0,"left"===h?(r={left:0},d={left:"-"+p+"px"}):(r={right:0},d={right:"-"+p+"px"}),u.is("body")&&(l=f.scrollTop(),f.removeAttr("style").scrollTop(l)),u.addClass("sidr-animating").animate(r,g).removeClass(x),c.animate(d,g,function(){c.removeAttr("style").hide(),u.removeAttr("style"),e("html").removeAttr("style"),t=!1,i=!1,"function"==typeof a&&a(s),u.removeClass("sidr-animating")}),y()}}},o={open:function(e,t){n.execute("open",e,t)},close:function(e,t){n.execute("close",e,t)},toggle:function(e,t){n.execute("toggle",e,t)},toogle:function(e,t){n.execute("toggle",e,t)}};e.sidr=function(t){return o[t]?o[t].apply(this,Array.prototype.slice.call(arguments,1)):"function"!=typeof t&&"string"!=typeof t&&t?(e.error("Method "+t+" does not exist on jQuery.sidr"),void 0):o.toggle.apply(this,arguments)},e.fn.sidr=function(t){var i=e.extend({name:"sidr",speed:200,side:"left",source:null,renaming:!0,body:"body",displace:!0,onOpen:function(){},onClose:function(){}},t),s=i.name,a=e("#"+s);if(0===a.length&&(a=e("<div />").attr("id",s).appendTo(e("body"))),a.addClass("sidr").addClass(i.side).data({speed:i.speed,side:i.side,body:i.body,displace:i.displace,onOpen:i.onOpen,onClose:i.onClose}),"function"==typeof i.source){var r=i.source(s);n.loadContent(a,r)}else if("string"==typeof i.source&&n.isUrl(i.source))e.get(i.source,function(e){n.loadContent(a,e)});else if("string"==typeof i.source){var d="",l=i.source.split(",");if(e.each(l,function(t,i){d+='<div class="sidr-inner">'+e(i).html()+"</div>"}),i.renaming){var c=e("<div />").html(d);c.find("*").each(function(t,i){var o=e(i);n.addPrefix(o)}),d=c.html()}n.loadContent(a,d)}else null!==i.source&&e.error("Invalid Sidr Source");return this.each(function(){var t=e(this),i=t.data("sidr");i||(t.data("sidr",s),"ontouchstart"in document.documentElement?(t.bind("touchstart",function(e){e.originalEvent.touches[0],this.touched=e.timeStamp}),t.bind("touchend",function(e){var t=Math.abs(e.timeStamp-this.touched);200>t&&(e.preventDefault(),o.toggle(s))})):t.click(function(e){e.preventDefault(),o.toggle(s)}))})}})(jQuery);
+</script>
+
+<script>
+	
+  	$(document).ready(function() {
+		$('#mobile-menu-button').sidr();	  
+  	});
+
+  	$('#mobile-menu-button').click(function(e){
+  	});
+
+
+  	$('html').click(function(e){
+  		$.sidr('close', 'sidr');
+  	});
+
+</script>
+
+	</body>
+</html>

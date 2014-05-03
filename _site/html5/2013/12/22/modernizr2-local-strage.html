@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Your New Jekyll Site</title>
+        <title>Modernizr2 [ local strage ]</title>
         <meta name="viewport" content="width=device-width">
 
         <!-- syntax highlighting CSS -->
@@ -16,9 +16,9 @@
 		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
 
 	</head>
-
+	
 	<body>
-        
+    
         <div id="mobile-sticky-menu">
 	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
 	<img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" />
@@ -109,54 +109,51 @@
 
 </div>
 
-        
-		<div class="site">			
 
-			<div id="contents">
+        <div class="site">
 
-				<!-- title -->
-				<!-- Header -->
+			<!-- title -->
+			<!-- Header -->
 <header>
-<h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
+<h1><a href="http://localhost:4000/"><img src="/images/title.png" alt="logo" /></a></h1>
 	<hr />
 </header>
 
+			<div id="contents">
+				
 				<div id="main">
-					<!-- This loops through the paginated posts -->
-					
-						<h3><a href="/ruby/2014/04/28/jekyll-plugin-deprecate-keeper.html">Jekyll にて記事の deprecate フラグを立てるプラグインを作成しました</a></h3>
-						<p class="author">
-							<span class="date">2014-04-28 17:00:00 -0700</span>
-						</p>
-						<div class="content">
-							<p>最近、ブログを Jekyll で自分のブログを作成しています。それに伴ってプログラミングのライブラリに関する記事等、ある程度時間が立つとその記事の内容を保証できない類の記事を管理するプラグインを書いてみました。</p>
+					<h3><a href="">Modernizr2 [ local strage ]</a></h3>
+					<p class="author">
+						<span class="date">2013-12-22 05:24:00 -0800</span>
+					</p>
+		      		
+					<div class="post">
+						<p>ローカルストレージはウェブサイトがデータをユーザーのコンピュータに保存し、のちに取り出す方法です。似たものにクッキーがありよく使われていますが、クッキーとの違いは、保存できる容量が HTML5 の ストレージの方が 5M と多く、またクッキーと違い、毎度の通信でデータがサーバーに送られることがありません。これは帯域の節約や、セキュリティの観点からも好ましいです。</p>
 
-						</div>
-						<p><a href="/ruby/2014/04/28/jekyll-plugin-deprecate-keeper.html">...More</a></p>
-						<hr />
-					
-						<h3><a href="/machine%20learning/2014/04/27/Logistic-Regression-Algorithm.html">Logistic Regression Algorithm（ロジスティック回帰）[機械学習]</a></h3>
-						<p class="author">
-							<span class="date">2014-04-27 10:34:49 -0700</span>
-						</p>
-						<div class="content">
-							<p>今まで線形モデルの Perceptron[link] と Linear Regression[link] に関して勉強してきました。今回は、新しい線形モデルである Logistic Regression に関して勉強したので、Python で実装しました。</p>
+<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="k">if</span> <span class="p">(</span><span class="nx">Modernizr</span><span class="p">.</span><span class="nx">localstorage</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">2</span>      <span class="c1">// window.localStorage is available!</span>
+<span class="lineno">3</span>  
+<span class="lineno">4</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">5</span>      <span class="c1">// no native support for local storage :(</span>
+<span class="lineno">6</span>      <span class="c1">// try a fallback or another third-party solution</span>
+<span class="lineno">7</span> <span class="p">}</span>
+</code></pre></div>
 
-						</div>
-						<p><a href="/machine%20learning/2014/04/27/Logistic-Regression-Algorithm.html">...More</a></p>
-						<hr />
-					
-						<h3><a href="/tips/2014/04/17/vim-vimtutor.html">初めての vim に最適な vimtutor</a></h3>
-						<p class="author">
-							<span class="date">2014-04-17 21:12:00 -0700</span>
-						</p>
-						<div class="content">
-							<p>vimtutor にあった vim のコマンドをまとめました。正直に告白すると、今まで vim に3度以上も挫折してきました。vim にチャレンジしても、思うように動かず、ビープ音でどんどんストレスが溜まり、結局いつものエディタに戻ってしまうという残念な感じでした。ずっと憧れはあり、そんな時に、なんとなく vimtutor を読みながらコマンドをいじってるとだいぶストレスが減ってきました。基本が大事ですね。いきなり画面を分割したり、カッコつけてもダメでした。vimtutor には、7つのレッスンがあるのですが、そこで使われたコマンドを忘れないためにもここに書いておきます。</p>
+<p>内部では、</p>
 
-						</div>
-						<p><a href="/tips/2014/04/17/vim-vimtutor.html">...More</a></p>
-						<hr />
-					
+<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="kd">function</span> <span class="nx">supports_local_storage</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">2</span>      <span class="k">try</span> <span class="p">{</span>
+<span class="lineno">3</span>          <span class="k">return</span> <span class="s1">&#39;localStorage&#39;</span> <span class="k">in</span> <span class="nb">window</span> <span class="o">&amp;&amp;</span> <span class="nb">window</span><span class="p">[</span><span class="s1">&#39;localStorage&#39;</span><span class="p">]</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">;</span>
+<span class="lineno">4</span>      <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+<span class="lineno">5</span>          <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+<span class="lineno">6</span>      <span class="p">}</span>
+<span class="lineno">7</span> <span class="p">}</span>
+</code></pre></div>
+
+<p>このように処理しています。古い Firefox のバグにより Exception をスローする場合があるので、try-catch 文を使っています。Javascript はケースセンシティブなので、Modernizr の localstorage と DOM プロパティの localStorage に違いに注意。</p>
+
+					</div>
+
 				</div>
 
 				<div id="sub">
@@ -215,22 +212,13 @@
 <h4>Work</h4>			   
 <p>Coming soon... maybe.</p>
 				</div>
-				
+
 			</div>
 
-			<!-- Pagination links -->
-			<div class="pagination">
-				
-				<span class="previous">Previous</span>
-				
-				<span class="page_number ">Page: 1 of 19</span>
-				
-				<a href="/page2" class="next">Next</a>
-				
-			</div>
-	   </div>   
 
-	   		<div class="footer">
+		</div>
+
+				<div class="footer">
 		   <div class="footer_inner">
 			   <div class="contact">
 				   <h4>About</h4>
@@ -316,6 +304,6 @@
   	});
 
 </script>
-	  
-    </body>
+
+	</body>
 </html>

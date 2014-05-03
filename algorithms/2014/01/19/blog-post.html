@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Your New Jekyll Site</title>
+        <title>アルゴリズムの重要性</title>
         <meta name="viewport" content="width=device-width">
 
         <!-- syntax highlighting CSS -->
@@ -16,9 +16,9 @@
 		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
 
 	</head>
-
+	
 	<body>
-        
+    
         <div id="mobile-sticky-menu">
 	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
 	<img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" />
@@ -109,54 +109,54 @@
 
 </div>
 
-        
-		<div class="site">			
 
-			<div id="contents">
+        <div class="site">
 
-				<!-- title -->
-				<!-- Header -->
+			<!-- title -->
+			<!-- Header -->
 <header>
 <h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
 	<hr />
 </header>
 
+			<div id="contents">
+				
 				<div id="main">
-					<!-- This loops through the paginated posts -->
-					
-						<h3><a href="/ruby/2014/04/28/jekyll-plugin-deprecate-keeper.html">Jekyll にて記事の deprecate フラグを立てるプラグインを作成しました</a></h3>
-						<p class="author">
-							<span class="date">2014-04-28 17:00:00 -0700</span>
-						</p>
-						<div class="content">
-							<p>最近、ブログを Jekyll で自分のブログを作成しています。それに伴ってプログラミングのライブラリに関する記事等、ある程度時間が立つとその記事の内容を保証できない類の記事を管理するプラグインを書いてみました。</p>
+					<h3><a href="">アルゴリズムの重要性</a></h3>
+					<p class="author">
+						<span class="date">2014-01-19 22:15:00 -0800</span>
+					</p>
+		      		
+					<div class="post">
+						<p>最近、アルゴリズムの勉強を本格的に始めました。以前から、優秀なエンジニアになるにはアルゴリズムの理解は必須だと何度も言われていたのですが、どうしてもやる気がでませんでした。というのも、最近のコンピューターの性能はどんどん進化しており、最適なアルゴリズムを追求していくことに対してあまり意味が感じられなかったからです。力技でどうにかなるんじゃないかと思っていました。</p>
 
-						</div>
-						<p><a href="/ruby/2014/04/28/jekyll-plugin-deprecate-keeper.html">...More</a></p>
-						<hr />
-					
-						<h3><a href="/machine%20learning/2014/04/27/Logistic-Regression-Algorithm.html">Logistic Regression Algorithm（ロジスティック回帰）[機械学習]</a></h3>
-						<p class="author">
-							<span class="date">2014-04-27 10:34:49 -0700</span>
-						</p>
-						<div class="content">
-							<p>今まで線形モデルの Perceptron[link] と Linear Regression[link] に関して勉強してきました。今回は、新しい線形モデルである Logistic Regression に関して勉強したので、Python で実装しました。</p>
+<p>しかし、具体的に勉強を初めて、「なんて愚かな考えだったんだろう。。。」と感じさせる例があったので、紹介したいと思います。</p>
 
-						</div>
-						<p><a href="/machine%20learning/2014/04/27/Logistic-Regression-Algorithm.html">...More</a></p>
-						<hr />
-					
-						<h3><a href="/tips/2014/04/17/vim-vimtutor.html">初めての vim に最適な vimtutor</a></h3>
-						<p class="author">
-							<span class="date">2014-04-17 21:12:00 -0700</span>
-						</p>
-						<div class="content">
-							<p>vimtutor にあった vim のコマンドをまとめました。正直に告白すると、今まで vim に3度以上も挫折してきました。vim にチャレンジしても、思うように動かず、ビープ音でどんどんストレスが溜まり、結局いつものエディタに戻ってしまうという残念な感じでした。ずっと憧れはあり、そんな時に、なんとなく vimtutor を読みながらコマンドをいじってるとだいぶストレスが減ってきました。基本が大事ですね。いきなり画面を分割したり、カッコつけてもダメでした。vimtutor には、7つのレッスンがあるのですが、そこで使われたコマンドを忘れないためにもここに書いておきます。</p>
+<p>この <a href="http://www.amazon.com/Introduction-Algorithms-Thomas-H-Cormen/dp/0262033844">&quot;Introduction to Algorithms&quot;</a>という本によると、アルゴリズムはテクノロジーです。最新のハイスペックなハードウェア（テクノロジー）を選ぶようにアルゴリズムも選択していかなければいけません。</p>
 
-						</div>
-						<p><a href="/tips/2014/04/17/vim-vimtutor.html">...More</a></p>
-						<hr />
-					
+<p><strong>Insertion Sort</strong> と <strong>Merge Sort</strong> を例に取ると、</p>
+
+<p><strong>Insertion Sort</strong> の場合、n 個の要素をソートするのに約 c1 * n^2 かかります。
+それに対して、
+<strong>Merge Sort</strong> の場合は、c2 * n lg n です。
+c は要素数に依存しない定数です。</p>
+
+<p>こういう例は今まで勉強していて何度も聞いていたのですが、しっかりきていませんでした。もっと具体的に考えると、</p>
+
+<p><strong>Insertion Sort</strong> を使い、 <em>優秀なプログラマー</em> が実装します。その結果、処理を完了するのに 2 * n^2 必要なプログラムができたとします。そして、このプログラムを 10 million 個の要素をそうとソートします。このプログラマーは、10 billion instructions / per second の能力のある <em>ハイスペック</em> なコンピューターをしようすると、</p>
+
+<p>[ 2 * ( 10^7 )^2 instructions ] / [ 10^10 instructions / per second ] = 20000 seconds = 5.5 hours</p>
+
+<p>そして <strong>Merge Sort</strong> を使い、 <em>凡庸なプログラマー</em> がコードを書いた結果、50 * n lg n instructions かかるプログラムを作成したとします。そしてこの <em>凡庸なプログラマー</em> が、 <em>優秀なプログラマー</em> よりも処理能力が <em>ロースペック</em> なコンピューターをします。10 million instructions / per second とします。その結果、</p>
+
+<p>[ 50 * 10^7 lg 10^7 instructions ] / [ 10^7 instructions / per second ] = 1163 seconds = 20 hours</p>
+
+<p>たとえ、 <em>優秀なプログラマー</em> が、 <em>処理能力の高いコンピューター</em> を使おうとも、最適なアルゴリズムを選択しなければ、 <em>凡庸なプログラマー</em> が <em>ポンコツのコンピューター</em> を使った場合でも負けてしまうのです。</p>
+
+<p>そのことからアルゴリズムはハードウェア等と同じテクノロジーの一種であり、しっかり勉強しなければならないという教訓でした。</p>
+
+					</div>
+
 				</div>
 
 				<div id="sub">
@@ -215,22 +215,13 @@
 <h4>Work</h4>			   
 <p>Coming soon... maybe.</p>
 				</div>
-				
+
 			</div>
 
-			<!-- Pagination links -->
-			<div class="pagination">
-				
-				<span class="previous">Previous</span>
-				
-				<span class="page_number ">Page: 1 of 19</span>
-				
-				<a href="/page2" class="next">Next</a>
-				
-			</div>
-	   </div>   
 
-	   		<div class="footer">
+		</div>
+
+				<div class="footer">
 		   <div class="footer_inner">
 			   <div class="contact">
 				   <h4>About</h4>
@@ -316,6 +307,6 @@
   	});
 
 </script>
-	  
-    </body>
+
+	</body>
 </html>

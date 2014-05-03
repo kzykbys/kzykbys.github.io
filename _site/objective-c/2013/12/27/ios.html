@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Your New Jekyll Site</title>
+        <title>iOS でのページ遷移</title>
         <meta name="viewport" content="width=device-width">
 
         <!-- syntax highlighting CSS -->
@@ -16,9 +16,9 @@
 		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
 
 	</head>
-
+	
 	<body>
-        
+    
         <div id="mobile-sticky-menu">
 	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
 	<img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" />
@@ -109,54 +109,70 @@
 
 </div>
 
-        
-		<div class="site">			
 
-			<div id="contents">
+        <div class="site">
 
-				<!-- title -->
-				<!-- Header -->
+			<!-- title -->
+			<!-- Header -->
 <header>
-<h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
+<h1><a href="http://localhost:4000/"><img src="/images/title.png" alt="logo" /></a></h1>
 	<hr />
 </header>
 
+			<div id="contents">
+				
 				<div id="main">
-					<!-- This loops through the paginated posts -->
-					
-						<h3><a href="/ruby/2014/04/28/jekyll-plugin-deprecate-keeper.html">Jekyll にて記事の deprecate フラグを立てるプラグインを作成しました</a></h3>
-						<p class="author">
-							<span class="date">2014-04-28 17:00:00 -0700</span>
-						</p>
-						<div class="content">
-							<p>最近、ブログを Jekyll で自分のブログを作成しています。それに伴ってプログラミングのライブラリに関する記事等、ある程度時間が立つとその記事の内容を保証できない類の記事を管理するプラグインを書いてみました。</p>
+					<h3><a href="">iOS でのページ遷移</a></h3>
+					<p class="author">
+						<span class="date">2013-12-27 06:42:00 -0800</span>
+					</p>
+		      		
+					<div class="post">
+						<p>また iOS のアプリの制作を個人的に始めた。すごい好きなデザインをするデザイナーさんと一緒に作るから楽しみだなー。久しぶりすぎて、最初なにから始めたらいいのか、さえも分からなくなっててすごいショックだけどちょくちょく頑張っていきます。</p>
 
-						</div>
-						<p><a href="/ruby/2014/04/28/jekyll-plugin-deprecate-keeper.html">...More</a></p>
-						<hr />
-					
-						<h3><a href="/machine%20learning/2014/04/27/Logistic-Regression-Algorithm.html">Logistic Regression Algorithm（ロジスティック回帰）[機械学習]</a></h3>
-						<p class="author">
-							<span class="date">2014-04-27 10:34:49 -0700</span>
-						</p>
-						<div class="content">
-							<p>今まで線形モデルの Perceptron[link] と Linear Regression[link] に関して勉強してきました。今回は、新しい線形モデルである Logistic Regression に関して勉強したので、Python で実装しました。</p>
+<p>今日は、ページ遷移について調べたのでそのメモ。&quot;ほとんど&quot; コードによるページ遷移の方法。</p>
 
-						</div>
-						<p><a href="/machine%20learning/2014/04/27/Logistic-Regression-Algorithm.html">...More</a></p>
-						<hr />
-					
-						<h3><a href="/tips/2014/04/17/vim-vimtutor.html">初めての vim に最適な vimtutor</a></h3>
-						<p class="author">
-							<span class="date">2014-04-17 21:12:00 -0700</span>
-						</p>
-						<div class="content">
-							<p>vimtutor にあった vim のコマンドをまとめました。正直に告白すると、今まで vim に3度以上も挫折してきました。vim にチャレンジしても、思うように動かず、ビープ音でどんどんストレスが溜まり、結局いつものエディタに戻ってしまうという残念な感じでした。ずっと憧れはあり、そんな時に、なんとなく vimtutor を読みながらコマンドをいじってるとだいぶストレスが減ってきました。基本が大事ですね。いきなり画面を分割したり、カッコつけてもダメでした。vimtutor には、7つのレッスンがあるのですが、そこで使われたコマンドを忘れないためにもここに書いておきます。</p>
+<h3 id="toc_0">遷移元の ViewController の準備</h3>
 
-						</div>
-						<p><a href="/tips/2014/04/17/vim-vimtutor.html">...More</a></p>
-						<hr />
-					
+<p>適当なボタン等にアクションを設定して以下の様なコードを書く。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">-</span> <span class="p">(</span><span class="kt">IBAction</span><span class="p">)</span><span class="nf">showMenu:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nv">sender</span>
+<span class="lineno">2</span> <span class="p">{</span>
+<span class="lineno">3</span>     <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Here! Long time no see!!&quot;</span><span class="p">);</span>
+<span class="lineno">4</span>     <span class="n">KKMenuListViewController</span> <span class="o">*</span><span class="n">menulistView</span> <span class="o">=</span>
+<span class="lineno">5</span>         <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">storyboard</span> <span class="n">instantiateViewControllerWithIdentifier</span><span class="o">:</span><span class="s">@&quot;menuID&quot;</span><span class="p">];</span>
+<span class="lineno">6</span>     <span class="n">menulistView</span><span class="p">.</span><span class="n">modalTransitionStyle</span> <span class="o">=</span> <span class="n">UIModalTransitionStyleCrossDissolve</span><span class="p">;</span>
+<span class="lineno">7</span>     <span class="p">[</span><span class="n">self</span> <span class="n">presentViewController</span><span class="o">:</span><span class="n">menulistView</span> <span class="n">animated</span><span class="o">:</span><span class="nb">YES</span> <span class="n">completion</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
+<span class="lineno">8</span> <span class="p">}</span>
+</code></pre></div>
+
+<p>1 . presentModalViewController:animated の代わりに presentViewController:animated:completion というメソッドを使わないと警告でます。新しいメソッドの最後の引数、completionにはコールバックを指定し、モーダルビューが表示完了後に呼び出される。</p>
+
+<p>2 . UIModalTransitionStyleCrossDissolve というのはモーダルビューがどのように表示されるかの設定です。他にも、</p>
+
+<blockquote>
+<blockquote>
+<p>UIModalTransitionStyleCoverVertical<br />
+UIModalTransitionStyleFlipHorizontal<br />
+UIModalTransitionStyleCrossDissolve<br />
+UIModalTransitionStylePartialCurl<br /></p>
+</blockquote>
+</blockquote>
+
+<p>があるみたいです。このモーダルのトランジション時のアニメーションを自分で作成できるようになりたい。今年中に一度勉強しよう。</p>
+
+<p>3 . この instantiateViewControllerWithIdentifier で指定しているのは、Storyboard で設定する ID です。Storyboard の遷移先 ViewController で以下のように指定した値を書きます。</p>
+
+<h3 id="toc_1">遷移先の ViewController の準備</h3>
+
+<p>こちらはただ遷移させるだけなら簡単です。適当に ViewController のファイルを作成し、Storyboard で ViewController のアイテムをドロップし、作成した遷移先となる ViewController を関連付けます。そして、上記の 3 と同じ値を指定。</p>
+
+<p><img src="http://3.bp.blogspot.com/-mdaMvsgyTEM/Ur0gYd7Lq0I/AAAAAAAAAMw/VsOzMRMQUso/s1600/Screen+Shot+2013-12-26+at+10.35.50+PM.png" alt=""></p>
+
+<p>ここらへんもコードで済ませたいんですけど、どうしたらいいのかなー。</p>
+
+					</div>
+
 				</div>
 
 				<div id="sub">
@@ -215,22 +231,13 @@
 <h4>Work</h4>			   
 <p>Coming soon... maybe.</p>
 				</div>
-				
+
 			</div>
 
-			<!-- Pagination links -->
-			<div class="pagination">
-				
-				<span class="previous">Previous</span>
-				
-				<span class="page_number ">Page: 1 of 19</span>
-				
-				<a href="/page2" class="next">Next</a>
-				
-			</div>
-	   </div>   
 
-	   		<div class="footer">
+		</div>
+
+				<div class="footer">
 		   <div class="footer_inner">
 			   <div class="contact">
 				   <h4>About</h4>
@@ -316,6 +323,6 @@
   	});
 
 </script>
-	  
-    </body>
+
+	</body>
 </html>

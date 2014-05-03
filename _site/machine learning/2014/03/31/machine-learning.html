@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Your New Jekyll Site</title>
+        <title>Machine Learning 概要 </title>
         <meta name="viewport" content="width=device-width">
 
         <!-- syntax highlighting CSS -->
@@ -16,9 +16,9 @@
 		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
 
 	</head>
-
+	
 	<body>
-        
+    
         <div id="mobile-sticky-menu">
 	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
 	<img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" />
@@ -109,54 +109,121 @@
 
 </div>
 
-        
-		<div class="site">			
 
-			<div id="contents">
+        <div class="site">
 
-				<!-- title -->
-				<!-- Header -->
+			<!-- title -->
+			<!-- Header -->
 <header>
-<h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
+<h1><a href="http://localhost:4000/"><img src="/images/title.png" alt="logo" /></a></h1>
 	<hr />
 </header>
 
+			<div id="contents">
+				
 				<div id="main">
-					<!-- This loops through the paginated posts -->
-					
-						<h3><a href="/ruby/2014/04/28/jekyll-plugin-deprecate-keeper.html">Jekyll にて記事の deprecate フラグを立てるプラグインを作成しました</a></h3>
-						<p class="author">
-							<span class="date">2014-04-28 17:00:00 -0700</span>
-						</p>
-						<div class="content">
-							<p>最近、ブログを Jekyll で自分のブログを作成しています。それに伴ってプログラミングのライブラリに関する記事等、ある程度時間が立つとその記事の内容を保証できない類の記事を管理するプラグインを書いてみました。</p>
+					<h3><a href="">Machine Learning 概要 </a></h3>
+					<p class="author">
+						<span class="date">2014-03-31 05:57:00 -0700</span>
+					</p>
+		      		
+					<div class="post">
+						<p>最近、機械学習に関心があります。機械学習を利用したツイッタークライアントとか作ってみたいな。機械学習の有名な本、&quot;Learning From Data&quot; の著者の授業が <a href="https://www.youtube.com/playlist?list=PLD63A284B7615313A">Youtube</a> で受けることが出来ます。また、Caltech のサイトには、パワポ資料等もあります。その授業の中で機械学習の概要が解説されていたので、本格的に勉強を初めて見る前に、個人的にまとめてみました。ほとんど Wikipedia からの転載です。ちょっとずつ追記あり。</p>
 
-						</div>
-						<p><a href="/ruby/2014/04/28/jekyll-plugin-deprecate-keeper.html">...More</a></p>
-						<hr />
-					
-						<h3><a href="/machine%20learning/2014/04/27/Logistic-Regression-Algorithm.html">Logistic Regression Algorithm（ロジスティック回帰）[機械学習]</a></h3>
-						<p class="author">
-							<span class="date">2014-04-27 10:34:49 -0700</span>
-						</p>
-						<div class="content">
-							<p>今まで線形モデルの Perceptron[link] と Linear Regression[link] に関して勉強してきました。今回は、新しい線形モデルである Logistic Regression に関して勉強したので、Python で実装しました。</p>
+<p><img src="http://4.bp.blogspot.com/-NQNeUxSUJn0/UziEBI240bI/AAAAAAAAAQ8/n53_AuEKl1M/s3200/Screen+Shot+2014-03-30+at+1.52.00+PM.png" alt=""></p>
 
-						</div>
-						<p><a href="/machine%20learning/2014/04/27/Logistic-Regression-Algorithm.html">...More</a></p>
-						<hr />
-					
-						<h3><a href="/tips/2014/04/17/vim-vimtutor.html">初めての vim に最適な vimtutor</a></h3>
-						<p class="author">
-							<span class="date">2014-04-17 21:12:00 -0700</span>
-						</p>
-						<div class="content">
-							<p>vimtutor にあった vim のコマンドをまとめました。正直に告白すると、今まで vim に3度以上も挫折してきました。vim にチャレンジしても、思うように動かず、ビープ音でどんどんストレスが溜まり、結局いつものエディタに戻ってしまうという残念な感じでした。ずっと憧れはあり、そんな時に、なんとなく vimtutor を読みながらコマンドをいじってるとだいぶストレスが減ってきました。基本が大事ですね。いきなり画面を分割したり、カッコつけてもダメでした。vimtutor には、7つのレッスンがあるのですが、そこで使われたコマンドを忘れないためにもここに書いておきます。</p>
+<p>Map of Machine Learning [ <a href="http://work.caltech.edu/library/181.pdf">http://work.caltech.edu/library/181.pdf</a> ]</p>
 
-						</div>
-						<p><a href="/tips/2014/04/17/vim-vimtutor.html">...More</a></p>
-						<hr />
-					
+<h3 id="toc_0">Paradigms</h3>
+
+<p>1 . Supervised </p>
+
+<blockquote>
+<blockquote>
+<p>Supervised Learning とは、機械学習においてラベル化されたデータセットからある関数を推測するタスクのこと。このデータセットを解析し、関数を作成し、その関数を新しいデータをマッピングするために使用される。ラベル化されたとは、事前にデータセットに属性を付与して置くということ。例えば、顔認識の際、事前にアルゴリズムに「顔である」とラベル化された写真と、「顔でない」というラベル化されたデータを与えておく。その後、新しい未知のデータをこのラベル化された事前データを基に推測するというもの。</p>
+</blockquote>
+</blockquote>
+
+<p>2 . Unsupervised </p>
+
+<blockquote>
+<blockquote>
+<p>Unsupervised Learning とは、隠された構造をラベル化されていないデータから発見すること。顔認識の例だと、データセットである写真群が与えられるが、どの写真が顔で、どの写真が風景ということは明示的に示されない。その代わり、このパラダイムでは、顔にある目といった特徴等を cluster する。cluster とは、あるグループに分類すること。Unsupervised Learning は Supervised Learning の precursor になり得る。</p>
+</blockquote>
+</blockquote>
+
+<p>3 . Reinforcement </p>
+
+<blockquote>
+<blockquote>
+<p>Reinforcement Learning とは、プログラムが、ある環境においてある累積的な報酬の概念・意向を最大化するように行動すること。Reinforcement Learning に関連したテクニックの多くは dynamic programming (動的計画法) に関係しています。Supervised Learning との違いは、input/outputの正しいペアが存在しないということ。赤ちゃんが熱いカップに触ることにより、湯気が出ているカップは触るべきではないということを学ぶプロセスに似ている。触るたびに、「熱く触れない」、「この温度なら大丈夫」とフィードバックがあるが、絶対的、普遍的な「触るべき」、「触るべきでない」と言うことは難しい。強いゲームプログラム等を作成する時に有効な手法。</p>
+</blockquote>
+</blockquote>
+
+<p>4 . Active </p>
+
+<blockquote>
+<blockquote>
+<p>Active Learning とは、Semi-Supervised Learning の特殊なケース。ラベル化されていないデータが豊富にあるが、それをラベル化することが難しい場合に使われる。Active Learning は、ラベルを能動的に user/teacher から得る。あるコンセプトを学習するための数は、Supervised Learning より少ない。能動的にデータセットを得ることで、ひとつひとつのデータの価値を最大化するからです。<a href="http://jp.akinator.com/">Akinator</a> や<a href="http://ja.wikipedia.org/wiki/%E4%BA%8C%E5%8D%81%E3%81%AE%E8%B3%AA%E5%95%8F">二十の質問</a>が良い例。</p>
+</blockquote>
+</blockquote>
+
+<p>5 . Online </p>
+
+<blockquote>
+<blockquote>
+<p>Online Machine Learning とは、ある時点のある事象に関して学ぶ誘導のモデル。このパラダイムのゴールは、ある事象に対してラベルを予測すること。予測が行われた後に、正しい結果と確認することができれば、それが将来の予測に使用される。また、計算能力やストレージの制約がある場合にも活用される。</p>
+</blockquote>
+</blockquote>
+
+<h3 id="toc_1">Theory</h3>
+
+<p>1 . VC</p>
+
+<blockquote>
+<blockquote>
+<p>VC dimension とは、統計的分類アルゴリズムの能力の指標。アルゴリズムが shatter できる最大のセットの基数として定義される。基数 (Cardinality)とは、セットの要素数。</p>
+</blockquote>
+</blockquote>
+
+<p>2 . Bias−variance </p>
+
+<blockquote>
+<blockquote>
+<p>Bias–variance tradeoff とは、Bias と Variance を同時に最小化する問題のこと。Bias とは、訓練データの違いに対してどれほど、正確性を保てるか。Variance とは、モデルが訓練データの違いにどの程度敏感に反応するか。この問題は、Supervised Learning において、大きな関心。</p>
+</blockquote>
+</blockquote>
+
+<p>3 . Complexity          </p>
+
+<p>4 . Bayesian</p>
+
+<h3 id="toc_2">Techniques</h3>
+
+<p>1 . Models</p>
+
+<ul>
+<li>Linear</li>
+<li>Neural networks</li>
+<li>SVM (support vector machine)</li>
+<li>Nearest neighbors</li>
+<li>RBF<br></li>
+<li>Gaussian processes</li>
+<li>SVD</li>
+<li>Graphical models </li>
+</ul>
+
+<p>2 . Methods </p>
+
+<ul>
+<li>Regularization</li>
+<li>Validation</li>
+<li>Aggregation</li>
+<li>Input processing</li>
+</ul>
+
+					</div>
+
 				</div>
 
 				<div id="sub">
@@ -215,22 +282,13 @@
 <h4>Work</h4>			   
 <p>Coming soon... maybe.</p>
 				</div>
-				
+
 			</div>
 
-			<!-- Pagination links -->
-			<div class="pagination">
-				
-				<span class="previous">Previous</span>
-				
-				<span class="page_number ">Page: 1 of 19</span>
-				
-				<a href="/page2" class="next">Next</a>
-				
-			</div>
-	   </div>   
 
-	   		<div class="footer">
+		</div>
+
+				<div class="footer">
 		   <div class="footer_inner">
 			   <div class="contact">
 				   <h4>About</h4>
@@ -316,6 +374,6 @@
   	});
 
 </script>
-	  
-    </body>
+
+	</body>
 </html>

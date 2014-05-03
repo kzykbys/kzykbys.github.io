@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Your New Jekyll Site</title>
+        <title>Ruby on Rails チュートリアル 6 章 ( 2 ) | モデル</title>
         <meta name="viewport" content="width=device-width">
 
         <!-- syntax highlighting CSS -->
@@ -16,9 +16,9 @@
 		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
 
 	</head>
-
+	
 	<body>
-        
+    
         <div id="mobile-sticky-menu">
 	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
 	<img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" />
@@ -109,54 +109,96 @@
 
 </div>
 
-        
-		<div class="site">			
 
-			<div id="contents">
+        <div class="site">
 
-				<!-- title -->
-				<!-- Header -->
+			<!-- title -->
+			<!-- Header -->
 <header>
 <h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
 	<hr />
 </header>
 
+			<div id="contents">
+				
 				<div id="main">
-					<!-- This loops through the paginated posts -->
-					
-						<h3><a href="/ruby/2014/04/28/jekyll-plugin-deprecate-keeper.html">Jekyll にて記事の deprecate フラグを立てるプラグインを作成しました</a></h3>
-						<p class="author">
-							<span class="date">2014-04-28 17:00:00 -0700</span>
-						</p>
-						<div class="content">
-							<p>最近、ブログを Jekyll で自分のブログを作成しています。それに伴ってプログラミングのライブラリに関する記事等、ある程度時間が立つとその記事の内容を保証できない類の記事を管理するプラグインを書いてみました。</p>
+					<h3><a href="">Ruby on Rails チュートリアル 6 章 ( 2 ) | モデル</a></h3>
+					<p class="author">
+						<span class="date">2013-11-17 23:56:00 -0800</span>
+					</p>
+		      		
+					<div class="post">
+						<h3 id="toc_0">セキュアなパスワード追加</h3>
 
-						</div>
-						<p><a href="/ruby/2014/04/28/jekyll-plugin-deprecate-keeper.html">...More</a></p>
-						<hr />
-					
-						<h3><a href="/machine%20learning/2014/04/27/Logistic-Regression-Algorithm.html">Logistic Regression Algorithm（ロジスティック回帰）[機械学習]</a></h3>
-						<p class="author">
-							<span class="date">2014-04-27 10:34:49 -0700</span>
-						</p>
-						<div class="content">
-							<p>今まで線形モデルの Perceptron[link] と Linear Regression[link] に関して勉強してきました。今回は、新しい線形モデルである Logistic Regression に関して勉強したので、Python で実装しました。</p>
+<p>まずはハッシュ関数を使用するためGemfileに以下の行を追加する。</p>
 
-						</div>
-						<p><a href="/machine%20learning/2014/04/27/Logistic-Regression-Algorithm.html">...More</a></p>
-						<hr />
-					
-						<h3><a href="/tips/2014/04/17/vim-vimtutor.html">初めての vim に最適な vimtutor</a></h3>
-						<p class="author">
-							<span class="date">2014-04-17 21:12:00 -0700</span>
-						</p>
-						<div class="content">
-							<p>vimtutor にあった vim のコマンドをまとめました。正直に告白すると、今まで vim に3度以上も挫折してきました。vim にチャレンジしても、思うように動かず、ビープ音でどんどんストレスが溜まり、結局いつものエディタに戻ってしまうという残念な感じでした。ずっと憧れはあり、そんな時に、なんとなく vimtutor を読みながらコマンドをいじってるとだいぶストレスが減ってきました。基本が大事ですね。いきなり画面を分割したり、カッコつけてもダメでした。vimtutor には、7つのレッスンがあるのですが、そこで使われたコマンドを忘れないためにもここに書いておきます。</p>
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># Gemfile</span>
+<span class="lineno">2</span> <span class="c1"># gem &#39;bcrypt-ruby&#39;, ‘3.0.1&#39;</span>
+<span class="lineno">3</span> <span class="n">gem</span> <span class="s1">&#39;bcrypt-ruby&#39;</span><span class="p">,</span> <span class="err">‘</span><span class="mi">3</span><span class="o">.</span><span class="mi">1</span><span class="o">.</span><span class="mi">2</span>
+</code></pre></div>
 
-						</div>
-						<p><a href="/tips/2014/04/17/vim-vimtutor.html">...More</a></p>
-						<hr />
-					
+<p>自分の環境では、3.0.1 では動作せず、 3.1.2をインストールすることにより動作した。
+<a href="http://stackoverflow.com/questions/18541062/issues-using-bcrypt-3-0-1-with-ruby2-0-on-windows">http://stackoverflow.com/questions/18541062/issues-using-bcrypt-3-0-1-with-ruby2-0-on-windows</a></p>
+
+<p>そしてインストール。</p>
+
+<blockquote>
+<blockquote>
+<p>$ bundle install</p>
+</blockquote>
+</blockquote>
+
+<p>そして、新しいカラム password_digestカラム用のマイグレーションを作成する。</p>
+
+<blockquote>
+<blockquote>
+<p>$ rails generate migration add_password_digest_to_users password_digest:string</p>
+</blockquote>
+</blockquote>
+
+<p>上記のコマンドの最初の引数はマイグレーション名。自由に設定できるが、上のように末尾を_to_usersにしておくことをお勧めします。こうしておくと、usersテーブルにカラムを追加するマイグレーションがRailsによって自動的に作成されるため。２つ目の引数は、作成する属性の名前と型。</p>
+
+<h3 id="toc_1">パスワードの確認</h3>
+
+<p>パスワードの入力確認は、コントローラーで行うこともできるが、モデルで行うことが慣習になっている。そのために、password属性とpassword_confirmation属性をUserモデルに追加し、レコードをデータベースに保存する前に2つの属性が一致するように要求します。</p>
+
+<h3 id="toc_2">ユーザーの作成</h3>
+
+<blockquote>
+<blockquote>
+<p>$ rails console<br />
+&gt;&gt; User.create(name: &quot;Michael Hartl&quot;, email: &quot;<a href="mailto:mhartl@example.com">mhartl@example.com</a>&quot;,<br />
+?&gt;  password: &quot;foobar&quot;, password_confirmation: &quot;foobar”)</p>
+</blockquote>
+</blockquote>
+
+<p>db/development.sqlite3 を SQLite Database Browser というソフトを使うことにより、中身を確認することができる。<a href="http://sourceforge.net/projects/sqlitebrowser/">http://sourceforge.net/projects/sqlitebrowser/</a> </p>
+
+<p>また、コンソールで、</p>
+
+<blockquote>
+<blockquote>
+<p>&gt;&gt;  user =  User.find_by(email: &quot;<a href="mailto:mhartl@example.com">mhartl@example.com</a>&quot;<br />
+&gt;&gt; user.password_digest<br />
+=&gt; &quot;$2a$10$kn4cQDJTzV76ZgDxOWk6Je9A0Ttn5sKNaGTEmT0jU7.n…&quot;<br /></p>
+</blockquote>
+</blockquote>
+
+<p>このように確認、さらに</p>
+
+<blockquote>
+<blockquote>
+<p>&gt;&gt; user.authenticate(&quot;invalid&quot;)<br />
+=&gt; false<br />
+&gt;&gt; user.authenticate(&quot;foobar&quot;)<br />
+=&gt; #<User id: 1, name: "Michael Hartl", email: "mhartl@example.com"<br />
+created_at: &quot;2013-03-11 20:45:19&quot;, updated_at: &quot;2013-03-11 20:45:19&quot;,<br />
+password_digest: &quot;$2a$10$kn4cQDJTzV76ZgDxOWk6Je9A0Ttn...&quot;]]&gt;<br /></p>
+</blockquote>
+</blockquote>
+
+					</div>
+
 				</div>
 
 				<div id="sub">
@@ -215,22 +257,13 @@
 <h4>Work</h4>			   
 <p>Coming soon... maybe.</p>
 				</div>
-				
+
 			</div>
 
-			<!-- Pagination links -->
-			<div class="pagination">
-				
-				<span class="previous">Previous</span>
-				
-				<span class="page_number ">Page: 1 of 19</span>
-				
-				<a href="/page2" class="next">Next</a>
-				
-			</div>
-	   </div>   
 
-	   		<div class="footer">
+		</div>
+
+				<div class="footer">
 		   <div class="footer_inner">
 			   <div class="contact">
 				   <h4>About</h4>
@@ -316,6 +349,6 @@
   	});
 
 </script>
-	  
-    </body>
+
+	</body>
 </html>

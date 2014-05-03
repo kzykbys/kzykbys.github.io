@@ -1,0 +1,414 @@
+	<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Linear Regression Algorithm (線形回帰) [ 機械学習 ]</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+		<link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/jquery.sidr.dark.css">
+		<link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+
+	</head>
+	
+	<body>
+    
+        <div id="mobile-sticky-menu">
+	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
+	<img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" />
+</div>
+
+<div id="sidr">
+	<!-- Your content -->
+	<!-- <h4>Share</h4> -->
+
+	<h4>Category</h4>
+	<ul>
+	   
+		   <li>
+		   		<a href="/categories/objective-c">objective-c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/other">other</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/node-js">node.js</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/tips">tips</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/html5">html5</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/algorithms">algorithms</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/machine-learning">machine learning</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/c">c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby">ruby</a>
+		   </li>
+	   
+    </ul>
+	<h4>Archive</h4>
+	<ul>
+		
+			<li>
+				<a href="/2013/08/">2013/08</a>
+			</li>
+		
+			<li>
+				<a href="/2013/09/">2013/09</a>
+			</li>
+		
+			<li>
+				<a href="/2013/11/">2013/11</a>
+			</li>
+		
+			<li>
+				<a href="/2013/12/">2013/12</a>
+			</li>
+		
+			<li>
+				<a href="/2014/01/">2014/01</a>
+			</li>
+		
+			<li>
+				<a href="/2014/03/">2014/03</a>
+			</li>
+		
+			<li>
+				<a href="/2014/04/">2014/04</a>
+			</li>
+		
+	</ul>
+
+	<img src="/images/me.png" alt="me" />
+
+</div>
+
+
+        <div class="site">
+
+			<!-- title -->
+			<!-- Header -->
+<header>
+<h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
+	<hr />
+</header>
+
+			<div id="contents">
+				
+				<div id="main">
+					<h3><a href="">Linear Regression Algorithm (線形回帰) [ 機械学習 ]</a></h3>
+					<p class="author">
+						<span class="date">2014-04-08 17:07:00 -0700</span>
+					</p>
+		      		
+					<div class="post">
+						<p>Linear Regression は機械学習の中でも、歴史があり広く使われているアルゴリズムです。Perceptron アルゴリズムのようにアウトプットが +1 か -1 のような決定的なものではなく、実際の数字を取ることができます。クレジットカード審査の例で言えば、カード発行の許可・不許可という結果だけでなく、許可された場合にカードの限度額までアウトプットできます。しかし、Linear という名前が暗示しているように、基本的にデータは Perceptron と同じように直線で分類されることができなければなりません。</p>
+
+<h3 id="toc_0">Linear Regression Algorithm</h3>
+
+<p>Linear Regression の一番の目標は、エラー率が最小化された結果を返すことです。図1の赤い線は実際のデータと予想された結果との差（エラー）を表しています。これが最小化されていれば、良い結果ということです。</p>
+
+<p><img src="http://1.bp.blogspot.com/-WzdGWb102-s/U0QqfgjdwwI/AAAAAAAAASM/bzozyUGDYQg/s1600/Screen+Shot+2014-04-08+at+9.31.02+AM.png" alt=""></p>
+
+<p>このエラーを計算する方程式は、</p>
+
+<p><img src="http://3.bp.blogspot.com/-yY_5FloScoE/U0QqfufPeGI/AAAAAAAAAR8/HeM63RMUprE/s1600/Screen+Shot+2014-04-08+at+9.19.33+AM.png" alt=""></p>
+
+<p>です。この J(theta) がエラー。m はサンプル数。x(i) がトレーニングデータ。y(i) がトレーニングデータの正確な結果（ターゲット関数の返り値）。h(theta)が仮説です。h(theta) は、</p>
+
+<p><img src="http://4.bp.blogspot.com/-KaRNZs28k1c/U0QqfuBjgyI/AAAAAAAAASA/GsX4fnXWK_4/s1600/Screen+Shot+2014-04-08+at+9.35.49+AM.png" alt=""></p>
+
+<p>となります。x （インプット） と h のドット積です。</p>
+
+<p>エラーを最小化するように theta を調整することが、今回の目標です。今回は、Gradient descent というアルゴリズムを使用します。</p>
+
+<p><img src="http://1.bp.blogspot.com/-F1EAkhkA3xk/U0QqgG5L-bI/AAAAAAAAASQ/ERBXZL7Q9jo/s1600/Screen+Shot+2014-04-08+at+9.40.16+AM.png" alt=""></p>
+
+<p>まず、theta を全て 0 に初期化します。そして、予め決められた回数分、ループを回してこの theta を最適化していきます。毎度、上記の式の通り、theta がアップデートされます。コードの中で、theta の値をアップデートし続けることで、J(theta) (エラー) の値がどんどん小さくなっていきます。J(theta)の値を print 等すれば、イメージがつかめると思います。</p>
+
+<h3 id="toc_1">Code</h3>
+
+<p>Python で実装したコードがこちらです。<a href="http://aimotion.blogspot.com/2011/10/machine-learning-with-python-linear.html">このブログ</a>の作者が実装したものです。解説も分かりやすくとても参考になりました。大きな流れとしては、theta (仮説) を 0 に初期化して、その際の J(theta) （エラー率）を表示します。そして、gradient_descent 関数を呼び出し、実際の学習をし、結果を表示するという感じです。このコードは、ある会社の経営者が、新しいお店を出店したいという時に、現在出店されているお店の売上とその町の人口を使って、予想するというシンプルなものです。より洗練された変数の数が増えたケースもこのブログ記事には、解説されています。</p>
+
+<div class="highlight"><pre><code class="python"><span class="lineno"> 1</span> <span class="c"># http://aimotion.blogspot.com/2011/10/machine-learning-with-python-linear.html</span>
+<span class="lineno"> 2</span>  
+<span class="lineno"> 3</span> <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">loadtxt</span><span class="p">,</span> <span class="n">zeros</span><span class="p">,</span> <span class="n">ones</span><span class="p">,</span> <span class="n">array</span><span class="p">,</span> <span class="n">linspace</span><span class="p">,</span> <span class="n">logspace</span>
+<span class="lineno"> 4</span> <span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="n">scatter</span><span class="p">,</span> <span class="n">show</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">,</span> <span class="n">plot</span><span class="p">,</span> <span class="n">contour</span>
+<span class="lineno"> 5</span>   
+<span class="lineno"> 6</span> <span class="c">#Evaluate the linear regression</span>
+<span class="lineno"> 7</span> <span class="k">def</span> <span class="nf">compute_cost</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">isPrint</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+<span class="lineno"> 8</span>     <span class="sd">&#39;&#39;&#39;</span>
+<span class="lineno"> 9</span> <span class="sd">    Compute cost for linear regression</span>
+<span class="lineno">10</span> <span class="sd">    &#39;&#39;&#39;</span>
+<span class="lineno">11</span>     <span class="c">#Number of training samples</span>
+<span class="lineno">12</span>     <span class="n">m</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">size</span>
+<span class="lineno">13</span>   
+<span class="lineno">14</span>     <span class="n">predictions</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="lineno">15</span>   
+<span class="lineno">16</span>     <span class="n">sqErrors</span> <span class="o">=</span> <span class="p">(</span><span class="n">predictions</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="lineno">17</span>   
+<span class="lineno">18</span>     <span class="n">J</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">m</span><span class="p">))</span> <span class="o">*</span> <span class="n">sqErrors</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="lineno">19</span>  
+<span class="lineno">20</span>     <span class="k">return</span> <span class="n">J</span>
+<span class="lineno">21</span>   
+<span class="lineno">22</span>   
+<span class="lineno">23</span> <span class="k">def</span> <span class="nf">gradient_descent</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">num_iters</span><span class="p">):</span>
+<span class="lineno">24</span>     <span class="sd">&#39;&#39;&#39;</span>
+<span class="lineno">25</span> <span class="sd">    Performs gradient descent to learn theta</span>
+<span class="lineno">26</span> <span class="sd">    by taking num_items gradient steps with learning</span>
+<span class="lineno">27</span> <span class="sd">    rate alpha</span>
+<span class="lineno">28</span> <span class="sd">    &#39;&#39;&#39;</span>
+<span class="lineno">29</span>     <span class="n">m</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">size</span>
+<span class="lineno">30</span>     <span class="n">J_history</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">num_iters</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="lineno">31</span>   
+<span class="lineno">32</span>     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_iters</span><span class="p">):</span>
+<span class="lineno">33</span>   
+<span class="lineno">34</span>         <span class="n">predictions</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="lineno">35</span>   
+<span class="lineno">36</span>         <span class="n">errors_x1</span> <span class="o">=</span> <span class="p">(</span><span class="n">predictions</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="c"># X[:, 0] is all 1s</span>
+<span class="lineno">37</span>         <span class="n">errors_x2</span> <span class="o">=</span> <span class="p">(</span><span class="n">predictions</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="lineno">38</span>   
+<span class="lineno">39</span>         <span class="c"># batch gradient</span>
+<span class="lineno">40</span>         <span class="n">theta</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">theta</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">alpha</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">m</span><span class="p">)</span> <span class="o">*</span> <span class="n">errors_x1</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="lineno">41</span>         <span class="n">theta</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">theta</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">alpha</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">m</span><span class="p">)</span> <span class="o">*</span> <span class="n">errors_x2</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="lineno">42</span>   
+<span class="lineno">43</span>         <span class="n">J_history</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">compute_cost</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">isPrint</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="lineno">44</span>   
+<span class="lineno">45</span>     <span class="k">return</span> <span class="n">theta</span><span class="p">,</span> <span class="n">J_history</span>
+<span class="lineno">46</span>   
+<span class="lineno">47</span>   
+<span class="lineno">48</span> <span class="c">#Load the dataset</span>
+<span class="lineno">49</span> <span class="n">data</span> <span class="o">=</span> <span class="n">loadtxt</span><span class="p">(</span><span class="s">&#39;ex1data1.txt&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s">&#39;,&#39;</span><span class="p">)</span>
+<span class="lineno">50</span>  
+<span class="lineno">51</span> <span class="c">#Plot the data</span>
+<span class="lineno">52</span> <span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s">&#39;o&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">&#39;b&#39;</span><span class="p">)</span>
+<span class="lineno">53</span> <span class="n">title</span><span class="p">(</span><span class="s">&#39;Profits distribution&#39;</span><span class="p">)</span>
+<span class="lineno">54</span> <span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Population of City in 10,000s&#39;</span><span class="p">)</span>
+<span class="lineno">55</span> <span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Profit in $10,000s&#39;</span><span class="p">)</span>
+<span class="lineno">56</span> <span class="c"># show()</span>
+<span class="lineno">57</span>   
+<span class="lineno">58</span> <span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="lineno">59</span> <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="lineno">60</span>   
+<span class="lineno">61</span> <span class="c">#number of training samples</span>
+<span class="lineno">62</span> <span class="n">m</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">size</span>
+<span class="lineno">63</span>   
+<span class="lineno">64</span> <span class="c">#Add a column of ones to X (interception data)</span>
+<span class="lineno">65</span> <span class="n">it</span> <span class="o">=</span> <span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="lineno">66</span> <span class="n">it</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span>
+<span class="lineno">67</span>   
+<span class="lineno">68</span> <span class="c">#Initialize theta parameters</span>
+<span class="lineno">69</span> <span class="n">theta</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="c"># [[0.][0.]]</span>
+<span class="lineno">70</span>   
+<span class="lineno">71</span> <span class="c">#Some gradient descent settings</span>
+<span class="lineno">72</span> <span class="n">iterations</span> <span class="o">=</span> <span class="mi">3000</span>
+<span class="lineno">73</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="lineno">74</span>   
+<span class="lineno">75</span> <span class="c">#compute and display initial cost</span>
+<span class="lineno">76</span> <span class="k">print</span> <span class="n">compute_cost</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">isPrint</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="c"># 32.0727338775</span>
+<span class="lineno">77</span>   
+<span class="lineno">78</span> <span class="n">theta</span><span class="p">,</span> <span class="n">J_history</span> <span class="o">=</span> <span class="n">gradient_descent</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">iterations</span><span class="p">)</span>
+<span class="lineno">79</span>   
+<span class="lineno">80</span> <span class="k">print</span> <span class="s">&#39;theta is&#39;</span><span class="p">,</span> <span class="n">theta</span>
+<span class="lineno">81</span> <span class="c">#Predict values for population sizes of 35,000 and 70,000</span>
+<span class="lineno">82</span> <span class="n">predict1</span> <span class="o">=</span> <span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">])</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="lineno">83</span> <span class="k">print</span> <span class="s">&#39;For population = 35,000, we predict a profit of </span><span class="si">%f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">predict1</span> <span class="o">*</span> <span class="mi">10000</span><span class="p">)</span>
+<span class="lineno">84</span> <span class="n">predict2</span> <span class="o">=</span> <span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">])</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="lineno">85</span> <span class="k">print</span> <span class="s">&#39;For population = 70,000, we predict a profit of </span><span class="si">%f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">predict2</span> <span class="o">*</span> <span class="mi">10000</span><span class="p">)</span>
+<span class="lineno">86</span>   
+<span class="lineno">87</span> <span class="c">#Plot the results</span>
+<span class="lineno">88</span> <span class="n">result</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="lineno">89</span> <span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">result</span><span class="p">)</span>
+<span class="lineno">90</span> <span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<p><img src="http://3.bp.blogspot.com/-7n6CkqA5l3U/U0Qqgdpc6EI/AAAAAAAAASU/ymL65Xlo0tA/s1600/Screen+Shot+2014-04-08+at+9.46.22+AM.png" alt=""></p>
+
+<hr>
+
+<p>参考</p>
+
+<p><a href="http://aimotion.blogspot.com/2011/10/machine-learning-with-python-linear.html">http://aimotion.blogspot.com/2011/10/machine-learning-with-python-linear.html</a><br />
+<a href="http://openclassroom.stanford.edu/MainFolder/DocumentPage.php?course=MachineLearning&amp;doc=exercises/ex2/ex2.html">http://openclassroom.stanford.edu/MainFolder/DocumentPage.php?course=MachineLearning&amp;doc=exercises/ex2/ex2.html</a></p>
+
+					</div>
+
+				</div>
+
+				<div id="sub">
+				   <h4>About</h4>
+<p><u>Kazuya Kobayshi</u><br />
+- I'm a once law student trying to be computer geek.<br />
+- ギークになりたい。<br />
+<a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a></p>
+<h4>Elsewhere</h4>
+<p>
+   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+   <a href="https://github.com/kzykbys">Github</a></p>
+<h4>Category</h4>
+<p>|
+   
+	   <a href="/categories/objective-c">objective-c</a> | 
+   
+	   <a href="/categories/other">other</a> | 
+   
+	   <a href="/categories/node-js">node.js</a> | 
+   
+	   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
+   
+	   <a href="/categories/tips">tips</a> | 
+   
+	   <a href="/categories/html5">html5</a> | 
+   
+	   <a href="/categories/algorithms">algorithms</a> | 
+   
+	   <a href="/categories/machine-learning">machine learning</a> | 
+   
+	   <a href="/categories/c">c</a> | 
+   
+	   <a href="/categories/ruby">ruby</a> | 
+   
+</p>
+<h4>Archive</h4>
+   <p>|
+   
+		<a href="/2013/08/">2013/08</a> | 
+   
+		<a href="/2013/09/">2013/09</a> | 
+   
+		<a href="/2013/11/">2013/11</a> | 
+   
+		<a href="/2013/12/">2013/12</a> | 
+   
+		<a href="/2014/01/">2014/01</a> | 
+   
+		<a href="/2014/03/">2014/03</a> | 
+   
+		<a href="/2014/04/">2014/04</a> | 
+   
+</p>
+<h4>Work</h4>			   
+<p>Coming soon... maybe.</p>
+				</div>
+
+			</div>
+
+
+		</div>
+
+				<div class="footer">
+		   <div class="footer_inner">
+			   <div class="contact">
+				   <h4>About</h4>
+				   <p><u>Kazuya Kobayshi</u><br />
+				   - I'm a once law student trying to be computer geek.<br />
+				   - ギークになりたい。<br />
+				   <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a></p>
+				   <h4>Social</h4>
+				   <p>
+					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+					   <a href="https://github.com/kzykbys">Github</a></p>
+				   <h4>Category</h4>
+				   <p>|
+					   
+						   <a href="/categories/objective-c">objective-c</a> | 
+					   
+						   <a href="/categories/other">other</a> | 
+					   
+						   <a href="/categories/node-js">node.js</a> | 
+					   
+						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
+					   
+						   <a href="/categories/tips">tips</a> | 
+					   
+						   <a href="/categories/html5">html5</a> | 
+					   
+						   <a href="/categories/algorithms">algorithms</a> | 
+					   
+						   <a href="/categories/machine-learning">machine learning</a> | 
+					   
+						   <a href="/categories/c">c</a> | 
+					   
+						   <a href="/categories/ruby">ruby</a> | 
+					   
+				   </p>
+				   <h4>Archive</h4>
+					   <p>|
+					   
+	    					<a href="/2013/08/">2013/08</a> | 
+	    			   
+	    					<a href="/2013/09/">2013/09</a> | 
+	    			   
+	    					<a href="/2013/11/">2013/11</a> | 
+	    			   
+	    					<a href="/2013/12/">2013/12</a> | 
+	    			   
+	    					<a href="/2014/01/">2014/01</a> | 
+	    			   
+	    					<a href="/2014/03/">2014/03</a> | 
+	    			   
+	    					<a href="/2014/04/">2014/04</a> | 
+	    			   
+    			   </p>
+				   <h4>Work</h4>			   
+				   <p>Coming soon... maybe.</p>
+			   </div>
+		   </div>
+	   	</div>
+
+	   	<!-- jQuery -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>	  
+	  	<!-- Sdir (slide menu for small screen) -->
+<script>
+/*! Sidr - v1.2.1 - 2013-11-06
+ * https://github.com/artberri/sidr
+ * Copyright (c) 2013 Alberto Varela; Licensed MIT */
+(function(e){var t=!1,i=!1,n={isUrl:function(e){var t=RegExp("^(https?:\\/\\/)?((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|((\\d{1,3}\\.){3}\\d{1,3}))(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*(\\?[;&a-z\\d%_.~+=-]*)?(\\#[-a-z\\d_]*)?$","i");return t.test(e)?!0:!1},loadContent:function(e,t){e.html(t)},addPrefix:function(e){var t=e.attr("id"),i=e.attr("class");"string"==typeof t&&""!==t&&e.attr("id",t.replace(/([A-Za-z0-9_.\-]+)/g,"sidr-id-$1")),"string"==typeof i&&""!==i&&"sidr-inner"!==i&&e.attr("class",i.replace(/([A-Za-z0-9_.\-]+)/g,"sidr-class-$1")),e.removeAttr("style")},execute:function(n,s,a){"function"==typeof s?(a=s,s="sidr"):s||(s="sidr");var r,d,l,c=e("#"+s),u=e(c.data("body")),f=e("html"),p=c.outerWidth(!0),g=c.data("speed"),h=c.data("side"),m=c.data("displace"),v=c.data("onOpen"),y=c.data("onClose"),x="sidr"===s?"sidr-open":"sidr-open "+s+"-open";if("open"===n||"toggle"===n&&!c.is(":visible")){if(c.is(":visible")||t)return;if(i!==!1)return o.close(i,function(){o.open(s)}),void 0;t=!0,"left"===h?(r={left:p+"px"},d={left:"0px"}):(r={right:p+"px"},d={right:"0px"}),u.is("body")&&(l=f.scrollTop(),f.css("overflow-x","hidden").scrollTop(l)),m?u.addClass("sidr-animating").css({width:u.width(),position:"absolute"}).animate(r,g,function(){e(this).addClass(x)}):setTimeout(function(){e(this).addClass(x)},g),c.css("display","block").animate(d,g,function(){t=!1,i=s,"function"==typeof a&&a(s),u.removeClass("sidr-animating")}),v()}else{if(!c.is(":visible")||t)return;t=!0,"left"===h?(r={left:0},d={left:"-"+p+"px"}):(r={right:0},d={right:"-"+p+"px"}),u.is("body")&&(l=f.scrollTop(),f.removeAttr("style").scrollTop(l)),u.addClass("sidr-animating").animate(r,g).removeClass(x),c.animate(d,g,function(){c.removeAttr("style").hide(),u.removeAttr("style"),e("html").removeAttr("style"),t=!1,i=!1,"function"==typeof a&&a(s),u.removeClass("sidr-animating")}),y()}}},o={open:function(e,t){n.execute("open",e,t)},close:function(e,t){n.execute("close",e,t)},toggle:function(e,t){n.execute("toggle",e,t)},toogle:function(e,t){n.execute("toggle",e,t)}};e.sidr=function(t){return o[t]?o[t].apply(this,Array.prototype.slice.call(arguments,1)):"function"!=typeof t&&"string"!=typeof t&&t?(e.error("Method "+t+" does not exist on jQuery.sidr"),void 0):o.toggle.apply(this,arguments)},e.fn.sidr=function(t){var i=e.extend({name:"sidr",speed:200,side:"left",source:null,renaming:!0,body:"body",displace:!0,onOpen:function(){},onClose:function(){}},t),s=i.name,a=e("#"+s);if(0===a.length&&(a=e("<div />").attr("id",s).appendTo(e("body"))),a.addClass("sidr").addClass(i.side).data({speed:i.speed,side:i.side,body:i.body,displace:i.displace,onOpen:i.onOpen,onClose:i.onClose}),"function"==typeof i.source){var r=i.source(s);n.loadContent(a,r)}else if("string"==typeof i.source&&n.isUrl(i.source))e.get(i.source,function(e){n.loadContent(a,e)});else if("string"==typeof i.source){var d="",l=i.source.split(",");if(e.each(l,function(t,i){d+='<div class="sidr-inner">'+e(i).html()+"</div>"}),i.renaming){var c=e("<div />").html(d);c.find("*").each(function(t,i){var o=e(i);n.addPrefix(o)}),d=c.html()}n.loadContent(a,d)}else null!==i.source&&e.error("Invalid Sidr Source");return this.each(function(){var t=e(this),i=t.data("sidr");i||(t.data("sidr",s),"ontouchstart"in document.documentElement?(t.bind("touchstart",function(e){e.originalEvent.touches[0],this.touched=e.timeStamp}),t.bind("touchend",function(e){var t=Math.abs(e.timeStamp-this.touched);200>t&&(e.preventDefault(),o.toggle(s))})):t.click(function(e){e.preventDefault(),o.toggle(s)}))})}})(jQuery);
+</script>
+
+<script>
+	
+  	$(document).ready(function() {
+		$('#mobile-menu-button').sidr();	  
+  	});
+
+  	$('#mobile-menu-button').click(function(e){
+  	});
+
+
+  	$('html').click(function(e){
+  		$.sidr('close', 'sidr');
+  	});
+
+</script>
+
+	</body>
+</html>

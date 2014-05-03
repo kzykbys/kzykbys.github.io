@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Your New Jekyll Site</title>
+        <title>Git コマンド集</title>
         <meta name="viewport" content="width=device-width">
 
         <!-- syntax highlighting CSS -->
@@ -16,9 +16,9 @@
 		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
 
 	</head>
-
+	
 	<body>
-        
+    
         <div id="mobile-sticky-menu">
 	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
 	<img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" />
@@ -109,54 +109,107 @@
 
 </div>
 
-        
-		<div class="site">			
 
-			<div id="contents">
+        <div class="site">
 
-				<!-- title -->
-				<!-- Header -->
+			<!-- title -->
+			<!-- Header -->
 <header>
 <h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
 	<hr />
 </header>
 
+			<div id="contents">
+				
 				<div id="main">
-					<!-- This loops through the paginated posts -->
-					
-						<h3><a href="/ruby/2014/04/28/jekyll-plugin-deprecate-keeper.html">Jekyll にて記事の deprecate フラグを立てるプラグインを作成しました</a></h3>
-						<p class="author">
-							<span class="date">2014-04-28 17:00:00 -0700</span>
-						</p>
-						<div class="content">
-							<p>最近、ブログを Jekyll で自分のブログを作成しています。それに伴ってプログラミングのライブラリに関する記事等、ある程度時間が立つとその記事の内容を保証できない類の記事を管理するプラグインを書いてみました。</p>
+					<h3><a href="">Git コマンド集</a></h3>
+					<p class="author">
+						<span class="date">2013-12-08 00:00:00 -0800</span>
+					</p>
+		      		
+					<div class="post">
+						<p>Herokuにデプロイするしか git を活用したことがなかったのですが、最近チームで開発する機会にちょくちょく恵まれ、git にてプロジェクトを複数人で管理する必要が出てきました。そこで、しっかり git を勉強しようとドットインストールの git 講座を視聴しました。下記はその Heroku へデプロイするだけではあまり知らなかった git のコマンド集です。</p>
 
-						</div>
-						<p><a href="/ruby/2014/04/28/jekyll-plugin-deprecate-keeper.html">...More</a></p>
-						<hr />
-					
-						<h3><a href="/machine%20learning/2014/04/27/Logistic-Regression-Algorithm.html">Logistic Regression Algorithm（ロジスティック回帰）[機械学習]</a></h3>
-						<p class="author">
-							<span class="date">2014-04-27 10:34:49 -0700</span>
-						</p>
-						<div class="content">
-							<p>今まで線形モデルの Perceptron[link] と Linear Regression[link] に関して勉強してきました。今回は、新しい線形モデルである Logistic Regression に関して勉強したので、Python で実装しました。</p>
+<h3 id="toc_0">git コマンド集 by ドットインストール</h3>
 
-						</div>
-						<p><a href="/machine%20learning/2014/04/27/Logistic-Regression-Algorithm.html">...More</a></p>
-						<hr />
-					
-						<h3><a href="/tips/2014/04/17/vim-vimtutor.html">初めての vim に最適な vimtutor</a></h3>
-						<p class="author">
-							<span class="date">2014-04-17 21:12:00 -0700</span>
-						</p>
-						<div class="content">
-							<p>vimtutor にあった vim のコマンドをまとめました。正直に告白すると、今まで vim に3度以上も挫折してきました。vim にチャレンジしても、思うように動かず、ビープ音でどんどんストレスが溜まり、結局いつものエディタに戻ってしまうという残念な感じでした。ずっと憧れはあり、そんな時に、なんとなく vimtutor を読みながらコマンドをいじってるとだいぶストレスが減ってきました。基本が大事ですね。いきなり画面を分割したり、カッコつけてもダメでした。vimtutor には、7つのレッスンがあるのですが、そこで使われたコマンドを忘れないためにもここに書いておきます。</p>
+<p>gitをアウトプットをカラーリング</p>
 
-						</div>
-						<p><a href="/tips/2014/04/17/vim-vimtutor.html">...More</a></p>
-						<hr />
-					
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">config</span> <span class="err">—</span><span class="n">global</span> <span class="n">color</span><span class="o">.</span><span class="n">ui</span> <span class="kp">true</span>
+</code></pre></div>
+
+<p>ログにどこが変更されたか表示する</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">log</span> <span class="o">-</span><span class="nb">p</span>
+<span class="lineno">2</span> <span class="n">git</span> <span class="n">log</span> <span class="o">--</span><span class="n">stat</span>
+</code></pre></div>
+
+<p>修正したが、ステージングエリアにあげていないファイルの差分チェック</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">diff</span>
+</code></pre></div>
+
+<p>修正したが、ステージングエリアにあげていないファイルを元に戻す</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">checkout</span> <span class="err">—</span> <span class="n">fileName</span>
+</code></pre></div>
+
+<p>修正し、ステージングエリアにあげたものファイルの差分チェック</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">diff</span> <span class="err">—</span><span class="n">cached</span>
+</code></pre></div>
+
+<p>スペルミス等のコミットとしてあげるほどでもない場合、ステージングエリアに修正ファイルをあげた後にこのコマンドを実行すると、同じコミットとして処理してくれる。</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">commit</span> <span class="err">—</span><span class="n">amend</span>
+</code></pre></div>
+
+<p>HEADは直前のコミット。直前のコミットをなかったことにしてくれる。</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">hard</span> <span class="no">HEAD</span>
+</code></pre></div>
+
+<p>そのコミットIDまで戻る。コミットIDは git status で確認</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">hard</span> <span class="no">CommitID</span>
+</code></pre></div>
+
+<p>ブランチの削除</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">d</span> <span class="p">(</span><span class="n">branch</span> <span class="nb">name</span><span class="p">)</span>
+</code></pre></div>
+
+<p>たくさんコミットをしていく中で、あるコミットだけに目印のようなものを付けたい時に活用する。</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">tag</span>
+</code></pre></div>
+
+<p>coというエイリアスを作成</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">config</span> <span class="err">—</span><span class="n">global</span> <span class="k">alias</span><span class="o">.</span><span class="n">co</span> <span class="n">checkout</span>
+</code></pre></div>
+
+<p>エイリアス等の設定一覧を表示</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">config</span> <span class="o">-</span><span class="n">l</span> 
+</code></pre></div>
+
+<p>共有リポジトリを作成する時の初期オプション。またリポジトリ名は .git と付けるのが通例。</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">init</span> <span class="err">—</span><span class="n">bare</span>
+</code></pre></div>
+
+<p>originという名前で共有リポジトリを設定する</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="p">(</span><span class="n">repos</span> <span class="n">location</span><span class="p">)</span>
+</code></pre></div>
+
+<p>誰かが作った共有レポジトリを他者がその他者のローカルに複製する</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="nb">clone</span>
+</code></pre></div>
+
+					</div>
+
 				</div>
 
 				<div id="sub">
@@ -215,22 +268,13 @@
 <h4>Work</h4>			   
 <p>Coming soon... maybe.</p>
 				</div>
-				
+
 			</div>
 
-			<!-- Pagination links -->
-			<div class="pagination">
-				
-				<span class="previous">Previous</span>
-				
-				<span class="page_number ">Page: 1 of 19</span>
-				
-				<a href="/page2" class="next">Next</a>
-				
-			</div>
-	   </div>   
 
-	   		<div class="footer">
+		</div>
+
+				<div class="footer">
 		   <div class="footer_inner">
 			   <div class="contact">
 				   <h4>About</h4>
@@ -316,6 +360,6 @@
   	});
 
 </script>
-	  
-    </body>
+
+	</body>
 </html>

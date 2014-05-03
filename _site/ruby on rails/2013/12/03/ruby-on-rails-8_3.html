@@ -1,0 +1,395 @@
+	<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Ruby on Rails チュートリアル 8 章 （２）| ログイン・ログアウト</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+		<link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/jquery.sidr.dark.css">
+		<link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+
+	</head>
+	
+	<body>
+    
+        <div id="mobile-sticky-menu">
+	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
+	<img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" />
+</div>
+
+<div id="sidr">
+	<!-- Your content -->
+	<!-- <h4>Share</h4> -->
+
+	<h4>Category</h4>
+	<ul>
+	   
+		   <li>
+		   		<a href="/categories/objective-c">objective-c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/other">other</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/node-js">node.js</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/tips">tips</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/html5">html5</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/algorithms">algorithms</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/machine-learning">machine learning</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/c">c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby">ruby</a>
+		   </li>
+	   
+    </ul>
+	<h4>Archive</h4>
+	<ul>
+		
+			<li>
+				<a href="/2013/08/">2013/08</a>
+			</li>
+		
+			<li>
+				<a href="/2013/09/">2013/09</a>
+			</li>
+		
+			<li>
+				<a href="/2013/11/">2013/11</a>
+			</li>
+		
+			<li>
+				<a href="/2013/12/">2013/12</a>
+			</li>
+		
+			<li>
+				<a href="/2014/01/">2014/01</a>
+			</li>
+		
+			<li>
+				<a href="/2014/03/">2014/03</a>
+			</li>
+		
+			<li>
+				<a href="/2014/04/">2014/04</a>
+			</li>
+		
+	</ul>
+
+	<img src="/images/me.png" alt="me" />
+
+</div>
+
+
+        <div class="site">
+
+			<!-- title -->
+			<!-- Header -->
+<header>
+<h1><a href="http://localhost:4000/"><img src="/images/title.png" alt="logo" /></a></h1>
+	<hr />
+</header>
+
+			<div id="contents">
+				
+				<div id="main">
+					<h3><a href="">Ruby on Rails チュートリアル 8 章 （２）| ログイン・ログアウト</a></h3>
+					<p class="author">
+						<span class="date">2013-12-03 23:45:00 -0800</span>
+					</p>
+		      		
+					<div class="post">
+						<p>急遽、勉強しなくちゃいけなくなった Ruby on Rails の個人的なまとめ。ログイン、ログアウト関連。
+<a href="http://railstutorial.jp/chapters/sign-in-sign-out?version=4.0#top">http://railstutorial.jp/chapters/sign-in-sign-out?version=4.0#top</a></p>
+
+<h3 id="toc_0">永続モデルのためのトークン</h3>
+
+<p>記憶トークンには Rails の標準ライブラリのSecureRandomモジュールのurlsafe_base64メソッドを使う。これは６４種類の文字列から、長さ１６の文字列を返す。流れとしては、</p>
+
+<p>１．ユーザーのブラウザに base64 トークンを保存</p>
+
+<p>２．同時に、DBにもそのトークンを暗号化し、保存</p>
+
+<p>３．ユーザーが再度サイトに来た際には、ブラウザの cookie からトークンを読み込み、暗号化し、DBの既に暗号化されていたトークンを比較</p>
+
+<blockquote>
+<blockquote>
+<p>トークンの生成</p>
+</blockquote>
+</blockquote>
+
+<p>上記までの流れにそえば、とりあえず Student モデルにトークンを保存するカラムは作成されているはずです。ここからは、具体的にトークンを生成をしていきます。</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno"> 1</span> <span class="c1"># student.rb</span>
+<span class="lineno"> 2</span> <span class="c1"># Generate token for Session</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span> <span class="n">before_create</span> <span class="ss">:create_remember_token</span>
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span> <span class="c1"># Sessions funk</span>
+<span class="lineno"> 7</span> <span class="k">def</span> <span class="nc">Student</span><span class="o">.</span><span class="nf">new_remember_token</span>
+<span class="lineno"> 8</span>  <span class="no">SecureRandom</span><span class="o">.</span><span class="n">urlsafe_base64</span>
+<span class="lineno"> 9</span> <span class="k">end</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="k">def</span> <span class="nc">Student</span><span class="o">.</span><span class="nf">encrypt</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+<span class="lineno">12</span>  <span class="no">Digest</span><span class="o">::</span><span class="no">SHA1</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">to_s</span><span class="p">)</span>
+<span class="lineno">13</span> <span class="k">end</span>
+<span class="lineno">14</span> 
+<span class="lineno">15</span> <span class="kp">private</span>
+<span class="lineno">16</span> 
+<span class="lineno">17</span> <span class="k">def</span> <span class="nf">create_remember_token</span>
+<span class="lineno">18</span>  <span class="nb">self</span><span class="o">.</span><span class="n">remember_token</span> <span class="o">=</span> <span class="no">Student</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="no">Student</span><span class="o">.</span><span class="n">new_remember_token</span><span class="p">)</span>
+<span class="lineno">19</span> <span class="k">end</span>
+</code></pre></div>
+
+<p>モデルの中で、トークンを生成する関数、暗号化する関数、そして、プライベートのそれらの結果を該当の Student モデルに保存しています。self というキーワードを指定し、ローカル変数ではなく、DBにしっかりと保存されるようにする。これらは、before_create により Student を保存する前に実行されます。</p>
+
+<blockquote>
+<blockquote>
+<p>セッションヘルパー</p>
+</blockquote>
+</blockquote>
+
+<p>ここから、先ほどの sign_in 関数の実装です。</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># sessions_helper.rb</span>
+<span class="lineno">2</span> <span class="k">module</span> <span class="nn">SessionsHelper</span>
+<span class="lineno">3</span>   <span class="k">def</span> <span class="nf">sign_in</span><span class="p">(</span><span class="n">student</span><span class="p">)</span>
+<span class="lineno">4</span>     <span class="n">remember_token</span> <span class="o">=</span> <span class="no">Student</span><span class="o">.</span><span class="n">new_remember_token</span>
+<span class="lineno">5</span>     <span class="n">cookies</span><span class="o">.</span><span class="n">permanent</span><span class="o">[</span><span class="ss">:remember_token</span><span class="o">]</span> <span class="o">=</span> <span class="n">remember_token</span>
+<span class="lineno">6</span>     <span class="n">student</span><span class="o">.</span><span class="n">update_attribute</span><span class="p">(</span><span class="ss">:remember_token</span><span class="p">,</span> <span class="no">Student</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">remember_token</span><span class="p">))</span>
+<span class="lineno">7</span>     <span class="nb">self</span><span class="o">.</span><span class="n">current_studen</span> <span class="o">=</span> <span class="n">student</span>
+<span class="lineno">8</span>   <span class="k">end</span>
+<span class="lineno">9</span> <span class="k">end</span>
+</code></pre></div>
+
+<p>この関数はログインに成功するたびに呼ばれることを思い出してください。まず、新しいトークンを生成。暗号化れていないこのトークンを cookie に保存。Student モデルのように暗号化したトークンを DB へ保存。update_attribute 関数により、validation 等を迂回して DB への変更することができる。最後の current_sutdent はこれから実装します。</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># sessions_helper.rb</span>
+<span class="lineno">2</span> <span class="k">def</span> <span class="nf">current_student</span><span class="o">=</span><span class="p">(</span><span class="n">student</span><span class="p">)</span>
+<span class="lineno">3</span>   <span class="vi">@current_student</span> <span class="o">=</span> <span class="n">student</span>
+<span class="lineno">4</span> <span class="k">end</span>
+</code></pre></div>
+
+<p>この current_studen= “関数&quot;は少し特殊です。普通のプログラミング言語では = は関数名に使いませんが、Ruby は使用することができます。これを実装することにより、sign_in関数の代入するように書くことにより、この関数が実行されます。ここでは @current_student というインスタンス変数を設定し、後に使用できるようにしています。</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># sessions_helper.rb</span>
+<span class="lineno">2</span> <span class="k">def</span> <span class="nf">current_student</span>
+<span class="lineno">3</span>   <span class="n">remember_token</span> <span class="o">=</span> <span class="no">Student</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">cookies</span><span class="o">[</span><span class="ss">:remember_token</span><span class="o">]</span><span class="p">)</span>
+<span class="lineno">4</span>   <span class="vi">@current_student</span> <span class="o">||=</span> <span class="no">Student</span><span class="o">.</span><span class="n">find_by</span><span class="p">(</span><span class="n">remember_token</span><span class="p">:</span> <span class="n">remember_token</span><span class="p">)</span>
+<span class="lineno">5</span> <span class="k">end</span>
+</code></pre></div>
+
+<p>そして、current_studentのゲッターを作成します。attr_accessor でゲッター・セッターを作成すると、セッション情報がその都度新しくなりページを遷移するたびにログアウトしてしまいます。そのため、上記のように、cookie をブラウザから取得し、DBのトークンは暗号化されているので、取得したトークンを暗号化し、 Student モデルを DB から引っ張ってきています。||= は他の言語でもよく使われる += と似ていて、この場合</p>
+
+<blockquote>
+<blockquote>
+<p>@current_student = @current || Student.find_by(remember_token: remember_token)</p>
+</blockquote>
+</blockquote>
+
+<p>と同義になります。つまり、 current_user が存在しない （ nil ）場合にのみ、DB から現在アクセスしているユーザーの情報を取ってくるということです。</p>
+
+<p>また、ユーザーがログインしているか否かを判断する関数を定義します。current_user が nil でない時に（ログインしている）、true を 返します。</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># sessions_helper.rb</span>
+<span class="lineno">2</span> <span class="k">def</span> <span class="nf">signed_in?</span>
+<span class="lineno">3</span>   <span class="o">!</span><span class="n">current_user</span><span class="o">.</span><span class="n">nil?</span>
+<span class="lineno">4</span> <span class="k">end</span>
+</code></pre></div>
+
+<p>後は、ビューで、以下のようにユーザーがログインしているか否か判断し、表示するコンテンツを変更すればそれぽくなります。</p>
+
+<div class="highlight"><pre><code class="erb"><span class="lineno">1</span> <span class="x"># Each View</span>
+<span class="lineno">2</span> <span class="cp">&lt;%</span> <span class="k">if</span> <span class="n">signed_in?</span> <span class="cp">%&gt;</span><span class="x"></span>
+<span class="lineno">3</span> <span class="x"># サインインしているユーザー用のリンク</span>
+<span class="lineno">4</span> <span class="cp">&lt;%</span> <span class="k">else</span> <span class="cp">%&gt;</span><span class="x"></span>
+<span class="lineno">5</span> <span class="x">#サインインしていないユーザー用のリンク</span>
+<span class="lineno">6</span> <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span><span class="x"></span>
+</code></pre></div>
+
+<p>あとは、ログアウト機能で終了！</p>
+
+					</div>
+
+				</div>
+
+				<div id="sub">
+				   <h4>About</h4>
+<p><u>Kazuya Kobayshi</u><br />
+- I'm a once law student trying to be computer geek.<br />
+- ギークになりたい。<br />
+<a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a></p>
+<h4>Elsewhere</h4>
+<p>
+   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+   <a href="https://github.com/kzykbys">Github</a></p>
+<h4>Category</h4>
+<p>|
+   
+	   <a href="/categories/objective-c">objective-c</a> | 
+   
+	   <a href="/categories/other">other</a> | 
+   
+	   <a href="/categories/node-js">node.js</a> | 
+   
+	   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
+   
+	   <a href="/categories/tips">tips</a> | 
+   
+	   <a href="/categories/html5">html5</a> | 
+   
+	   <a href="/categories/algorithms">algorithms</a> | 
+   
+	   <a href="/categories/machine-learning">machine learning</a> | 
+   
+	   <a href="/categories/c">c</a> | 
+   
+	   <a href="/categories/ruby">ruby</a> | 
+   
+</p>
+<h4>Archive</h4>
+   <p>|
+   
+		<a href="/2013/08/">2013/08</a> | 
+   
+		<a href="/2013/09/">2013/09</a> | 
+   
+		<a href="/2013/11/">2013/11</a> | 
+   
+		<a href="/2013/12/">2013/12</a> | 
+   
+		<a href="/2014/01/">2014/01</a> | 
+   
+		<a href="/2014/03/">2014/03</a> | 
+   
+		<a href="/2014/04/">2014/04</a> | 
+   
+</p>
+<h4>Work</h4>			   
+<p>Coming soon... maybe.</p>
+				</div>
+
+			</div>
+
+
+		</div>
+
+				<div class="footer">
+		   <div class="footer_inner">
+			   <div class="contact">
+				   <h4>About</h4>
+				   <p><u>Kazuya Kobayshi</u><br />
+				   - I'm a once law student trying to be computer geek.<br />
+				   - ギークになりたい。<br />
+				   <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a></p>
+				   <h4>Social</h4>
+				   <p>
+					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+					   <a href="https://github.com/kzykbys">Github</a></p>
+				   <h4>Category</h4>
+				   <p>|
+					   
+						   <a href="/categories/objective-c">objective-c</a> | 
+					   
+						   <a href="/categories/other">other</a> | 
+					   
+						   <a href="/categories/node-js">node.js</a> | 
+					   
+						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
+					   
+						   <a href="/categories/tips">tips</a> | 
+					   
+						   <a href="/categories/html5">html5</a> | 
+					   
+						   <a href="/categories/algorithms">algorithms</a> | 
+					   
+						   <a href="/categories/machine-learning">machine learning</a> | 
+					   
+						   <a href="/categories/c">c</a> | 
+					   
+						   <a href="/categories/ruby">ruby</a> | 
+					   
+				   </p>
+				   <h4>Archive</h4>
+					   <p>|
+					   
+	    					<a href="/2013/08/">2013/08</a> | 
+	    			   
+	    					<a href="/2013/09/">2013/09</a> | 
+	    			   
+	    					<a href="/2013/11/">2013/11</a> | 
+	    			   
+	    					<a href="/2013/12/">2013/12</a> | 
+	    			   
+	    					<a href="/2014/01/">2014/01</a> | 
+	    			   
+	    					<a href="/2014/03/">2014/03</a> | 
+	    			   
+	    					<a href="/2014/04/">2014/04</a> | 
+	    			   
+    			   </p>
+				   <h4>Work</h4>			   
+				   <p>Coming soon... maybe.</p>
+			   </div>
+		   </div>
+	   	</div>
+
+	   	<!-- jQuery -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>	  
+	  	<!-- Sdir (slide menu for small screen) -->
+<script>
+/*! Sidr - v1.2.1 - 2013-11-06
+ * https://github.com/artberri/sidr
+ * Copyright (c) 2013 Alberto Varela; Licensed MIT */
+(function(e){var t=!1,i=!1,n={isUrl:function(e){var t=RegExp("^(https?:\\/\\/)?((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|((\\d{1,3}\\.){3}\\d{1,3}))(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*(\\?[;&a-z\\d%_.~+=-]*)?(\\#[-a-z\\d_]*)?$","i");return t.test(e)?!0:!1},loadContent:function(e,t){e.html(t)},addPrefix:function(e){var t=e.attr("id"),i=e.attr("class");"string"==typeof t&&""!==t&&e.attr("id",t.replace(/([A-Za-z0-9_.\-]+)/g,"sidr-id-$1")),"string"==typeof i&&""!==i&&"sidr-inner"!==i&&e.attr("class",i.replace(/([A-Za-z0-9_.\-]+)/g,"sidr-class-$1")),e.removeAttr("style")},execute:function(n,s,a){"function"==typeof s?(a=s,s="sidr"):s||(s="sidr");var r,d,l,c=e("#"+s),u=e(c.data("body")),f=e("html"),p=c.outerWidth(!0),g=c.data("speed"),h=c.data("side"),m=c.data("displace"),v=c.data("onOpen"),y=c.data("onClose"),x="sidr"===s?"sidr-open":"sidr-open "+s+"-open";if("open"===n||"toggle"===n&&!c.is(":visible")){if(c.is(":visible")||t)return;if(i!==!1)return o.close(i,function(){o.open(s)}),void 0;t=!0,"left"===h?(r={left:p+"px"},d={left:"0px"}):(r={right:p+"px"},d={right:"0px"}),u.is("body")&&(l=f.scrollTop(),f.css("overflow-x","hidden").scrollTop(l)),m?u.addClass("sidr-animating").css({width:u.width(),position:"absolute"}).animate(r,g,function(){e(this).addClass(x)}):setTimeout(function(){e(this).addClass(x)},g),c.css("display","block").animate(d,g,function(){t=!1,i=s,"function"==typeof a&&a(s),u.removeClass("sidr-animating")}),v()}else{if(!c.is(":visible")||t)return;t=!0,"left"===h?(r={left:0},d={left:"-"+p+"px"}):(r={right:0},d={right:"-"+p+"px"}),u.is("body")&&(l=f.scrollTop(),f.removeAttr("style").scrollTop(l)),u.addClass("sidr-animating").animate(r,g).removeClass(x),c.animate(d,g,function(){c.removeAttr("style").hide(),u.removeAttr("style"),e("html").removeAttr("style"),t=!1,i=!1,"function"==typeof a&&a(s),u.removeClass("sidr-animating")}),y()}}},o={open:function(e,t){n.execute("open",e,t)},close:function(e,t){n.execute("close",e,t)},toggle:function(e,t){n.execute("toggle",e,t)},toogle:function(e,t){n.execute("toggle",e,t)}};e.sidr=function(t){return o[t]?o[t].apply(this,Array.prototype.slice.call(arguments,1)):"function"!=typeof t&&"string"!=typeof t&&t?(e.error("Method "+t+" does not exist on jQuery.sidr"),void 0):o.toggle.apply(this,arguments)},e.fn.sidr=function(t){var i=e.extend({name:"sidr",speed:200,side:"left",source:null,renaming:!0,body:"body",displace:!0,onOpen:function(){},onClose:function(){}},t),s=i.name,a=e("#"+s);if(0===a.length&&(a=e("<div />").attr("id",s).appendTo(e("body"))),a.addClass("sidr").addClass(i.side).data({speed:i.speed,side:i.side,body:i.body,displace:i.displace,onOpen:i.onOpen,onClose:i.onClose}),"function"==typeof i.source){var r=i.source(s);n.loadContent(a,r)}else if("string"==typeof i.source&&n.isUrl(i.source))e.get(i.source,function(e){n.loadContent(a,e)});else if("string"==typeof i.source){var d="",l=i.source.split(",");if(e.each(l,function(t,i){d+='<div class="sidr-inner">'+e(i).html()+"</div>"}),i.renaming){var c=e("<div />").html(d);c.find("*").each(function(t,i){var o=e(i);n.addPrefix(o)}),d=c.html()}n.loadContent(a,d)}else null!==i.source&&e.error("Invalid Sidr Source");return this.each(function(){var t=e(this),i=t.data("sidr");i||(t.data("sidr",s),"ontouchstart"in document.documentElement?(t.bind("touchstart",function(e){e.originalEvent.touches[0],this.touched=e.timeStamp}),t.bind("touchend",function(e){var t=Math.abs(e.timeStamp-this.touched);200>t&&(e.preventDefault(),o.toggle(s))})):t.click(function(e){e.preventDefault(),o.toggle(s)}))})}})(jQuery);
+</script>
+
+<script>
+	
+  	$(document).ready(function() {
+		$('#mobile-menu-button').sidr();	  
+  	});
+
+  	$('#mobile-menu-button').click(function(e){
+  	});
+
+
+  	$('html').click(function(e){
+  		$.sidr('close', 'sidr');
+  	});
+
+</script>
+
+	</body>
+</html>

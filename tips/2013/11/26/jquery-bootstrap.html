@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Your New Jekyll Site</title>
+        <title>jQuery と Bootstrap で動的なプログレスバー</title>
         <meta name="viewport" content="width=device-width">
 
         <!-- syntax highlighting CSS -->
@@ -16,9 +16,9 @@
 		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
 
 	</head>
-
+	
 	<body>
-        
+    
         <div id="mobile-sticky-menu">
 	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
 	<img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" />
@@ -109,54 +109,77 @@
 
 </div>
 
-        
-		<div class="site">			
 
-			<div id="contents">
+        <div class="site">
 
-				<!-- title -->
-				<!-- Header -->
+			<!-- title -->
+			<!-- Header -->
 <header>
 <h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
 	<hr />
 </header>
 
+			<div id="contents">
+				
 				<div id="main">
-					<!-- This loops through the paginated posts -->
-					
-						<h3><a href="/ruby/2014/04/28/jekyll-plugin-deprecate-keeper.html">Jekyll にて記事の deprecate フラグを立てるプラグインを作成しました</a></h3>
-						<p class="author">
-							<span class="date">2014-04-28 17:00:00 -0700</span>
-						</p>
-						<div class="content">
-							<p>最近、ブログを Jekyll で自分のブログを作成しています。それに伴ってプログラミングのライブラリに関する記事等、ある程度時間が立つとその記事の内容を保証できない類の記事を管理するプラグインを書いてみました。</p>
+					<h3><a href="">jQuery と Bootstrap で動的なプログレスバー</a></h3>
+					<p class="author">
+						<span class="date">2013-11-26 00:02:00 -0800</span>
+					</p>
+		      		
+					<div class="post">
+						<p>友達とウェブサイトを作っている中、Bootstrapのプログレスバーの進捗状況を動的に変更したくなったので、jQueryを使って実装してみました。</p>
 
-						</div>
-						<p><a href="/ruby/2014/04/28/jekyll-plugin-deprecate-keeper.html">...More</a></p>
-						<hr />
-					
-						<h3><a href="/machine%20learning/2014/04/27/Logistic-Regression-Algorithm.html">Logistic Regression Algorithm（ロジスティック回帰）[機械学習]</a></h3>
-						<p class="author">
-							<span class="date">2014-04-27 10:34:49 -0700</span>
-						</p>
-						<div class="content">
-							<p>今まで線形モデルの Perceptron[link] と Linear Regression[link] に関して勉強してきました。今回は、新しい線形モデルである Logistic Regression に関して勉強したので、Python で実装しました。</p>
+<h3 id="toc_0">Bootstrap プログレスバーの用意</h3>
 
-						</div>
-						<p><a href="/machine%20learning/2014/04/27/Logistic-Regression-Algorithm.html">...More</a></p>
-						<hr />
-					
-						<h3><a href="/tips/2014/04/17/vim-vimtutor.html">初めての vim に最適な vimtutor</a></h3>
-						<p class="author">
-							<span class="date">2014-04-17 21:12:00 -0700</span>
-						</p>
-						<div class="content">
-							<p>vimtutor にあった vim のコマンドをまとめました。正直に告白すると、今まで vim に3度以上も挫折してきました。vim にチャレンジしても、思うように動かず、ビープ音でどんどんストレスが溜まり、結局いつものエディタに戻ってしまうという残念な感じでした。ずっと憧れはあり、そんな時に、なんとなく vimtutor を読みながらコマンドをいじってるとだいぶストレスが減ってきました。基本が大事ですね。いきなり画面を分割したり、カッコつけてもダメでした。vimtutor には、7つのレッスンがあるのですが、そこで使われたコマンドを忘れないためにもここに書いておきます。</p>
+<p>まずは、プログレスバーを用意する必要があります。簡単な例が本家の<a href="http://getbootstrap.com/components/#progress">サイト</a>にあるので、そちらも参考にしてください。</p>
 
-						</div>
-						<p><a href="/tips/2014/04/17/vim-vimtutor.html">...More</a></p>
-						<hr />
-					
+<div class="highlight"><pre><code class="html"><span class="lineno">1</span> <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">2</span>   <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;label label-default&quot;</span> <span class="na">id=</span><span class="s">&quot;labelRequirement&quot;</span><span class="nt">&gt;</span>Units Requirement<span class="nt">&lt;/span&gt;</span>
+<span class="lineno">3</span>   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress progress-striped active &quot;</span><span class="nt">&gt;</span>
+<span class="lineno">4</span>     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;bar&quot;</span> <span class="na">style=</span><span class="s">&quot;width:0%;&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="lineno">5</span>   <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">6</span> <span class="nt">&lt;/div&gt;</span>​
+</code></pre></div>
+
+<p>今回は、アメリカの留学生が１学期に取らなくてはならない最低単位数とユーザーの履修予定のクラスの単位数のパーセンテージをバーに表示します。</p>
+
+<h3 id="toc_1">jQuery 側の実装</h3>
+
+<p>jQuery を使うのはほとんど初めてだったんですが、意外に簡単にできました。</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span> <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span><span class="c">&lt;!--</span>
+<span class="lineno"> 2</span>     <span class="kd">var</span> <span class="nx">selectedUnits</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+<span class="lineno"> 3</span>     <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.thumbnail&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
+<span class="lineno"> 4</span>         <span class="kd">var</span> <span class="nx">thisUnits</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">data</span><span class="p">((</span><span class="s1">&#39;units&#39;</span><span class="p">));</span>
+<span class="lineno"> 5</span>         <span class="kd">var</span> <span class="nx">thisUnitsFloat</span> <span class="o">=</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">thisUnits</span><span class="p">);</span>
+<span class="lineno"> 6</span>  
+<span class="lineno"> 7</span>         <span class="nx">selectedUnits</span> <span class="o">=</span> <span class="nx">thisUnitsFloat</span> <span class="o">+</span> <span class="nx">selectedUnits</span><span class="p">;</span>
+<span class="lineno"> 8</span>         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;This  Units :&quot;</span> <span class="o">+</span> <span class="nx">thisUnitsFloat</span><span class="p">);</span>
+<span class="lineno"> 9</span>         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Total Units :&quot;</span> <span class="o">+</span> <span class="nx">selectedUnits</span><span class="p">);</span>
+<span class="lineno">10</span>  
+<span class="lineno">11</span>         <span class="kd">var</span> <span class="nx">$bar</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.bar&quot;</span><span class="p">);</span>
+<span class="lineno">12</span>         <span class="c1">// Minimum requirement is 12 units </span>
+<span class="lineno">13</span>         <span class="kd">var</span> <span class="nx">percent</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">((</span><span class="nx">selectedUnits</span><span class="o">/</span><span class="mi">12</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">);</span>
+<span class="lineno">14</span>         <span class="k">if</span><span class="p">(</span><span class="nx">percent</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span> <span class="nx">percent</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+<span class="lineno">15</span>         <span class="nx">$bar</span><span class="p">.</span><span class="nx">width</span><span class="p">(</span><span class="nx">percent</span> <span class="o">+</span> <span class="s2">&quot;%&quot;</span><span class="p">);</span>
+<span class="lineno">16</span>         <span class="nx">$bar</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">percent</span> <span class="o">+</span> <span class="s2">&quot;%&quot;</span><span class="p">);</span>
+<span class="lineno">17</span>  
+<span class="lineno">18</span>     <span class="p">});</span>
+<span class="lineno">19</span> <span class="c1">//--&gt;&lt;/script&gt;</span>
+</code></pre></div>
+
+<p>html側は下記のようになっています。</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;span4 col-xs-12 col-sm-6 col-md-3 col-lg-4 thumb&quot;</span><span class="o">&gt;</span>
+<span class="lineno">2</span>   <span class="o">&lt;</span><span class="n">a</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;thumbnail&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">units</span><span class="o">=</span><span class="s2">&quot;4.0&quot;</span><span class="o">&gt;&lt;</span><span class="n">img</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;img-responsive&quot;</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;http://placehold.it/250x200&quot;</span><span class="o">&gt;&lt;</span><span class="sr">/a&gt;</span>
+<span class="lineno">3</span> <span class="sr">&lt;/</span><span class="n">div</span><span class="o">&gt;</span> 
+</code></pre></div>
+
+<p>まず、&lt;a&gt;タグに data-units という属性を追加しておき、ユーザーが履修したいクラスをクリックします。それらの情報を元に、あとどの程度の単位数を履修するべきか計算させ、新しいクラスがクリックされるたびに、バーを動的に更新しています。</p>
+
+					</div>
+
 				</div>
 
 				<div id="sub">
@@ -215,22 +238,13 @@
 <h4>Work</h4>			   
 <p>Coming soon... maybe.</p>
 				</div>
-				
+
 			</div>
 
-			<!-- Pagination links -->
-			<div class="pagination">
-				
-				<span class="previous">Previous</span>
-				
-				<span class="page_number ">Page: 1 of 19</span>
-				
-				<a href="/page2" class="next">Next</a>
-				
-			</div>
-	   </div>   
 
-	   		<div class="footer">
+		</div>
+
+				<div class="footer">
 		   <div class="footer_inner">
 			   <div class="contact">
 				   <h4>About</h4>
@@ -316,6 +330,6 @@
   	});
 
 </script>
-	  
-    </body>
+
+	</body>
 </html>

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Your New Jekyll Site</title>
+        <title>定数をまとめる [ iOS 開発 ]</title>
         <meta name="viewport" content="width=device-width">
 
         <!-- syntax highlighting CSS -->
@@ -16,9 +16,9 @@
 		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
 
 	</head>
-
+	
 	<body>
-        
+    
         <div id="mobile-sticky-menu">
 	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
 	<img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" />
@@ -109,54 +109,54 @@
 
 </div>
 
-        
-		<div class="site">			
 
-			<div id="contents">
+        <div class="site">
 
-				<!-- title -->
-				<!-- Header -->
+			<!-- title -->
+			<!-- Header -->
 <header>
 <h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
 	<hr />
 </header>
 
+			<div id="contents">
+				
 				<div id="main">
-					<!-- This loops through the paginated posts -->
-					
-						<h3><a href="/ruby/2014/04/28/jekyll-plugin-deprecate-keeper.html">Jekyll にて記事の deprecate フラグを立てるプラグインを作成しました</a></h3>
-						<p class="author">
-							<span class="date">2014-04-28 17:00:00 -0700</span>
-						</p>
-						<div class="content">
-							<p>最近、ブログを Jekyll で自分のブログを作成しています。それに伴ってプログラミングのライブラリに関する記事等、ある程度時間が立つとその記事の内容を保証できない類の記事を管理するプラグインを書いてみました。</p>
+					<h3><a href="">定数をまとめる [ iOS 開発 ]</a></h3>
+					<p class="author">
+						<span class="date">2014-01-02 00:00:00 -0800</span>
+					</p>
+		      		
+					<div class="post">
+						<p>UserDefault のキーや デバイス情報、データの参照先の URL等、iOS開発をしていると何度も使用する定数があると思います。それらを一つのファイルにまとめ、プロジェクトのどこからでも参照することができるようにします。</p>
 
-						</div>
-						<p><a href="/ruby/2014/04/28/jekyll-plugin-deprecate-keeper.html">...More</a></p>
-						<hr />
-					
-						<h3><a href="/machine%20learning/2014/04/27/Logistic-Regression-Algorithm.html">Logistic Regression Algorithm（ロジスティック回帰）[機械学習]</a></h3>
-						<p class="author">
-							<span class="date">2014-04-27 10:34:49 -0700</span>
-						</p>
-						<div class="content">
-							<p>今まで線形モデルの Perceptron[link] と Linear Regression[link] に関して勉強してきました。今回は、新しい線形モデルである Logistic Regression に関して勉強したので、Python で実装しました。</p>
+<p>まずは、定数をまとめるヘッダーファイルの作成です。下記の画像のように &quot; C and C++ &quot; という項目から &quot; Header File &quot; を選びます。</p>
 
-						</div>
-						<p><a href="/machine%20learning/2014/04/27/Logistic-Regression-Algorithm.html">...More</a></p>
-						<hr />
-					
-						<h3><a href="/tips/2014/04/17/vim-vimtutor.html">初めての vim に最適な vimtutor</a></h3>
-						<p class="author">
-							<span class="date">2014-04-17 21:12:00 -0700</span>
-						</p>
-						<div class="content">
-							<p>vimtutor にあった vim のコマンドをまとめました。正直に告白すると、今まで vim に3度以上も挫折してきました。vim にチャレンジしても、思うように動かず、ビープ音でどんどんストレスが溜まり、結局いつものエディタに戻ってしまうという残念な感じでした。ずっと憧れはあり、そんな時に、なんとなく vimtutor を読みながらコマンドをいじってるとだいぶストレスが減ってきました。基本が大事ですね。いきなり画面を分割したり、カッコつけてもダメでした。vimtutor には、7つのレッスンがあるのですが、そこで使われたコマンドを忘れないためにもここに書いておきます。</p>
+<p><img src="http://1.bp.blogspot.com/-eoIwTVURDq0/UsW9v6AaF5I/AAAAAAAAANk/vwvW4IKspuw/s1600/Screen+Shot+2014-01-02+at+11.26.49+AM.png" alt=""></p>
 
-						</div>
-						<p><a href="/tips/2014/04/17/vim-vimtutor.html">...More</a></p>
-						<hr />
-					
+<p>作成したファイルに定数を書き出します。例えばこのような感じですね。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="c1">// constantVariable.h</span>
+<span class="lineno">2</span> <span class="cp">#ifndef Menu_constantVariable_h</span>
+<span class="lineno">3</span> <span class="cp">#define Menu_constantVariable_h</span>
+<span class="lineno">4</span>  
+<span class="lineno">5</span> <span class="c1">// URL</span>
+<span class="lineno">6</span> <span class="cp">#define kDataSource @&quot;blabla&quot;</span>
+<span class="lineno">7</span>  
+<span class="lineno">8</span> <span class="cp">#endif</span>
+</code></pre></div>
+
+<p>そして、次にこの定数がまとめられたヘッダーファイルをインクルードするという設定です。各々、これらの定数が必要なファイルでインクルードしてもよいのですが、少し面倒です。&quot; Supporting Files &quot; の中にある、*-Prefix.pch というファイルでインクルードしておくと、自動的に全てのファイルでインクルードされているので、いつでもどこでも定義した定数を使用することができ便利です。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="cp">#ifdef __OBJC__</span>
+<span class="lineno">2</span>     <span class="err">#</span><span class="n">import</span> <span class="o">&lt;</span><span class="n">UIKit</span><span class="o">/</span><span class="n">UIKit</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;</span>
+<span class="lineno">3</span>     <span class="err">#</span><span class="n">import</span> <span class="o">&lt;</span><span class="n">Foundation</span><span class="o">/</span><span class="n">Foundation</span><span class="p">.</span><span class="n">t</span><span class="o">&gt;</span>
+<span class="lineno">4</span>     <span class="err">#</span><span class="n">import</span> <span class="s">&quot;constantVariable.h&quot;</span>
+<span class="lineno">5</span> <span class="cp">#endif</span>
+</code></pre></div>
+
+					</div>
+
 				</div>
 
 				<div id="sub">
@@ -215,22 +215,13 @@
 <h4>Work</h4>			   
 <p>Coming soon... maybe.</p>
 				</div>
-				
+
 			</div>
 
-			<!-- Pagination links -->
-			<div class="pagination">
-				
-				<span class="previous">Previous</span>
-				
-				<span class="page_number ">Page: 1 of 19</span>
-				
-				<a href="/page2" class="next">Next</a>
-				
-			</div>
-	   </div>   
 
-	   		<div class="footer">
+		</div>
+
+				<div class="footer">
 		   <div class="footer_inner">
 			   <div class="contact">
 				   <h4>About</h4>
@@ -316,6 +307,6 @@
   	});
 
 </script>
-	  
-    </body>
+
+	</body>
 </html>

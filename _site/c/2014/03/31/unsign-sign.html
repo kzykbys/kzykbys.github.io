@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Your New Jekyll Site</title>
+        <title>Unsign と Sign の注意点</title>
         <meta name="viewport" content="width=device-width">
 
         <!-- syntax highlighting CSS -->
@@ -16,9 +16,9 @@
 		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
 
 	</head>
-
+	
 	<body>
-        
+    
         <div id="mobile-sticky-menu">
 	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
 	<img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" />
@@ -109,54 +109,73 @@
 
 </div>
 
-        
-		<div class="site">			
 
-			<div id="contents">
+        <div class="site">
 
-				<!-- title -->
-				<!-- Header -->
+			<!-- title -->
+			<!-- Header -->
 <header>
-<h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
+<h1><a href="http://localhost:4000/"><img src="/images/title.png" alt="logo" /></a></h1>
 	<hr />
 </header>
 
+			<div id="contents">
+				
 				<div id="main">
-					<!-- This loops through the paginated posts -->
-					
-						<h3><a href="/ruby/2014/04/28/jekyll-plugin-deprecate-keeper.html">Jekyll にて記事の deprecate フラグを立てるプラグインを作成しました</a></h3>
-						<p class="author">
-							<span class="date">2014-04-28 17:00:00 -0700</span>
-						</p>
-						<div class="content">
-							<p>最近、ブログを Jekyll で自分のブログを作成しています。それに伴ってプログラミングのライブラリに関する記事等、ある程度時間が立つとその記事の内容を保証できない類の記事を管理するプラグインを書いてみました。</p>
+					<h3><a href="">Unsign と Sign の注意点</a></h3>
+					<p class="author">
+						<span class="date">2014-03-31 06:01:00 -0700</span>
+					</p>
+		      		
+					<div class="post">
+						<p>&quot;<a href="http://www.amazon.com/gp/product/0131774298">Expert C Programming</a>&quot; を読んでいてunsign と sign を扱うときにおもしろかった違いがあったのでメモ。</p>
 
-						</div>
-						<p><a href="/ruby/2014/04/28/jekyll-plugin-deprecate-keeper.html">...More</a></p>
-						<hr />
-					
-						<h3><a href="/machine%20learning/2014/04/27/Logistic-Regression-Algorithm.html">Logistic Regression Algorithm（ロジスティック回帰）[機械学習]</a></h3>
-						<p class="author">
-							<span class="date">2014-04-27 10:34:49 -0700</span>
-						</p>
-						<div class="content">
-							<p>今まで線形モデルの Perceptron[link] と Linear Regression[link] に関して勉強してきました。今回は、新しい線形モデルである Logistic Regression に関して勉強したので、Python で実装しました。</p>
+<p>ご存じの通り、unsign と sign の数字は、MSB をプラスかマイナスかを表現するために使用するかどうかの違いです。仮に 8 bits で数字を表現することを考えてみると、unsign は 8bits 全てを正の数を表すために使用します。そのため、8bits で表すことができる範囲は、0 から 255 です。一方、sign は MSB で符号を示します。MSB がセットされていれば、その 8bits で表された数字は負です。範囲は、-128 から 127 です。そこで、下記のような C のプログラムを見てみると、</p>
 
-						</div>
-						<p><a href="/machine%20learning/2014/04/27/Logistic-Regression-Algorithm.html">...More</a></p>
-						<hr />
-					
-						<h3><a href="/tips/2014/04/17/vim-vimtutor.html">初めての vim に最適な vimtutor</a></h3>
-						<p class="author">
-							<span class="date">2014-04-17 21:12:00 -0700</span>
-						</p>
-						<div class="content">
-							<p>vimtutor にあった vim のコマンドをまとめました。正直に告白すると、今まで vim に3度以上も挫折してきました。vim にチャレンジしても、思うように動かず、ビープ音でどんどんストレスが溜まり、結局いつものエディタに戻ってしまうという残念な感じでした。ずっと憧れはあり、そんな時に、なんとなく vimtutor を読みながらコマンドをいじってるとだいぶストレスが減ってきました。基本が大事ですね。いきなり画面を分割したり、カッコつけてもダメでした。vimtutor には、7つのレッスンがあるのですが、そこで使われたコマンドを忘れないためにもここに書いておきます。</p>
+<div class="highlight"><pre><code class="c"><span class="lineno"> 1</span> <span class="cp">#include &lt;stdio.h&gt;</span>
+<span class="lineno"> 2</span>  
+<span class="lineno"> 3</span> <span class="kt">int</span> <span class="n">array</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">23</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">204</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">16</span><span class="p">};</span>
+<span class="lineno"> 4</span> <span class="cp">#define TOTAL_ELEMENTS (sizeof(array) / sizeof(array[0]))</span>
+<span class="lineno"> 5</span>  
+<span class="lineno"> 6</span> <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
+<span class="lineno"> 7</span> <span class="p">{</span>
+<span class="lineno"> 8</span>  
+<span class="lineno"> 9</span>     <span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="lineno">10</span>      
+<span class="lineno">11</span>     <span class="k">if</span><span class="p">(</span><span class="n">d</span> <span class="o">&lt;=</span> <span class="n">TOTAL_ELEMENTS</span><span class="p">){</span> <span class="c1">// false</span>
+<span class="lineno">12</span>         <span class="cm">/*</span>
+<span class="lineno">13</span> <span class="cm">         * This if statement is false, because the logical statement</span>
+<span class="lineno">14</span> <span class="cm">         * compares two values as unsign integer. sizeof() return unsign value.</span>
+<span class="lineno">15</span> <span class="cm">         * In 8 bits, -1 is 11111111b, FFh and  255 decimal number.</span>
+<span class="lineno">16</span> <span class="cm">         * So, it compares 255d and 7 (the number of elements). =&gt; false</span>
+<span class="lineno">17</span> <span class="cm">         */</span>
+<span class="lineno">18</span>         <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Invalid</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="lineno">19</span>     <span class="p">}</span>
+<span class="lineno">20</span>      
+<span class="lineno">21</span>     <span class="k">if</span><span class="p">(</span><span class="n">d</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">TOTAL_ELEMENTS</span><span class="p">){</span> <span class="c1">// true</span>
+<span class="lineno">22</span>         <span class="cm">/*</span>
+<span class="lineno">23</span> <span class="cm">         * We cast unsign integer into sign integer.</span>
+<span class="lineno">24</span> <span class="cm">         * In this context, -1 is literally -1. </span>
+<span class="lineno">25</span> <span class="cm">         * So, it compares -1 and 7 (the number of elements). =&gt; true</span>
+<span class="lineno">26</span> <span class="cm">         */</span>
+<span class="lineno">27</span>         <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Expected Result.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="lineno">28</span>         <span class="n">printf</span><span class="p">(</span><span class="s">&quot;TOTAL_ELEMENTS : %lu</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">TOTAL_ELEMENTS</span><span class="p">);</span>
+<span class="lineno">29</span>     <span class="p">}</span>
+<span class="lineno">30</span>     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="lineno">31</span> <span class="p">}</span>
+</code></pre></div>
 
-						</div>
-						<p><a href="/tips/2014/04/17/vim-vimtutor.html">...More</a></p>
-						<hr />
-					
+<p>一つ目の if 文は false を返します。sizeof が unsign integer を返すので、この比較は unsign で実行されます。-1 は、0xFF、十進数で 255であり、配列の要素数より大きいです。そのため、この if 文の中は実行されません。
+二つ目の if 文は、unsign integer である、TOTAL_ELEMENTS をキャストし、sign integer として扱うため、期待している結果が表示されます。</p>
+
+<p>アセンブリの勉強をしている時などに、unsign と sign の数字というのは、知識としてあったのですが、C の中でも気をつけないとハマる可能性があるという教訓でした。 </p>
+
+<hr>
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=komchax-22&o=9&p=8&l=as1&m=amazon&f=ifr&ref=tf_til&asins=4756116396" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+					</div>
+
 				</div>
 
 				<div id="sub">
@@ -215,22 +234,13 @@
 <h4>Work</h4>			   
 <p>Coming soon... maybe.</p>
 				</div>
-				
+
 			</div>
 
-			<!-- Pagination links -->
-			<div class="pagination">
-				
-				<span class="previous">Previous</span>
-				
-				<span class="page_number ">Page: 1 of 19</span>
-				
-				<a href="/page2" class="next">Next</a>
-				
-			</div>
-	   </div>   
 
-	   		<div class="footer">
+		</div>
+
+				<div class="footer">
 		   <div class="footer_inner">
 			   <div class="contact">
 				   <h4>About</h4>
@@ -316,6 +326,6 @@
   	});
 
 </script>
-	  
-    </body>
+
+	</body>
 </html>

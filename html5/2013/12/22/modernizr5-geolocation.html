@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Your New Jekyll Site</title>
+        <title>Modernizr5 [ Geolocation ]</title>
         <meta name="viewport" content="width=device-width">
 
         <!-- syntax highlighting CSS -->
@@ -16,9 +16,9 @@
 		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
 
 	</head>
-
+	
 	<body>
-        
+    
         <div id="mobile-sticky-menu">
 	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
 	<img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" />
@@ -109,54 +109,44 @@
 
 </div>
 
-        
-		<div class="site">			
 
-			<div id="contents">
+        <div class="site">
 
-				<!-- title -->
-				<!-- Header -->
+			<!-- title -->
+			<!-- Header -->
 <header>
 <h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
 	<hr />
 </header>
 
+			<div id="contents">
+				
 				<div id="main">
-					<!-- This loops through the paginated posts -->
-					
-						<h3><a href="/ruby/2014/04/28/jekyll-plugin-deprecate-keeper.html">Jekyll にて記事の deprecate フラグを立てるプラグインを作成しました</a></h3>
-						<p class="author">
-							<span class="date">2014-04-28 17:00:00 -0700</span>
-						</p>
-						<div class="content">
-							<p>最近、ブログを Jekyll で自分のブログを作成しています。それに伴ってプログラミングのライブラリに関する記事等、ある程度時間が立つとその記事の内容を保証できない類の記事を管理するプラグインを書いてみました。</p>
+					<h3><a href="">Modernizr5 [ Geolocation ]</a></h3>
+					<p class="author">
+						<span class="date">2013-12-22 05:29:00 -0800</span>
+					</p>
+		      		
+					<div class="post">
+						<p>位置情報は、あなたがどこにいるか明らかにし、その情報をシェアすることができます。いくつか位置情報を特定する方法があり、IP アドレス、無線LANの接続、電波塔との接続、また GPSハードウェアによる経度緯度の測定等あります。</p>
 
-						</div>
-						<p><a href="/ruby/2014/04/28/jekyll-plugin-deprecate-keeper.html">...More</a></p>
-						<hr />
-					
-						<h3><a href="/machine%20learning/2014/04/27/Logistic-Regression-Algorithm.html">Logistic Regression Algorithm（ロジスティック回帰）[機械学習]</a></h3>
-						<p class="author">
-							<span class="date">2014-04-27 10:34:49 -0700</span>
-						</p>
-						<div class="content">
-							<p>今まで線形モデルの Perceptron[link] と Linear Regression[link] に関して勉強してきました。今回は、新しい線形モデルである Logistic Regression に関して勉強したので、Python で実装しました。</p>
+<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="c1">// Modernizr によるサポートチェック</span>
+<span class="lineno">2</span> <span class="k">if</span> <span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
+<span class="lineno">3</span>      <span class="c1">// let&#39;s find out where you are!</span>
+<span class="lineno">4</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">5</span>      <span class="c1">// no native geolocation support available :(</span>
+<span class="lineno">6</span>      <span class="c1">// try geoPosition.js or another third-party solution</span>
+<span class="lineno">7</span> <span class="p">}</span>
+</code></pre></div>
 
-						</div>
-						<p><a href="/machine%20learning/2014/04/27/Logistic-Regression-Algorithm.html">...More</a></p>
-						<hr />
-					
-						<h3><a href="/tips/2014/04/17/vim-vimtutor.html">初めての vim に最適な vimtutor</a></h3>
-						<p class="author">
-							<span class="date">2014-04-17 21:12:00 -0700</span>
-						</p>
-						<div class="content">
-							<p>vimtutor にあった vim のコマンドをまとめました。正直に告白すると、今まで vim に3度以上も挫折してきました。vim にチャレンジしても、思うように動かず、ビープ音でどんどんストレスが溜まり、結局いつものエディタに戻ってしまうという残念な感じでした。ずっと憧れはあり、そんな時に、なんとなく vimtutor を読みながらコマンドをいじってるとだいぶストレスが減ってきました。基本が大事ですね。いきなり画面を分割したり、カッコつけてもダメでした。vimtutor には、7つのレッスンがあるのですが、そこで使われたコマンドを忘れないためにもここに書いておきます。</p>
+<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="c1">// 内部</span>
+<span class="lineno">2</span> <span class="kd">function</span> <span class="nx">supports_geolocation</span><span class="p">()</span> <span class="p">{</span> 
+<span class="lineno">3</span>      <span class="k">return</span> <span class="s1">&#39;geolocation&#39;</span> <span class="k">in</span> <span class="nx">navigator</span><span class="p">;</span>
+<span class="lineno">4</span> <span class="p">}</span>
+</code></pre></div>
 
-						</div>
-						<p><a href="/tips/2014/04/17/vim-vimtutor.html">...More</a></p>
-						<hr />
-					
+					</div>
+
 				</div>
 
 				<div id="sub">
@@ -215,22 +205,13 @@
 <h4>Work</h4>			   
 <p>Coming soon... maybe.</p>
 				</div>
-				
+
 			</div>
 
-			<!-- Pagination links -->
-			<div class="pagination">
-				
-				<span class="previous">Previous</span>
-				
-				<span class="page_number ">Page: 1 of 19</span>
-				
-				<a href="/page2" class="next">Next</a>
-				
-			</div>
-	   </div>   
 
-	   		<div class="footer">
+		</div>
+
+				<div class="footer">
 		   <div class="footer_inner">
 			   <div class="contact">
 				   <h4>About</h4>
@@ -316,6 +297,6 @@
   	});
 
 </script>
-	  
-    </body>
+
+	</body>
 </html>

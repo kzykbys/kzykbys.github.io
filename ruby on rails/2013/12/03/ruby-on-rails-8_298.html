@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Your New Jekyll Site</title>
+        <title>Ruby on Rails チュートリアル 8 章 （３）| ログイン・ログアウト</title>
         <meta name="viewport" content="width=device-width">
 
         <!-- syntax highlighting CSS -->
@@ -16,9 +16,9 @@
 		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
 
 	</head>
-
+	
 	<body>
-        
+    
         <div id="mobile-sticky-menu">
 	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
 	<img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" />
@@ -109,54 +109,52 @@
 
 </div>
 
-        
-		<div class="site">			
 
-			<div id="contents">
+        <div class="site">
 
-				<!-- title -->
-				<!-- Header -->
+			<!-- title -->
+			<!-- Header -->
 <header>
 <h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
 	<hr />
 </header>
 
+			<div id="contents">
+				
 				<div id="main">
-					<!-- This loops through the paginated posts -->
-					
-						<h3><a href="/ruby/2014/04/28/jekyll-plugin-deprecate-keeper.html">Jekyll にて記事の deprecate フラグを立てるプラグインを作成しました</a></h3>
-						<p class="author">
-							<span class="date">2014-04-28 17:00:00 -0700</span>
-						</p>
-						<div class="content">
-							<p>最近、ブログを Jekyll で自分のブログを作成しています。それに伴ってプログラミングのライブラリに関する記事等、ある程度時間が立つとその記事の内容を保証できない類の記事を管理するプラグインを書いてみました。</p>
+					<h3><a href="">Ruby on Rails チュートリアル 8 章 （３）| ログイン・ログアウト</a></h3>
+					<p class="author">
+						<span class="date">2013-12-03 23:51:00 -0800</span>
+					</p>
+		      		
+					<div class="post">
+						<p>急遽、勉強しなくちゃいけなくなった Ruby on Rails の個人的なまとめ。ログイン、ログアウト関連。
+<a href="http://railstutorial.jp/chapters/sign-in-sign-out?version=4.0#top">http://railstutorial.jp/chapters/sign-in-sign-out?version=4.0#top</a></p>
 
-						</div>
-						<p><a href="/ruby/2014/04/28/jekyll-plugin-deprecate-keeper.html">...More</a></p>
-						<hr />
-					
-						<h3><a href="/machine%20learning/2014/04/27/Logistic-Regression-Algorithm.html">Logistic Regression Algorithm（ロジスティック回帰）[機械学習]</a></h3>
-						<p class="author">
-							<span class="date">2014-04-27 10:34:49 -0700</span>
-						</p>
-						<div class="content">
-							<p>今まで線形モデルの Perceptron[link] と Linear Regression[link] に関して勉強してきました。今回は、新しい線形モデルである Logistic Regression に関して勉強したので、Python で実装しました。</p>
+<h3 id="toc_0">ログアウト機能</h3>
 
-						</div>
-						<p><a href="/machine%20learning/2014/04/27/Logistic-Regression-Algorithm.html">...More</a></p>
-						<hr />
-					
-						<h3><a href="/tips/2014/04/17/vim-vimtutor.html">初めての vim に最適な vimtutor</a></h3>
-						<p class="author">
-							<span class="date">2014-04-17 21:12:00 -0700</span>
-						</p>
-						<div class="content">
-							<p>vimtutor にあった vim のコマンドをまとめました。正直に告白すると、今まで vim に3度以上も挫折してきました。vim にチャレンジしても、思うように動かず、ビープ音でどんどんストレスが溜まり、結局いつものエディタに戻ってしまうという残念な感じでした。ずっと憧れはあり、そんな時に、なんとなく vimtutor を読みながらコマンドをいじってるとだいぶストレスが減ってきました。基本が大事ですね。いきなり画面を分割したり、カッコつけてもダメでした。vimtutor には、7つのレッスンがあるのですが、そこで使われたコマンドを忘れないためにもここに書いておきます。</p>
+<p>ログアウトはすごく簡単です。コードを見れば理解できると思います。</p>
 
-						</div>
-						<p><a href="/tips/2014/04/17/vim-vimtutor.html">...More</a></p>
-						<hr />
-					
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1">#session_helper.rb</span>
+<span class="lineno">2</span> <span class="k">def</span> <span class="nf">destroy</span>
+<span class="lineno">3</span>   <span class="n">sign_out</span>
+<span class="lineno">4</span>   <span class="n">redirect_to</span> <span class="n">root_url</span>
+<span class="lineno">5</span> <span class="k">end</span>
+</code></pre></div>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># sessions_helper.rb </span>
+<span class="lineno">2</span> <span class="k">def</span> <span class="nf">sign_out</span>
+<span class="lineno">3</span>   <span class="nb">self</span><span class="o">.</span><span class="n">current_student</span> <span class="o">=</span> <span class="kp">nil</span>
+<span class="lineno">4</span>   <span class="n">cookies</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="ss">:remember_token</span><span class="p">)</span>
+<span class="lineno">5</span> <span class="k">end</span> 
+</code></pre></div>
+
+<p>これが、セッションを管理する際に作ったリスト。</p>
+
+<p><img src="http://1.bp.blogspot.com/-hBQ82oc7kgE/Up5uK0xRbqI/AAAAAAAAALk/5yZXzH0ZGC0/s1600/Screen+Shot+2013-11-18+at+5.14.27+PM.png" alt=""></p>
+
+					</div>
+
 				</div>
 
 				<div id="sub">
@@ -215,22 +213,13 @@
 <h4>Work</h4>			   
 <p>Coming soon... maybe.</p>
 				</div>
-				
+
 			</div>
 
-			<!-- Pagination links -->
-			<div class="pagination">
-				
-				<span class="previous">Previous</span>
-				
-				<span class="page_number ">Page: 1 of 19</span>
-				
-				<a href="/page2" class="next">Next</a>
-				
-			</div>
-	   </div>   
 
-	   		<div class="footer">
+		</div>
+
+				<div class="footer">
 		   <div class="footer_inner">
 			   <div class="contact">
 				   <h4>About</h4>
@@ -316,6 +305,6 @@
   	});
 
 </script>
-	  
-    </body>
+
+	</body>
 </html>

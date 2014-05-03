@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Your New Jekyll Site</title>
+        <title>Ruby on Rails チュートリアル 6 章 ( 1 ) | モデル</title>
         <meta name="viewport" content="width=device-width">
 
         <!-- syntax highlighting CSS -->
@@ -16,9 +16,9 @@
 		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
 
 	</head>
-
+	
 	<body>
-        
+    
         <div id="mobile-sticky-menu">
 	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
 	<img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" />
@@ -109,54 +109,112 @@
 
 </div>
 
-        
-		<div class="site">			
 
-			<div id="contents">
+        <div class="site">
 
-				<!-- title -->
-				<!-- Header -->
+			<!-- title -->
+			<!-- Header -->
 <header>
 <h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
 	<hr />
 </header>
 
+			<div id="contents">
+				
 				<div id="main">
-					<!-- This loops through the paginated posts -->
-					
-						<h3><a href="/ruby/2014/04/28/jekyll-plugin-deprecate-keeper.html">Jekyll にて記事の deprecate フラグを立てるプラグインを作成しました</a></h3>
-						<p class="author">
-							<span class="date">2014-04-28 17:00:00 -0700</span>
-						</p>
-						<div class="content">
-							<p>最近、ブログを Jekyll で自分のブログを作成しています。それに伴ってプログラミングのライブラリに関する記事等、ある程度時間が立つとその記事の内容を保証できない類の記事を管理するプラグインを書いてみました。</p>
+					<h3><a href="">Ruby on Rails チュートリアル 6 章 ( 1 ) | モデル</a></h3>
+					<p class="author">
+						<span class="date">2013-11-17 23:56:00 -0800</span>
+					</p>
+		      		
+					<div class="post">
+						<p>急遽、勉強しなくちゃいけなくなった Ruby on Rails の個人的なまとめ。今回はモデルに関して。
+<a href="http://railstutorial.jp/chapters/modeling-users?version=4.0#top">http://railstutorial.jp/chapters/modeling-users?version=4.0#top</a></p>
 
-						</div>
-						<p><a href="/ruby/2014/04/28/jekyll-plugin-deprecate-keeper.html">...More</a></p>
-						<hr />
-					
-						<h3><a href="/machine%20learning/2014/04/27/Logistic-Regression-Algorithm.html">Logistic Regression Algorithm（ロジスティック回帰）[機械学習]</a></h3>
-						<p class="author">
-							<span class="date">2014-04-27 10:34:49 -0700</span>
-						</p>
-						<div class="content">
-							<p>今まで線形モデルの Perceptron[link] と Linear Regression[link] に関して勉強してきました。今回は、新しい線形モデルである Logistic Regression に関して勉強したので、Python で実装しました。</p>
+<h3 id="toc_0">全般</h3>
 
-						</div>
-						<p><a href="/machine%20learning/2014/04/27/Logistic-Regression-Algorithm.html">...More</a></p>
-						<hr />
-					
-						<h3><a href="/tips/2014/04/17/vim-vimtutor.html">初めての vim に最適な vimtutor</a></h3>
-						<p class="author">
-							<span class="date">2014-04-17 21:12:00 -0700</span>
-						</p>
-						<div class="content">
-							<p>vimtutor にあった vim のコマンドをまとめました。正直に告白すると、今まで vim に3度以上も挫折してきました。vim にチャレンジしても、思うように動かず、ビープ音でどんどんストレスが溜まり、結局いつものエディタに戻ってしまうという残念な感じでした。ずっと憧れはあり、そんな時に、なんとなく vimtutor を読みながらコマンドをいじってるとだいぶストレスが減ってきました。基本が大事ですね。いきなり画面を分割したり、カッコつけてもダメでした。vimtutor には、7つのレッスンがあるのですが、そこで使われたコマンドを忘れないためにもここに書いておきます。</p>
+<p>モデルを作成するときのモデル名は単数形。対して、コントローラーは複数形。この generate コマンドの結果として、マイグレーションファイルが作成される。このファイル名の先頭には生成されたときのタイムスタンプも入っている。開発者同士のコンフリクトを防ぐため。</p>
 
-						</div>
-						<p><a href="/tips/2014/04/17/vim-vimtutor.html">...More</a></p>
-						<hr />
-					
+<blockquote>
+<blockquote>
+<p>$ rails generate model User name:string email:string</p>
+</blockquote>
+</blockquote>
+
+<p>マイグレーションを実行するには、</p>
+
+<blockquote>
+<blockquote>
+<p>$ bundle exec rake db:migrate</p>
+</blockquote>
+</blockquote>
+
+<p>ほとんどのマイグレーションは可逆。db:rollback というRakeタスクで変更を取り消せる。これを 「マイグレーションの取り消し (migrate down)」と呼ぶ。</p>
+
+<blockquote>
+<blockquote>
+<p>$ bundle exec rake db:rollback # migrate down</p>
+</blockquote>
+</blockquote>
+
+<p>コンソールをサンドボックスで呼び出すと、そのセッションのデータベースへの変更は終了時にロールバックされる。</p>
+
+<blockquote>
+<blockquote>
+<p>$ rails console —sandbox</p>
+</blockquote>
+</blockquote>
+
+<p>以下のコマンドは、単に開発データベースのデータモデルdb/development.sqlite3がテストデータベースdb/test.sqlite3に反映されるようにするもの。マイグレーション後でたまにRakeタスクが実行できなくなることがあり、多くの人がこれに戸惑います。さらに、テストデータベースはたまに壊れることがあるので、その場合はリセットが必要です。もしテストスイートが理由もなく壊れるようなことがあれば、rake test:prepareを実行して、この問題が解決するか確認。</p>
+
+<h3 id="toc_1">バリデーション ( app/models/user.rb )</h3>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># プレゼンス確認</span>
+<span class="lineno">2</span> <span class="n">validates</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">presence</span><span class="p">:</span> <span class="kp">true</span>
+</code></pre></div>
+
+<p>presence: true はハッシュ。メソッドの最後の引数のハッシュは波括弧が要らない。</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># 長さのチェック </span>
+<span class="lineno">2</span> <span class="n">validates</span> <span class="ss">:name</span><span class="p">,</span>  <span class="ss">presence</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">length</span><span class="p">:</span> <span class="p">{</span> <span class="ss">maximum</span><span class="p">:</span> <span class="mi">50</span> <span class="p">}</span>
+</code></pre></div>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># メールアドレスのチェック </span>
+<span class="lineno">2</span> <span class="no">VALID_EMAIL_REGEX</span> <span class="o">=</span> <span class="sr">/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i</span>
+<span class="lineno">3</span> <span class="n">validates</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">presence</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="nb">format</span><span class="p">:</span> <span class="p">{</span> <span class="ss">with</span><span class="p">:</span> <span class="no">VALID_EMAIL_REGEX</span> <span class="p">}</span>
+</code></pre></div>
+
+<p>素晴らしい正規表現エディタ <a href="http://www.rubular.com/">http://www.rubular.com/</a></p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># 一意性のチェック </span>
+<span class="lineno">2</span> <span class="ss">uniqueness</span><span class="p">:</span> <span class="p">{</span> <span class="n">case_sensitive</span><span class="p">:</span> <span class="kp">false</span> <span class="p">}</span>
+</code></pre></div>
+
+<p>上記のようなチェックだけでは、アプリケーションのトラフィックが多いとき等に、いくつかのリクエスとがなされ、ほぼ同時にDBに登録されることにより、DB上に同一のレコードが残る可能性がある。これを防ぐには、一意性を保証したいDBのカラムにインデックスを作成し、そのインデックスが一意であることを要求することで解決することができる。</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># この例では email column にインデックスを追加</span>
+<span class="lineno">2</span> <span class="err">$</span> <span class="n">rails</span> <span class="n">generate</span> <span class="n">migration</span> <span class="n">add_index_to_users_email</span>
+</code></pre></div>
+
+<p>これにより前回のように自動でマイグレーションが作成される。しかし、この場合は自ら未定義のメソッドを定義する必要がある。</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="k">class</span> <span class="nc">AddIndexToUsersEmail</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span>
+<span class="lineno">2</span>   <span class="k">def</span> <span class="nf">change</span>
+<span class="lineno">3</span>     <span class="n">add_index</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">unique</span><span class="p">:</span> <span class="kp">true</span>
+<span class="lineno">4</span>   <span class="k">end</span>
+<span class="lineno">5</span> <span class="k">end</span>
+</code></pre></div>
+
+<p>そしてDBにマイグレーションの適応をする。</p>
+
+<p>さらにメールアドレスの一意性を保証するために、すべてのアドレスを小文字に変換する。これはDBが常に小文字大文字を区別しているとは限らないから。このためにコールバックという、Active Recordオブジェクトが持続している間のどこかの時点で、Active Recordオブジェクトに呼び出してもらうメソッドを使う。</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># app/models/user.rb</span>
+<span class="lineno">2</span> <span class="n">before_save</span> <span class="p">{</span> <span class="nb">self</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="n">email</span><span class="o">.</span><span class="n">downcase</span> <span class="p">}</span>
+</code></pre></div>
+
+					</div>
+
 				</div>
 
 				<div id="sub">
@@ -215,22 +273,13 @@
 <h4>Work</h4>			   
 <p>Coming soon... maybe.</p>
 				</div>
-				
+
 			</div>
 
-			<!-- Pagination links -->
-			<div class="pagination">
-				
-				<span class="previous">Previous</span>
-				
-				<span class="page_number ">Page: 1 of 19</span>
-				
-				<a href="/page2" class="next">Next</a>
-				
-			</div>
-	   </div>   
 
-	   		<div class="footer">
+		</div>
+
+				<div class="footer">
 		   <div class="footer_inner">
 			   <div class="contact">
 				   <h4>About</h4>
@@ -316,6 +365,6 @@
   	});
 
 </script>
-	  
-    </body>
+
+	</body>
 </html>
