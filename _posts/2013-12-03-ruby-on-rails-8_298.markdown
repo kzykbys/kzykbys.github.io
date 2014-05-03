@@ -1,0 +1,33 @@
+---
+title: "Ruby on Rails チュートリアル 8 章 （３）| ログイン・ログアウト"
+layout: "post"
+date: "2013-12-03 23:51:00"
+categories: [Ruby on Rails]
+---
+
+急遽、勉強しなくちゃいけなくなった Ruby on Rails の個人的なまとめ。ログイン、ログアウト関連。
+[http://railstutorial.jp/chapters/sign-in-sign-out?version=4.0#top](http://railstutorial.jp/chapters/sign-in-sign-out?version=4.0#top)
+
+### ログアウト機能
+
+ログアウトはすごく簡単です。コードを見れば理解できると思います。
+
+{% highlight ruby linenos %}
+#session_helper.rb
+def destroy
+  sign_out
+  redirect_to root_url
+end
+{% endhighlight %}
+
+{% highlight ruby linenos %}
+# sessions_helper.rb 
+def sign_out
+  self.current_student = nil
+  cookies.delete(:remember_token)
+end 
+{% endhighlight %}
+
+これが、セッションを管理する際に作ったリスト。
+
+![](http://1.bp.blogspot.com/-hBQ82oc7kgE/Up5uK0xRbqI/AAAAAAAAALk/5yZXzH0ZGC0/s1600/Screen+Shot+2013-11-18+at+5.14.27+PM.png)

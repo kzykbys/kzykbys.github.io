@@ -1,0 +1,18 @@
+<!-- Sdir (slide menu for small screen) -->
+{% include jquery_sidr_min.html %}
+
+<script>
+	
+  	$(document).ready(function() {
+		$('#mobile-menu-button').sidr();	  
+  	});
+
+  	$('#mobile-menu-button').click(function(e){
+  	});
+
+
+  	$('html').click(function(e){
+  		$.sidr('close', 'sidr');
+  	});
+
+</script>

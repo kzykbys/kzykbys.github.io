@@ -1,0 +1,24 @@
+<h4>About</h4>
+<p><u>Kazuya Kobayshi</u><br />
+- I'm a once law student trying to be computer geek.<br />
+- ギークになりたい。<br />
+<a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a></p>
+<h4>Elsewhere</h4>
+<p>
+   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+   <a href="https://github.com/kzykbys">Github</a></p>
+<h4>Category</h4>
+<p>|
+   {% for category in site.categories %}
+	   <a href="{{ category | first | each_category_link }}">{{ category | first }}</a> | 
+   {% endfor %}
+</p>
+<h4>Archive</h4>
+   <p>|
+   {% for ym in site.archive %}
+		<a href="/{{ym[0]}}/{{ym[1]}}/">{{ym[0]}}/{{ym[1]}}</a> | 
+   {% endfor %}
+</p>
+<h4>Work</h4>			   
+<p>Coming soon... maybe.</p>

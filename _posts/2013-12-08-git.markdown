@@ -1,0 +1,101 @@
+---
+title: "Git コマンド集"
+layout: "post"
+updated: "2013-12-08 09:04:24"
+categories: [Tips]
+---
+
+Herokuにデプロイするしか git を活用したことがなかったのですが、最近チームで開発する機会にちょくちょく恵まれ、git にてプロジェクトを複数人で管理する必要が出てきました。そこで、しっかり git を勉強しようとドットインストールの git 講座を視聴しました。下記はその Heroku へデプロイするだけではあまり知らなかった git のコマンド集です。
+
+### git コマンド集 by ドットインストール
+
+gitをアウトプットをカラーリング
+
+{% highlight ruby linenos %}
+git config —global color.ui true
+{% endhighlight %}
+
+ログにどこが変更されたか表示する
+
+{% highlight ruby linenos %}
+git log -p
+git log --stat
+{% endhighlight %}
+
+修正したが、ステージングエリアにあげていないファイルの差分チェック
+
+{% highlight ruby linenos %}
+git diff
+{% endhighlight %}
+
+修正したが、ステージングエリアにあげていないファイルを元に戻す
+
+{% highlight ruby linenos %}
+git checkout — fileName
+{% endhighlight %}
+
+修正し、ステージングエリアにあげたものファイルの差分チェック
+
+{% highlight ruby linenos %}
+git diff —cached
+{% endhighlight %}
+
+スペルミス等のコミットとしてあげるほどでもない場合、ステージングエリアに修正ファイルをあげた後にこのコマンドを実行すると、同じコミットとして処理してくれる。
+
+{% highlight ruby linenos %}
+git commit —amend
+{% endhighlight %}
+
+HEADは直前のコミット。直前のコミットをなかったことにしてくれる。
+
+{% highlight ruby linenos %}
+git reset --hard HEAD
+{% endhighlight %}
+
+そのコミットIDまで戻る。コミットIDは git status で確認
+
+{% highlight ruby linenos %}
+git reset --hard CommitID
+{% endhighlight %}
+
+ブランチの削除
+
+{% highlight ruby linenos %}
+git branch -d (branch name)
+{% endhighlight %}
+
+たくさんコミットをしていく中で、あるコミットだけに目印のようなものを付けたい時に活用する。
+
+{% highlight ruby linenos %}
+git tag
+{% endhighlight %}
+
+coというエイリアスを作成
+
+{% highlight ruby linenos %}
+git config —global alias.co checkout
+{% endhighlight %}
+
+エイリアス等の設定一覧を表示
+
+{% highlight ruby linenos %}
+git config -l 
+{% endhighlight %}
+
+共有リポジトリを作成する時の初期オプション。またリポジトリ名は .git と付けるのが通例。
+
+{% highlight ruby linenos %}
+git init —bare
+{% endhighlight %}
+
+originという名前で共有リポジトリを設定する
+
+{% highlight ruby linenos %}
+git remote add origin (repos location)
+{% endhighlight %}
+
+誰かが作った共有レポジトリを他者がその他者のローカルに複製する
+
+{% highlight ruby linenos %}
+git clone
+{% endhighlight %}

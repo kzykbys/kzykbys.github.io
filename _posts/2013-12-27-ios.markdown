@@ -1,0 +1,45 @@
+---
+title: "iOS でのページ遷移"
+layout: "post"
+date: "2013-12-27 06:42:00"
+categories: [Objective-c]
+---
+
+また iOS のアプリの制作を個人的に始めた。すごい好きなデザインをするデザイナーさんと一緒に作るから楽しみだなー。久しぶりすぎて、最初なにから始めたらいいのか、さえも分からなくなっててすごいショックだけどちょくちょく頑張っていきます。
+
+今日は、ページ遷移について調べたのでそのメモ。"ほとんど" コードによるページ遷移の方法。
+
+### 遷移元の ViewController の準備
+
+適当なボタン等にアクションを設定して以下の様なコードを書く。
+
+{% highlight objective-c linenos %}
+- (IBAction)showMenu:(id)sender
+{
+    NSLog(@"Here! Long time no see!!");
+    KKMenuListViewController *menulistView =
+        [self.storyboard instantiateViewControllerWithIdentifier:@"menuID"];
+    menulistView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:menulistView animated:YES completion:nil];
+}
+{% endhighlight %}
+
+1 . presentModalViewController:animated の代わりに presentViewController:animated:completion というメソッドを使わないと警告でます。新しいメソッドの最後の引数、completionにはコールバックを指定し、モーダルビューが表示完了後に呼び出される。
+
+2 . UIModalTransitionStyleCrossDissolve というのはモーダルビューがどのように表示されるかの設定です。他にも、
+>> UIModalTransitionStyleCoverVertical<br />
+>> UIModalTransitionStyleFlipHorizontal<br />
+>> UIModalTransitionStyleCrossDissolve<br />
+>> UIModalTransitionStylePartialCurl<br />
+
+があるみたいです。このモーダルのトランジション時のアニメーションを自分で作成できるようになりたい。今年中に一度勉強しよう。
+
+3 . この instantiateViewControllerWithIdentifier で指定しているのは、Storyboard で設定する ID です。Storyboard の遷移先 ViewController で以下のように指定した値を書きます。
+
+### 遷移先の ViewController の準備
+
+こちらはただ遷移させるだけなら簡単です。適当に ViewController のファイルを作成し、Storyboard で ViewController のアイテムをドロップし、作成した遷移先となる ViewController を関連付けます。そして、上記の 3 と同じ値を指定。
+
+![](http://3.bp.blogspot.com/-mdaMvsgyTEM/Ur0gYd7Lq0I/AAAAAAAAAMw/VsOzMRMQUso/s1600/Screen+Shot+2013-12-26+at+10.35.50+PM.png)
+
+ここらへんもコードで済ませたいんですけど、どうしたらいいのかなー。

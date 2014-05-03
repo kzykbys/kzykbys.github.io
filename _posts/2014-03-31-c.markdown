@@ -1,0 +1,150 @@
+---
+title: "C言語の落とし穴"
+layout: "post"
+date: "2014-03-31 22:47:00"
+categories: [C]
+---
+
+"[Expert C Programming](http://www.amazon.com/gp/product/0131774298)" で紹介されていたC言語の落とし穴を3つのカテゴリに分けて紹介したいと思います。C言語とは直接関係はありませんが、アメリカの宇宙計画は、少なくとも2度プログラムのバグにより失敗してしまったそうです。[Mercury](http://en.wikipedia.org/wiki/Project_Mercury) というプロジェクトでは、プログラムが . を , の代わりに使用したことにより、大きな事故が起きそうになりました。この事件は幸いにも、発射前にエラーが確認されたため大きな損失はありませんでした。原因は、Fortran の欠陥です。また、[Mariner 1](http://en.wikipedia.org/wiki/Mariner_1) では、アルゴリズムの間違った仕様書を渡されたプログラマが、その通りに実装したために起こりました。実際に$12 million のロケットが破壊されてしまったそうです。こんなロケットを打ち上げるプロジェクトに関われるなんてことはそうそうないと思いますが、普段のプロジェクトでも注意してコーディングしたいですね。
+
+### Sins of Commission ( 言語がすべきでないにもかかわらず、してしまっている問題 )
+
+**Default fall through**
+
+switch 文の default fall through は意図して使われることは 3% 程度の割合でしかありません。下記のコードのように、意図して fall through を行っている場合以外は、各 case に break が必要です。
+
+{% highlight C linenos %}
+// desired fall through’s switch statement
+switch ( operator->num_of_operands ) {
+     case 2: process_operand ( operator->operator_2 )
+              // Fall through 
+     case 1: process_operand ( operator->operator_1 )
+     break;
+} 
+{% endhighlight %}
+
+**Default fall through**
+
+{% highlight c linenos %}
+network code() {
+     switch (line) {
+          case THING1:
+               doit1();
+               break;
+          case THING2:
+               if (x == STUFF) {
+                    do_first_stuff();
+ 
+                    if(y == OTHER_STUFF)
+                         break; // get us out of switch statement instate of if statement.
+                     
+                    do_later_stuff();
+               }
+               initialize_modes_pointer();  // it’s not occurred when y == OTHER_STUFF!!
+               break;
+          default:
+               processing();                              
+     }
+}
+{% endhighlight %}
+
+if 文を抜けようとして使用した break が switch 文を抜け出してしまい必要な初期化が行われない例。このバグにより、1990年1月15日の午後、９時間以上にわたってアメリカのAT&Tの大部分のネットワークが使用不可能になった。AT&Tの114年の歴史の中で一番最初の悲惨な事件を起こしてしまいました。
+
+### Sins of Mission ( 見当違いな実装、言語に適切でない問題 )
+
+**Operator’s wrong precedence**
+
+Kernighan と Ritchie が “The Programming Language.” でも指摘したように、C言語には間違った precedence があります。これらの間違いは、ANSI C でも修正はされませんでした。既に存在するコードに大きな影響を与えてしまうからです。
+
+いくつかの例をあげると、
+
+* . が * よりも 高い優先度*
+
+     プログラム = *p.f <br />
+     プログラマーの期待している結果 =  (*p).f<br />
+     実際の処理 = *(p.f)<br />
+
+* [] が * よりも高い優先度*
+
+    プログラム = int *ap[]<br />
+    プログラマーの期待している結果 =  int(*ap)[]<br />
+    実際の処理 = int *(ap[])<br />
+
+常にかっこを付けて、式の優先度を明示しておくことが大事にです。
+
+### Sin of Omission ( 言語はすべきにもかかわらず、していない問題 )
+
+{% highlight c linenos %}
+char * localized_time(char * filename) {
+     char buffer[120];
+     .
+     .
+     .
+     return buffer
+}
+{% endhighlight %}
+
+このコードは、上手く機能しません。C言語では、Automatic 変数 は、スタック上でメモリが割り当てられます。そして、この関数が終了すると、そのスタックは再利用され、オバーライドされます。そのため、ポインタを返したとしても、期待した結果は得られません。いくつかの解決策として、 
+
+{% highlight c linenos %}
+// string literal のポインタを返す方法
+cahr *func() { return "Only works for simple strings"; }
+{% endhighlight %}
+
+もちろんこれは動的に文字列を返したいときには役に立ちません。 
+
+{% highlight c linenos %}
+// グローバル変数
+char *fun() {
+     my_global_array[i] = . . . 
+      
+     return my_global_array;
+}
+{% endhighlight %}
+
+これも簡潔で簡単ですが、誰もがこのグローバル変数を変更してしまいます。 
+
+{% highlight c linenos %}
+// static 
+char *fun() {
+     static char buffer[20];
+     .
+     .
+     .     
+     return buffer;
+}
+{% endhighlight %}
+
+static 配列を使用すれば、誰もが上書きしてしまう問題は回避することができます。プログラムがポインタを与えた関数だけ、この staic 配列を変更できます。しかし、他の関数がが上書きする前に、コピーする等の手間がかかります。 
+
+{% highlight c linenos %}
+// 明示的にメモリの割り当て
+char *fun() {
+     char *s = mallo(120);
+     .
+     .
+     .     
+     return s;
+}
+{% endhighlight %}
+
+static 配列を使用した時と同じように利点があり、かつ、この関数が何度呼び出されても、前の呼び出しの結果を上書きすることがありません。しかし、プログラムがメモリ管理をしなければなりません。プログラムが複雑になればなるほど、free を呼び出すことを頻繁に忘れてしまうでしょう。 
+
+{% highlight c linenos %}
+// 呼び出し元が、メモリ管理
+void func(char * result, int size) {
+     . . . 
+     strncpy(result, “That’d be in the data segment, Bob”, size);
+}
+ 
+buffer = malloc(size);
+func(buffer, size);
+     . . .
+free(buffer);
+{% endhighlight %}
+
+この方法なら、メモリ管理をなるべく一つの場所に実行できます。呼び出し元の近くにメモリ管理の処理を書いておけば忘れた等の最低限のミスは防ぐことができます。 
+
+***
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=komchax-22&o=9&p=8&l=as1&m=amazon&f=ifr&ref=tf_til&asins=4756116396" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
