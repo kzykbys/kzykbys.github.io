@@ -1,0 +1,472 @@
+	<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>C言語の文字列関数</title>
+        <meta name="viewport" content="width=device-width">        
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+		<link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/jquery.sidr.dark.css">
+		<link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+
+	</head>
+	
+	<body>
+    
+        <div id="mobile-sticky-menu">
+	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
+	<img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" />
+</div>
+
+<div id="sidr">
+	<!-- Your content -->
+	<!-- <h4>Share</h4> -->
+
+	<h4>Category</h4>
+	<ul>
+	   
+		   <li>
+		   		<a href="/categories/objective-c">objective-c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/other">other</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/node-js">node.js</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/tips">tips</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/html5">html5</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/algorithms">algorithms</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/machine-learning">machine learning</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/c">c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby">ruby</a>
+		   </li>
+	   
+    </ul>
+	<h4>Archive</h4>
+	<ul>
+		
+			<li>
+				<a href="/2013/08/">2013/08</a>
+			</li>
+		
+			<li>
+				<a href="/2013/09/">2013/09</a>
+			</li>
+		
+			<li>
+				<a href="/2013/11/">2013/11</a>
+			</li>
+		
+			<li>
+				<a href="/2013/12/">2013/12</a>
+			</li>
+		
+			<li>
+				<a href="/2014/01/">2014/01</a>
+			</li>
+		
+			<li>
+				<a href="/2014/03/">2014/03</a>
+			</li>
+		
+			<li>
+				<a href="/2014/04/">2014/04</a>
+			</li>
+		
+			<li>
+				<a href="/2014/05/">2014/05</a>
+			</li>
+		
+	</ul>
+
+	<img src="/images/me.png" alt="me" />
+
+</div>
+
+
+        <div class="site">
+
+			<!-- title -->
+			<!-- Header -->
+<header>
+<h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
+	<hr />
+</header>
+
+			<div id="contents">
+				
+				<div id="main">
+					<h3><a href="">C言語の文字列関数</a></h3>
+					<p class="author">
+						<span class="date">2014-05-05 12:30:00 -0700</span>
+					</p>
+		      		
+					<div class="post">
+						<p>C言語における文字列に関連した関数のまとめ。strcmp(), strcat(), strlen(), strcpy() 等の一般的なもの以外をまとめてみました。</p>
+
+<h3 id="toc_0">strchr() / strrchr()</h3>
+
+<p>この2つの関数は文字列から特定の文字を探し出します。strchr は前(左)から、strrchr は後ろ（右）から検索。もし検索している文字が文字列の中にない場合は、NULLを返します。発見した場合には、その文字へのポインタを返します。</p>
+
+<div class="highlight"><pre><code class="c"><span class="lineno"> 1</span>  <span class="kt">char</span> <span class="n">s1</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;I am the one, the only one.&quot;</span><span class="p">;</span>
+<span class="lineno"> 2</span>     <span class="kt">char</span> <span class="o">*</span><span class="n">ptr1</span><span class="p">,</span> <span class="o">*</span><span class="n">ptr2</span><span class="p">;</span>
+<span class="lineno"> 3</span>     
+<span class="lineno"> 4</span>     <span class="n">ptr1</span> <span class="o">=</span> <span class="n">strchr</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="sc">&#39;o&#39;</span><span class="p">);</span>
+<span class="lineno"> 5</span>     <span class="n">ptr2</span> <span class="o">=</span> <span class="n">strrchr</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="sc">&#39;o&#39;</span><span class="p">);</span>
+<span class="lineno"> 6</span>     
+<span class="lineno"> 7</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;String starting at leftmost  &#39;o&#39; is: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">ptr1</span><span class="p">);</span>
+<span class="lineno"> 8</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;String starting at rightmost &#39;o&#39; is: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">ptr2</span><span class="p">);</span>
+<span class="lineno"> 9</span>     
+<span class="lineno">10</span>     <span class="cm">/* Find all the o&#39;s in s1. Print their addresses. */</span>
+<span class="lineno">11</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Address of beginning of s1 is: %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">s1</span><span class="p">);</span>
+<span class="lineno">12</span>     <span class="k">for</span> <span class="p">(</span><span class="n">ptr1</span> <span class="o">=</span> <span class="n">s1</span><span class="p">;</span> <span class="p">(</span><span class="n">ptr1</span> <span class="o">=</span> <span class="n">strchr</span><span class="p">(</span><span class="n">ptr1</span><span class="p">,</span> <span class="sc">&#39;o&#39;</span><span class="p">))</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">;</span> <span class="n">ptr1</span><span class="o">++</span><span class="p">)</span>
+<span class="lineno">13</span>     <span class="p">{</span>
+<span class="lineno">14</span>         <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Address of current &#39;o&#39; is %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">ptr1</span><span class="p">);</span>
+<span class="lineno">15</span>     <span class="p">}</span>
+<span class="lineno">16</span>     
+<span class="lineno">17</span>     <span class="cm">/*=====</span>
+<span class="lineno">18</span> <span class="cm">     </span>
+<span class="lineno">19</span> <span class="cm">     String starting at leftmost  &#39;o&#39; is: one, the only one.</span>
+<span class="lineno">20</span> <span class="cm">     String starting at rightmost &#39;o&#39; is: one.</span>
+<span class="lineno">21</span> <span class="cm">     Address of beginning of s1 is: 0x7fff5fbff840</span>
+<span class="lineno">22</span> <span class="cm">     Address of current &#39;o&#39; is 0x7fff5fbff849</span>
+<span class="lineno">23</span> <span class="cm">     Address of current &#39;o&#39; is 0x7fff5fbff852</span>
+<span class="lineno">24</span> <span class="cm">     Address of current &#39;o&#39; is 0x7fff5fbff857</span>
+<span class="lineno">25</span> <span class="cm">     Program ended with exit code: 0</span>
+<span class="lineno">26</span> <span class="cm">     </span>
+<span class="lineno">27</span> <span class="cm">     =====*/</span>
+</code></pre></div>
+
+<h3 id="toc_1">strstr()</h3>
+
+<p>strstr() は文字列の中から他の文字列を探し出します。例えば、cat が concatenate に含まれているのかを判断します。 strchr() / strrchr() と同じように、発見した場合にはそのアドレスを返し、そうでない場合には、NULL を返します。</p>
+
+<div class="highlight"><pre><code class="c"><span class="lineno"> 1</span>     <span class="kt">char</span> <span class="n">a</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;cat&quot;</span><span class="p">;</span>
+<span class="lineno"> 2</span>     <span class="kt">char</span> <span class="n">b</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;cattle&quot;</span><span class="p">;</span>
+<span class="lineno"> 3</span>     <span class="kt">char</span> <span class="n">c</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;concatenate&quot;</span><span class="p">;</span>
+<span class="lineno"> 4</span>     <span class="kt">char</span> <span class="n">d</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;fooboar&quot;</span><span class="p">;</span>
+<span class="lineno"> 5</span>     
+<span class="lineno"> 6</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Address of b = %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+<span class="lineno"> 7</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Address of c = %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
+<span class="lineno"> 8</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Address of d = %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">);</span>
+<span class="lineno"> 9</span>     
+<span class="lineno">10</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Address of a in b = %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">strstr</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">));</span>
+<span class="lineno">11</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Address of a in c = %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">strstr</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">a</span><span class="p">));</span>
+<span class="lineno">12</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Address of a in d = %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">strstr</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">a</span><span class="p">));</span>
+<span class="lineno">13</span>     
+<span class="lineno">14</span>     <span class="cm">/*=====</span>
+<span class="lineno">15</span> <span class="cm">     </span>
+<span class="lineno">16</span> <span class="cm">     Address of b = 0x7fff5fbff859</span>
+<span class="lineno">17</span> <span class="cm">     Address of c = 0x7fff5fbff84d</span>
+<span class="lineno">18</span> <span class="cm">     Address of d = 0x7fff5fbff845</span>
+<span class="lineno">19</span> <span class="cm">     Address of a in b = 0x7fff5fbff859</span>
+<span class="lineno">20</span> <span class="cm">     Address of a in c = 0x7fff5fbff850</span>
+<span class="lineno">21</span> <span class="cm">     Address of a in d = 0x0    // NULL. No cat in foobar</span>
+<span class="lineno">22</span> <span class="cm">     Program ended with exit code: 0</span>
+<span class="lineno">23</span> <span class="cm">     </span>
+<span class="lineno">24</span> <span class="cm">     =====*/</span>
+</code></pre></div>
+
+<h3 id="toc_2">strspn() / strcpn()</h3>
+
+<p>この2つの関数は、ある文字セットがある文字列に含まれているかを判断します。例えば、ある文字列が全て数字であるかを判断する際に、役に立ちます。そして、いくつの文字を文字列の中からチェックしたかを返します。</p>
+
+<div class="highlight"><pre><code class="c"><span class="lineno"> 1</span>      <span class="kt">char</span> <span class="n">sentence</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;Hello, I am Kazuya!&quot;</span><span class="p">;</span>
+<span class="lineno"> 2</span>     <span class="kt">char</span> <span class="n">nonsense</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;~*%#&quot;</span><span class="p">;</span>
+<span class="lineno"> 3</span>     <span class="kt">char</span> <span class="n">letters</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ\</span>
+<span class="lineno"> 4</span> <span class="s">                      abcdefghijklmnopqrstuvwxyz&quot;</span><span class="p">;</span>
+<span class="lineno"> 5</span>     
+<span class="lineno"> 6</span>     <span class="kt">int</span> <span class="n">numskipped</span><span class="p">;</span>
+<span class="lineno"> 7</span>     
+<span class="lineno"> 8</span>     <span class="n">numskipped</span> <span class="o">=</span> <span class="n">strcspn</span><span class="p">(</span><span class="n">sentence</span><span class="p">,</span> <span class="n">letters</span><span class="p">);</span>
+<span class="lineno"> 9</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d chars skipped over untill a letter was found.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">numskipped</span><span class="p">);</span>
+<span class="lineno">10</span>     
+<span class="lineno">11</span>     <span class="n">numskipped</span> <span class="o">=</span> <span class="n">strspn</span><span class="p">(</span><span class="n">sentence</span><span class="p">,</span> <span class="n">letters</span><span class="p">);</span>
+<span class="lineno">12</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d chars skipped over until a non-letter was found.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">numskipped</span><span class="p">);</span>
+<span class="lineno">13</span>     
+<span class="lineno">14</span>     <span class="n">numskipped</span> <span class="o">=</span> <span class="n">strcspn</span><span class="p">(</span><span class="n">sentence</span><span class="p">,</span> <span class="n">nonsense</span><span class="p">);</span>
+<span class="lineno">15</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d chars skipped over untill a nonsense character was found.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">numskipped</span><span class="p">);</span>
+<span class="lineno">16</span>     
+<span class="lineno">17</span>     
+<span class="lineno">18</span>     <span class="cm">/*=====</span>
+<span class="lineno">19</span> <span class="cm">     </span>
+<span class="lineno">20</span> <span class="cm">     0 chars skipped over untill a letter was found.</span>
+<span class="lineno">21</span> <span class="cm">     5 chars skipped over until a non-letter was found.</span>
+<span class="lineno">22</span> <span class="cm">     19 chars skipped over untill a nonsense character was found.</span>
+<span class="lineno">23</span> <span class="cm">     Program ended with exit code: 0</span>
+<span class="lineno">24</span> <span class="cm">     </span>
+<span class="lineno">25</span> <span class="cm">     =====*/</span>
+</code></pre></div>
+
+<p>strspn()は与えられた文字セットの要素が、文字列にあるかぎり、文字列の中の次の文字をチェックします。もし、文字セットに含まれていない文字に出くわしたら、そこで何個の文字をスキップしたのかを返します。strscpn()はその逆です。文字セットに含まれていないものをスキップします。</p>
+
+<h3 id="toc_3">strpbrk()</h3>
+
+<p>この関数は、strcspn()と似ています。文字セットに含まれている文字を発見するまで、文字列を検索します。strcspn()と違うのは、いくつの文字をスキップしたのかを返すのではなく、その発見した文字へのポインタを返します。この関数は、区切り文字の位置を見つけたりする際に使われます。strchr()は、一度の検索にある文字１つを検索しますが、strpbrk()は、文字セットの中の全ての文字を検索することができます。</p>
+
+<div class="highlight"><pre><code class="c"><span class="lineno"> 1</span>      <span class="kt">int</span> <span class="n">num_sentences</span><span class="p">;</span>
+<span class="lineno"> 2</span>     <span class="kt">int</span> <span class="nf">count_sentences</span><span class="p">();</span>
+<span class="lineno"> 3</span>     
+<span class="lineno"> 4</span>     <span class="n">num_sentences</span> <span class="o">=</span> <span class="n">count_sentences</span><span class="p">();</span>
+<span class="lineno"> 5</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Your file had %d sentences in it!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">num_sentences</span><span class="p">);</span>
+<span class="lineno"> 6</span>     
+<span class="lineno"> 7</span>     <span class="cm">/*=====</span>
+<span class="lineno"> 8</span> <span class="cm">     </span>
+<span class="lineno"> 9</span> <span class="cm">     19 chars skipped over untill a nonsense character was found.</span>
+<span class="lineno">10</span> <span class="cm">     Your file had 5 sentences in it!</span>
+<span class="lineno">11</span> <span class="cm">     Program ended with exit code: 0</span>
+<span class="lineno">12</span> <span class="cm">          </span>
+<span class="lineno">13</span> <span class="cm">     Input file is like: </span>
+<span class="lineno">14</span> <span class="cm">     </span>
+<span class="lineno">15</span> <span class="cm">     This is a sentence. I am Kazuya!!! This sentence has the</span>
+<span class="lineno">16</span> <span class="cm">     number 3.5 in it and it also runs along for more thatn one</span>
+<span class="lineno">17</span> <span class="cm">     line until it comes to an untimely end. Do you know what</span>
+<span class="lineno">18</span> <span class="cm">     I mean, Jelly Bean?? Thta&#39;s all I&#39;ve got to say.</span>
+<span class="lineno">19</span> <span class="cm">     </span>
+<span class="lineno">20</span> <span class="cm">     =====*/</span>
+<span class="lineno">21</span> 
+<span class="lineno">22</span> <span class="kt">int</span> <span class="nf">count_sentences</span><span class="p">()</span>
+<span class="lineno">23</span> <span class="p">{</span>
+<span class="lineno">24</span>     <span class="kt">char</span> <span class="n">line</span><span class="p">[</span><span class="n">BIGLINE</span><span class="p">];</span>
+<span class="lineno">25</span>     <span class="kt">char</span> <span class="o">*</span><span class="n">mover</span><span class="p">;</span>
+<span class="lineno">26</span>     <span class="kt">FILE</span> <span class="o">*</span><span class="n">fp</span><span class="p">;</span>
+<span class="lineno">27</span>     <span class="kt">int</span> <span class="n">num_sentences</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="lineno">28</span>     
+<span class="lineno">29</span>     <span class="n">fp</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s">&quot;a.txt&quot;</span><span class="p">,</span> <span class="s">&quot;r&quot;</span><span class="p">);</span>
+<span class="lineno">30</span>     
+<span class="lineno">31</span>     <span class="k">while</span> <span class="p">(</span><span class="n">fgets</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">BIGLINE</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">fp</span><span class="p">))</span>
+<span class="lineno">32</span>     <span class="p">{</span>
+<span class="lineno">33</span>         <span class="k">for</span> <span class="p">(</span><span class="n">mover</span> <span class="o">=</span> <span class="n">line</span><span class="p">;</span> <span class="p">(</span><span class="n">mover</span> <span class="o">=</span> <span class="n">strpbrk</span><span class="p">(</span><span class="n">mover</span><span class="p">,</span> <span class="s">&quot;?!.&quot;</span><span class="p">));</span> <span class="n">mover</span><span class="o">++</span><span class="p">)</span>
+<span class="lineno">34</span>         <span class="p">{</span>
+<span class="lineno">35</span>             <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">isdigit</span><span class="p">(</span><span class="n">mover</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="n">num_sentences</span><span class="o">++</span><span class="p">;</span>
+<span class="lineno">36</span>             <span class="k">for</span> <span class="p">(;</span> <span class="n">mover</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;?&#39;</span> <span class="o">||</span> <span class="n">mover</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;!&#39;</span><span class="p">;</span> <span class="n">mover</span><span class="o">++</span><span class="p">)</span> <span class="p">;</span>
+<span class="lineno">37</span>         <span class="p">}</span>
+<span class="lineno">38</span>     <span class="p">}</span>
+<span class="lineno">39</span>     
+<span class="lineno">40</span>     <span class="k">return</span> <span class="n">num_sentences</span><span class="p">;</span>
+<span class="lineno">41</span>     
+<span class="lineno">42</span> <span class="p">}</span>
+</code></pre></div>
+
+<p>上記のプログラムは、ある文章の中にいくつの文があるかを計算するプログラムです。文は !?. のいずれかで終わると仮定します。. があった場合には、小数点の点の可能性があるので、. の後に数字があるかチェック。また、! と ? で文が終わるケースには、いくつかの !? が続くことも考慮します。</p>
+
+<h3 id="toc_4">strtok()</h3>
+
+<p>strtok()関数は便利な関数です。ユーザーのインプットがカンマ区切りで入力されているような場合に、よく使われます。tokとはトークンのことです。私達が求めているものをトークンと呼ぶようです。下のコードの例では、出力する数字です。strtok()はターゲットの文字列とdelimitersを指定し、delimitersで区切られたトークンを取得します。トークンを見つけることができない（文字列がdelimitersか’\0\&#39;しか含まない）場合には、NULLを返します。</p>
+
+<div class="highlight"><pre><code class="c"><span class="lineno"> 1</span>  <span class="kt">char</span> <span class="n">s</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;,,,,10  , 35, 40&quot;</span><span class="p">;</span>
+<span class="lineno"> 2</span>     <span class="kt">char</span> <span class="o">*</span><span class="n">ptr1</span> <span class="o">=</span> <span class="n">strtok</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s">&quot;,</span><span class="se">\040\t</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="lineno"> 3</span>     <span class="kt">char</span> <span class="o">*</span><span class="n">ptr2</span> <span class="o">=</span> <span class="n">strtok</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="s">&quot;,</span><span class="se">\040\t</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="lineno"> 4</span>     <span class="kt">char</span> <span class="o">*</span><span class="n">ptr3</span> <span class="o">=</span> <span class="n">strtok</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="s">&quot;,</span><span class="se">\040\t</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="lineno"> 5</span>     <span class="kt">char</span> <span class="o">*</span><span class="n">ptr4</span> <span class="o">=</span> <span class="n">strtok</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="s">&quot;,</span><span class="se">\040\t</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="lineno"> 6</span>     
+<span class="lineno"> 7</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;ptr1: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">ptr1</span><span class="p">);</span>
+<span class="lineno"> 8</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;ptr2: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">ptr2</span><span class="p">);</span>
+<span class="lineno"> 9</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;ptr3: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">ptr3</span><span class="p">);</span>
+<span class="lineno">10</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;ptr4: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">ptr4</span><span class="p">);</span>
+<span class="lineno">11</span>     
+<span class="lineno">12</span>     <span class="o">/*=====</span>
+<span class="lineno">13</span>      
+<span class="lineno">14</span>      <span class="nl">ptr1:</span> <span class="mi">10</span>
+<span class="lineno">15</span>      <span class="nl">ptr2:</span> <span class="mi">35</span>
+<span class="lineno">16</span>      <span class="nl">ptr3:</span> <span class="mi">40</span>
+<span class="lineno">17</span>      <span class="nl">ptr4:</span> <span class="p">(</span><span class="n">null</span><span class="p">)</span>
+<span class="lineno">18</span>      
+<span class="lineno">19</span>      <span class="o">*=====/</span>
+</code></pre></div>
+
+<p>strtoke() がはじめに呼ばれた際には、先立つ delimiters をスキップし、token の一番後ろにある delimiters を &#39;\0&#39; にオーバーライトします。そして、token の最初の文字へのポインタを返します。ターゲットとなる文字列を修正してしまうという面で危険な処理ですが、きれいな token を返してくれるということで大変役に立ちます。同じ文字列を続けて処理する際には、ターゲット文字列の指定は NULL です。strtoke() の中で static 変数が使われ処理されています。</p>
+
+					</div>
+
+				</div>
+
+				<div id="sub">
+				   <h4>About</h4>
+<p><u>Kazuya Kobayshi</u><br />
+- I'm a once law student trying to be computer geek.<br />
+- ギークになりたい。<br />
+<a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a></p>
+<h4>Elsewhere</h4>
+<p>
+   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+   <a href="https://github.com/kzykbys">Github</a></p>
+<h4>Category</h4>
+<p>|
+   
+	   <a href="/categories/objective-c">objective-c</a> | 
+   
+	   <a href="/categories/other">other</a> | 
+   
+	   <a href="/categories/node-js">node.js</a> | 
+   
+	   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
+   
+	   <a href="/categories/tips">tips</a> | 
+   
+	   <a href="/categories/html5">html5</a> | 
+   
+	   <a href="/categories/algorithms">algorithms</a> | 
+   
+	   <a href="/categories/machine-learning">machine learning</a> | 
+   
+	   <a href="/categories/c">c</a> | 
+   
+	   <a href="/categories/ruby">ruby</a> | 
+   
+</p>
+<h4>Archive</h4>
+   <p>|
+   
+		<a href="/2013/08/">2013/08</a> | 
+   
+		<a href="/2013/09/">2013/09</a> | 
+   
+		<a href="/2013/11/">2013/11</a> | 
+   
+		<a href="/2013/12/">2013/12</a> | 
+   
+		<a href="/2014/01/">2014/01</a> | 
+   
+		<a href="/2014/03/">2014/03</a> | 
+   
+		<a href="/2014/04/">2014/04</a> | 
+   
+		<a href="/2014/05/">2014/05</a> | 
+   
+</p>
+<h4>Work</h4>			   
+<p>Coming soon... maybe.</p>
+				</div>
+
+			</div>
+
+
+		</div>
+
+				<div class="footer">
+		   <div class="footer_inner">
+			   <div class="contact">
+				   <h4>About</h4>
+				   <p><u>Kazuya Kobayshi</u><br />
+				   - I'm a once law student trying to be computer geek.<br />
+				   - ギークになりたい。<br />
+				   <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a></p>
+				   <h4>Elsewhere</h4>
+				   <p>
+					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+					   <a href="https://github.com/kzykbys">Github</a></p>
+				   <h4>Category</h4>
+				   <p>|
+					   
+						   <a href="/categories/objective-c">objective-c</a> | 
+					   
+						   <a href="/categories/other">other</a> | 
+					   
+						   <a href="/categories/node-js">node.js</a> | 
+					   
+						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
+					   
+						   <a href="/categories/tips">tips</a> | 
+					   
+						   <a href="/categories/html5">html5</a> | 
+					   
+						   <a href="/categories/algorithms">algorithms</a> | 
+					   
+						   <a href="/categories/machine-learning">machine learning</a> | 
+					   
+						   <a href="/categories/c">c</a> | 
+					   
+						   <a href="/categories/ruby">ruby</a> | 
+					   
+				   </p>
+				   <h4>Archive</h4>
+					   <p>|
+					   
+	    					<a href="/2013/08/">2013/08</a> | 
+	    			   
+	    					<a href="/2013/09/">2013/09</a> | 
+	    			   
+	    					<a href="/2013/11/">2013/11</a> | 
+	    			   
+	    					<a href="/2013/12/">2013/12</a> | 
+	    			   
+	    					<a href="/2014/01/">2014/01</a> | 
+	    			   
+	    					<a href="/2014/03/">2014/03</a> | 
+	    			   
+	    					<a href="/2014/04/">2014/04</a> | 
+	    			   
+	    					<a href="/2014/05/">2014/05</a> | 
+	    			   
+    			   </p>
+				   <h4>Work</h4>			   
+				   <p>Coming soon... maybe.</p>
+			   </div>
+		   </div>
+	   	</div>
+
+	   	<!-- jQuery -->
+<script src="/javascript/jquery-1.11.1.min.js"></script>
+<script src="/javascript/jquery.sidr.min.js"></script>	  
+	  	<!-- Sdir (slide menu for small screen) -->
+
+<script>
+	
+  	$(document).ready(function() {
+		$('#mobile-menu-button').sidr();	  
+  	});
+
+  	$('#mobile-menu-button').click(function(e){
+  	});
+
+  	$('html').click(function(e){
+  		$.sidr('close', 'sidr');
+  	});
+
+</script>
+	  	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28952627-6', 'kazuya.co');
+  ga('send', 'pageview');
+
+</script>
+
+	</body>
+</html>
