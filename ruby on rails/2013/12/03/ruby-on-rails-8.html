@@ -3,8 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Ruby on Rails チュートリアル 8 章 （１）| ログイン・ログアウト</title>
-        <meta name="viewport" content="width=device-width">        
+        <title>Ruby on Rails チュートリアル 8 章 （１）| ログイン・ログアウト</title>        
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+        <meta name="viewport" content="width=device-width">
 
         <!-- syntax highlighting CSS -->
         <link rel="stylesheet" href="/css/syntax.css">
@@ -108,8 +109,6 @@
 			</li>
 		
 	</ul>
-
-	<img src="/images/me.png" alt="me" />
 
 </div>
 
@@ -222,62 +221,83 @@ if(typeof(window.NINJA_CO_JP_ONETAG_BUTTON_dd414fe8d52004b7572f9689a434e194)=='u
 				</div>
 
 				<div id="sub">
-				   <h4>About</h4>
-<p><u>Kazuya Kobayshi</u><br />
-- I'm a once law student trying to be computer geek.<br />
-- ギークになりたい。<br />
-<a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a></p>
-<h4>Elsewhere</h4>
-<p>
-   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
-   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
-   <a href="https://github.com/kzykbys">Github</a></p>
-<h4>Category</h4>
-<p>|
-   
-	   <a href="/categories/objective-c">objective-c</a> | 
-   
-	   <a href="/categories/other">other</a> | 
-   
-	   <a href="/categories/node-js">node.js</a> | 
-   
-	   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
-   
-	   <a href="/categories/tips">tips</a> | 
-   
-	   <a href="/categories/html5">html5</a> | 
-   
-	   <a href="/categories/algorithms">algorithms</a> | 
-   
-	   <a href="/categories/machine-learning">machine learning</a> | 
-   
-	   <a href="/categories/c">c</a> | 
-   
-	   <a href="/categories/ruby">ruby</a> | 
-   
-</p>
-<h4>Archive</h4>
-   <p>|
-   
-		<a href="/2013/08/">2013/08</a> | 
-   
-		<a href="/2013/09/">2013/09</a> | 
-   
-		<a href="/2013/11/">2013/11</a> | 
-   
-		<a href="/2013/12/">2013/12</a> | 
-   
-		<a href="/2014/01/">2014/01</a> | 
-   
-		<a href="/2014/03/">2014/03</a> | 
-   
-		<a href="/2014/04/">2014/04</a> | 
-   
-		<a href="/2014/05/">2014/05</a> | 
-   
-</p>
-<h4>Work</h4>			   
-<p>Coming soon... maybe.</p>
+				   <div class="side_box">
+   <h3>About</h3>
+      <p class="side_content">
+         <i>Kazuya Kobayashi</i><br />
+         - I'm a once law student trying to be computer geek.<br />
+         - ギークになりたい。<br />
+         <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a>
+      </p>
+</div>
+
+<hr />
+
+<h3>Elsewhere</h3>
+   <p class="side_content">
+      <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+      <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+      <a href="https://github.com/kzykbys">Github</a>
+   </p>
+
+<hr />
+
+<h3>Category</h3>
+   <p class="side_content">|
+      
+   	   <a href="/categories/objective-c">objective-c</a> | 
+      
+   	   <a href="/categories/other">other</a> | 
+      
+   	   <a href="/categories/node-js">node.js</a> | 
+      
+   	   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
+      
+   	   <a href="/categories/tips">tips</a> | 
+      
+   	   <a href="/categories/html5">html5</a> | 
+      
+   	   <a href="/categories/algorithms">algorithms</a> | 
+      
+   	   <a href="/categories/machine-learning">machine learning</a> | 
+      
+   	   <a href="/categories/c">c</a> | 
+      
+   	   <a href="/categories/ruby">ruby</a> | 
+      
+   </p>
+
+<hr />
+
+<h3>Archive</h3>
+   <p class="side_content">|
+      
+   		<a href="/2013/08/">2013/08</a> | 
+      
+   		<a href="/2013/09/">2013/09</a> | 
+      
+   		<a href="/2013/11/">2013/11</a> | 
+      
+   		<a href="/2013/12/">2013/12</a> | 
+      
+   		<a href="/2014/01/">2014/01</a> | 
+      
+   		<a href="/2014/03/">2014/03</a> | 
+      
+   		<a href="/2014/04/">2014/04</a> | 
+      
+   		<a href="/2014/05/">2014/05</a> | 
+      
+   </p>
+
+<hr />
+
+<h3>Work</h3>			   
+   <p class="side_content">
+      Coming soon... maybe.
+   </p>
+
+<hr />
 				</div>
 
 			</div>
@@ -289,7 +309,7 @@ if(typeof(window.NINJA_CO_JP_ONETAG_BUTTON_dd414fe8d52004b7572f9689a434e194)=='u
 		   <div class="footer_inner">
 			   <div class="contact">
 				   <h4>About</h4>
-				   <p><u>Kazuya Kobayshi</u><br />
+				   <p>Kazuya Kobayashi<br />
 				   - I'm a once law student trying to be computer geek.<br />
 				   - ギークになりたい。<br />
 				   <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a></p>

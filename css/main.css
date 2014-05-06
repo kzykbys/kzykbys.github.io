@@ -59,6 +59,13 @@ h3 {
 	font-family: 'Josefin Sans', "ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro";
 }
 
+h4 {
+	margin-bottom: 0px;
+	font-size: 24px;
+	line-height: 1;
+	font-family: 'Josefin Sans', "ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro";
+}
+
 hgroup h2, h4, h5, h6 {
 	font-size: 16px; /* 16px */
 	line-height: 1.5; /* 24px */
@@ -125,6 +132,17 @@ pre {
   margin-left: 1em;
 }
 
+.side_box {
+	border: solid black 0px;
+	/* background-color: #E6E6E6; */
+}
+
+.side_content {
+	margin-top: 6px;
+	margin-bottom: 6px;
+	margin-left: 12px;
+}
+
 .footer {
 	color: white;
 	display: block;
@@ -175,13 +193,12 @@ pre {
 	.site {
 		text-align: justify;
 		width: 90%;
-		
 		margin-top: 48px;
 		line-height: 1.5em;
 	}
 
 	header {
-		text-align: center;
+		text-align: center;		
 		padding-top: 24px;
 	}
 
@@ -299,7 +316,7 @@ pre {
 	margin: 0 auto;
 }
 
-
+/*****************************************************************************/
 /*
 /* Posts
 /*
@@ -343,9 +360,12 @@ pre {
   background-color: #333;
 }
 
-/***************
- * Sdir
- * */
+/*****************************************************************************/
+/*
+/* Sdir
+/*
+/*****************************************************************************/
+
 .sidr{
     display:none;
     position:absolute;
