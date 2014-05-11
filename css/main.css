@@ -89,6 +89,19 @@ pre {
 	overflow-x: auto;
 }
 
+#social-buttom li {
+	float: left;
+	margin: 10px 5px 20px 0;
+	width: 65px;
+}
+
+#social-buttom ul {
+/*	margin-left: -40px; */
+}
+
+.clear-list {
+	clear: both;
+}
 
 #mobile-stickey-menu {
 	display: none;

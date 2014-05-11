@@ -16,6 +16,20 @@
 		<link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
 
+        <!-- jQuery -->
+<script src="/javascript/jquery-1.11.1.min.js"></script>
+<!-- slide menu -->
+<script src="/javascript/jquery.sidr.min.js"></script>
+<!-- For FB like buttom -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=571082556301479&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 	</head>
 	
 	<body>
@@ -112,7 +126,6 @@
 
 </div>
 
-
         <div class="site">
 
 			<!-- title -->
@@ -131,20 +144,31 @@
 					</span>
 
 					<hr />
-					<div class="ninja_onebutton">
-<script type="text/javascript">
-//<![CDATA[
-(function(d){
-if(typeof(window.NINJA_CO_JP_ONETAG_BUTTON_dd414fe8d52004b7572f9689a434e194)=='undefined'){
-        document.write("<sc"+"ript type='text\/javascript' src='http:\/\/omt.shinobi.jp\/b\/dd414fe8d52004b7572f9689a434e194'><\/sc"+"ript>");
-}else{ 
-    window.NINJA_CO_JP_ONETAG_BUTTON_dd414fe8d52004b7572f9689a434e194.ONETAGButton_Load();}
-})(document);
-//]]>
-</script><span class="ninja_onebutton_hidden" style="display:none;"></span><span style="display:none;" class="ninja_onebutton_hidden"></span>
+					<div id="social-buttom">
+	<!-- Social Buttoms -->
+	<ul>
+		<li>
+			<!-- Pocket -->
+			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
+			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+		</li>		
+		<li>
+			<!-- Vertical Twitter -->
+			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		</li>				
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//algorithms/2014/01/19/blog-post.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+		</li>				
+		<li style="margine-left: 10px;!important">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="アルゴリズムの重要性" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+	</ul>
 </div>
 
-		      		<hr />
+		      		<hr class="clear-list"/>
 
 					<div class="post">
 						<p>最近、アルゴリズムの勉強を本格的に始めました。以前から、優秀なエンジニアになるにはアルゴリズムの理解は必須だと何度も言われていたのですが、どうしてもやる気がでませんでした。というのも、最近のコンピューターの性能はどんどん進化しており、最適なアルゴリズムを追求していくことに対してあまり意味が感じられなかったからです。力技でどうにかなるんじゃないかと思っていました。</p>
@@ -326,9 +350,7 @@ c は要素数に依存しない定数です。</p>
 		   </div>
 	   	</div>
 
-	   	<!-- jQuery -->
-<script src="/javascript/jquery-1.11.1.min.js"></script>
-<script src="/javascript/jquery.sidr.min.js"></script>	  
+	   		  
 	  	<!-- Sdir (slide menu for small screen) -->
 
 <script>
