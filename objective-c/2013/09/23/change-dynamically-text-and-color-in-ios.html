@@ -180,7 +180,7 @@
 
 <p>This twitter editing modal view automatically show the count and change the color based on the user typing.</p>
 
-<h3 id="toc_0">How to implement</h3>
+<h3 id="how-to-implement">How to implement</h3>
 
 <p>This is easily accomplished. Here is simple code :</p>
 
@@ -239,8 +239,7 @@
 <span class="lineno">53</span>     <span class="p">}</span>
 <span class="lineno">54</span> <span class="p">}</span>
 <span class="lineno">55</span> 
-<span class="lineno">56</span> <span class="k">@end</span>
-</code></pre></div>
+<span class="lineno">56</span> <span class="k">@end</span></code></pre></div>
 
 <p>The point is adding Target ( - (void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;) and using &quot;UIControlEventEditingChanged&quot; in my textAttributesBasedOnTyping function. By this code, we can change dynamically the text ( number in this case ) and the color at the same time. It is so convenient. Furthermore, we can add some more effect like the twitter&#39;s tweet button in above photos. If we type over 140 characters, we won&#39;t be allowed  to tweet it by disable the button. It is helpful to validate something in client side. </p>
 

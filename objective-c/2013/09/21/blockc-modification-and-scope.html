@@ -174,11 +174,11 @@
 					<div class="post">
 						<p>I often encounter Blocks when I write Objective-C. It&#39;s always kind confusing for me. The syntax is awkward and I honestly cannot still understand why using Block is useful. I have read really a helpful book about this topic and I found the different concept of scope in Blocks. I&#39;d like to write down it here. I believe I will be confused about it again.</p>
 
-<h3 id="toc_0">1. Modify Variable in Blocks</h3>
+<h3 id="1.-modify-variable-in-blocks">1. Modify Variable in Blocks</h3>
 
 <p>To modify variable, we should use &quot;__block&quot; when we declare the variable. Otherwise, our compiler display error if we try to modify variable. </p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span>  <span class="n">__block</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">blala</span>    <span class="o">=</span> <span class="s">@&quot;Use __block!!&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">__block</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">blala</span>    <span class="o">=</span> <span class="s">@&quot;Use __block!!&quot;</span><span class="p">;</span>
 <span class="lineno"> 2</span>  <span class="n">NSString</span>         <span class="o">*</span><span class="n">foolish</span>  <span class="o">=</span> <span class="s">@&quot;Error will couse&quot;</span><span class="p">;</span>
 <span class="lineno"> 3</span>         
 <span class="lineno"> 4</span>  <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">testBlocks</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span>   <span class="o">=</span>
@@ -187,16 +187,15 @@
 <span class="lineno"> 7</span>             <span class="n">blala</span>   <span class="o">=</span> <span class="s">@&quot;It&#39;s OK.&quot;</span><span class="p">;</span>
 <span class="lineno"> 8</span>             <span class="n">foolish</span> <span class="o">=</span> <span class="s">@&quot;It&#39;s not allowed&quot;</span><span class="p">;</span> <span class="c1">// Error</span>
 <span class="lineno"> 9</span>             
-<span class="lineno">10</span>         <span class="p">};</span>
-</code></pre></div>
+<span class="lineno">10</span>         <span class="p">};</span></code></pre></div>
 
 <p>This code doesn&#39;t work because we are trying to modify foolish variable. If we comment the variable out, the code works. So, we should add __block at the declaration of this variable to change the value in Blocks.</p>
 
-<h3 id="toc_1">2. Scope of Blocks</h3>
+<h3 id="2.-scope-of-blocks">2. Scope of Blocks</h3>
 
 <p>The scope of Blocks is more confusing. Let&#39;s take a look a simple example.</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span>  <span class="n">NSString</span> <span class="o">*</span><span class="n">blala</span> <span class="o">=</span> <span class="s">@&quot;BLOCKS!!&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">blala</span> <span class="o">=</span> <span class="s">@&quot;BLOCKS!!&quot;</span><span class="p">;</span>
 <span class="lineno"> 2</span>         
 <span class="lineno"> 3</span>  <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">output</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span>
 <span class="lineno"> 4</span>         <span class="o">^</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
@@ -207,8 +206,7 @@
 <span class="lineno"> 9</span>         
 <span class="lineno">10</span>         <span class="n">blala</span> <span class="o">=</span> <span class="s">@&quot;Calm down.&quot;</span><span class="p">;</span>
 <span class="lineno">11</span>         
-<span class="lineno">12</span>         <span class="n">output</span><span class="p">();</span> <span class="c1">// Output : BLOCKS!</span>
-</code></pre></div>
+<span class="lineno">12</span>         <span class="n">output</span><span class="p">();</span> <span class="c1">// Output : BLOCKS!</span></code></pre></div>
 
 <p>If we think blocks is a like function, we expect the out put which is &quot;Calm down.&quot;. But actually this code will show &quot;BLOCKS!!&quot;. The scope that blocks access is determined at the time blocks is called. Therefore,  in this case ( 1. @&quot;BLOCKS!!&quot; 2. Blocks 3. @&quot;Calm down&quot;), this output is &quot;BLOCKS!!&quot;</p>
 
@@ -225,8 +223,7 @@
 <span class="lineno"> 9</span>         
 <span class="lineno">10</span> <span class="n">blala</span> <span class="o">=</span> <span class="s">@&quot;Calm down.&quot;</span><span class="p">;</span>
 <span class="lineno">11</span>         
-<span class="lineno">12</span> <span class="n">output</span><span class="p">();</span> <span class="c1">// Output : Calm down</span>
-</code></pre></div>
+<span class="lineno">12</span> <span class="n">output</span><span class="p">();</span> <span class="c1">// Output : Calm down</span></code></pre></div>
 
 <p>Just by adding __block, we changed the output. </p>
 

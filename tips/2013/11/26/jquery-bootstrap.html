@@ -174,7 +174,7 @@
 					<div class="post">
 						<p>友達とウェブサイトを作っている中、Bootstrapのプログレスバーの進捗状況を動的に変更したくなったので、jQueryを使って実装してみました。</p>
 
-<h3 id="toc_0">Bootstrap プログレスバーの用意</h3>
+<h3 id="bootstrap-プログレスバーの用意">Bootstrap プログレスバーの用意</h3>
 
 <p>まずは、プログレスバーを用意する必要があります。簡単な例が本家の<a href="http://getbootstrap.com/components/#progress">サイト</a>にあるので、そちらも参考にしてください。</p>
 
@@ -183,12 +183,11 @@
 <span class="lineno">3</span>   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;progress progress-striped active &quot;</span><span class="nt">&gt;</span>
 <span class="lineno">4</span>     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;bar&quot;</span> <span class="na">style=</span><span class="s">&quot;width:0%;&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
 <span class="lineno">5</span>   <span class="nt">&lt;/div&gt;</span>
-<span class="lineno">6</span> <span class="nt">&lt;/div&gt;</span>​
-</code></pre></div>
+<span class="lineno">6</span> <span class="nt">&lt;/div&gt;</span>​</code></pre></div>
 
 <p>今回は、アメリカの留学生が１学期に取らなくてはならない最低単位数とユーザーの履修予定のクラスの単位数のパーセンテージをバーに表示します。</p>
 
-<h3 id="toc_1">jQuery 側の実装</h3>
+<h3 id="jquery-側の実装">jQuery 側の実装</h3>
 
 <p>jQuery を使うのはほとんど初めてだったんですが、意外に簡単にできました。</p>
 
@@ -210,15 +209,13 @@
 <span class="lineno">16</span>         <span class="nx">$bar</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">percent</span> <span class="o">+</span> <span class="s2">&quot;%&quot;</span><span class="p">);</span>
 <span class="lineno">17</span>  
 <span class="lineno">18</span>     <span class="p">});</span>
-<span class="lineno">19</span> <span class="c1">//--&gt;&lt;/script&gt;</span>
-</code></pre></div>
+<span class="lineno">19</span> <span class="c1">//--&gt;&lt;/script&gt;</span></code></pre></div>
 
 <p>html側は下記のようになっています。</p>
 
 <div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;span4 col-xs-12 col-sm-6 col-md-3 col-lg-4 thumb&quot;</span><span class="o">&gt;</span>
 <span class="lineno">2</span>   <span class="o">&lt;</span><span class="n">a</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;thumbnail&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">units</span><span class="o">=</span><span class="s2">&quot;4.0&quot;</span><span class="o">&gt;&lt;</span><span class="n">img</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;img-responsive&quot;</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;http://placehold.it/250x200&quot;</span><span class="o">&gt;&lt;</span><span class="sr">/a&gt;</span>
-<span class="lineno">3</span> <span class="sr">&lt;/</span><span class="n">div</span><span class="o">&gt;</span> 
-</code></pre></div>
+<span class="lineno">3</span> <span class="sr">&lt;/</span><span class="n">div</span><span class="o">&gt;</span></code></pre></div>
 
 <p>まず、&lt;a&gt;タグに data-units という属性を追加しておき、ユーザーが履修したいクラスをクリックします。それらの情報を元に、あとどの程度の単位数を履修するべきか計算させ、新しいクラスがクリックされるたびに、バーを動的に更新しています。</p>
 

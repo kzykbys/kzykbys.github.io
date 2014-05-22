@@ -178,8 +178,7 @@
 <span class="lineno">2</span> <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
 <span class="lineno">3</span> <span class="nt">&lt;title&gt;</span>Dive Into HTML5<span class="nt">&lt;/title&gt;</span>
 <span class="lineno">4</span> <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;modernizr.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="lineno">5</span> <span class="nt">&lt;/head&gt;</span>
-</code></pre></div>
+<span class="lineno">5</span> <span class="nt">&lt;/head&gt;</span></code></pre></div>
 
 <div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="k">if</span> <span class="p">(</span><span class="nx">Modernizr</span><span class="p">.</span><span class="nx">canvas</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">2</span> <span class="c1">// let&#39;s draw some shapes!</span>
@@ -187,8 +186,7 @@
 <span class="lineno">4</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 <span class="lineno">5</span> <span class="c1">// no native canvas support available :(</span>
 <span class="lineno">6</span>  
-<span class="lineno">7</span> <span class="p">}</span>
-</code></pre></div>
+<span class="lineno">7</span> <span class="p">}</span></code></pre></div>
 
 <p>nomodernizr_init() という関数が、Modernizr というグローバルオブジェクトを作成するので、上記のようにサポートされているか確認する。</p>
 
@@ -199,8 +197,7 @@
 <span class="lineno">3</span>  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">supports_canvas</span><span class="p">())</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="p">}</span>
 <span class="lineno">4</span>  <span class="kd">var</span> <span class="nx">dummy_canvas</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;canvas&#39;</span><span class="p">);</span> <span class="kd">var</span> <span class="nx">context</span> <span class="o">=</span> <span class="nx">dummy_canvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s1">&#39;2d&#39;</span><span class="p">);</span>
 <span class="lineno">5</span>  <span class="k">return</span> <span class="k">typeof</span> <span class="nx">context</span><span class="p">.</span><span class="nx">fillText</span> <span class="o">==</span> <span class="err">&#39;</span><span class="kd">function</span><span class="err">’</span><span class="p">;</span>
-<span class="lineno">6</span> <span class="p">}</span>
-</code></pre></div>
+<span class="lineno">6</span> <span class="p">}</span></code></pre></div>
 
 <p>このようにダミーの canvas をエレメントを作成し、メソッドがあるか確認している。</p>
 

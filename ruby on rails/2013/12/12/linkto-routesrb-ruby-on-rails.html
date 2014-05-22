@@ -174,24 +174,21 @@
 					<div class="post">
 						<p>RoRのルーティングに関していくつか新しいことを知ったのでメモ。</p>
 
-<h3 id="toc_0">ルーティン情報の表示</h3>
+<h3 id="ルーティン情報の表示">ルーティン情報の表示</h3>
 
 <div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># routes.rb の情報を表示！！</span>
-<span class="lineno">2</span> <span class="err">$</span> <span class="n">rake</span> <span class="n">routes</span>
-</code></pre></div>
+<span class="lineno">2</span> <span class="err">$</span> <span class="n">rake</span> <span class="n">routes</span></code></pre></div>
 
-<h3 id="toc_1">link_to の引数</h3>
+<h3 id="link_to-の引数">link_to の引数</h3>
 
 <p>よくRoRでリンクを作成するときに &lt;%= link_to “blabla&quot;, blabla %&gt; みたいに使う。一つ目の引数はリンクの文字。二つの引数がURLに関するもの。二つ目の引数にいつも何を渡せばいいのか分からなかった。これは、上記の routes.rb の情報を確認するコマンドを打ち、一番左の prefix のカラムの変数？を渡す。resources :blabla で RESTful なモデルを作成した場合は、型が決まっている。<a href="http://railsdoc.com/references/resources">ドキュメント</a>に詳細あり。
 自分で routes.rb の中で match を作成した時には、as: で自分で指定する。例えば、 </p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">match</span> <span class="s1">&#39;students/:id/q1&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;students#q1&#39;</span><span class="p">,</span> <span class="ss">via</span><span class="p">:</span> <span class="s1">&#39;get&#39;</span><span class="p">,</span> <span class="ss">as</span><span class="p">:</span> <span class="s1">&#39;q1&#39;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">match</span> <span class="s1">&#39;students/:id/q1&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;students#q1&#39;</span><span class="p">,</span> <span class="ss">via</span><span class="p">:</span> <span class="s1">&#39;get&#39;</span><span class="p">,</span> <span class="ss">as</span><span class="p">:</span> <span class="s1">&#39;q1&#39;</span></code></pre></div>
 
 <p>とした時には、studentsコントローラーのq1アクションにアクセスする。この最後の as: がポイントで、これにより&lt;%= link_to ~~~ %&gt;で使える値を指定している。この例ならば、 </p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="o">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;1st Quoter&quot;</span><span class="p">,</span> <span class="n">q1_path</span><span class="p">(</span><span class="vi">@current_student</span><span class="p">)</span> <span class="o">%&gt;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="o">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;1st Quoter&quot;</span><span class="p">,</span> <span class="n">q1_path</span><span class="p">(</span><span class="vi">@current_student</span><span class="p">)</span> <span class="o">%&gt;</span></code></pre></div>
 
 <p>q1_path として使える。</p>
 

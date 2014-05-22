@@ -174,7 +174,7 @@
 					<div class="post">
 						<p>RailsでのFacebookログインの実装。Facebookログインをサイトに設定することで、ユーザーはワンクリックでユーザー登録を完了することができ、パスワードやE-mailアドレスを入力する必要がなくなることもあるので、かなり楽です。実装も結構簡単でした。</p>
 
-<h3 id="toc_0">準備</h3>
+<h3 id="準備">準備</h3>
 
 <blockquote>
 <blockquote>
@@ -184,8 +184,7 @@
 
 <div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># Gemfile</span>
 <span class="lineno">2</span> <span class="n">gem</span> <span class="err">‘</span><span class="n">omniauth</span><span class="s1">&#39;</span>
-<span class="lineno">3</span> <span class="s1">gem &#39;</span><span class="n">omniauth</span><span class="o">-</span><span class="n">facebook</span><span class="err">’</span>
-</code></pre></div>
+<span class="lineno">3</span> <span class="s1">gem &#39;</span><span class="n">omniauth</span><span class="o">-</span><span class="n">facebook</span><span class="err">’</span></code></pre></div>
 
 <p>Gemfileを準備し、 $ bundle install . ここまではもうおなじみですね。 </p>
 
@@ -195,7 +194,7 @@
 </blockquote>
 </blockquote>
 
-<p>また、Facebookログインをサイトに組み込むには、Facebook側でアプリを作成し、自分のサイトを登録しておく必要があります。まず、<a href="https://developers.facebook.com/apps">ここ</a> にアクセスし、アプリを作成します。アプリ作成に関しては特に問題ないと思います。ローカルで動作確認する際には、各アプリ設定ページ中程にある Website with Facebook Login という項目を有効にし、http://localhost:3000/ を設定します。これを忘れると、 Invalid blabala とエラーがでます。設定ページにある ”App ID” と ”App Secret” をあとで使います</p>
+<p>また、Facebookログインをサイトに組み込むには、Facebook側でアプリを作成し、自分のサイトを登録しておく必要があります。まず、<a href="https://developers.facebook.com/apps">ここ</a> にアクセスし、アプリを作成します。アプリ作成に関しては特に問題ないと思います。ローカルで動作確認する際には、各アプリ設定ページ中程にある Website with Facebook Login という項目を有効にし、<a href="http://localhost:3000/">http://localhost:3000/</a> を設定します。これを忘れると、 Invalid blabala とエラーがでます。設定ページにある ”App ID” と ”App Secret” をあとで使います</p>
 
 <p><img src="http://1.bp.blogspot.com/--YZNsLznuAc/Uq9IegmlUfI/AAAAAAAAAME/JAd6BCdKD-0/s1600/Screen+Shot+2013-12-16+at+9.59.10+AM.png" alt=""></p>
 
@@ -208,8 +207,7 @@
 <div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1">#config/initializers/omniauth.rb</span>
 <span class="lineno">2</span> <span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">middleware</span><span class="o">.</span><span class="n">use</span> <span class="no">OmniAuth</span><span class="o">::</span><span class="no">Builder</span> <span class="k">do</span>
 <span class="lineno">3</span>   <span class="n">provider</span> <span class="ss">:facebook</span><span class="p">,</span> <span class="err">“</span><span class="no">App</span> <span class="no">ID</span><span class="s2">&quot;, “App Secret&quot;</span>
-<span class="lineno">4</span> <span class="k">end</span>
-</code></pre></div>
+<span class="lineno">4</span> <span class="k">end</span></code></pre></div>
 
 <p>config/initializers/ に上記のファイルを作成します。 </p>
 
@@ -220,12 +218,11 @@
 </blockquote>
 
 <div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1">#config/route.rb</span>
-<span class="lineno">2</span> <span class="n">match</span> <span class="s2">&quot;/auth/:provider/callback&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;sessions#createByFacebook&quot;</span><span class="p">,</span> <span class="ss">via</span><span class="p">:</span> <span class="err">‘</span><span class="n">get</span><span class="err">&#39;</span>
-</code></pre></div>
+<span class="lineno">2</span> <span class="n">match</span> <span class="s2">&quot;/auth/:provider/callback&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;sessions#createByFacebook&quot;</span><span class="p">,</span> <span class="ss">via</span><span class="p">:</span> <span class="err">‘</span><span class="n">get</span><span class="err">&#39;</span></code></pre></div>
 
 <p>上記の match を追加。２つ目のダブルクォートの中身は Facebook からコールバックで自分のサイトに戻ってきた時に処理するコントローラーのアクションを設定しておけば大丈夫だと思います。今回、Facebook の Facebook Login 機能を使って、サイトでユーザー登録とログインがすることができるよう実装してみます。</p>
 
-<h3 id="toc_1">実装</h3>
+<h3 id="実装">実装</h3>
 
 <blockquote>
 <blockquote>
@@ -241,8 +238,7 @@
 <span class="lineno">4</span> <span class="s2">     student = Student.find_by_provider_and_fbid(auth[&quot;</span><span class="n">provider</span><span class="s2">&quot;],auth[&quot;</span><span class="n">uid</span><span class="s2">&quot;]) || Student.create_with_fb(auth,classID)  #*</span>
 <span class="lineno">5</span> <span class="s2">     sign_in student</span>
 <span class="lineno">6</span> <span class="s2">     redirect_to student</span>
-<span class="lineno">7</span> <span class="s2">end </span>
-</code></pre></div>
+<span class="lineno">7</span> <span class="s2">end</span></code></pre></div>
 
 <p>一行目は Facebook から取ってきた情報です。これを既存ユーザーかどうか判断する際に追加、また、新規ユーザーを作成する際にはモデルのメソッドに引数として渡し、この情報をもとに新規ユーザーを作成します。コメント * の部分が、上記の 既存のユーザーかどうかの判断するポイントです。</p>
 
@@ -282,8 +278,7 @@
 <span class="lineno">26</span>  
 <span class="lineno">27</span>       <span class="k">return</span> <span class="n">newS</span>
 <span class="lineno">28</span>     <span class="k">end</span>
-<span class="lineno">29</span>   <span class="k">end</span>
-</code></pre></div>
+<span class="lineno">29</span>   <span class="k">end</span></code></pre></div>
 
 <p>この箇所はあまり自信がないので問題があったらご指摘いただきたいです。ここでは、ユーザーが Facebook でログインするのは初めてだけど、既にサイトのユーザーだったというケースを E-mail アドレスでチェックしています。もし Facebook に登録されたアドレスが既に存在すれば、Facebook の UID と privider つまり facebook ということを保存しています。正真正銘、新規ユーザーの場合には else 文以下で新規ユーザーを作成しています。僕のケースでは Student が持つクラス（授業名）を登録する際に Student の id が必要でした。そこでまず newS （新しい生徒）を保存して、その後に中間テーブルに student_id と klass_id を登録しました。なんだかあまりかっこよくないです。 いずれの場合にも更新 or 作成したモデルを return し、2.1 のコントローラーに返します。そのモデルを使い、ログイン・各ユーザーページにリダイレクトという流れです。</p>
 

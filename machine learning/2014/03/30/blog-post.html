@@ -174,7 +174,7 @@
 					<div class="post">
 						<p>ナイーブベイジアンフィルタとは、Naive Bayes というアルゴリズムを使用して、カテゴリやスパムメールの振り分けを行うとてもシンプルなフィルタです。強い独立性を仮定して処理するので、&quot;ナイーブ&quot;と言われます。*1 事前にコンピューターに手動で学習させておく（訓練フェーズ）ので、Supervied Leaning と呼ばれる機械学習の手法の一つ。</p>
 
-<h3 id="toc_0">ナイーブベイズフィルタ</h3>
+<h3 id="ナイーブベイズフィルタ">ナイーブベイズフィルタ</h3>
 
 <p>ナイーブベイズでは、カテゴリを推定します。ある文章が与えられた時に、その文章がどのカテゴリに属するのが「もっともらしい」のかを求める。</p>
 
@@ -182,25 +182,22 @@
 
 <p>1 .  カテゴリに各単語が分類された回数</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span>  <span class="p">{</span>
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="p">{</span>
 <span class="lineno">2</span>      <span class="s">&quot;Python&quot;</span><span class="o">:</span> <span class="p">{</span>
 <span class="lineno">3</span>           <span class="s">&quot;Python&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
 <span class="lineno">4</span>           <span class="s">&quot;パイソン&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">},</span>
 <span class="lineno">5</span>       <span class="s">&quot;Ruby&quot;</span><span class="o">:</span> <span class="p">{</span>
 <span class="lineno">6</span>           <span class="s">&quot;Ruby&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
 <span class="lineno">7</span>           <span class="s">&quot;ルビー&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">}</span>
-<span class="lineno">8</span> <span class="p">}</span>
-</code></pre></div>
+<span class="lineno">8</span> <span class="p">}</span></code></pre></div>
 
 <p>2 . カテゴリの登場回数</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span>  <span class="p">{</span><span class="err">&#39;</span><span class="n">Python</span><span class="err">&#39;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">Ruby</span><span class="err">&#39;</span><span class="o">:</span> <span class="mi">1</span><span class="p">}</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="p">{</span><span class="err">&#39;</span><span class="n">Python</span><span class="err">&#39;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">Ruby</span><span class="err">&#39;</span><span class="o">:</span> <span class="mi">1</span><span class="p">}</span></code></pre></div>
 
 <p>3 . ユニークな単語の集合</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span>  <span class="p">{</span><span class="s">&quot;Python&quot;</span><span class="p">,</span> <span class="s">&quot;パイソン&quot;</span><span class="p">,</span> <span class="s">&quot;Ruby&quot;</span><span class="p">,</span> <span class="s">&quot;ルビー&quot;</span><span class="p">}</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="p">{</span><span class="s">&quot;Python&quot;</span><span class="p">,</span> <span class="s">&quot;パイソン&quot;</span><span class="p">,</span> <span class="s">&quot;Ruby&quot;</span><span class="p">,</span> <span class="s">&quot;ルビー&quot;</span><span class="p">}</span></code></pre></div>
 
 <p>確率の乗法定理により、ある文章(doc)が与えられた時に、あるカテゴリ(cat)に属する確率は、</p>
 

@@ -180,8 +180,7 @@
 <span class="lineno">4</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 <span class="lineno">5</span>      <span class="c1">// no native support for local storage :(</span>
 <span class="lineno">6</span>      <span class="c1">// try a fallback or another third-party solution</span>
-<span class="lineno">7</span> <span class="p">}</span>
-</code></pre></div>
+<span class="lineno">7</span> <span class="p">}</span></code></pre></div>
 
 <p>内部では、</p>
 
@@ -191,8 +190,7 @@
 <span class="lineno">4</span>      <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
 <span class="lineno">5</span>          <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
 <span class="lineno">6</span>      <span class="p">}</span>
-<span class="lineno">7</span> <span class="p">}</span>
-</code></pre></div>
+<span class="lineno">7</span> <span class="p">}</span></code></pre></div>
 
 <p>このように処理しています。古い Firefox のバグにより Exception をスローする場合があるので、try-catch 文を使っています。Javascript はケースセンシティブなので、Modernizr の localstorage と DOM プロパティの localStorage に違いに注意。</p>
 

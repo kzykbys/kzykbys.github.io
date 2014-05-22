@@ -206,8 +206,7 @@
 <span class="lineno">28</span>         <span class="n">printf</span><span class="p">(</span><span class="s">&quot;TOTAL_ELEMENTS : %lu</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">TOTAL_ELEMENTS</span><span class="p">);</span>
 <span class="lineno">29</span>     <span class="p">}</span>
 <span class="lineno">30</span>     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="lineno">31</span> <span class="p">}</span>
-</code></pre></div>
+<span class="lineno">31</span> <span class="p">}</span></code></pre></div>
 
 <p>一つ目の if 文は false を返します。sizeof が unsign integer を返すので、この比較は unsign で実行されます。-1 は、0xFF、十進数で 255であり、配列の要素数より大きいです。そのため、この if 文の中は実行されません。
 二つ目の if 文は、unsign integer である、TOTAL_ELEMENTS をキャストし、sign integer として扱うため、期待している結果が表示されます。</p>

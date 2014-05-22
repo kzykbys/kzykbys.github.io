@@ -185,13 +185,11 @@
 <div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="c">&lt;!--</span><span class="p">[</span><span class="k">if</span> <span class="nx">lt</span> <span class="nx">IE</span> <span class="mi">9</span><span class="p">]</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
 <span class="lineno">2</span> <span class="kd">var</span> <span class="nx">e</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;abbr,article,aside,audio,canvas,datalist,details,&quot;</span> <span class="o">+</span> <span class="s2">&quot;figure,footer,header,hgroup,mark,menu,meter,nav,output,&quot;</span> <span class="o">+</span> <span class="s2">&quot;progress,section,time,video&quot;</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">);</span>
 <span class="lineno">3</span> <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="nx">e</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
-<span class="lineno">4</span> <span class="p">}</span> <span class="o">&lt;</span><span class="err">/script&gt; &lt;![endif]—&gt;</span>
-</code></pre></div>
+<span class="lineno">4</span> <span class="p">}</span> <span class="o">&lt;</span><span class="err">/script&gt; &lt;![endif]—&gt;</span></code></pre></div>
 
 <div class="highlight"><pre><code class="html"><span class="lineno">1</span> <span class="c">&lt;!--[if lt IE 9]&gt;</span>
 <span class="lineno">2</span> <span class="c">&lt;script src=&quot;http://html5shiv.googlecode.com/svn/trunk/html5.js&quot;&gt;&lt;/script&gt; </span>
-<span class="lineno">3</span> <span class="c">&lt;![endif]—&gt;</span>
-</code></pre></div>
+<span class="lineno">3</span> <span class="c">&lt;![endif]—&gt;</span></code></pre></div>
 
 <p>このために Remy Sharp さんという方がライブラリを作成してくれています。オープンソースのMITライセンスなのでどなたでも使用でき、古いブラウザに対応しなければならに時に重宝しそうです。</p>
 

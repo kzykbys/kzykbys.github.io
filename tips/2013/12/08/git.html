@@ -174,83 +174,68 @@
 					<div class="post">
 						<p>Herokuにデプロイするしか git を活用したことがなかったのですが、最近チームで開発する機会にちょくちょく恵まれ、git にてプロジェクトを複数人で管理する必要が出てきました。そこで、しっかり git を勉強しようとドットインストールの git 講座を視聴しました。下記はその Heroku へデプロイするだけではあまり知らなかった git のコマンド集です。</p>
 
-<h3 id="toc_0">git コマンド集 by ドットインストール</h3>
+<h3 id="git-コマンド集-by-ドットインストール">git コマンド集 by ドットインストール</h3>
 
 <p>gitをアウトプットをカラーリング</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">config</span> <span class="err">—</span><span class="n">global</span> <span class="n">color</span><span class="o">.</span><span class="n">ui</span> <span class="kp">true</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">config</span> <span class="err">—</span><span class="n">global</span> <span class="n">color</span><span class="o">.</span><span class="n">ui</span> <span class="kp">true</span></code></pre></div>
 
 <p>ログにどこが変更されたか表示する</p>
 
 <div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">log</span> <span class="o">-</span><span class="nb">p</span>
-<span class="lineno">2</span> <span class="n">git</span> <span class="n">log</span> <span class="o">--</span><span class="n">stat</span>
-</code></pre></div>
+<span class="lineno">2</span> <span class="n">git</span> <span class="n">log</span> <span class="o">--</span><span class="n">stat</span></code></pre></div>
 
 <p>修正したが、ステージングエリアにあげていないファイルの差分チェック</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">diff</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">diff</span></code></pre></div>
 
 <p>修正したが、ステージングエリアにあげていないファイルを元に戻す</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">checkout</span> <span class="err">—</span> <span class="n">fileName</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">checkout</span> <span class="err">—</span> <span class="n">fileName</span></code></pre></div>
 
 <p>修正し、ステージングエリアにあげたものファイルの差分チェック</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">diff</span> <span class="err">—</span><span class="n">cached</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">diff</span> <span class="err">—</span><span class="n">cached</span></code></pre></div>
 
 <p>スペルミス等のコミットとしてあげるほどでもない場合、ステージングエリアに修正ファイルをあげた後にこのコマンドを実行すると、同じコミットとして処理してくれる。</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">commit</span> <span class="err">—</span><span class="n">amend</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">commit</span> <span class="err">—</span><span class="n">amend</span></code></pre></div>
 
 <p>HEADは直前のコミット。直前のコミットをなかったことにしてくれる。</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">hard</span> <span class="no">HEAD</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">hard</span> <span class="no">HEAD</span></code></pre></div>
 
 <p>そのコミットIDまで戻る。コミットIDは git status で確認</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">hard</span> <span class="no">CommitID</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">hard</span> <span class="no">CommitID</span></code></pre></div>
 
 <p>ブランチの削除</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">d</span> <span class="p">(</span><span class="n">branch</span> <span class="nb">name</span><span class="p">)</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">d</span> <span class="p">(</span><span class="n">branch</span> <span class="nb">name</span><span class="p">)</span></code></pre></div>
 
 <p>たくさんコミットをしていく中で、あるコミットだけに目印のようなものを付けたい時に活用する。</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">tag</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">tag</span></code></pre></div>
 
 <p>coというエイリアスを作成</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">config</span> <span class="err">—</span><span class="n">global</span> <span class="k">alias</span><span class="o">.</span><span class="n">co</span> <span class="n">checkout</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">config</span> <span class="err">—</span><span class="n">global</span> <span class="k">alias</span><span class="o">.</span><span class="n">co</span> <span class="n">checkout</span></code></pre></div>
 
 <p>エイリアス等の設定一覧を表示</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">config</span> <span class="o">-</span><span class="n">l</span> 
-</code></pre></div>
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">config</span> <span class="o">-</span><span class="n">l</span></code></pre></div>
 
 <p>共有リポジトリを作成する時の初期オプション。またリポジトリ名は .git と付けるのが通例。</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">init</span> <span class="err">—</span><span class="n">bare</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">init</span> <span class="err">—</span><span class="n">bare</span></code></pre></div>
 
 <p>originという名前で共有リポジトリを設定する</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="p">(</span><span class="n">repos</span> <span class="n">location</span><span class="p">)</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="p">(</span><span class="n">repos</span> <span class="n">location</span><span class="p">)</span></code></pre></div>
 
 <p>誰かが作った共有レポジトリを他者がその他者のローカルに複製する</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="nb">clone</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">git</span> <span class="nb">clone</span></code></pre></div>
 
 					</div>
 

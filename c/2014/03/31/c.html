@@ -174,7 +174,7 @@
 					<div class="post">
 						<p>&quot;<a href="http://www.amazon.com/gp/product/0131774298">Expert C Programming</a>&quot; で紹介されていたC言語の落とし穴を3つのカテゴリに分けて紹介したいと思います。C言語とは直接関係はありませんが、アメリカの宇宙計画は、少なくとも2度プログラムのバグにより失敗してしまったそうです。<a href="http://en.wikipedia.org/wiki/Project_Mercury">Mercury</a> というプロジェクトでは、プログラムが . を , の代わりに使用したことにより、大きな事故が起きそうになりました。この事件は幸いにも、発射前にエラーが確認されたため大きな損失はありませんでした。原因は、Fortran の欠陥です。また、<a href="http://en.wikipedia.org/wiki/Mariner_1">Mariner 1</a> では、アルゴリズムの間違った仕様書を渡されたプログラマが、その通りに実装したために起こりました。実際に$12 million のロケットが破壊されてしまったそうです。こんなロケットを打ち上げるプロジェクトに関われるなんてことはそうそうないと思いますが、普段のプロジェクトでも注意してコーディングしたいですね。</p>
 
-<h3 id="toc_0">Sins of Commission ( 言語がすべきでないにもかかわらず、してしまっている問題 )</h3>
+<h3 id="sins-of-commission-(-言語がすべきでないにもかかわらず、してしまっている問題-)">Sins of Commission ( 言語がすべきでないにもかかわらず、してしまっている問題 )</h3>
 
 <p><strong>Default fall through</strong></p>
 
@@ -186,8 +186,7 @@
 <span class="lineno">4</span>               <span class="c1">// Fall through </span>
 <span class="lineno">5</span>      <span class="k">case</span> <span class="mi">1</span>: <span class="n">process_operand</span> <span class="p">(</span> <span class="n">operator</span><span class="o">-&gt;</span><span class="n">operator_1</span> <span class="p">)</span>
 <span class="lineno">6</span>      <span class="k">break</span><span class="p">;</span>
-<span class="lineno">7</span> <span class="p">}</span> 
-</code></pre></div>
+<span class="lineno">7</span> <span class="p">}</span></code></pre></div>
 
 <p><strong>Default fall through</strong></p>
 
@@ -210,12 +209,11 @@
 <span class="lineno">17</span>           <span class="nl">default:</span>
 <span class="lineno">18</span>                <span class="n">processing</span><span class="p">();</span>                              
 <span class="lineno">19</span>      <span class="p">}</span>
-<span class="lineno">20</span> <span class="p">}</span>
-</code></pre></div>
+<span class="lineno">20</span> <span class="p">}</span></code></pre></div>
 
 <p>if 文を抜けようとして使用した break が switch 文を抜け出してしまい必要な初期化が行われない例。このバグにより、1990年1月15日の午後、９時間以上にわたってアメリカのAT&amp;Tの大部分のネットワークが使用不可能になった。AT&amp;Tの114年の歴史の中で一番最初の悲惨な事件を起こしてしまいました。</p>
 
-<h3 id="toc_1">Sins of Mission ( 見当違いな実装、言語に適切でない問題 )</h3>
+<h3 id="sins-of-mission-(-見当違いな実装、言語に適切でない問題-)">Sins of Mission ( 見当違いな実装、言語に適切でない問題 )</h3>
 
 <p><strong>Operator’s wrong precedence</strong></p>
 
@@ -238,7 +236,7 @@
 
 <p>常にかっこを付けて、式の優先度を明示しておくことが大事にです。</p>
 
-<h3 id="toc_2">Sin of Omission ( 言語はすべきにもかかわらず、していない問題 )</h3>
+<h3 id="sin-of-omission-(-言語はすべきにもかかわらず、していない問題-)">Sin of Omission ( 言語はすべきにもかかわらず、していない問題 )</h3>
 
 <div class="highlight"><pre><code class="c"><span class="lineno">1</span> <span class="kt">char</span> <span class="o">*</span> <span class="nf">localized_time</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span> <span class="n">filename</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">2</span>      <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">120</span><span class="p">];</span>
@@ -246,14 +244,12 @@
 <span class="lineno">4</span>      <span class="p">.</span>
 <span class="lineno">5</span>      <span class="p">.</span>
 <span class="lineno">6</span>      <span class="k">return</span> <span class="n">buffer</span>
-<span class="lineno">7</span> <span class="p">}</span>
-</code></pre></div>
+<span class="lineno">7</span> <span class="p">}</span></code></pre></div>
 
 <p>このコードは、上手く機能しません。C言語では、Automatic 変数 は、スタック上でメモリが割り当てられます。そして、この関数が終了すると、そのスタックは再利用され、オバーライドされます。そのため、ポインタを返したとしても、期待した結果は得られません。いくつかの解決策として、 </p>
 
 <div class="highlight"><pre><code class="c"><span class="lineno">1</span> <span class="c1">// string literal のポインタを返す方法</span>
-<span class="lineno">2</span> <span class="n">cahr</span> <span class="o">*</span><span class="nf">func</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="s">&quot;Only works for simple strings&quot;</span><span class="p">;</span> <span class="p">}</span>
-</code></pre></div>
+<span class="lineno">2</span> <span class="n">cahr</span> <span class="o">*</span><span class="nf">func</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="s">&quot;Only works for simple strings&quot;</span><span class="p">;</span> <span class="p">}</span></code></pre></div>
 
 <p>もちろんこれは動的に文字列を返したいときには役に立ちません。 </p>
 
@@ -262,8 +258,7 @@
 <span class="lineno">3</span>      <span class="n">my_global_array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">.</span> <span class="p">.</span> <span class="p">.</span> 
 <span class="lineno">4</span>       
 <span class="lineno">5</span>      <span class="k">return</span> <span class="n">my_global_array</span><span class="p">;</span>
-<span class="lineno">6</span> <span class="p">}</span>
-</code></pre></div>
+<span class="lineno">6</span> <span class="p">}</span></code></pre></div>
 
 <p>これも簡潔で簡単ですが、誰もがこのグローバル変数を変更してしまいます。 </p>
 
@@ -274,8 +269,7 @@
 <span class="lineno">5</span>      <span class="p">.</span>
 <span class="lineno">6</span>      <span class="p">.</span>     
 <span class="lineno">7</span>      <span class="k">return</span> <span class="n">buffer</span><span class="p">;</span>
-<span class="lineno">8</span> <span class="p">}</span>
-</code></pre></div>
+<span class="lineno">8</span> <span class="p">}</span></code></pre></div>
 
 <p>static 配列を使用すれば、誰もが上書きしてしまう問題は回避することができます。プログラムがポインタを与えた関数だけ、この staic 配列を変更できます。しかし、他の関数がが上書きする前に、コピーする等の手間がかかります。 </p>
 
@@ -286,8 +280,7 @@
 <span class="lineno">5</span>      <span class="p">.</span>
 <span class="lineno">6</span>      <span class="p">.</span>     
 <span class="lineno">7</span>      <span class="k">return</span> <span class="n">s</span><span class="p">;</span>
-<span class="lineno">8</span> <span class="p">}</span>
-</code></pre></div>
+<span class="lineno">8</span> <span class="p">}</span></code></pre></div>
 
 <p>static 配列を使用した時と同じように利点があり、かつ、この関数が何度呼び出されても、前の呼び出しの結果を上書きすることがありません。しかし、プログラムがメモリ管理をしなければなりません。プログラムが複雑になればなるほど、free を呼び出すことを頻繁に忘れてしまうでしょう。 </p>
 
@@ -300,8 +293,7 @@
 <span class="lineno"> 7</span> <span class="n">buffer</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
 <span class="lineno"> 8</span> <span class="n">func</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
 <span class="lineno"> 9</span>      <span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
-<span class="lineno">10</span> <span class="n">free</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
-</code></pre></div>
+<span class="lineno">10</span> <span class="n">free</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span></code></pre></div>
 
 <p>この方法なら、メモリ管理をなるべく一つの場所に実行できます。呼び出し元の近くにメモリ管理の処理を書いておけば忘れた等の最低限のミスは防ぐことができます。 </p>
 

@@ -175,26 +175,24 @@
 						<p>急遽、勉強しなくちゃいけなくなった Ruby on Rails の個人的なまとめ。ログイン、ログアウト関連。
 <a href="http://railstutorial.jp/chapters/sign-in-sign-out?version=4.0#top">http://railstutorial.jp/chapters/sign-in-sign-out?version=4.0#top</a></p>
 
-<h3 id="toc_0">ログイン・ログアウト機能</h3>
+<h3 id="ログイン・ログアウト機能">ログイン・ログアウト機能</h3>
 
 <p>８章では、ウェブサービスの基本的な機能、ログイン・ログアウトの実装について解説してくれました。そのまとめです。</p>
 
 <p>ログイン・ログアウトを司るセッションには一般的に３種類ある。ブラウザを閉じると終了する忘却モデル。「パスワードを保存する」チェックボックスを使用してセッションを継続する継続モデル。ユーザーが明示的にログアウトするまで永続する永続モデル。チュートリアルでは、最後の永続モデルの実装。</p>
 
-<h3 id="toc_1">セッションを管理するコントローラーの作成 etc</h3>
+<h3 id="セッションを管理するコントローラーの作成-etc">セッションを管理するコントローラーの作成 etc</h3>
 
 <p>RESTfulなURLを自動生成するため、以下の行をルーティングファイルに追加。このコントローラーはセッションを管理するだけなので、new（ページ表示）、create（セッションスタート - ログイン）、destory（セッションエンド - ログアウト）の３つだけ作成。</p>
 
 <div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># routes.rb</span>
 <span class="lineno">2</span> <span class="n">resources</span> <span class="ss">:sessions</span><span class="p">,</span> <span class="ss">only</span><span class="p">:</span> <span class="o">[</span><span class="ss">:new</span><span class="p">,</span> <span class="ss">:create</span><span class="p">,</span> <span class="ss">:destroy</span><span class="o">]</span>
 <span class="lineno">3</span> <span class="n">match</span> <span class="s1">&#39;/signin&#39;</span><span class="p">,</span>  <span class="ss">to</span><span class="p">:</span> <span class="s1">&#39;sessions#new&#39;</span><span class="p">,</span>  <span class="ss">via</span><span class="p">:</span> <span class="s1">&#39;get&#39;</span>
-<span class="lineno">4</span> <span class="n">match</span> <span class="s1">&#39;/signout&#39;</span><span class="p">,</span> <span class="ss">to</span><span class="p">:</span> <span class="s1">&#39;sessions#destroy&#39;</span><span class="p">,</span>   <span class="ss">via</span><span class="p">:</span> <span class="err">‘</span><span class="n">delete</span><span class="err">&#39;</span>
-</code></pre></div>
+<span class="lineno">4</span> <span class="n">match</span> <span class="s1">&#39;/signout&#39;</span><span class="p">,</span> <span class="ss">to</span><span class="p">:</span> <span class="s1">&#39;sessions#destroy&#39;</span><span class="p">,</span>   <span class="ss">via</span><span class="p">:</span> <span class="err">‘</span><span class="n">delete</span><span class="err">&#39;</span></code></pre></div>
 
 <p>そして、 ログインする際の View を実際に作成します。 View の Sessions フォルダに new.html.erbを作成します。注意点として、 セッションを作成するときには @user 変数のような存在がないため、前の章とは違う形式で form_for を書きます。（ form_tag を使った方が一般的のようですが、未確認。）具体的には、</p>
 
-<div class="highlight"><pre><code class="erb"><span class="lineno">1</span> <span class="cp">&lt;%=</span> <span class="n">form_for</span><span class="p">(</span><span class="ss">:session</span><span class="p">,</span> <span class="ss">url</span><span class="p">:</span> <span class="n">sessions_path</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="cp">%&gt;</span><span class="x"></span>
-</code></pre></div>
+<div class="highlight"><pre><code class="erb"><span class="lineno">1</span> <span class="cp">&lt;%=</span> <span class="n">form_for</span><span class="p">(</span><span class="ss">:session</span><span class="p">,</span> <span class="ss">url</span><span class="p">:</span> <span class="n">sessions_path</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="cp">%&gt;</span><span class="x"></span></code></pre></div>
 
 <p>ここでの sessions_path は /sessions への POST リクエスト。変数を使い、 form_for(@user) のように書くと、Rails は勝手に、/users への POST リクエスト と認識するが、今回のようなケースでは上記のように URL とリソースを指定しなければならない。</p>
 
@@ -210,8 +208,7 @@
 <span class="lineno"> 8</span>     <span class="n">flash</span><span class="o">.</span><span class="n">now</span><span class="o">[</span><span class="ss">:error</span><span class="o">]</span> <span class="o">=</span> <span class="s1">&#39;Invalid email/password combination&#39;</span>
 <span class="lineno"> 9</span>     <span class="n">render</span> <span class="s1">&#39;new&#39;</span>
 <span class="lineno">10</span>   <span class="k">end</span>
-<span class="lineno">11</span> <span class="k">end</span>
-</code></pre></div>
+<span class="lineno">11</span> <span class="k">end</span></code></pre></div>
 
 <p>ログイン成功時に実行される sign_in関数をこれから実装していきます。これはログイン状態を永続化し、ユーザーがログアウトするまで、セッションを保持します。また、この関数は、ビューやコントローラー両方から使用する必要があるので、この sign_in 関数を SessionHelper というモジュール（Sessionコントローラー作成時に生成されている）に書き、Application コントローラーにてこれをインクルードする。これにより、コントローラー内でこのヘルパーを使用することができるようになる。ちなみに、ビューはデフォルトで、全てのヘルパーが使える。</p>
 
@@ -219,8 +216,7 @@
 <span class="lineno">2</span> <span class="k">class</span> <span class="nc">ApplicationController</span> <span class="o">&lt;</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">Base</span>
 <span class="lineno">3</span>   <span class="n">protect_from_forgery</span> <span class="ss">with</span><span class="p">:</span> <span class="ss">:exception</span>
 <span class="lineno">4</span>   <span class="kp">include</span> <span class="no">SessionsHelper</span>
-<span class="lineno">5</span> <span class="k">end</span>
-</code></pre></div>
+<span class="lineno">5</span> <span class="k">end</span></code></pre></div>
 
 <p>そして、永続的なセッションを実装するために cookie を使用します。この cookie の記憶トークンと Student は関連付けられている必要があるので、Student モデルにカラムとインデックスを追加する。</p>
 
@@ -236,8 +232,7 @@
 <span class="lineno">10</span> <span class="k">end</span>
 <span class="lineno">11</span>  
 <span class="lineno">12</span> <span class="c1"># マイグレーションの適応</span>
-<span class="lineno">13</span> <span class="err">$</span> <span class="n">bundle</span> <span class="nb">exec</span> <span class="n">rake</span> <span class="ss">db</span><span class="p">:</span><span class="n">migrate</span>
-</code></pre></div>
+<span class="lineno">13</span> <span class="err">$</span> <span class="n">bundle</span> <span class="nb">exec</span> <span class="n">rake</span> <span class="ss">db</span><span class="p">:</span><span class="n">migrate</span></code></pre></div>
 
 <p>続きます。</p>
 

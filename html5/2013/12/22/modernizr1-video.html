@@ -183,8 +183,7 @@
 <span class="lineno"> 7</span>      <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">Modernizr</span><span class="p">.</span><span class="nx">video</span><span class="p">.</span><span class="nx">h264</span><span class="p">){</span> <span class="c1">// *3</span>
 <span class="lineno"> 8</span>      <span class="c1">// try H.264 video + AAC audio in an MP4 container</span>
 <span class="lineno"> 9</span>      <span class="p">}</span>
-<span class="lineno">10</span> <span class="p">}</span>
-</code></pre></div>
+<span class="lineno">10</span> <span class="p">}</span></code></pre></div>
 
 <p>0 . check for HTML5 video support</p>
 
@@ -200,24 +199,21 @@ major browsers, including Chrome, Firefox, and Opera.</p>
 <span class="lineno">3</span>      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">supports_video</span><span class="p">())</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="p">}</span>
 <span class="lineno">4</span>      <span class="kd">var</span> <span class="nx">v</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;video&quot;</span><span class="p">);</span>
 <span class="lineno">5</span>      <span class="k">return</span> <span class="nx">v</span><span class="p">.</span><span class="nx">canPlayType</span><span class="p">(</span><span class="err">&#39;</span><span class="nx">video</span><span class="o">/</span><span class="nx">webm</span><span class="p">;</span> <span class="nx">codecs</span><span class="o">=</span><span class="s2">&quot;vp8, vorbis&quot;</span><span class="err">’</span><span class="p">);</span>
-<span class="lineno">6</span> <span class="p">}</span>
-</code></pre></div>
+<span class="lineno">6</span> <span class="p">}</span></code></pre></div>
 
 <div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="c1">// 2</span>
 <span class="lineno">2</span> <span class="kd">function</span> <span class="nx">supports_ogg_theora_video</span><span class="p">()</span> <span class="p">{</span>
 <span class="lineno">3</span>  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">supports_video</span><span class="p">())</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="p">}</span>
 <span class="lineno">4</span>  <span class="kd">var</span> <span class="nx">v</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;video&quot;</span><span class="p">);</span>
 <span class="lineno">5</span>  <span class="k">return</span> <span class="nx">v</span><span class="p">.</span><span class="nx">canPlayType</span><span class="p">(</span><span class="s1">&#39;video/ogg; codecs=&quot;theora, vorbis&quot;&#39;</span><span class="p">);</span>
-<span class="lineno">6</span> <span class="p">}</span>
-</code></pre></div>
+<span class="lineno">6</span> <span class="p">}</span></code></pre></div>
 
 <div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="c1">// 3</span>
 <span class="lineno">2</span> <span class="kd">function</span> <span class="nx">supports_h264_baseline_video</span><span class="p">()</span> <span class="p">{</span>
 <span class="lineno">3</span>      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">supports_video</span><span class="p">())</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="p">}</span>
 <span class="lineno">4</span>      <span class="kd">var</span> <span class="nx">v</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;video&quot;</span><span class="p">);</span>
 <span class="lineno">5</span>      <span class="k">return</span> <span class="nx">v</span><span class="p">.</span><span class="nx">canPlayType</span><span class="p">(</span><span class="s1">&#39;video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;&#39;</span><span class="p">);</span>
-<span class="lineno">6</span> <span class="p">}</span>
-</code></pre></div>
+<span class="lineno">6</span> <span class="p">}</span></code></pre></div>
 
 <p>各関数が、各ブラウザが対応しているビデオフォーマットに対応しているかチェックしている。return文の canPlayType() 関数は、true か false を返すのではなく、下記のように String を返す。</p>
 

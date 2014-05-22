@@ -177,7 +177,7 @@
 
 <p>Rails 3.0と、その後のバージョンの最も大きな違いの1つは、CSS、JavaScript、画像などの静的コンテンツの生産と管理を大幅に強化する「アセットパイプライン」です。アセットパイプラインは、Railsの流儀を守りながら多大な変化をもたらしますが、一般的なRails開発者の視点からは、アセットディレクトリ、マニフェストファイル、プリプロセッサエンジンという、3つの主要な機能が理解の対象。</p>
 
-<h3 id="toc_0">アセットディレクトリ</h3>
+<h3 id="アセットディレクトリ">アセットディレクトリ</h3>
 
 <table><thead>
 <tr>
@@ -199,7 +199,7 @@
 </tr>
 </tbody></table>
 
-<h3 id="toc_1">マニフェストファイル</h3>
+<h3 id="マニフェストファイル">マニフェストファイル</h3>
 
 <p>適切にアセットディレクトリにファイルを配置すれば、マニフェストファイルによって一つにファイルのように扱うことができる。 実際にまとめるのは Sprokects gem の役割。app/assets/stylesheets/application.css はマニフェストファイルの例。</p>
 
@@ -219,11 +219,11 @@
 
 <p>application.css自身の CSS 記述もインクルードする。</p>
 
-<h3 id="toc_2">プリプロセッサエンジン</h3>
+<h3 id="プリプロセッサエンジン">プリプロセッサエンジン</h3>
 
 <p>必要なアセットをディレクトリに配置してまとめた後、Railsはさまざまなプリプロセッサエンジンを介してそれらを実行し、ブラウザに配信できるようにそれらをマニフェストファイルを用いて結合し、サイトテンプレート用に準備します。Railsは、どのプリプロセッサを使用するかを、ファイル名の拡張子を使用して判断します。最も一般的な拡張子は、Sass用の.scss、CoffeeScript用の.coffee、埋め込みRuby (ERb) 用の.erbです。</p>
 
-<h3 id="toc_3">その他</h3>
+<h3 id="その他">その他</h3>
 
 <p>この章を読みながら、ローカルを作業していた時は問題なかったが、Heroku にデプロイした時にCSS等が効かなかった。その時にこのページを参考にし、いくつかの修正をするとローカルと同じ結果を得ることができた。
 <a href="http://stackoverflow.com/questions/18839662/invalid-css-on-rails-app-michael-hartl-tutorial">http://stackoverflow.com/questions/18839662/invalid-css-on-rails-app-michael-hartl-tutorial</a></p>
@@ -231,12 +231,10 @@
 <p>config/environments/production.rb を以下のように変更</p>
 
 <div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># Do not fallback to assets pipeline if a precompiled asset is missed.</span>
-<span class="lineno">2</span> <span class="c1"># config.assets.compile = false</span>
-</code></pre></div>
+<span class="lineno">2</span> <span class="c1"># config.assets.compile = false</span></code></pre></div>
 
 <div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># Generate digests for assets URLs.</span>
-<span class="lineno">2</span> <span class="c1"># config.assets.digest = true</span>
-</code></pre></div>
+<span class="lineno">2</span> <span class="c1"># config.assets.digest = true</span></code></pre></div>
 
 					</div>
 

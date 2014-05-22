@@ -174,7 +174,7 @@
 					<div class="post">
 						<p>今まで線形モデルの Perceptron[link] と Linear Regression[link] に関して勉強してきました。今回は、新しい線形モデルである Logistic Regression に関して勉強したので、Python で実装しました。</p>
 
-<h3 id="toc_0">導入</h3>
+<h3 id="導入">導入</h3>
 
 <p>Logistic Regression は、 Logistic Regression は Perceptron と Linear Regression のちょうど間に位置すると言ってもいいです。Perceptron は、アウトプットとして、+ か - のようにバイナリの結果を返しました。[ h(x] = sign(w(t)x) ] Liner Regression は、実数の値を返しました。[ h(x) = w(t)x ] これらに対して、今回の新しいモデルである Linear Regression は 0 から 1 の範囲の確率を返します。[ h(x) = theta(w(t)x ] ここでの theta関数は、theta(s) = e^s / 1 + e^s と便宜的に、0 から 1 を返すように設定します。（ロジスティクス関数) x が大きくなればなるほど、アウトプットは 1 に近くなります。逆に小さくなればなるほど、0 に近くなります。</p>
 
@@ -198,7 +198,7 @@
 
 <p><img src="http://2.bp.blogspot.com/-mwq-AqGG4h8/U1xMLNLzwPI/AAAAAAAAATM/_KXT1ToLnRc/s1600/Screen+Shot+2014-04-26+at+5.04.25+PM.png" alt=""></p>
 
-<h3 id="toc_1">実装</h3>
+<h3 id="実装">実装</h3>
 
 <p>Pythonで実装した内容がこちらです。 </p>
 
@@ -258,12 +258,11 @@
 <span class="lineno">54</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">Y</span><span class="o">==</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">Y</span><span class="o">==</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">)</span>
 <span class="lineno">55</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">Y</span><span class="o">==</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">Y</span><span class="o">==</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="s">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
 <span class="lineno">56</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s">&#39;Not admitted&#39;</span><span class="p">,</span> <span class="s">&#39;Admitted&#39;</span><span class="p">])</span>
-<span class="lineno">57</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div>
+<span class="lineno">57</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></code></pre></div>
 
 <p><img src="http://3.bp.blogspot.com/-cLu3UcoILC0/U1xMXAvIyGI/AAAAAAAAATU/IuOpZkAwkio/s1600/Screen+Shot+2014-04-26+at+5.10.27+PM.png" alt=""></p>
 
-<h3 id="toc_2">参考</h3>
+<h3 id="参考">参考</h3>
 
 <p><a href="http://gihyo.jp/dev/serial/01/machine-learning/0016">Gihyo.jp : 第16回　最適化のための勾配法</a><br>
 <a href="http://gihyo.jp/dev/serial/01/machine-learning/0018">Gihyo.jp : 第18回　ロジスティック回帰</a><br>

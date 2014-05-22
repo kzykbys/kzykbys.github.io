@@ -172,14 +172,13 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<h3 id="toc_0">セキュアなパスワード追加</h3>
+						<h3 id="セキュアなパスワード追加">セキュアなパスワード追加</h3>
 
 <p>まずはハッシュ関数を使用するためGemfileに以下の行を追加する。</p>
 
 <div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># Gemfile</span>
 <span class="lineno">2</span> <span class="c1"># gem &#39;bcrypt-ruby&#39;, ‘3.0.1&#39;</span>
-<span class="lineno">3</span> <span class="n">gem</span> <span class="s1">&#39;bcrypt-ruby&#39;</span><span class="p">,</span> <span class="err">‘</span><span class="mi">3</span><span class="o">.</span><span class="mi">1</span><span class="o">.</span><span class="mi">2</span>
-</code></pre></div>
+<span class="lineno">3</span> <span class="n">gem</span> <span class="s1">&#39;bcrypt-ruby&#39;</span><span class="p">,</span> <span class="err">‘</span><span class="mi">3</span><span class="o">.</span><span class="mi">1</span><span class="o">.</span><span class="mi">2</span></code></pre></div>
 
 <p>自分の環境では、3.0.1 では動作せず、 3.1.2をインストールすることにより動作した。
 <a href="http://stackoverflow.com/questions/18541062/issues-using-bcrypt-3-0-1-with-ruby2-0-on-windows">http://stackoverflow.com/questions/18541062/issues-using-bcrypt-3-0-1-with-ruby2-0-on-windows</a></p>
@@ -202,11 +201,11 @@
 
 <p>上記のコマンドの最初の引数はマイグレーション名。自由に設定できるが、上のように末尾を_to_usersにしておくことをお勧めします。こうしておくと、usersテーブルにカラムを追加するマイグレーションがRailsによって自動的に作成されるため。２つ目の引数は、作成する属性の名前と型。</p>
 
-<h3 id="toc_1">パスワードの確認</h3>
+<h3 id="パスワードの確認">パスワードの確認</h3>
 
 <p>パスワードの入力確認は、コントローラーで行うこともできるが、モデルで行うことが慣習になっている。そのために、password属性とpassword_confirmation属性をUserモデルに追加し、レコードをデータベースに保存する前に2つの属性が一致するように要求します。</p>
 
-<h3 id="toc_2">ユーザーの作成</h3>
+<h3 id="ユーザーの作成">ユーザーの作成</h3>
 
 <blockquote>
 <blockquote>

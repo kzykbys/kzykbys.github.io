@@ -176,7 +176,7 @@
 
 <p>今日は、ページ遷移について調べたのでそのメモ。&quot;ほとんど&quot; コードによるページ遷移の方法。</p>
 
-<h3 id="toc_0">遷移元の ViewController の準備</h3>
+<h3 id="遷移元の-viewcontroller-の準備">遷移元の ViewController の準備</h3>
 
 <p>適当なボタン等にアクションを設定して以下の様なコードを書く。</p>
 
@@ -187,8 +187,7 @@
 <span class="lineno">5</span>         <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">storyboard</span> <span class="n">instantiateViewControllerWithIdentifier</span><span class="o">:</span><span class="s">@&quot;menuID&quot;</span><span class="p">];</span>
 <span class="lineno">6</span>     <span class="n">menulistView</span><span class="p">.</span><span class="n">modalTransitionStyle</span> <span class="o">=</span> <span class="n">UIModalTransitionStyleCrossDissolve</span><span class="p">;</span>
 <span class="lineno">7</span>     <span class="p">[</span><span class="n">self</span> <span class="n">presentViewController</span><span class="o">:</span><span class="n">menulistView</span> <span class="n">animated</span><span class="o">:</span><span class="nb">YES</span> <span class="n">completion</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
-<span class="lineno">8</span> <span class="p">}</span>
-</code></pre></div>
+<span class="lineno">8</span> <span class="p">}</span></code></pre></div>
 
 <p>1 . presentModalViewController:animated の代わりに presentViewController:animated:completion というメソッドを使わないと警告でます。新しいメソッドの最後の引数、completionにはコールバックを指定し、モーダルビューが表示完了後に呼び出される。</p>
 
@@ -207,7 +206,7 @@ UIModalTransitionStylePartialCurl<br /></p>
 
 <p>3 . この instantiateViewControllerWithIdentifier で指定しているのは、Storyboard で設定する ID です。Storyboard の遷移先 ViewController で以下のように指定した値を書きます。</p>
 
-<h3 id="toc_1">遷移先の ViewController の準備</h3>
+<h3 id="遷移先の-viewcontroller-の準備">遷移先の ViewController の準備</h3>
 
 <p>こちらはただ遷移させるだけなら簡単です。適当に ViewController のファイルを作成し、Storyboard で ViewController のアイテムをドロップし、作成した遷移先となる ViewController を関連付けます。そして、上記の 3 と同じ値を指定。</p>
 
