@@ -1,0 +1,543 @@
+	<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Facebook SDK for iOS Facebook ログイン</title>        
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />        
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+		<link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/jquery.sidr.dark.css">
+		<link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+
+        <!-- jQuery -->
+<script src="/javascript/jquery-1.11.1.min.js"></script>
+<!-- slide menu -->
+<script src="/javascript/jquery.sidr.min.js"></script>
+<!-- For FB like buttom -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=571082556301479&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+	</head>
+	
+	<body>
+    
+        <div id="mobile-sticky-menu">
+	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
+	<!-- <img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" /> -->
+</div>
+
+<div id="sidr">
+	<!-- Your content -->
+	<!-- <h4>Share</h4> -->
+
+	<h4>Category</h4>
+	<ul>
+	   
+		   <li>
+		   		<a href="/categories/objective-c">objective-c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/other">other</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/node-js">node.js</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/tips">tips</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/html5">html5</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/algorithms">algorithms</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/machine-learning">machine learning</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/c">c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby">ruby</a>
+		   </li>
+	   
+    </ul>
+	<h4>Archive</h4>
+	<ul>
+		
+			<li>
+				<a href="/2013/08/">2013/08</a>
+			</li>
+		
+			<li>
+				<a href="/2013/09/">2013/09</a>
+			</li>
+		
+			<li>
+				<a href="/2013/11/">2013/11</a>
+			</li>
+		
+			<li>
+				<a href="/2013/12/">2013/12</a>
+			</li>
+		
+			<li>
+				<a href="/2014/01/">2014/01</a>
+			</li>
+		
+			<li>
+				<a href="/2014/03/">2014/03</a>
+			</li>
+		
+			<li>
+				<a href="/2014/04/">2014/04</a>
+			</li>
+		
+			<li>
+				<a href="/2014/05/">2014/05</a>
+			</li>
+		
+	</ul>
+
+</div>
+
+        <div class="site">
+
+			<!-- title -->
+			<!-- Header -->
+<header>
+<h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
+	<hr />
+</header>
+
+			<div id="contents">
+				
+				<div id="main">
+					<h3><a href="">Facebook SDK for iOS Facebook ログイン</a></h3>
+					<span class="author">
+						<span class="date">2014-05-25 13:45:00 -0700</span>
+					</span>
+
+					<hr />
+					<div id="social-buttom">
+	<!-- Social Buttoms -->
+	<ul>
+		<li>
+			<!-- Pocket -->
+			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
+			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+		</li>		
+		<li>
+			<!-- Vertical Twitter -->
+			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		</li>				
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//objective-c/2014/05/25/facebook-sdk.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+		</li>				
+		<li style="margine-left: 10px;!important">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Facebook SDK for iOS Facebook ログイン" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+	</ul>
+</div>
+
+		      		<hr class="clear-list"/>
+
+					<div class="post">
+						<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+
+<p><a href="http://blog.kazuya.co/objective-c/2014/05/25/facebook-sdk-preparation.html">前回</a> で SDK を使用して、実際にコーディングする準備ができました。今回は、実際にログイン機能の作成をしてみます。Facebook ログインを実装するには、Facebook が用意してくれたログインボタンを使用する方法と、API を呼びカスタム UI を使用する方法があるのですが、今回はその前者を使います。</p>
+
+<p>一番の基本となる FBLoginView というクラスは、ユーザーがログインしているか等のステータスを管理し、それに合わせてボタンにログイン/ログアウトといった情報を自動で表示してくれます。</p>
+
+<p><img src="/images/2014/05/3.png" alt=""></p>
+
+<h3 id="ui-コントロールの追加">UI コントロールの追加</h3>
+
+<p>この記事では、主に Interface Builder を使用しての view の追加を見ていきます。もちろんプログラムによる方法もあります。詳しくは<a href="https://developers.facebook.com/docs/facebook-login/ios/v2.0">公式ドキュメント</a>で。</p>
+
+<p>まずは、 &quot;View&quot; オブジェクトをレイアウト上に設置します。これがログイン、ログアウトのボタンになります。Identity inspector にて、クラスプロパティを FBLoginView に変更します。</p>
+
+<p>そして、AppDelegate クラスに以下のコードを追加。これにより、FBLoginViewクラスがviewが表示される前にロードされるようになります。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span>
+<span class="lineno">2</span> <span class="nl">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span>
+<span class="lineno">3</span> <span class="p">{</span>
+<span class="lineno">4</span>     <span class="c1">// Override point for customization after application launch.</span>
+<span class="lineno">5</span>     <span class="p">[</span><span class="n">FBLoginView</span> <span class="n">class</span><span class="p">];</span>
+<span class="lineno">6</span>     <span class="p">...</span>
+<span class="lineno">7</span>     <span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
+<span class="lineno">8</span> <span class="p">}</span></code></pre></div>
+
+<h3 id="facebook-からレスポンスの処理">Facebook からレスポンスの処理</h3>
+
+<p>このメソッドを AppDelegate クラスに追加。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span>
+<span class="lineno"> 2</span>             <span class="nl">openURL:</span><span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">url</span>
+<span class="lineno"> 3</span>   <span class="nl">sourceApplication:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">sourceApplication</span>
+<span class="lineno"> 4</span>         <span class="nl">annotation:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nv">annotation</span> <span class="p">{</span>
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span>         <span class="c1">// Call FBAppCall&#39;s handleOpenURL:sourceApplication to handle Facebook app responses</span>
+<span class="lineno"> 7</span>         <span class="kt">BOOL</span> <span class="n">wasHandled</span> <span class="o">=</span> <span class="p">[</span><span class="n">FBAppCall</span> <span class="n">handleOpenURL</span><span class="o">:</span><span class="n">url</span> <span class="n">sourceApplication</span><span class="o">:</span><span class="n">sourceApplication</span><span class="p">];</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span>         <span class="c1">// You can add your app-specific url handling code here if needed</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span>         <span class="k">return</span> <span class="n">wasHandled</span><span class="p">;</span>
+<span class="lineno">12</span>     <span class="p">}</span></code></pre></div>
+
+<h3 id="パーミッションの取得">パーミッションの取得</h3>
+
+<p>次にユーザーから Facebook の機能を使用するために、パーミッションを取得する必要があります。ここで注意しておきたいのは、私達のアプリから Facebook へ投稿する許可は、このアプリにログインする際に取得しない方がよいということです。ユーザーはアプリから勝手に投稿されることに大変センシティブなので、まずここでは、ユーザの基本情報に関するパーミッションを得ておき、のちのちユーザーが何かこのアプリからFacebookに投稿したい時に、パーミッションを取った方が良いです。</p>
+
+<p>先ほど view を設置したレイアウトに対応した viewController のヘッダーファイルに</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">@property</span> <span class="p">(</span><span class="n">weak</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="kt">IBOutlet</span> <span class="n">FBLoginView</span> <span class="o">*</span><span class="n">loginView</span><span class="p">;</span></code></pre></div>
+
+<p>と宣言し、Interface Builder と接続します。</p>
+
+<p>そして、viewDidLoad メソッドにて、</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">self</span><span class="p">.</span><span class="n">loginView</span><span class="p">.</span><span class="n">readPermissions</span> <span class="o">=</span> <span class="p">@[</span><span class="s">@&quot;public_profile&quot;</span><span class="p">,</span> <span class="s">@&quot;email&quot;</span><span class="p">,</span> <span class="s">@&quot;user_friends”];</span></code></pre></div>
+
+<p>とすることで、public_profile, email, user_friends のパーミッションを取ります。</p>
+
+<h3 id="認証コールバックの実装">認証コールバックの実装</h3>
+
+<p>もう Facebook ログインの機能を使用することができます。FBLoginView はログイン状況を管理する以外にも、Facebook の情報を取得する役割もあります。FBLoginViewDelegate を実装することで、ログインした際、情報を取得した際など、特定にイベントに対する通知を受け取ることが出来ます。</p>
+
+<p>そのために、先ほどの viewController で、delegate を実装することを宣言します。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">@interface</span> <span class="nc">LoginUIViewController</span> : <span class="nc">UIViewController</span> <span class="o">&lt;</span><span class="n">FBLoginViewDelegate</span></code></pre></div>
+
+<p>そして、viewDidLoad においても、delegate プロパティを設定。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">self</span><span class="p">.</span><span class="n">loginView</span><span class="p">.</span><span class="n">readPermissions</span> <span class="o">=</span> <span class="p">@[</span><span class="s">@&quot;public_profile&quot;</span><span class="p">,</span> <span class="s">@&quot;email&quot;</span><span class="p">,</span> <span class="s">@&quot;user_friends&quot;</span><span class="p">];</span>
+<span class="lineno">2</span> <span class="n">self</span><span class="p">.</span><span class="n">loginView</span><span class="p">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span></code></pre></div>
+
+<p>ここから Facebook の情報を活用した本格的なコーディングです。</p>
+
+<p>この delegate メソッドは、FBLoginView がユーザーのFacebookの情報を受信した時に呼ばれます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="c1">// This method will be called when the user information has been fetched</span>
+<span class="lineno">2</span> <span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">loginViewFetchedUserInfo:</span><span class="p">(</span><span class="n">FBLoginView</span> <span class="o">*</span><span class="p">)</span><span class="nv">loginView</span>
+<span class="lineno">3</span>                             <span class="nl">user:</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">FBGraphUser</span><span class="o">&gt;</span><span class="p">)</span><span class="nv">user</span> <span class="p">{</span>
+<span class="lineno">4</span>     <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="n">user</span><span class="p">.</span><span class="n">name</span><span class="p">);</span>
+<span class="lineno">5</span> <span class="p">}</span></code></pre></div>
+
+<p>これは、ログインが成功した時に呼ばれます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="c1">// Logged-out user experience</span>
+<span class="lineno">2</span> <span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">loginViewShowingLoggedOutUser:</span><span class="p">(</span><span class="n">FBLoginView</span> <span class="o">*</span><span class="p">)</span><span class="nv">loginView</span> <span class="p">{</span>
+<span class="lineno">3</span>     <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;You&#39;re not logged in!&quot;</span><span class="p">);</span>
+<span class="lineno">4</span> <span class="p">}</span></code></pre></div>
+
+<p>これは、ログアウトした時。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="c1">// Logged-out user experience</span>
+<span class="lineno">2</span> <span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">loginViewShowingLoggedOutUser:</span><span class="p">(</span><span class="n">FBLoginView</span> <span class="o">*</span><span class="p">)</span><span class="nv">loginView</span> <span class="p">{</span>
+<span class="lineno">3</span>     <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;You&#39;re not logged in!&quot;</span><span class="p">);</span>
+<span class="lineno">4</span> <span class="p">}</span></code></pre></div>
+
+<p>そして、最後に loginView:handleError: delegate メソッドを実装することにより、エラー処理をします。詳しいエラーの情報は <a href="https://developers.facebook.com/docs/graph-api/using-graph-api/v2.0#errors">https://developers.facebook.com/docs/graph-api/using-graph-api/v2.0#errors</a> にあります。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="c1">// Handle possible errors that can occur during login</span>
+<span class="lineno"> 2</span> <span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">loginView:</span><span class="p">(</span><span class="n">FBLoginView</span> <span class="o">*</span><span class="p">)</span><span class="nv">loginView</span> <span class="nf">handleError:</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="p">)</span><span class="nv">error</span> <span class="p">{</span>
+<span class="lineno"> 3</span>     <span class="n">NSString</span> <span class="o">*</span><span class="n">alertMessage</span><span class="p">,</span> <span class="o">*</span><span class="n">alertTitle</span><span class="p">;</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span>     <span class="c1">// If the user should perform an action outside of you app to recover,</span>
+<span class="lineno"> 6</span>     <span class="c1">// the SDK will provide a message for the user, you just need to surface it.</span>
+<span class="lineno"> 7</span>     <span class="c1">// This conveniently handles cases like Facebook password change or unverified Facebook accounts.</span>
+<span class="lineno"> 8</span>     <span class="k">if</span> <span class="p">([</span><span class="n">FBErrorUtility</span> <span class="n">shouldNotifyUserForError</span><span class="o">:</span><span class="n">error</span><span class="p">])</span> <span class="p">{</span>
+<span class="lineno"> 9</span>         <span class="n">alertTitle</span> <span class="o">=</span> <span class="s">@&quot;Facebook error&quot;</span><span class="p">;</span>
+<span class="lineno">10</span>         <span class="n">alertMessage</span> <span class="o">=</span> <span class="p">[</span><span class="n">FBErrorUtility</span> <span class="n">userMessageForError</span><span class="o">:</span><span class="n">error</span><span class="p">];</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span>         <span class="c1">// This code will handle session closures that happen outside of the app</span>
+<span class="lineno">13</span>         <span class="c1">// You can take a look at our error handling guide to know more about it</span>
+<span class="lineno">14</span>         <span class="c1">// https://developers.facebook.com/docs/ios/errors</span>
+<span class="lineno">15</span>     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">([</span><span class="n">FBErrorUtility</span> <span class="n">errorCategoryForError</span><span class="o">:</span><span class="n">error</span><span class="p">]</span> <span class="o">==</span> <span class="n">FBErrorCategoryAuthenticationReopenSession</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">16</span>         <span class="n">alertTitle</span> <span class="o">=</span> <span class="s">@&quot;Session Error&quot;</span><span class="p">;</span>
+<span class="lineno">17</span>         <span class="n">alertMessage</span> <span class="o">=</span> <span class="s">@&quot;Your current session is no longer valid. Please log in again.&quot;</span><span class="p">;</span>
+<span class="lineno">18</span> 
+<span class="lineno">19</span>         <span class="c1">// If the user has cancelled a login, we will do nothing.</span>
+<span class="lineno">20</span>         <span class="c1">// You can also choose to show the user a message if cancelling login will result in</span>
+<span class="lineno">21</span>         <span class="c1">// the user not being able to complete a task they had initiated in your app</span>
+<span class="lineno">22</span>         <span class="c1">// (like accessing FB-stored information or posting to Facebook)</span>
+<span class="lineno">23</span>     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">([</span><span class="n">FBErrorUtility</span> <span class="n">errorCategoryForError</span><span class="o">:</span><span class="n">error</span><span class="p">]</span> <span class="o">==</span> <span class="n">FBErrorCategoryUserCancelled</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">24</span>         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;user cancelled login&quot;</span><span class="p">);</span>
+<span class="lineno">25</span> 
+<span class="lineno">26</span>         <span class="c1">// For simplicity, this sample handles other errors with a generic message</span>
+<span class="lineno">27</span>         <span class="c1">// You can checkout our error handling guide for more detailed information</span>
+<span class="lineno">28</span>         <span class="c1">// https://developers.facebook.com/docs/ios/errors</span>
+<span class="lineno">29</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">30</span>         <span class="n">alertTitle</span>  <span class="o">=</span> <span class="s">@&quot;Something went wrong&quot;</span><span class="p">;</span>
+<span class="lineno">31</span>         <span class="n">alertMessage</span> <span class="o">=</span> <span class="s">@&quot;Please try again later.&quot;</span><span class="p">;</span>
+<span class="lineno">32</span>         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Unexpected error:%@&quot;</span><span class="p">,</span> <span class="n">error</span><span class="p">);</span>
+<span class="lineno">33</span>     <span class="p">}</span>
+<span class="lineno">34</span> 
+<span class="lineno">35</span>     <span class="k">if</span> <span class="p">(</span><span class="n">alertMessage</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">36</span>         <span class="p">[[[</span><span class="n">UIAlertView</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithTitle</span><span class="o">:</span><span class="n">alertTitle</span>
+<span class="lineno">37</span>                                     <span class="nl">message:</span><span class="n">alertMessage</span>
+<span class="lineno">38</span>                                    <span class="nl">delegate:</span><span class="nb">nil</span>
+<span class="lineno">39</span>                           <span class="nl">cancelButtonTitle:</span><span class="s">@&quot;OK&quot;</span>
+<span class="lineno">40</span>                           <span class="nl">otherButtonTitles:</span><span class="nb">nil</span><span class="p">]</span> <span class="n">show</span><span class="p">];</span>
+<span class="lineno">41</span>     <span class="p">}</span>
+<span class="lineno">42</span> <span class="p">}</span></code></pre></div>
+
+					</div>
+
+				</div>
+
+				<div id="sub">
+				   <div class="side_box">
+   <h3>About</h3>
+      <p class="side_content">
+         <i>Kazuya Kobayashi</i><br />
+         - I'm a once law student trying to be computer geek.<br />
+         - ギークになりたい。<br />
+         <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a>
+      </p>
+</div>
+
+<hr />
+
+<h3>Elsewhere</h3>
+   <p class="side_content">
+      <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+      <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+      <a href="https://github.com/kzykbys">Github</a>
+   </p>
+
+<hr />
+
+<h3>Category</h3>
+   <p class="side_content">|
+      
+   	   <a href="/categories/objective-c">objective-c
+            (9)
+         </a> | 
+      
+   	   <a href="/categories/other">other
+            (6)
+         </a> | 
+      
+   	   <a href="/categories/node-js">node.js
+            (1)
+         </a> | 
+      
+   	   <a href="/categories/ruby-on-rails">ruby on rails
+            (18)
+         </a> | 
+      
+   	   <a href="/categories/tips">tips
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/html5">html5
+            (8)
+         </a> | 
+      
+   	   <a href="/categories/algorithms">algorithms
+            (2)
+         </a> | 
+      
+   	   <a href="/categories/machine-learning">machine learning
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/c">c
+            (8)
+         </a> | 
+      
+   	   <a href="/categories/ruby">ruby
+            (5)
+         </a> | 
+      
+   </p>
+
+<hr />
+
+<h3>Archive</h3>
+   <p class="side_content">|
+      
+   		<a href="/2013/08/">2013/08
+            (2)
+         </a> |          
+      
+   		<a href="/2013/09/">2013/09
+            (4)
+         </a> |          
+      
+   		<a href="/2013/11/">2013/11
+            (11)
+         </a> |          
+      
+   		<a href="/2013/12/">2013/12
+            (21)
+         </a> |          
+      
+   		<a href="/2014/01/">2014/01
+            (5)
+         </a> |          
+      
+   		<a href="/2014/03/">2014/03
+            (6)
+         </a> |          
+      
+   		<a href="/2014/04/">2014/04
+            (7)
+         </a> |          
+      
+   		<a href="/2014/05/">2014/05
+            (11)
+         </a> |          
+      
+   </p>
+
+<hr />
+
+<h3>Work</h3>			   
+   <p class="side_content">
+      Coming soon... maybe.
+   </p>
+
+<hr />
+				</div>
+
+			</div>
+
+
+		</div>
+
+				<div class="footer">
+		   <div class="footer_inner">
+			   <div class="contact">
+				   <h4>About</h4>
+				   <p>Kazuya Kobayashi<br />
+				   - I'm a once law student trying to be computer geek.<br />
+				   - ギークになりたい。<br />
+				   <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a></p>
+				   <h4>Elsewhere</h4>
+				   <p>
+					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+					   <a href="https://github.com/kzykbys">Github</a></p>
+				   <h4>Category</h4>
+				   <p>|
+					   
+						   <a href="/categories/objective-c">objective-c</a> | 
+					   
+						   <a href="/categories/other">other</a> | 
+					   
+						   <a href="/categories/node-js">node.js</a> | 
+					   
+						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
+					   
+						   <a href="/categories/tips">tips</a> | 
+					   
+						   <a href="/categories/html5">html5</a> | 
+					   
+						   <a href="/categories/algorithms">algorithms</a> | 
+					   
+						   <a href="/categories/machine-learning">machine learning</a> | 
+					   
+						   <a href="/categories/c">c</a> | 
+					   
+						   <a href="/categories/ruby">ruby</a> | 
+					   
+				   </p>
+				   <h4>Archive</h4>
+					   <p>|
+					   
+	    					<a href="/2013/08/">2013/08
+	    					</a> | 
+	    			   
+	    					<a href="/2013/09/">2013/09
+	    					</a> | 
+	    			   
+	    					<a href="/2013/11/">2013/11
+	    					</a> | 
+	    			   
+	    					<a href="/2013/12/">2013/12
+	    					</a> | 
+	    			   
+	    					<a href="/2014/01/">2014/01
+	    					</a> | 
+	    			   
+	    					<a href="/2014/03/">2014/03
+	    					</a> | 
+	    			   
+	    					<a href="/2014/04/">2014/04
+	    					</a> | 
+	    			   
+	    					<a href="/2014/05/">2014/05
+	    					</a> | 
+	    			   
+    			   </p>
+				   <h4>Work</h4>			   
+				   <p>Coming soon... maybe.</p>
+			   </div>
+		   </div>
+	   	</div>
+
+	   		  
+	  	<!-- Sdir (slide menu for small screen) -->
+
+<script>
+	
+  	$(document).ready(function() {
+		$('#mobile-menu-button').sidr();	  
+  	});
+
+  	$('#mobile-menu-button').click(function(e){
+  	});
+
+  	$('html').click(function(e){
+  		$.sidr('close', 'sidr');
+  	});
+
+</script>
+	  	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28952627-6', 'kazuya.co');
+  ga('send', 'pageview');
+
+</script>
+
+	</body>
+</html>
