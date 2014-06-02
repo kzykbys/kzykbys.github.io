@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>アルゴリズムの重要性</title>        
+        <title>難しい C の宣言の読解 right-left rule</title>        
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />        
         <meta name="HandheldFriendly" content="true" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" />
@@ -143,9 +143,9 @@
 			<div id="contents">
 				
 				<div id="main">
-					<h3><a href="">アルゴリズムの重要性</a></h3>
+					<h3><a href="">難しい C の宣言の読解 right-left rule</a></h3>
 					<span class="author">
-						<span class="date">2014-01-19 22:15:00 -0800</span>
+						<span class="date">2014-06-02 11:15:00 -0700</span>
 					</span>
 
 					<hr />
@@ -164,11 +164,11 @@
 		</li>				
 		<li>
 			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//algorithms/2014/01/19/blog-post.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			<div class="fb-like" data-href="http://blog.kazuya.co//c/2014/06/02/difficult-declarations-in-c.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
 		</li>				
 		<li style="margine-left: 10px;!important">
 			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="アルゴリズムの重要性" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="難しい C の宣言の読解 right-left rule" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
 		</li>		
 	</ul>
 </div>
@@ -176,32 +176,60 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>最近、アルゴリズムの勉強を本格的に始めました。以前から、優秀なエンジニアになるにはアルゴリズムの理解は必須だと何度も言われていたのですが、どうしてもやる気がでませんでした。というのも、最近のコンピューターの性能はどんどん進化しており、最適なアルゴリズムを追求していくことに対してあまり意味が感じられなかったからです。力技でどうにかなるんじゃないかと思っていました。</p>
+						<p>C の宣言は複雑になってしまうことが多々あります。関数へのポインタやその引数にまた関数へのポインタがあったりすると、もうお手上げです。しかし、このような複雑な C の宣言を簡単に読み解ける right-left rule というものがあるので 5 つの例を通して紹介したいと思います。</p>
 
-<p>しかし、具体的に勉強を初めて、「なんて愚かな考えだったんだろう。。。」と感じさせる例があったので、紹介したいと思います。</p>
+<h3 id="int-*p[5]">int *p[5]</h3>
 
-<p>この <a href="http://www.amazon.com/Introduction-Algorithms-Thomas-H-Cormen/dp/0262033844">&quot;Introduction to Algorithms&quot;</a>という本によると、アルゴリズムはテクノロジーです。最新のハイスペックなハードウェア（テクノロジー）を選ぶようにアルゴリズムも選択していかなければいけません。</p>
+<p>まずは、本当に簡単な例から。right-left rule は、最初に変数の名前から読み始めます。ここでは、p です。そして、右へ左へと繰り返して読みます。この int *p[5] の例であれば、</p>
 
-<p><strong>Insertion Sort</strong> と <strong>Merge Sort</strong> を例に取ると、</p>
+<div class="highlight"><pre><code class="c"><span class="lineno">1</span> <span class="n">p</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="cm">/* p は 5 つの ”何かの” 要素を持つ配列 */</span>
+<span class="lineno">2</span> <span class="o">*</span><span class="n">p</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="cm">/* p は 5 つの ”何かの” 要素へのポインタを持つ配列 */</span>
+<span class="lineno">3</span> <span class="o">*</span><span class="n">p</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="cm">/* [5] の右には何もないので、左へ */</span>
+<span class="lineno">4</span> <span class="kt">int</span> <span class="o">*</span><span class="n">p</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="cm">/* p は 5 つの int 要素へのポインタを持つ配列 */</span></code></pre></div>
 
-<p><strong>Insertion Sort</strong> の場合、n 個の要素をソートするのに約 c1 * n^2 かかります。
-それに対して、
-<strong>Merge Sort</strong> の場合は、c2 * n lg n です。
-c は要素数に依存しない定数です。</p>
+<p>このルールを適応すれば難しい宣言での読み解けます。</p>
 
-<p>こういう例は今まで勉強していて何度も聞いていたのですが、しっかりきていませんでした。もっと具体的に考えると、</p>
+<h3 id="int-(*f)-(int-i)">int (*f) (int i)</h3>
 
-<p><strong>Insertion Sort</strong> を使い、 <em>優秀なプログラマー</em> が実装します。その結果、処理を完了するのに 2 * n^2 必要なプログラムができたとします。そして、このプログラムを 10 million 個の要素をそうとソートします。このプログラマーは、10 billion instructions / per second の能力のある <em>ハイスペック</em> なコンピューターをしようすると、</p>
+<p>先ほどのルールにもう 1 つだけルールを加えます。それは、変数名のまわりの括弧は先に終わらせるということです。この例で言えば、(*f) を先に読み終えるということです。では、見ていきます。</p>
 
-<p>[ 2 * ( 10^7 )^2 instructions ] / [ 10^10 instructions / per second ] = 20000 seconds = 5.5 hours</p>
+<div class="highlight"><pre><code class="c"><span class="lineno">1</span> <span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="cm">/* 括弧内の右には何もないので左へ */</span>
+<span class="lineno">2</span> <span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">)</span> <span class="cm">/* f は “何かの” ポインタ */</span>
+<span class="lineno">3</span> <span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">)(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="cm">/* f は int を引数に持つ関数へのポインタ */</span>
+<span class="lineno">4</span> <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">)(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="cm">/* f は int を引数に持ち、int を返す関数へのポインタ */</span></code></pre></div>
 
-<p>そして <strong>Merge Sort</strong> を使い、 <em>凡庸なプログラマー</em> がコードを書いた結果、50 * n lg n instructions かかるプログラムを作成したとします。そしてこの <em>凡庸なプログラマー</em> が、 <em>優秀なプログラマー</em> よりも処理能力が <em>ロースペック</em> なコンピューターをします。10 million instructions / per second とします。その結果、</p>
+<h3 id="int-(*p)[20]">int (*p)[20]</h3>
 
-<p>[ 50 * 10^7 lg 10^7 instructions ] / [ 10^7 instructions / per second ] = 1163 seconds = 20 hours</p>
+<p>2 つ目の例と同じように変数名のまわりの括弧を終わらせます。そして、純粋に右左右左を繰り返します。</p>
 
-<p>たとえ、 <em>優秀なプログラマー</em> が、 <em>処理能力の高いコンピューター</em> を使おうとも、最適なアルゴリズムを選択しなければ、 <em>凡庸なプログラマー</em> が <em>ポンコツのコンピューター</em> を使った場合でも負けてしまうのです。</p>
+<div class="highlight"><pre><code class="c"><span class="lineno">1</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="cm">/* 括弧内の右には何もないので左へ */</span>
+<span class="lineno">2</span> <span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">)</span> <span class="cm">/* p は “何かの” ポインタ */</span>
+<span class="lineno">3</span> <span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">)[</span><span class="mi">20</span><span class="p">]</span> <span class="cm">/* p は 20 つの “何かの” 要素を持つ配列へのポインタ */</span>
+<span class="lineno">4</span> <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">)</span> <span class="p">[</span><span class="mi">20</span><span class="p">]</span> <span class="cm">/* p は 20 つの int 要素を持つ配列へのポインタ */</span></code></pre></div>
 
-<p>そのことからアルゴリズムはハードウェア等と同じテクノロジーの一種であり、しっかり勉強しなければならないという教訓でした。</p>
+<p>1 つ目の例とこの 3 つ目例は見た目が似ているのに大きく異なりますね。1 つ目は、20個の int へのポインタを持つ配列。2 つ目は、たった 1 つのポインタです。</p>
+
+<h3 id="int-(*f[5])(float-f)">int (*f[5])(float f)</h3>
+
+<p>この辺りから個人的にキツイ。</p>
+
+<div class="highlight"><pre><code class="c"><span class="lineno">1</span> <span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="cm">/* f は 5 つの “何かの” 要素を持つ配列 */</span>
+<span class="lineno">2</span> <span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="cm">/* f は 5 つの “何かの” ポインタを持つ配列 */</span>
+<span class="lineno">3</span> <span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">[</span><span class="mi">5</span><span class="p">])(</span><span class="kt">float</span> <span class="n">f</span><span class="p">)</span> <span class="cm">/* f は float 引数を持つ関数へのポインタ 5 つを持つ配列 */</span>
+<span class="lineno">4</span> <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">[</span><span class="mi">5</span><span class="p">])(</span><span class="kt">float</span> <span class="n">f</span><span class="p">)</span> <span class="cm">/* f は、float 引数を持ち、int を返す関数へのポインタ 5 つを持つ配列 */</span></code></pre></div>
+
+<p>こいつが配列には見えない。</p>
+
+<h3 id="int-(*func(int-num))-(int)">int (*func(int num)) (int)</h3>
+
+<p>関数へのポインタを返す関数です。</p>
+
+<div class="highlight"><pre><code class="c"><span class="lineno">1</span> <span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">))</span> <span class="cm">/* func は int 引数を持つ関数 */</span>
+<span class="lineno">2</span> <span class="p">(</span><span class="o">*</span><span class="n">func</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">))</span> <span class="cm">/* func は int 引数を持ち、”何かへの” ポインタを返す関数*/</span>
+<span class="lineno">3</span> <span class="p">(</span><span class="o">*</span><span class="n">func</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">))(</span><span class="kt">int</span><span class="p">)</span> <span class="cm">/* func は int 引数を持ち、&quot;int 引数を持つ関数への” ポインタを返す関数*/</span>
+<span class="lineno">4</span> <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">func</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">))(</span><span class="kt">int</span><span class="p">)</span> <span class="cm">/* func は int 引数を持ち、”int 引数を持ち、int を返す関数への” ポインタを返す関数*/</span></code></pre></div>
+
+<p>もうむちゃくちゃですね。簡単には読み解けませんでした。</p>
 
 					</div>
 
