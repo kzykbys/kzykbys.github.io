@@ -1,0 +1,501 @@
+	<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>strftime()の使い方</title>        
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />        
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+		<link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/jquery.sidr.dark.css">
+		<link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+
+        <!-- jQuery -->
+<script src="/javascript/jquery-1.11.1.min.js"></script>
+<!-- slide menu -->
+<script src="/javascript/jquery.sidr.min.js"></script>
+<!-- For FB like buttom -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=571082556301479&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+	</head>
+	
+	<body>
+    
+        <div id="mobile-sticky-menu">
+	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
+	<!-- <img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" /> -->
+</div>
+
+<div id="sidr">
+	<!-- Your content -->
+	<!-- <h4>Share</h4> -->
+
+	<h4>Category</h4>
+	<ul>
+	   
+		   <li>
+		   		<a href="/categories/objective-c">objective-c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/other">other</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/node-js">node.js</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/tips">tips</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/html5">html5</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/algorithms">algorithms</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/machine-learning">machine learning</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/c">c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby">ruby</a>
+		   </li>
+	   
+    </ul>
+	<h4>Archive</h4>
+	<ul>
+		
+			<li>
+				<a href="/2013/08/">2013/08</a>
+			</li>
+		
+			<li>
+				<a href="/2013/09/">2013/09</a>
+			</li>
+		
+			<li>
+				<a href="/2013/11/">2013/11</a>
+			</li>
+		
+			<li>
+				<a href="/2013/12/">2013/12</a>
+			</li>
+		
+			<li>
+				<a href="/2014/01/">2014/01</a>
+			</li>
+		
+			<li>
+				<a href="/2014/03/">2014/03</a>
+			</li>
+		
+			<li>
+				<a href="/2014/04/">2014/04</a>
+			</li>
+		
+			<li>
+				<a href="/2014/05/">2014/05</a>
+			</li>
+		
+			<li>
+				<a href="/2014/06/">2014/06</a>
+			</li>
+		
+	</ul>
+
+</div>
+
+        <div class="site">
+
+			<!-- title -->
+			<!-- Header -->
+<header>
+<h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
+	<hr />
+</header>
+
+			<div id="contents">
+				
+				<div id="main">
+					<h3><a href="">strftime()の使い方</a></h3>
+					<span class="author">
+						<span class="date">2014-06-01 17:15:00 -0700</span>
+					</span>
+
+					<hr />
+					<div id="social-buttom">
+	<!-- Social Buttoms -->
+	<ul>
+		<li>
+			<!-- Pocket -->
+			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
+			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+		</li>		
+		<li>
+			<!-- Vertical Twitter -->
+			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		</li>				
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//c/2014/06/01/time-func-3.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+		</li>				
+		<li style="margine-left: 10px;!important">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="strftime()の使い方" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+	</ul>
+</div>
+
+		      		<hr class="clear-list"/>
+
+					<div class="post">
+						<p><a href="http://blog.kazuya.co/c/2014/06/01/time-func-2.html">前回</a>、<a href="http://blog.kazuya.co/c/2014/06/01/time-func-1.html">前々回</a> と time.h の関数を見てきました。この記事は、その中でも一番柔軟に使用できる strftime() の使い方です。この strftime とは、string format time のことです。</p>
+
+<div class="highlight"><pre><code class="c"><span class="lineno"> 1</span> <span class="cp">#include &lt;stdio.h&gt;</span>
+<span class="lineno"> 2</span> <span class="cp">#include &lt;time.h&gt;</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span> <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span> <span class="kt">void</span> <span class="p">)</span>
+<span class="lineno"> 5</span> <span class="p">{</span>
+<span class="lineno"> 6</span>     <span class="k">struct</span> <span class="n">tm</span> <span class="o">*</span><span class="n">timeptr</span><span class="p">;</span>
+<span class="lineno"> 7</span>     <span class="kt">time_t</span> <span class="n">timeval</span><span class="p">;</span>
+<span class="lineno"> 8</span>     <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">80</span><span class="p">];</span>
+<span class="lineno"> 9</span>     
+<span class="lineno">10</span>     <span class="n">time</span><span class="p">(</span><span class="o">&amp;</span><span class="n">timeval</span><span class="p">);</span>
+<span class="lineno">11</span>     
+<span class="lineno">12</span>     <span class="n">timeptr</span> <span class="o">=</span> <span class="n">localtime</span><span class="p">(</span><span class="o">&amp;</span><span class="n">timeval</span><span class="p">);</span>
+<span class="lineno">13</span>     
+<span class="lineno">14</span>     <span class="n">strftime</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s">&quot;%c</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">timeptr</span><span class="p">);</span>
+<span class="lineno">15</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;strftime %%c format</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="lineno">16</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;-------------------------</span><span class="se">\n</span><span class="s"> %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">buffer</span><span class="p">);</span>
+<span class="lineno">17</span>     
+<span class="lineno">18</span>     <span class="n">strftime</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s">&quot;%A, %B %d, %H:%M</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">timeptr</span><span class="p">);</span>
+<span class="lineno">19</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;strftime %%A, %%B %%d, %%H:%%M format</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="lineno">20</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;--------------------------------</span><span class="se">\n</span><span class="s"> %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">buffer</span><span class="p">);</span>
+<span class="lineno">21</span>     
+<span class="lineno">22</span>     <span class="n">strftime</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s">&quot;%a, %b %d, %H:%M</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">timeptr</span><span class="p">);</span>
+<span class="lineno">23</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;strftime %%a, %%b %%d, %%H:%%M format</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="lineno">24</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;--------------------------------</span><span class="se">\n</span><span class="s"> %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">buffer</span><span class="p">);</span>
+<span class="lineno">25</span>     
+<span class="lineno">26</span>     
+<span class="lineno">27</span>     <span class="n">strftime</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s">&quot;%a, %b %d, %I:%M %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">timeptr</span><span class="p">);</span>
+<span class="lineno">28</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;strftime %%a, %%b %%d, %%I:%%M %%p format</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="lineno">29</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;-----------------------------------</span><span class="se">\n</span><span class="s"> %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">buffer</span><span class="p">);</span>
+<span class="lineno">30</span>     
+<span class="lineno">31</span>     <span class="n">strftime</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s">&quot;%a, %b %d, %I:%M %p, %Y</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">timeptr</span><span class="p">);</span>
+<span class="lineno">32</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;strftime %%a, %%b %%d, %%I:%%M %%p, %%Y format</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="lineno">33</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;---------------------------------------</span><span class="se">\n</span><span class="s"> %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">buffer</span><span class="p">);</span>
+<span class="lineno">34</span>     
+<span class="lineno">35</span>     <span class="n">strftime</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s">&quot;%a, %b %d, %I:%M %p, %y</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">timeptr</span><span class="p">);</span>
+<span class="lineno">36</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;strftime %%a, %%b %%d, %%I:%%M %%p, %%y format</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="lineno">37</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;---------------------------------------</span><span class="se">\n</span><span class="s"> %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">buffer</span><span class="p">);</span>
+<span class="lineno">38</span>     
+<span class="lineno">39</span>     <span class="n">strftime</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s">&quot;%A, %b %d %I:%M %p %Y</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">timeptr</span><span class="p">);</span>
+<span class="lineno">40</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;strftime %%A, %%b %%d, %%I:%%M %%p, %%Y format</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="lineno">41</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;---------------------------------------</span><span class="se">\n</span><span class="s"> %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">buffer</span><span class="p">);</span>
+<span class="lineno">42</span>     
+<span class="lineno">43</span>     
+<span class="lineno">44</span>     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="lineno">45</span> <span class="p">}</span>
+<span class="lineno">46</span> 
+<span class="lineno">47</span> <span class="cm">/* Output:</span>
+<span class="lineno">48</span> <span class="cm">    strftime %c format</span>
+<span class="lineno">49</span> <span class="cm">    -------------------------</span>
+<span class="lineno">50</span> <span class="cm">     Sun Jun  1 17:13:31 2014</span>
+<span class="lineno">51</span> 
+<span class="lineno">52</span> <span class="cm">    strftime %A, %B %d, %H:%M format</span>
+<span class="lineno">53</span> <span class="cm">    --------------------------------</span>
+<span class="lineno">54</span> <span class="cm">     Sunday, June 01, 17:13</span>
+<span class="lineno">55</span> 
+<span class="lineno">56</span> <span class="cm">    strftime %a, %b %d, %H:%M format</span>
+<span class="lineno">57</span> <span class="cm">    --------------------------------</span>
+<span class="lineno">58</span> <span class="cm">     Sun, Jun 01, 17:13</span>
+<span class="lineno">59</span> 
+<span class="lineno">60</span> <span class="cm">    strftime %a, %b %d, %I:%M %p format</span>
+<span class="lineno">61</span> <span class="cm">    -----------------------------------</span>
+<span class="lineno">62</span> <span class="cm">     Sun, Jun 01, 05:13 PM</span>
+<span class="lineno">63</span> 
+<span class="lineno">64</span> <span class="cm">    strftime %a, %b %d, %I:%M %p, %Y format</span>
+<span class="lineno">65</span> <span class="cm">    ---------------------------------------</span>
+<span class="lineno">66</span> <span class="cm">     Sun, Jun 01, 05:13 PM, 2014</span>
+<span class="lineno">67</span> 
+<span class="lineno">68</span> <span class="cm">    strftime %a, %b %d, %I:%M %p, %y format</span>
+<span class="lineno">69</span> <span class="cm">    ---------------------------------------</span>
+<span class="lineno">70</span> <span class="cm">     Sun, Jun 01, 05:13 PM, 14</span>
+<span class="lineno">71</span> 
+<span class="lineno">72</span> <span class="cm">    strftime %A, %b %d, %I:%M %p, %Y format</span>
+<span class="lineno">73</span> <span class="cm">    ---------------------------------------</span>
+<span class="lineno">74</span> <span class="cm">     Sunday, Jun 01 05:13 PM 2014</span>
+<span class="lineno">75</span> 
+<span class="lineno">76</span> <span class="cm">    Program ended with exit code: 0</span>
+<span class="lineno">77</span> <span class="cm">*/</span></code></pre></div>
+
+<ul>
+<li>%c は　asctime() や ctime() と似たようなフォーマットを返します。<br></li>
+<li>%A と %a は曜日の指定です。[full spelled-out か 3文字]<br></li>
+<li>%B と %b は月の名前の指定。[full spelled-out か 3文字]<br></li>
+<li>%d は日付。<br></li>
+<li>%Y と %y は年。[4桁か下2桁]<br></li>
+<li>%H と %I は、24時間表示（%H）か 12時間表示（%I）<br></li>
+<li>%p は、PM/AM。<br></li>
+</ul>
+
+					</div>
+
+				</div>
+
+				<div id="sub">
+				   <div class="side_box">
+   <h3>About</h3>
+      <p class="side_content">
+         <i>Kazuya Kobayashi</i><br />
+         - I'm a once law student trying to be computer geek.<br />
+         - ギークになりたい。<br />
+         <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a>
+      </p>
+</div>
+
+<hr />
+
+<h3>Elsewhere</h3>
+   <p class="side_content">
+      <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+      <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+      <a href="https://github.com/kzykbys">Github</a>
+   </p>
+
+<hr />
+
+<h3>Category</h3>
+   <p class="side_content">|
+      
+   	   <a href="/categories/objective-c">objective-c
+            (9)
+         </a> | 
+      
+   	   <a href="/categories/other">other
+            (6)
+         </a> | 
+      
+   	   <a href="/categories/node-js">node.js
+            (1)
+         </a> | 
+      
+   	   <a href="/categories/ruby-on-rails">ruby on rails
+            (18)
+         </a> | 
+      
+   	   <a href="/categories/tips">tips
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/html5">html5
+            (8)
+         </a> | 
+      
+   	   <a href="/categories/algorithms">algorithms
+            (2)
+         </a> | 
+      
+   	   <a href="/categories/machine-learning">machine learning
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/c">c
+            (11)
+         </a> | 
+      
+   	   <a href="/categories/ruby">ruby
+            (5)
+         </a> | 
+      
+   </p>
+
+<hr />
+
+<h3>Archive</h3>
+   <p class="side_content">|
+      
+   		<a href="/2013/08/">2013/08
+            (2)
+         </a> |          
+      
+   		<a href="/2013/09/">2013/09
+            (4)
+         </a> |          
+      
+   		<a href="/2013/11/">2013/11
+            (11)
+         </a> |          
+      
+   		<a href="/2013/12/">2013/12
+            (21)
+         </a> |          
+      
+   		<a href="/2014/01/">2014/01
+            (5)
+         </a> |          
+      
+   		<a href="/2014/03/">2014/03
+            (6)
+         </a> |          
+      
+   		<a href="/2014/04/">2014/04
+            (7)
+         </a> |          
+      
+   		<a href="/2014/05/">2014/05
+            (11)
+         </a> |          
+      
+   		<a href="/2014/06/">2014/06
+            (3)
+         </a> |          
+      
+   </p>
+
+<hr />
+
+<h3>Work</h3>			   
+   <p class="side_content">
+      Coming soon... maybe.
+   </p>
+
+<hr />
+				</div>
+
+			</div>
+
+
+		</div>
+
+				<div class="footer">
+		   <div class="footer_inner">
+			   <div class="contact">
+				   <h4>About</h4>
+				   <p>Kazuya Kobayashi<br />
+				   - I'm a once law student trying to be computer geek.<br />
+				   - ギークになりたい。<br />
+				   <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a></p>
+				   <h4>Elsewhere</h4>
+				   <p>
+					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+					   <a href="https://github.com/kzykbys">Github</a></p>
+				   <h4>Category</h4>
+				   <p>|
+					   
+						   <a href="/categories/objective-c">objective-c</a> | 
+					   
+						   <a href="/categories/other">other</a> | 
+					   
+						   <a href="/categories/node-js">node.js</a> | 
+					   
+						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
+					   
+						   <a href="/categories/tips">tips</a> | 
+					   
+						   <a href="/categories/html5">html5</a> | 
+					   
+						   <a href="/categories/algorithms">algorithms</a> | 
+					   
+						   <a href="/categories/machine-learning">machine learning</a> | 
+					   
+						   <a href="/categories/c">c</a> | 
+					   
+						   <a href="/categories/ruby">ruby</a> | 
+					   
+				   </p>
+				   <h4>Archive</h4>
+					   <p>|
+					   
+	    					<a href="/2013/08/">2013/08
+	    					</a> | 
+	    			   
+	    					<a href="/2013/09/">2013/09
+	    					</a> | 
+	    			   
+	    					<a href="/2013/11/">2013/11
+	    					</a> | 
+	    			   
+	    					<a href="/2013/12/">2013/12
+	    					</a> | 
+	    			   
+	    					<a href="/2014/01/">2014/01
+	    					</a> | 
+	    			   
+	    					<a href="/2014/03/">2014/03
+	    					</a> | 
+	    			   
+	    					<a href="/2014/04/">2014/04
+	    					</a> | 
+	    			   
+	    					<a href="/2014/05/">2014/05
+	    					</a> | 
+	    			   
+	    					<a href="/2014/06/">2014/06
+	    					</a> | 
+	    			   
+    			   </p>
+				   <h4>Work</h4>			   
+				   <p>Coming soon... maybe.</p>
+			   </div>
+		   </div>
+	   	</div>
+
+	   		  
+	  	<!-- Sdir (slide menu for small screen) -->
+
+<script>
+	
+  	$(document).ready(function() {
+		$('#mobile-menu-button').sidr();	  
+  	});
+
+  	$('#mobile-menu-button').click(function(e){
+  	});
+
+  	$('html').click(function(e){
+  		$.sidr('close', 'sidr');
+  	});
+
+</script>
+	  	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28952627-6', 'kazuya.co');
+  ga('send', 'pageview');
+
+</script>
+
+	</body>
+</html>
