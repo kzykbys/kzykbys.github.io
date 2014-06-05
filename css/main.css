@@ -338,6 +338,11 @@ pre {
 /* standard */
 .post h3 {
 	border-bottom: 1px solid black;
+	margin-bottom: 12px;
+}
+
+.post h4 {
+	border-bottom: 1px solid black;
 }
 
 .post pre {
