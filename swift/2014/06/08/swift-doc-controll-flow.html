@@ -1,0 +1,588 @@
+	<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>The Swift Programming Language ~ Control Flow</title>        
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />        
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+		<link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/jquery.sidr.dark.css">
+		<link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+
+        <!-- jQuery -->
+<script src="/javascript/jquery-1.11.1.min.js"></script>
+<!-- slide menu -->
+<script src="/javascript/jquery.sidr.min.js"></script>
+<!-- For FB like buttom -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=571082556301479&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+	</head>
+	
+	<body>
+    
+        <div id="mobile-sticky-menu">
+	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
+	<!-- <img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" /> -->
+</div>
+
+<div id="sidr">
+	<!-- Your content -->
+	<!-- <h4>Share</h4> -->
+
+	<h4>Category</h4>
+	<ul>
+	   
+		   <li>
+		   		<a href="/categories/objective-c">objective-c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/other">other</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/node-js">node.js</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/tips">tips</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/html5">html5</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/algorithms">algorithms</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/machine-learning">machine learning</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/c">c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby">ruby</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/swift">swift</a>
+		   </li>
+	   
+    </ul>
+	<h4>Archive</h4>
+	<ul>
+		
+			<li>
+				<a href="/2013/08/">2013/08</a>
+			</li>
+		
+			<li>
+				<a href="/2013/09/">2013/09</a>
+			</li>
+		
+			<li>
+				<a href="/2013/11/">2013/11</a>
+			</li>
+		
+			<li>
+				<a href="/2013/12/">2013/12</a>
+			</li>
+		
+			<li>
+				<a href="/2014/01/">2014/01</a>
+			</li>
+		
+			<li>
+				<a href="/2014/03/">2014/03</a>
+			</li>
+		
+			<li>
+				<a href="/2014/04/">2014/04</a>
+			</li>
+		
+			<li>
+				<a href="/2014/05/">2014/05</a>
+			</li>
+		
+			<li>
+				<a href="/2014/06/">2014/06</a>
+			</li>
+		
+	</ul>
+
+</div>
+
+        <div class="site">
+
+			<!-- title -->
+			<!-- Header -->
+<header>
+<h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
+	<hr />
+</header>
+
+			<div id="contents">
+				
+				<div id="main">
+					<h3><a href="">The Swift Programming Language ~ Control Flow</a></h3>
+					<span class="author">
+						<span class="date">2014-06-08 09:00:00 -0700</span>
+					</span>
+
+					<hr />
+					<div id="social-buttom">
+	<!-- Social Buttoms -->
+	<ul>
+		<li>
+			<!-- Pocket -->
+			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
+			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+		</li>		
+		<li>
+			<!-- Vertical Twitter -->
+			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		</li>				
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//swift/2014/06/08/swift-doc-controll-flow.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+		</li>				
+		<li style="margine-left: 10px;!important">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="The Swift Programming Language ~ Control Flow" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+	</ul>
+</div>
+
+		      		<hr class="clear-list"/>
+
+					<div class="post">
+						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。  </p>
+
+<p>今回は、Collection Types の章の if のような Controll Flow に関して。</p>
+
+<h3 id="control-flow">Control Flow</h3>
+
+<h4 id="for-in-での-_-(underscore)">for-in での _ (underscore)</h4>
+
+<p>Array や Dictionary, range operator 等でよく使用する for-in において、その範囲に各要素自体を使用する必要がない場合には、_ を使用できます。下記の例は、3^10 を計算しています。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">base</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="lineno">2</span> <span class="n">let</span> <span class="n">power</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="lineno">3</span> <span class="n">var</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="lineno">4</span> <span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">..</span><span class="n">power</span> <span class="p">{</span>
+<span class="lineno">5</span>     <span class="n">answer</span> <span class="o">*=</span> <span class="n">base</span>
+<span class="lineno">6</span> <span class="p">}</span>
+<span class="lineno">7</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;\(base) to the power of \(power) is \(answer)&quot;</span><span class="p">)</span>
+<span class="lineno">8</span> <span class="c1">// prints &quot;3 to the power of 10 is 59049</span></code></pre></div>
+
+<h4 id="switch-文">switch 文</h4>
+
+<p><strong><em>Swift の switch</em></strong>  </p>
+
+<p>C と Swift の swtich はちょっと違います。この母音か子音か、それ以外かを区別する switch は、</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">someCharacter</span><span class="o">:</span> <span class="n">Character</span> <span class="o">=</span> <span class="s">&quot;e&quot;</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="k">switch</span> <span class="n">someCharacter</span> <span class="p">{</span>
+<span class="lineno"> 4</span>     <span class="k">case</span> <span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;e&quot;</span><span class="p">,</span> <span class="s">&quot;i&quot;</span><span class="p">,</span> <span class="s">&quot;o&quot;</span><span class="p">,</span> <span class="s">&quot;u&quot;</span>:
+<span class="lineno"> 5</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;\(someCharacter) is a vowel&quot;</span><span class="p">)</span>
+<span class="lineno"> 6</span>     <span class="k">case</span> <span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="s">&quot;c&quot;</span><span class="p">,</span> <span class="s">&quot;d&quot;</span><span class="p">,</span> <span class="s">&quot;f&quot;</span><span class="p">,</span> <span class="s">&quot;g&quot;</span><span class="p">,</span> <span class="s">&quot;h&quot;</span><span class="p">,</span> <span class="s">&quot;j&quot;</span><span class="p">,</span> <span class="s">&quot;k&quot;</span><span class="p">,</span> <span class="s">&quot;l&quot;</span><span class="p">,</span> <span class="s">&quot;m&quot;</span><span class="p">,</span>
+<span class="lineno"> 7</span>     <span class="s">&quot;n&quot;</span><span class="p">,</span> <span class="s">&quot;p&quot;</span><span class="p">,</span> <span class="s">&quot;q&quot;</span><span class="p">,</span> <span class="s">&quot;r&quot;</span><span class="p">,</span> <span class="s">&quot;s&quot;</span><span class="p">,</span> <span class="s">&quot;t&quot;</span><span class="p">,</span> <span class="s">&quot;v&quot;</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">,</span> <span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="s">&quot;z&quot;</span><span class="o">:</span>
+<span class="lineno"> 8</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;\(someCharacter) is a consonant&quot;</span><span class="p">)</span>
+<span class="lineno"> 9</span>     <span class="nl">default:</span>
+<span class="lineno">10</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;\(someCharacter) is not a vowel or a consonant&quot;</span><span class="p">)</span>
+<span class="lineno">11</span> <span class="p">}</span>
+<span class="lineno">12</span> <span class="cm">/* Output:</span>
+<span class="lineno">13</span> <span class="cm">e is a vowel</span>
+<span class="lineno">14</span> <span class="cm">*/</span></code></pre></div>
+
+<p>まずは、break を各ケースに置く必要がありません。また、C 言語で問題とされていた、デフォルトでの、<a href="http://blog.kazuya.co/c/2014/03/31/c.html">fall through</a> が変わりました。。一つのケースに該当したら、それ以降のコードは実行されません。また、ケースに条件に対して、カンマで区切って場合分けすることができます。最後に、switch 文はあらゆる値がきても、どれかのケースに該当しなければいけません(exhaustive)。この場合には、default ケースは必須です。ないと、コンパイル時に怒られます。</p>
+
+<p><strong><em>ケースの範囲指定</em></strong>  </p>
+
+<p>range operator を使用して、switch 文の場合分けをすることができます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">someCharacter</span><span class="o">:</span> <span class="n">Character</span> <span class="o">=</span> <span class="s">&quot;e&quot;</span>
+<span class="lineno"> 2</span> <span class="n">let</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">3</span><span class="n">_000_000_000_000</span>
+<span class="lineno"> 3</span> <span class="n">let</span> <span class="n">countedThings</span> <span class="o">=</span> <span class="s">&quot;stars in the Milky Way&quot;</span>
+<span class="lineno"> 4</span> <span class="n">var</span> <span class="n">naturalCount</span><span class="o">:</span> <span class="n">String</span>
+<span class="lineno"> 5</span> <span class="k">switch</span> <span class="n">count</span> <span class="p">{</span>
+<span class="lineno"> 6</span> <span class="k">case</span> <span class="mi">0</span>:
+<span class="lineno"> 7</span>     <span class="n">naturalCount</span> <span class="o">=</span> <span class="s">&quot;no&quot;</span>
+<span class="lineno"> 8</span> <span class="k">case</span> <span class="mf">1.</span><span class="p">.</span><span class="mf">.3</span>:
+<span class="lineno"> 9</span>     <span class="n">naturalCount</span> <span class="o">=</span> <span class="s">&quot;a few&quot;</span>
+<span class="lineno">10</span> <span class="k">case</span> <span class="mf">4.</span><span class="p">.</span><span class="mf">.9</span>:
+<span class="lineno">11</span>     <span class="n">naturalCount</span> <span class="o">=</span> <span class="s">&quot;several&quot;</span>
+<span class="lineno">12</span> <span class="k">case</span> <span class="mf">10.</span><span class="p">.</span><span class="mf">.99</span>:
+<span class="lineno">13</span>     <span class="n">naturalCount</span> <span class="o">=</span> <span class="s">&quot;tens of&quot;</span>
+<span class="lineno">14</span> <span class="k">case</span> <span class="mf">100.</span><span class="p">.</span><span class="mf">.999</span>:
+<span class="lineno">15</span>     <span class="n">naturalCount</span> <span class="o">=</span> <span class="s">&quot;hundreds of&quot;</span>
+<span class="lineno">16</span> <span class="k">case</span> <span class="mf">1000.</span><span class="p">.</span><span class="mf">.999</span><span class="n">_999</span>:
+<span class="lineno">17</span>     <span class="n">naturalCount</span> <span class="o">=</span> <span class="s">&quot;thousands of&quot;</span>
+<span class="lineno">18</span> <span class="nl">default:</span>
+<span class="lineno">19</span>     <span class="n">naturalCount</span> <span class="o">=</span> <span class="s">&quot;millions and millions of&quot;</span>
+<span class="lineno">20</span> <span class="p">}</span>
+<span class="lineno">21</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;There are \(naturalCount) \(countedThings).&quot;</span><span class="p">)</span>
+<span class="lineno">22</span> <span class="c1">// prints &quot;There are millions and millions of stars in the Milky Way.</span></code></pre></div>
+
+<p><strong><em>tupleでのケースの指定</em></strong>  </p>
+
+<p>switch 文の場合分けを tuple で、行うこともできます。_ は、何に対してもマッチするという意味です。下記の Apple による例では、座標軸がどこに対応しているかをチェックしています。まずは、原点をチェックし、そして、x軸, y軸, 青い box の中、それ以外という順にチェックしています。一つのケースが該当されると、それ以外は無視されます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">somePoint</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="lineno"> 2</span> <span class="k">switch</span> <span class="n">somePoint</span> <span class="p">{</span>
+<span class="lineno"> 3</span> <span class="k">case</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>:
+<span class="lineno"> 4</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;(0, 0) is at the origin&quot;</span><span class="p">)</span>
+<span class="lineno"> 5</span> <span class="k">case</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>:
+<span class="lineno"> 6</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;(\(somePoint.0), 0) is on the x-axis&quot;</span><span class="p">)</span>
+<span class="lineno"> 7</span> <span class="k">case</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span>:
+<span class="lineno"> 8</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;(0, \(somePoint.1)) is on the y-axis&quot;</span><span class="p">)</span>
+<span class="lineno"> 9</span> <span class="k">case</span> <span class="p">(</span><span class="o">-</span><span class="mf">2.</span><span class="p">.</span><span class="mf">.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.</span><span class="p">.</span><span class="mf">.2</span><span class="p">)</span>:
+<span class="lineno">10</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;(\(somePoint.0), \(somePoint.1)) is inside the box&quot;</span><span class="p">)</span>
+<span class="lineno">11</span> <span class="nl">default:</span>
+<span class="lineno">12</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;(\(somePoint.0), \(somePoint.1)) is outside of the box&quot;</span><span class="p">)</span>
+<span class="lineno">13</span> <span class="p">}</span>
+<span class="lineno">14</span> <span class="c1">// prints &quot;(1, 1) is inside the box</span></code></pre></div>
+
+<p><img src="/images/2014/06/2.png" alt=""></p>
+
+<p><strong><em>Value Binding</em></strong>  </p>
+
+<p>各ケースの実行コードの中で使用できるようにコンスタントか変数を binding することができます。まずは、このコードを見てください。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">anotherPoint</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="lineno"> 2</span> <span class="k">switch</span> <span class="n">anotherPoint</span> <span class="p">{</span>
+<span class="lineno"> 3</span> <span class="k">case</span> <span class="p">(</span><span class="n">let</span> <span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>:
+<span class="lineno"> 4</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;on the x-axis with an x value of \(x)&quot;</span><span class="p">)</span>
+<span class="lineno"> 5</span> <span class="k">case</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">let</span> <span class="n">y</span><span class="p">)</span>:
+<span class="lineno"> 6</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;on the y-axis with a y value of \(y)&quot;</span><span class="p">)</span>
+<span class="lineno"> 7</span> <span class="k">case</span> <span class="n">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>:
+<span class="lineno"> 8</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;somewhere else at (\(x), \(y))&quot;</span><span class="p">)</span>
+<span class="lineno"> 9</span> <span class="p">}</span>
+<span class="lineno">10</span> <span class="c1">// prints &quot;on the x-axis with an x value of 2</span></code></pre></div>
+
+<p>ケースの条件にある、let x は、一つ目の tuple の要素は何に対しても対応し、二つ目の要素は 0 のケースと読めます。最後の let(x, y)は、何に対してもマッチします。この場合には、全てのパターンを捉えているので、default は必要ありません。exhaustive であればよいのです。</p>
+
+<p><strong><em>where clause</em></strong>  </p>
+
+<p>switch ケースに where を追加して、余分に条件を指定することができます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">yetAnotherPoint</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="lineno"> 2</span> <span class="k">switch</span> <span class="n">yetAnotherPoint</span> <span class="p">{</span>
+<span class="lineno"> 3</span> <span class="k">case</span> <span class="n">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="n">where</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span>:
+<span class="lineno"> 4</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;(\(x), \(y)) is on the line x == y&quot;</span><span class="p">)</span>
+<span class="lineno"> 5</span> <span class="k">case</span> <span class="n">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="n">where</span> <span class="n">x</span> <span class="o">==</span> <span class="o">-</span><span class="n">y</span>:
+<span class="lineno"> 6</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;(\(x), \(y)) is on the line x == -y&quot;</span><span class="p">)</span>
+<span class="lineno"> 7</span> <span class="k">case</span> <span class="n">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>:
+<span class="lineno"> 8</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;(\(x), \(y)) is just some arbitrary point&quot;</span><span class="p">)</span>
+<span class="lineno"> 9</span> <span class="p">}</span>
+<span class="lineno">10</span> <span class="c1">// prints &quot;(1, -1) is on the line x == -y</span></code></pre></div>
+
+<p>この場合も 最後の　let(x,y) のおかげで、default が必要ありません。</p>
+
+<p><strong><em>fallthrough キーワード</em></strong>  </p>
+
+<p>上記で見たように、Swift の switch は、C のように fall through しない。もし、C と同じ挙動をして欲しい時には、fallthrough を使用する。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">integerToDescribe</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="lineno"> 2</span> <span class="n">var</span> <span class="n">description</span> <span class="o">=</span> <span class="s">&quot;The number \(integerToDescribe) is&quot;</span>
+<span class="lineno"> 3</span> <span class="k">switch</span> <span class="n">integerToDescribe</span> <span class="p">{</span>
+<span class="lineno"> 4</span> <span class="k">case</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span>:
+<span class="lineno"> 5</span>     <span class="n">description</span> <span class="o">+=</span> <span class="s">&quot; a prime number, and also&quot;</span>
+<span class="lineno"> 6</span>     <span class="n">fallthrough</span>
+<span class="lineno"> 7</span> <span class="nl">default:</span>
+<span class="lineno"> 8</span>     <span class="n">description</span> <span class="o">+=</span> <span class="s">&quot; an integer.&quot;</span>
+<span class="lineno"> 9</span> <span class="p">}</span>
+<span class="lineno">10</span> <span class="n">println</span><span class="p">(</span><span class="n">description</span><span class="p">)</span>
+<span class="lineno">11</span> <span class="c1">// prints &quot;The number 5 is a prime number, and also an integer.</span></code></pre></div>
+
+<p>このような fall through を意図したケースというのは 3% もないらしいです。なので、変えたのでしょうね。C と同じように、fallthrough した後は、ケースの条件はチェックしません。</p>
+
+<h4 id="labeled-statement">Labeled statement</h4>
+
+<p>もちろん、ループや swtich をネストすることができます。また、その中で break 等も使用できます。このような時に、ステートメントにラベル付けをして、どのようにプログラムのフローを変える処理をするのかことを明らかにしておくとコードが読みやすくなりそうです。</p>
+
+<p>そのために、ループ、switch に対してラベル付けする方法があります。ラベルの名前に続いて : をタイプして、ループか switch の前に置くだけです。そして、break の後にラベルの名前を書くことにより、そのループか switch を終わらせます。また、continu の後に、ラベルの名前を書くことにより、その場所へジャンプします。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="nl">gameLoop:</span> <span class="k">while</span> <span class="n">square</span> <span class="o">!=</span> <span class="n">finalSquare</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="k">if</span> <span class="o">++</span><span class="n">diceRoll</span> <span class="o">==</span> <span class="mi">7</span> <span class="p">{</span> <span class="n">diceRoll</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">}</span>
+<span class="lineno"> 3</span>     <span class="k">switch</span> <span class="n">square</span> <span class="o">+</span> <span class="n">diceRoll</span> <span class="p">{</span>
+<span class="lineno"> 4</span>     <span class="k">case</span> <span class="n">finalSquare</span>:
+<span class="lineno"> 5</span>         <span class="c1">// diceRoll will move us to the final square, so the game is over</span>
+<span class="lineno"> 6</span>         <span class="k">break</span> <span class="n">gameLoop</span>
+<span class="lineno"> 7</span>     <span class="k">case</span> <span class="n">let</span> <span class="n">newSquare</span> <span class="n">where</span> <span class="n">newSquare</span> <span class="o">&gt;</span> <span class="n">finalSquare</span>:
+<span class="lineno"> 8</span>         <span class="c1">// diceRoll will move us beyond the final square, so roll again</span>
+<span class="lineno"> 9</span>         <span class="k">continue</span> <span class="n">gameLoop</span>
+<span class="lineno">10</span>     <span class="nl">default:</span>
+<span class="lineno">11</span>         <span class="c1">// this is a valid move, so find out its effect</span>
+<span class="lineno">12</span>         <span class="n">square</span> <span class="o">+=</span> <span class="n">diceRoll</span>
+<span class="lineno">13</span>         <span class="n">square</span> <span class="o">+=</span> <span class="n">board</span><span class="p">[</span><span class="n">square</span><span class="p">]</span>
+<span class="lineno">14</span>     <span class="p">}</span>
+<span class="lineno">15</span> <span class="p">}</span>
+<span class="lineno">16</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;Game over!&quot;</span><span class="p">)</span></code></pre></div>
+
+<p>このコードの注意点として、break に対してラベルを指定することで、while を抜けるということです。もし、break にラベルを指定しなかった場合には、switch を終了し、while ループは継続してしまいます。また、ここでは、continue に対して、ラベルを指定する必要はありませんが、これにより多少コードが読みやすくなるという利点があります。</p>
+
+					</div>
+
+				</div>
+
+				<div id="sub">
+				   <div class="side_box">
+   <h3>About</h3>
+      <p class="side_content">
+         <i>Kazuya Kobayashi</i><br />
+         - I'm a once law student trying to be computer geek.<br />
+         - ギークになりたい。<br />
+         <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a>
+      </p>
+</div>
+
+<hr />
+
+<h3>Elsewhere</h3>
+   <p class="side_content">
+      <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+      <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+      <a href="https://github.com/kzykbys">Github</a>
+   </p>
+
+<hr />
+
+<h3>Category</h3>
+   <p class="side_content">|
+      
+   	   <a href="/categories/objective-c">objective-c
+            (10)
+         </a> | 
+      
+   	   <a href="/categories/other">other
+            (6)
+         </a> | 
+      
+   	   <a href="/categories/node-js">node.js
+            (1)
+         </a> | 
+      
+   	   <a href="/categories/ruby-on-rails">ruby on rails
+            (18)
+         </a> | 
+      
+   	   <a href="/categories/tips">tips
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/html5">html5
+            (8)
+         </a> | 
+      
+   	   <a href="/categories/algorithms">algorithms
+            (2)
+         </a> | 
+      
+   	   <a href="/categories/machine-learning">machine learning
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/c">c
+            (14)
+         </a> | 
+      
+   	   <a href="/categories/ruby">ruby
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/swift">swift
+            (7)
+         </a> | 
+      
+   </p>
+
+<hr />
+
+<h3>Archive</h3>
+   <p class="side_content">|
+      
+   		<a href="/2013/08/">2013/08
+            (2)
+         </a> |          
+      
+   		<a href="/2013/09/">2013/09
+            (4)
+         </a> |          
+      
+   		<a href="/2013/11/">2013/11
+            (11)
+         </a> |          
+      
+   		<a href="/2013/12/">2013/12
+            (21)
+         </a> |          
+      
+   		<a href="/2014/01/">2014/01
+            (5)
+         </a> |          
+      
+   		<a href="/2014/03/">2014/03
+            (6)
+         </a> |          
+      
+   		<a href="/2014/04/">2014/04
+            (7)
+         </a> |          
+      
+   		<a href="/2014/05/">2014/05
+            (11)
+         </a> |          
+      
+   		<a href="/2014/06/">2014/06
+            (14)
+         </a> |          
+      
+   </p>
+
+<hr />
+
+<h3>Work</h3>			   
+   <p class="side_content">
+      Coming soon... maybe.
+   </p>
+
+<hr />
+				</div>
+
+			</div>
+
+
+		</div>
+
+				<div class="footer">
+		   <div class="footer_inner">
+			   <div class="contact">
+				   <h4>About</h4>
+				   <p>Kazuya Kobayashi<br />
+				   - I'm a once law student trying to be computer geek.<br />
+				   - ギークになりたい。<br />
+				   <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a></p>
+				   <h4>Elsewhere</h4>
+				   <p>
+					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+					   <a href="https://github.com/kzykbys">Github</a></p>
+				   <h4>Category</h4>
+				   <p>|
+					   
+						   <a href="/categories/objective-c">objective-c</a> | 
+					   
+						   <a href="/categories/other">other</a> | 
+					   
+						   <a href="/categories/node-js">node.js</a> | 
+					   
+						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
+					   
+						   <a href="/categories/tips">tips</a> | 
+					   
+						   <a href="/categories/html5">html5</a> | 
+					   
+						   <a href="/categories/algorithms">algorithms</a> | 
+					   
+						   <a href="/categories/machine-learning">machine learning</a> | 
+					   
+						   <a href="/categories/c">c</a> | 
+					   
+						   <a href="/categories/ruby">ruby</a> | 
+					   
+						   <a href="/categories/swift">swift</a> | 
+					   
+				   </p>
+				   <h4>Archive</h4>
+					   <p>|
+					   
+	    					<a href="/2013/08/">2013/08
+	    					</a> | 
+	    			   
+	    					<a href="/2013/09/">2013/09
+	    					</a> | 
+	    			   
+	    					<a href="/2013/11/">2013/11
+	    					</a> | 
+	    			   
+	    					<a href="/2013/12/">2013/12
+	    					</a> | 
+	    			   
+	    					<a href="/2014/01/">2014/01
+	    					</a> | 
+	    			   
+	    					<a href="/2014/03/">2014/03
+	    					</a> | 
+	    			   
+	    					<a href="/2014/04/">2014/04
+	    					</a> | 
+	    			   
+	    					<a href="/2014/05/">2014/05
+	    					</a> | 
+	    			   
+	    					<a href="/2014/06/">2014/06
+	    					</a> | 
+	    			   
+    			   </p>
+				   <h4>Work</h4>			   
+				   <p>Coming soon... maybe.</p>
+			   </div>
+		   </div>
+	   	</div>
+
+	   		  
+	  	<!-- Sdir (slide menu for small screen) -->
+
+<script>
+	
+  	$(document).ready(function() {
+		$('#mobile-menu-button').sidr();	  
+  	});
+
+  	$('#mobile-menu-button').click(function(e){
+  	});
+
+  	$('html').click(function(e){
+  		$.sidr('close', 'sidr');
+  	});
+
+</script>
+	  	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28952627-6', 'kazuya.co');
+  ga('send', 'pageview');
+
+</script>
+
+	</body>
+</html>
