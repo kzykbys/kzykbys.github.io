@@ -180,7 +180,9 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。</p>
+						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。  </p>
+
+<p>今回は、オペレーターに関して。</p>
 
 <h3 id="basic-operators">Basic Operators</h3>
 
@@ -250,53 +252,6 @@
 <span class="lineno">21</span> <span class="cm">4</span>
 <span class="lineno">22</span> <span class="cm">*/</span></code></pre></div>
 
-<h4 id="5.-string-は-value-(値)">5. String は value (値)</h4>
-
-<p>Swing は Cocoa の NSString と違い、String は全て値であり、コピーして関数に渡され、新しく代入された際にも、常に新しいコピーが作られる。Cocoa では、常に * を使用するように、基本的に、reference が渡されていた。渡された文字列が、called func の中でいじられないということを保証することができる。</p>
-
-<h4 id="6.-character-type">6. Character type</h4>
-
-<p>String は順序のある Character type の集まり。だた一つの Character を作成するには、下記のように明示的に Character を書く。</p>
-
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">yenSign</span><span class="o">:</span> <span class="n">Character</span> <span class="o">=</span> <span class="s">&quot;¥&quot;</span></code></pre></div>
-
-<h4 id="7.-文字列の長さ">7. 文字列の長さ</h4>
-
-<p>文字列の長さを得るには、countElemetns というグローバル関数を使う。Swift では、英語でない言語や、絵文字をサポートしているので、文字によって、一つ一つの文字が異なるメモリ容量を持っています。そのため、文字列の長さを得るには、C のように始まりと終わりのポインタの差を返すといった単純なものではなく、文字列の各文字を全てチェックする必要があります。長い文字列を処理する際には、注意。</p>
-
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">unusualMenagerie</span> <span class="o">=</span> <span class="s">&quot;Koala 🐨, Snail 🐌, Penguin 🐧, Dromedary 🐪&quot;</span>
-<span class="lineno">2</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;unusualMenagerie has \(countElements(unusualMenagerie)) characters&quot;</span><span class="p">)</span>
-<span class="lineno">3</span> <span class="c1">// unusualMenagerie has 40 characters</span></code></pre></div>
-
-<p>Objective-C の NSString の length プロパティと countElements が返す値は異なることがあります。NSString の length は 16bits コードに基づいているためです。Swift で NSString の length にアクセスする場合には、utf16count というものが使われます。</p>
-
-<h4 id="8.-文字列比較-(hasprefix-/-hassuffix)">8. 文字列比較 (hasPrefix / hasSuffix)</h4>
-
-<p>通常の文字列の比較は、このポストの 3 にあり。hasPrefix と hasSuffix という文字列比較のメソッドがある。コードを見た方がわかりやすいと思います。</p>
-
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">fullName</span> <span class="o">=</span> <span class="p">[</span>
-<span class="lineno"> 2</span>         <span class="s">&quot;Kobayashi Kazuya&quot;</span><span class="p">,</span>
-<span class="lineno"> 3</span>         <span class="s">&quot;Kobayashi Taro&quot;</span><span class="p">,</span>
-<span class="lineno"> 4</span>         <span class="s">&quot;Suzuki Kazuya&quot;</span><span class="p">,</span>
-<span class="lineno"> 5</span>         <span class="s">&quot;Suzuki Taro&quot;</span>
-<span class="lineno"> 6</span> <span class="p">]</span>
-<span class="lineno"> 7</span>         
-<span class="lineno"> 8</span> <span class="n">var</span> <span class="n">numKobayashi</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="lineno"> 9</span> <span class="k">for</span> <span class="n">name</span> <span class="k">in</span> <span class="n">fullName</span> <span class="p">{</span>
-<span class="lineno">10</span>  <span class="k">if</span> <span class="n">name</span><span class="p">.</span><span class="n">hasPrefix</span><span class="p">(</span><span class="s">&quot;Kobayashi&quot;</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">11</span>      <span class="o">++</span><span class="n">numKobayashi</span>
-<span class="lineno">12</span>  <span class="p">}</span>
-<span class="lineno">13</span> <span class="p">}</span>
-<span class="lineno">14</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;\(numKobayashi) Kobayashi here!&quot;</span><span class="p">)</span> <span class="c1">// 2</span>
-<span class="lineno">15</span>         
-<span class="lineno">16</span> <span class="n">var</span> <span class="n">numKazuya</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="lineno">17</span> <span class="k">for</span> <span class="n">name</span> <span class="k">in</span> <span class="n">fullName</span> <span class="p">{</span>
-<span class="lineno">18</span>  <span class="k">if</span> <span class="n">name</span><span class="p">.</span><span class="n">hasSuffix</span><span class="p">(</span><span class="s">&quot;Kazuya&quot;</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">19</span>      <span class="o">++</span><span class="n">numKazuya</span>
-<span class="lineno">20</span>  <span class="p">}</span>
-<span class="lineno">21</span> <span class="p">}</span>
-<span class="lineno">22</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;\(numKazuya) Kazuya here!&quot;</span><span class="p">)</span> <span class="c1">// 2</span></code></pre></div>
-
 					</div>
 
 				</div>
@@ -359,7 +314,7 @@
          </a> | 
       
    	   <a href="/categories/c">c
-            (13)
+            (14)
          </a> | 
       
    	   <a href="/categories/ruby">ruby
@@ -367,7 +322,7 @@
          </a> | 
       
    	   <a href="/categories/swift">swift
-            (3)
+            (6)
          </a> | 
       
    </p>
@@ -410,7 +365,7 @@
          </a> |          
       
    		<a href="/2014/06/">2014/06
-            (9)
+            (13)
          </a> |          
       
    </p>

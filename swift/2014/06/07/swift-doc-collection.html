@@ -1,0 +1,541 @@
+	<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>The Swift Programming Language ~ Collection Types [Array]</title>        
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />        
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+		<link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/jquery.sidr.dark.css">
+		<link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+
+        <!-- jQuery -->
+<script src="/javascript/jquery-1.11.1.min.js"></script>
+<!-- slide menu -->
+<script src="/javascript/jquery.sidr.min.js"></script>
+<!-- For FB like buttom -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=571082556301479&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+	</head>
+	
+	<body>
+    
+        <div id="mobile-sticky-menu">
+	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
+	<!-- <img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" /> -->
+</div>
+
+<div id="sidr">
+	<!-- Your content -->
+	<!-- <h4>Share</h4> -->
+
+	<h4>Category</h4>
+	<ul>
+	   
+		   <li>
+		   		<a href="/categories/objective-c">objective-c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/other">other</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/node-js">node.js</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/tips">tips</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/html5">html5</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/algorithms">algorithms</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/machine-learning">machine learning</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/c">c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby">ruby</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/swift">swift</a>
+		   </li>
+	   
+    </ul>
+	<h4>Archive</h4>
+	<ul>
+		
+			<li>
+				<a href="/2013/08/">2013/08</a>
+			</li>
+		
+			<li>
+				<a href="/2013/09/">2013/09</a>
+			</li>
+		
+			<li>
+				<a href="/2013/11/">2013/11</a>
+			</li>
+		
+			<li>
+				<a href="/2013/12/">2013/12</a>
+			</li>
+		
+			<li>
+				<a href="/2014/01/">2014/01</a>
+			</li>
+		
+			<li>
+				<a href="/2014/03/">2014/03</a>
+			</li>
+		
+			<li>
+				<a href="/2014/04/">2014/04</a>
+			</li>
+		
+			<li>
+				<a href="/2014/05/">2014/05</a>
+			</li>
+		
+			<li>
+				<a href="/2014/06/">2014/06</a>
+			</li>
+		
+	</ul>
+
+</div>
+
+        <div class="site">
+
+			<!-- title -->
+			<!-- Header -->
+<header>
+<h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
+	<hr />
+</header>
+
+			<div id="contents">
+				
+				<div id="main">
+					<h3><a href="">The Swift Programming Language ~ Collection Types [Array]</a></h3>
+					<span class="author">
+						<span class="date">2014-06-07 16:30:00 -0700</span>
+					</span>
+
+					<hr />
+					<div id="social-buttom">
+	<!-- Social Buttoms -->
+	<ul>
+		<li>
+			<!-- Pocket -->
+			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
+			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+		</li>		
+		<li>
+			<!-- Vertical Twitter -->
+			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		</li>				
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//swift/2014/06/07/swift-doc-collection.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+		</li>				
+		<li style="margine-left: 10px;!important">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="The Swift Programming Language ~ Collection Types [Array]" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+	</ul>
+</div>
+
+		      		<hr class="clear-list"/>
+
+					<div class="post">
+						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。  </p>
+
+<p>今回は、Collection Types の章の Array に関して。</p>
+
+<h3 id="collection-types">Collection Types</h3>
+
+<h4 id="1.-swing-array">1. Swing Array</h4>
+
+<p>Swift の Array は、型に厳格です。NSString ではできましたが、一つの Array に異なるデータ型を組み合わせて保存することはできません。また、次に紹介する Dictionary も同様です。</p>
+
+<h4 id="2.-array-型-のシンタックス">2. Array 型 のシンタックス</h4>
+
+<p>Array 型を作成するには、二通りあります。しかし、二つ目の [] を使用した方法がより簡単なので、ドキュメントもこちらを使用しています。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">list1</span><span class="o">:</span> <span class="n">Array</span><span class="o">&lt;</span><span class="n">Int</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="lineno">2</span> <span class="n">var</span> <span class="n">list2</span><span class="o">:</span> <span class="n">Int</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span></code></pre></div>
+
+<h4 id="3.-array-の要素数">3. Array の要素数</h4>
+
+<p>Array の要素数を得るには、読み込み専用の count プロパティを参照します。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">list1</span><span class="p">.</span><span class="n">count</span> <span class="c1">// 3</span></code></pre></div>
+
+<h4 id="4.-array-が空かのチェック">4. Array が空かのチェック</h4>
+
+<p>Array.count が 0 であるかをチェックするには、isEmpty プロパティを使用できます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">if</span> <span class="n">list2</span><span class="p">.</span><span class="n">isEmpty</span> <span class="p">{</span>
+<span class="lineno">2</span>   <span class="n">println</span><span class="p">(</span><span class="s">&quot;This is empty array&quot;</span><span class="p">)</span>
+<span class="lineno">3</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">4</span>   <span class="n">println</span><span class="p">(</span><span class="s">&quot;This isn&#39;t empty array&quot;</span><span class="p">)</span>
+<span class="lineno">5</span> <span class="p">}</span></code></pre></div>
+
+<h4 id="5.-要素の追加">5. 要素の追加</h4>
+
+<p>Array を var で宣言していれば、新しく配列を追加することができます。いくつかの方法があります。</p>
+
+<p>まずは、append()を使用する方法。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">list2</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span></code></pre></div>
+
+<p>次に、+= を使用する方法。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">list2</span> <span class="o">+=</span> <span class="mi">2</span> <span class="c1">// add one element</span>
+<span class="lineno">2</span> <span class="n">list2</span> <span class="o">+=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="c1">// add multiple elements</span></code></pre></div>
+
+<p>また、insert(atIndex:) メソッドを使用する方法。index を指定しますが、上書きするのではなく、その要素の場所に新しく値を入れて、前後を調整してくれます。失う要素はないです。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="lineno">2</span> <span class="n">list</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">atIndex</span><span class="o">:</span> <span class="mi">0</span><span class="p">)</span>
+<span class="lineno">3</span> <span class="n">list</span> <span class="c1">// [0, 1, 2, 3]</span></code></pre></div>
+
+<h4 id="6.-要素の削除">6. 要素の削除</h4>
+
+<p>要素を削除する方法もいくつかあります。</p>
+
+<p>まずは、removeAtIndex()。削除された結果生まれる隙間は後続の要素が埋めてくれます。また、削除された値を返します。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">removedItem</span> <span class="o">=</span> <span class="n">list</span><span class="p">.</span><span class="n">removeAtIndex</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span></code></pre></div>
+
+<p>最後の要素を削除するには、removeLast()。また、削除された値を返します。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">removedItem</span> <span class="o">=</span> <span class="n">list</span><span class="p">.</span><span class="n">removeLast</span><span class="p">()</span></code></pre></div>
+
+<p>全て削除するには、removeAll(keepCapacity:)。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">list</span><span class="p">.</span><span class="n">removeAll</span><span class="p">(</span><span class="n">keepCapacity</span><span class="o">:</span> <span class="nb">true</span><span class="p">)</span></code></pre></div>
+
+<h4 id="7.-要素の範囲選択">7. 要素の範囲選択</h4>
+
+<p>Array の要素を range operator のように選択することができます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="lineno">2</span> <span class="n">arr</span><span class="p">[</span><span class="mf">0.</span><span class="p">.</span><span class="mf">.2</span><span class="p">]</span> <span class="c1">// [1, 2, 3]</span>
+<span class="lineno">3</span> <span class="n">arr</span><span class="p">[</span><span class="mf">0..2</span><span class="p">]</span>  <span class="c1">// [1, 2]</span>
+<span class="lineno">4</span> <span class="n">arr</span><span class="p">[</span><span class="mf">0..2</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1">// [3, 4, 5]</span>
+<span class="lineno">5</span> <span class="n">arr</span><span class="p">[</span><span class="mf">0..3</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="c1">// [1, 2]</span></code></pre></div>
+
+<p>このコードのように、柔軟に追加や削除等ができます。Playground で遊んでみるとわかりやすいと思います。</p>
+
+<h4 id="8.-index-と一緒に-iteration">8. index と一緒に iteration</h4>
+
+<p>グローバル enumerate 関数を使用すれば、index と値の tuple を返してくれます。Array の index を使用したい時に便利です。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<span class="lineno">2</span> <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span> <span class="k">in</span> <span class="n">enumerate</span><span class="p">(</span><span class="n">list</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">3</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;\(i) : \(item)&quot;</span><span class="p">)</span>
+<span class="lineno">4</span> <span class="p">}</span>
+<span class="lineno">5</span> <span class="cm">/* Output:</span>
+<span class="lineno">6</span> <span class="cm">0 : 10</span>
+<span class="lineno">7</span> <span class="cm">1 : 20</span>
+<span class="lineno">8</span> <span class="cm">2 : 30</span>
+<span class="lineno">9</span> <span class="cm">*/</span></code></pre></div>
+
+<h4 id="9.-array-の-init,-reset,-default-value">9. Array の init, reset, default value</h4>
+
+<p>ある型の空の Array の作成</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">someInts</span> <span class="o">=</span> <span class="n">Int</span><span class="p">[]()</span> <span class="c1">// count is 0</span></code></pre></div>
+
+<p>Array のリセット</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">someInts</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="lineno">2</span> <span class="n">someInts</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1">// empty Int Array</span></code></pre></div>
+
+<p>Array のサイズとデフォルト値を持っての初期化。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">threeDoubles</span> <span class="o">=</span> <span class="n">Dounle</span><span class="p">[](</span><span class="n">count</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">repeatedValue</span><span class="o">:</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="lineno">2</span> <span class="c1">// [0.0, 0.0, 0.0]</span>
+<span class="lineno">3</span> <span class="n">var</span> <span class="n">anotherThreeDoubles</span> <span class="o">=</span> <span class="n">Array</span><span class="p">(</span><span class="n">count</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">repeatedValue</span><span class="o">:</span> <span class="mf">2.5</span><span class="p">)</span></code></pre></div>
+
+<h4 id="10.-array-の結合">10. Array の結合</h4>
+
+<p>String と同じ要領で二つの Array を結合できます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">threeDoubles</span> <span class="c1">// [0.0, 0.0, 0.0]</span>
+<span class="lineno">2</span> <span class="n">anotherThreeDoubles</span> <span class="c1">// [2.5, 2.5, 2.5]</span>
+<span class="lineno">3</span> <span class="n">var</span> <span class="n">sixDoubles</span> <span class="o">=</span> <span class="n">threeDoubles</span> <span class="o">+</span> <span class="n">anotherThreeDoubles</span>
+<span class="lineno">4</span> <span class="c1">// sixDoubles is inferred as Double[], and equals [0.0, 0.0, 0.0, 2.5, 2.5, 2.5]</span></code></pre></div>
+
+					</div>
+
+				</div>
+
+				<div id="sub">
+				   <div class="side_box">
+   <h3>About</h3>
+      <p class="side_content">
+         <i>Kazuya Kobayashi</i><br />
+         - I'm a once law student trying to be computer geek.<br />
+         - ギークになりたい。<br />
+         <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a>
+      </p>
+</div>
+
+<hr />
+
+<h3>Elsewhere</h3>
+   <p class="side_content">
+      <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+      <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+      <a href="https://github.com/kzykbys">Github</a>
+   </p>
+
+<hr />
+
+<h3>Category</h3>
+   <p class="side_content">|
+      
+   	   <a href="/categories/objective-c">objective-c
+            (10)
+         </a> | 
+      
+   	   <a href="/categories/other">other
+            (6)
+         </a> | 
+      
+   	   <a href="/categories/node-js">node.js
+            (1)
+         </a> | 
+      
+   	   <a href="/categories/ruby-on-rails">ruby on rails
+            (18)
+         </a> | 
+      
+   	   <a href="/categories/tips">tips
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/html5">html5
+            (8)
+         </a> | 
+      
+   	   <a href="/categories/algorithms">algorithms
+            (2)
+         </a> | 
+      
+   	   <a href="/categories/machine-learning">machine learning
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/c">c
+            (14)
+         </a> | 
+      
+   	   <a href="/categories/ruby">ruby
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/swift">swift
+            (6)
+         </a> | 
+      
+   </p>
+
+<hr />
+
+<h3>Archive</h3>
+   <p class="side_content">|
+      
+   		<a href="/2013/08/">2013/08
+            (2)
+         </a> |          
+      
+   		<a href="/2013/09/">2013/09
+            (4)
+         </a> |          
+      
+   		<a href="/2013/11/">2013/11
+            (11)
+         </a> |          
+      
+   		<a href="/2013/12/">2013/12
+            (21)
+         </a> |          
+      
+   		<a href="/2014/01/">2014/01
+            (5)
+         </a> |          
+      
+   		<a href="/2014/03/">2014/03
+            (6)
+         </a> |          
+      
+   		<a href="/2014/04/">2014/04
+            (7)
+         </a> |          
+      
+   		<a href="/2014/05/">2014/05
+            (11)
+         </a> |          
+      
+   		<a href="/2014/06/">2014/06
+            (13)
+         </a> |          
+      
+   </p>
+
+<hr />
+
+<h3>Work</h3>			   
+   <p class="side_content">
+      Coming soon... maybe.
+   </p>
+
+<hr />
+				</div>
+
+			</div>
+
+
+		</div>
+
+				<div class="footer">
+		   <div class="footer_inner">
+			   <div class="contact">
+				   <h4>About</h4>
+				   <p>Kazuya Kobayashi<br />
+				   - I'm a once law student trying to be computer geek.<br />
+				   - ギークになりたい。<br />
+				   <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a></p>
+				   <h4>Elsewhere</h4>
+				   <p>
+					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+					   <a href="https://github.com/kzykbys">Github</a></p>
+				   <h4>Category</h4>
+				   <p>|
+					   
+						   <a href="/categories/objective-c">objective-c</a> | 
+					   
+						   <a href="/categories/other">other</a> | 
+					   
+						   <a href="/categories/node-js">node.js</a> | 
+					   
+						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
+					   
+						   <a href="/categories/tips">tips</a> | 
+					   
+						   <a href="/categories/html5">html5</a> | 
+					   
+						   <a href="/categories/algorithms">algorithms</a> | 
+					   
+						   <a href="/categories/machine-learning">machine learning</a> | 
+					   
+						   <a href="/categories/c">c</a> | 
+					   
+						   <a href="/categories/ruby">ruby</a> | 
+					   
+						   <a href="/categories/swift">swift</a> | 
+					   
+				   </p>
+				   <h4>Archive</h4>
+					   <p>|
+					   
+	    					<a href="/2013/08/">2013/08
+	    					</a> | 
+	    			   
+	    					<a href="/2013/09/">2013/09
+	    					</a> | 
+	    			   
+	    					<a href="/2013/11/">2013/11
+	    					</a> | 
+	    			   
+	    					<a href="/2013/12/">2013/12
+	    					</a> | 
+	    			   
+	    					<a href="/2014/01/">2014/01
+	    					</a> | 
+	    			   
+	    					<a href="/2014/03/">2014/03
+	    					</a> | 
+	    			   
+	    					<a href="/2014/04/">2014/04
+	    					</a> | 
+	    			   
+	    					<a href="/2014/05/">2014/05
+	    					</a> | 
+	    			   
+	    					<a href="/2014/06/">2014/06
+	    					</a> | 
+	    			   
+    			   </p>
+				   <h4>Work</h4>			   
+				   <p>Coming soon... maybe.</p>
+			   </div>
+		   </div>
+	   	</div>
+
+	   		  
+	  	<!-- Sdir (slide menu for small screen) -->
+
+<script>
+	
+  	$(document).ready(function() {
+		$('#mobile-menu-button').sidr();	  
+  	});
+
+  	$('#mobile-menu-button').click(function(e){
+  	});
+
+  	$('html').click(function(e){
+  		$.sidr('close', 'sidr');
+  	});
+
+</script>
+	  	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28952627-6', 'kazuya.co');
+  ga('send', 'pageview');
+
+</script>
+
+	</body>
+</html>
