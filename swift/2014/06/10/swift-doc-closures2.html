@@ -1,0 +1,525 @@
+	<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>The Swift Programming Language ~ Trailing Closures</title>        
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />        
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+		<link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/jquery.sidr.dark.css">
+		<link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+
+        <!-- jQuery -->
+<script src="/javascript/jquery-1.11.1.min.js"></script>
+<!-- slide menu -->
+<script src="/javascript/jquery.sidr.min.js"></script>
+<!-- For FB like buttom -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=571082556301479&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+	</head>
+	
+	<body>
+    
+        <div id="mobile-sticky-menu">
+	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
+	<!-- <img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" /> -->
+</div>
+
+<div id="sidr">
+	<!-- Your content -->
+	<!-- <h4>Share</h4> -->
+
+	<h4>Category</h4>
+	<ul>
+	   
+		   <li>
+		   		<a href="/categories/objective-c">objective-c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/other">other</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/node-js">node.js</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/tips">tips</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/html5">html5</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/algorithms">algorithms</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/machine-learning">machine learning</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/c">c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby">ruby</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/swift">swift</a>
+		   </li>
+	   
+    </ul>
+	<h4>Archive</h4>
+	<ul>
+		
+			<li>
+				<a href="/2013/08/">2013/08</a>
+			</li>
+		
+			<li>
+				<a href="/2013/09/">2013/09</a>
+			</li>
+		
+			<li>
+				<a href="/2013/11/">2013/11</a>
+			</li>
+		
+			<li>
+				<a href="/2013/12/">2013/12</a>
+			</li>
+		
+			<li>
+				<a href="/2014/01/">2014/01</a>
+			</li>
+		
+			<li>
+				<a href="/2014/03/">2014/03</a>
+			</li>
+		
+			<li>
+				<a href="/2014/04/">2014/04</a>
+			</li>
+		
+			<li>
+				<a href="/2014/05/">2014/05</a>
+			</li>
+		
+			<li>
+				<a href="/2014/06/">2014/06</a>
+			</li>
+		
+	</ul>
+
+</div>
+
+        <div class="site">
+
+			<!-- title -->
+			<!-- Header -->
+<header>
+<h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
+	<hr />
+</header>
+
+			<div id="contents">
+				
+				<div id="main">
+					<h3><a href="">The Swift Programming Language ~ Trailing Closures</a></h3>
+					<span class="author">
+						<span class="date">2014-06-10 12:30:00 -0700</span>
+					</span>
+
+					<hr />
+					<div id="social-buttom">
+	<!-- Social Buttoms -->
+	<ul>
+		<li>
+			<!-- Pocket -->
+			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
+			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+		</li>		
+		<li>
+			<!-- Vertical Twitter -->
+			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		</li>				
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//swift/2014/06/10/swift-doc-closures2.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+		</li>				
+		<li style="margine-left: 10px;!important">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="The Swift Programming Language ~ Trailing Closures" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+	</ul>
+</div>
+
+		      		<hr class="clear-list"/>
+
+					<div class="post">
+						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。  </p>
+
+<p>今回は、Trailing Closure に関して。</p>
+
+<h3 id="trailing-closure">Trailing Closure</h3>
+
+<p>Trailing Closure は、Closure を関数の最後の引数として渡し、さらにその Closure が長くなるような場合に役に立ちます。Trailing Closure は、関数の () の書きます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">func</span> <span class="nf">someFunctionThatTakesAClosure</span><span class="p">(</span><span class="n">closure</span><span class="o">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="p">())</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="c1">// function body goes here</span>
+<span class="lineno"> 3</span> <span class="p">}</span>
+<span class="lineno"> 4</span>  
+<span class="lineno"> 5</span> <span class="c1">// here&#39;s how you call this function without using a trailing closure:</span>
+<span class="lineno"> 6</span>  
+<span class="lineno"> 7</span> <span class="n">someFunctionThatTakesAClosure</span><span class="p">({</span>
+<span class="lineno"> 8</span>     <span class="c1">// closure&#39;s body goes here</span>
+<span class="lineno"> 9</span>     <span class="p">})</span>
+<span class="lineno">10</span>  
+<span class="lineno">11</span> <span class="c1">// here&#39;s how you call this function with a trailing closure instead:</span>
+<span class="lineno">12</span>  
+<span class="lineno">13</span> <span class="n">someFunctionThatTakesAClosure</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">14</span>     <span class="c1">// trailing closure&#39;s body goes here</span>
+<span class="lineno">15</span> <span class="p">}</span></code></pre></div>
+
+<p>このコードは、Trailing Closure を使用したシンタックスと使用していないシンタックスを比較しています。最初に、Closure を受け取る関数があります。そして、Closure を関数呼び出し時に () の中に書く例と、() の後に書く Trailing Closure の例です。</p>
+
+<p><a href="http://blog.kazuya.co/swift/2014/06/10/swift-doc-closures.html">以前</a> の Sort 関数の場合にはこのように書きます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">reversed</span> <span class="o">=</span> <span class="n">sort</span><span class="p">(</span><span class="n">names</span><span class="p">)</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="o">&gt;</span> <span class="err">$</span><span class="mi">1</span> <span class="p">}</span></code></pre></div>
+
+<p>この例では、あまり役に立ちませんが、Closure が長くなった時にちょっと便利です。</p>
+
+<h4 id="1.-配列の-map-関数の-trailing-closure-の例">1. 配列の map 関数の Trailing Closure の例</h4>
+
+<p>配列の map 関数は、引数の Closure を配列の各要素に対して実行します。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">digitNames</span> <span class="o">=</span> <span class="p">[</span>
+<span class="lineno"> 2</span>     <span class="mi">0</span><span class="o">:</span> <span class="s">&quot;Zero&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="o">:</span> <span class="s">&quot;One&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="o">:</span> <span class="s">&quot;Two&quot;</span><span class="p">,</span>   <span class="mi">3</span><span class="o">:</span> <span class="s">&quot;Three&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="o">:</span> <span class="s">&quot;Four&quot;</span><span class="p">,</span>
+<span class="lineno"> 3</span>     <span class="mi">5</span><span class="o">:</span> <span class="s">&quot;Five&quot;</span><span class="p">,</span> <span class="mi">6</span><span class="o">:</span> <span class="s">&quot;Six&quot;</span><span class="p">,</span> <span class="mi">7</span><span class="o">:</span> <span class="s">&quot;Seven&quot;</span><span class="p">,</span> <span class="mi">8</span><span class="o">:</span> <span class="s">&quot;Eight&quot;</span><span class="p">,</span> <span class="mi">9</span><span class="o">:</span> <span class="s">&quot;Nine&quot;</span>
+<span class="lineno"> 4</span> <span class="p">]</span>
+<span class="lineno"> 5</span> <span class="n">let</span> <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">510</span><span class="p">]</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="n">let</span> <span class="n">strings</span> <span class="o">=</span> <span class="n">numbers</span><span class="p">.</span><span class="n">map</span> <span class="p">{</span>
+<span class="lineno"> 8</span>     <span class="p">(</span><span class="n">var</span> <span class="n">number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="k">in</span>
+<span class="lineno"> 9</span>     <span class="n">var</span> <span class="n">output</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+<span class="lineno">10</span>     <span class="k">while</span> <span class="n">number</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+<span class="lineno">11</span>         <span class="n">output</span> <span class="o">=</span> <span class="n">digitNames</span><span class="p">[</span><span class="n">number</span> <span class="o">%</span> <span class="mi">10</span><span class="p">]</span><span class="o">!</span> <span class="o">+</span> <span class="n">output</span>
+<span class="lineno">12</span>         <span class="n">number</span> <span class="o">/=</span> <span class="mi">10</span>
+<span class="lineno">13</span>     <span class="p">}</span>
+<span class="lineno">14</span>     <span class="k">return</span> <span class="n">output</span>
+<span class="lineno">15</span> <span class="p">}</span>
+<span class="lineno">16</span> <span class="c1">// strings is inferred to be of type String[]</span>
+<span class="lineno">17</span> <span class="c1">// its value is [&quot;OneSix&quot;, &quot;FiveEight&quot;, &quot;FiveOneZero&quot;]</span></code></pre></div>
+
+<p>もし、Closure が関数のただ 1 つの引数として与えられ、Trailing Closure を使用する場合には、通常、関数名の後につける () を省略することができます。この map 関数はまさにこの例です。map 関数の後、直接 closure が始まっています。</p>
+
+<p>また、ここで digitNames[number % 10]! と、Dictionary の要素を呼ぶ際に、! が付いています。これは、Dictionary の subscripts は、Optionals を返すためです。そして、forced unwrap しています。</p>
+
+<h4 id="2.-capturing-values">2. Capturing Values</h4>
+
+<p>Closure は、変数とコンスタントをその文脈においてキャプチャできます。たとえ元の値を定義した範囲が既に存在しなくとも、Closure の本体で、そのキャプチャした値を変更できます。</p>
+
+<p>一番イメージしやすいのは、ネストされた関数です。ネストされた関数は、ネストしている関数の引数、その本体で定義されている変数とコンスタントをキャプチャできます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">func</span> <span class="n">makeIncrementor</span><span class="p">(</span><span class="n">forIncrement</span> <span class="n">amount</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="n">var</span> <span class="n">runningTotal</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="lineno">3</span>     <span class="n">func</span> <span class="n">incrementor</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
+<span class="lineno">4</span>         <span class="n">runningTotal</span> <span class="o">+=</span> <span class="n">amount</span>
+<span class="lineno">5</span>         <span class="k">return</span> <span class="n">runningTotal</span>
+<span class="lineno">6</span>     <span class="p">}</span>
+<span class="lineno">7</span>     <span class="k">return</span> <span class="n">incrementor</span>
+<span class="lineno">8</span> <span class="p">}</span></code></pre></div>
+
+<p>この例では、makeIncrementor 関数が incrementor 関数をネストしています。そして、incrementor 関数は、makeIncrementor の引数である amount と、runningTotal をキャプチャし、runningTotal の値を変更しています。</p>
+
+<p>Swift は、キャプチャする際に、どのようにキャプチャするかを自動的に判定してくれます。この例において、amount は、incrementor 関数の中で変更されません。そのため、amount は、この amount の値のコピーを incrementor 関数 で保存しています。それに対して、runningTotal は、incrementor 関数の中で変更されています。そのため、もしこの runningTotal のコピーしても、変更が incrementor 関数が終了した際に、反映されません。そのため、この runningTotal は、参照として渡されます。私たちプログラマーは、これらのことを気にすることなく、ただキャプチャして使用して問題ありません。</p>
+
+<h4 id="3.-closure-は参照">3. Closure は参照</h4>
+
+<p>関数と Closure は、参照型です。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">incrementByTen</span> <span class="o">=</span> <span class="n">makeIncrementor</span><span class="p">(</span><span class="n">forIncrement</span><span class="o">:</span> <span class="mi">10</span><span class="p">)</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="n">incrementByTen</span><span class="p">()</span>
+<span class="lineno"> 4</span> <span class="c1">// returns a value of 10</span>
+<span class="lineno"> 5</span> <span class="n">incrementByTen</span><span class="p">()</span>
+<span class="lineno"> 6</span> <span class="c1">// returns a value of 20</span>
+<span class="lineno"> 7</span> <span class="n">incrementByTen</span><span class="p">()</span>
+<span class="lineno"> 8</span> <span class="c1">// returns a value of 30</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="n">let</span> <span class="n">incrementBySeven</span> <span class="o">=</span> <span class="n">makeIncrementor</span><span class="p">(</span><span class="n">forIncrement</span><span class="o">:</span> <span class="mi">7</span><span class="p">)</span>
+<span class="lineno">11</span> <span class="n">incrementBySeven</span><span class="p">()</span>
+<span class="lineno">12</span> <span class="c1">// returns a value of 7</span>
+<span class="lineno">13</span> <span class="n">incrementByTen</span><span class="p">()</span>
+<span class="lineno">14</span> <span class="c1">// returns a value of 40</span></code></pre></div>
+
+<p>この例では、incrementByTen と incrementBySeven はともにコンスタントです。しかし、両者とも runningTotal を変更することができています。これは、関数と Closure が、参照型だからです。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">alsoIncrementByTen</span> <span class="o">=</span> <span class="n">incrementByTen</span>
+<span class="lineno">2</span> <span class="n">alsoIncrementByTen</span><span class="p">()</span>
+<span class="lineno">3</span> <span class="c1">// returns a value of 50</span></code></pre></div>
+
+<p>また、Closure が参照ということは、違うコンスタントや変数に Closure を代入した際に、これらの変数やコンスタントは同じ Closure を指していることを意味します。上記の例では、alsoIncrementByTen コンスタントは、incrementByTen が指している Closure と同じ Closure を指しています。</p>
+
+					</div>
+
+				</div>
+
+				<div id="sub">
+				   <div class="side_box">
+   <h3>About</h3>
+      <p class="side_content">
+         <i>Kazuya Kobayashi</i><br />
+         - I'm a once law student trying to be computer geek.<br />
+         - ギークになりたい。<br />
+         <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a>
+      </p>
+</div>
+
+<hr />
+
+<h3>Elsewhere</h3>
+   <p class="side_content">
+      <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+      <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+      <a href="https://github.com/kzykbys">Github</a>
+   </p>
+
+<hr />
+
+<h3>Category</h3>
+   <p class="side_content">|
+      
+   	   <a href="/categories/objective-c">objective-c
+            (10)
+         </a> | 
+      
+   	   <a href="/categories/other">other
+            (6)
+         </a> | 
+      
+   	   <a href="/categories/node-js">node.js
+            (1)
+         </a> | 
+      
+   	   <a href="/categories/ruby-on-rails">ruby on rails
+            (18)
+         </a> | 
+      
+   	   <a href="/categories/tips">tips
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/html5">html5
+            (8)
+         </a> | 
+      
+   	   <a href="/categories/algorithms">algorithms
+            (2)
+         </a> | 
+      
+   	   <a href="/categories/machine-learning">machine learning
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/c">c
+            (14)
+         </a> | 
+      
+   	   <a href="/categories/ruby">ruby
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/swift">swift
+            (11)
+         </a> | 
+      
+   </p>
+
+<hr />
+
+<h3>Archive</h3>
+   <p class="side_content">|
+      
+   		<a href="/2013/08/">2013/08
+            (2)
+         </a> |          
+      
+   		<a href="/2013/09/">2013/09
+            (4)
+         </a> |          
+      
+   		<a href="/2013/11/">2013/11
+            (11)
+         </a> |          
+      
+   		<a href="/2013/12/">2013/12
+            (21)
+         </a> |          
+      
+   		<a href="/2014/01/">2014/01
+            (5)
+         </a> |          
+      
+   		<a href="/2014/03/">2014/03
+            (6)
+         </a> |          
+      
+   		<a href="/2014/04/">2014/04
+            (7)
+         </a> |          
+      
+   		<a href="/2014/05/">2014/05
+            (11)
+         </a> |          
+      
+   		<a href="/2014/06/">2014/06
+            (19)
+         </a> |          
+      
+   </p>
+
+<hr />
+
+<h3>Work</h3>			   
+   <p class="side_content">
+      Coming soon... maybe.
+   </p>
+
+<hr />
+				</div>
+
+			</div>
+
+
+		</div>
+
+				<div class="footer">
+		   <div class="footer_inner">
+			   <div class="contact">
+				   <h4>About</h4>
+				   <p>Kazuya Kobayashi<br />
+				   - I'm a once law student trying to be computer geek.<br />
+				   - ギークになりたい。<br />
+				   <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a></p>
+				   <h4>Elsewhere</h4>
+				   <p>
+					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+					   <a href="https://github.com/kzykbys">Github</a></p>
+				   <h4>Category</h4>
+				   <p>|
+					   
+						   <a href="/categories/objective-c">objective-c</a> | 
+					   
+						   <a href="/categories/other">other</a> | 
+					   
+						   <a href="/categories/node-js">node.js</a> | 
+					   
+						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
+					   
+						   <a href="/categories/tips">tips</a> | 
+					   
+						   <a href="/categories/html5">html5</a> | 
+					   
+						   <a href="/categories/algorithms">algorithms</a> | 
+					   
+						   <a href="/categories/machine-learning">machine learning</a> | 
+					   
+						   <a href="/categories/c">c</a> | 
+					   
+						   <a href="/categories/ruby">ruby</a> | 
+					   
+						   <a href="/categories/swift">swift</a> | 
+					   
+				   </p>
+				   <h4>Archive</h4>
+					   <p>|
+					   
+	    					<a href="/2013/08/">2013/08
+	    					</a> | 
+	    			   
+	    					<a href="/2013/09/">2013/09
+	    					</a> | 
+	    			   
+	    					<a href="/2013/11/">2013/11
+	    					</a> | 
+	    			   
+	    					<a href="/2013/12/">2013/12
+	    					</a> | 
+	    			   
+	    					<a href="/2014/01/">2014/01
+	    					</a> | 
+	    			   
+	    					<a href="/2014/03/">2014/03
+	    					</a> | 
+	    			   
+	    					<a href="/2014/04/">2014/04
+	    					</a> | 
+	    			   
+	    					<a href="/2014/05/">2014/05
+	    					</a> | 
+	    			   
+	    					<a href="/2014/06/">2014/06
+	    					</a> | 
+	    			   
+    			   </p>
+				   <h4>Work</h4>			   
+				   <p>Coming soon... maybe.</p>
+			   </div>
+		   </div>
+	   	</div>
+
+	   		  
+	  	<!-- Sdir (slide menu for small screen) -->
+
+<script>
+	
+  	$(document).ready(function() {
+		$('#mobile-menu-button').sidr();	  
+  	});
+
+  	$('#mobile-menu-button').click(function(e){
+  	});
+
+  	$('html').click(function(e){
+  		$.sidr('close', 'sidr');
+  	});
+
+</script>
+	  	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28952627-6', 'kazuya.co');
+  ga('send', 'pageview');
+
+</script>
+
+	</body>
+</html>
