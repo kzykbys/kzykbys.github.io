@@ -1,0 +1,589 @@
+	<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>The Swift Programming Language ~ Initialization of Class</title>        
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />        
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+		<link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/jquery.sidr.dark.css">
+		<link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+
+        <!-- jQuery -->
+<script src="/javascript/jquery-1.11.1.min.js"></script>
+<!-- slide menu -->
+<script src="/javascript/jquery.sidr.min.js"></script>
+<!-- For FB like buttom -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=571082556301479&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+	</head>
+	
+	<body>
+    
+        <div id="mobile-sticky-menu">
+	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
+	<!-- <img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" /> -->
+</div>
+
+<div id="sidr">
+	<!-- Your content -->
+	<!-- <h4>Share</h4> -->
+
+	<h4>Category</h4>
+	<ul>
+	   
+		   <li>
+		   		<a href="/categories/objective-c">objective-c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/other">other</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/node-js">node.js</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/tips">tips</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/html5">html5</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/algorithms">algorithms</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/machine-learning">machine learning</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/c">c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby">ruby</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/swift">swift</a>
+		   </li>
+	   
+    </ul>
+	<h4>Archive</h4>
+	<ul>
+		
+			<li>
+				<a href="/2013/08/">2013/08</a>
+			</li>
+		
+			<li>
+				<a href="/2013/09/">2013/09</a>
+			</li>
+		
+			<li>
+				<a href="/2013/11/">2013/11</a>
+			</li>
+		
+			<li>
+				<a href="/2013/12/">2013/12</a>
+			</li>
+		
+			<li>
+				<a href="/2014/01/">2014/01</a>
+			</li>
+		
+			<li>
+				<a href="/2014/03/">2014/03</a>
+			</li>
+		
+			<li>
+				<a href="/2014/04/">2014/04</a>
+			</li>
+		
+			<li>
+				<a href="/2014/05/">2014/05</a>
+			</li>
+		
+			<li>
+				<a href="/2014/06/">2014/06</a>
+			</li>
+		
+	</ul>
+
+</div>
+
+        <div class="site">
+
+			<!-- title -->
+			<!-- Header -->
+<header>
+<h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
+	<hr />
+</header>
+
+			<div id="contents">
+				
+				<div id="main">
+					<h3><a href="">The Swift Programming Language ~ Initialization of Class</a></h3>
+					<span class="author">
+						<span class="date">2014-06-20 23:00:00 -0700</span>
+					</span>
+
+					<hr />
+					<div id="social-buttom">
+	<!-- Social Buttoms -->
+	<ul>
+		<li>
+			<!-- Pocket -->
+			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
+			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+		</li>		
+		<li>
+			<!-- Vertical Twitter -->
+			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		</li>				
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//swift/2014/06/20/swift-doc-initialization2.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+		</li>				
+		<li style="margine-left: 10px;!important">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="The Swift Programming Language ~ Initialization of Class" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+	</ul>
+</div>
+
+		      		<hr class="clear-list"/>
+
+					<div class="post">
+						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。  </p>
+
+<p>今回は、<a href="http://blog.kazuya.co/swift/2014/06/20/swift-doc-initialization.html">前回</a> の続きのクラスの Initialization に関して。</p>
+
+<h3 id="initialization">Initialization</h3>
+
+<p>継承することができるクラスと、継承することができない構造体・Enumeration では、初期化を定義する際に違いでてきます。前回までに、初期化の一般的なことと、構造体・Enumeration の初期化をみたので、この記事では、クラスの初期化に関してみていきます。最後に、プロパティをクロージャや関数を使用して初期化する方法も軽く触れます。</p>
+
+<h4 id="5.-クラスの継承と-initializer">5. クラスの継承と Initializer</h4>
+
+<p>次にクラスの継承と Initializer をみていきます。クラスのすべての Stored プロパティは（スーパークラスのプロパティも含めて）、初期化時に初期値が与えられなければなりません。クラスの Initializer は Designed Initializer と Convenience initializers に分けることができます。</p>
+
+<p>Designated initializers はメインの Initializer となります。この Initializer は、すべてのプロパティの初期化をし、必要であればスーパークラスの Initializer も呼ぶ必要があります。全てのクラスは最低でも 1 つの Designated initializers を持つ必要があります。</p>
+
+<p>Convenience initializers は いくつかのデフォルト値と一緒に Designated initializers を呼びます。</p>
+
+<p>これらの関係を単純化するため、以下のルールを覚えておくと分かりやすいです。</p>
+
+<ul>
+<li>・Designated initializers は、スーパークラスの Designated initializers を呼ぶ</li>
+<li>・Convenience initializers は、同じクラス内にある他の Initializer を呼ぶ</li>
+<li>・Convenience initializers は、最終的に Designated initializers を呼ぶ</li>
+</ul>
+
+<p>つまり、</p>
+
+<ul>
+<li>・Designated initializers は delegate up (スーパークラスのinit)</li>
+<li>・Convenience initializers は delagate across (同じクラスのinit)</li>
+</ul>
+
+<p>と覚えておくとよいです。</p>
+
+<p>このルールの関係性を維持し、それぞれの Initializer が仕事をすれば複雑なクラス間の初期化も対応することができます。下の画像を見てもらうと分かりますが、どの Initializer が呼ばれても漏れなく初回化できる流れが掴めると思います。</p>
+
+<p><img src="/images/2014/06/3.png" alt=""></p>
+
+<h4 id="6.-クラスの二段階初期化">6. クラスの二段階初期化</h4>
+
+<p>Swift におけるクラスの初期化は大きく二段階に分けて行われます。最初のフェーズでは、全ての Stored プロパティ に初期値が設定されます。そして、次のフェーズでは、クラスはこれらの Stored プロパティを独自に設定しなおす機会が与えられます。</p>
+
+<p>フェーズ 1</p>
+
+<ol>
+<li>1. designated or convenience initializer が呼ばれる。</li>
+<li>2. 新しいインスタンスへのメモリが割り当てられる。まだ、初期化はされていない。</li>
+<li>3. designated initializer が全ての Stored プロパティ に値が設定されるか確認。この時に、Stored プロパティのためのメモリが初期化される。</li>
+<li>4. この designated initializer は、スーパークラスの initializer へ、その Stored プロパティに対して、初期化するために処理を渡す。</li>
+<li>5. これが必要なくなるまで最後まで上に行く。</li>
+<li>6. 最後までこの流れが続き、最後のクラスの全ての Stored プロパティが値を持ったら、このインスタンスは完全に初期化されフェーズ 1 の終了。</li>
+</ol>
+
+<p>フェーズ 2</p>
+
+<ol>
+<li>1. フェーズ 1 での最後のクラスから処理が戻ってきて、各 designated initializer は、独自の処理を実行できる。Initializer は、<code>self</code> を使うことができ、そのプロパティを修正でき、そのクラスのインスタンスメソッドを呼ぶことができる。</li>
+<li>2. 最後に、convenience initializer が独自の処理を実行できる。（<code>self</code> を使用可能）<br></li>
+</ol>
+
+<p>これが、二段階初期化の流れです。</p>
+
+<h4 id="7.-初期化処理の継承">7. 初期化処理の継承</h4>
+
+<p>Swift は、サブクラスはデフォルトでスーパークラスの Initializer を継承しません。これは、単純なスーパークラスの Initializer が 複雑な処理を必要とするサブクラスから継承されて、そのサブクラスが新しいインスタンスを作成する際、まだ初期化されていな値を使用してしまうといったエラーを防ぐためです。</p>
+
+<p>サブクラスにおいて、スーパークラスを同じ Initializer を使用したい場合には、オーバーライドします。もし、オーバーライドする Initializer が、designed initializer であれば、この実装をオーバーライドして、スーパークラスの Initializer をこのオーバーライドされたものから呼ぶことができます。convenience initializer をオーバーライドする際には、必ずそのサブクラスから designated initializer を呼ぶ必要があります。オーバーライドする時に、<code>override</code> キーワードを使用する必要はありません。</p>
+
+<p>このように、デフォルトでは Initializer は継承されませんが、ある条件を満たすと継承されます。実質は、多く場合自動的に継承されることが多いようです。</p>
+
+<p>Rule 1</p>
+
+<p>もしサブクラスが designated initializer を持たない場合、このサブクラスは自動的に全てのスーパークラスの designated initializer を継承します。</p>
+
+<p>Rule 2</p>
+
+<p>もしサブクラスがスーパークラスの全ての designated initizliser を実装した場合 (Rule 1 の場合の継承も含む)、スーパークラスの全ての convenience initializer は継承されます。</p>
+
+<h4 id="8.-designated-and-convenience-initializers-のシンタックス">8. Designated and Convenience Initializers のシンタックス</h4>
+
+<p>Designated initializer Convenience Initializer は、init の前に、<code>convenience</code> キーワードを使用します。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">Food</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span>
+<span class="lineno"> 3</span>     <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 4</span>         <span class="n">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<span class="lineno"> 5</span>     <span class="p">}</span>
+<span class="lineno"> 6</span>     <span class="n">convenience</span> <span class="n">init</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno"> 7</span>         <span class="n">self</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;[Unnamed]&quot;</span><span class="p">)</span>
+<span class="lineno"> 8</span>     <span class="p">}</span>
+<span class="lineno"> 9</span> <span class="p">}</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="n">let</span> <span class="n">namedMeat</span> <span class="o">=</span> <span class="n">Food</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;Bacon&quot;</span><span class="p">)</span>
+<span class="lineno">12</span> <span class="c1">// namedMeat&#39;s name is &quot;Bacon&quot;</span>
+<span class="lineno">13</span> <span class="n">let</span> <span class="n">mysteryMeat</span> <span class="o">=</span> <span class="n">Food</span><span class="p">()</span>
+<span class="lineno">14</span> <span class="c1">// mysteryMeat&#39;s name is &quot;[Unnamed]&quot;</span></code></pre></div>
+
+<p>この Food クラスは、1 つの Designated initializer と、1 つの Convenience Initializer を持ちます。わかりやすいと思います。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">RecipeIngredient</span><span class="o">:</span> <span class="n">Food</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">quantity</span><span class="o">:</span> <span class="n">Int</span>
+<span class="lineno"> 3</span>     <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">quantity</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 4</span>         <span class="n">self</span><span class="p">.</span><span class="n">quantity</span> <span class="o">=</span> <span class="n">quantity</span>
+<span class="lineno"> 5</span>         <span class="n">super</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">name</span><span class="p">)</span>
+<span class="lineno"> 6</span>     <span class="p">}</span>
+<span class="lineno"> 7</span>     <span class="n">convenience</span> <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 8</span>         <span class="n">self</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">name</span><span class="p">,</span> <span class="n">quantity</span><span class="o">:</span> <span class="mi">1</span><span class="p">)</span>
+<span class="lineno"> 9</span>     <span class="p">}</span>
+<span class="lineno">10</span> <span class="p">}</span></code></pre></div>
+
+<p>この RecipeIngredient は Food クラスを継承し、1 つの Designated initializer と、1 つの Convenience Initializer を持っています。さらに、RecipeIngredient は Food の Convenience Initializer である、init() を継承しています。これは、7 でみた Rule 2 によるものです。RecipeIngredient は、Convenience Initializer として、init(name: String) を実装しています。これは、Food クラスの Designated initializer と同じシグニチャです。これにより、Food クラスの Designated initializer の全ての実装していることになるので、Food の Convenience Initializer を継承します。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">oneMysteryItem</span> <span class="o">=</span> <span class="n">RecipeIngredient</span><span class="p">()</span>
+<span class="lineno">2</span> <span class="n">let</span> <span class="n">oneBacon</span> <span class="o">=</span> <span class="n">RecipeIngredient</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;Bacon&quot;</span><span class="p">)</span>
+<span class="lineno">3</span> <span class="n">let</span> <span class="n">sixEggs</span> <span class="o">=</span> <span class="n">RecipeIngredient</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;Eggs&quot;</span><span class="p">,</span> <span class="n">quantity</span><span class="o">:</span> <span class="mi">6</span><span class="p">)</span></code></pre></div>
+
+<p>このように 3 つの Initializer を使用できます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">class</span> <span class="n">ShoppingListItem</span><span class="o">:</span> <span class="n">RecipeIngredient</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="n">var</span> <span class="n">purchased</span> <span class="o">=</span> <span class="nb">false</span>
+<span class="lineno">3</span>     <span class="n">var</span> <span class="n">description</span><span class="o">:</span> <span class="n">String</span> <span class="p">{</span>
+<span class="lineno">4</span>     <span class="n">var</span> <span class="n">output</span> <span class="o">=</span> <span class="s">&quot;\(quantity) x \(name.lowercaseString)&quot;</span>
+<span class="lineno">5</span>         <span class="n">output</span> <span class="o">+=</span> <span class="n">purchased</span> <span class="o">?</span> <span class="s">&quot; ✔&quot;</span> <span class="o">:</span> <span class="s">&quot; ✘&quot;</span>
+<span class="lineno">6</span>         <span class="k">return</span> <span class="n">output</span>
+<span class="lineno">7</span>     <span class="p">}</span>
+<span class="lineno">8</span> <span class="p">}</span></code></pre></div>
+
+<p>最後に、ShoppingListItem クラス。このクラスは、1 つの新しいプロパティを持ちます。これは初期化され際には、常に false です。そのため、このクラスに対して、特に Initializer は必要がありません。その結果、Rule 1 により、全ての Initializer を継承します。</p>
+
+<h4 id="9.-クロージャー・関数でのデフォルトプロパティ値の設定">9. クロージャー・関数でのデフォルトプロパティ値の設定</h4>
+
+<p>Stored プロパティがデフォルト値を持ち、その値を決める際にちょっとした処理が必要な場合には、クロージャーかグローバルな関数を使用できます。このインスタンスが初期化される際に、これらの処理が呼ばれます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">class</span> <span class="n">SomeClass</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="n">let</span> <span class="n">someProperty</span><span class="o">:</span> <span class="n">SomeType</span> <span class="o">=</span> <span class="p">{</span>
+<span class="lineno">3</span>         <span class="c1">// create a default value for someProperty inside this closure</span>
+<span class="lineno">4</span>         <span class="c1">// someValue must be of the same type as SomeType</span>
+<span class="lineno">5</span>         <span class="k">return</span> <span class="n">someValue</span>
+<span class="lineno">6</span>         <span class="p">}()</span>
+<span class="lineno">7</span> <span class="p">}</span></code></pre></div>
+
+<p>これがその基本形です。注意点として、最後に <code>()</code> があります。これのより、このクロージャーをすぐに呼び出すということを明示しています。これがないと、このプロパティにクロージャーを設定するという意味になってしまいます。また、このクロージャーの中では、他のインスンスプロパティにまだアクセスできません。まだ初期化が終わっていないからです。<code>self</code> も使えません。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">Checkerboard</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">let</span> <span class="n">boardColors</span><span class="o">:</span> <span class="n">Bool</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+<span class="lineno"> 3</span>         <span class="n">var</span> <span class="n">temporaryBoard</span>  <span class="o">=</span> <span class="n">Bool</span><span class="p">[]()</span>
+<span class="lineno"> 4</span>         <span class="n">var</span> <span class="n">isBlack</span> <span class="o">=</span> <span class="nb">false</span>
+<span class="lineno"> 5</span>         <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">.</span><span class="mf">.10</span> <span class="p">{</span>
+<span class="lineno"> 6</span>             <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">.</span><span class="mf">.10</span> <span class="p">{</span>
+<span class="lineno"> 7</span>                 <span class="n">temporaryBoard</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">isBlack</span><span class="p">)</span>
+<span class="lineno"> 8</span>                 <span class="n">isBlack</span> <span class="o">=</span> <span class="o">!</span><span class="n">isBlack</span>
+<span class="lineno"> 9</span>             <span class="p">}</span>
+<span class="lineno">10</span>             <span class="n">isBlack</span> <span class="o">=</span> <span class="o">!</span><span class="n">isBlack</span>
+<span class="lineno">11</span>         <span class="p">}</span>
+<span class="lineno">12</span>         <span class="k">return</span> <span class="n">temporaryBoard</span>
+<span class="lineno">13</span>         <span class="p">}()</span>
+<span class="lineno">14</span>     <span class="n">func</span> <span class="n">squareIsBlackAtRow</span><span class="p">(</span><span class="n">row</span><span class="o">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">column</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+<span class="lineno">15</span>         <span class="k">return</span> <span class="n">boardColors</span><span class="p">[(</span><span class="n">row</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="n">column</span><span class="p">]</span>
+<span class="lineno">16</span>     <span class="p">}</span>
+<span class="lineno">17</span> <span class="p">}</span>
+<span class="lineno">18</span> 
+<span class="lineno">19</span> <span class="n">let</span> <span class="n">board</span> <span class="o">=</span> <span class="n">Checkerboard</span><span class="p">()</span>
+<span class="lineno">20</span> <span class="n">println</span><span class="p">(</span><span class="n">board</span><span class="p">.</span><span class="n">squareIsBlackAtRow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">:</span> <span class="mi">1</span><span class="p">))</span>
+<span class="lineno">21</span> <span class="c1">// prints &quot;true&quot;</span>
+<span class="lineno">22</span> <span class="n">println</span><span class="p">(</span><span class="n">board</span><span class="p">.</span><span class="n">squareIsBlackAtRow</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">column</span><span class="o">:</span> <span class="mi">9</span><span class="p">))</span>
+<span class="lineno">23</span> <span class="c1">// prints &quot;false&quot;</span></code></pre></div>
+
+<p>この例では、<code>boardColors</code> を設定するためにクロージャーを使用しています。チェスのボードの白黒のマス目を設定するためです。</p>
+
+					</div>
+
+				</div>
+
+				<div id="sub">
+				   <div class="side_box">
+   <h3>About</h3>
+      <p class="side_content">
+         <i>Kazuya Kobayashi</i><br />
+         - I'm a once law student trying to be computer geek.<br />
+         - ギークになりたい。<br />
+         <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a>
+      </p>
+</div>
+
+<hr />
+
+<h3>Elsewhere</h3>
+   <p class="side_content">
+      <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+      <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+      <a href="https://github.com/kzykbys">Github</a>
+   </p>
+
+<hr />
+
+<h3>Category</h3>
+   <p class="side_content">|
+      
+   	   <a href="/categories/objective-c">objective-c
+            (10)
+         </a> | 
+      
+   	   <a href="/categories/other">other
+            (6)
+         </a> | 
+      
+   	   <a href="/categories/node-js">node.js
+            (1)
+         </a> | 
+      
+   	   <a href="/categories/ruby-on-rails">ruby on rails
+            (18)
+         </a> | 
+      
+   	   <a href="/categories/tips">tips
+            (6)
+         </a> | 
+      
+   	   <a href="/categories/html5">html5
+            (8)
+         </a> | 
+      
+   	   <a href="/categories/algorithms">algorithms
+            (2)
+         </a> | 
+      
+   	   <a href="/categories/machine-learning">machine learning
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/c">c
+            (14)
+         </a> | 
+      
+   	   <a href="/categories/ruby">ruby
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/swift">swift
+            (21)
+         </a> | 
+      
+   </p>
+
+<hr />
+
+<h3>Archive</h3>
+   <p class="side_content">|
+      
+   		<a href="/2013/08/">2013/08
+            (2)
+         </a> |          
+      
+   		<a href="/2013/09/">2013/09
+            (4)
+         </a> |          
+      
+   		<a href="/2013/11/">2013/11
+            (11)
+         </a> |          
+      
+   		<a href="/2013/12/">2013/12
+            (21)
+         </a> |          
+      
+   		<a href="/2014/01/">2014/01
+            (5)
+         </a> |          
+      
+   		<a href="/2014/03/">2014/03
+            (6)
+         </a> |          
+      
+   		<a href="/2014/04/">2014/04
+            (7)
+         </a> |          
+      
+   		<a href="/2014/05/">2014/05
+            (11)
+         </a> |          
+      
+   		<a href="/2014/06/">2014/06
+            (29)
+         </a> |          
+      
+   </p>
+
+<hr />
+
+<h3>Work</h3>			   
+   <p class="side_content">
+      Coming soon... maybe.
+   </p>
+
+<hr />
+				</div>
+
+			</div>
+
+
+		</div>
+
+				<div class="footer">
+		   <div class="footer_inner">
+			   <div class="contact">
+				   <h4>About</h4>
+				   <p>Kazuya Kobayashi<br />
+				   - I'm a once law student trying to be computer geek.<br />
+				   - ギークになりたい。<br />
+				   <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a></p>
+				   <h4>Elsewhere</h4>
+				   <p>
+					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+					   <a href="https://github.com/kzykbys">Github</a></p>
+				   <h4>Category</h4>
+				   <p>|
+					   
+						   <a href="/categories/objective-c">objective-c</a> | 
+					   
+						   <a href="/categories/other">other</a> | 
+					   
+						   <a href="/categories/node-js">node.js</a> | 
+					   
+						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
+					   
+						   <a href="/categories/tips">tips</a> | 
+					   
+						   <a href="/categories/html5">html5</a> | 
+					   
+						   <a href="/categories/algorithms">algorithms</a> | 
+					   
+						   <a href="/categories/machine-learning">machine learning</a> | 
+					   
+						   <a href="/categories/c">c</a> | 
+					   
+						   <a href="/categories/ruby">ruby</a> | 
+					   
+						   <a href="/categories/swift">swift</a> | 
+					   
+				   </p>
+				   <h4>Archive</h4>
+					   <p>|
+					   
+	    					<a href="/2013/08/">2013/08
+	    					</a> | 
+	    			   
+	    					<a href="/2013/09/">2013/09
+	    					</a> | 
+	    			   
+	    					<a href="/2013/11/">2013/11
+	    					</a> | 
+	    			   
+	    					<a href="/2013/12/">2013/12
+	    					</a> | 
+	    			   
+	    					<a href="/2014/01/">2014/01
+	    					</a> | 
+	    			   
+	    					<a href="/2014/03/">2014/03
+	    					</a> | 
+	    			   
+	    					<a href="/2014/04/">2014/04
+	    					</a> | 
+	    			   
+	    					<a href="/2014/05/">2014/05
+	    					</a> | 
+	    			   
+	    					<a href="/2014/06/">2014/06
+	    					</a> | 
+	    			   
+    			   </p>
+				   <h4>Work</h4>			   
+				   <p>Coming soon... maybe.</p>
+			   </div>
+		   </div>
+	   	</div>
+
+	   		  
+	  	<!-- Sdir (slide menu for small screen) -->
+
+<script>
+	
+  	$(document).ready(function() {
+		$('#mobile-menu-button').sidr();	  
+  	});
+
+  	$('#mobile-menu-button').click(function(e){
+  	});
+
+  	$('html').click(function(e){
+  		$.sidr('close', 'sidr');
+  	});
+
+</script>
+	  	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28952627-6', 'kazuya.co');
+  ga('send', 'pageview');
+
+</script>
+
+	</body>
+</html>
