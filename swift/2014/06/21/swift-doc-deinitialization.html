@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Ruby on Rails チュートリアル 3 章 | テスト</title>        
+        <title>The Swift Programming Language ~ Deinitialization</title>        
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />        
         <meta name="HandheldFriendly" content="true" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" />
@@ -147,9 +147,9 @@
 			<div id="contents">
 				
 				<div id="main">
-					<h3><a href="">Ruby on Rails チュートリアル 3 章 | テスト</a></h3>
+					<h3><a href="">The Swift Programming Language ~ Deinitialization</a></h3>
 					<span class="author">
-						<span class="date">2013-11-15 20:15:00 -0800</span>
+						<span class="date">2014-06-21 16:00:00 -0700</span>
 					</span>
 
 					<hr />
@@ -168,11 +168,11 @@
 		</li>				
 		<li>
 			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//ruby%20on%20rails/2013/11/15/ruby-on-rails-3.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			<div class="fb-like" data-href="http://blog.kazuya.co//swift/2014/06/21/swift-doc-deinitialization.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
 		</li>				
 		<li style="margine-left: 10px;!important">
 			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Ruby on Rails チュートリアル 3 章 | テスト" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="The Swift Programming Language ~ Deinitialization" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
 		</li>		
 	</ul>
 </div>
@@ -180,97 +180,25 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>急遽、勉強しなくちゃいけなくなった Ruby on Rails の個人的なまとめ。今回はテストと周り。
-<a href="http://railstutorial.jp/chapters/static-pages?version=4.0#top">http://railstutorial.jp/chapters/static-pages?version=4.0#top</a></p>
+						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。  </p>
 
-<h3 id="準備">準備</h3>
+<p>今回は、Deinitialization に関して。</p>
 
-<p>プロジェクト作成時に、</p>
+<h3 id="deinitialization">Deinitialization</h3>
 
-<blockquote>
-<blockquote>
-<p>$ rails new sample_app --skip-test-unit</p>
-</blockquote>
-</blockquote>
+<p>Deinitializer は、クラスのインスタンスが解放される際に呼ばれます。定義するには、Initializer のように <code>deinit</code> キーワードを使用します。クラスのみ Deinitializer を必要とします。</p>
 
-<p>この --skip-test-unit オプションは 通常作成される test ディレクトリを作成しなくするためのもの。Ruby on Rails チュートリアルでは RSpec というフレームワークを使ってテストしていくため。RSpec というのがよく分かっていないが、英語ぽくテストを記述することができるらしい。例えば、</p>
+<h4 id="1.-deinitialization">1. Deinitialization</h4>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># ダブルクォートの中は無視される</span>
-<span class="lineno">2</span> <span class="n">it</span> <span class="s2">&quot;should have the content &#39;Sample App&#39;&quot;</span> <span class="k">do</span>
-<span class="lineno">3</span>  <span class="n">visit</span> <span class="s1">&#39;/static_pages/home&#39;</span>
-<span class="lineno">4</span>  <span class="n">expect</span><span class="p">(</span><span class="n">page</span><span class="p">)</span><span class="o">.</span><span class="n">to</span> <span class="n">have_content</span><span class="p">(</span><span class="s1">&#39;Sample App&#39;</span><span class="p">)</span>
-<span class="lineno">5</span> <span class="k">end</span></code></pre></div>
+<p>Swift は、メモリ管理を ARC により自ら行ってくれるので、基本的に独自に Deinitializer を作成する必要はありません。しかし、ファイルを開いたりと独自のリソースを使用している場合には、必要になることがあります。</p>
 
-<p>まずは、通常の Test::Unitではなく、上記の RSpec を使うために、</p>
+<p>Deinitializer は、各クラスにつき 1 つだけ定義できます。Deinitializer は引数を取らず、かっこを省いて書かれます。</p>
 
-<blockquote>
-<blockquote>
-<p>$ rails generate rspec:install</p>
-</blockquote>
-</blockquote>
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">deinit</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="c1">// perform the deinitialization</span>
+<span class="lineno">3</span> <span class="p">}</span></code></pre></div>
 
-<p>を実行する</p>
-
-<p>また、コントローラー作成時に</p>
-
-<blockquote>
-<blockquote>
-<p>$ rails generate controller StaticPages home help --no-test-framework</p>
-</blockquote>
-</blockquote>
-
-<p>--no-test-framework オプションで、RSpecのテストが自動生成されないようにする。</p>
-
-<p>そして、実際にテストを書くために</p>
-
-<blockquote>
-<blockquote>
-<p>$ rails generate integration_test static_pages</p>
-</blockquote>
-</blockquote>
-
-<p>により、spec/requestsディレクトリにstatic_pages_spec.rbが生成。このファイルに自分の上記のようなテストを記述していく。</p>
-
-<h3 id="実行">実行</h3>
-
-<p>今回の例だと、</p>
-
-<blockquote>
-<blockquote>
-<p>$bundle exec respec speck/requests/static_pages.rb</p>
-</blockquote>
-</blockquote>
-
-<p>で実行。 すぐにテストに通過したか確認できる。基本、赤文字は失敗、緑はOK。Test-Driven Development: TDDでは、RED/GREEN/REFACTORというサイクルを回していく。まずテストを書き、まだテストに通過できない（赤）コードを書き直してバグ等潰していく（緑）。そして、開発が進むにつれ汚くなっていくコードをREFACTORしていく。</p>
-
-<p>ちなみに、自分の開発環境では、テストを実行しようするとすると、</p>
-
-<blockquote>
-<blockquote>
-<p>Reason: Incompatible library version: nokogiri.bundle requires version 11.0.0 or later</p>
-</blockquote>
-</blockquote>
-
-<p>というエラーが発生した。そこで、</p>
-
-<blockquote>
-<blockquote>
-<p>$ brew update<br />
-$ brew uninstall libxml2<br />
-$ brew install libxml2 --with-xml2-config<br />
-$ brew link --force libxml2<br />
-$ brew install libxslt<br />
-$ brew link --force libxslt<br />
-$ bundle config build.nokogiri -- --with-xml2-dir=/usr --with-xslt-dir=/opt/local --with-iconv-dir=/opt/local<br />
-$ bundle install<br /></p>
-</blockquote>
-</blockquote>
-
-<p>を実行すると解決。</p>
-
-<h3 id="参考">参考</h3>
-
-<p><a href="https://gist.github.com/vparihar01/5856524">https://gist.github.com/vparihar01/5856524</a></p>
+<p>Deinitializer は自動的に呼ばれ、私たちから呼ぶことはできません。スーパークラスの Deinitializer は継承されます。Deinitializer は、全てのプロパティにアクセスすることができます。</p>
 
 					</div>
 
