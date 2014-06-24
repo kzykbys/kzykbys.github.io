@@ -1,0 +1,616 @@
+	<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>The Swift Programming Language ~ Automatic Reference Counting [Strong Reference Cycles]</title>        
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />        
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+		<link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/jquery.sidr.dark.css">
+		<link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+
+        <!-- jQuery -->
+<script src="/javascript/jquery-1.11.1.min.js"></script>
+<!-- slide menu -->
+<script src="/javascript/jquery.sidr.min.js"></script>
+<!-- For FB like buttom -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=571082556301479&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+	</head>
+	
+	<body>
+    
+        <div id="mobile-sticky-menu">
+	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
+	<!-- <img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" /> -->
+</div>
+
+<div id="sidr">
+	<!-- Your content -->
+	<!-- <h4>Share</h4> -->
+
+	<h4>Category</h4>
+	<ul>
+	   
+		   <li>
+		   		<a href="/categories/objective-c">objective-c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/other">other</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/node-js">node.js</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/tips">tips</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/html5">html5</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/algorithms">algorithms</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/machine-learning">machine learning</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/c">c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby">ruby</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/swift">swift</a>
+		   </li>
+	   
+    </ul>
+	<h4>Archive</h4>
+	<ul>
+		
+			<li>
+				<a href="/2013/08/">2013/08</a>
+			</li>
+		
+			<li>
+				<a href="/2013/09/">2013/09</a>
+			</li>
+		
+			<li>
+				<a href="/2013/11/">2013/11</a>
+			</li>
+		
+			<li>
+				<a href="/2013/12/">2013/12</a>
+			</li>
+		
+			<li>
+				<a href="/2014/01/">2014/01</a>
+			</li>
+		
+			<li>
+				<a href="/2014/03/">2014/03</a>
+			</li>
+		
+			<li>
+				<a href="/2014/04/">2014/04</a>
+			</li>
+		
+			<li>
+				<a href="/2014/05/">2014/05</a>
+			</li>
+		
+			<li>
+				<a href="/2014/06/">2014/06</a>
+			</li>
+		
+	</ul>
+
+</div>
+
+        <div class="site">
+
+			<!-- title -->
+			<!-- Header -->
+<header>
+<h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
+	<hr />
+</header>
+
+			<div id="contents">
+				
+				<div id="main">
+					<h3><a href="">The Swift Programming Language ~ Automatic Reference Counting [Strong Reference Cycles]</a></h3>
+					<span class="author">
+						<span class="date">2014-06-23 23:00:00 -0700</span>
+					</span>
+
+					<hr />
+					<div id="social-buttom">
+	<!-- Social Buttoms -->
+	<ul>
+		<li>
+			<!-- Pocket -->
+			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
+			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+		</li>		
+		<li>
+			<!-- Vertical Twitter -->
+			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		</li>				
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//swift/2014/06/23/swift-doc-arc2.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+		</li>				
+		<li style="margine-left: 10px;!important">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="The Swift Programming Language ~ Automatic Reference Counting [Strong Reference Cycles]" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+	</ul>
+</div>
+
+		      		<hr class="clear-list"/>
+
+					<div class="post">
+						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。  </p>
+
+<p>今回は、Automatic Reference Counting の続きに関して。</p>
+
+<h3 id="automatic-reference-counting">Automatic Reference Counting</h3>
+
+<p><a href="http://blog.kazuya.co/swift/2014/06/23/swift-doc-arc.html">前回</a> までで、ARC の基本とその問題点に関してみてきました。この記事では、プログラマーが気を配らないといけない箇所をみていきます。</p>
+
+<h4 id="3.-strong-reference-cycles-の解消---weak-参照">3. Strong Reference Cycles の解消 - Weak 参照</h4>
+
+<p>Swift には 2 でみた問題を解決するために、2 つの方法があります。それが、<code>weak</code> 参照と <code>unowned</code> 参照です。</p>
+
+<p><code>weak</code> 参照は、<code>strong</code> 参照ではないので、<code>weak</code> 参照があっても ARC はメモリを解放します。この <code>weak</code> 参照は、その参照が、nil になり得る場合に使用されます。もし、常に nil にならず値を持つような場合には、のちにみる <code>unowned</code> を使用します。先ほどの Apartment の例では、<code>weak</code> が適切です。Apartment クラスはいつでも tenant が nil になる可能性があるからです。<code>weak</code> 参照は値が変わる可能性があるので、Optional 変数として宣言されます。</p>
+
+<p>ARC は、メモリが解放し、その解放したインスタンスに対して <code>weak</code> 参照がある場合、この <code>weak</code> 参照に nil を設定します。私たちは、普通の Optional のように値があるかをチェックできます。</p>
+
+<p>先ほどの Person-Apartmen の例を <code>weak</code> を使い書き直します。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">Person</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">let</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span>
+<span class="lineno"> 3</span>     <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span> <span class="n">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span> <span class="p">}</span>
+<span class="lineno"> 4</span>     <span class="n">var</span> <span class="n">apartment</span><span class="o">:</span> <span class="n">Apartment</span><span class="o">?</span>
+<span class="lineno"> 5</span>     <span class="n">deinit</span> <span class="p">{</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;\(name) is being deinitialized&quot;</span><span class="p">)</span> <span class="p">}</span>
+<span class="lineno"> 6</span> <span class="p">}</span>
+<span class="lineno"> 7</span>  
+<span class="lineno"> 8</span> <span class="n">class</span> <span class="n">Apartment</span> <span class="p">{</span>
+<span class="lineno"> 9</span>     <span class="n">let</span> <span class="n">number</span><span class="o">:</span> <span class="n">Int</span>
+<span class="lineno">10</span>     <span class="n">init</span><span class="p">(</span><span class="n">number</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span> <span class="n">self</span><span class="p">.</span><span class="n">number</span> <span class="o">=</span> <span class="n">number</span> <span class="p">}</span>
+<span class="lineno">11</span>     <span class="n">weak</span> <span class="n">var</span> <span class="n">tenant</span><span class="o">:</span> <span class="n">Person</span><span class="o">?</span>
+<span class="lineno">12</span>     <span class="n">deinit</span> <span class="p">{</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;Apartment #\(number) is being deinitialized&quot;</span><span class="p">)</span> <span class="p">}</span>
+<span class="lineno">13</span> <span class="p">}</span></code></pre></div>
+
+<p>Apartment の tenant プロパティが <code>weak</code> として宣言されています。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">john</span><span class="o">:</span> <span class="n">Person</span><span class="o">?</span>
+<span class="lineno">2</span> <span class="n">var</span> <span class="n">number73</span><span class="o">:</span> <span class="n">Apartment</span><span class="o">?</span>
+<span class="lineno">3</span>  
+<span class="lineno">4</span> <span class="n">john</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;John Appleseed&quot;</span><span class="p">)</span>
+<span class="lineno">5</span> <span class="n">number73</span> <span class="o">=</span> <span class="n">Apartment</span><span class="p">(</span><span class="n">number</span><span class="o">:</span> <span class="mi">73</span><span class="p">)</span>
+<span class="lineno">6</span>  
+<span class="lineno">7</span> <span class="n">john</span><span class="o">!</span><span class="p">.</span><span class="n">apartment</span> <span class="o">=</span> <span class="n">number73</span>
+<span class="lineno">8</span> <span class="n">number73</span><span class="o">!</span><span class="p">.</span><span class="n">tenant</span> <span class="o">=</span> <span class="n">john</span></code></pre></div>
+
+<p>そして、Person のインスタンスを解放してみます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">john</span> <span class="o">=</span> <span class="nb">nil</span>
+<span class="lineno">2</span> <span class="c1">// prints &quot;John Appleseed is being deinitialized&quot;</span></code></pre></div>
+
+<p>この Person に対する <code>strong</code> 参照は、この <code>john = nil</code> で 0 になります。そのため、Person インスタンス は解放されました。このイメージを見ていただければわかりやすいと思います。Person Instance に向かっている矢印は、<code>weak</code> 参照だけです。</p>
+
+<p><img src="/images/2014/06/7.png" alt=""></p>
+
+<p>そして、Apartment のインスタンスも解放します。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">number73</span> <span class="o">=</span> <span class="nb">nil</span>
+<span class="lineno">2</span> <span class="c1">// prints &quot;Apartment #73 is being deinitialized&quot;</span></code></pre></div>
+
+<p>この Apartment インスタンスは <code>number73</code> と Person インスタンスのプロパティである <code>apartment</code> から <code>strong</code> 参照がありました。この <code>number73 = nil</code> により、<code>number73</code> からの <code>strong</code> 参照は消え、上記の <code>john = nil</code> により、Person インスタンスからの <code>strong</code> 参照もなくなっているので、メモリが解放されています。</p>
+
+<p><img src="/images/2014/06/8.png" alt=""></p>
+
+<h4 id="4.-strong-reference-cycles-の解消---unowned-参照">4. Strong Reference Cycles の解消 - Unowned 参照</h4>
+
+<p><code>unowned</code> 参照も、<code>strong</code> 参照ではないので、<code>unowned</code> 参照があっても ARC はメモリを解放します。この <code>unowned</code> 参照は、その参照が、常に nil にならず値を持つような場合に使用します。そのため、<code>unowned</code> は、Optional としては宣言されません。</p>
+
+<p>先ほどの Apartment の例では、<code>weak</code> が適切です。Apartment クラスはいつでも tenant が nil になる可能性があるからです。<code>weak</code> 参照は値が変わる可能性があるので、Optional 変数として宣言されます。</p>
+
+<p>次は、先ほどとは少し違う例を見ます。Customer と CreditCard というクラスを見ていきます。Customer はクレジットカードを常に持っているかは分かりません。しかし、CreditCard クラスのインスタンスは常に顧客情報である Customer のインスタンスを持っています。つまり、CreditCard の Customer インスタンスを持つ プロパティは <code>unowned</code> として宣言されます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">Customer</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">let</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span>
+<span class="lineno"> 3</span>     <span class="n">var</span> <span class="n">card</span><span class="o">:</span> <span class="n">CreditCard</span><span class="o">?</span>
+<span class="lineno"> 4</span>     <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 5</span>         <span class="n">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<span class="lineno"> 6</span>     <span class="p">}</span>
+<span class="lineno"> 7</span>     <span class="n">deinit</span> <span class="p">{</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;\(name) is being deinitialized&quot;</span><span class="p">)</span> <span class="p">}</span>
+<span class="lineno"> 8</span> <span class="p">}</span>
+<span class="lineno"> 9</span>  
+<span class="lineno">10</span> <span class="n">class</span> <span class="n">CreditCard</span> <span class="p">{</span>
+<span class="lineno">11</span>     <span class="n">let</span> <span class="n">number</span><span class="o">:</span> <span class="n">Int</span>
+<span class="lineno">12</span>     <span class="n">unowned</span> <span class="n">let</span> <span class="n">customer</span><span class="o">:</span> <span class="n">Customer</span>
+<span class="lineno">13</span>     <span class="n">init</span><span class="p">(</span><span class="n">number</span><span class="o">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">customer</span><span class="o">:</span> <span class="n">Customer</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">14</span>         <span class="n">self</span><span class="p">.</span><span class="n">number</span> <span class="o">=</span> <span class="n">number</span>
+<span class="lineno">15</span>         <span class="n">self</span><span class="p">.</span><span class="n">customer</span> <span class="o">=</span> <span class="n">customer</span>
+<span class="lineno">16</span>     <span class="p">}</span>
+<span class="lineno">17</span>     <span class="n">deinit</span> <span class="p">{</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;Card #\(number) is being deinitialized&quot;</span><span class="p">)</span> <span class="p">}</span>
+<span class="lineno">18</span> <span class="p">}</span></code></pre></div>
+
+<p>そして、それぞれ初期化していきます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">john</span><span class="o">:</span> <span class="n">Customer</span><span class="o">?</span>
+<span class="lineno">2</span> <span class="n">john</span> <span class="o">=</span> <span class="n">Customer</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;John Appleseed&quot;</span><span class="p">)</span>
+<span class="lineno">3</span> <span class="n">john</span><span class="o">!</span><span class="p">.</span><span class="n">card</span> <span class="o">=</span> <span class="n">CreditCard</span><span class="p">(</span><span class="n">number</span><span class="o">:</span> <span class="mi">1234</span><span class="n">_5678_9012_3456</span><span class="p">,</span> <span class="n">customer</span><span class="o">:</span> <span class="n">john</span><span class="o">!</span><span class="p">)</span></code></pre></div>
+
+<p>この段階でこのようなイメージです。</p>
+
+<p><img src="/images/2014/06/9.png" alt=""></p>
+
+<p>そして、解放します。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">john</span> <span class="o">=</span> <span class="nb">nil</span>
+<span class="lineno">2</span> <span class="c1">// prints &quot;John Appleseed is being deinitialized&quot;</span>
+<span class="lineno">3</span> <span class="c1">// prints &quot;Card #1234567890123456 is being deinitialized&quot;</span></code></pre></div>
+
+<p>それぞれの <code>strong</code> 参照がなくなるので、両方のインスタンスが解放されます。</p>
+
+<h4 id="5.-strong-reference-cycles-の解消---unowned-参照-と-implicitly-unwrapped-optional">5. Strong Reference Cycles の解消 - Unowned 参照 と Implicitly Unwrapped Optional</h4>
+
+<p>今までの例では 2 つよくある Strong Reference Cycles のケースを見てきました。</p>
+
+<p>1 つ目は、Person-Apartment のケース。このケースの特徴は、2 つのプロパティ両方とも nil になることが許されてたということです。そのため、<code>weak</code> 参照が使われました。</p>
+
+<p>2 つ目は、Customer-CreditCard の例です。この例では、1 つのプロパティは nil になりえませんでした。そのため、<code>unowned</code> を使用しました。</p>
+
+<p>そして、このセクションでみるのが、2 つのプロパティどちらものが常に値を持つことが期待されている場合です。ここでは、Country と City というクラスを使って考えていきます。国も街も常に値を持ちます。つまり、nil になりません。この例では、<code>unowned</code> 参照をプロパティに設定し、もう 1 つのクラスのプロパティには、Implicitly Unwrapped Optional (<code>!</code>)を設定すると、どちらのプロパティも直接アクセスすることができ、Reference Cycles を防ぐこともできます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">Country</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">let</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span>
+<span class="lineno"> 3</span>     <span class="n">let</span> <span class="n">capitalCity</span><span class="o">:</span> <span class="n">City</span><span class="o">!</span>
+<span class="lineno"> 4</span>     <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">capitalName</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 5</span>         <span class="n">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<span class="lineno"> 6</span>         <span class="n">self</span><span class="p">.</span><span class="n">capitalCity</span> <span class="o">=</span> <span class="n">City</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">capitalName</span><span class="p">,</span> <span class="n">country</span><span class="o">:</span> <span class="n">self</span><span class="p">)</span>
+<span class="lineno"> 7</span>     <span class="p">}</span>
+<span class="lineno"> 8</span> <span class="p">}</span>
+<span class="lineno"> 9</span>  
+<span class="lineno">10</span> <span class="n">class</span> <span class="n">City</span> <span class="p">{</span>
+<span class="lineno">11</span>     <span class="n">let</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span>
+<span class="lineno">12</span>     <span class="n">unowned</span> <span class="n">let</span> <span class="n">country</span><span class="o">:</span> <span class="n">Country</span>
+<span class="lineno">13</span>     <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">country</span><span class="o">:</span> <span class="n">Country</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">14</span>         <span class="n">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<span class="lineno">15</span>         <span class="n">self</span><span class="p">.</span><span class="n">country</span> <span class="o">=</span> <span class="n">country</span>
+<span class="lineno">16</span>     <span class="p">}</span>
+<span class="lineno">17</span> <span class="p">}</span></code></pre></div>
+
+<p>この 2 つのクラスを初期化するには、Country の Initializer を使用します。通常、Initializer の中から、self は渡せません。<a href="http://blog.kazuya.co/swift/2014/06/20/swift-doc-initialization2.html">以前</a> みたようにクラスの二段階初期化によるためです。しかし、Country の capitalCity プロパティを an implicitly unwrapped optional property として宣言します。これにより、nil がデフォルト値が設定されます。そして、Country クラスの name プロパティが設定され、初期化されたとみなされた後、self を使用して、City の Initializer に自身を渡すことができます。</p>
+
+<p>この an implicitly unwrapped optional property と <code>unowned</code> の組み合わせで、Strong Reference Cycles を発生させることなく、1 つステートメントで 2 つのインスタンスを作成できます。また、capitalCity は、unwrap (<code>!</code>) することなく、直接アクセスすることができます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">country</span> <span class="o">=</span> <span class="n">Country</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;Canada&quot;</span><span class="p">,</span> <span class="n">capitalName</span><span class="o">:</span> <span class="s">&quot;Ottawa&quot;</span><span class="p">)</span>
+<span class="lineno">2</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;\(country.name)&#39;s capital city is called \(country.capitalCity.name)&quot;</span><span class="p">)</span>
+<span class="lineno">3</span> <span class="c1">// prints &quot;Canada&#39;s capital city is called Ottawa&quot;</span></code></pre></div>
+
+<h4 id="6.-strong-reference-cycles-の解消---closures">6. Strong Reference Cycles の解消 - Closures</h4>
+
+<p>クラスとクロージャの Strong Reference Cycles は、キャプチャリストというものを宣言して解決します。このキャプチャリストは、いつクロージャの本体の中で、参照をキャプチャするのかを定義します。このキャプチャする参照を <code>weak</code> や <code>unowned</code> として宣言します。</p>
+
+<p>キャプチャリストの各要素は、クラスへの参照と <code>weak</code> か <code>unowned</code> キーワードの組み合わせにより定義されます。この組み合わせは、<code>[]</code> の中に描かれます。複数ある場合には、カンマで区切られます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="p">@</span><span class="n">lazy</span> <span class="n">var</span> <span class="n">someClosure</span><span class="o">:</span> <span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="o">=</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="p">[</span><span class="n">unowned</span> <span class="n">self</span><span class="p">]</span> <span class="p">(</span><span class="n">index</span><span class="o">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">stringToProcess</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="k">in</span>
+<span class="lineno">3</span>     <span class="c1">// closure body goes here</span>
+<span class="lineno">4</span> <span class="p">}</span></code></pre></div>
+
+<p>クラスとクロージャが常に一緒に解放されるべき場合には、このキャプチャは <code>unowned</code> として宣言されます。それに対して、プログラムの中で参照が nil になる場合には、<code>weak</code> として宣言されます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">HTMLElement</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     
+<span class="lineno"> 3</span>     <span class="n">let</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span>
+<span class="lineno"> 4</span>     <span class="n">let</span> <span class="n">text</span><span class="o">:</span> <span class="n">String</span><span class="o">?</span>
+<span class="lineno"> 5</span>     
+<span class="lineno"> 6</span>     <span class="p">@</span><span class="n">lazy</span> <span class="n">var</span> <span class="n">asHTML</span><span class="o">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="o">=</span> <span class="p">{</span>
+<span class="lineno"> 7</span>         <span class="p">[</span><span class="n">unowned</span> <span class="n">self</span><span class="p">]</span> <span class="k">in</span>
+<span class="lineno"> 8</span>         <span class="k">if</span> <span class="n">let</span> <span class="n">text</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">text</span> <span class="p">{</span>
+<span class="lineno"> 9</span>             <span class="k">return</span> <span class="s">&quot;&lt;\(self.name)&gt;\(text)&lt;/\(self.name)&gt;&quot;</span>
+<span class="lineno">10</span>         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">11</span>             <span class="k">return</span> <span class="s">&quot;&lt;\(self.name) /&gt;&quot;</span>
+<span class="lineno">12</span>         <span class="p">}</span>
+<span class="lineno">13</span>     <span class="p">}</span>
+<span class="lineno">14</span>     
+<span class="lineno">15</span>     <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">text</span><span class="o">:</span> <span class="n">String</span><span class="o">?</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">16</span>         <span class="n">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<span class="lineno">17</span>         <span class="n">self</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
+<span class="lineno">18</span>     <span class="p">}</span>
+<span class="lineno">19</span>     
+<span class="lineno">20</span>     <span class="n">deinit</span> <span class="p">{</span>
+<span class="lineno">21</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;\(name) is being deinitialized&quot;</span><span class="p">)</span>
+<span class="lineno">22</span>     <span class="p">}</span>
+<span class="lineno">23</span>     
+<span class="lineno">24</span> <span class="p">}</span></code></pre></div>
+
+<p>例えばこのように使われます。HTMLElement クラスは、あるクロージャへの参照を持っています。この場合には、<code>unowned</code> として宣言されています。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">paragraph</span><span class="o">:</span> <span class="n">HTMLElement</span><span class="o">?</span> <span class="o">=</span> <span class="n">HTMLElement</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;p&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">:</span> <span class="s">&quot;hello, world&quot;</span><span class="p">)</span>
+<span class="lineno">2</span> <span class="n">println</span><span class="p">(</span><span class="n">paragraph</span><span class="o">!</span><span class="p">.</span><span class="n">asHTML</span><span class="p">())</span>
+<span class="lineno">3</span> <span class="c1">// prints &quot;&lt;p&gt;hello, world&lt;/p&gt;&quot;</span></code></pre></div>
+
+<p>イメージとしてこんな感じ。</p>
+
+<p><img src="/images/2014/06/10.png" alt=""></p>
+
+<p>解放すると、</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">paragraph</span> <span class="o">=</span> <span class="nb">nil</span>
+<span class="lineno">2</span> <span class="c1">// prints &quot;p is being deinitialized&quot;</span></code></pre></div>
+
+					</div>
+
+				</div>
+
+				<div id="sub">
+				   <div class="side_box">
+   <h3>About</h3>
+      <p class="side_content">
+         <i>Kazuya Kobayashi</i><br />
+         - I'm a once law student trying to be computer geek.<br />
+         - ギークになりたい。<br />
+         <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a>
+      </p>
+</div>
+
+<hr />
+
+<h3>Elsewhere</h3>
+   <p class="side_content">
+      <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+      <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+      <a href="https://github.com/kzykbys">Github</a>
+   </p>
+
+<hr />
+
+<h3>Category</h3>
+   <p class="side_content">|
+      
+   	   <a href="/categories/objective-c">objective-c
+            (11)
+         </a> | 
+      
+   	   <a href="/categories/other">other
+            (6)
+         </a> | 
+      
+   	   <a href="/categories/node-js">node.js
+            (1)
+         </a> | 
+      
+   	   <a href="/categories/ruby-on-rails">ruby on rails
+            (18)
+         </a> | 
+      
+   	   <a href="/categories/tips">tips
+            (6)
+         </a> | 
+      
+   	   <a href="/categories/html5">html5
+            (8)
+         </a> | 
+      
+   	   <a href="/categories/algorithms">algorithms
+            (2)
+         </a> | 
+      
+   	   <a href="/categories/machine-learning">machine learning
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/c">c
+            (14)
+         </a> | 
+      
+   	   <a href="/categories/ruby">ruby
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/swift">swift
+            (24)
+         </a> | 
+      
+   </p>
+
+<hr />
+
+<h3>Archive</h3>
+   <p class="side_content">|
+      
+   		<a href="/2013/08/">2013/08
+            (2)
+         </a> |          
+      
+   		<a href="/2013/09/">2013/09
+            (4)
+         </a> |          
+      
+   		<a href="/2013/11/">2013/11
+            (11)
+         </a> |          
+      
+   		<a href="/2013/12/">2013/12
+            (21)
+         </a> |          
+      
+   		<a href="/2014/01/">2014/01
+            (5)
+         </a> |          
+      
+   		<a href="/2014/03/">2014/03
+            (6)
+         </a> |          
+      
+   		<a href="/2014/04/">2014/04
+            (7)
+         </a> |          
+      
+   		<a href="/2014/05/">2014/05
+            (11)
+         </a> |          
+      
+   		<a href="/2014/06/">2014/06
+            (33)
+         </a> |          
+      
+   </p>
+
+<hr />
+
+<h3>Work</h3>			   
+   <p class="side_content">
+      Coming soon... maybe.
+   </p>
+
+<hr />
+				</div>
+
+			</div>
+
+
+		</div>
+
+				<div class="footer">
+		   <div class="footer_inner">
+			   <div class="contact">
+				   <h4>About</h4>
+				   <p>Kazuya Kobayashi<br />
+				   - I'm a once law student trying to be computer geek.<br />
+				   - ギークになりたい。<br />
+				   <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a></p>
+				   <h4>Elsewhere</h4>
+				   <p>
+					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+					   <a href="https://github.com/kzykbys">Github</a></p>
+				   <h4>Category</h4>
+				   <p>|
+					   
+						   <a href="/categories/objective-c">objective-c</a> | 
+					   
+						   <a href="/categories/other">other</a> | 
+					   
+						   <a href="/categories/node-js">node.js</a> | 
+					   
+						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
+					   
+						   <a href="/categories/tips">tips</a> | 
+					   
+						   <a href="/categories/html5">html5</a> | 
+					   
+						   <a href="/categories/algorithms">algorithms</a> | 
+					   
+						   <a href="/categories/machine-learning">machine learning</a> | 
+					   
+						   <a href="/categories/c">c</a> | 
+					   
+						   <a href="/categories/ruby">ruby</a> | 
+					   
+						   <a href="/categories/swift">swift</a> | 
+					   
+				   </p>
+				   <h4>Archive</h4>
+					   <p>|
+					   
+	    					<a href="/2013/08/">2013/08
+	    					</a> | 
+	    			   
+	    					<a href="/2013/09/">2013/09
+	    					</a> | 
+	    			   
+	    					<a href="/2013/11/">2013/11
+	    					</a> | 
+	    			   
+	    					<a href="/2013/12/">2013/12
+	    					</a> | 
+	    			   
+	    					<a href="/2014/01/">2014/01
+	    					</a> | 
+	    			   
+	    					<a href="/2014/03/">2014/03
+	    					</a> | 
+	    			   
+	    					<a href="/2014/04/">2014/04
+	    					</a> | 
+	    			   
+	    					<a href="/2014/05/">2014/05
+	    					</a> | 
+	    			   
+	    					<a href="/2014/06/">2014/06
+	    					</a> | 
+	    			   
+    			   </p>
+				   <h4>Work</h4>			   
+				   <p>Coming soon... maybe.</p>
+			   </div>
+		   </div>
+	   	</div>
+
+	   		  
+	  	<!-- Sdir (slide menu for small screen) -->
+
+<script>
+	
+  	$(document).ready(function() {
+		$('#mobile-menu-button').sidr();	  
+  	});
+
+  	$('#mobile-menu-button').click(function(e){
+  	});
+
+  	$('html').click(function(e){
+  		$.sidr('close', 'sidr');
+  	});
+
+</script>
+	  	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28952627-6', 'kazuya.co');
+  ga('send', 'pageview');
+
+</script>
+
+	</body>
+</html>
