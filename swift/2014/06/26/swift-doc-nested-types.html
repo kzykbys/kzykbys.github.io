@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>The Swift Programming Language ~ Strings and Characters</title>        
+        <title>The Swift Programming Language ~ Nested Types</title>        
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />        
         <meta name="HandheldFriendly" content="true" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" />
@@ -147,9 +147,9 @@
 			<div id="contents">
 				
 				<div id="main">
-					<h3><a href="">The Swift Programming Language ~ Strings and Characters</a></h3>
+					<h3><a href="">The Swift Programming Language ~ Nested Types</a></h3>
 					<span class="author">
-						<span class="date">2014-06-06 23:00:00 -0700</span>
+						<span class="date">2014-06-26 14:00:00 -0700</span>
 					</span>
 
 					<hr />
@@ -168,11 +168,11 @@
 		</li>				
 		<li>
 			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//swift/2014/06/06/swift-doc-string-char.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			<div class="fb-like" data-href="http://blog.kazuya.co//swift/2014/06/26/swift-doc-nested-types.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
 		</li>				
 		<li style="margine-left: 10px;!important">
 			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="The Swift Programming Language ~ Strings and Characters" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="The Swift Programming Language ~ Nested Types" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
 		</li>		
 	</ul>
 </div>
@@ -182,56 +182,66 @@
 					<div class="post">
 						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。  </p>
 
-<p>今回は、String と Character に関して。</p>
+<p>今回は、Nested Types に関して。</p>
 
-<h3 id="strings-and-characters">Strings and Characters</h3>
+<h3 id="nested-types">Nested Types</h3>
 
-<h4 id="1.-string-は-value-(値)">1. String は value (値)</h4>
+<p>Enumeration は他のクラスや構造体をサポートする形で使われることが多いです。また、複雑なクラスを助ける形でヘルパークラスを定義するのも便利です。このため、Swift では、Nested Type というものを使用できます。</p>
 
-<p>Swing は Cocoa の NSString と違い、String は全て値であり、コピーして関数に渡され、新しく代入された際にも、常に新しいコピーが作られる。Cocoa では、常に * を使用するように、基本的に、reference が渡されていた。渡された文字列が、called func の中でいじられないということを保証することができる。</p>
+<h4 id="nested-types-の例">Nested Types の例</h4>
 
-<h4 id="2.-character-type">2. Character type</h4>
+<p>ブラックジャックの例を通してどのように Nested Type が使われるか見ていきます。</p>
 
-<p>String は順序のある Character type の集まり。だた一つの Character を作成するには、下記のように明示的に Character を書く。</p>
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">BlackjackCard</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     
+<span class="lineno"> 3</span>     <span class="c1">// nested Suit enumeration</span>
+<span class="lineno"> 4</span>     <span class="k">enum</span> <span class="n">Suit</span><span class="o">:</span> <span class="n">Character</span> <span class="p">{</span>
+<span class="lineno"> 5</span>         <span class="k">case</span> <span class="n">Spades</span> <span class="o">=</span> <span class="s">&quot;♠&quot;</span><span class="p">,</span> <span class="n">Hearts</span> <span class="o">=</span> <span class="s">&quot;♡&quot;</span><span class="p">,</span> <span class="n">Diamonds</span> <span class="o">=</span> <span class="s">&quot;♢&quot;</span><span class="p">,</span> <span class="n">Clubs</span> <span class="o">=</span> <span class="s">&quot;♣&quot;</span>
+<span class="lineno"> 6</span>     <span class="p">}</span>
+<span class="lineno"> 7</span>     
+<span class="lineno"> 8</span>     <span class="c1">// nested Rank enumeration</span>
+<span class="lineno"> 9</span>     <span class="k">enum</span> <span class="n">Rank</span><span class="o">:</span> <span class="n">Int</span> <span class="p">{</span>
+<span class="lineno">10</span>         <span class="k">case</span> <span class="n">Two</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">Three</span><span class="p">,</span> <span class="n">Four</span><span class="p">,</span> <span class="n">Five</span><span class="p">,</span> <span class="n">Six</span><span class="p">,</span> <span class="n">Seven</span><span class="p">,</span> <span class="n">Eight</span><span class="p">,</span> <span class="n">Nine</span><span class="p">,</span> <span class="n">Ten</span>
+<span class="lineno">11</span>         <span class="k">case</span> <span class="n">Jack</span><span class="p">,</span> <span class="n">Queen</span><span class="p">,</span> <span class="n">King</span><span class="p">,</span> <span class="n">Ace</span>
+<span class="lineno">12</span>         <span class="k">struct</span> <span class="n">Values</span> <span class="p">{</span>
+<span class="lineno">13</span>             <span class="n">let</span> <span class="n">first</span><span class="o">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">second</span><span class="o">:</span> <span class="n">Int</span><span class="o">?</span>
+<span class="lineno">14</span>         <span class="p">}</span>
+<span class="lineno">15</span>         <span class="n">var</span> <span class="n">values</span><span class="o">:</span> <span class="n">Values</span> <span class="p">{</span>
+<span class="lineno">16</span>         <span class="k">switch</span> <span class="n">self</span> <span class="p">{</span>
+<span class="lineno">17</span>         <span class="k">case</span> <span class="p">.</span><span class="n">Ace</span>:
+<span class="lineno">18</span>             <span class="k">return</span> <span class="n">Values</span><span class="p">(</span><span class="n">first</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">second</span><span class="o">:</span> <span class="mi">11</span><span class="p">)</span>
+<span class="lineno">19</span>         <span class="k">case</span> <span class="p">.</span><span class="n">Jack</span><span class="p">,</span> <span class="p">.</span><span class="n">Queen</span><span class="p">,</span> <span class="p">.</span><span class="n">King</span>:
+<span class="lineno">20</span>             <span class="k">return</span> <span class="n">Values</span><span class="p">(</span><span class="n">first</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span> <span class="n">second</span><span class="o">:</span> <span class="nb">nil</span><span class="p">)</span>
+<span class="lineno">21</span>         <span class="nl">default:</span>
+<span class="lineno">22</span>             <span class="k">return</span> <span class="n">Values</span><span class="p">(</span><span class="n">first</span><span class="o">:</span> <span class="n">self</span><span class="p">.</span><span class="n">toRaw</span><span class="p">(),</span> <span class="n">second</span><span class="o">:</span> <span class="nb">nil</span><span class="p">)</span>
+<span class="lineno">23</span>             <span class="p">}</span>
+<span class="lineno">24</span>         <span class="p">}</span>
+<span class="lineno">25</span>     <span class="p">}</span>
+<span class="lineno">26</span>     
+<span class="lineno">27</span>     <span class="c1">// BlackjackCard properties and methods</span>
+<span class="lineno">28</span>     <span class="n">let</span> <span class="n">rank</span><span class="o">:</span> <span class="n">Rank</span><span class="p">,</span> <span class="n">suit</span><span class="o">:</span> <span class="n">Suit</span>
+<span class="lineno">29</span>     <span class="n">var</span> <span class="n">description</span><span class="o">:</span> <span class="n">String</span> <span class="p">{</span>
+<span class="lineno">30</span>     <span class="n">var</span> <span class="n">output</span> <span class="o">=</span> <span class="s">&quot;suit is \(suit.toRaw()),&quot;</span>
+<span class="lineno">31</span>         <span class="n">output</span> <span class="o">+=</span> <span class="s">&quot; value is \(rank.values.first)&quot;</span>
+<span class="lineno">32</span>         <span class="k">if</span> <span class="n">let</span> <span class="n">second</span> <span class="o">=</span> <span class="n">rank</span><span class="p">.</span><span class="n">values</span><span class="p">.</span><span class="n">second</span> <span class="p">{</span>
+<span class="lineno">33</span>             <span class="n">output</span> <span class="o">+=</span> <span class="s">&quot; or \(second)&quot;</span>
+<span class="lineno">34</span>         <span class="p">}</span>
+<span class="lineno">35</span>         <span class="k">return</span> <span class="n">output</span>
+<span class="lineno">36</span>     <span class="p">}</span>
+<span class="lineno">37</span> <span class="p">}</span></code></pre></div>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">yenSign</span><span class="o">:</span> <span class="n">Character</span> <span class="o">=</span> <span class="s">&quot;¥&quot;</span></code></pre></div>
+<p>この BlackjackCard 構造体は 2 つの Nested Enumeration を持っています。1 つ目は、<code>Suit</code>。これはカードの柄の文字を返します。2 つ目の、<code>Rank</code> は少し複雑です。まずは、2 ~ 10 の場合には、その rowvalue を定義します。さらにこの Enumeration は、Value Nested 構造体を定義しています。これが、2 つのプロパティを持っており、これを返すための Computed プロパティも持っています。</p>
 
-<h4 id="3.-文字列の長さ">3. 文字列の長さ</h4>
+<p>上記で定義した BlackjackCard 構造体をこのように初期化・参照できます。</p>
 
-<p>文字列の長さを得るには、countElemetns というグローバル関数を使う。Swift では、英語でない言語や、絵文字をサポートしているので、文字によって、一つ一つの文字が異なるメモリ容量を持っています。そのため、文字列の長さを得るには、C のように始まりと終わりのポインタの差を返すといった単純なものではなく、文字列の各文字を全てチェックする必要があります。長い文字列を処理する際には、注意。</p>
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">theAceOfSpades</span> <span class="o">=</span> <span class="n">BlackjackCard</span><span class="p">(</span><span class="n">rank</span><span class="o">:</span> <span class="p">.</span><span class="n">Ace</span><span class="p">,</span> <span class="n">suit</span><span class="o">:</span> <span class="p">.</span><span class="n">Spades</span><span class="p">)</span>
+<span class="lineno">2</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;theAceOfSpades: \(theAceOfSpades.description)&quot;</span><span class="p">)</span>
+<span class="lineno">3</span> <span class="c1">// prints &quot;theAceOfSpades: suit is ♠, value is 1 or 11&quot;</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span> <span class="n">let</span> <span class="n">heartsSymbol</span> <span class="o">=</span> <span class="n">BlackjackCard</span><span class="p">.</span><span class="n">Suit</span><span class="p">.</span><span class="n">Hearts</span><span class="p">.</span><span class="n">toRaw</span><span class="p">()</span>
+<span class="lineno">6</span> <span class="c1">// heartsSymbol is &quot;♡&quot;</span></code></pre></div>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">unusualMenagerie</span> <span class="o">=</span> <span class="s">&quot;Koala 🐨, Snail 🐌, Penguin 🐧, Dromedary 🐪&quot;</span>
-<span class="lineno">2</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;unusualMenagerie has \(countElements(unusualMenagerie)) characters&quot;</span><span class="p">)</span>
-<span class="lineno">3</span> <span class="c1">// unusualMenagerie has 40 characters</span></code></pre></div>
-
-<p>Objective-C の NSString の length プロパティと countElements が返す値は異なることがあります。NSString の length は 16bits コードに基づいているためです。Swift で NSString の length にアクセスする場合には、utf16count というものが使われます。</p>
-
-<h4 id="4.-文字列比較-(hasprefix-/-hassuffix)">4. 文字列比較 (hasPrefix / hasSuffix)</h4>
-
-<p>hasPrefix と hasSuffix という文字列比較のメソッドがある。コードを見た方がわかりやすいと思います。</p>
-
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">fullName</span> <span class="o">=</span> <span class="p">[</span>
-<span class="lineno"> 2</span>         <span class="s">&quot;Kobayashi Kazuya&quot;</span><span class="p">,</span>
-<span class="lineno"> 3</span>         <span class="s">&quot;Kobayashi Taro&quot;</span><span class="p">,</span>
-<span class="lineno"> 4</span>         <span class="s">&quot;Suzuki Kazuya&quot;</span><span class="p">,</span>
-<span class="lineno"> 5</span>         <span class="s">&quot;Suzuki Taro&quot;</span>
-<span class="lineno"> 6</span> <span class="p">]</span>
-<span class="lineno"> 7</span>         
-<span class="lineno"> 8</span> <span class="n">var</span> <span class="n">numKobayashi</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="lineno"> 9</span> <span class="k">for</span> <span class="n">name</span> <span class="k">in</span> <span class="n">fullName</span> <span class="p">{</span>
-<span class="lineno">10</span>  <span class="k">if</span> <span class="n">name</span><span class="p">.</span><span class="n">hasPrefix</span><span class="p">(</span><span class="s">&quot;Kobayashi&quot;</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">11</span>      <span class="o">++</span><span class="n">numKobayashi</span>
-<span class="lineno">12</span>  <span class="p">}</span>
-<span class="lineno">13</span> <span class="p">}</span>
-<span class="lineno">14</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;\(numKobayashi) Kobayashi here!&quot;</span><span class="p">)</span> <span class="c1">// 2</span>
-<span class="lineno">15</span>         
-<span class="lineno">16</span> <span class="n">var</span> <span class="n">numKazuya</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="lineno">17</span> <span class="k">for</span> <span class="n">name</span> <span class="k">in</span> <span class="n">fullName</span> <span class="p">{</span>
-<span class="lineno">18</span>  <span class="k">if</span> <span class="n">name</span><span class="p">.</span><span class="n">hasSuffix</span><span class="p">(</span><span class="s">&quot;Kazuya&quot;</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">19</span>      <span class="o">++</span><span class="n">numKazuya</span>
-<span class="lineno">20</span>  <span class="p">}</span>
-<span class="lineno">21</span> <span class="p">}</span>
-<span class="lineno">22</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;\(numKazuya) Kazuya here!&quot;</span><span class="p">)</span> <span class="c1">// 2</span></code></pre></div>
+<p>複雑なクラスがうまく整理できそうです。</p>
 
 					</div>
 
