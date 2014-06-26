@@ -1,0 +1,587 @@
+	<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>The Swift Programming Language ~ Type Casting</title>        
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />        
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+		<link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/jquery.sidr.dark.css">
+		<link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+
+        <!-- jQuery -->
+<script src="/javascript/jquery-1.11.1.min.js"></script>
+<!-- slide menu -->
+<script src="/javascript/jquery.sidr.min.js"></script>
+<!-- For FB like buttom -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=571082556301479&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+	</head>
+	
+	<body>
+    
+        <div id="mobile-sticky-menu">
+	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
+	<!-- <img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" /> -->
+</div>
+
+<div id="sidr">
+	<!-- Your content -->
+	<!-- <h4>Share</h4> -->
+
+	<h4>Category</h4>
+	<ul>
+	   
+		   <li>
+		   		<a href="/categories/objective-c">objective-c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/other">other</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/node-js">node.js</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/tips">tips</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/html5">html5</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/algorithms">algorithms</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/machine-learning">machine learning</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/c">c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby">ruby</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/swift">swift</a>
+		   </li>
+	   
+    </ul>
+	<h4>Archive</h4>
+	<ul>
+		
+			<li>
+				<a href="/2013/08/">2013/08</a>
+			</li>
+		
+			<li>
+				<a href="/2013/09/">2013/09</a>
+			</li>
+		
+			<li>
+				<a href="/2013/11/">2013/11</a>
+			</li>
+		
+			<li>
+				<a href="/2013/12/">2013/12</a>
+			</li>
+		
+			<li>
+				<a href="/2014/01/">2014/01</a>
+			</li>
+		
+			<li>
+				<a href="/2014/03/">2014/03</a>
+			</li>
+		
+			<li>
+				<a href="/2014/04/">2014/04</a>
+			</li>
+		
+			<li>
+				<a href="/2014/05/">2014/05</a>
+			</li>
+		
+			<li>
+				<a href="/2014/06/">2014/06</a>
+			</li>
+		
+	</ul>
+
+</div>
+
+        <div class="site">
+
+			<!-- title -->
+			<!-- Header -->
+<header>
+<h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
+	<hr />
+</header>
+
+			<div id="contents">
+				
+				<div id="main">
+					<h3><a href="">The Swift Programming Language ~ Type Casting</a></h3>
+					<span class="author">
+						<span class="date">2014-06-25 11:00:00 -0700</span>
+					</span>
+
+					<hr />
+					<div id="social-buttom">
+	<!-- Social Buttoms -->
+	<ul>
+		<li>
+			<!-- Pocket -->
+			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
+			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+		</li>		
+		<li>
+			<!-- Vertical Twitter -->
+			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		</li>				
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//swift/2014/06/25/swift-doc-type-casting.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+		</li>				
+		<li style="margine-left: 10px;!important">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="The Swift Programming Language ~ Type Casting" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+	</ul>
+</div>
+
+		      		<hr class="clear-list"/>
+
+					<div class="post">
+						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。  </p>
+
+<p>今回は、Type Casting に関して。</p>
+
+<h3 id="type-casting">Type Casting</h3>
+
+<p>Swift での Type Casting は、<code>as</code> と <code>is</code> オペレーターにて実装されます。また、Type Casting をそのタイプがあるプロトコルに準拠しているかを確認するためにも使用できるようです。</p>
+
+<h4 id="準備編">準備編</h4>
+
+<p>まずは、この Type Casting をデモンストレイトするためにクラスを用意します。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">MediaItem</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span>
+<span class="lineno"> 3</span>     <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 4</span>         <span class="n">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<span class="lineno"> 5</span>     <span class="p">}</span>
+<span class="lineno"> 6</span> <span class="p">}</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="n">class</span> <span class="n">Movie</span><span class="o">:</span> <span class="n">MediaItem</span> <span class="p">{</span>
+<span class="lineno"> 9</span>     <span class="n">var</span> <span class="n">director</span><span class="o">:</span> <span class="n">String</span>
+<span class="lineno">10</span>     <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">director</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">11</span>         <span class="n">self</span><span class="p">.</span><span class="n">director</span> <span class="o">=</span> <span class="n">director</span>
+<span class="lineno">12</span>         <span class="n">super</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">name</span><span class="p">)</span>
+<span class="lineno">13</span>     <span class="p">}</span>
+<span class="lineno">14</span> <span class="p">}</span>
+<span class="lineno">15</span>  
+<span class="lineno">16</span> <span class="n">class</span> <span class="n">Song</span><span class="o">:</span> <span class="n">MediaItem</span> <span class="p">{</span>
+<span class="lineno">17</span>     <span class="n">var</span> <span class="n">artist</span><span class="o">:</span> <span class="n">String</span>
+<span class="lineno">18</span>     <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">artist</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">19</span>         <span class="n">self</span><span class="p">.</span><span class="n">artist</span> <span class="o">=</span> <span class="n">artist</span>
+<span class="lineno">20</span>         <span class="n">super</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">name</span><span class="p">)</span>
+<span class="lineno">21</span>     <span class="p">}</span>
+<span class="lineno">22</span> <span class="p">}</span></code></pre></div>
+
+<p>そして、初期化。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">library</span> <span class="o">=</span> <span class="p">[</span>
+<span class="lineno">2</span>     <span class="n">Movie</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;Casablanca&quot;</span><span class="p">,</span> <span class="n">director</span><span class="o">:</span> <span class="s">&quot;Michael Curtiz&quot;</span><span class="p">),</span>
+<span class="lineno">3</span>     <span class="n">Song</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;Blue Suede Shoes&quot;</span><span class="p">,</span> <span class="n">artist</span><span class="o">:</span> <span class="s">&quot;Elvis Presley&quot;</span><span class="p">),</span>
+<span class="lineno">4</span>     <span class="n">Movie</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;Citizen Kane&quot;</span><span class="p">,</span> <span class="n">director</span><span class="o">:</span> <span class="s">&quot;Orson Welles&quot;</span><span class="p">),</span>
+<span class="lineno">5</span>     <span class="n">Song</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;The One And Only&quot;</span><span class="p">,</span> <span class="n">artist</span><span class="o">:</span> <span class="s">&quot;Chesney Hawkes&quot;</span><span class="p">),</span>
+<span class="lineno">6</span>     <span class="n">Song</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;Never Gonna Give You Up&quot;</span><span class="p">,</span> <span class="n">artist</span><span class="o">:</span> <span class="s">&quot;Rick Astley&quot;</span><span class="p">)</span>
+<span class="lineno">7</span> <span class="p">]</span>
+<span class="lineno">8</span> <span class="c1">// the type of &quot;library&quot; is inferred to be MediaItem[]&quot;</span></code></pre></div>
+
+<p>この library 配列は、Movie を Song のインスタンスを持っています。これらのインスタンスのスーパークラスは、どちらも MediaItem なので、Swift はこの共通のタイプ（クラス）を推論してくれます。つまり、library 配列は、<code>MediaItem[]</code> という型になります。</p>
+
+<h4 id="タイプチェック">タイプチェック</h4>
+
+<p>あるタイプが（クラス）が、あるサブクラスであるかを確認するには、<code>is</code> オペレータを使います。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">var</span> <span class="n">movieCount</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="lineno"> 2</span> <span class="n">var</span> <span class="n">songCount</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="lineno"> 3</span>  
+<span class="lineno"> 4</span> <span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">library</span> <span class="p">{</span>
+<span class="lineno"> 5</span>     <span class="k">if</span> <span class="n">item</span> <span class="n">is</span> <span class="n">Movie</span> <span class="p">{</span>
+<span class="lineno"> 6</span>         <span class="o">++</span><span class="n">movieCount</span>
+<span class="lineno"> 7</span>     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">item</span> <span class="n">is</span> <span class="n">Song</span> <span class="p">{</span>
+<span class="lineno"> 8</span>         <span class="o">++</span><span class="n">songCount</span>
+<span class="lineno"> 9</span>     <span class="p">}</span>
+<span class="lineno">10</span> <span class="p">}</span>
+<span class="lineno">11</span>  
+<span class="lineno">12</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;Media library contains \(movieCount) movies and \(songCount) songs&quot;</span><span class="p">)</span>
+<span class="lineno">13</span> <span class="c1">// prints &quot;Media library contains 2 movies and 3 songs&quot;</span></code></pre></div>
+
+<p>このコードは、library 配列が保持する要素が Movie インスタンスか Song インスタンスかを確認して、それぞれ数を数えています。読みやすいと思います。</p>
+
+<h4 id="downcasting">Downcasting</h4>
+
+<p>あるコンスタンス・変数が、あるサブクラスであることが推定される場合には、<code>as</code> オペレータを使いキャストします。もちろん、キャスティングは失敗することがあります。そのため <code>as?</code> という Optional にも対応しています。<code>as</code> を使い間違ったキャストをするとランタイムエラーになります。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">library</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="k">if</span> <span class="n">let</span> <span class="n">movie</span> <span class="o">=</span> <span class="n">item</span> <span class="n">as</span><span class="o">?</span> <span class="n">Movie</span> <span class="p">{</span>
+<span class="lineno"> 3</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;Movie: &#39;\(movie.name)&#39;, dir. \(movie.director)&quot;</span><span class="p">)</span>
+<span class="lineno"> 4</span>     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">let</span> <span class="n">song</span> <span class="o">=</span> <span class="n">item</span> <span class="n">as</span><span class="o">?</span> <span class="n">Song</span> <span class="p">{</span>
+<span class="lineno"> 5</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;Song: &#39;\(song.name)&#39;, by \(song.artist)&quot;</span><span class="p">)</span>
+<span class="lineno"> 6</span>     <span class="p">}</span>
+<span class="lineno"> 7</span> <span class="p">}</span>
+<span class="lineno"> 8</span>  
+<span class="lineno"> 9</span> <span class="c1">// Movie: &#39;Casablanca&#39;, dir. Michael Curtiz</span>
+<span class="lineno">10</span> <span class="c1">// Song: &#39;Blue Suede Shoes&#39;, by Elvis Presley</span>
+<span class="lineno">11</span> <span class="c1">// Movie: &#39;Citizen Kane&#39;, dir. Orson Welles</span>
+<span class="lineno">12</span> <span class="c1">// Song: &#39;The One And Only&#39;, by Chesney Hawkes</span>
+<span class="lineno">13</span> <span class="c1">// Song: &#39;Never Gonna Give You Up&#39;, by Rick Astley</span></code></pre></div>
+
+<p>この例は、各サブクラス特有のプロパティにアクセスしているので、キャスティング必須です。<code>as?</code> を使い条件分岐し、それぞれ対応しています。</p>
+
+<h4 id="any-と-anyobject">Any と AnyObject</h4>
+
+<p>Swift は 2 つの特定の型に依存しないタイプエイリアスを持っています。<code>AnyObject</code> と <code>Any</code> があります。</p>
+
+<p>まずは、<code>AnyObject</code> からみていきます。<code>AnyObject</code> はどんなクラスタイプでも表すことができます。Cocoa API を扱っているときに、<code>AnyObject[]</code> を受け取ることがよくあります。Objective-C の id のようなものですかね。AnyObject がどんなタイプのインスタンスを持っているかわかっている時には、この AnyObject をキャストして使用できます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">someObjects</span><span class="o">:</span> <span class="n">AnyObject</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span>
+<span class="lineno">2</span>     <span class="n">Movie</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;2001: A Space Odyssey&quot;</span><span class="p">,</span> <span class="n">director</span><span class="o">:</span> <span class="s">&quot;Stanley Kubrick&quot;</span><span class="p">),</span>
+<span class="lineno">3</span>     <span class="n">Movie</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;Moon&quot;</span><span class="p">,</span> <span class="n">director</span><span class="o">:</span> <span class="s">&quot;Duncan Jones&quot;</span><span class="p">),</span>
+<span class="lineno">4</span>     <span class="n">Movie</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;Alien&quot;</span><span class="p">,</span> <span class="n">director</span><span class="o">:</span> <span class="s">&quot;Ridley Scott&quot;</span><span class="p">)</span>
+<span class="lineno">5</span> <span class="p">]</span></code></pre></div>
+
+<p>このように <code>AnyObject[]</code> に Movie のインスタンスを格納しています。この場合には、問題なくキャスト(<code>as</code>)して使用します。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">for</span> <span class="n">object</span> <span class="k">in</span> <span class="n">someObjects</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="n">let</span> <span class="n">movie</span> <span class="o">=</span> <span class="n">object</span> <span class="n">as</span> <span class="n">Movie</span>
+<span class="lineno">3</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;Movie: &#39;\(movie.name)&#39;, dir. \(movie.director)&quot;</span><span class="p">)</span>
+<span class="lineno">4</span> <span class="p">}</span>
+<span class="lineno">5</span> <span class="c1">// Movie: &#39;2001: A Space Odyssey&#39;, dir. Stanley Kubrick</span>
+<span class="lineno">6</span> <span class="c1">// Movie: &#39;Moon&#39;, dir. Duncan Jones</span>
+<span class="lineno">7</span> <span class="c1">// Movie: &#39;Alien&#39;, dir. Ridley Scott</span></code></pre></div>
+
+<p>このようにより簡潔に書くこともできます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">for</span> <span class="n">movie</span> <span class="k">in</span> <span class="n">someObjects</span> <span class="n">as</span> <span class="n">Movie</span><span class="p">[]</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;Movie: &#39;\(movie.name)&#39;, dir. \(movie.director)&quot;</span><span class="p">)</span>
+<span class="lineno">3</span> <span class="p">}</span>
+<span class="lineno">4</span> <span class="c1">// Movie: &#39;2001: A Space Odyssey&#39;, dir. Stanley Kubrick</span>
+<span class="lineno">5</span> <span class="c1">// Movie: &#39;Moon&#39;, dir. Duncan Jones</span>
+<span class="lineno">6</span> <span class="c1">// Movie: &#39;Alien&#39;, dir. Ridley Scott</span></code></pre></div>
+
+<p>次に <code>Any</code> をみていきます。<code>Any</code> は、どんなタイプのインスタンスも表すことができます。しかし、関数はできません。<code>AnyObject</code> は、どんなクラスタイプでしたが、<code>Any</code> は、文字通り関数以外何に対しても使えます。下記の例では、Int や Double, tuple 等を配列の中に保存しています。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">things</span> <span class="o">=</span> <span class="n">Any</span><span class="p">[]()</span>
+<span class="lineno">2</span>  
+<span class="lineno">3</span> <span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="lineno">4</span> <span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="lineno">5</span> <span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="lineno">6</span> <span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mf">3.14159</span><span class="p">)</span>
+<span class="lineno">7</span> <span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">)</span>
+<span class="lineno">8</span> <span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">((</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">))</span>
+<span class="lineno">9</span> <span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">Movie</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;Ghostbusters&quot;</span><span class="p">,</span> <span class="n">director</span><span class="o">:</span> <span class="s">&quot;Ivan Reitman&quot;</span><span class="p">))</span></code></pre></div>
+
+<p>上記のようにこの things 変数は、どんなタイプでも格納しています。これを処理するために switch 文を使ってそれぞれ対応できます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="k">for</span> <span class="n">thing</span> <span class="k">in</span> <span class="n">things</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="k">switch</span> <span class="n">thing</span> <span class="p">{</span>
+<span class="lineno"> 3</span>     <span class="k">case</span> <span class="mi">0</span> <span class="n">as</span> <span class="n">Int</span>:
+<span class="lineno"> 4</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;zero as an Int&quot;</span><span class="p">)</span>
+<span class="lineno"> 5</span>     <span class="k">case</span> <span class="mi">0</span> <span class="n">as</span> <span class="n">Double</span>:
+<span class="lineno"> 6</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;zero as a Double&quot;</span><span class="p">)</span>
+<span class="lineno"> 7</span>     <span class="k">case</span> <span class="n">let</span> <span class="n">someInt</span> <span class="n">as</span> <span class="n">Int</span>:
+<span class="lineno"> 8</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;an integer value of \(someInt)&quot;</span><span class="p">)</span>
+<span class="lineno"> 9</span>     <span class="k">case</span> <span class="n">let</span> <span class="n">someDouble</span> <span class="n">as</span> <span class="n">Double</span> <span class="n">where</span> <span class="n">someDouble</span> <span class="o">&gt;</span> <span class="mi">0</span>:
+<span class="lineno">10</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;a positive double value of \(someDouble)&quot;</span><span class="p">)</span>
+<span class="lineno">11</span>     <span class="k">case</span> <span class="n">is</span> <span class="n">Double</span>:
+<span class="lineno">12</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;some other double value that I don&#39;t want to print&quot;</span><span class="p">)</span>
+<span class="lineno">13</span>     <span class="k">case</span> <span class="n">let</span> <span class="n">someString</span> <span class="n">as</span> <span class="n">String</span>:
+<span class="lineno">14</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;a string value of </span><span class="se">\&quot;</span><span class="s">\(someString)</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="lineno">15</span>     <span class="k">case</span> <span class="n">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="n">as</span> <span class="p">(</span><span class="n">Double</span><span class="p">,</span> <span class="n">Double</span><span class="p">)</span>:
+<span class="lineno">16</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;an (x, y) point at \(x), \(y)&quot;</span><span class="p">)</span>
+<span class="lineno">17</span>     <span class="k">case</span> <span class="n">let</span> <span class="n">movie</span> <span class="n">as</span> <span class="n">Movie</span>:
+<span class="lineno">18</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;a movie called &#39;\(movie.name)&#39;, dir. \(movie.director)&quot;</span><span class="p">)</span>
+<span class="lineno">19</span>     <span class="nl">default:</span>
+<span class="lineno">20</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;something else&quot;</span><span class="p">)</span>
+<span class="lineno">21</span>     <span class="p">}</span>
+<span class="lineno">22</span> <span class="p">}</span>
+<span class="lineno">23</span>  
+<span class="lineno">24</span> <span class="c1">// zero as an Int</span>
+<span class="lineno">25</span> <span class="c1">// zero as a Double</span>
+<span class="lineno">26</span> <span class="c1">// an integer value of 42</span>
+<span class="lineno">27</span> <span class="c1">// a positive double value of 3.14159</span>
+<span class="lineno">28</span> <span class="c1">// a string value of &quot;hello&quot;</span>
+<span class="lineno">29</span> <span class="c1">// an (x, y) point at 3.0, 5.0</span>
+<span class="lineno">30</span> <span class="c1">// a movie called &#39;Ghostbusters&#39;, dir. Ivan Reitman</span></code></pre></div>
+
+<p>この switch 文では、<code>as</code>（forced version of the type cast operator）を使っていますが、switch 文のコンテキストではいつも安全です。</p>
+
+					</div>
+
+				</div>
+
+				<div id="sub">
+				   <div class="side_box">
+   <h3>About</h3>
+      <p class="side_content">
+         <i>Kazuya Kobayashi</i><br />
+         - I'm a once law student trying to be computer geek.<br />
+         - ギークになりたい。<br />
+         <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a>
+      </p>
+</div>
+
+<hr />
+
+<h3>Elsewhere</h3>
+   <p class="side_content">
+      <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+      <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+      <a href="https://github.com/kzykbys">Github</a>
+   </p>
+
+<hr />
+
+<h3>Category</h3>
+   <p class="side_content">|
+      
+   	   <a href="/categories/objective-c">objective-c
+            (11)
+         </a> | 
+      
+   	   <a href="/categories/other">other
+            (6)
+         </a> | 
+      
+   	   <a href="/categories/node-js">node.js
+            (1)
+         </a> | 
+      
+   	   <a href="/categories/ruby-on-rails">ruby on rails
+            (18)
+         </a> | 
+      
+   	   <a href="/categories/tips">tips
+            (6)
+         </a> | 
+      
+   	   <a href="/categories/html5">html5
+            (8)
+         </a> | 
+      
+   	   <a href="/categories/algorithms">algorithms
+            (2)
+         </a> | 
+      
+   	   <a href="/categories/machine-learning">machine learning
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/c">c
+            (14)
+         </a> | 
+      
+   	   <a href="/categories/ruby">ruby
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/swift">swift
+            (26)
+         </a> | 
+      
+   </p>
+
+<hr />
+
+<h3>Archive</h3>
+   <p class="side_content">|
+      
+   		<a href="/2013/08/">2013/08
+            (2)
+         </a> |          
+      
+   		<a href="/2013/09/">2013/09
+            (4)
+         </a> |          
+      
+   		<a href="/2013/11/">2013/11
+            (11)
+         </a> |          
+      
+   		<a href="/2013/12/">2013/12
+            (21)
+         </a> |          
+      
+   		<a href="/2014/01/">2014/01
+            (5)
+         </a> |          
+      
+   		<a href="/2014/03/">2014/03
+            (6)
+         </a> |          
+      
+   		<a href="/2014/04/">2014/04
+            (7)
+         </a> |          
+      
+   		<a href="/2014/05/">2014/05
+            (11)
+         </a> |          
+      
+   		<a href="/2014/06/">2014/06
+            (35)
+         </a> |          
+      
+   </p>
+
+<hr />
+
+<h3>Work</h3>			   
+   <p class="side_content">
+      Coming soon... maybe.
+   </p>
+
+<hr />
+				</div>
+
+			</div>
+
+
+		</div>
+
+				<div class="footer">
+		   <div class="footer_inner">
+			   <div class="contact">
+				   <h4>About</h4>
+				   <p>Kazuya Kobayashi<br />
+				   - I'm a once law student trying to be computer geek.<br />
+				   - ギークになりたい。<br />
+				   <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a></p>
+				   <h4>Elsewhere</h4>
+				   <p>
+					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+					   <a href="https://github.com/kzykbys">Github</a></p>
+				   <h4>Category</h4>
+				   <p>|
+					   
+						   <a href="/categories/objective-c">objective-c</a> | 
+					   
+						   <a href="/categories/other">other</a> | 
+					   
+						   <a href="/categories/node-js">node.js</a> | 
+					   
+						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
+					   
+						   <a href="/categories/tips">tips</a> | 
+					   
+						   <a href="/categories/html5">html5</a> | 
+					   
+						   <a href="/categories/algorithms">algorithms</a> | 
+					   
+						   <a href="/categories/machine-learning">machine learning</a> | 
+					   
+						   <a href="/categories/c">c</a> | 
+					   
+						   <a href="/categories/ruby">ruby</a> | 
+					   
+						   <a href="/categories/swift">swift</a> | 
+					   
+				   </p>
+				   <h4>Archive</h4>
+					   <p>|
+					   
+	    					<a href="/2013/08/">2013/08
+	    					</a> | 
+	    			   
+	    					<a href="/2013/09/">2013/09
+	    					</a> | 
+	    			   
+	    					<a href="/2013/11/">2013/11
+	    					</a> | 
+	    			   
+	    					<a href="/2013/12/">2013/12
+	    					</a> | 
+	    			   
+	    					<a href="/2014/01/">2014/01
+	    					</a> | 
+	    			   
+	    					<a href="/2014/03/">2014/03
+	    					</a> | 
+	    			   
+	    					<a href="/2014/04/">2014/04
+	    					</a> | 
+	    			   
+	    					<a href="/2014/05/">2014/05
+	    					</a> | 
+	    			   
+	    					<a href="/2014/06/">2014/06
+	    					</a> | 
+	    			   
+    			   </p>
+				   <h4>Work</h4>			   
+				   <p>Coming soon... maybe.</p>
+			   </div>
+		   </div>
+	   	</div>
+
+	   		  
+	  	<!-- Sdir (slide menu for small screen) -->
+
+<script>
+	
+  	$(document).ready(function() {
+		$('#mobile-menu-button').sidr();	  
+  	});
+
+  	$('#mobile-menu-button').click(function(e){
+  	});
+
+  	$('html').click(function(e){
+  		$.sidr('close', 'sidr');
+  	});
+
+</script>
+	  	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28952627-6', 'kazuya.co');
+  ga('send', 'pageview');
+
+</script>
+
+	</body>
+</html>
