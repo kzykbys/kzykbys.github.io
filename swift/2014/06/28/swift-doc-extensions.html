@@ -1,0 +1,603 @@
+	<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>The Swift Programming Language ~ Extensions</title>        
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />        
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+		<link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/jquery.sidr.dark.css">
+		<link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+
+        <!-- jQuery -->
+<script src="/javascript/jquery-1.11.1.min.js"></script>
+<!-- slide menu -->
+<script src="/javascript/jquery.sidr.min.js"></script>
+<!-- For FB like buttom -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=571082556301479&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+	</head>
+	
+	<body>
+    
+        <div id="mobile-sticky-menu">
+	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
+	<!-- <img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" /> -->
+</div>
+
+<div id="sidr">
+	<!-- Your content -->
+	<!-- <h4>Share</h4> -->
+
+	<h4>Category</h4>
+	<ul>
+	   
+		   <li>
+		   		<a href="/categories/objective-c">objective-c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/other">other</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/node-js">node.js</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/tips">tips</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/html5">html5</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/algorithms">algorithms</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/machine-learning">machine learning</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/c">c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby">ruby</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/swift">swift</a>
+		   </li>
+	   
+    </ul>
+	<h4>Archive</h4>
+	<ul>
+		
+			<li>
+				<a href="/2013/08/">2013/08</a>
+			</li>
+		
+			<li>
+				<a href="/2013/09/">2013/09</a>
+			</li>
+		
+			<li>
+				<a href="/2013/11/">2013/11</a>
+			</li>
+		
+			<li>
+				<a href="/2013/12/">2013/12</a>
+			</li>
+		
+			<li>
+				<a href="/2014/01/">2014/01</a>
+			</li>
+		
+			<li>
+				<a href="/2014/03/">2014/03</a>
+			</li>
+		
+			<li>
+				<a href="/2014/04/">2014/04</a>
+			</li>
+		
+			<li>
+				<a href="/2014/05/">2014/05</a>
+			</li>
+		
+			<li>
+				<a href="/2014/06/">2014/06</a>
+			</li>
+		
+	</ul>
+
+</div>
+
+        <div class="site">
+
+			<!-- title -->
+			<!-- Header -->
+<header>
+<h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
+	<hr />
+</header>
+
+			<div id="contents">
+				
+				<div id="main">
+					<h3><a href="">The Swift Programming Language ~ Extensions</a></h3>
+					<span class="author">
+						<span class="date">2014-06-28 15:00:00 -0700</span>
+					</span>
+
+					<hr />
+					<div id="social-buttom">
+	<!-- Social Buttoms -->
+	<ul>
+		<li>
+			<!-- Pocket -->
+			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
+			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+		</li>		
+		<li>
+			<!-- Vertical Twitter -->
+			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		</li>				
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//swift/2014/06/28/swift-doc-extensions.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+		</li>				
+		<li style="margine-left: 10px;!important">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="The Swift Programming Language ~ Extensions" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+	</ul>
+</div>
+
+		      		<hr class="clear-list"/>
+
+					<div class="post">
+						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。  </p>
+
+<p>今回は、Extensions に関して。</p>
+
+<h3 id="extensions">Extensions</h3>
+
+<p>Extensions は、既存のクラス・構造体・Enumeration に対して新しい機能を追加します。これは Objective-C のカテゴリのようなものです。</p>
+
+<h4 id="extensions-syntax">Extensions Syntax</h4>
+
+<p>Extensions は、<code>extension</code> キーワードを使用して宣言されます。また、既存のタイプがプロトコルに準拠するように拡大することもできます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">extension</span> <span class="n">SomeType</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="c1">// new functionality to add to SomeType goes here</span>
+<span class="lineno">3</span> <span class="p">}</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span> <span class="n">extension</span> <span class="n">SomeType</span><span class="o">:</span> <span class="n">SomeProtocol</span><span class="p">,</span> <span class="n">AnotherProtocol</span> <span class="p">{</span>
+<span class="lineno">6</span>     <span class="c1">// implementation of protocol requirements goes here</span>
+<span class="lineno">7</span> <span class="p">}</span></code></pre></div>
+
+<h4 id="computed-プロパティ">Computed プロパティ</h4>
+
+<p>Extension は、Computed インスタンスプロパティと Computed タイププロパティを追加することができます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">extension</span> <span class="n">Double</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">km</span><span class="o">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="n">self</span> <span class="o">*</span> <span class="mi">1</span><span class="n">_000</span><span class="mf">.0</span> <span class="p">}</span>
+<span class="lineno"> 3</span>     <span class="n">var</span> <span class="n">m</span><span class="o">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="n">self</span> <span class="p">}</span>
+<span class="lineno"> 4</span>     <span class="n">var</span> <span class="n">cm</span><span class="o">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="n">self</span> <span class="o">/</span> <span class="mf">100.0</span> <span class="p">}</span>
+<span class="lineno"> 5</span>     <span class="n">var</span> <span class="n">mm</span><span class="o">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="n">self</span> <span class="o">/</span> <span class="mi">1</span><span class="n">_000</span><span class="mf">.0</span> <span class="p">}</span>
+<span class="lineno"> 6</span>     <span class="n">var</span> <span class="n">ft</span><span class="o">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="n">self</span> <span class="o">/</span> <span class="mf">3.28084</span> <span class="p">}</span>
+<span class="lineno"> 7</span> <span class="p">}</span>
+<span class="lineno"> 8</span> <span class="n">let</span> <span class="n">oneInch</span> <span class="o">=</span> <span class="mf">25.4</span><span class="p">.</span><span class="n">mm</span>
+<span class="lineno"> 9</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;One inch is \(oneInch) meters&quot;</span><span class="p">)</span>
+<span class="lineno">10</span> <span class="c1">// prints &quot;One inch is 0.0254 meters&quot;</span>
+<span class="lineno">11</span> <span class="n">let</span> <span class="n">threeFeet</span> <span class="o">=</span> <span class="mf">3.f</span><span class="n">t</span>
+<span class="lineno">12</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;Three feet is \(threeFeet) meters&quot;</span><span class="p">)</span>
+<span class="lineno">13</span> <span class="c1">// prints &quot;Three feet is 0.914399970739201 meters&quot;</span>
+<span class="lineno">14</span> 
+<span class="lineno">15</span> <span class="n">let</span> <span class="n">aMarathon</span> <span class="o">=</span> <span class="mf">42.</span><span class="n">km</span> <span class="o">+</span> <span class="mf">195.</span><span class="n">m</span>
+<span class="lineno">16</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;A marathon is \(aMarathon) meters long&quot;</span><span class="p">)</span>
+<span class="lineno">17</span> <span class="c1">// prints &quot;A marathon is 42195.0 meters long&quot;</span></code></pre></div>
+
+<p>この例では、Swift の既存 Double タイプに対して、5 つの Computed インスタンスプロパティを追加しています。</p>
+
+<h4 id="initializer">Initializer</h4>
+
+<p>Extension は新しい Initializer も追加することができます。新しく Initializer を追加することで、既存の実装にはない新しい Initializer を使用したり、独自のカスタムタイプを引数として使用したりと便利にコーディングできます。しかし、Designvated Initializer と Deinitializer は追加することができません。これらは、常に元のタイプの実装の中になければなりません。</p>
+
+<p>構造体や Enumeration に新しく Initializer を追加する際、もしそのタイプが全ての Stored プロパティに初期値を持っていれば、このデフォルト Initializer と Memberwise Initioaliszer を Extension の中で呼ぶことができます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">Size</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">width</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="lineno"> 3</span> <span class="p">}</span>
+<span class="lineno"> 4</span> <span class="k">struct</span> <span class="n">Point</span> <span class="p">{</span>
+<span class="lineno"> 5</span>     <span class="n">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="lineno"> 6</span> <span class="p">}</span>
+<span class="lineno"> 7</span> <span class="k">struct</span> <span class="n">Rect</span> <span class="p">{</span>
+<span class="lineno"> 8</span>     <span class="n">var</span> <span class="n">origin</span> <span class="o">=</span> <span class="n">Point</span><span class="p">()</span>
+<span class="lineno"> 9</span>     <span class="n">var</span> <span class="n">size</span> <span class="o">=</span> <span class="n">Size</span><span class="p">()</span>
+<span class="lineno">10</span> <span class="p">}</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span> <span class="n">extension</span> <span class="n">Rect</span> <span class="p">{</span>
+<span class="lineno">13</span>     <span class="n">init</span><span class="p">(</span><span class="n">center</span><span class="o">:</span> <span class="n">Point</span><span class="p">,</span> <span class="n">size</span><span class="o">:</span> <span class="n">Size</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">14</span>         <span class="n">let</span> <span class="n">originX</span> <span class="o">=</span> <span class="n">center</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+<span class="lineno">15</span>         <span class="n">let</span> <span class="n">originY</span> <span class="o">=</span> <span class="n">center</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+<span class="lineno">16</span>         <span class="n">self</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">origin</span><span class="o">:</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="n">originX</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="n">originY</span><span class="p">),</span> <span class="n">size</span><span class="o">:</span> <span class="n">size</span><span class="p">)</span>
+<span class="lineno">17</span>     <span class="p">}</span>
+<span class="lineno">18</span> <span class="p">}</span></code></pre></div>
+
+<p>この Rect 構造体は、デフォルト Initializer (<code>init()</code>) と Memberwise Initializer を使用することができます。全ての Stored プロパティに初期値が設定されているからです。そして、Extension の中で、この Memberwise Initializer を使用しています。</p>
+
+<h4 id="メソッド">メソッド</h4>
+
+<p>Extension は、新しいインスタンスメソッドとタイプメソッドを追加することができます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">extension</span> <span class="n">Int</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">func</span> <span class="n">repetitions</span><span class="p">(</span><span class="n">task</span><span class="o">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="p">())</span> <span class="p">{</span>
+<span class="lineno"> 3</span>         <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mf">0.</span><span class="p">.</span><span class="n">self</span> <span class="p">{</span>
+<span class="lineno"> 4</span>             <span class="n">task</span><span class="p">()</span>
+<span class="lineno"> 5</span>         <span class="p">}</span>
+<span class="lineno"> 6</span>     <span class="p">}</span>
+<span class="lineno"> 7</span> <span class="p">}</span>
+<span class="lineno"> 8</span> <span class="mf">3.</span><span class="n">repetitions</span><span class="p">({</span>
+<span class="lineno"> 9</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;Hello!&quot;</span><span class="p">)</span>
+<span class="lineno">10</span>     <span class="p">})</span>
+<span class="lineno">11</span> <span class="c1">// Hello!</span>
+<span class="lineno">12</span> <span class="c1">// Hello!</span>
+<span class="lineno">13</span> <span class="c1">// Hello!</span>
+<span class="lineno">14</span> 
+<span class="lineno">15</span> <span class="c1">// Using trailing closure syntax</span>
+<span class="lineno">16</span> <span class="mf">3.</span><span class="n">repetitions</span> <span class="p">{</span>
+<span class="lineno">17</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;Goodbye!&quot;</span><span class="p">)</span>
+<span class="lineno">18</span> <span class="p">}</span>
+<span class="lineno">19</span> <span class="c1">// Goodbye!</span>
+<span class="lineno">20</span> <span class="c1">// Goodbye!</span>
+<span class="lineno">21</span> <span class="c1">// Goodbye!</span></code></pre></div>
+
+<p>repetitions は 1 つ引数を持っています。これは、引数を持たず、返り値も持たない関数です。</p>
+
+<p>Extension により追加されたインスタンスメソッドは、インスタンス自体に変更を加えることができます。構造体・Enumeration のメソッドが self やそのプロパティを修正する場合には、<code>mutating</code> キーワードを使用しなければなりません。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">extension</span> <span class="n">Int</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">square</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">3</span>         <span class="n">self</span> <span class="o">=</span> <span class="n">self</span> <span class="o">*</span> <span class="n">self</span>
+<span class="lineno">4</span>     <span class="p">}</span>
+<span class="lineno">5</span> <span class="p">}</span>
+<span class="lineno">6</span> <span class="n">var</span> <span class="n">someInt</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="lineno">7</span> <span class="n">someInt</span><span class="p">.</span><span class="n">square</span><span class="p">()</span>
+<span class="lineno">8</span> <span class="c1">// someInt is now 9</span></code></pre></div>
+
+<h4 id="subscripts">Subscripts</h4>
+
+<p>Extension は、サブスクリプトを追加することができます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">extension</span> <span class="n">Int</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">subscript</span><span class="p">(</span><span class="n">digitIndex</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
+<span class="lineno"> 3</span>         <span class="n">var</span> <span class="n">decimalBase</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="lineno"> 4</span>             <span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">..</span><span class="n">digitIndex</span> <span class="p">{</span>
+<span class="lineno"> 5</span>                 <span class="n">decimalBase</span> <span class="o">*=</span> <span class="mi">10</span>
+<span class="lineno"> 6</span>             <span class="p">}</span>
+<span class="lineno"> 7</span>             <span class="k">return</span> <span class="p">(</span><span class="n">self</span> <span class="o">/</span> <span class="n">decimalBase</span><span class="p">)</span> <span class="o">%</span> <span class="mi">10</span>
+<span class="lineno"> 8</span>     <span class="p">}</span>
+<span class="lineno"> 9</span> <span class="p">}</span>
+<span class="lineno">10</span> <span class="mi">746381295</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="lineno">11</span> <span class="c1">// returns 5</span>
+<span class="lineno">12</span> <span class="mi">746381295</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="lineno">13</span> <span class="c1">// returns 9</span>
+<span class="lineno">14</span> <span class="mi">746381295</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="lineno">15</span> <span class="c1">// returns 2</span>
+<span class="lineno">16</span> <span class="mi">746381295</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span>
+<span class="lineno">17</span> <span class="c1">// returns 7</span>
+<span class="lineno">18</span> <span class="mi">746381295</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span>
+<span class="lineno">19</span> <span class="c1">// returns 0, as if you had requested:</span>
+<span class="lineno">20</span> <span class="mo">07463</span><span class="mi">81295</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span></code></pre></div>
+
+<p>この例は、Swift の Int タイプに対して、指定された桁の数字を返すサブスクリプトを追加しています。</p>
+
+<h4 id="nested-types">Nested Types</h4>
+
+<p>Extension は、Nested Type を追加することもできます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">extension</span> <span class="n">Character</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="k">enum</span> <span class="n">Kind</span> <span class="p">{</span>
+<span class="lineno"> 3</span>         <span class="k">case</span> <span class="n">Vowel</span><span class="p">,</span> <span class="n">Consonant</span><span class="p">,</span> <span class="n">Other</span>
+<span class="lineno"> 4</span>     <span class="p">}</span>
+<span class="lineno"> 5</span>     <span class="n">var</span> <span class="n">kind</span><span class="o">:</span> <span class="n">Kind</span> <span class="p">{</span>
+<span class="lineno"> 6</span>     <span class="k">switch</span> <span class="n">String</span><span class="p">(</span><span class="n">self</span><span class="p">).</span><span class="n">lowercaseString</span> <span class="p">{</span>
+<span class="lineno"> 7</span>     <span class="k">case</span> <span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;e&quot;</span><span class="p">,</span> <span class="s">&quot;i&quot;</span><span class="p">,</span> <span class="s">&quot;o&quot;</span><span class="p">,</span> <span class="s">&quot;u&quot;</span>:
+<span class="lineno"> 8</span>         <span class="k">return</span> <span class="p">.</span><span class="n">Vowel</span>
+<span class="lineno"> 9</span>     <span class="k">case</span> <span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="s">&quot;c&quot;</span><span class="p">,</span> <span class="s">&quot;d&quot;</span><span class="p">,</span> <span class="s">&quot;f&quot;</span><span class="p">,</span> <span class="s">&quot;g&quot;</span><span class="p">,</span> <span class="s">&quot;h&quot;</span><span class="p">,</span> <span class="s">&quot;j&quot;</span><span class="p">,</span> <span class="s">&quot;k&quot;</span><span class="p">,</span> <span class="s">&quot;l&quot;</span><span class="p">,</span> <span class="s">&quot;m&quot;</span><span class="p">,</span>
+<span class="lineno">10</span>     <span class="s">&quot;n&quot;</span><span class="p">,</span> <span class="s">&quot;p&quot;</span><span class="p">,</span> <span class="s">&quot;q&quot;</span><span class="p">,</span> <span class="s">&quot;r&quot;</span><span class="p">,</span> <span class="s">&quot;s&quot;</span><span class="p">,</span> <span class="s">&quot;t&quot;</span><span class="p">,</span> <span class="s">&quot;v&quot;</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">,</span> <span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="s">&quot;z&quot;</span><span class="o">:</span>
+<span class="lineno">11</span>         <span class="k">return</span> <span class="p">.</span><span class="n">Consonant</span>
+<span class="lineno">12</span>     <span class="nl">default:</span>
+<span class="lineno">13</span>         <span class="k">return</span> <span class="p">.</span><span class="n">Other</span>
+<span class="lineno">14</span>         <span class="p">}</span>
+<span class="lineno">15</span>     <span class="p">}</span>
+<span class="lineno">16</span> <span class="p">}</span></code></pre></div>
+
+<p>この例は、Character タイプに対して Enumeration を追加しています。これにより、ある文字がどのような種類のものかを簡単に確認しています。</p>
+
+<p>例えばこのように使用可能です。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">func</span> <span class="nf">printLetterKinds</span><span class="p">(</span><span class="n">word</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;&#39;\(word)&#39; is made up of the following kinds of letters:&quot;</span><span class="p">)</span>
+<span class="lineno"> 3</span>     <span class="k">for</span> <span class="n">character</span> <span class="k">in</span> <span class="n">word</span> <span class="p">{</span>
+<span class="lineno"> 4</span>         <span class="k">switch</span> <span class="n">character</span><span class="p">.</span><span class="n">kind</span> <span class="p">{</span>
+<span class="lineno"> 5</span>         <span class="k">case</span> <span class="p">.</span><span class="n">Vowel</span>:
+<span class="lineno"> 6</span>             <span class="n">print</span><span class="p">(</span><span class="s">&quot;vowel &quot;</span><span class="p">)</span>
+<span class="lineno"> 7</span>         <span class="k">case</span> <span class="p">.</span><span class="n">Consonant</span>:
+<span class="lineno"> 8</span>             <span class="n">print</span><span class="p">(</span><span class="s">&quot;consonant &quot;</span><span class="p">)</span>
+<span class="lineno"> 9</span>         <span class="k">case</span> <span class="p">.</span><span class="n">Other</span>:
+<span class="lineno">10</span>             <span class="n">print</span><span class="p">(</span><span class="s">&quot;other &quot;</span><span class="p">)</span>
+<span class="lineno">11</span>         <span class="p">}</span>
+<span class="lineno">12</span>     <span class="p">}</span>
+<span class="lineno">13</span>     <span class="n">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="lineno">14</span> <span class="p">}</span>
+<span class="lineno">15</span> <span class="n">printLetterKinds</span><span class="p">(</span><span class="s">&quot;Hello&quot;</span><span class="p">)</span>
+<span class="lineno">16</span> <span class="c1">// &#39;Hello&#39; is made up of the following kinds of letters:</span>
+<span class="lineno">17</span> <span class="c1">// consonant vowel consonant consonant vowel</span></code></pre></div>
+
+<p>character.kind は、すでに Character.Kind として分かっています。このため、switch 文の中では、単に .Vowel、.Consonant、.Other と書けます。Character.Kind.Vowel と書く必要はありません。</p>
+
+					</div>
+
+				</div>
+
+				<div id="sub">
+				   <div class="side_box">
+   <h3>About</h3>
+      <p class="side_content">
+         <i>Kazuya Kobayashi</i><br />
+         - I'm a once law student trying to be computer geek.<br />
+         - ギークになりたい。<br />
+         <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a>
+      </p>
+</div>
+
+<hr />
+
+<h3>Elsewhere</h3>
+   <p class="side_content">
+      <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+      <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+      <a href="https://github.com/kzykbys">Github</a>
+   </p>
+
+<hr />
+
+<h3>Category</h3>
+   <p class="side_content">|
+      
+   	   <a href="/categories/objective-c">objective-c
+            (11)
+         </a> | 
+      
+   	   <a href="/categories/other">other
+            (6)
+         </a> | 
+      
+   	   <a href="/categories/node-js">node.js
+            (1)
+         </a> | 
+      
+   	   <a href="/categories/ruby-on-rails">ruby on rails
+            (18)
+         </a> | 
+      
+   	   <a href="/categories/tips">tips
+            (6)
+         </a> | 
+      
+   	   <a href="/categories/html5">html5
+            (8)
+         </a> | 
+      
+   	   <a href="/categories/algorithms">algorithms
+            (2)
+         </a> | 
+      
+   	   <a href="/categories/machine-learning">machine learning
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/c">c
+            (14)
+         </a> | 
+      
+   	   <a href="/categories/ruby">ruby
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/swift">swift
+            (28)
+         </a> | 
+      
+   </p>
+
+<hr />
+
+<h3>Archive</h3>
+   <p class="side_content">|
+      
+   		<a href="/2013/08/">2013/08
+            (2)
+         </a> |          
+      
+   		<a href="/2013/09/">2013/09
+            (4)
+         </a> |          
+      
+   		<a href="/2013/11/">2013/11
+            (11)
+         </a> |          
+      
+   		<a href="/2013/12/">2013/12
+            (21)
+         </a> |          
+      
+   		<a href="/2014/01/">2014/01
+            (5)
+         </a> |          
+      
+   		<a href="/2014/03/">2014/03
+            (6)
+         </a> |          
+      
+   		<a href="/2014/04/">2014/04
+            (7)
+         </a> |          
+      
+   		<a href="/2014/05/">2014/05
+            (11)
+         </a> |          
+      
+   		<a href="/2014/06/">2014/06
+            (37)
+         </a> |          
+      
+   </p>
+
+<hr />
+
+<h3>Work</h3>			   
+   <p class="side_content">
+      Coming soon... maybe.
+   </p>
+
+<hr />
+				</div>
+
+			</div>
+
+
+		</div>
+
+				<div class="footer">
+		   <div class="footer_inner">
+			   <div class="contact">
+				   <h4>About</h4>
+				   <p>Kazuya Kobayashi<br />
+				   - I'm a once law student trying to be computer geek.<br />
+				   - ギークになりたい。<br />
+				   <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a></p>
+				   <h4>Elsewhere</h4>
+				   <p>
+					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+					   <a href="https://github.com/kzykbys">Github</a></p>
+				   <h4>Category</h4>
+				   <p>|
+					   
+						   <a href="/categories/objective-c">objective-c</a> | 
+					   
+						   <a href="/categories/other">other</a> | 
+					   
+						   <a href="/categories/node-js">node.js</a> | 
+					   
+						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
+					   
+						   <a href="/categories/tips">tips</a> | 
+					   
+						   <a href="/categories/html5">html5</a> | 
+					   
+						   <a href="/categories/algorithms">algorithms</a> | 
+					   
+						   <a href="/categories/machine-learning">machine learning</a> | 
+					   
+						   <a href="/categories/c">c</a> | 
+					   
+						   <a href="/categories/ruby">ruby</a> | 
+					   
+						   <a href="/categories/swift">swift</a> | 
+					   
+				   </p>
+				   <h4>Archive</h4>
+					   <p>|
+					   
+	    					<a href="/2013/08/">2013/08
+	    					</a> | 
+	    			   
+	    					<a href="/2013/09/">2013/09
+	    					</a> | 
+	    			   
+	    					<a href="/2013/11/">2013/11
+	    					</a> | 
+	    			   
+	    					<a href="/2013/12/">2013/12
+	    					</a> | 
+	    			   
+	    					<a href="/2014/01/">2014/01
+	    					</a> | 
+	    			   
+	    					<a href="/2014/03/">2014/03
+	    					</a> | 
+	    			   
+	    					<a href="/2014/04/">2014/04
+	    					</a> | 
+	    			   
+	    					<a href="/2014/05/">2014/05
+	    					</a> | 
+	    			   
+	    					<a href="/2014/06/">2014/06
+	    					</a> | 
+	    			   
+    			   </p>
+				   <h4>Work</h4>			   
+				   <p>Coming soon... maybe.</p>
+			   </div>
+		   </div>
+	   	</div>
+
+	   		  
+	  	<!-- Sdir (slide menu for small screen) -->
+
+<script>
+	
+  	$(document).ready(function() {
+		$('#mobile-menu-button').sidr();	  
+  	});
+
+  	$('#mobile-menu-button').click(function(e){
+  	});
+
+  	$('html').click(function(e){
+  		$.sidr('close', 'sidr');
+  	});
+
+</script>
+	  	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28952627-6', 'kazuya.co');
+  ga('send', 'pageview');
+
+</script>
+
+	</body>
+</html>
