@@ -1,0 +1,617 @@
+	<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>The Swift Programming Language ~ Advanced Operators</title>        
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />        
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+		<link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/jquery.sidr.dark.css">
+		<link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+
+        <!-- jQuery -->
+<script src="/javascript/jquery-1.11.1.min.js"></script>
+<!-- slide menu -->
+<script src="/javascript/jquery.sidr.min.js"></script>
+<!-- For FB like buttom -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=571082556301479&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+	</head>
+	
+	<body>
+    
+        <div id="mobile-sticky-menu">
+	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
+	<!-- <img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" /> -->
+</div>
+
+<div id="sidr">
+	<!-- Your content -->
+	<!-- <h4>Share</h4> -->
+
+	<h4>Category</h4>
+	<ul>
+	   
+		   <li>
+		   		<a href="/categories/objective-c">objective-c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/other">other</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/node-js">node.js</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/tips">tips</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/html5">html5</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/algorithms">algorithms</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/machine-learning">machine learning</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/c">c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby">ruby</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/swift">swift</a>
+		   </li>
+	   
+    </ul>
+	<h4>Archive</h4>
+	<ul>
+		
+			<li>
+				<a href="/2013/08/">2013/08</a>
+			</li>
+		
+			<li>
+				<a href="/2013/09/">2013/09</a>
+			</li>
+		
+			<li>
+				<a href="/2013/11/">2013/11</a>
+			</li>
+		
+			<li>
+				<a href="/2013/12/">2013/12</a>
+			</li>
+		
+			<li>
+				<a href="/2014/01/">2014/01</a>
+			</li>
+		
+			<li>
+				<a href="/2014/03/">2014/03</a>
+			</li>
+		
+			<li>
+				<a href="/2014/04/">2014/04</a>
+			</li>
+		
+			<li>
+				<a href="/2014/05/">2014/05</a>
+			</li>
+		
+			<li>
+				<a href="/2014/06/">2014/06</a>
+			</li>
+		
+			<li>
+				<a href="/2014/07/">2014/07</a>
+			</li>
+		
+	</ul>
+
+</div>
+
+        <div class="site">
+
+			<!-- title -->
+			<!-- Header -->
+<header>
+<h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
+	<hr />
+</header>
+
+			<div id="contents">
+				
+				<div id="main">
+					<h3><a href="">The Swift Programming Language ~ Advanced Operators</a></h3>
+					<span class="author">
+						<span class="date">2014-07-01 13:00:00 -0700</span>
+					</span>
+
+					<hr />
+					<div id="social-buttom">
+	<!-- Social Buttoms -->
+	<ul>
+		<li>
+			<!-- Pocket -->
+			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
+			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+		</li>		
+		<li>
+			<!-- Vertical Twitter -->
+			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		</li>				
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//swift/2014/07/01/swift-doc-advanced-operators.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+		</li>				
+		<li style="margine-left: 10px;!important">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="The Swift Programming Language ~ Advanced Operators" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+	</ul>
+</div>
+
+		      		<hr class="clear-list"/>
+
+					<div class="post">
+						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。  </p>
+
+<p>今回は、Advanced Operators に関して。</p>
+
+<h3 id="advanced-operators">Advanced Operators</h3>
+
+<p>今まで見てきたような基本的なオペレーター以外に、Swift ではビット操作等のオペレーターも C 同様にサポートしています。また、既存のオペレーターをオーバーライドすることも可能です。さらに、独自のオペレーターを作成することもできます。</p>
+
+<h4 id="1.-ビット操作オペレーター">1. ビット操作オペレーター</h4>
+
+<p>C と同じように Swift でも、ビット操作をすることができます。基本的にシンタックスも同じようです。</p>
+
+<p>以前、C のビット操作に関する記事を書いたので、詳しくは <a href="http://blog.kazuya.co/c/2014/05/24/c-bit-operation.html">こちら</a> と <a href="http://blog.kazuya.co/c/2014/05/24/c-bit-masking.html">こちら</a> へ。iBooks のマニュアルには、sign integer や　unsign integer のビットレベルでの表し方等、基本的なことも細かく解説されていました。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="c1">// NOT</span>
+<span class="lineno"> 2</span> <span class="n">let</span> <span class="n">initialBits</span><span class="o">:</span> <span class="n">UInt8</span> <span class="o">=</span> <span class="mi">0</span><span class="n">b00001111</span>
+<span class="lineno"> 3</span> <span class="n">let</span> <span class="n">invertedBits</span> <span class="o">=</span> <span class="o">~</span><span class="n">initialBits</span>  <span class="c1">// equals 11110000</span>
+<span class="lineno"> 4</span> <span class="c1">// AND</span>
+<span class="lineno"> 5</span> <span class="n">let</span> <span class="n">firstSixBits</span><span class="o">:</span> <span class="n">UInt8</span> <span class="o">=</span> <span class="mi">0</span><span class="n">b11111100</span>
+<span class="lineno"> 6</span> <span class="n">let</span> <span class="n">lastSixBits</span><span class="o">:</span> <span class="n">UInt8</span>  <span class="o">=</span> <span class="mi">0</span><span class="n">b00111111</span>
+<span class="lineno"> 7</span> <span class="n">let</span> <span class="n">middleFourBits</span> <span class="o">=</span> <span class="n">firstSixBits</span> <span class="o">&amp;</span> <span class="n">lastSixBits</span>  <span class="c1">// equals 00111100</span>
+<span class="lineno"> 8</span> <span class="c1">// OR</span>
+<span class="lineno"> 9</span> <span class="n">let</span> <span class="n">someBits</span><span class="o">:</span> <span class="n">UInt8</span> <span class="o">=</span> <span class="mi">0</span><span class="n">b10110010</span>
+<span class="lineno">10</span> <span class="n">let</span> <span class="n">moreBits</span><span class="o">:</span> <span class="n">UInt8</span> <span class="o">=</span> <span class="mi">0</span><span class="n">b01011110</span>
+<span class="lineno">11</span> <span class="n">let</span> <span class="n">combinedbits</span> <span class="o">=</span> <span class="n">someBits</span> <span class="o">|</span> <span class="n">moreBits</span>  <span class="c1">// equals 11111110</span>
+<span class="lineno">12</span> <span class="c1">// XOR</span>
+<span class="lineno">13</span> <span class="n">let</span> <span class="n">firstBits</span><span class="o">:</span> <span class="n">UInt8</span> <span class="o">=</span> <span class="mi">0</span><span class="n">b00010100</span>
+<span class="lineno">14</span> <span class="n">let</span> <span class="n">otherBits</span><span class="o">:</span> <span class="n">UInt8</span> <span class="o">=</span> <span class="mi">0</span><span class="n">b00000101</span>
+<span class="lineno">15</span> <span class="n">let</span> <span class="n">outputBits</span> <span class="o">=</span> <span class="n">firstBits</span> <span class="o">^</span> <span class="n">otherBits</span>  <span class="c1">// equals 00010001</span>
+<span class="lineno">16</span> <span class="c1">// Left and Right Shift</span>
+<span class="lineno">17</span> <span class="n">let</span> <span class="n">shiftBits</span><span class="o">:</span> <span class="n">UInt8</span> <span class="o">=</span> <span class="mi">4</span>   <span class="c1">// 00000100 in binary</span>
+<span class="lineno">18</span> <span class="n">shiftBits</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span>             <span class="c1">// 00001000</span>
+<span class="lineno">19</span> <span class="n">shiftBits</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span>             <span class="c1">// 00010000</span>
+<span class="lineno">20</span> <span class="n">shiftBits</span> <span class="o">&lt;&lt;</span> <span class="mi">5</span>             <span class="c1">// 10000000</span>
+<span class="lineno">21</span> <span class="n">shiftBits</span> <span class="o">&lt;&lt;</span> <span class="mi">6</span>             <span class="c1">// 00000000</span>
+<span class="lineno">22</span> <span class="n">shiftBits</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span>             <span class="c1">// 00000001</span>
+<span class="lineno">23</span> <span class="c1">// Shift Operator with Hex Color Code</span>
+<span class="lineno">24</span> <span class="n">let</span> <span class="n">pink</span><span class="o">:</span> <span class="n">UInt32</span> <span class="o">=</span> <span class="mh">0xCC6699</span>
+<span class="lineno">25</span> <span class="n">let</span> <span class="n">redComponent</span> <span class="o">=</span> <span class="p">(</span><span class="n">pink</span> <span class="o">&amp;</span> <span class="mh">0xFF0000</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span>    <span class="c1">// redComponent is 0xCC, or 204</span>
+<span class="lineno">26</span> <span class="n">let</span> <span class="n">greenComponent</span> <span class="o">=</span> <span class="p">(</span><span class="n">pink</span> <span class="o">&amp;</span> <span class="mh">0x00FF00</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span>   <span class="c1">// greenComponent is 0x66, or 102</span>
+<span class="lineno">27</span> <span class="n">let</span> <span class="n">blueComponent</span> <span class="o">=</span> <span class="n">pink</span> <span class="o">&amp;</span> <span class="mh">0x0000FF</span>           <span class="c1">// blueComponent is 0x99, or 153</span></code></pre></div>
+
+<h4 id="2.-オーバーフローオペレーター">2. オーバーフローオペレーター</h4>
+
+<p>Swift では、オーバーフロー・アンダーフローともに発生した場合には、エラーを吐きます。意図しない間違った値を使用してしまうことを防いでくれます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">potentialOverflow</span> <span class="o">=</span> <span class="n">Int16</span><span class="p">.</span><span class="n">max</span>
+<span class="lineno">2</span> <span class="c1">// potentialOverflow equals 32767, which is the largest value an Int16 can hold</span>
+<span class="lineno">3</span> <span class="n">potentialOverflow</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="lineno">4</span> <span class="c1">// this causes an error</span></code></pre></div>
+
+<p>エラーを起こすのではなく、通常のようにオーバーフロー・アンダーフローさせたい場合には、その値を丸めてくれるようにすることもできます。その際には、オペレーターの前に <code>&amp;</code> をつけます。</p>
+
+<ul>
+<li>・オーバーフロー足し算 ： <code>&amp;+</code></li>
+<li>・オーバーフロー引き算 ： <code>&amp;-</code></li>
+<li>・オーバーフロー掛け算 ： <code>&amp;*</code></li>
+<li>・オーバーフロー割り算 ： <code>&amp;/</code></li>
+<li>・オーバーフロー　余り ： <code>&amp;%</code></li>
+</ul>
+
+<p>例を見てみます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">willOverflow</span> <span class="o">=</span> <span class="n">UInt8</span><span class="p">.</span><span class="n">max</span>
+<span class="lineno">2</span> <span class="c1">// willOverflow equals 255, which is the largest value a UInt8 can hold</span>
+<span class="lineno">3</span> <span class="n">willOverflow</span> <span class="o">=</span> <span class="n">willOverflow</span> <span class="o">&amp;+</span> <span class="mi">1</span>
+<span class="lineno">4</span> <span class="c1">// willOverflow is now equal to 0</span>
+<span class="lineno">5</span> 
+<span class="lineno">6</span> <span class="n">var</span> <span class="n">willUnderflow</span> <span class="o">=</span> <span class="n">UInt8</span><span class="p">.</span><span class="n">min</span>
+<span class="lineno">7</span> <span class="c1">// willUnderflow equals 0, which is the smallest value a UInt8 can hold</span>
+<span class="lineno">8</span> <span class="n">willUnderflow</span> <span class="o">=</span> <span class="n">willUnderflow</span> <span class="o">&amp;-</span> <span class="mi">1</span>
+<span class="lineno">9</span> <span class="c1">// willUnderflow is now equal to 255</span></code></pre></div>
+
+<p>また、0 で割った場合と 0 で余りを求めた場合に、エラーを吐くのではなく、0 を返すという効果もあります。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="lineno">2</span> <span class="n">let</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&amp;/</span> <span class="mi">0</span>
+<span class="lineno">3</span> <span class="c1">// y is equal to 0</span></code></pre></div>
+
+<h4 id="3.-オペレーター関数">3. オペレーター関数</h4>
+
+<p>クラスと構造体は、すでに存在しているオペレーターに独自の実装を追加することができます。これをオーバーライドと言います。</p>
+
+<p>下記の例では、Vector2D という独自の構造体に対して、新しい + オペレーターをオーバーライドしています。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">Vector2D</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="lineno"> 3</span> <span class="p">}</span>
+<span class="lineno"> 4</span> <span class="p">@</span><span class="n">infix</span> <span class="n">func</span> <span class="o">+</span> <span class="p">(</span><span class="n">left</span><span class="o">:</span> <span class="n">Vector2D</span><span class="p">,</span> <span class="n">right</span><span class="o">:</span> <span class="n">Vector2D</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Vector2D</span> <span class="p">{</span>
+<span class="lineno"> 5</span>     <span class="k">return</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="n">left</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">right</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="n">left</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">right</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+<span class="lineno"> 6</span> <span class="p">}</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="n">let</span> <span class="n">vector</span> <span class="o">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="lineno"> 9</span> <span class="n">let</span> <span class="n">anotherVector</span> <span class="o">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mf">4.0</span><span class="p">)</span>
+<span class="lineno">10</span> <span class="n">let</span> <span class="n">combinedVector</span> <span class="o">=</span> <span class="n">vector</span> <span class="o">+</span> <span class="n">anotherVector</span>
+<span class="lineno">11</span> <span class="c1">// combinedVector is a Vector2D instance with values of (5.0, 5.0)</span></code></pre></div>
+
+<p>この <code>@infix</code> 属性は、binary operator (オペランドが 2 つあるオペレーター) に対して使用します。このオペレーター関数は、グローバル関数なので、2 つのインスタンスに上記のように使用できます。</p>
+
+<p>また、unary operator も定義できます。この際には、<code>@postfix</code> と <code>@prefix</code> 属性を使用します。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="p">@</span><span class="n">prefix</span> <span class="n">func</span> <span class="o">-</span> <span class="p">(</span><span class="n">vector</span><span class="o">:</span> <span class="n">Vector2D</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Vector2D</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="k">return</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="o">-</span><span class="n">vector</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="o">-</span><span class="n">vector</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+<span class="lineno">3</span> <span class="p">}</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span> <span class="n">let</span> <span class="n">positive</span> <span class="o">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mf">4.0</span><span class="p">)</span>
+<span class="lineno">6</span> <span class="n">let</span> <span class="n">negative</span> <span class="o">=</span> <span class="o">-</span><span class="n">positive</span>
+<span class="lineno">7</span> <span class="c1">// negative is a Vector2D instance with values of (-3.0, -4.0)</span>
+<span class="lineno">8</span> <span class="n">let</span> <span class="n">alsoPositive</span> <span class="o">=</span> <span class="o">-</span><span class="n">negative</span>
+<span class="lineno">9</span> <span class="c1">// alsoPositive is a Vector2D instance with values of (3.0, 4.0)</span></code></pre></div>
+
+<p>また、Compound assignment operators (+= とか /= とか) もオーバーライドできます。その際には、<code>@assignment</code> を使用します。また、この Compound assignment operators のオペレーター関数を書く際には、左の引数に <code>inout</code> キーワードを使用しなければなりません。この引数は変更され、この変更は関数呼び出し後も持続なければならないからです。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="p">@</span><span class="n">assignment</span> <span class="n">func</span> <span class="o">+=</span> <span class="p">(</span><span class="n">inout</span> <span class="n">left</span><span class="o">:</span> <span class="n">Vector2D</span><span class="p">,</span> <span class="n">right</span><span class="o">:</span> <span class="n">Vector2D</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="n">left</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="n">right</span>
+<span class="lineno">3</span> <span class="p">}</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span> <span class="n">var</span> <span class="n">original</span> <span class="o">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mf">2.0</span><span class="p">)</span>
+<span class="lineno">6</span> <span class="n">let</span> <span class="n">vectorToAdd</span> <span class="o">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mf">4.0</span><span class="p">)</span>
+<span class="lineno">7</span> <span class="n">original</span> <span class="o">+=</span> <span class="n">vectorToAdd</span>
+<span class="lineno">8</span> <span class="c1">// original now has values of (4.0, 6.0)</span></code></pre></div>
+
+<p>先ほど、Vector2D のために + をオーバーライドしているので、上記のように簡潔に書くことができます。</p>
+
+<p><code>@assignment</code> と <code>@postfix</code> か <code>@prefix</code> を組み合わせることもできます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="p">@</span><span class="n">prefix</span> <span class="p">@</span><span class="n">assignment</span> <span class="n">func</span> <span class="o">++</span> <span class="p">(</span><span class="n">inout</span> <span class="n">vector</span><span class="o">:</span> <span class="n">Vector2D</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Vector2D</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="n">vector</span> <span class="o">+=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="lineno">3</span>     <span class="k">return</span> <span class="n">vector</span>
+<span class="lineno">4</span> <span class="p">}</span>
+<span class="lineno">5</span> 
+<span class="lineno">6</span> <span class="n">var</span> <span class="n">toIncrement</span> <span class="o">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mf">4.0</span><span class="p">)</span>
+<span class="lineno">7</span> <span class="n">let</span> <span class="n">afterIncrement</span> <span class="o">=</span> <span class="o">++</span><span class="n">toIncrement</span>
+<span class="lineno">8</span> <span class="c1">// toIncrement now has values of (4.0, 5.0)</span>
+<span class="lineno">9</span> <span class="c1">// afterIncrement also has values of (4.0, 5.0)</span></code></pre></div>
+
+<p>いくつかオペレーターをオーバーライドする例をみてきましたが、= はオーバーライドすることができません。また、ternary condicional operator (ex. (a ? b : c)) は、オーバーライドできません。</p>
+
+<p>独自のクラス・構造体は、比較オペレーターをデフォルトでは持ちません。Swift 側から推測することはできません。先ほどと同じように実装することで、比較オペレーターを使用することができるようになります。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="p">@</span><span class="n">infix</span> <span class="n">func</span> <span class="o">==</span> <span class="p">(</span><span class="n">left</span><span class="o">:</span> <span class="n">Vector2D</span><span class="p">,</span> <span class="n">right</span><span class="o">:</span> <span class="n">Vector2D</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="k">return</span> <span class="p">(</span><span class="n">left</span><span class="p">.</span><span class="n">x</span> <span class="o">==</span> <span class="n">right</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">left</span><span class="p">.</span><span class="n">y</span> <span class="o">==</span> <span class="n">right</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+<span class="lineno"> 3</span> <span class="p">}</span>
+<span class="lineno"> 4</span> <span class="p">@</span><span class="n">infix</span> <span class="n">func</span> <span class="o">!=</span> <span class="p">(</span><span class="n">left</span><span class="o">:</span> <span class="n">Vector2D</span><span class="p">,</span> <span class="n">right</span><span class="o">:</span> <span class="n">Vector2D</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+<span class="lineno"> 5</span>     <span class="k">return</span> <span class="o">!</span><span class="p">(</span><span class="n">left</span> <span class="o">==</span> <span class="n">right</span><span class="p">)</span>
+<span class="lineno"> 6</span> <span class="p">}</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="n">let</span> <span class="n">twoThree</span> <span class="o">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="lineno"> 9</span> <span class="n">let</span> <span class="n">anotherTwoThree</span> <span class="o">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="lineno">10</span> <span class="k">if</span> <span class="n">twoThree</span> <span class="o">==</span> <span class="n">anotherTwoThree</span> <span class="p">{</span>
+<span class="lineno">11</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;These two vectors are equivalent.&quot;</span><span class="p">)</span>
+<span class="lineno">12</span> <span class="p">}</span>
+<span class="lineno">13</span> <span class="c1">// prints &quot;These two vectors are equivalent.&quot;</span></code></pre></div>
+
+<h4 id="4.-カスタムオペレーター">4. カスタムオペレーター</h4>
+
+<p>Swift では、カスタムオペレーターを定義することができます。これには、/ = - + * % &lt; &gt; ! &amp; | ^ . ~ を使用することができます。<code>operator</code> キーワードを使用し、グローバルに宣言されます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">operator</span> <span class="n">prefix</span> <span class="o">+++</span> <span class="p">{}</span></code></pre></div>
+
+<p>そして、宣言した後は、実際に実装をしていきます。先ほどと同じ Vector2D に対して、この独自のオペレーターを追加する例をみていきます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="p">@</span><span class="n">prefix</span> <span class="p">@</span><span class="n">assignment</span> <span class="n">func</span> <span class="o">+++</span> <span class="p">(</span><span class="n">inout</span> <span class="n">vector</span><span class="o">:</span> <span class="n">Vector2D</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Vector2D</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="n">vector</span> <span class="o">+=</span> <span class="n">vector</span>
+<span class="lineno">3</span>     <span class="k">return</span> <span class="n">vector</span>
+<span class="lineno">4</span> <span class="p">}</span>
+<span class="lineno">5</span> 
+<span class="lineno">6</span> <span class="n">var</span> <span class="n">toBeDoubled</span> <span class="o">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mf">4.0</span><span class="p">)</span>
+<span class="lineno">7</span> <span class="n">let</span> <span class="n">afterDoubling</span> <span class="o">=</span> <span class="o">+++</span><span class="n">toBeDoubled</span>
+<span class="lineno">8</span> <span class="c1">// toBeDoubled now has values of (2.0, 8.0)</span>
+<span class="lineno">9</span> <span class="c1">// afterDoubling also has values of (2.0, 8.0)</span></code></pre></div>
+
+<p>独自の infix オペレーターは独自の precedence と associativity を指定できます。precedence とは、オペレーター同士の優先順です。associativity とは、同じ優先順位を持ったオペレーターがどのようにくっつくか（右から or 左から or 同じ優先順位のオペレーターを一緒になれない）を決める要因です。</p>
+
+<p>associativity は、<code>left</code>、<code>right</code>、<code>none</code> を指定でき、デフォルトは、<code>none</code> です。precedence は数字で優先順位を定義します。デフォルトは、100 です。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">operator</span> <span class="n">infix</span> <span class="o">+-</span> <span class="p">{</span> <span class="n">associativity</span> <span class="n">left</span> <span class="n">precedence</span> <span class="mi">140</span> <span class="p">}</span>
+<span class="lineno">2</span> <span class="n">func</span> <span class="o">+-</span> <span class="p">(</span><span class="n">left</span><span class="o">:</span> <span class="n">Vector2D</span><span class="p">,</span> <span class="n">right</span><span class="o">:</span> <span class="n">Vector2D</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Vector2D</span> <span class="p">{</span>
+<span class="lineno">3</span>     <span class="k">return</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="n">left</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">right</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="n">left</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">right</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+<span class="lineno">4</span> <span class="p">}</span>
+<span class="lineno">5</span> <span class="n">let</span> <span class="n">firstVector</span> <span class="o">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mf">2.0</span><span class="p">)</span>
+<span class="lineno">6</span> <span class="n">let</span> <span class="n">secondVector</span> <span class="o">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mf">4.0</span><span class="p">)</span>
+<span class="lineno">7</span> <span class="n">let</span> <span class="n">plusMinusVector</span> <span class="o">=</span> <span class="n">firstVector</span> <span class="o">+-</span> <span class="n">secondVector</span>
+<span class="lineno">8</span> <span class="c1">// plusMinusVector is a Vector2D instance with values of (4.0, -2.0)</span></code></pre></div>
+
+					</div>
+
+				</div>
+
+				<div id="sub">
+				   <div class="side_box">
+   <h3>About</h3>
+      <p class="side_content">
+         <i>Kazuya Kobayashi</i><br />
+         - I'm a once law student trying to be computer geek.<br />
+         - ギークになりたい。<br />
+         <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a>
+      </p>
+</div>
+
+<hr />
+
+<h3>Elsewhere</h3>
+   <p class="side_content">
+      <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+      <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+      <a href="https://github.com/kzykbys">Github</a>
+   </p>
+
+<hr />
+
+<h3>Category</h3>
+   <p class="side_content">|
+      
+   	   <a href="/categories/objective-c">objective-c
+            (11)
+         </a> | 
+      
+   	   <a href="/categories/other">other
+            (6)
+         </a> | 
+      
+   	   <a href="/categories/node-js">node.js
+            (1)
+         </a> | 
+      
+   	   <a href="/categories/ruby-on-rails">ruby on rails
+            (18)
+         </a> | 
+      
+   	   <a href="/categories/tips">tips
+            (6)
+         </a> | 
+      
+   	   <a href="/categories/html5">html5
+            (8)
+         </a> | 
+      
+   	   <a href="/categories/algorithms">algorithms
+            (2)
+         </a> | 
+      
+   	   <a href="/categories/machine-learning">machine learning
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/c">c
+            (14)
+         </a> | 
+      
+   	   <a href="/categories/ruby">ruby
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/swift">swift
+            (33)
+         </a> | 
+      
+   </p>
+
+<hr />
+
+<h3>Archive</h3>
+   <p class="side_content">|
+      
+   		<a href="/2013/08/">2013/08
+            (2)
+         </a> |          
+      
+   		<a href="/2013/09/">2013/09
+            (4)
+         </a> |          
+      
+   		<a href="/2013/11/">2013/11
+            (11)
+         </a> |          
+      
+   		<a href="/2013/12/">2013/12
+            (21)
+         </a> |          
+      
+   		<a href="/2014/01/">2014/01
+            (5)
+         </a> |          
+      
+   		<a href="/2014/03/">2014/03
+            (6)
+         </a> |          
+      
+   		<a href="/2014/04/">2014/04
+            (7)
+         </a> |          
+      
+   		<a href="/2014/05/">2014/05
+            (11)
+         </a> |          
+      
+   		<a href="/2014/06/">2014/06
+            (40)
+         </a> |          
+      
+   		<a href="/2014/07/">2014/07
+            (2)
+         </a> |          
+      
+   </p>
+
+<hr />
+
+<h3>Work</h3>			   
+   <p class="side_content">
+      Coming soon... maybe.
+   </p>
+
+<hr />
+				</div>
+
+			</div>
+
+
+		</div>
+
+				<div class="footer">
+		   <div class="footer_inner">
+			   <div class="contact">
+				   <h4>About</h4>
+				   <p>Kazuya Kobayashi<br />
+				   - I'm a once law student trying to be computer geek.<br />
+				   - ギークになりたい。<br />
+				   <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a></p>
+				   <h4>Elsewhere</h4>
+				   <p>
+					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+					   <a href="https://github.com/kzykbys">Github</a></p>
+				   <h4>Category</h4>
+				   <p>|
+					   
+						   <a href="/categories/objective-c">objective-c</a> | 
+					   
+						   <a href="/categories/other">other</a> | 
+					   
+						   <a href="/categories/node-js">node.js</a> | 
+					   
+						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
+					   
+						   <a href="/categories/tips">tips</a> | 
+					   
+						   <a href="/categories/html5">html5</a> | 
+					   
+						   <a href="/categories/algorithms">algorithms</a> | 
+					   
+						   <a href="/categories/machine-learning">machine learning</a> | 
+					   
+						   <a href="/categories/c">c</a> | 
+					   
+						   <a href="/categories/ruby">ruby</a> | 
+					   
+						   <a href="/categories/swift">swift</a> | 
+					   
+				   </p>
+				   <h4>Archive</h4>
+					   <p>|
+					   
+	    					<a href="/2013/08/">2013/08
+	    					</a> | 
+	    			   
+	    					<a href="/2013/09/">2013/09
+	    					</a> | 
+	    			   
+	    					<a href="/2013/11/">2013/11
+	    					</a> | 
+	    			   
+	    					<a href="/2013/12/">2013/12
+	    					</a> | 
+	    			   
+	    					<a href="/2014/01/">2014/01
+	    					</a> | 
+	    			   
+	    					<a href="/2014/03/">2014/03
+	    					</a> | 
+	    			   
+	    					<a href="/2014/04/">2014/04
+	    					</a> | 
+	    			   
+	    					<a href="/2014/05/">2014/05
+	    					</a> | 
+	    			   
+	    					<a href="/2014/06/">2014/06
+	    					</a> | 
+	    			   
+	    					<a href="/2014/07/">2014/07
+	    					</a> | 
+	    			   
+    			   </p>
+				   <h4>Work</h4>			   
+				   <p>Coming soon... maybe.</p>
+			   </div>
+		   </div>
+	   	</div>
+
+	   		  
+	  	<!-- Sdir (slide menu for small screen) -->
+
+<script>
+	
+  	$(document).ready(function() {
+		$('#mobile-menu-button').sidr();	  
+  	});
+
+  	$('#mobile-menu-button').click(function(e){
+  	});
+
+  	$('html').click(function(e){
+  		$.sidr('close', 'sidr');
+  	});
+
+</script>
+	  	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28952627-6', 'kazuya.co');
+  ga('send', 'pageview');
+
+</script>
+
+	</body>
+</html>
