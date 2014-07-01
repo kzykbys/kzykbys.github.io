@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Debugging Node.js</title>        
+        <title>Articles | 2014/7</title>        
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />        
         <meta name="HandheldFriendly" content="true" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" />
@@ -32,10 +32,10 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 
 	</head>
-	
+
 	<body>
-    
-        <div id="mobile-sticky-menu">
+
+		<div id="mobile-sticky-menu">
 	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
 	<!-- <img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" /> -->
 </div>
@@ -139,213 +139,33 @@
 
 </div>
 
-        <div class="site">
+		<div class="site">
 
-			<!-- title -->
-			<!-- Header -->
+			<div id="contents">
+
+				<!-- title -->
+				<!-- Header -->
 <header>
 <h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
 	<hr />
 </header>
-
-			<div id="contents">
 				
-				<div id="main">
-					<h3><a href="">Debugging Node.js</a></h3>
-					<span class="author">
-						<span class="date">2013-09-21 02:21:00 -0700</span>
-					</span>
+				<h1 class="category">2014/7</h1>
 
-					<hr />
-					<div id="social-buttom">
-	<!-- Social Buttoms -->
-	<ul>
-		<li>
-			<!-- Pocket -->
-			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
-			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
-		</li>		
-		<li>
-			<!-- Vertical Twitter -->
-			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
-			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		</li>				
-		<li>
-			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//node.js/2013/09/21/debugging-nodejs.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
-		</li>				
-		<li style="margine-left: 10px;!important">
-			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Debugging Node.js" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-		</li>		
-	</ul>
-</div>
+				<ul>
+					      
+        <h3><a href="/swift/2014/07/01/swift-doc-generics.html">The Swift Programming Language ~ Generics</a></h3>
+        <p class="author">
+         <span class="date">2014-07-01 11:00:00 -0700</span>
+        </p>
+        <hr />
+        
+ <!-- Content is depended on .rb file. -->
+	    		</ul>
 
-		      		<hr class="clear-list"/>
+    		</div>
 
-					<div class="post">
-						<p>Recently I have just started studying Node.js and so I&#39;m a still novice in Node.js. Therefore, there are many bugs in my code. That&#39;s why I&#39;d like to write down how to debug Node.js effectively.</p>
-
-<h3 id="setting">Setting</h3>
-
-<p>First, we need to install Node inspector by using npm. You must familiar with it. This tool is so general to use. It&#39;s better to add -g option to install globally. And you probably have to execute it on sudo. like :</p>
-
-<blockquote>
-<blockquote>
-<p>sudo npm install -g node-inspector</p>
-</blockquote>
-</blockquote>
-
-<p>That&#39;s it. You can use it now.</p>
-
-<h3 id="how-to-use">How to use</h3>
-
-<p>To debug, you add --debug-brk flag when you execute your code. It allow us to use Javascript debugger. After that, run node inspector that you installed awhile ago in different tab or window.</p>
-
-<blockquote>
-<blockquote>
-<p>node-inspector</p>
-</blockquote>
-</blockquote>
-
-<p>You will get a message like Visit <a href="http://127.0.0.1:8080/debug?port=5858">http://127.0.0.1:8080/debug?port=5858</a> to start debugging. So, follow the instruction and then we can see the debug tool. It&#39;s so helpful to learn Node.js. It teach us how Node.js is executed.</p>
-
-					</div>
-
-				</div>
-
-				<div id="sub">
-				   <div class="side_box">
-   <h3>About</h3>
-      <p class="side_content">
-         <i>Kazuya Kobayashi</i><br />
-         - I'm a once law student trying to be computer geek.<br />
-         - ギークになりたい。<br />
-         <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a>
-      </p>
-</div>
-
-<hr />
-
-<h3>Elsewhere</h3>
-   <p class="side_content">
-      <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
-      <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
-      <a href="https://github.com/kzykbys">Github</a>
-   </p>
-
-<hr />
-
-<h3>Category</h3>
-   <p class="side_content">|
-      
-   	   <a href="/categories/objective-c">objective-c
-            (11)
-         </a> | 
-      
-   	   <a href="/categories/other">other
-            (6)
-         </a> | 
-      
-   	   <a href="/categories/node-js">node.js
-            (1)
-         </a> | 
-      
-   	   <a href="/categories/ruby-on-rails">ruby on rails
-            (18)
-         </a> | 
-      
-   	   <a href="/categories/tips">tips
-            (6)
-         </a> | 
-      
-   	   <a href="/categories/html5">html5
-            (8)
-         </a> | 
-      
-   	   <a href="/categories/algorithms">algorithms
-            (2)
-         </a> | 
-      
-   	   <a href="/categories/machine-learning">machine learning
-            (5)
-         </a> | 
-      
-   	   <a href="/categories/c">c
-            (14)
-         </a> | 
-      
-   	   <a href="/categories/ruby">ruby
-            (5)
-         </a> | 
-      
-   	   <a href="/categories/swift">swift
-            (32)
-         </a> | 
-      
-   </p>
-
-<hr />
-
-<h3>Archive</h3>
-   <p class="side_content">|
-      
-   		<a href="/2013/08/">2013/08
-            (2)
-         </a> |          
-      
-   		<a href="/2013/09/">2013/09
-            (4)
-         </a> |          
-      
-   		<a href="/2013/11/">2013/11
-            (11)
-         </a> |          
-      
-   		<a href="/2013/12/">2013/12
-            (21)
-         </a> |          
-      
-   		<a href="/2014/01/">2014/01
-            (5)
-         </a> |          
-      
-   		<a href="/2014/03/">2014/03
-            (6)
-         </a> |          
-      
-   		<a href="/2014/04/">2014/04
-            (7)
-         </a> |          
-      
-   		<a href="/2014/05/">2014/05
-            (11)
-         </a> |          
-      
-   		<a href="/2014/06/">2014/06
-            (40)
-         </a> |          
-      
-   		<a href="/2014/07/">2014/07
-            (1)
-         </a> |          
-      
-   </p>
-
-<hr />
-
-<h3>Work</h3>			   
-   <p class="side_content">
-      Coming soon... maybe.
-   </p>
-
-<hr />
-				</div>
-
-			</div>
-
-
-		</div>
+	    </div>
 
 				<div class="footer">
 		   <div class="footer_inner">
@@ -453,6 +273,6 @@
   ga('send', 'pageview');
 
 </script>
-
+		
 	</body>
-</html>
+</html>	
