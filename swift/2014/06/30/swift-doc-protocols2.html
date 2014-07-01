@@ -1,0 +1,600 @@
+	<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>The Swift Programming Language ~ Protocols [Delegation, Extension]</title>        
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />        
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+		<link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/jquery.sidr.dark.css">
+		<link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+
+        <!-- jQuery -->
+<script src="/javascript/jquery-1.11.1.min.js"></script>
+<!-- slide menu -->
+<script src="/javascript/jquery.sidr.min.js"></script>
+<!-- For FB like buttom -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=571082556301479&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+	</head>
+	
+	<body>
+    
+        <div id="mobile-sticky-menu">
+	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
+	<!-- <img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" /> -->
+</div>
+
+<div id="sidr">
+	<!-- Your content -->
+	<!-- <h4>Share</h4> -->
+
+	<h4>Category</h4>
+	<ul>
+	   
+		   <li>
+		   		<a href="/categories/objective-c">objective-c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/other">other</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/node-js">node.js</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/tips">tips</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/html5">html5</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/algorithms">algorithms</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/machine-learning">machine learning</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/c">c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby">ruby</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/swift">swift</a>
+		   </li>
+	   
+    </ul>
+	<h4>Archive</h4>
+	<ul>
+		
+			<li>
+				<a href="/2013/08/">2013/08</a>
+			</li>
+		
+			<li>
+				<a href="/2013/09/">2013/09</a>
+			</li>
+		
+			<li>
+				<a href="/2013/11/">2013/11</a>
+			</li>
+		
+			<li>
+				<a href="/2013/12/">2013/12</a>
+			</li>
+		
+			<li>
+				<a href="/2014/01/">2014/01</a>
+			</li>
+		
+			<li>
+				<a href="/2014/03/">2014/03</a>
+			</li>
+		
+			<li>
+				<a href="/2014/04/">2014/04</a>
+			</li>
+		
+			<li>
+				<a href="/2014/05/">2014/05</a>
+			</li>
+		
+			<li>
+				<a href="/2014/06/">2014/06</a>
+			</li>
+		
+	</ul>
+
+</div>
+
+        <div class="site">
+
+			<!-- title -->
+			<!-- Header -->
+<header>
+<h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
+	<hr />
+</header>
+
+			<div id="contents">
+				
+				<div id="main">
+					<h3><a href="">The Swift Programming Language ~ Protocols [Delegation, Extension]</a></h3>
+					<span class="author">
+						<span class="date">2014-06-30 17:00:00 -0700</span>
+					</span>
+
+					<hr />
+					<div id="social-buttom">
+	<!-- Social Buttoms -->
+	<ul>
+		<li>
+			<!-- Pocket -->
+			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
+			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+		</li>		
+		<li>
+			<!-- Vertical Twitter -->
+			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		</li>				
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//swift/2014/06/30/swift-doc-protocols2.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+		</li>				
+		<li style="margine-left: 10px;!important">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="The Swift Programming Language ~ Protocols [Delegation, Extension]" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+	</ul>
+</div>
+
+		      		<hr class="clear-list"/>
+
+					<div class="post">
+						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。  </p>
+
+<p>今回は、プロトコルをより実践的に使用していく方法。</p>
+
+<p>プロトコルの基本編の記事は、<a href="http://blog.kazuya.co/swift/2014/06/30/swift-doc-protocols.html">こちら</a>。</p>
+
+<h3 id="protocols">Protocols</h3>
+
+<h4 id="5.-タイプとしてのプロトコル">5. タイプとしてのプロトコル</h4>
+
+<p>例をみてみます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">Dice</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">let</span> <span class="n">sides</span><span class="o">:</span> <span class="n">Int</span>
+<span class="lineno"> 3</span>     <span class="n">let</span> <span class="n">generator</span><span class="o">:</span> <span class="n">RandomNumberGenerator</span>
+<span class="lineno"> 4</span>     <span class="n">init</span><span class="p">(</span><span class="n">sides</span><span class="o">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">generator</span><span class="o">:</span> <span class="n">RandomNumberGenerator</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 5</span>         <span class="n">self</span><span class="p">.</span><span class="n">sides</span> <span class="o">=</span> <span class="n">sides</span>
+<span class="lineno"> 6</span>         <span class="n">self</span><span class="p">.</span><span class="n">generator</span> <span class="o">=</span> <span class="n">generator</span>
+<span class="lineno"> 7</span>     <span class="p">}</span>
+<span class="lineno"> 8</span>     <span class="n">func</span> <span class="n">roll</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
+<span class="lineno"> 9</span>         <span class="k">return</span> <span class="n">Int</span><span class="p">(</span><span class="n">generator</span><span class="p">.</span><span class="n">random</span><span class="p">()</span> <span class="o">*</span> <span class="n">Double</span><span class="p">(</span><span class="n">sides</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="lineno">10</span>     <span class="p">}</span>
+<span class="lineno">11</span> <span class="p">}</span></code></pre></div>
+
+<p>この Dice クラスは generator というプロパティを持っています。このプロパティは、<a href="http://blog.kazuya.co/swift/2014/06/30/swift-doc-protocols.html">以前</a> みた RandomNumberGenerator プロトコルです。この generator プロパティには、RandomNumberGenerator プロトコルに準拠してる限りどんなタイプでも設定することができます。また、Initializer の引数のタイプとしてもこのプロトコルは使われています。generator が RandomNumberGenerator プロトコルに準拠していることが保証されているので、安心して random メソッドを使用することができます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">d6</span> <span class="o">=</span> <span class="n">Dice</span><span class="p">(</span><span class="n">sides</span><span class="o">:</span> <span class="mi">6</span><span class="p">,</span> <span class="n">generator</span><span class="o">:</span> <span class="n">LinearCongruentialGenerator</span><span class="p">())</span>
+<span class="lineno">2</span> <span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">.</span><span class="mf">.5</span> <span class="p">{</span>
+<span class="lineno">3</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;Random dice roll is \(d6.roll())&quot;</span><span class="p">)</span>
+<span class="lineno">4</span> <span class="p">}</span>
+<span class="lineno">5</span> <span class="c1">// Random dice roll is 3</span>
+<span class="lineno">6</span> <span class="c1">// Random dice roll is 5</span>
+<span class="lineno">7</span> <span class="c1">// Random dice roll is 4</span>
+<span class="lineno">8</span> <span class="c1">// Random dice roll is 5</span>
+<span class="lineno">9</span> <span class="c1">// Random dice roll is 4</span></code></pre></div>
+
+<p>このように実際に使用されます。</p>
+
+<h4 id="6.-delegation">6. Delegation</h4>
+
+<p>Delegation とはデザインパターンの 1 つで、クラス・構造体のある責任(機能)を他のタイプのインスタンスに転嫁することです。この Delegation は、転嫁される責任をまとめたプロトコルによって実装されます。例をみていきます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">DiceGame</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="n">var</span> <span class="n">dice</span><span class="o">:</span> <span class="n">Dice</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
+<span class="lineno">3</span>     <span class="n">func</span> <span class="n">play</span><span class="p">()</span>
+<span class="lineno">4</span> <span class="p">}</span>
+<span class="lineno">5</span> <span class="n">protocol</span> <span class="n">DiceGameDelegate</span> <span class="p">{</span>
+<span class="lineno">6</span>     <span class="n">func</span> <span class="n">gameDidStart</span><span class="p">(</span><span class="n">game</span><span class="o">:</span> <span class="n">DiceGame</span><span class="p">)</span>
+<span class="lineno">7</span>     <span class="n">func</span> <span class="n">game</span><span class="p">(</span><span class="n">game</span><span class="o">:</span> <span class="n">DiceGame</span><span class="p">,</span> <span class="n">didStartNewTurnWithDiceRoll</span> <span class="n">diceRoll</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span>
+<span class="lineno">8</span>     <span class="n">func</span> <span class="n">gameDidEnd</span><span class="p">(</span><span class="n">game</span><span class="o">:</span> <span class="n">DiceGame</span><span class="p">)</span>
+<span class="lineno">9</span> <span class="p">}</span></code></pre></div>
+
+<p>DiceGame プロトコルは、サイコロを持つどんなゲームにでも採用されることができます。DiceGameDelegate プロトコルは、そのゲームの状況を観察するどんなタイプにでも採用されることができます。</p>
+
+<p>このプロトコルを使い Snakes and Ladders というゲームの実装をしてみます。ゲームの内容は、iBooks の Control Flow にあります。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">SnakesAndLadders</span><span class="o">:</span> <span class="n">DiceGame</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">let</span> <span class="n">finalSquare</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="lineno"> 3</span>     <span class="n">let</span> <span class="n">dice</span> <span class="o">=</span> <span class="n">Dice</span><span class="p">(</span><span class="n">sides</span><span class="o">:</span> <span class="mi">6</span><span class="p">,</span> <span class="n">generator</span><span class="o">:</span> <span class="n">LinearCongruentialGenerator</span><span class="p">())</span>
+<span class="lineno"> 4</span>     <span class="n">var</span> <span class="n">square</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="lineno"> 5</span>     <span class="n">var</span> <span class="n">board</span><span class="o">:</span> <span class="n">Int</span><span class="p">[]</span>
+<span class="lineno"> 6</span>     <span class="n">init</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno"> 7</span>         <span class="n">board</span> <span class="o">=</span> <span class="n">Int</span><span class="p">[](</span><span class="n">count</span><span class="o">:</span> <span class="n">finalSquare</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">repeatedValue</span><span class="o">:</span> <span class="mi">0</span><span class="p">)</span>
+<span class="lineno"> 8</span>         <span class="n">board</span><span class="p">[</span><span class="mo">03</span><span class="p">]</span> <span class="o">=</span> <span class="o">+</span><span class="mi">08</span><span class="p">;</span> <span class="n">board</span><span class="p">[</span><span class="mo">06</span><span class="p">]</span> <span class="o">=</span> <span class="o">+</span><span class="mi">11</span><span class="p">;</span> <span class="n">board</span><span class="p">[</span><span class="mi">09</span><span class="p">]</span> <span class="o">=</span> <span class="o">+</span><span class="mi">09</span><span class="p">;</span> <span class="n">board</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="o">+</span><span class="mo">02</span>
+<span class="lineno"> 9</span>         <span class="n">board</span><span class="p">[</span><span class="mi">14</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span><span class="p">;</span> <span class="n">board</span><span class="p">[</span><span class="mi">19</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">11</span><span class="p">;</span> <span class="n">board</span><span class="p">[</span><span class="mi">22</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mo">02</span><span class="p">;</span> <span class="n">board</span><span class="p">[</span><span class="mi">24</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">08</span>
+<span class="lineno">10</span>     <span class="p">}</span>
+<span class="lineno">11</span>     <span class="n">var</span> <span class="n">delegate</span><span class="o">:</span> <span class="n">DiceGameDelegate</span><span class="o">?</span>
+<span class="lineno">12</span>     <span class="n">func</span> <span class="n">play</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">13</span>         <span class="n">square</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="lineno">14</span>         <span class="n">delegate</span><span class="o">?</span><span class="p">.</span><span class="n">gameDidStart</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
+<span class="lineno">15</span>         <span class="nl">gameLoop:</span> <span class="k">while</span> <span class="n">square</span> <span class="o">!=</span> <span class="n">finalSquare</span> <span class="p">{</span>
+<span class="lineno">16</span>             <span class="n">let</span> <span class="n">diceRoll</span> <span class="o">=</span> <span class="n">dice</span><span class="p">.</span><span class="n">roll</span><span class="p">()</span>
+<span class="lineno">17</span>             <span class="n">delegate</span><span class="o">?</span><span class="p">.</span><span class="n">game</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">didStartNewTurnWithDiceRoll</span><span class="o">:</span> <span class="n">diceRoll</span><span class="p">)</span>
+<span class="lineno">18</span>             <span class="k">switch</span> <span class="n">square</span> <span class="o">+</span> <span class="n">diceRoll</span> <span class="p">{</span>
+<span class="lineno">19</span>             <span class="k">case</span> <span class="n">finalSquare</span>:
+<span class="lineno">20</span>                 <span class="k">break</span> <span class="n">gameLoop</span>
+<span class="lineno">21</span>             <span class="k">case</span> <span class="n">let</span> <span class="n">newSquare</span> <span class="n">where</span> <span class="n">newSquare</span> <span class="o">&gt;</span> <span class="n">finalSquare</span>:
+<span class="lineno">22</span>                 <span class="k">continue</span> <span class="n">gameLoop</span>
+<span class="lineno">23</span>             <span class="nl">default:</span>
+<span class="lineno">24</span>                 <span class="n">square</span> <span class="o">+=</span> <span class="n">diceRoll</span>
+<span class="lineno">25</span>                 <span class="n">square</span> <span class="o">+=</span> <span class="n">board</span><span class="p">[</span><span class="n">square</span><span class="p">]</span>
+<span class="lineno">26</span>             <span class="p">}</span>
+<span class="lineno">27</span>         <span class="p">}</span>
+<span class="lineno">28</span>         <span class="n">delegate</span><span class="o">?</span><span class="p">.</span><span class="n">gameDidEnd</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
+<span class="lineno">29</span>     <span class="p">}</span>
+<span class="lineno">30</span> <span class="p">}</span></code></pre></div>
+
+<p>ここで定義したクラス SnakesAndLadders が DiceGame プロトコルに準拠しています。play メソッドと dice プロパティを持っています。このクラスがゲームの本体です。</p>
+
+<p>そして、Delegation というデザインパターンとして重要なのが、プロパティとして delegate を持っていることです。11 行目ですね。これは Optional として宣言されているため、初期値は nil です。ゲーム状況を観察する処理は必ずしもゲームを実行するのに必要ではないので、処理が Optional で、delegate されています。このデザインパターンにより、ゲーム本体とそれを補助する処理を分離させ、責任を綺麗に分離させることができます。</p>
+
+<p>ここでは、delegate が Optional のため、これを使用する際には、Optional Chaining (<code>?</code>) を使っています。</p>
+
+<p>肝心の転嫁された処理は、例えばこのように実装することができるでしょう。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">DiceGameTracker</span><span class="o">:</span> <span class="n">DiceGameDelegate</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">numberOfTurns</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="lineno"> 3</span>     <span class="n">func</span> <span class="n">gameDidStart</span><span class="p">(</span><span class="n">game</span><span class="o">:</span> <span class="n">DiceGame</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 4</span>         <span class="n">numberOfTurns</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="lineno"> 5</span>         <span class="k">if</span> <span class="n">game</span> <span class="n">is</span> <span class="n">SnakesAndLadders</span> <span class="p">{</span>
+<span class="lineno"> 6</span>             <span class="n">println</span><span class="p">(</span><span class="s">&quot;Started a new game of Snakes and Ladders&quot;</span><span class="p">)</span>
+<span class="lineno"> 7</span>         <span class="p">}</span>
+<span class="lineno"> 8</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;The game is using a \(game.dice.sides)-sided dice&quot;</span><span class="p">)</span>
+<span class="lineno"> 9</span>     <span class="p">}</span>
+<span class="lineno">10</span>     <span class="n">func</span> <span class="n">game</span><span class="p">(</span><span class="n">game</span><span class="o">:</span> <span class="n">DiceGame</span><span class="p">,</span> <span class="n">didStartNewTurnWithDiceRoll</span> <span class="n">diceRoll</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">11</span>         <span class="o">++</span><span class="n">numberOfTurns</span>
+<span class="lineno">12</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;Rolled a \(diceRoll)&quot;</span><span class="p">)</span>
+<span class="lineno">13</span>     <span class="p">}</span>
+<span class="lineno">14</span>     <span class="n">func</span> <span class="n">gameDidEnd</span><span class="p">(</span><span class="n">game</span><span class="o">:</span> <span class="n">DiceGame</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">15</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;The game lasted for \(numberOfTurns) turns&quot;</span><span class="p">)</span>
+<span class="lineno">16</span>     <span class="p">}</span>
+<span class="lineno">17</span> <span class="p">}</span></code></pre></div>
+
+<p>状況を print しているだけのシンプルなクラスです。DiceGameDelegate プロトコルに準拠し、そのためのメソッドを実装しています。</p>
+
+<p>gameDidStart の引数の game は、SnakesAndLadders タイプではなく、DiceGame タイプです。そのため、DiceGame プロトコルで実装されているメソッド・プロパティにしかアクセスすることができません。しかし、適切なクラスにキャストすることはできます。この例では、game は SnakesAndLadders (DiceGame に準拠している) のインスタンスであることを確認しています。(<code>game is SnakesAndLadders</code> の部分)</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">tracker</span> <span class="o">=</span> <span class="n">DiceGameTracker</span><span class="p">()</span>
+<span class="lineno"> 2</span> <span class="n">let</span> <span class="n">game</span> <span class="o">=</span> <span class="n">SnakesAndLadders</span><span class="p">()</span>
+<span class="lineno"> 3</span> <span class="n">game</span><span class="p">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="n">tracker</span>
+<span class="lineno"> 4</span> <span class="n">game</span><span class="p">.</span><span class="n">play</span><span class="p">()</span>
+<span class="lineno"> 5</span> <span class="c1">// Started a new game of Snakes and Ladders</span>
+<span class="lineno"> 6</span> <span class="c1">// The game is using a 6-sided dice</span>
+<span class="lineno"> 7</span> <span class="c1">// Rolled a 3</span>
+<span class="lineno"> 8</span> <span class="c1">// Rolled a 5</span>
+<span class="lineno"> 9</span> <span class="c1">// Rolled a 4</span>
+<span class="lineno">10</span> <span class="c1">// Rolled a 5</span>
+<span class="lineno">11</span> <span class="c1">// The game lasted for 4 turns</span></code></pre></div>
+
+<p>ゲームのルールが分からなくとも Delegate というデザインパターンがプロトコルを通して実装されたことが分かると思います。</p>
+
+<h4 id="7.-extension-による-プロトコル準拠">7. Extension による プロトコル準拠</h4>
+
+<p>たとえ、もとのソースコードに対するアクセス権がなくとも、Extension により既存タイプをあるプロトコルに準拠させることができます。例をみていきます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">TextRepresentable</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="n">func</span> <span class="n">asText</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span>
+<span class="lineno">3</span> <span class="p">}</span></code></pre></div>
+
+<p>これはどんなタイプに対しても文字列として表現させるためメソッドを実装するプオロトコルです。これを先ほどの Dice クラス と SnakesAndLadders クラスに対し、Extension によって、この TextRepresentable プロトコルに準拠させるにはこのようにします。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">extension</span> <span class="n">Dice</span><span class="o">:</span> <span class="n">TextRepresentable</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">func</span> <span class="n">asText</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+<span class="lineno"> 3</span>         <span class="k">return</span> <span class="s">&quot;A \(sides)-sided dice&quot;</span>
+<span class="lineno"> 4</span>     <span class="p">}</span>
+<span class="lineno"> 5</span> <span class="p">}</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="n">extension</span> <span class="n">SnakesAndLadders</span><span class="o">:</span> <span class="n">TextRepresentable</span> <span class="p">{</span>
+<span class="lineno"> 8</span>     <span class="n">func</span> <span class="n">asText</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+<span class="lineno"> 9</span>         <span class="k">return</span> <span class="s">&quot;A game of Snakes and Ladders with \(finalSquare) squares&quot;</span>
+<span class="lineno">10</span>     <span class="p">}</span>
+<span class="lineno">11</span> <span class="p">}</span></code></pre></div>
+
+<p>プロトコルの名前は、タイプの名前の後にコロンを書き、宣言されます。そして、下記のように使用できます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">d12</span> <span class="o">=</span> <span class="n">Dice</span><span class="p">(</span><span class="n">sides</span><span class="o">:</span> <span class="mi">12</span><span class="p">,</span> <span class="n">generator</span><span class="o">:</span> <span class="n">LinearCongruentialGenerator</span><span class="p">())</span>
+<span class="lineno">2</span> <span class="n">println</span><span class="p">(</span><span class="n">d12</span><span class="p">.</span><span class="n">asText</span><span class="p">())</span>
+<span class="lineno">3</span> <span class="c1">// prints &quot;A 12-sided dice&quot;</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span> <span class="n">println</span><span class="p">(</span><span class="n">game</span><span class="p">.</span><span class="n">asText</span><span class="p">())</span>
+<span class="lineno">6</span> <span class="c1">// prints &quot;A game of Snakes and Ladders with 25 squares&quot;</span></code></pre></div>
+
+<p>すでにあるタイプがプロトコルの全ての要件を満たしても、プロトコルに準拠されていることが明示されていない場合には、空の Extension にて正式に準拠させることができます。あるタイプは、全ての要件を満たしているとしても、自動的にはプロトコルには準拠されないので、明示的に宣言する必要があります。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">Hamster</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="n">var</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span>
+<span class="lineno">3</span>     <span class="n">func</span> <span class="n">asText</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+<span class="lineno">4</span>         <span class="k">return</span> <span class="s">&quot;A hamster named \(name)&quot;</span>
+<span class="lineno">5</span>     <span class="p">}</span>
+<span class="lineno">6</span> <span class="p">}</span>
+<span class="lineno">7</span> <span class="n">extension</span> <span class="n">Hamster</span><span class="o">:</span> <span class="n">TextRepresentable</span> <span class="p">{}</span></code></pre></div>
+
+<p>これにより、Hamster のインスタンスは、どこでも TextRepresentable タイプとして使用することができます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">simonTheHamster</span> <span class="o">=</span> <span class="n">Hamster</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;Simon&quot;</span><span class="p">)</span>
+<span class="lineno">2</span> <span class="n">let</span> <span class="n">somethingTextRepresentable</span><span class="o">:</span> <span class="n">TextRepresentable</span> <span class="o">=</span> <span class="n">simonTheHamster</span>
+<span class="lineno">3</span> <span class="n">println</span><span class="p">(</span><span class="n">somethingTextRepresentable</span><span class="p">.</span><span class="n">asText</span><span class="p">())</span>
+<span class="lineno">4</span> <span class="c1">// prints &quot;A hamster named Simon&quot;</span></code></pre></div>
+
+					</div>
+
+				</div>
+
+				<div id="sub">
+				   <div class="side_box">
+   <h3>About</h3>
+      <p class="side_content">
+         <i>Kazuya Kobayashi</i><br />
+         - I'm a once law student trying to be computer geek.<br />
+         - ギークになりたい。<br />
+         <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a>
+      </p>
+</div>
+
+<hr />
+
+<h3>Elsewhere</h3>
+   <p class="side_content">
+      <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+      <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+      <a href="https://github.com/kzykbys">Github</a>
+   </p>
+
+<hr />
+
+<h3>Category</h3>
+   <p class="side_content">|
+      
+   	   <a href="/categories/objective-c">objective-c
+            (11)
+         </a> | 
+      
+   	   <a href="/categories/other">other
+            (6)
+         </a> | 
+      
+   	   <a href="/categories/node-js">node.js
+            (1)
+         </a> | 
+      
+   	   <a href="/categories/ruby-on-rails">ruby on rails
+            (18)
+         </a> | 
+      
+   	   <a href="/categories/tips">tips
+            (6)
+         </a> | 
+      
+   	   <a href="/categories/html5">html5
+            (8)
+         </a> | 
+      
+   	   <a href="/categories/algorithms">algorithms
+            (2)
+         </a> | 
+      
+   	   <a href="/categories/machine-learning">machine learning
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/c">c
+            (14)
+         </a> | 
+      
+   	   <a href="/categories/ruby">ruby
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/swift">swift
+            (31)
+         </a> | 
+      
+   </p>
+
+<hr />
+
+<h3>Archive</h3>
+   <p class="side_content">|
+      
+   		<a href="/2013/08/">2013/08
+            (2)
+         </a> |          
+      
+   		<a href="/2013/09/">2013/09
+            (4)
+         </a> |          
+      
+   		<a href="/2013/11/">2013/11
+            (11)
+         </a> |          
+      
+   		<a href="/2013/12/">2013/12
+            (21)
+         </a> |          
+      
+   		<a href="/2014/01/">2014/01
+            (5)
+         </a> |          
+      
+   		<a href="/2014/03/">2014/03
+            (6)
+         </a> |          
+      
+   		<a href="/2014/04/">2014/04
+            (7)
+         </a> |          
+      
+   		<a href="/2014/05/">2014/05
+            (11)
+         </a> |          
+      
+   		<a href="/2014/06/">2014/06
+            (40)
+         </a> |          
+      
+   </p>
+
+<hr />
+
+<h3>Work</h3>			   
+   <p class="side_content">
+      Coming soon... maybe.
+   </p>
+
+<hr />
+				</div>
+
+			</div>
+
+
+		</div>
+
+				<div class="footer">
+		   <div class="footer_inner">
+			   <div class="contact">
+				   <h4>About</h4>
+				   <p>Kazuya Kobayashi<br />
+				   - I'm a once law student trying to be computer geek.<br />
+				   - ギークになりたい。<br />
+				   <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a></p>
+				   <h4>Elsewhere</h4>
+				   <p>
+					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+					   <a href="https://github.com/kzykbys">Github</a></p>
+				   <h4>Category</h4>
+				   <p>|
+					   
+						   <a href="/categories/objective-c">objective-c</a> | 
+					   
+						   <a href="/categories/other">other</a> | 
+					   
+						   <a href="/categories/node-js">node.js</a> | 
+					   
+						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
+					   
+						   <a href="/categories/tips">tips</a> | 
+					   
+						   <a href="/categories/html5">html5</a> | 
+					   
+						   <a href="/categories/algorithms">algorithms</a> | 
+					   
+						   <a href="/categories/machine-learning">machine learning</a> | 
+					   
+						   <a href="/categories/c">c</a> | 
+					   
+						   <a href="/categories/ruby">ruby</a> | 
+					   
+						   <a href="/categories/swift">swift</a> | 
+					   
+				   </p>
+				   <h4>Archive</h4>
+					   <p>|
+					   
+	    					<a href="/2013/08/">2013/08
+	    					</a> | 
+	    			   
+	    					<a href="/2013/09/">2013/09
+	    					</a> | 
+	    			   
+	    					<a href="/2013/11/">2013/11
+	    					</a> | 
+	    			   
+	    					<a href="/2013/12/">2013/12
+	    					</a> | 
+	    			   
+	    					<a href="/2014/01/">2014/01
+	    					</a> | 
+	    			   
+	    					<a href="/2014/03/">2014/03
+	    					</a> | 
+	    			   
+	    					<a href="/2014/04/">2014/04
+	    					</a> | 
+	    			   
+	    					<a href="/2014/05/">2014/05
+	    					</a> | 
+	    			   
+	    					<a href="/2014/06/">2014/06
+	    					</a> | 
+	    			   
+    			   </p>
+				   <h4>Work</h4>			   
+				   <p>Coming soon... maybe.</p>
+			   </div>
+		   </div>
+	   	</div>
+
+	   		  
+	  	<!-- Sdir (slide menu for small screen) -->
+
+<script>
+	
+  	$(document).ready(function() {
+		$('#mobile-menu-button').sidr();	  
+  	});
+
+  	$('#mobile-menu-button').click(function(e){
+  	});
+
+  	$('html').click(function(e){
+  		$.sidr('close', 'sidr');
+  	});
+
+</script>
+	  	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28952627-6', 'kazuya.co');
+  ga('send', 'pageview');
+
+</script>
+
+	</body>
+</html>

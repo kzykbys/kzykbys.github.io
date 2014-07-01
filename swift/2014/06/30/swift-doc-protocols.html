@@ -1,0 +1,557 @@
+	<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>The Swift Programming Language ~ Protocols [基本編]</title>        
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />        
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+		<link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/jquery.sidr.dark.css">
+		<link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+
+        <!-- jQuery -->
+<script src="/javascript/jquery-1.11.1.min.js"></script>
+<!-- slide menu -->
+<script src="/javascript/jquery.sidr.min.js"></script>
+<!-- For FB like buttom -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=571082556301479&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+	</head>
+	
+	<body>
+    
+        <div id="mobile-sticky-menu">
+	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
+	<!-- <img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" /> -->
+</div>
+
+<div id="sidr">
+	<!-- Your content -->
+	<!-- <h4>Share</h4> -->
+
+	<h4>Category</h4>
+	<ul>
+	   
+		   <li>
+		   		<a href="/categories/objective-c">objective-c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/other">other</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/node-js">node.js</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/tips">tips</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/html5">html5</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/algorithms">algorithms</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/machine-learning">machine learning</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/c">c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby">ruby</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/swift">swift</a>
+		   </li>
+	   
+    </ul>
+	<h4>Archive</h4>
+	<ul>
+		
+			<li>
+				<a href="/2013/08/">2013/08</a>
+			</li>
+		
+			<li>
+				<a href="/2013/09/">2013/09</a>
+			</li>
+		
+			<li>
+				<a href="/2013/11/">2013/11</a>
+			</li>
+		
+			<li>
+				<a href="/2013/12/">2013/12</a>
+			</li>
+		
+			<li>
+				<a href="/2014/01/">2014/01</a>
+			</li>
+		
+			<li>
+				<a href="/2014/03/">2014/03</a>
+			</li>
+		
+			<li>
+				<a href="/2014/04/">2014/04</a>
+			</li>
+		
+			<li>
+				<a href="/2014/05/">2014/05</a>
+			</li>
+		
+			<li>
+				<a href="/2014/06/">2014/06</a>
+			</li>
+		
+	</ul>
+
+</div>
+
+        <div class="site">
+
+			<!-- title -->
+			<!-- Header -->
+<header>
+<h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
+	<hr />
+</header>
+
+			<div id="contents">
+				
+				<div id="main">
+					<h3><a href="">The Swift Programming Language ~ Protocols [基本編]</a></h3>
+					<span class="author">
+						<span class="date">2014-06-30 16:00:00 -0700</span>
+					</span>
+
+					<hr />
+					<div id="social-buttom">
+	<!-- Social Buttoms -->
+	<ul>
+		<li>
+			<!-- Pocket -->
+			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
+			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+		</li>		
+		<li>
+			<!-- Vertical Twitter -->
+			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		</li>				
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//swift/2014/06/30/swift-doc-protocols.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+		</li>				
+		<li style="margine-left: 10px;!important">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="The Swift Programming Language ~ Protocols [基本編]" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+	</ul>
+</div>
+
+		      		<hr class="clear-list"/>
+
+					<div class="post">
+						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。  </p>
+
+<p>今回は、基本的な Protocols の宣言に関して。</p>
+
+<h3 id="protocols">Protocols</h3>
+
+<p>プロトコルは、クラス・構造体・Enumeration が実装すべきメソッド・プロパティ等の必要要件を定義します。このプロトコルは、実際には、実装を提供しません。ただ宣言するだけです。実際に実装するのは、このプロトコルに従うクラス・構造体・Enumeration です。</p>
+
+<h4 id="1.-protocol-sytax">1. Protocol Sytax</h4>
+
+<p>クラス等と同じようにプロトコルを定義できます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">SomeProtocol</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="c1">// protocol definition goes here</span>
+<span class="lineno">3</span> <span class="p">}</span></code></pre></div>
+
+<p>そして、タイプ（クラス・構造体・Enumeration）は、コロンで区切り、プロトコルに準拠していることを準拠(adopt)していることを宣言します。複数ある場合は、カンマで区切ります。クラスにプロトコルを採用したく、そのクラスがスーパークラスを持っている場合は、コロンの後にスーパークラスを書き、その後にカンマで区切りプロトコルを宣言します。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">SomeStructure</span><span class="o">:</span> <span class="n">FirstProtocol</span><span class="p">,</span> <span class="n">AnotherProtocol</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="c1">// structure definition goes here</span>
+<span class="lineno">3</span> <span class="p">}</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span> <span class="n">class</span> <span class="n">SomeClass</span><span class="o">:</span> <span class="n">SomeSuperclass</span><span class="p">,</span> <span class="n">FirstProtocol</span><span class="p">,</span> <span class="n">AnotherProtocol</span> <span class="p">{</span>
+<span class="lineno">6</span>     <span class="c1">// class definition goes here</span>
+<span class="lineno">7</span> <span class="p">}</span></code></pre></div>
+
+<h4 id="2.-プロパティの要求">2. プロパティの要求</h4>
+
+<p>プロトコルは、あるタイプに対して、インスタンスプロパティ・タイププロパティをある名前で持たせることを求めることができます。プロトコルは、Computed プロパティか Stored プロパティであるかは指定しません。プロトコルは、ただ名前とタイプのみを求めます。また、読み込み専用か、読み込み書き込み可能かを指定します。</p>
+
+<p>プロパティの要件は、変数として宣言すれば基本的に問題ありません。下記のように読み込み専用か読み込み書き込み可能かを指定します。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">SomeProtocol</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="n">var</span> <span class="n">mustBeSettable</span><span class="o">:</span> <span class="n">Int</span> <span class="p">{</span> <span class="n">get</span> <span class="n">set</span> <span class="p">}</span>
+<span class="lineno">3</span>     <span class="n">var</span> <span class="n">doesNotNeedToBeSettable</span><span class="o">:</span> <span class="n">Int</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
+<span class="lineno">4</span> <span class="p">}</span></code></pre></div>
+
+<p>また、タイププロパティをプロトコルの中で定義する場合は、<code>class</code> キーワードを使用します。これは構造体・Enumeration においては、通常 <code>static</code> を使用しないといけないですが、<code>class</code> で統一して問題ありません。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">AnotherProtocol</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="n">class</span> <span class="n">var</span> <span class="n">someTypeProperty</span><span class="o">:</span> <span class="n">Int</span> <span class="p">{</span> <span class="n">get</span> <span class="n">set</span> <span class="p">}</span>
+<span class="lineno">3</span> <span class="p">}</span></code></pre></div>
+
+<p>簡単な例を見てみます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">FullyNamed</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="n">var</span> <span class="n">fullName</span><span class="o">:</span> <span class="n">String</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
+<span class="lineno">3</span> <span class="p">}</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span> <span class="k">struct</span> <span class="n">Person</span><span class="o">:</span> <span class="n">FullyNamed</span> <span class="p">{</span>
+<span class="lineno">6</span>     <span class="n">var</span> <span class="n">fullName</span><span class="o">:</span> <span class="n">String</span>
+<span class="lineno">7</span> <span class="p">}</span>
+<span class="lineno">8</span> <span class="n">let</span> <span class="n">john</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="n">fullName</span><span class="o">:</span> <span class="s">&quot;John Appleseed&quot;</span><span class="p">)</span>
+<span class="lineno">9</span> <span class="c1">// john.fullName is &quot;John Appleseed&quot;</span></code></pre></div>
+
+<p>これはフルネームを持つべきだというプロトコルです。Person 構造体は、これを Stored プロパティとして定義しています。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">Starship</span><span class="o">:</span> <span class="n">FullyNamed</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">prefix</span><span class="o">:</span> <span class="n">String</span><span class="o">?</span>
+<span class="lineno"> 3</span>     <span class="n">var</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span>
+<span class="lineno"> 4</span>     <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">prefix</span><span class="o">:</span> <span class="n">String</span><span class="o">?</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 5</span>         <span class="n">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<span class="lineno"> 6</span>         <span class="n">self</span><span class="p">.</span><span class="n">prefix</span> <span class="o">=</span> <span class="n">prefix</span>
+<span class="lineno"> 7</span>     <span class="p">}</span>
+<span class="lineno"> 8</span>     <span class="n">var</span> <span class="n">fullName</span><span class="o">:</span> <span class="n">String</span> <span class="p">{</span>
+<span class="lineno"> 9</span>     <span class="k">return</span> <span class="p">(</span><span class="n">prefix</span> <span class="o">?</span> <span class="n">prefix</span><span class="o">!</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">name</span>
+<span class="lineno">10</span>     <span class="p">}</span>
+<span class="lineno">11</span> <span class="p">}</span>
+<span class="lineno">12</span> <span class="n">var</span> <span class="n">ncc1701</span> <span class="o">=</span> <span class="n">Starship</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;Enterprise&quot;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">:</span> <span class="s">&quot;USS&quot;</span><span class="p">)</span>
+<span class="lineno">13</span> <span class="c1">// ncc1701.fullName is &quot;USS Enterprise&quot;</span></code></pre></div>
+
+<p>この Starship クラスは、フルネームを Computed プロパティとして定義しています。</p>
+
+<p>これらのプロトコルが要求しているプロパティを実装していない場合、Swift はコンパイルエラーを吐きます。</p>
+
+<h4 id="3.-メソッドの要求">3. メソッドの要求</h4>
+
+<p>次にプロトコルがタイプメソッド・インスタンスメソッドを要求する場合をみていきます。プロトコル内では、通常のメソッドのように宣言されます。しかし、{} を持ちません。また、引数のデフォルト値を持つことはできません。可変引数のメソッドは可能です。</p>
+
+<p>タイプメソッドの場合は、タイププロパティの時と同じように <code>class</code> キーワードを先に記述します。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">SomeProtocol</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="n">class</span> <span class="n">func</span> <span class="n">someTypeMethod</span><span class="p">()</span>
+<span class="lineno">3</span> <span class="p">}</span></code></pre></div>
+
+<p>1 つ例をみてみます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">RandomNumberGenerator</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="n">func</span> <span class="n">random</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Double</span>
+<span class="lineno">3</span> <span class="p">}</span></code></pre></div>
+
+<p>インスタンスメソッドのため、<code>class</code> はありません。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">LinearCongruentialGenerator</span><span class="o">:</span> <span class="n">RandomNumberGenerator</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">lastRandom</span> <span class="o">=</span> <span class="mf">42.0</span>
+<span class="lineno"> 3</span>     <span class="n">let</span> <span class="n">m</span> <span class="o">=</span> <span class="mf">139968.0</span>
+<span class="lineno"> 4</span>     <span class="n">let</span> <span class="n">a</span> <span class="o">=</span> <span class="mf">3877.0</span>
+<span class="lineno"> 5</span>     <span class="n">let</span> <span class="n">c</span> <span class="o">=</span> <span class="mf">29573.0</span>
+<span class="lineno"> 6</span>     <span class="n">func</span> <span class="n">random</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Double</span> <span class="p">{</span>
+<span class="lineno"> 7</span>         <span class="n">lastRandom</span> <span class="o">=</span> <span class="p">((</span><span class="n">lastRandom</span> <span class="o">*</span> <span class="n">a</span> <span class="o">+</span> <span class="n">c</span><span class="p">)</span> <span class="o">%</span> <span class="n">m</span><span class="p">)</span>
+<span class="lineno"> 8</span>         <span class="k">return</span> <span class="n">lastRandom</span> <span class="o">/</span> <span class="n">m</span>
+<span class="lineno"> 9</span>     <span class="p">}</span>
+<span class="lineno">10</span> <span class="p">}</span>
+<span class="lineno">11</span> <span class="n">let</span> <span class="n">generator</span> <span class="o">=</span> <span class="n">LinearCongruentialGenerator</span><span class="p">()</span>
+<span class="lineno">12</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;Here&#39;s a random number: \(generator.random())&quot;</span><span class="p">)</span>
+<span class="lineno">13</span> <span class="c1">// prints &quot;Here&#39;s a random number: 0.37464991998171&quot;</span>
+<span class="lineno">14</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;And another one: \(generator.random())&quot;</span><span class="p">)</span>
+<span class="lineno">15</span> <span class="c1">// prints &quot;And another one: 0.729023776863283&quot;</span></code></pre></div>
+
+<h4 id="4.-mutating-メソッドの要求">4. Mutating メソッドの要求</h4>
+
+<p>メソッドがそのインスタンスを変更する場合もあります。構造体・Enumeratio のインスタンスメソッドの場合、<code>mutating</code> キーワードを使用します。クラスの場合は、必要がありませんが、プロトコルは構造体や Enumeration でも使用されるので、プロトコル側では <code>mutating</code> を書いておくことで、全てのケースに対応できます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">Togglable</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">toggle</span><span class="p">()</span>
+<span class="lineno">3</span> <span class="p">}</span></code></pre></div>
+
+<p>toggle とはあるステートを変更することです。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="k">enum</span> <span class="n">OnOffSwitch</span><span class="o">:</span> <span class="n">Togglable</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="k">case</span> <span class="n">Off</span><span class="p">,</span> <span class="n">On</span>
+<span class="lineno"> 3</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">toggle</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno"> 4</span>         <span class="k">switch</span> <span class="n">self</span> <span class="p">{</span>
+<span class="lineno"> 5</span>         <span class="k">case</span> <span class="n">Off</span>:
+<span class="lineno"> 6</span>             <span class="n">self</span> <span class="o">=</span> <span class="n">On</span>
+<span class="lineno"> 7</span>         <span class="k">case</span> <span class="n">On</span>:
+<span class="lineno"> 8</span>             <span class="n">self</span> <span class="o">=</span> <span class="n">Off</span>
+<span class="lineno"> 9</span>         <span class="p">}</span>
+<span class="lineno">10</span>     <span class="p">}</span>
+<span class="lineno">11</span> <span class="p">}</span>
+<span class="lineno">12</span> <span class="n">var</span> <span class="n">lightSwitch</span> <span class="o">=</span> <span class="n">OnOffSwitch</span><span class="p">.</span><span class="n">Off</span>
+<span class="lineno">13</span> <span class="n">lightSwitch</span><span class="p">.</span><span class="n">toggle</span><span class="p">()</span>
+<span class="lineno">14</span> <span class="c1">// lightSwitch is now equal to .On</span></code></pre></div>
+
+<p>プロトコル側で <code>mutatign</code> と指定されているので、Enumeration の中で Mutating メソッドとして実装されています。</p>
+
+					</div>
+
+				</div>
+
+				<div id="sub">
+				   <div class="side_box">
+   <h3>About</h3>
+      <p class="side_content">
+         <i>Kazuya Kobayashi</i><br />
+         - I'm a once law student trying to be computer geek.<br />
+         - ギークになりたい。<br />
+         <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a>
+      </p>
+</div>
+
+<hr />
+
+<h3>Elsewhere</h3>
+   <p class="side_content">
+      <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+      <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+      <a href="https://github.com/kzykbys">Github</a>
+   </p>
+
+<hr />
+
+<h3>Category</h3>
+   <p class="side_content">|
+      
+   	   <a href="/categories/objective-c">objective-c
+            (11)
+         </a> | 
+      
+   	   <a href="/categories/other">other
+            (6)
+         </a> | 
+      
+   	   <a href="/categories/node-js">node.js
+            (1)
+         </a> | 
+      
+   	   <a href="/categories/ruby-on-rails">ruby on rails
+            (18)
+         </a> | 
+      
+   	   <a href="/categories/tips">tips
+            (6)
+         </a> | 
+      
+   	   <a href="/categories/html5">html5
+            (8)
+         </a> | 
+      
+   	   <a href="/categories/algorithms">algorithms
+            (2)
+         </a> | 
+      
+   	   <a href="/categories/machine-learning">machine learning
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/c">c
+            (14)
+         </a> | 
+      
+   	   <a href="/categories/ruby">ruby
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/swift">swift
+            (31)
+         </a> | 
+      
+   </p>
+
+<hr />
+
+<h3>Archive</h3>
+   <p class="side_content">|
+      
+   		<a href="/2013/08/">2013/08
+            (2)
+         </a> |          
+      
+   		<a href="/2013/09/">2013/09
+            (4)
+         </a> |          
+      
+   		<a href="/2013/11/">2013/11
+            (11)
+         </a> |          
+      
+   		<a href="/2013/12/">2013/12
+            (21)
+         </a> |          
+      
+   		<a href="/2014/01/">2014/01
+            (5)
+         </a> |          
+      
+   		<a href="/2014/03/">2014/03
+            (6)
+         </a> |          
+      
+   		<a href="/2014/04/">2014/04
+            (7)
+         </a> |          
+      
+   		<a href="/2014/05/">2014/05
+            (11)
+         </a> |          
+      
+   		<a href="/2014/06/">2014/06
+            (40)
+         </a> |          
+      
+   </p>
+
+<hr />
+
+<h3>Work</h3>			   
+   <p class="side_content">
+      Coming soon... maybe.
+   </p>
+
+<hr />
+				</div>
+
+			</div>
+
+
+		</div>
+
+				<div class="footer">
+		   <div class="footer_inner">
+			   <div class="contact">
+				   <h4>About</h4>
+				   <p>Kazuya Kobayashi<br />
+				   - I'm a once law student trying to be computer geek.<br />
+				   - ギークになりたい。<br />
+				   <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a></p>
+				   <h4>Elsewhere</h4>
+				   <p>
+					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+					   <a href="https://github.com/kzykbys">Github</a></p>
+				   <h4>Category</h4>
+				   <p>|
+					   
+						   <a href="/categories/objective-c">objective-c</a> | 
+					   
+						   <a href="/categories/other">other</a> | 
+					   
+						   <a href="/categories/node-js">node.js</a> | 
+					   
+						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
+					   
+						   <a href="/categories/tips">tips</a> | 
+					   
+						   <a href="/categories/html5">html5</a> | 
+					   
+						   <a href="/categories/algorithms">algorithms</a> | 
+					   
+						   <a href="/categories/machine-learning">machine learning</a> | 
+					   
+						   <a href="/categories/c">c</a> | 
+					   
+						   <a href="/categories/ruby">ruby</a> | 
+					   
+						   <a href="/categories/swift">swift</a> | 
+					   
+				   </p>
+				   <h4>Archive</h4>
+					   <p>|
+					   
+	    					<a href="/2013/08/">2013/08
+	    					</a> | 
+	    			   
+	    					<a href="/2013/09/">2013/09
+	    					</a> | 
+	    			   
+	    					<a href="/2013/11/">2013/11
+	    					</a> | 
+	    			   
+	    					<a href="/2013/12/">2013/12
+	    					</a> | 
+	    			   
+	    					<a href="/2014/01/">2014/01
+	    					</a> | 
+	    			   
+	    					<a href="/2014/03/">2014/03
+	    					</a> | 
+	    			   
+	    					<a href="/2014/04/">2014/04
+	    					</a> | 
+	    			   
+	    					<a href="/2014/05/">2014/05
+	    					</a> | 
+	    			   
+	    					<a href="/2014/06/">2014/06
+	    					</a> | 
+	    			   
+    			   </p>
+				   <h4>Work</h4>			   
+				   <p>Coming soon... maybe.</p>
+			   </div>
+		   </div>
+	   	</div>
+
+	   		  
+	  	<!-- Sdir (slide menu for small screen) -->
+
+<script>
+	
+  	$(document).ready(function() {
+		$('#mobile-menu-button').sidr();	  
+  	});
+
+  	$('#mobile-menu-button').click(function(e){
+  	});
+
+  	$('html').click(function(e){
+  		$.sidr('close', 'sidr');
+  	});
+
+</script>
+	  	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28952627-6', 'kazuya.co');
+  ga('send', 'pageview');
+
+</script>
+
+	</body>
+</html>

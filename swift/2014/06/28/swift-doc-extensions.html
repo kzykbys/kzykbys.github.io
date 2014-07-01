@@ -188,7 +188,7 @@
 
 <p>Extensions は、既存のクラス・構造体・Enumeration に対して新しい機能を追加します。これは Objective-C のカテゴリのようなものです。</p>
 
-<h4 id="extensions-syntax">Extensions Syntax</h4>
+<h4 id="1.-extensions-syntax">1. Extensions Syntax</h4>
 
 <p>Extensions は、<code>extension</code> キーワードを使用して宣言されます。また、既存のタイプがプロトコルに準拠するように拡大することもできます。</p>
 
@@ -200,7 +200,7 @@
 <span class="lineno">6</span>     <span class="c1">// implementation of protocol requirements goes here</span>
 <span class="lineno">7</span> <span class="p">}</span></code></pre></div>
 
-<h4 id="computed-プロパティ">Computed プロパティ</h4>
+<h4 id="2.-computed-プロパティ">2. Computed プロパティ</h4>
 
 <p>Extension は、Computed インスタンスプロパティと Computed タイププロパティを追加することができます。</p>
 
@@ -224,7 +224,7 @@
 
 <p>この例では、Swift の既存 Double タイプに対して、5 つの Computed インスタンスプロパティを追加しています。</p>
 
-<h4 id="initializer">Initializer</h4>
+<h4 id="3.-initializer">3. Initializer</h4>
 
 <p>Extension は新しい Initializer も追加することができます。新しく Initializer を追加することで、既存の実装にはない新しい Initializer を使用したり、独自のカスタムタイプを引数として使用したりと便利にコーディングできます。しかし、Designvated Initializer と Deinitializer は追加することができません。これらは、常に元のタイプの実装の中になければなりません。</p>
 
@@ -251,7 +251,7 @@
 
 <p>この Rect 構造体は、デフォルト Initializer (<code>init()</code>) と Memberwise Initializer を使用することができます。全ての Stored プロパティに初期値が設定されているからです。そして、Extension の中で、この Memberwise Initializer を使用しています。</p>
 
-<h4 id="メソッド">メソッド</h4>
+<h4 id="4.-メソッド">4. メソッド</h4>
 
 <p>Extension は、新しいインスタンスメソッドとタイプメソッドを追加することができます。</p>
 
@@ -290,7 +290,7 @@
 <span class="lineno">7</span> <span class="n">someInt</span><span class="p">.</span><span class="n">square</span><span class="p">()</span>
 <span class="lineno">8</span> <span class="c1">// someInt is now 9</span></code></pre></div>
 
-<h4 id="subscripts">Subscripts</h4>
+<h4 id="5.-subscripts">5. Subscripts</h4>
 
 <p>Extension は、サブスクリプトを追加することができます。</p>
 
@@ -317,7 +317,7 @@
 
 <p>この例は、Swift の Int タイプに対して、指定された桁の数字を返すサブスクリプトを追加しています。</p>
 
-<h4 id="nested-types">Nested Types</h4>
+<h4 id="6.-nested-types">6. Nested Types</h4>
 
 <p>Extension は、Nested Type を追加することもできます。</p>
 
@@ -432,7 +432,7 @@
          </a> | 
       
    	   <a href="/categories/swift">swift
-            (28)
+            (31)
          </a> | 
       
    </p>
@@ -475,7 +475,7 @@
          </a> |          
       
    		<a href="/2014/06/">2014/06
-            (37)
+            (40)
          </a> |          
       
    </p>
