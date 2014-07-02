@@ -184,7 +184,7 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。  </p>
+						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。  </p>
 
 <p>今回は、<a href="http://blog.kazuya.co/swift/2014/06/17/swift-doc-properties.html">前回</a> の続きの Properties に関して。</p>
 
@@ -192,7 +192,7 @@
 
 <p>プロパティは、クラス、構造体、Enumeration に関連した値です。Swift では、下記で説明するようにいくつかの種類のプロパティがあります。この記事は、Property Observers と Type Properties に関して。</p>
 
-<h4 id="1.-property-observers">1. Property Observers</h4>
+<h4 id="5.-property-observers">5. Property Observers</h4>
 
 <p>Property Observers はプロパティの値が変更される際に、ある処理をしたい場合に使用します。どの Stored Properties にも Property Observers を追加することができます。また、継承したプロパティなら、Stored Properties にも Computed Properties にも追加できます。</p>
 
@@ -225,7 +225,7 @@
 
 <p>上記の <code>willSet</code> と <code>didSet</code> の実装方法は多少違いがあります。<code>willSet</code> は、新しい値である引数の名前を自分で指定しています。この例では、<code>newTotalSteps</code> です。そして、この <code>newTotalSteps</code> を println() の中で使用しています。もし、この名前を自分で指定しなかった場合、<code>newValue</code> という名前を処理の中で使用できます。<code>didSet</code> は引数の名前を指定していません。自動的に割り当てられる <code>oldValue</code> という引数名を使用して処理をしています。もちろん、<code>willSet</code> と同じように自分で引数の名前を指定することもできます。</p>
 
-<h4 id="2.-type-properties">2. Type Properties</h4>
+<h4 id="6.-type-properties">6. Type Properties</h4>
 
 <p>今まで見てきたプロパティは、インスタンスに属するプロパティでした。それに加えて、タイプ(クラス、構造体、Enumeration)に属する Type Properties というものを作成することもできます。これは、各タイプのすべてのインスタンスにおいて共通の値を定義するのに向いています。構造体と Enumeration に対しては、stored と comuted Type Properties  を使用できます。クラスに対しては、computed Type Properties のみ使用できます。構造体と Enumeration にて使用できる Stored Type Properties は、変数でもコンスタントでも可能です。また、stored Type Properties には、常にデフォルト値を設定しなければなりません。</p>
 
@@ -347,7 +347,7 @@
          </a> | 
       
    	   <a href="/categories/swift">swift
-            (33)
+            (34)
          </a> | 
       
    </p>
@@ -394,7 +394,7 @@
          </a> |          
       
    		<a href="/2014/07/">2014/07
-            (2)
+            (3)
          </a> |          
       
    </p>

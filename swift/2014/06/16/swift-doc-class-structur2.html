@@ -184,7 +184,7 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。  </p>
+						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。  </p>
 
 <p>今回は、Class と Structure に関して。</p>
 
@@ -192,7 +192,7 @@
 
 <p><a href="http://blog.kazuya.co/swift/2014/06/16/swift-doc-class-structur.html">前回</a> の続きとして、Array と Dictionary のコピー・代入される際の挙動に関して。特に配列の挙動はちょっと特殊です。</p>
 
-<h4 id="1.-dictionaryの代入とコピー">1. Dictionaryの代入とコピー</h4>
+<h4 id="4.-dictionaryの代入とコピー">4. Dictionaryの代入とコピー</h4>
 
 <p>Dictionary が変数やコンスタントに代入された時、また関数やメソッドの引数として渡された時には、キー/値はコピーして渡されます。キーや値がリファレンスタイプの時は、そのリファレンスがコピーされます。</p>
 
@@ -203,7 +203,7 @@
 <span class="lineno">5</span> <span class="n">println</span><span class="p">(</span><span class="n">ages</span><span class="p">[</span><span class="s">&quot;Peter&quot;</span><span class="p">])</span>
 <span class="lineno">6</span> <span class="c1">// prints &quot;23&quot;</span></code></pre></div>
 
-<h4 id="2.-配列の代入とコピー">2. 配列の代入とコピー</h4>
+<h4 id="5.-配列の代入とコピー">5. 配列の代入とコピー</h4>
 
 <p>配列の代入とコピーはちょっと複雑です。配列が、変数やコンスタントに代入されるか、関数やメソッドの引数として渡された場合、&quot;この時点&quot;では配列はリファレンスとして渡されます。つまり、同じメモリ領域をシェアしています。配列の要素の値を変更したら、他のリファレンスしている変数等から確認することができます。下記の例では、a[0]を変更すると、b や c からも変更を確認することができます。</p>
 
@@ -334,7 +334,7 @@
          </a> | 
       
    	   <a href="/categories/swift">swift
-            (33)
+            (34)
          </a> | 
       
    </p>
@@ -381,7 +381,7 @@
          </a> |          
       
    		<a href="/2014/07/">2014/07
-            (2)
+            (3)
          </a> |          
       
    </p>

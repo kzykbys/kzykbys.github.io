@@ -184,13 +184,13 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。  </p>
+						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。  </p>
 
 <p>前回に続き、The Basics 章。今回は、Tuples, Optionals, Assertions に関して。</p>
 
 <h3 id="the-basics">The Basics</h3>
 
-<h4 id="1.-tuples">1. Tuples</h4>
+<h4 id="10.-tuples">10. Tuples</h4>
 
 <p>Tuples は、複数の値を 1 つにまとめるためのもの。これにより、関数から複数の値を返してもらうことができる。</p>
 
@@ -222,7 +222,7 @@
 
 <p>tuples は基本的に、関数からの返り値等の一時的な値のグループ分に使う。データがずっと保持される場合には構造体やクラスを使用。</p>
 
-<h4 id="2.-optionals">2. Optionals</h4>
+<h4 id="11.-optionals">11. Optionals</h4>
 
 <p>Swift には、Optionals という概念がある。名詞ぽい。これはある変数がある型の値を持つか、それとも全く持たないか、ということを明示的に示すもの。Optionals は型に ? を付けて宣言する。例えば、Int? といった感じ。Objective-C で nil にメッセージを送ってよくランタイムエラーを起こしてたので、堅牢に書くためのものだと思います。</p>
 
@@ -245,7 +245,7 @@
 
 <p>Optionals の値にアクセスする際には、! を optional の最後に付けて unwrap する。これは、forced unwrap と呼ばれる、無理やり剥きとる。なので、nil に対して使用するとエラーになる。上のコードで if-true ケースにおいて ! を使っても、使わなくても値にアクセスできる。ドキュメントには、! を使用するように書いてあるけど、なんでだろう。とにかく、! を使用する際には、run-time error になる可能性があるので、しっかりと if で確認。</p>
 
-<h4 id="3.-optional-binding">3. Optional Binding</h4>
+<h4 id="12.-optional-binding">12. Optional Binding</h4>
 
 <p>Optional Binding は、Optional が値を持っているか確認し、もし持っているなら、その値を一時的な変数かコンスタントに保存して利用するというもの。if か while で使われる。</p>
 
@@ -259,7 +259,7 @@
 
 <p>もし、possibleNum.toInt() が値を返せば actualValue に保存し、if-true が実行される。actualValue のスコープは、最初の if-true ブロックまで。この Optional Binding を使用すれば、forced unwrap を使用する必要がない。</p>
 
-<h4 id="4.-nil-について">4. nil について</h4>
+<h4 id="13.-nil-について">13. nil について</h4>
 
 <p>Objective-C の nil と Swift の nil は異なるもの。前者は、存在しないオブジェクトへのポインターですが、Swift では、ポインターではなく、ある型の値が欠落しているしてるということを表す。Optionals でないデータに nil をセットすることはできないので、ある変数/コンスタントが nil になることがある場合には、Optionals として宣言する必要がある。Optionals には、値が存在しない場合には、nil を明示的に代入してもよいし、特に指定しなければ、nil がセットされる。</p>
 
@@ -269,7 +269,7 @@
 <span class="lineno">4</span> <span class="n">YesOptional</span>           <span class="o">=</span> <span class="nb">nil</span> <span class="c1">// no problem, indicating explicitly the lack of value</span>
 <span class="lineno">5</span> <span class="n">var</span> <span class="n">AutoOptional</span><span class="o">:</span> <span class="n">Int</span><span class="o">?</span>      <span class="c1">// AutoOptional is set to nil</span></code></pre></div>
 
-<h4 id="5.-implicitly-unwrapped-optionals">5. Implicitly unwrapped optionals</h4>
+<h4 id="14.-implicitly-unwrapped-optionals">14. Implicitly unwrapped optionals</h4>
 
 <p>Optionals に対して、一度値がセットされた後は、常に値を持つと仮定することができる場合には、Implicitly unwrapped optionals というものが使える。これは、Optionals に対しても、自動的に unwrap (値にアクセス) する権限を与えるという風に考えることができる。つまり、値にアクセスする際に、! を付与する必要がない。Implicitly unwrapped optionals を使用するには、? の代わりに ! を宣言時にタイプする。</p>
 
@@ -283,7 +283,7 @@
 
 <p>二つ目の宣言が、Implicitly unwrapped optionals です。やっぱり疑問なのが、Optional の値に、! を付けないでアクセスしても普通に動くという点です。とりあえず、Optinal にアクセスする際には、if 文で値があるかチェックして、! で値にアクセスする。値があるか不明だが、ある時点で一度値がセットされた後は、ずっと値があると仮定できる時には 宣言時に ! を付けて、Implicitly unwrapped optionals を使用して、アクセスする際には、! を付けないでただアクセスする、ということかな。Implicitly unwrapped optionals に対しても、if を値をチェックしたり、Optional Binding も変わらず使用可。</p>
 
-<h4 id="6.-assertions">6. Assertions</h4>
+<h4 id="15.-assertions">15. Assertions</h4>
 
 <p>Assertions は、値がある条件を満たしているかをチェックするもの。もし、その条件を満たしていなかったら、プログラムは終了する。デバック時に役に立つ。assert() 関数を使用する。</p>
 
@@ -366,7 +366,7 @@
          </a> | 
       
    	   <a href="/categories/swift">swift
-            (33)
+            (34)
          </a> | 
       
    </p>
@@ -413,7 +413,7 @@
          </a> |          
       
    		<a href="/2014/07/">2014/07
-            (2)
+            (3)
          </a> |          
       
    </p>

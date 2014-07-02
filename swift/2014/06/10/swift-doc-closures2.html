@@ -184,7 +184,7 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。  </p>
+						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。  </p>
 
 <p>今回は、Trailing Closure に関して。</p>
 
@@ -216,7 +216,7 @@
 
 <p>この例では、あまり役に立ちませんが、Closure が長くなった時にちょっと便利です。</p>
 
-<h4 id="1.-配列の-map-関数の-trailing-closure-の例">1. 配列の map 関数の Trailing Closure の例</h4>
+<h4 id="7.-配列の-map-関数の-trailing-closure-の例">7. 配列の map 関数の Trailing Closure の例</h4>
 
 <p>配列の map 関数は、引数の Closure を配列の各要素に対して実行します。</p>
 
@@ -242,7 +242,7 @@
 
 <p>また、ここで digitNames[number % 10]! と、Dictionary の要素を呼ぶ際に、! が付いています。これは、Dictionary の subscripts は、Optionals を返すためです。そして、forced unwrap しています。</p>
 
-<h4 id="2.-capturing-values">2. Capturing Values</h4>
+<h4 id="8.-capturing-values">8. Capturing Values</h4>
 
 <p>Closure は、変数とコンスタントをその文脈においてキャプチャできます。たとえ元の値を定義した範囲が既に存在しなくとも、Closure の本体で、そのキャプチャした値を変更できます。</p>
 
@@ -261,7 +261,7 @@
 
 <p>Swift は、キャプチャする際に、どのようにキャプチャするかを自動的に判定してくれます。この例において、amount は、incrementor 関数の中で変更されません。そのため、amount は、この amount の値のコピーを incrementor 関数 で保存しています。それに対して、runningTotal は、incrementor 関数の中で変更されています。そのため、もしこの runningTotal のコピーしても、変更が incrementor 関数が終了した際に、反映されません。そのため、この runningTotal は、参照として渡されます。私たちプログラマーは、これらのことを気にすることなく、ただキャプチャして使用して問題ありません。</p>
 
-<h4 id="3.-closure-は参照">3. Closure は参照</h4>
+<h4 id="9.-closure-は参照">9. Closure は参照</h4>
 
 <p>関数と Closure は、参照型です。</p>
 
@@ -358,7 +358,7 @@
          </a> | 
       
    	   <a href="/categories/swift">swift
-            (33)
+            (34)
          </a> | 
       
    </p>
@@ -405,7 +405,7 @@
          </a> |          
       
    		<a href="/2014/07/">2014/07
-            (2)
+            (3)
          </a> |          
       
    </p>
