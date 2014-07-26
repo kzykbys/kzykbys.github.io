@@ -1,0 +1,541 @@
+	<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Logistic Regression Algorithm（ロジスティック回帰）[機械学習]</title>        
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />        
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+		<link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/jquery.sidr.dark.css">
+		<link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+
+        <!-- jQuery -->
+<script src="/javascript/jquery-1.11.1.min.js"></script>
+<!-- slide menu -->
+<script src="/javascript/jquery.sidr.min.js"></script>
+<!-- For FB like buttom -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=571082556301479&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+	</head>
+	
+	<body>
+    
+        <div id="mobile-sticky-menu">
+	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
+	<!-- <img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" /> -->
+</div>
+
+<div id="sidr">
+	<!-- Your content -->
+	<!-- <h4>Share</h4> -->
+
+	<h4>Category</h4>
+	<ul>
+	   
+		   <li>
+		   		<a href="/categories/objective-c">objective-c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/other">other</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/node-js">node.js</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/tips">tips</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/html5">html5</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/algorithms">algorithms</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/machine-learning">machine learning</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/c">c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby">ruby</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/swift">swift</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ios">ios</a>
+		   </li>
+	   
+    </ul>
+	<h4>Archive</h4>
+	<ul>
+		
+			<li>
+				<a href="/2013/08/">2013/08</a>
+			</li>
+		
+			<li>
+				<a href="/2013/09/">2013/09</a>
+			</li>
+		
+			<li>
+				<a href="/2013/11/">2013/11</a>
+			</li>
+		
+			<li>
+				<a href="/2013/12/">2013/12</a>
+			</li>
+		
+			<li>
+				<a href="/2014/01/">2014/01</a>
+			</li>
+		
+			<li>
+				<a href="/2014/03/">2014/03</a>
+			</li>
+		
+			<li>
+				<a href="/2014/04/">2014/04</a>
+			</li>
+		
+			<li>
+				<a href="/2014/05/">2014/05</a>
+			</li>
+		
+			<li>
+				<a href="/2014/06/">2014/06</a>
+			</li>
+		
+			<li>
+				<a href="/2014/07/">2014/07</a>
+			</li>
+		
+	</ul>
+
+</div>
+
+        <div class="site">
+
+			<!-- title -->
+			<!-- Header -->
+<header>
+<h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
+	<hr />
+</header>
+
+			<div id="contents">
+				
+				<div id="main">
+					<h3><a href="">Logistic Regression Algorithm（ロジスティック回帰）[機械学習]</a></h3>
+					<span class="author">
+						<span class="date">2014-04-28 02:34:49 +0900</span>
+					</span>
+
+					<hr />
+					<div id="social-buttom">
+	<!-- Social Buttoms -->
+	<ul>
+		<li>
+			<!-- Pocket -->
+			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
+			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+		</li>		
+		<li>
+			<!-- Vertical Twitter -->
+			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		</li>				
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//machine%20learning/2014/04/28/Logistic-Regression-Algorithm.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+		</li>				
+		<li style="margine-left: 10px;!important">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Logistic Regression Algorithm（ロジスティック回帰）[機械学習]" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+	</ul>
+</div>
+
+		      		<hr class="clear-list"/>
+
+					<div class="post">
+						<p>今まで線形モデルの Perceptron[link] と Linear Regression[link] に関して勉強してきました。今回は、新しい線形モデルである Logistic Regression に関して勉強したので、Python で実装しました。</p>
+
+<h3 id="導入">導入</h3>
+
+<p>Logistic Regression は、 Logistic Regression は Perceptron と Linear Regression のちょうど間に位置すると言ってもいいです。Perceptron は、アウトプットとして、+ か - のようにバイナリの結果を返しました。[ h(x] = sign(w(t)x) ] Liner Regression は、実数の値を返しました。[ h(x) = w(t)x ] これらに対して、今回の新しいモデルである Linear Regression は 0 から 1 の範囲の確率を返します。[ h(x) = theta(w(t)x ] ここでの theta関数は、theta(s) = e^s / 1 + e^s と便宜的に、0 から 1 を返すように設定します。（ロジスティクス関数) x が大きくなればなるほど、アウトプットは 1 に近くなります。逆に小さくなればなるほど、0 に近くなります。</p>
+
+<p><img src="http://3.bp.blogspot.com/-hGdelr5rUGA/U1xLvq9htbI/AAAAAAAAASs/Z_kwywA6Uro/s1600/Screen+Shot+2014-04-21+at+11.43.44+AM.png" alt=""></p>
+
+<p>次にコスト関数と、その関数の Gradient を見ていきます。まず、コスト関数は、</p>
+
+<p><img src="http://3.bp.blogspot.com/-fHn7IldvFGQ/U1xL3L4AU6I/AAAAAAAAAS0/xYBGOCW-WPQ/s1600/Screen+Shot+2014-04-26+at+12.10.57+PM.png" alt=""></p>
+
+<p>その Gradient は、確率的勾配降下法というもので、</p>
+
+<p><img src="http://1.bp.blogspot.com/-pHSHUjS2jwg/U1xL-bDegYI/AAAAAAAAAS8/CCZsoqBu-sk/s1600/Screen+Shot+2014-04-26+at+12.11.49+PM.png" alt=""></p>
+
+<p>です。そもそも確率的勾配降下法とは、Linear Regressioの際に使用した、最急降下法をよりシンプルにしたものです。通常の勾配法では、データ分だけパラメータ（w）を更新するために微分する必要があります。しかし、確率的勾配降下法では、データ分の和を計算する過程を省きます。ここでの”確率的”とは、乱数を使い実行の度に結果が異なるということを表現しています。このアルゴリズムを使用し、パラメータの更新式は、</p>
+
+<p><img src="http://1.bp.blogspot.com/-lQ8kkSVfXeI/U1xMFpEuZTI/AAAAAAAAATE/Xm2c1pT38To/s1600/Screen+Shot+2014-04-26+at+12.22.53+PM.png" alt=""></p>
+
+<p>となります。</p>
+
+<p>Convex function なので local minimum に収束するこの手法でも global minimum であることが保証されています。また、学習率である eta を少しずつ小さくしていきます。下記のグラフのように、eta が大きいと最適な値を飛ばしてしまい学習が安定せず、小さすぎると非効率です。そのため eta をはじめは 0.1 程度の設定し、学習が進むにつれて小さくするというのが一般的のようです。</p>
+
+<p><img src="http://2.bp.blogspot.com/-mwq-AqGG4h8/U1xMLNLzwPI/AAAAAAAAATM/_KXT1ToLnRc/s1600/Screen+Shot+2014-04-26+at+5.04.25+PM.png" alt=""></p>
+
+<h3 id="実装">実装</h3>
+
+<p>Pythonで実装した内容がこちらです。 </p>
+
+<div class="highlight"><pre><code class="python"><span class="lineno"> 1</span> <span class="c">#-*- coding: utf-8 -*-</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="lineno"> 4</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span> <span class="c"># 特徴関数</span>
+<span class="lineno"> 7</span> <span class="c">#</span>
+<span class="lineno"> 8</span> <span class="c">#</span>
+<span class="lineno"> 9</span> <span class="k">def</span> <span class="nf">phi</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="lineno">10</span>     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span> <span class="c"># シグモイド関数</span>
+<span class="lineno">13</span> <span class="c">#</span>
+<span class="lineno">14</span> <span class="c">#</span>
+<span class="lineno">15</span> <span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+<span class="lineno">16</span>     <span class="k">return</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">z</span><span class="p">))</span>
+<span class="lineno">17</span> 
+<span class="lineno">18</span> <span class="c">###############################################</span>
+<span class="lineno">19</span> 
+<span class="lineno">20</span> <span class="c"># BY using other data set</span>
+<span class="lineno">21</span> <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s">&#39;ex2data1.txt&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s">&#39;,&#39;</span><span class="p">)</span>
+<span class="lineno">22</span> 
+<span class="lineno">23</span> <span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="lineno">24</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="lineno">25</span> <span class="n">N</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">size</span><span class="p">;</span>
+<span class="lineno">26</span> <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c"># パラメータをランダムに初期化</span>
+<span class="lineno">27</span> <span class="n">eta</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="c"># 学習率の初期値</span>
+<span class="lineno">28</span> 
+<span class="lineno">29</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">400</span><span class="p">):</span>
+<span class="lineno">30</span>     <span class="nb">list</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="lineno">31</span> 
+<span class="lineno">32</span>     <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<span class="lineno">33</span> 
+<span class="lineno">34</span>     <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">:</span>
+<span class="lineno">35</span>         <span class="n">x_n</span><span class="p">,</span> <span class="n">y_n</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="p">:]</span>
+<span class="lineno">36</span> 
+<span class="lineno">37</span>         <span class="n">t_n</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+<span class="lineno">38</span> 
+<span class="lineno">39</span>         <span class="c"># 予測確率</span>
+<span class="lineno">40</span>         <span class="n">feature</span> <span class="o">=</span> <span class="n">phi</span><span class="p">(</span><span class="n">x_n</span><span class="p">,</span> <span class="n">y_n</span><span class="p">)</span>
+<span class="lineno">41</span>         <span class="n">predict</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">feature</span><span class="p">))</span>
+<span class="lineno">42</span>         <span class="n">w</span> <span class="o">-=</span> <span class="n">eta</span> <span class="o">*</span> <span class="p">(</span><span class="n">predict</span> <span class="o">-</span> <span class="n">t_n</span><span class="p">)</span> <span class="o">*</span> <span class="n">feature</span>
+<span class="lineno">43</span> 
+<span class="lineno">44</span>     <span class="c"># イテレーションごとに学習率を小さくする</span>
+<span class="lineno">45</span>     <span class="n">eta</span> <span class="o">*=</span> <span class="mf">0.9</span>
+<span class="lineno">46</span> 
+<span class="lineno">47</span> <span class="c"># 図を描くための準備</span>
+<span class="lineno">48</span> <span class="n">seq</span>          <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="lineno">49</span> <span class="n">xlist</span><span class="p">,</span> <span class="n">ylist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">seq</span><span class="p">)</span>
+<span class="lineno">50</span> <span class="n">zlist</span>        <span class="o">=</span> <span class="p">[</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">phi</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)))</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">xlist</span><span class="p">,</span> <span class="n">ylist</span><span class="p">)]</span>
+<span class="lineno">51</span> 
+<span class="lineno">52</span> <span class="c"># 散布図と予測分布を描画</span>
+<span class="lineno">53</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">zlist</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">120</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">120</span><span class="p">],</span> <span class="n">origin</span><span class="o">=</span><span class="s">&#39;lower&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">PiYG_r</span><span class="p">)</span>
+<span class="lineno">54</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">Y</span><span class="o">==</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">Y</span><span class="o">==</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">)</span>
+<span class="lineno">55</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">Y</span><span class="o">==</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">Y</span><span class="o">==</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="s">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
+<span class="lineno">56</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s">&#39;Not admitted&#39;</span><span class="p">,</span> <span class="s">&#39;Admitted&#39;</span><span class="p">])</span>
+<span class="lineno">57</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></code></pre></div>
+
+<p><img src="http://3.bp.blogspot.com/-cLu3UcoILC0/U1xMXAvIyGI/AAAAAAAAATU/IuOpZkAwkio/s1600/Screen+Shot+2014-04-26+at+5.10.27+PM.png" alt=""></p>
+
+<h3 id="参考">参考</h3>
+
+<p><a href="http://gihyo.jp/dev/serial/01/machine-learning/0016">Gihyo.jp : 第16回　最適化のための勾配法</a><br>
+<a href="http://gihyo.jp/dev/serial/01/machine-learning/0018">Gihyo.jp : 第18回　ロジスティック回帰</a><br>
+<a href="http://gihyo.jp/dev/serial/01/machine-learning/0019">Gihyo.jp : 第19回　ロジスティック回帰の学習</a><br>
+<a href="http://gihyo.jp/dev/serial/01/machine-learning/0020">Gihyo.jp : 第20回　ロジスティック回帰の実装</a><br>
+<a href="http://aimotion.blogspot.com/2011/11/machine-learning-with-python-logistic.html">Machine Learning with Python - Logistic Regression</a><br>
+<a href="http://www.amlbook.com/slides/iTunesU_Lecture09_May_01.pdf">Caltech  : Lecture 9 (The Linear Model II )</a>  </p>
+
+					</div>
+
+				</div>
+
+				<div id="sub">
+				   <div class="side_box">
+   <h3>About</h3>
+      <p class="side_content">
+         <i>Kazuya Kobayashi</i><br />
+         - I'm a once law student trying to be computer geek.<br />
+         - ギークになりたい。<br />
+         <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a>
+      </p>
+</div>
+
+<hr />
+
+<h3>Elsewhere</h3>
+   <p class="side_content">
+      <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+      <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+      <a href="https://github.com/kzykbys">Github</a>
+   </p>
+
+<hr />
+
+<h3>Category</h3>
+   <p class="side_content">|
+      
+   	   <a href="/categories/objective-c">objective-c
+            (11)
+         </a> | 
+      
+   	   <a href="/categories/other">other
+            (6)
+         </a> | 
+      
+   	   <a href="/categories/node-js">node.js
+            (1)
+         </a> | 
+      
+   	   <a href="/categories/ruby-on-rails">ruby on rails
+            (18)
+         </a> | 
+      
+   	   <a href="/categories/tips">tips
+            (6)
+         </a> | 
+      
+   	   <a href="/categories/html5">html5
+            (8)
+         </a> | 
+      
+   	   <a href="/categories/algorithms">algorithms
+            (2)
+         </a> | 
+      
+   	   <a href="/categories/machine-learning">machine learning
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/c">c
+            (14)
+         </a> | 
+      
+   	   <a href="/categories/ruby">ruby
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/swift">swift
+            (34)
+         </a> | 
+      
+   	   <a href="/categories/ios">ios
+            (2)
+         </a> | 
+      
+   </p>
+
+<hr />
+
+<h3>Archive</h3>
+   <p class="side_content">|
+      
+   		<a href="/2013/08/">2013/08
+            (2)
+         </a> |          
+      
+   		<a href="/2013/09/">2013/09
+            (4)
+         </a> |          
+      
+   		<a href="/2013/11/">2013/11
+            (11)
+         </a> |          
+      
+   		<a href="/2013/12/">2013/12
+            (21)
+         </a> |          
+      
+   		<a href="/2014/01/">2014/01
+            (5)
+         </a> |          
+      
+   		<a href="/2014/03/">2014/03
+            (6)
+         </a> |          
+      
+   		<a href="/2014/04/">2014/04
+            (7)
+         </a> |          
+      
+   		<a href="/2014/05/">2014/05
+            (11)
+         </a> |          
+      
+   		<a href="/2014/06/">2014/06
+            (40)
+         </a> |          
+      
+   		<a href="/2014/07/">2014/07
+            (5)
+         </a> |          
+      
+   </p>
+
+<hr />
+
+<h3>Work</h3>			   
+   <p class="side_content">
+      Coming soon... maybe.
+   </p>
+
+<hr />
+				</div>
+
+			</div>
+
+
+		</div>
+
+				<div class="footer">
+		   <div class="footer_inner">
+			   <div class="contact">
+				   <h4>About</h4>
+				   <p>Kazuya Kobayashi<br />
+				   - I'm a once law student trying to be computer geek.<br />
+				   - ギークになりたい。<br />
+				   <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a></p>
+				   <h4>Elsewhere</h4>
+				   <p>
+					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+					   <a href="https://github.com/kzykbys">Github</a></p>
+				   <h4>Category</h4>
+				   <p>|
+					   
+						   <a href="/categories/objective-c">objective-c</a> | 
+					   
+						   <a href="/categories/other">other</a> | 
+					   
+						   <a href="/categories/node-js">node.js</a> | 
+					   
+						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
+					   
+						   <a href="/categories/tips">tips</a> | 
+					   
+						   <a href="/categories/html5">html5</a> | 
+					   
+						   <a href="/categories/algorithms">algorithms</a> | 
+					   
+						   <a href="/categories/machine-learning">machine learning</a> | 
+					   
+						   <a href="/categories/c">c</a> | 
+					   
+						   <a href="/categories/ruby">ruby</a> | 
+					   
+						   <a href="/categories/swift">swift</a> | 
+					   
+						   <a href="/categories/ios">ios</a> | 
+					   
+				   </p>
+				   <h4>Archive</h4>
+					   <p>|
+					   
+	    					<a href="/2013/08/">2013/08
+	    					</a> | 
+	    			   
+	    					<a href="/2013/09/">2013/09
+	    					</a> | 
+	    			   
+	    					<a href="/2013/11/">2013/11
+	    					</a> | 
+	    			   
+	    					<a href="/2013/12/">2013/12
+	    					</a> | 
+	    			   
+	    					<a href="/2014/01/">2014/01
+	    					</a> | 
+	    			   
+	    					<a href="/2014/03/">2014/03
+	    					</a> | 
+	    			   
+	    					<a href="/2014/04/">2014/04
+	    					</a> | 
+	    			   
+	    					<a href="/2014/05/">2014/05
+	    					</a> | 
+	    			   
+	    					<a href="/2014/06/">2014/06
+	    					</a> | 
+	    			   
+	    					<a href="/2014/07/">2014/07
+	    					</a> | 
+	    			   
+    			   </p>
+				   <h4>Work</h4>			   
+				   <p>Coming soon... maybe.</p>
+			   </div>
+		   </div>
+	   	</div>
+
+	   		  
+	  	<!-- Sdir (slide menu for small screen) -->
+
+<script>
+	
+  	$(document).ready(function() {
+		$('#mobile-menu-button').sidr();	  
+  	});
+
+  	$('#mobile-menu-button').click(function(e){
+  	});
+
+  	$('html').click(function(e){
+  		$.sidr('close', 'sidr');
+  	});
+
+</script>
+	  	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28952627-6', 'kazuya.co');
+  ga('send', 'pageview');
+
+</script>
+
+	</body>
+</html>
