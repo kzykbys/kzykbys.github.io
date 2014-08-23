@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>The Only Tip. The Only Edge.</title>        
+        <title>Heroku でデータベースのバックアップ (PostgreSQL)</title>        
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />        
         <meta name="HandheldFriendly" content="true" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" />
@@ -32,9 +32,9 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 
 	</head>
-
+	
 	<body>
-        
+    
         <div id="mobile-sticky-menu">
 	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
 	<!-- <img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" /> -->
@@ -150,79 +150,97 @@
 	</ul>
 
 </div>
-        
-		<div class="site">			
 
-			<div id="contents">
+        <div class="site">
 
-				<!-- title -->
-				<!-- Header -->
+			<!-- title -->
+			<!-- Header -->
 <header>
 <h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
 	<hr />
 </header>
 
+			<div id="contents">
+				
 				<div id="main">
-					<!-- This loops through the paginated posts -->
-					
-						<h3><a href="/ruby%20on%20rails/2013/11/17/ruby-on-rails-5.html">Ruby on Rails チュートリアル 5 章 | アセットパイプライン</a></h3>
-						<p class="author">
-							<span class="date">2013-11-17 18:44:00 +0900</span>
-						</p>
-						<div class="content">
-							<p>急遽、勉強しなくちゃいけなくなった Ruby on Rails の個人的なまとめ。今回はアセットパイプライン関係。
-<a href="http://railstutorial.jp/chapters/filling-in-the-layout#top">http://railstutorial.jp/chapters/filling-in-the-layout#top</a></p>
+					<h3><a href="">Heroku でデータベースのバックアップ (PostgreSQL)</a></h3>
+					<span class="author">
+						<span class="date">2014-08-23 20:00:00 +0900</span>
+					</span>
 
-						</div>
-						<p><a href="/ruby%20on%20rails/2013/11/17/ruby-on-rails-5.html">...More</a></p>
-						<hr />
-					
-						<h3><a href="/ruby%20on%20rails/2013/11/15/ruby-on-rails-4.html">Ruby on Rails チュートリアル 4 章 | Ruby</a></h3>
-						<p class="author">
-							<span class="date">2013-11-15 22:21:00 +0900</span>
-						</p>
-						<div class="content">
-							<p>急遽、勉強しなくちゃいけなくなった Ruby on Rails の個人的なまとめ。今回は初めて触るRubyに関して。
-<a href="http://railstutorial.jp/chapters/rails-flavored-ruby?version=4.0#top">http://railstutorial.jp/chapters/rails-flavored-ruby?version=4.0#top</a></p>
+					<hr />
+					<div id="social-buttom">
+	<!-- Social Buttoms -->
+	<ul>
+		<li>
+			<!-- Pocket -->
+			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
+			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+		</li>		
+		<li>
+			<!-- Vertical Twitter -->
+			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		</li>				
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//tips/2014/08/23/heroku-backups.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+		</li>				
+		<li style="margine-left: 10px;!important">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Heroku でデータベースのバックアップ (PostgreSQL)" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+	</ul>
+</div>
 
-						</div>
-						<p><a href="/ruby%20on%20rails/2013/11/15/ruby-on-rails-4.html">...More</a></p>
-						<hr />
-					
-						<h3><a href="/ruby%20on%20rails/2013/11/15/ruby-on-rails-3.html">Ruby on Rails チュートリアル 3 章 | テスト</a></h3>
-						<p class="author">
-							<span class="date">2013-11-15 20:15:00 +0900</span>
-						</p>
-						<div class="content">
-							<p>急遽、勉強しなくちゃいけなくなった Ruby on Rails の個人的なまとめ。今回はテストと周り。
-<a href="http://railstutorial.jp/chapters/static-pages?version=4.0#top">http://railstutorial.jp/chapters/static-pages?version=4.0#top</a></p>
+		      		<hr class="clear-list"/>
 
-						</div>
-						<p><a href="/ruby%20on%20rails/2013/11/15/ruby-on-rails-3.html">...More</a></p>
-						<hr />
-					
-						<h3><a href="/objective-c/2013/09/23/change-dynamically-text-and-color-in-ios.html">Change Dynamically Text and Color in iOS</a></h3>
-						<p class="author">
-							<span class="date">2013-09-23 02:11:00 +0900</span>
-						</p>
-						<div class="content">
-							<p>I think we often encounter the situation we want to change the text color based on the length of the message in iOS programming. The famous example is twitter. When we type tweet and the tweet is over 140, the counter become red. like there : </p>
+					<div class="post">
+						<p>Heroku をデフォルトの PostgreSQL で運用していている場合の DB のバックアップ方法と DB の情報をローカルに再現する方法。</p>
 
-						</div>
-						<p><a href="/objective-c/2013/09/23/change-dynamically-text-and-color-in-ios.html">...More</a></p>
-						<hr />
-					
-						<h3><a href="/objective-c/2013/09/21/blockc-modification-and-scope.html">Block'c  Modification and Scope</a></h3>
-						<p class="author">
-							<span class="date">2013-09-21 05:03:00 +0900</span>
-						</p>
-						<div class="content">
-							<p>I often encounter Blocks when I write Objective-C. It&#39;s always kind confusing for me. The syntax is awkward and I honestly cannot still understand why using Block is useful. I have read really a helpful book about this topic and I found the different concept of scope in Blocks. I&#39;d like to write down it here. I believe I will be confused about it again.</p>
+<h4 id="アドオンの追加">アドオンの追加</h4>
 
-						</div>
-						<p><a href="/objective-c/2013/09/21/blockc-modification-and-scope.html">...More</a></p>
-						<hr />
-					
+<p>まずは、バックアップオプションを使用するためにアドオンを該当アプリに追加します。    </p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="err">$</span> <span class="n">heroku</span> <span class="n">addons</span><span class="o">:</span><span class="n">add</span> <span class="n">pgbackups</span></code></pre></div>
+
+<h4 id="バックアップ一覧表示">バックアップ一覧表示</h4>
+
+<p>バックアップの一覧を確認します。バックアップIDは、各バックアップを識別するためのIDです。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="err">$</span> <span class="n">heroku</span> <span class="n">pgbackups</span></code></pre></div>
+
+<h4 id="エクポートurlの作成">エクポートURLの作成</h4>
+
+<p>このコマンドを実行するとこのバックアップをダウンロードできるURLが生成されます。   </p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="err">$</span> <span class="n">heroku</span> <span class="n">pgbackups</span><span class="o">:</span><span class="n">url</span> <span class="err">バックアップ</span><span class="n">ID</span> <span class="o">--</span><span class="n">app</span> <span class="err">アプリ</span><span class="n">ID</span></code></pre></div>
+
+<h4 id="バックアップのダウンロード">バックアップのダウンロード</h4>
+
+<p>バックアップファイルは .dump ファイルと呼ばれるようです。これをローカルにダウンロードするには下記のコマンドを実行します。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="err">$</span> <span class="n">curl</span> <span class="o">-</span><span class="n">o</span> <span class="n">backup</span><span class="p">.</span><span class="n">dump</span> <span class="err">&#39;生成した</span><span class="n">URL</span><span class="err">&#39;</span></code></pre></div>
+    
+
+<p>この場合は、<code>backup.dump</code> という名前で保存しています。クォーテーションマークは必須です。</p>
+
+<h4 id="ローカルに反映">ローカルに反映</h4>
+
+<p>遂にローカルへ反映です。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="err">$</span> <span class="n">pg_restore</span> <span class="o">--</span><span class="n">verbose</span> <span class="o">--</span><span class="n">clean</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">acl</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">owner</span> <span class="o">-</span><span class="n">h</span> <span class="n">localhost</span> <span class="o">-</span><span class="n">U</span> <span class="err">ユーザー名</span> <span class="o">-</span><span class="n">d</span> <span class="err">データベース名</span> <span class="err">バックアップファイル名</span></code></pre></div>
+
+<p>ユーザー名とデータベース名は下記のコマンドで確認できます。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="err">$</span> <span class="n">psql</span> <span class="o">-</span><span class="n">l</span></code></pre></div>
+
+<p>ちなみに、SQL を実行するには、</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="err">$</span> <span class="n">psql</span> <span class="err">データベース名</span></code></pre></div>
+
+					</div>
+
 				</div>
 
 				<div id="sub">
@@ -364,22 +382,13 @@
 
 <hr />
 				</div>
-				
+
 			</div>
 
-			<!-- Pagination links -->
-			<div class="pagination">
-				
-				<a href="/page21" class="previous">Previous</a>
-				
-				<span class="page_number ">Page: 22 of 23</span>
-				
-				<a href="/page23" class="next">Next</a>
-				
-			</div>
-	   </div>   
 
-	   		<div class="footer">
+		</div>
+
+				<div class="footer">
 		   <div class="footer_inner">
 			   <div class="contact">
 				   <h4>About</h4>
@@ -492,6 +501,6 @@
   ga('send', 'pageview');
 
 </script>
-	  
-    </body>
+
+	</body>
 </html>
