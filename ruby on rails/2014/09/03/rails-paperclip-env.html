@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>『Xcode 5 徹底解説』</title>        
+        <title>Paperclipを環境ごとに設定を変更する</title>        
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />        
         <meta name="HandheldFriendly" content="true" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" />
@@ -167,9 +167,9 @@
 			<div id="contents">
 				
 				<div id="main">
-					<h3><a href="">『Xcode 5 徹底解説』</a></h3>
+					<h3><a href="">Paperclipを環境ごとに設定を変更する</a></h3>
 					<span class="author">
-						<span class="date">2014-08-23 11:00:00 +0900</span>
+						<span class="date">2014-09-03 10:00:00 +0900</span>
 					</span>
 
 					<hr />
@@ -188,11 +188,11 @@
 		</li>				
 		<li>
 			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//books/2014/08/23/xcode-kaisetsu.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			<div class="fb-like" data-href="http://blog.kazuya.co//ruby%20on%20rails/2014/09/03/rails-paperclip-env.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
 		</li>				
 		<li style="margine-left: 10px;!important">
 			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="『Xcode 5 徹底解説』" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Paperclipを環境ごとに設定を変更する" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
 		</li>		
 	</ul>
 </div>
@@ -200,91 +200,75 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>アメリカから帰国したり、作成しているアプリの申請が完了したりと、一息ついたので気分転換に <a href="http://www.amazon.co.jp/gp/product/4798041114/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;camp=247&amp;creative=1211&amp;creativeASIN=4798041114&amp;linkCode=as2&amp;tag=komchax-22">『Xcode 5 徹底解説』</a> という本を読んでみました。</p>
+						<p>Paperclipを使用していて、開発環境では画像の保存先を <code>:rails_root/public/</code> のようにして、テスト環境やプロダクション環境では S3 等の個別の設定をしたいといった場合がある思います。今回はその方法に関して。</p>
 
-<p>この本は、個人的にアプリを0から全て作成し、リリースまで経験したことがあるという方が読むとかなりためになると思います。少し Xcode でコードを書いるだけではなく、実際にリリースまで経験すると Xcode の様々な機能を使い倒すことになると思うので、その後に読むとちょっとした疑問点が解消されたり、次回以降の開発に取り入れることができる小技もたくさんつまっているので、開発のストレスが少なくなる本です。</p>
+<h4 id="新規モジュールの作成">新規モジュールの作成</h4>
 
-<h4 id="ショートカット関連">ショートカット関連</h4>
+<p>まずは、個別に設定するために、<code>app/models/shared/attachment_helper.rb</code> に以下のようなファイルを作成します。</p>
 
-<p>個人的に今後使っていきたいショートカット</p>
+<div class="highlight"><pre><code class="ruby"><span class="lineno"> 1</span> <span class="k">module</span> <span class="nn">Shared</span>
+<span class="lineno"> 2</span>   <span class="k">module</span> <span class="nn">AttachmentHelper</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span>     <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">included</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>
+<span class="lineno"> 5</span>       <span class="n">base</span><span class="o">.</span><span class="n">extend</span> <span class="no">ClassMethods</span>
+<span class="lineno"> 6</span>     <span class="k">end</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span>     <span class="k">module</span> <span class="nn">ClassMethods</span>
+<span class="lineno"> 9</span>       <span class="k">def</span> <span class="nf">has_attachment</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">options</span> <span class="o">=</span> <span class="p">{})</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span>         <span class="k">if</span> <span class="no">Rails</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">production?</span> <span class="k">then</span>
+<span class="lineno">12</span>           <span class="c1"># Not yet, it should be like test env</span>
+<span class="lineno">13</span>           <span class="n">options</span><span class="o">[</span><span class="ss">:storage</span><span class="o">]</span>         <span class="o">||=</span> <span class="ss">:s3</span>
+<span class="lineno">14</span>           <span class="n">options</span><span class="o">[</span><span class="ss">:s3_credentials</span><span class="o">]</span>  <span class="o">||=</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="no">Rails</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;config&#39;</span><span class="p">,</span> <span class="s1">&#39;s3_production.yml&#39;</span><span class="p">)</span>
+<span class="lineno">15</span>         <span class="k">elsif</span> <span class="no">Rails</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">test?</span> <span class="k">then</span>
+<span class="lineno">16</span>           <span class="nb">puts</span> <span class="s2">&quot;Test enviroment s3 setting is processed.&quot;</span>
+<span class="lineno">17</span>           <span class="n">options</span><span class="o">[</span><span class="ss">:storage</span><span class="o">]</span>         <span class="o">||=</span> <span class="ss">:s3</span>
+<span class="lineno">18</span>           <span class="n">options</span><span class="o">[</span><span class="ss">:s3_credentials</span><span class="o">]</span>  <span class="o">||=</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="no">Rails</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;config&#39;</span><span class="p">,</span> <span class="s1">&#39;s3_test.yml&#39;</span><span class="p">)</span>
+<span class="lineno">19</span>           <span class="n">options</span><span class="o">[</span><span class="ss">:path</span><span class="o">]</span> <span class="o">||=</span> <span class="s2">&quot;/images/:class/:lesson_identifer/:attachment/:style.:extension&quot;</span>
+<span class="lineno">20</span>           <span class="n">options</span><span class="o">[</span><span class="ss">:url</span><span class="o">]</span>             <span class="o">||=</span> <span class="s1">&#39;s3-us-west-2&#39;</span>
+<span class="lineno">21</span>         <span class="k">else</span>
+<span class="lineno">22</span>           <span class="nb">puts</span> <span class="s2">&quot;Development enviroment setting is processed.&quot;</span>
+<span class="lineno">23</span>           <span class="c1"># For local Dev envs, use the default filesystem, but separate the environments</span>
+<span class="lineno">24</span>           <span class="c1"># into different folders, so you can delete test files without breaking dev files.</span>
+<span class="lineno">25</span>           <span class="n">options</span><span class="o">[</span><span class="ss">:path</span><span class="o">]</span> <span class="o">||=</span> <span class="s2">&quot;:rails_root/public/images/:class/:lesson_identifer/:attachment/:style.:extension&quot;</span>
+<span class="lineno">26</span>           <span class="n">options</span><span class="o">[</span><span class="ss">:url</span><span class="o">]</span>  <span class="o">||=</span> <span class="s2">&quot;/images/:class/:lesson_identifer/:attachment/:style.:extension&quot;</span>
+<span class="lineno">27</span>         <span class="k">end</span>
+<span class="lineno">28</span> 
+<span class="lineno">29</span>         <span class="c1"># To use string id for the path/url</span>
+<span class="lineno">30</span>         <span class="no">Paperclip</span><span class="o">.</span><span class="n">interpolates</span> <span class="ss">:lesson_identifer</span> <span class="k">do</span> <span class="o">|</span><span class="n">attachment</span><span class="p">,</span> <span class="n">style</span><span class="o">|</span>
+<span class="lineno">31</span>           <span class="s2">&quot;</span><span class="si">#{</span><span class="n">attachment</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">lesson_identifer</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="lineno">32</span>         <span class="k">end</span>
+<span class="lineno">33</span> 
+<span class="lineno">34</span>         <span class="c1"># pass things off to paperclip.</span>
+<span class="lineno">35</span>         <span class="n">has_attached_file</span> <span class="nb">name</span><span class="p">,</span> <span class="n">options</span>
+<span class="lineno">36</span>       <span class="k">end</span>
+<span class="lineno">37</span>     <span class="k">end</span>
+<span class="lineno">38</span>   <span class="k">end</span>
+<span class="lineno">39</span> <span class="k">end</span></code></pre></div>
 
-<table><thead>
-<tr>
-<th>Short Cut Command</th>
-<th>Action</th>
-<th>備考</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Command + Return</td>
-<td>標準エディター</td>
-<td></td>
-</tr>
-<tr>
-<td>Command + Option + Return</td>
-<td>アシスタントエディター</td>
-<td></td>
-</tr>
-<tr>
-<td>Control + 6</td>
-<td>ドキュメントタイプ</td>
-<td>標準エディターで</td>
-</tr>
-<tr>
-<td>Command + Shift + Y</td>
-<td>デバックエリアの表示/非表示</td>
-<td></td>
-</tr>
-<tr>
-<td>Control + I</td>
-<td>インデントによるコード整形</td>
-<td></td>
-</tr>
-<tr>
-<td>Command + L</td>
-<td>指定した行数へジャンプ</td>
-<td></td>
-</tr>
-<tr>
-<td>Control + D</td>
-<td>カーソルの右側にある文字の削除</td>
-<td></td>
-</tr>
-<tr>
-<td>Command + Control + E</td>
-<td>スコープ内の変数名編集</td>
-<td>Evernoteと競合</td>
-</tr>
-</tbody></table>
+<p><code>Rails.env</code> の値によって Paperclip の設定を変更しています。そして、モデルの中では、モジュールをインクルードし、上記の <code>has_attachment</code> を使用します。</p>
 
-<h4 id="その他">その他</h4>
+<div class="highlight"><pre><code class="ruby"><span class="lineno"> 1</span> <span class="k">class</span> <span class="nc">Lesson</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span> 
+<span class="lineno"> 2</span>   <span class="kp">include</span> <span class="no">Shared</span><span class="o">::</span><span class="no">AttachmentHelper</span>
+<span class="lineno"> 3</span>   <span class="c1"># For catcher image</span>
+<span class="lineno"> 4</span>   <span class="n">has_attachment</span> <span class="ss">:catcher</span><span class="p">,</span>
+<span class="lineno"> 5</span>                  <span class="ss">:styles</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="lineno"> 6</span>                     <span class="ss">:big</span>  <span class="o">=&gt;</span> <span class="s2">&quot;2000x798&quot;</span><span class="p">,</span>
+<span class="lineno"> 7</span>                     <span class="ss">:medium</span> <span class="o">=&gt;</span> <span class="s2">&quot;1000x399&quot;</span>
+<span class="lineno"> 8</span>                   <span class="p">}</span>
+<span class="lineno"> 9</span> <span class="err">　</span><span class="n">validates_attachment_content_type</span> <span class="ss">:catcher</span><span class="p">,</span> <span class="ss">:content_type</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;image/jpg&quot;</span><span class="p">,</span> <span class="s2">&quot;image/jpeg&quot;</span><span class="p">,</span> <span class="s2">&quot;image/png&quot;</span><span class="p">,</span> <span class="s2">&quot;image/gif&quot;</span><span class="o">]</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span>   <span class="c1"># To use string id</span>
+<span class="lineno">12</span>   <span class="k">def</span> <span class="nf">to_param</span>
+<span class="lineno">13</span>     <span class="n">lesson_identifer</span>
+<span class="lineno">14</span>   <span class="k">end</span>
+<span class="lineno">15</span> <span class="k">end</span></code></pre></div>
 
-<p>その他メモ。</p>
-
-<p>クラスの宣言時に説明文を///を使用してコメントを書いておくと、Objective-Cのクラスのように補完時にその説明を見ることができる。長い文章の時には、/*! ~~~~ */とする。</p>
-
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="c1">/// KKTask is a model class which has information about task, including group information</span>
-<span class="lineno">2</span> <span class="k">@interface</span> <span class="nc">KKTask</span> : <span class="nc">NSObject</span></code></pre></div>
-
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="cm">/*!</span>
-<span class="lineno">2</span> <span class="cm">    KKTask is a model class which has information about task, including group information</span>
-<span class="lineno">3</span> <span class="cm">*/</span>
-<span class="lineno">4</span> <span class="k">@interface</span> <span class="nc">KKTask</span> : <span class="nc">NSObject</span></code></pre></div>
-
-<p>他にも 16章の Xcode サーバーのことや、デバック時のブレイクポイントに条件式を追加したりカスタマイズすることができるという内容は全く知らなかった。デバック画面の lldb で <code>po self.tableview</code> とかインタラクティブにデバックできるという機能もちょっと勉強したい。</p>
-
-<h4 id="xcode-6-について">Xcode 6 について</h4>
-
-<p>この本は完全に Xcode 5 に関してなので、直に正式にリリースされる Xcode 6 とは少し勝手が違うかもしれません。でも、一度本書を読めば後は、新しい機能等のキャッチアップをすれば良いという状態になれると思います。</p>
-
-<p>Xcode 6 に関しては、WWDC 2014 のビデオが英語の勉強にもなっておもしろいです。</p>
-
-<p><a href="https://developer.apple.com/videos/wwdc/2014/">What&#39;s New in Xcode 6</a></p>
+<p>これで完了。</p>
 
 <h4 id="参考">参考</h4>
 
-<p><br />
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?t=komchax-22&o=9&p=8&l=as1&asins=4798041114&ref=qf_sp_asin_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe></p>
+<p><a href="http://stackoverflow.com/questions/2562249/how-can-i-set-paperclips-storage-mechanism-based-on-the-current-rails-environme">How can I set paperclip&#39;s storage mechanism based on the current Rails environment?</a></p>
 
 					</div>
 
