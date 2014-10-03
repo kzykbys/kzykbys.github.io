@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Modernizr4 [ offline web app ]</title>        
+        <title>Swiftを使ってMagicalRecordを使用する</title>        
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />        
         <meta name="HandheldFriendly" content="true" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" />
@@ -171,9 +171,9 @@
 			<div id="contents">
 				
 				<div id="main">
-					<h3><a href="">Modernizr4 [ offline web app ]</a></h3>
+					<h3><a href="">Swiftを使ってMagicalRecordを使用する</a></h3>
 					<span class="author">
-						<span class="date">2013-12-22 05:28:00 +0900</span>
+						<span class="date">2014-10-04 06:00:00 +0900</span>
 					</span>
 
 					<hr />
@@ -192,11 +192,11 @@
 		</li>				
 		<li>
 			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//html5/2013/12/22/modernizr4-offline-web-app.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			<div class="fb-like" data-href="http://blog.kazuya.co//ios/2014/10/04/swift-magical-record.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
 		</li>				
 		<li style="margine-left: 10px;!important">
 			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Modernizr4 [ offline web app ]" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Swiftを使ってMagicalRecordを使用する" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
 		</li>		
 	</ul>
 </div>
@@ -204,20 +204,62 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>オフラインウェブアプリは、名前の通りオフラインでも動的なサイトをオフラインで表示することができます。はじめにユーザーはこの機能が有効になったサイトにアクセスし、オフラインに必要なデータをダウンロードします。これは HTML/JS、画像はもちろんビデオも可能です。そして、ユーザーがオフラインでこのサイトを訪れた場合、ダウンロードされたデータを使用し、サイトを表示します。もしユーザーがオフライン中にデータに変更をした場合、のちのオンラインになった時にサーバーに送信されます。</p>
+						<p>Swiftを使っているプロジェクトでMagicalRecordを使用する際のメモ。Swiftを使うと言っていますが、MagicalRecordで永続化するモデルは、Objective-Cとして作成しています。</p>
 
-<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="c1">// Modernizr によるサポートチェック</span>
-<span class="lineno">2</span> <span class="k">if</span> <span class="p">(</span><span class="nx">Modernizr</span><span class="p">.</span><span class="nx">applicationcache</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">3</span>      <span class="c1">// window.applicationCache is available!</span>
-<span class="lineno">4</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<span class="lineno">5</span>      <span class="c1">// no native support for offline :(</span>
-<span class="lineno">6</span>      <span class="c1">// try a fallback or another third-party solution</span>
-<span class="lineno">7</span> <span class="p">}</span></code></pre></div>
+<h4 id="bridging-header.hの作成">Bridging-Header.hの作成</h4>
 
-<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="c1">// 内部</span>
-<span class="lineno">2</span> <span class="kd">function</span> <span class="nx">supports_offline</span><span class="p">()</span> <span class="p">{</span> 
-<span class="lineno">3</span>      <span class="k">return</span> <span class="o">!!</span><span class="nb">window</span><span class="p">.</span><span class="nx">applicationCache</span><span class="p">;</span>
-<span class="lineno">4</span> <span class="p">}</span></code></pre></div>
+<p>まずは、Xcodeのプロジェクトに <code>[プロジェクト名]-Bridging-Header.h</code> というファイルを作成します。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="cp">#ifndef Meemo_Meemo_Bridging_Header_h</span>
+<span class="lineno">2</span> <span class="cp">#define Meemo_Meemo_Bridging_Header_h</span>
+<span class="lineno">3</span> 
+<span class="lineno">4</span> <span class="cp">#import &quot;CoreData+MagicalRecord.h&quot; </span><span class="c1">// 追加!</span>
+<span class="lineno">5</span> <span class="cp">#import &quot;KKMemo.h&quot;     </span><span class="c1">// これはのちのち追加</span>
+<span class="lineno">6</span> <span class="cp">#import &quot;KKCategory.h&quot; </span><span class="c1">// これはのちのち追加</span>
+<span class="lineno">7</span> 
+<span class="lineno">8</span> <span class="cp">#endif</span></code></pre></div>
+
+<p>とりあえず、最初は <code>CoreData+MagicalRecord.h</code> をインポートします。</p>
+
+<h4 id="xcdatamodeld-ファイルの作成">xcdatamodeld ファイルの作成</h4>
+
+<p>次にモデルを定義していきます。</p>
+
+<p>ファイルの新規作成で、CoreDataを選択し、xcdatamodeldを作成します。</p>
+
+<p>ENTITIESにモデルの名前を、Attributesに各モデルが持つデータ型と属性名を追加。RelationshipsのRelationshipには、小文字で持っているモデル名を、Destinationには、登録したはずのModel名が表示されているはずなので、同じものを選択する。</p>
+
+<p>画像を保存するときは、そのパスを保存しておくため、データ型は、Stringにする。</p>
+
+<p>モデルを選択した状態で、Editor、Create NSManagedObject SubClassを選択。この際、１つ目の画面では、管理する必要があるMemoを選び、２つ目の画面では、この管理したいMemoに関連する全てのエンティティを選ぶ。</p>
+
+<p>最後にBridging-Header.hにもモデルクラスのファイルをインポートしておく。</p>
+
+<h4 id="appdelegate.swift">AppDelegate.swift</h4>
+
+<p>AppDelegate.swift の didFinishLaunchingWithOptions に</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="c1">// Magical Record Initialization</span>
+<span class="lineno">2</span> <span class="n">MagicalRecord</span><span class="p">.</span><span class="n">setupCoreDataStackWithAutoMigratingSqliteStoreNamed</span><span class="p">(</span><span class="s">&quot;Meemo.sqlite”)</span></code></pre></div>
+
+<p>このコードを追加する。</p>
+
+<h4 id="保存・読み込み方法">保存・読み込み方法</h4>
+
+<p>保存の際には、</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">photoMemo</span> <span class="o">=</span> <span class="n">KKMemo</span><span class="p">.</span><span class="n">MR_createEntity</span><span class="p">()</span> <span class="n">as</span> <span class="n">KKMemo</span>
+<span class="lineno">2</span> <span class="n">photoMemo</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="err">“</span><span class="n">sample</span><span class="err">”</span>
+<span class="lineno">3</span> <span class="n">photoMemo</span><span class="p">.</span><span class="n">managedObjectContext</span><span class="p">.</span><span class="n">MR_saveToPersistentStoreAndWait</span><span class="p">()</span></code></pre></div>
+
+<p>実際にデータを呼ぶ出すときには、</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">memosObjects</span> <span class="o">=</span> <span class="n">KKMemo</span><span class="p">.</span><span class="n">MR_findAll</span><span class="p">()</span></code></pre></div>
+
+<h4 id="参考">参考</h4>
+
+<p><a href="http://www.raywenderlich.com/56879/magicalrecord-tutorial-ios">http://www.raywenderlich.com/56879/magicalrecord-tutorial-ios</a> <br />
+<a href="http://bundlr.com/clips/538e569809359743040000c0">http://bundlr.com/clips/538e569809359743040000c0</a></p>
 
 					</div>
 
