@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>『GitHub実践入門』</title>        
+        <title>Xcode6の新規プロジェクトにおいての上下の黒いスペース</title>        
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />        
         <meta name="HandheldFriendly" content="true" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" />
@@ -171,9 +171,9 @@
 			<div id="contents">
 				
 				<div id="main">
-					<h3><a href="">『GitHub実践入門』</a></h3>
+					<h3><a href="">Xcode6の新規プロジェクトにおいての上下の黒いスペース</a></h3>
 					<span class="author">
-						<span class="date">2014-08-25 17:00:00 +0900</span>
+						<span class="date">2014-10-15 21:00:00 +0900</span>
 					</span>
 
 					<hr />
@@ -192,11 +192,11 @@
 		</li>				
 		<li>
 			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//books/2014/08/25/github-jissen-nyumon.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			<div class="fb-like" data-href="http://blog.kazuya.co//ios/2014/10/15/swift-xcode6.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
 		</li>				
 		<li style="margine-left: 10px;!important">
 			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="『GitHub実践入門』" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Xcode6の新規プロジェクトにおいての上下の黒いスペース" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
 		</li>		
 	</ul>
 </div>
@@ -204,56 +204,21 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>モダンな開発手法を学びたくて<a href="http://www.amazon.co.jp/gp/product/477416366X/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;camp=247&amp;creative=1211&amp;creativeASIN=477416366X&amp;linkCode=as2&amp;tag=komchax-22">『GitHub実践入門』</a>を読んでみました。実際に手を動かして、手法を学べるようにサンプルのレポジトリを筆者の方が用意してあったりと、とても読みやすい本でした。</p>
+						<p>Xcode6でiOSのプロジェクトを作成すると、自動で作成されていたDefaultのローンチ画像がありません。このため、iOS7の4inchのスクリーンサイズのデバイスでビルドすると、上下に黒いスペースが入るということが起こります。(iOS8でビルドすると大丈夫)</p>
 
-<p>コードレビューを必ず行うことでソフトウェアの品質をしっかりと管理することができつつ、チームのレベルもこのおかげでどんどん上がっていきそう。早く実際に経験しよう。</p>
+<p><img src="/images/2014/10/1.png" alt=""></p>
 
-<p>あとで読み返す時のためのメモ。</p>
+<p>こんな感じです。</p>
 
-<h4 id="1章">1章</h4>
+<p>これを解決する一番簡単な方法は、とにかく<code>Default-568h@2x.png</code>といった名前で下記のようなローンチ画像をプロジェクトに入れてしまうことです。</p>
 
-<p>1章は GitHub に関して。Git と GitHub の違いなので本当に基本的なことから始まり、GitHub が考える GitHub やソーシャルコーディングの魅力が述べられています。企業でGitHubを使用した開発方法を実践していれば、企業外でオープンソースのプロジェクトに参加しようと思った時にも何の抵抗もなく貢献できます。また、オープンソースに積極的に参加しているような凄腕エンジニアたちが、企業に参加した場合にも、彼らに企業特有の余分な学習コスト少なくなるというのは魅力的です。</p>
+<p><img src="/images/2014/10/2.png" alt=""></p>
 
-<h4 id="2章">2章</h4>
-
-<p>2章は、Gitに関して。ここではSubversionのような集中型とGitのような分散型の簡単な説明、またGitのインストール方法と簡単な初期設定が説明されています。</p>
-
-<h4 id="3章">3章</h4>
-
-<p>3章は、GitHubの登録、SSHの登録、新しくデモ用のレポジトリの作成。</p>
-
-<h4 id="4章">4章</h4>
-
-<p>4章は、基本的なGitの使い方がまとめられています。とても丁寧にまとめられていて分かりやすいです。本当に基本的なログの確認方法や実際にファイルを作成した後、コミットをするようなことから始まります。ブランチを使用した管理方法も丁寧に触れられています。Gihutbへのプッシュ、第三者の変更をローカルに取り組むことまでよく解説されています。</p>
-
-<h4 id="5章">5章</h4>
-
-<p>5章は、本格的にGitHubの解説。GitHubのあらゆるページや機能を網羅的に解説しています。もし、なんのためにある機能なのか分からない場合はこのページを見ると分かるかも。</p>
-
-<h4 id="6章">6章</h4>
-
-<p>6章は、PRの方法。実際に筆者が用意してくれているレポジトリをフォークし、作業用のブランチを作成し、コードを変更後PRを作成する手順が説明されています。また実際の開発現場でよく使用されるPRを開発段階で作成するという作法の説明や、リモートのリポジトリの変更を自分のリポジトリに反映させる方法も解説されている。</p>
-
-<h4 id="7章">7章</h4>
-
-<p>7章は、PRが送られてきた時に、安全にマージする方法が丁寧に書かれています。GitHubでボタンひとつでマージもできますが、その前にローカルで変更内容を再現してテスト等してからマージという方法が重要です。また、これらのコードマネジメントスキルを伸ばすには経験を積むしかないということです。自分でブランチを分けて、自分でPRを送る等してこのスキルを伸ばしていこうという提案がなされています。</p>
-
-<h4 id="8章">8章</h4>
-
-<p>8章は、GitHubに関連したサービスを紹介しています。まずは、hub。これはコマンドラインツールでgitとGitHubを便利にしてくれます。Travis CIの紹介。Coverallというテストカバレッジのレポートを詳細に得ることができるサービス。Gemnasiumというライブラリのバージョンを監視してくれる。Code Climateというコードの品質を監視してくれるサービス。Rubyにのみ現在は対応。Jenkins。PRを起点として自動でテストを実行し、テスト結果を通知してくれる設定を解説しています。</p>
-
-<h4 id="9章">9章</h4>
-
-<p>9章は、GitHubを使用した開発フローを実際に細かく解説してくれている。GitHub Flowという常にデプロイし、作業は新しくブランチを作成し、定期的にpushし、PR、レビューといった流れ。また、オランダのエンジニアの Vincent Drissenという方が提唱したGit FlowというGitのマネジメントの方法も詳しく述べられている。</p>
-
-<h4 id="10章">10章</h4>
-
-<p>10章は、企業で使用していく中でのメリットや、考慮して置くべき点について述べられている。</p>
+<p>また、参考記事の解答では、<code>Images.xcassets</code>のローンチ画像を追加し、ビルド設定を変更するという方法も紹介されています。</p>
 
 <h4 id="参考">参考</h4>
 
-<p><br />
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?t=komchax-22&o=9&p=8&l=as1&asins=477416366X&ref=qf_sp_asin_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe></p>
+<p><a href="http://stackoverflow.com/questions/25945194/xcode-6-storyboard-screen-size-wrong-in-iphone5sios-7-but-not-ios-8">Xcode 6 storyboard screen size wrong in iPhone5s(iOS 7) but not (iOS 8)</a></p>
 
 					</div>
 
