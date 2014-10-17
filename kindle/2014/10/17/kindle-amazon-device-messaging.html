@@ -1,0 +1,683 @@
+	<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Amazon Device Messagingの実装</title>        
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />        
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+		<link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/jquery.sidr.dark.css">
+		<link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+
+        <!-- jQuery -->
+<script src="/javascript/jquery-1.11.1.min.js"></script>
+<!-- slide menu -->
+<script src="/javascript/jquery.sidr.min.js"></script>
+<!-- For FB like buttom -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=571082556301479&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+	</head>
+	
+	<body>
+    
+        <div id="mobile-sticky-menu">
+	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
+	<!-- <img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" /> -->
+</div>
+
+<div id="sidr">
+	<!-- Your content -->
+	<!-- <h4>Share</h4> -->
+
+	<h4>Category</h4>
+	<ul>
+	   
+		   <li>
+		   		<a href="/categories/objective-c">objective-c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/other">other</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/node-js">node.js</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/tips">tips</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/html5">html5</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/algorithms">algorithms</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/machine-learning">machine learning</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/c">c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby">ruby</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/swift">swift</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ios">ios</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/books">books</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/kindle">kindle</a>
+		   </li>
+	   
+    </ul>
+	<h4>Archive</h4>
+	<ul>
+		
+			<li>
+				<a href="/2013/08/">2013/08</a>
+			</li>
+		
+			<li>
+				<a href="/2013/09/">2013/09</a>
+			</li>
+		
+			<li>
+				<a href="/2013/11/">2013/11</a>
+			</li>
+		
+			<li>
+				<a href="/2013/12/">2013/12</a>
+			</li>
+		
+			<li>
+				<a href="/2014/01/">2014/01</a>
+			</li>
+		
+			<li>
+				<a href="/2014/03/">2014/03</a>
+			</li>
+		
+			<li>
+				<a href="/2014/04/">2014/04</a>
+			</li>
+		
+			<li>
+				<a href="/2014/05/">2014/05</a>
+			</li>
+		
+			<li>
+				<a href="/2014/06/">2014/06</a>
+			</li>
+		
+			<li>
+				<a href="/2014/07/">2014/07</a>
+			</li>
+		
+			<li>
+				<a href="/2014/08/">2014/08</a>
+			</li>
+		
+			<li>
+				<a href="/2014/09/">2014/09</a>
+			</li>
+		
+			<li>
+				<a href="/2014/10/">2014/10</a>
+			</li>
+		
+	</ul>
+
+</div>
+
+        <div class="site">
+
+			<!-- title -->
+			<!-- Header -->
+<header>
+<h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
+	<hr />
+</header>
+
+			<div id="contents">
+				
+				<div id="main">
+					<h3><a href="">Amazon Device Messagingの実装</a></h3>
+					<span class="author">
+						<span class="date">2014-10-17 21:30:00 +0900</span>
+					</span>
+
+					<hr />
+					<div id="social-buttom">
+	<!-- Social Buttoms -->
+	<ul>
+		<li>
+			<!-- Pocket -->
+			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
+			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+		</li>		
+		<li>
+			<!-- Vertical Twitter -->
+			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		</li>				
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//kindle/2014/10/17/kindle-amazon-device-messaging.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+		</li>				
+		<li style="margine-left: 10px;!important">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Amazon Device Messagingの実装" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+	</ul>
+</div>
+
+		      		<hr class="clear-list"/>
+
+					<div class="post">
+						<p>ここ最近、既存のAndroidプロジェクトをKindleに対応させています。主に、GoogleのサービスをAmazonのものに取り替えるということをしています。この記事は、その過程で学んだ、Google Cloud Messaging を Amazon Device Messagingに切り替える方法の記事です。</p>
+
+<h4 id="obtaining-amazon-device-messaging-credentials">Obtaining Amazon Device Messaging Credentials</h4>
+
+<p>ADMでは、デバッグ時にAPIキーが必要です。基本的にプロダクションの際には必要ないようです。</p>
+
+<p>まずは、<a href="https://developer.amazon.com/appsandservices">Amazon Apps &amp; Games Developer Portal</a> にてアプリを新規作成。作成されたアプリのメニューの Device Messaging を選択し、Security Profile を作成。この Security Profileは、いくつかのアプリで共有することもできます。もし、この Profileを共有した場合には、データもそのいくつかのアプリ内でシェアされます。</p>
+
+<p><a href="https://developer.amazon.com/appsandservices">Amazon Apps &amp; Games Developer Portal</a> の Apps &amp; Services &gt; My Apps にて、アプリを既に登録している場合は、そのアプリを選択し、登録していない場合は登録してください。このアプリを選択して、Device Messagingを選択して、Security profile を作成します。</p>
+
+<p>このSecurity Profileを作成したら、View Security Profileをクリックし、Kindle/Android Settingsタブを表示します。ここでやってAPIキーを作成できます。必要な情報は、<code>パッケージ名</code>、<code>signature(後述）</code>、<code>APIキーへの名前</code>。APIキーの名前は、任意です。パッケージ名もAndroidのマニフェストファイル等に書いてあるでしょう。<code>signature</code>は、少し操作が必要です。私が実際に試した方法は、APKファイルを用意し、ターミナルで下記のコマンドを実行しました。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="err">$</span> <span class="n">unzip</span> <span class="o">-</span><span class="n">p</span> <span class="p">{</span><span class="n">your</span><span class="o">-</span><span class="n">app</span><span class="p">.</span><span class="n">apk</span><span class="p">}</span> <span class="n">META</span><span class="o">-</span><span class="n">INF</span><span class="o">/</span><span class="n">CERT</span><span class="p">.</span><span class="n">RSA</span> <span class="o">|</span> <span class="n">keytool</span> <span class="o">-</span><span class="n">printcert</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">MD5</span></code></pre></div>
+
+<p>これで、MD5: 2E:0B:46:F8:D0:4A:06:AC:18:7A:2E:B0:42:95:58:FE のようなアウトプットがあるはずです。この 2EからFEまでをコピペすればAPIキーを作成されます。</p>
+
+<p>このAPIキーは先程の、Amazon Apps &amp; Games Developer Portalで確認することができます。しかし、ページをリロードするたびにこのAPIキーは変更されます。これらの複数のAPIキーはどれもvalidらしいので、あまり気にしなくて良いようです。私は、ADMが上手く動かなく、自分のAPIキーの作り方が悪かったのかと、これを疑って時間を潰してしまいました。(<a href="https://forums.developer.amazon.com/forums/thread.jspa?threadID=1224">ソース</a>)</p>
+
+<h4 id="setting-up-amazon-device-messaging">Setting Up Amazon Device Messaging</h4>
+
+<p>ここからはEclipseにて既にAndroidのプロジェクトがあるという前提で話を進めていきます。ここでは、ADMを使用するのに必要なファイルをプロジェクトに追加します。</p>
+
+<p>まずは、Eclipseでプロジェクトのルートディレクトリを右クリック等して、<code>Properties</code>を選択します。<code>Java Built Path</code>の中の、<code>Libraries</code>タブを選択。<code>Add External JARs…</code> を選択して、SDKの <code>Android/DeviceMessaging/lib</code>の中の <code>amazon-device-messaging.jar</code>を選択。SDKは、<a href="https://developer.amazon.com/public/resources/development-tools/sdk">ここ</a>でダウンロードできます。下記の参考リンクにあるSDKへのリンクが異なるので注意です。</p>
+
+<p>これで完了です。一応、Package ExploreのReferenced Libraries の中に、amazon-device-message-****.jar というのが発見できることを確認してください。</p>
+
+<h4 id="integrating-your-app-with-amazon-device-messaging">Integrating Your App with Amazon Device Messaging</h4>
+
+<p>次に、マニフェストファイルの設定、assetへ<code>api_key.txt</code>の追加、ReceiverとHandler(broadcast receiver)の実装です。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="o">&lt;</span><span class="n">manifest</span> <span class="n">xmlns</span><span class="o">:</span><span class="n">android</span><span class="o">=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+<span class="lineno"> 2</span>    <span class="nl">xmlns:</span><span class="n">amazon</span><span class="o">=</span><span class="s">&quot;http://schemas.amazon.com/apk/res/android&quot;</span>
+<span class="lineno"> 3</span>    <span class="n">package</span><span class="o">=</span><span class="s">&quot;[YOUR PACKAGE NAME]&quot;</span>
+<span class="lineno"> 4</span>    <span class="nl">android:</span><span class="n">versionCode</span><span class="o">=</span><span class="s">&quot;1&quot;</span>
+<span class="lineno"> 5</span>    <span class="nl">android:</span><span class="n">versionName</span><span class="o">=</span><span class="s">&quot;1.0&quot;</span> <span class="o">&gt;</span>
+<span class="lineno"> 6</span>  
+<span class="lineno"> 7</span>    <span class="o">&lt;!--</span> <span class="n">Because</span> <span class="n">the</span> <span class="n">Fire</span> <span class="o">&lt;</span><span class="n">span</span> <span class="kt">id</span><span class="o">=</span><span class="s">&quot;XinhaEditingPostion&quot;</span><span class="o">&gt;&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="n">devices</span> <span class="n">that</span> <span class="n">support</span> <span class="n">ADM</span> <span class="n">are</span> <span class="n">based</span> <span class="n">on</span> <span class="n">Android</span> <span class="n">API</span> <span class="n">level</span> <span class="mi">15</span><span class="p">,</span>
+<span class="lineno"> 8</span>       <span class="n">your</span> <span class="n">minSdkVersion</span> <span class="n">must</span> <span class="n">be</span> <span class="nb">NO</span> <span class="n">GREATER</span> <span class="n">THAN</span> <span class="mi">15</span> <span class="p">(</span><span class="o">&lt;=</span><span class="mi">15</span><span class="p">).</span> <span class="n">You</span> <span class="n">may</span> <span class="n">have</span> <span class="n">a</span> <span class="n">lower</span> <span class="n">SDK</span> <span class="n">version</span><span class="p">,</span>
+<span class="lineno"> 9</span>       <span class="k">if</span> <span class="n">that</span> <span class="n">is</span> <span class="n">appropriate</span> <span class="k">for</span> <span class="n">your</span> <span class="n">app</span><span class="p">.</span> <span class="o">--&gt;</span>
+<span class="lineno">10</span>    <span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">sdk</span>
+<span class="lineno">11</span>       <span class="nl">android:</span><span class="n">minSdkVersion</span><span class="o">=</span><span class="s">&quot;15&quot;</span>
+<span class="lineno">12</span>       <span class="nl">android:</span><span class="n">targetSdkVersion</span><span class="o">=</span><span class="s">&quot;15&quot;</span> <span class="o">/&gt;</span>
+<span class="lineno">13</span>  
+<span class="lineno">14</span>    <span class="o">&lt;!--</span> <span class="n">This</span> <span class="n">permission</span> <span class="n">ensures</span> <span class="n">that</span> <span class="n">no</span> <span class="n">other</span> <span class="n">application</span> <span class="n">can</span> <span class="n">intercept</span> <span class="n">your</span> <span class="n">ADM</span> <span class="n">messages</span><span class="p">.</span>
+<span class="lineno">15</span>       <span class="s">&quot;[YOUR PACKAGE NAME]&quot;</span> <span class="n">is</span> <span class="n">your</span> <span class="n">package</span> <span class="n">name</span> <span class="n">as</span> <span class="n">defined</span> <span class="k">in</span> <span class="n">your</span> <span class="o">&lt;</span><span class="n">manifest</span><span class="o">&gt;</span> <span class="n">tag</span><span class="p">.</span> <span class="o">--&gt;</span>
+<span class="lineno">16</span>    <span class="o">&lt;</span><span class="n">permission</span>
+<span class="lineno">17</span>       <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;[YOUR PACKAGE NAME].permission.RECEIVE_ADM_MESSAGE&quot;</span>
+<span class="lineno">18</span>       <span class="nl">android:</span><span class="n">protectionLevel</span><span class="o">=</span><span class="s">&quot;signature&quot;</span> <span class="o">/&gt;</span>
+<span class="lineno">19</span>    <span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="n">android</span><span class="o">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;[YOUR PACKAGE NAME].permission.RECEIVE_ADM_MESSAGE&quot;</span> <span class="o">/&gt;</span>
+<span class="lineno">20</span>  
+<span class="lineno">21</span>    <span class="o">&lt;!--</span> <span class="n">This</span> <span class="n">permission</span> <span class="n">allows</span> <span class="n">your</span> <span class="n">app</span> <span class="n">access</span> <span class="n">to</span> <span class="n">receive</span> <span class="n">push</span> <span class="n">notifications</span> <span class="n">from</span> <span class="n">ADM</span><span class="p">.</span> <span class="o">--&gt;</span>
+<span class="lineno">22</span>    <span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="n">android</span><span class="o">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;com.amazon.device.messaging.permission.RECEIVE&quot;</span> <span class="o">/&gt;</span>
+<span class="lineno">23</span>  
+<span class="lineno">24</span>    <span class="o">&lt;!--</span> <span class="n">ADM</span> <span class="n">uses</span> <span class="n">WAKE_LOCK</span> <span class="n">to</span> <span class="n">keep</span> <span class="n">the</span> <span class="n">processor</span> <span class="n">from</span> <span class="n">sleeping</span> <span class="n">when</span> <span class="n">a</span> <span class="n">message</span> <span class="n">is</span> <span class="n">received</span><span class="p">.</span> <span class="o">--&gt;</span>
+<span class="lineno">25</span>    <span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="n">android</span><span class="o">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;android.permission.WAKE_LOCK&quot;</span> <span class="o">/&gt;</span>
+<span class="lineno">26</span>  
+<span class="lineno">27</span>    <span class="o">&lt;</span><span class="n">application</span>
+<span class="lineno">28</span>       <span class="nl">android:</span><span class="n">icon</span><span class="o">=</span><span class="s">&quot;@drawable/ic_launcher&quot;</span>
+<span class="lineno">29</span>       <span class="nl">android:</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;@string/app_name&quot;</span>
+<span class="lineno">30</span>       <span class="nl">android:</span><span class="n">theme</span><span class="o">=</span><span class="s">&quot;@style/AppTheme&quot;</span> <span class="o">&gt;</span>
+<span class="lineno">31</span>  
+<span class="lineno">32</span>       <span class="o">&lt;!--</span> <span class="n">You</span> <span class="n">must</span> <span class="n">explicitly</span> <span class="n">enable</span> <span class="n">ADM</span> <span class="n">and</span> <span class="n">declare</span> <span class="n">whether</span> <span class="n">your</span> <span class="n">app</span> <span class="n">cannot</span> <span class="n">work</span> <span class="n">without</span>
+<span class="lineno">33</span>          <span class="n">ADM</span> <span class="p">(</span><span class="n">android</span><span class="o">:</span><span class="n">required</span><span class="o">=</span><span class="s">&quot;true&quot;</span><span class="p">)</span> <span class="n">or</span> <span class="n">can</span> <span class="n">work</span> <span class="n">without</span> <span class="n">ADM</span> <span class="p">(</span><span class="n">android</span><span class="o">:</span><span class="n">required</span><span class="o">=</span><span class="s">&quot;false&quot;</span><span class="p">).</span>
+<span class="lineno">34</span>          <span class="n">If</span> <span class="n">you</span> <span class="n">specify</span> <span class="n">android</span><span class="o">:</span><span class="n">required</span><span class="o">=</span><span class="s">&quot;false&quot;</span><span class="p">,</span> <span class="n">your</span> <span class="n">app</span> <span class="n">must</span> <span class="n">degrade</span> <span class="n">gracefully</span> <span class="k">if</span> <span class="n">ADM</span>
+<span class="lineno">35</span>          <span class="n">is</span> <span class="n">unavailable</span><span class="p">.</span> <span class="o">--&gt;</span>
+<span class="lineno">36</span>       <span class="o">&lt;</span><span class="n">amazon</span><span class="o">:</span><span class="n">enable</span><span class="o">-</span><span class="n">feature</span>
+<span class="lineno">37</span>          <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;com.amazon.device.messaging&quot;</span>
+<span class="lineno">38</span>          <span class="nl">android:</span><span class="n">required</span><span class="o">=</span><span class="s">&quot;true&quot;</span><span class="o">/&gt;</span>
+<span class="lineno">39</span>  
+<span class="lineno">40</span>       <span class="o">&lt;!--</span> <span class="n">Provide</span> <span class="n">references</span> <span class="n">to</span> <span class="n">the</span> <span class="n">message</span> <span class="n">handler</span> <span class="n">and</span> <span class="n">broadcast</span> <span class="n">receiver</span> <span class="k">for</span> <span class="n">your</span> <span class="n">app</span> <span class="n">here</span><span class="p">.</span> <span class="n">Replace</span>
+<span class="lineno">41</span>          <span class="n">the</span> <span class="n">names</span> <span class="k">in</span> <span class="n">the</span> <span class="n">service</span> <span class="n">and</span> <span class="n">receiver</span> <span class="n">tags</span> <span class="n">with</span> <span class="n">names</span> <span class="n">appropriate</span> <span class="n">to</span> <span class="n">your</span> <span class="n">package</span><span class="p">.</span> <span class="o">--&gt;</span>
+<span class="lineno">42</span>       <span class="o">&lt;</span><span class="n">service</span>
+<span class="lineno">43</span>          <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;[YOUR SERVICE NAME]&quot;</span>
+<span class="lineno">44</span>          <span class="nl">android:</span><span class="n">exported</span><span class="o">=</span><span class="s">&quot;false&quot;</span> <span class="o">/&gt;</span>
+<span class="lineno">45</span>  
+<span class="lineno">46</span>       <span class="o">&lt;!--</span> <span class="n">This</span> <span class="n">permission</span> <span class="n">ensures</span> <span class="n">that</span> <span class="n">only</span> <span class="n">ADM</span> <span class="n">can</span> <span class="n">send</span> <span class="n">your</span> <span class="n">app</span> <span class="n">registration</span> <span class="n">broadcasts</span><span class="p">.</span> <span class="o">--&gt;</span>
+<span class="lineno">47</span>       <span class="o">&lt;</span><span class="n">receiver</span>
+<span class="lineno">48</span>          <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;[YOUR RECEIVER NAME]&quot;</span>
+<span class="lineno">49</span>          <span class="nl">android:</span><span class="n">permission</span><span class="o">=</span><span class="s">&quot;com.amazon.device.messaging.permission.SEND&quot;</span> <span class="o">&gt;</span>
+<span class="lineno">50</span>  
+<span class="lineno">51</span>          <span class="o">&lt;!--</span> <span class="n">To</span> <span class="n">interact</span> <span class="n">with</span> <span class="n">ADM</span><span class="p">,</span> <span class="n">your</span> <span class="n">app</span> <span class="n">must</span> <span class="n">listen</span> <span class="k">for</span> <span class="n">the</span> <span class="n">following</span> <span class="n">intents</span><span class="p">.</span> <span class="o">--&gt;</span>
+<span class="lineno">52</span>          <span class="o">&lt;</span><span class="n">intent</span><span class="o">-</span><span class="n">filter</span><span class="o">&gt;</span>
+<span class="lineno">53</span>          <span class="o">&lt;</span><span class="n">action</span> <span class="n">android</span><span class="o">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;com.amazon.device.messaging.intent.REGISTRATION&quot;</span> <span class="o">/&gt;</span>
+<span class="lineno">54</span>          <span class="o">&lt;</span><span class="n">action</span> <span class="n">android</span><span class="o">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;com.amazon.device.messaging.intent.RECEIVE&quot;</span> <span class="o">/&gt;</span>
+<span class="lineno">55</span>  
+<span class="lineno">56</span>          <span class="o">&lt;!--</span> <span class="n">You</span> <span class="n">must</span> <span class="n">replace</span> <span class="n">the</span> <span class="n">name</span> <span class="k">in</span> <span class="n">the</span> <span class="n">category</span> <span class="n">tag</span> <span class="n">with</span> <span class="n">your</span> <span class="n">app</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">package</span> <span class="n">name</span><span class="p">.</span> <span class="o">--&gt;</span>
+<span class="lineno">57</span>          <span class="o">&lt;</span><span class="n">category</span> <span class="n">android</span><span class="o">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;[YOUR PACKAGE NAME]&quot;</span> <span class="o">/&gt;</span>
+<span class="lineno">58</span>          <span class="o">&lt;/</span><span class="n">intent</span><span class="o">-</span><span class="n">filter</span><span class="o">&gt;</span>
+<span class="lineno">59</span>  
+<span class="lineno">60</span>       <span class="o">&lt;/</span><span class="n">receiver</span><span class="o">&gt;</span>
+<span class="lineno">61</span>    <span class="o">&lt;/</span><span class="n">application</span><span class="o">&gt;</span>
+<span class="lineno">62</span> <span class="o">&lt;/</span><span class="n">manifest</span><span class="o">&gt;</span></code></pre></div>
+
+<p>このようにpermission等を追加します。</p>
+
+<p>そして、<code>api_key.txt</code>という名前でファイルをassetsフォルダに置かなければなりません。このファイルには、先ほどのAPIキーをスペース等なくコピペします。</p>
+
+<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">public</span> <span class="n">class</span> <span class="n">MyADMMessageHandler</span> <span class="n">extends</span> <span class="n">ADMMessageHandlerBase</span>
+<span class="lineno"> 2</span> <span class="p">{</span>
+<span class="lineno"> 3</span>     <span class="n">public</span> <span class="k">static</span> <span class="n">class</span> <span class="n">Receiver</span> <span class="n">extends</span> <span class="n">ADMMessageReceiver</span>
+<span class="lineno"> 4</span>     <span class="p">{</span>
+<span class="lineno"> 5</span>         <span class="n">public</span> <span class="n">Receiver</span><span class="p">()</span>
+<span class="lineno"> 6</span>         <span class="p">{</span>
+<span class="lineno"> 7</span>             <span class="n">super</span><span class="p">(</span><span class="n">MyADMMessageHandler</span><span class="p">.</span><span class="n">class</span><span class="p">);</span>
+<span class="lineno"> 8</span>         <span class="p">}</span>
+<span class="lineno"> 9</span>   
+<span class="lineno">10</span>     <span class="c1">// Nothing else is required here; your broadcast receiver automatically</span>
+<span class="lineno">11</span>     <span class="c1">// forwards intents to your service for processing.</span>
+<span class="lineno">12</span>     <span class="p">}</span>
+<span class="lineno">13</span>      
+<span class="lineno">14</span>     <span class="p">@</span><span class="n">Override</span>
+<span class="lineno">15</span>     <span class="n">protected</span> <span class="kt">void</span> <span class="n">onRegistered</span><span class="p">(</span><span class="n">final</span> <span class="n">String</span> <span class="n">newRegistrationId</span><span class="p">)</span>
+<span class="lineno">16</span>         <span class="p">{</span>
+<span class="lineno">17</span>         <span class="c1">// You start the registration process by calling startRegister() in your Main</span>
+<span class="lineno">18</span>         <span class="c1">// Activity. When the registration ID is ready, ADM calls onRegistered() on</span>
+<span class="lineno">19</span>         <span class="c1">// your app. Transmit the passed-in registration ID to your server, so your</span>
+<span class="lineno">20</span>         <span class="c1">// server can send messages to this app instance. onRegistered() is also</span>
+<span class="lineno">21</span>         <span class="c1">// called if your registration ID is rotated or changed for any reason; your</span>
+<span class="lineno">22</span>         <span class="c1">// app should pass the new registration ID to your server if this occurs.</span>
+<span class="lineno">23</span>         <span class="c1">// Your server needs to be able to handle a registration ID up to 1536 characters</span>
+<span class="lineno">24</span>         <span class="c1">// in length.</span>
+<span class="lineno">25</span>   
+<span class="lineno">26</span>         <span class="c1">// The following is an example of sending the registration ID to your</span>
+<span class="lineno">27</span>         <span class="c1">// server via a header key/value pair over HTTP.</span>
+<span class="lineno">28</span>         <span class="n">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="n">new</span> <span class="n">URL</span><span class="p">(</span><span class="n">YOUR_WEBSERVER_URL</span><span class="p">);</span>
+<span class="lineno">29</span>         <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="p">(</span><span class="n">HttpURLConnection</span><span class="p">)</span> <span class="n">url</span><span class="p">.</span><span class="n">openConnection</span><span class="p">();</span>
+<span class="lineno">30</span>         <span class="n">con</span><span class="p">.</span><span class="n">setDoInput</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="lineno">31</span>         <span class="n">con</span><span class="p">.</span><span class="n">setUseCaches</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+<span class="lineno">32</span>         <span class="n">con</span><span class="p">.</span><span class="n">setRequestMethod</span><span class="p">(</span><span class="s">&quot;POST&quot;</span><span class="p">);</span>
+<span class="lineno">33</span>         <span class="n">con</span><span class="p">.</span><span class="n">setRequestProperty</span><span class="p">(</span><span class="s">&quot;RegistrationId&quot;</span><span class="p">,</span> <span class="n">newRegistrationId</span><span class="p">);</span>
+<span class="lineno">34</span>         <span class="n">con</span><span class="p">.</span><span class="n">getResponse</span><span class="p">();</span>
+<span class="lineno">35</span>         <span class="p">}</span>
+<span class="lineno">36</span>      
+<span class="lineno">37</span>     <span class="p">@</span><span class="n">Override</span>
+<span class="lineno">38</span>     <span class="n">protected</span> <span class="kt">void</span> <span class="n">onUnregistered</span><span class="p">(</span><span class="n">final</span> <span class="n">String</span> <span class="n">registrationId</span><span class="p">)</span>
+<span class="lineno">39</span>     <span class="p">{</span>
+<span class="lineno">40</span>         <span class="c1">// If your app is unregistered on this device, inform your server that</span>
+<span class="lineno">41</span>         <span class="c1">// this app instance is no longer a valid target for messages.</span>
+<span class="lineno">42</span>     <span class="p">}</span>
+<span class="lineno">43</span>      
+<span class="lineno">44</span>     <span class="p">@</span><span class="n">Override</span>
+<span class="lineno">45</span>     <span class="n">protected</span> <span class="kt">void</span> <span class="n">onRegistrationError</span><span class="p">(</span><span class="n">final</span> <span class="n">String</span> <span class="n">errorId</span><span class="p">)</span>
+<span class="lineno">46</span>     <span class="p">{</span>
+<span class="lineno">47</span>         <span class="c1">// You should consider a registration error fatal. In response, your app may</span>
+<span class="lineno">48</span>         <span class="c1">// degrade gracefully, or you may wish to notify the user that this part of</span>
+<span class="lineno">49</span>         <span class="c1">// your app&#39;s functionality is not available.</span>
+<span class="lineno">50</span>     <span class="p">}</span>
+<span class="lineno">51</span>  
+<span class="lineno">52</span>     <span class="p">@</span><span class="n">Override</span>
+<span class="lineno">53</span>     <span class="n">protected</span> <span class="kt">void</span> <span class="n">onMessage</span><span class="p">(</span><span class="n">final</span> <span class="n">Intent</span> <span class="n">intent</span><span class="p">)</span>
+<span class="lineno">54</span>     <span class="p">{</span>
+<span class="lineno">55</span>         <span class="c1">// Extract the message content from the set of extras attached to</span>
+<span class="lineno">56</span>         <span class="c1">// the com.amazon.device.messaging.intent.RECEIVE intent.</span>
+<span class="lineno">57</span>  
+<span class="lineno">58</span>         <span class="c1">// Create strings to access the message and timeStamp fields from the JSON data.</span>
+<span class="lineno">59</span>         <span class="n">final</span> <span class="n">String</span> <span class="n">msgKey</span> <span class="o">=</span> <span class="n">getString</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">json_data_msg_key</span><span class="p">);</span>
+<span class="lineno">60</span>         <span class="n">final</span> <span class="n">String</span> <span class="n">timeKey</span> <span class="o">=</span> <span class="n">getString</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">json_data_time_key</span><span class="p">);</span>
+<span class="lineno">61</span>          
+<span class="lineno">62</span>         <span class="c1">// Obtain the intent action that will be triggered in onMessage() callback.</span>
+<span class="lineno">63</span>         <span class="n">final</span> <span class="n">String</span> <span class="n">intentAction</span> <span class="o">=</span> <span class="n">getString</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">intent_msg_action</span><span class="p">);</span>
+<span class="lineno">64</span>  
+<span class="lineno">65</span>         <span class="c1">// Obtain the extras that were included in the intent.</span>
+<span class="lineno">66</span>         <span class="n">final</span> <span class="n">Bundle</span> <span class="n">extras</span> <span class="o">=</span> <span class="n">intent</span><span class="p">.</span><span class="n">getExtras</span><span class="p">();</span>
+<span class="lineno">67</span>                  
+<span class="lineno">68</span>         <span class="c1">// Extract the message and time from the extras in the intent.</span>
+<span class="lineno">69</span>         <span class="c1">// ADM makes no guarantees about delivery or the order of messages.</span>
+<span class="lineno">70</span>         <span class="c1">// Due to varying network conditions, messages may be delivered more than once.</span>
+<span class="lineno">71</span>         <span class="c1">// Your app must be able to handle instances of duplicate messages.</span>
+<span class="lineno">72</span>         <span class="n">final</span> <span class="n">String</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">extras</span><span class="p">.</span><span class="n">getString</span><span class="p">(</span><span class="n">msgKey</span><span class="p">);</span>
+<span class="lineno">73</span>         <span class="n">final</span> <span class="n">String</span> <span class="n">time</span> <span class="o">=</span> <span class="n">extras</span><span class="p">.</span><span class="n">getString</span><span class="p">(</span><span class="n">timeKey</span><span class="p">);</span>
+<span class="lineno">74</span>     <span class="p">}</span>
+<span class="lineno">75</span> <span class="p">}</span></code></pre></div>
+
+<p>そして、遂にRegistrationId(デバイストークン)を取得し、それを適宜サーバーへ送信です。後は、サーバー側からメッセージをこのトークンを使用して送ることができます。</p>
+
+<p>雑ですが以上です。</p>
+
+<h4 id="参考">参考</h4>
+
+<p><a href="https://developer.amazon.com/appsandservices/apis/engage/device-messaging/tech-docs/02-obtaining-adm-credentials">Obtaining Amazon Device Messaging Credentials</a><br />
+<a href="https://developer.amazon.com/appsandservices/apis/engage/device-messaging/tech-docs/03-setting-up-adm">Setting Up Amazon Device Messaging</a><br />
+<a href="https://developer.amazon.com/appsandservices/apis/engage/device-messaging/tech-docs/04-integrating-your-app-with-adm">Integrating Your App with Amazon Device Messaging</a><br />
+<a href="https://developer.amazon.com/appsandservices/apis/engage/device-messaging/tech-docs/05-requesting-an-access-token">Requesting an Access Token for Amazon Device Messaging</a><br /></p>
+
+<hr />
+
+<p><a href="https://forums.developer.amazon.com/forums/thread.jspa?threadID=1224">Thread: why do API keys of game circle keep changing when refreshing the web page ?</a></p>
+
+					</div>
+
+				</div>
+
+				<div id="sub">
+				   <div class="side_box">
+   <h3>About</h3>
+      <p class="side_content">
+         <i>Kazuya Kobayashi</i><br />
+         - I'm a once law student trying to be computer geek.<br />
+         - ギークになりたい。<br />
+         <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a>
+      </p>
+</div>
+
+<hr />
+
+<h3>Elsewhere</h3>
+   <p class="side_content">
+      <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+      <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+      <a href="https://github.com/kzykbys">Github</a>
+   </p>
+
+<hr />
+
+<h3>Category</h3>
+   <p class="side_content">|
+      
+   	   <a href="/categories/objective-c">objective-c
+            (11)
+         </a> | 
+      
+   	   <a href="/categories/other">other
+            (6)
+         </a> | 
+      
+   	   <a href="/categories/node-js">node.js
+            (1)
+         </a> | 
+      
+   	   <a href="/categories/ruby-on-rails">ruby on rails
+            (22)
+         </a> | 
+      
+   	   <a href="/categories/tips">tips
+            (7)
+         </a> | 
+      
+   	   <a href="/categories/html5">html5
+            (8)
+         </a> | 
+      
+   	   <a href="/categories/algorithms">algorithms
+            (2)
+         </a> | 
+      
+   	   <a href="/categories/machine-learning">machine learning
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/c">c
+            (14)
+         </a> | 
+      
+   	   <a href="/categories/ruby">ruby
+            (5)
+         </a> | 
+      
+   	   <a href="/categories/swift">swift
+            (34)
+         </a> | 
+      
+   	   <a href="/categories/ios">ios
+            (6)
+         </a> | 
+      
+   	   <a href="/categories/books">books
+            (2)
+         </a> | 
+      
+   	   <a href="/categories/kindle">kindle
+            (2)
+         </a> | 
+      
+   </p>
+
+<hr />
+
+<h3>Archive</h3>
+   <p class="side_content">|
+      
+   		<a href="/2013/08/">2013/08
+            (2)
+         </a> |          
+      
+   		<a href="/2013/09/">2013/09
+            (4)
+         </a> |          
+      
+   		<a href="/2013/11/">2013/11
+            (11)
+         </a> |          
+      
+   		<a href="/2013/12/">2013/12
+            (21)
+         </a> |          
+      
+   		<a href="/2014/01/">2014/01
+            (5)
+         </a> |          
+      
+   		<a href="/2014/03/">2014/03
+            (6)
+         </a> |          
+      
+   		<a href="/2014/04/">2014/04
+            (7)
+         </a> |          
+      
+   		<a href="/2014/05/">2014/05
+            (11)
+         </a> |          
+      
+   		<a href="/2014/06/">2014/06
+            (40)
+         </a> |          
+      
+   		<a href="/2014/07/">2014/07
+            (5)
+         </a> |          
+      
+   		<a href="/2014/08/">2014/08
+            (3)
+         </a> |          
+      
+   		<a href="/2014/09/">2014/09
+            (4)
+         </a> |          
+      
+   		<a href="/2014/10/">2014/10
+            (6)
+         </a> |          
+      
+   </p>
+
+<hr />
+
+<h3>Work</h3>			   
+   <p class="side_content">
+      Coming soon... maybe.
+   </p>
+
+<hr />
+				</div>
+
+			</div>
+
+
+		</div>
+
+				<div class="footer">
+		   <div class="footer_inner">
+			   <div class="contact">
+				   <h4>About</h4>
+				   <p>Kazuya Kobayashi<br />
+				   - I'm a once law student trying to be computer geek.<br />
+				   - ギークになりたい。<br />
+				   <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a></p>
+				   <h4>Elsewhere</h4>
+				   <p>
+					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+					   <a href="https://github.com/kzykbys">Github</a></p>
+				   <h4>Category</h4>
+				   <p>|
+					   
+						   <a href="/categories/objective-c">objective-c</a> | 
+					   
+						   <a href="/categories/other">other</a> | 
+					   
+						   <a href="/categories/node-js">node.js</a> | 
+					   
+						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
+					   
+						   <a href="/categories/tips">tips</a> | 
+					   
+						   <a href="/categories/html5">html5</a> | 
+					   
+						   <a href="/categories/algorithms">algorithms</a> | 
+					   
+						   <a href="/categories/machine-learning">machine learning</a> | 
+					   
+						   <a href="/categories/c">c</a> | 
+					   
+						   <a href="/categories/ruby">ruby</a> | 
+					   
+						   <a href="/categories/swift">swift</a> | 
+					   
+						   <a href="/categories/ios">ios</a> | 
+					   
+						   <a href="/categories/books">books</a> | 
+					   
+						   <a href="/categories/kindle">kindle</a> | 
+					   
+				   </p>
+				   <h4>Archive</h4>
+					   <p>|
+					   
+	    					<a href="/2013/08/">2013/08
+	    					</a> | 
+	    			   
+	    					<a href="/2013/09/">2013/09
+	    					</a> | 
+	    			   
+	    					<a href="/2013/11/">2013/11
+	    					</a> | 
+	    			   
+	    					<a href="/2013/12/">2013/12
+	    					</a> | 
+	    			   
+	    					<a href="/2014/01/">2014/01
+	    					</a> | 
+	    			   
+	    					<a href="/2014/03/">2014/03
+	    					</a> | 
+	    			   
+	    					<a href="/2014/04/">2014/04
+	    					</a> | 
+	    			   
+	    					<a href="/2014/05/">2014/05
+	    					</a> | 
+	    			   
+	    					<a href="/2014/06/">2014/06
+	    					</a> | 
+	    			   
+	    					<a href="/2014/07/">2014/07
+	    					</a> | 
+	    			   
+	    					<a href="/2014/08/">2014/08
+	    					</a> | 
+	    			   
+	    					<a href="/2014/09/">2014/09
+	    					</a> | 
+	    			   
+	    					<a href="/2014/10/">2014/10
+	    					</a> | 
+	    			   
+    			   </p>
+				   <h4>Work</h4>			   
+				   <p>Coming soon... maybe.</p>
+			   </div>
+		   </div>
+	   	</div>
+
+	   		  
+	  	<!-- Sdir (slide menu for small screen) -->
+
+<script>
+	
+  	$(document).ready(function() {
+		$('#mobile-menu-button').sidr();	  
+  	});
+
+  	$('#mobile-menu-button').click(function(e){
+  	});
+
+  	$('html').click(function(e){
+  		$.sidr('close', 'sidr');
+  	});
+
+</script>
+	  	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28952627-6', 'kazuya.co');
+  ga('send', 'pageview');
+
+</script>
+
+	</body>
+</html>
