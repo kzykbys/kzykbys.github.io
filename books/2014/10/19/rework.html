@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Naked domain problem | Heoku - Godaddy |</title>        
+        <title>『小さなチーム、大きなチーム』 ~ Rework</title>        
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />        
         <meta name="HandheldFriendly" content="true" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" />
@@ -175,9 +175,9 @@
 			<div id="contents">
 				
 				<div id="main">
-					<h3><a href="">Naked domain problem | Heoku - Godaddy |</a></h3>
+					<h3><a href="">『小さなチーム、大きなチーム』 ~ Rework</a></h3>
 					<span class="author">
-						<span class="date">2013-12-02 08:05:00 +0900</span>
+						<span class="date">2014-10-19 22:30:00 +0900</span>
 					</span>
 
 					<hr />
@@ -196,11 +196,11 @@
 		</li>				
 		<li>
 			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//tips/2013/12/02/naked-domain-problem-heoku-godaddy.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			<div class="fb-like" data-href="http://blog.kazuya.co//books/2014/10/19/rework.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
 		</li>				
 		<li style="margine-left: 10px;!important">
 			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Naked domain problem | Heoku - Godaddy |" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="『小さなチーム、大きなチーム』 ~ Rework" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
 		</li>		
 	</ul>
 </div>
@@ -208,33 +208,98 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>Recently I&#39;m developing RoR application on Heroku. In this post, I&#39;d like to share how to solve naked domain problem in my environment (Heroku and Goddady ).</p>
+						<p>37シグナルズの<a href="http://www.amazon.co.jp/gp/product/415209267X/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;camp=247&amp;creative=1211&amp;creativeASIN=415209267X&amp;linkCode=as2&amp;tag=komchax-22">『小さなチーム、大きな仕事』</a>を読んだ。Railsの作者としても有名な David Heinemeier Hansson、通称 DHH も著者として関わっていて読んでみたけど、久しぶりにコンピューター関連以外のこういう本を最後まで読んだ気がする。</p>
 
-<p>Naked domain problem is big concern. Basically, naked domain is like example.com. It doesn&#39;t have www prefix. We sometimes can&#39;t use our website when we access the naked domain without <a href="http://www">www</a>. To solve this problem on Heroku, we should follow some steps. In my case, I got domain from Godaddy. So, I&#39;m gonna show how to do that in this situation.</p>
+<p>自分自身スタートアップで働いて、それ以外でも少数の個人でソフトウェアを開発していたりするので、参考になることが多かった。この本は、彼らの働き方や組織のあり方等の考え方が、小さなトピックごとに解説されていてすごく読みやすい。自分がおもしろいなと思ったり、なるほどと思ったことをまとめてみます。</p>
 
-<h3 id="set-up-(-heroku-)">Set up ( Heroku )</h3>
+<h4 id="be-a-starter">Be a Starter</h4>
 
-<p>In your command line, type</p>
+<p>頑張って起業家とかにならなくても、兎に角自分がやりたいことをやってみよう。</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="err">$</span> <span class="n">heroku</span> <span class="ss">domains</span><span class="p">:</span><span class="n">add</span> <span class="n">www</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
-<span class="lineno">2</span> <span class="err">$</span> <span class="n">heroku</span> <span class="ss">domains</span><span class="p">:</span><span class="n">add</span> <span class="n">example</span><span class="o">.</span><span class="n">com</span></code></pre></div>
+<h4 id="scrach-your-own-itch">Scrach your own itch</h4>
 
-<p>Also, you can check the result by typing</p>
+<p>素晴らしいプロダクトを作る一番簡単な方法は自分たちが欲しいものを作ること。どんな小さなものを作るときでも、たくさんの決断をしないといけない。他人の問題を解決するというのは、このたくさんの小さな決断を間違えてしまい、結果、おもしろいものを作るハードルは高くなってしまう。37シグナルズも自分たちに必要なものを作って、それを売っている。</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="err">$</span> <span class="n">heroku</span> <span class="n">host</span> <span class="n">www</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
-<span class="lineno">2</span> <span class="err">$</span> <span class="n">heroku</span> <span class="n">host</span> <span class="n">example</span><span class="o">.</span><span class="n">com</span></code></pre></div>
+<h4 id="you&#39;re-better-off-with-a-kick-ass-half-than-a-half-assed-whole">You&#39;re better off with a kick-ass half than a half-assed whole</h4>
 
-<h3 id="set-up-(-goddady-)">Set up ( Goddady )</h3>
+<p>みんなたくさんの良いアイディアはもっている。運が良ければ、それなりに実行する力も持っている。でも、それらを全て達成しようとするのは難しい。だからやりたいことを半分にして、その半分に集中した方が良い。中途半端なたくさんのものより、良く出来た半分の方がよい。</p>
 
-<p>Ⅰ. &quot;Visit My Account&quot; and &quot;Launch&quot; Domains row</p>
+<h4 id="basic">Basic</h4>
 
-<p>Ⅱ. Choose your domain which you want to solve naked domain problem</p>
+<p>何か新しいことを始めるときには、芯から始める。ホットドック屋台をやりたければ、まずはホットドックに力を注ぐ。店の名前とかカートのデコレーションとかは後で良い。</p>
 
-<p>Ⅲ. In the &quot;Domain Details&quot;, find &quot;Forwarding&quot; row and click &quot;Manage&quot;</p>
+<h4 id="focus-on-what-won&#39;t-change">Focus on what won&#39;t change</h4>
 
-<p>Ⅳ. Type like &quot;<a href="http://www.example.com">www.example.com</a>&quot;</p>
+<p>新しいトレンドのように常に変わってしまうものを追いかけて何かをするのは難しい。今までもこれからも変わらないものを追求した方が良い。日本の車メーカーも基本的に信頼・手軽さ・実用性といったずっと変わらないものを追求している。</p>
 
-<p>That&#39;s it. After a few minutes, your naked domain problem is solved.</p>
+<h4 id="good-enough-is-fine">Good enough is fine</h4>
+
+<p>何かの問題に対処する時に、複雑なカッコ良い解決策に拘る必要はない。最低限の力で最大の効果を生む解決策を考えるべき。高いところに行きたいという気持ちがあるなら、エレベストに登るということだけでなく、高層ビルの上に行ってみるということも考える。</p>
+
+<h4 id="quick-wins">Quick wins</h4>
+
+<p>やっぱりモチベーションがないと中々良い仕事はできない。だから小さな勝利を積み重ねるということを意識的にして、モチベーションをキープする。９ヶ月かかるプロジェクトに関わり、その間なんの勝利もなかったら辛い。そんな長期のプロジェクトに参加するときには、期間を区切って小さな勝利を得ることに専念すべき。    </p>
+
+<h4 id="make-tiny-decisions">Make tiny decisions</h4>
+
+<p>大きな決断をするのは難しいし、その決断をなかったことにするのも難しい。だから、小さな一時的な決断を繰り返す。</p>
+
+<h4 id="pick-a-fight">Pick a fight</h4>
+
+<p>競合相手が最低ならそう言えば良い。こうやって自分の立場を明確にすることで、自分の差別化につながるし、人も惹きつけることができる。アンチもできるだろうが。</p>
+
+<h4 id="focus-on-you-instead-of-they">Focus on you instead of they</h4>
+
+<p>今ここで起こっていることは、向こう側で起きていることよりずっと重要。どうせ明日の向こう側は様変わりしているし、あまり気にしていても仕方がない。次のポケモンを目指した時点で負けている。</p>
+
+<h4 id="don&#39;t-confuse-enthusiasm-with-priority">Don&#39;t confuse enthusiasm with priority</h4>
+
+<p>素晴らしいアイディアを思いつくと、興奮して今やっていることを放り出してその一番最後に思いついた素晴らしいアイディアに取り組みたくなる。でも、次の日の朝には大したアイディアではないと思うこともあるし、良いアイディアは一度棚上げしておいた方が良い。</p>
+
+<h4 id="welcome-obscurity">Welcome obscurity</h4>
+
+<p>無名であることは素晴らしい。世間にあれこれ言われずに大いに挑戦し、大いに失敗できる。ブロードウェイもまずは小さなステージから始める。そこには評論家や専門家の手厳しい批判を受ける前に、観客の評価を受けることができる。</p>
+
+<h4 id="fake-fake-fake">Fake Fake Fake</h4>
+
+<p>偽物が好きな人はいない。たとえ素晴らしいスーツに身を包み、完璧に見せても、お堅い退屈な存在になりがちだ。誰もそこから親しみは感じない。欠点を見せることを恐れてはいけない。不完全はリアル。造花が好きな人はいない。</p>
+
+<h4 id="everything-is-marketing">Everything is marketing</h4>
+
+<p>マーケティングは部署ではない。マーケティングはチーム全員がやること。ソフトウェアのエラーメッセージの文言もマーケティングだ。</p>
+
+<h4 id="~-year-10-overnight-sensation">~ year 10 Overnight sensation</h4>
+
+<p>１日にして成功はない。自分の声を聞いてくれる人を地道に集めて、それを継続する。PR会社等に頼らない。偉大なブランドは時間とともに一流のブランドになった。</p>
+
+<h4 id="hello,-my-name-is-john">Hello, my name is John</h4>
+
+<p>知り合いのいないパーティーに行っても、退屈だ。でも、古くからの友人との飲み会では、おもしろい会話があり、熱い議論が生まれる。組織も、短期間で大量の人を雇い知り合いのいないパーティーのようにしてはいけない。争いを避け、素直に意見を言い難くなり、無難でつまらない商品が生まれてしまう。</p>
+
+<h4 id="delegators-are-dead-weight">Delegators are dead weight</h4>
+
+<p>小さなチームでは、あれこれ仕事を振る人ではなく、動ける人が必要だ。仕切り屋はいらない。会議が増え、作業する時間を短くするのが彼らの仕事だ。</p>
+
+<h4 id="own-your-bad-news">Own your bad news</h4>
+
+<p>過ちへの対応は自分でやる。人は悪いことがあるとそれを話題にする。だから、自分自身が最初のその役を引き受けるべき。悪いニュースは誰も気がついていなくとも、顧客に伝えるべきだ。</p>
+
+<h4 id="everyone-on-the-front-lines">Everyone on the front lines</h4>
+
+<p>伝言ゲームでは人が多いほど最初のメッセージは歪む。顧客とメンバーの間に人がいるほど、顧客の声は歪んでしまう。顧客と接する暇などないと思ってはダメだ。クレイグリストのクレイグもいまだにサポートメールを数分以内に返したりと、顧客と接している。</p>
+
+<h4 id="culuture-is-the-by-product-of-consistent-behavior">Culuture is the by-product of consistent behavior</h4>
+
+<p>文化は作るものではない。ふだんの振る舞いの蓄積が文化だ。</p>
+
+<h4 id="asap">ASAP</h4>
+
+<p>なるたけ早くは毒。どんな仕事にもなるたけ早くと言うと、何が大事かわからなくなる。実際に緊急時以外にこの急がせる言葉は控える。</p>
+
+<h4 id="参考">参考</h4>
+
+<p><br />
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?t=komchax-22&o=9&p=8&l=as1&asins=415209267X&ref=qf_sp_asin_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe></p>
 
 					</div>
 
