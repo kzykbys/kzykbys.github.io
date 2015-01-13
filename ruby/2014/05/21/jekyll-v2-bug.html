@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -214,17 +210,17 @@
 					<div class="post">
 						<p>Jekyll のバージョンを 2.0.3 に上げた際に、突然ビルドするできることができなくなってしまいました。その解決方法に関して記事です。</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">jekyll</span> <span class="mi">2</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">3</span> <span class="o">|</span> <span class="ss">Error</span><span class="p">:</span>  <span class="n">undefined</span> <span class="nb">method</span> <span class="sb">`deep_merge&#39; for #&lt;Hash:0x007fd2644089c0&gt;</span></code></pre></div>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="n">jekyll</span> <span class="mi">2</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">3</span> <span class="o">|</span> <span class="ss">Error</span><span class="p">:</span>  <span class="n">undefined</span> <span class="nb">method</span> <span class="sb">`deep_merge&#39; for #&lt;Hash:0x007fd2644089c0&gt;</span></code></pre></div>
 
 <p>のようにエラーが出てビルドすることができなくなってしまいました。--trace すると、</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">monthly_archive_plugin</span><span class="o">.</span><span class="n">rb</span><span class="p">:</span><span class="mi">121</span><span class="ss">:in</span> <span class="sb">`to_liquid&#39;: undefined method `</span><span class="n">deep_merge</span><span class="err">&#39;</span> <span class="k">for</span> <span class="c1">#&lt;Hash:0x007f9303cf8490&gt; (NoMethodError)</span></code></pre></div>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="n">monthly_archive_plugin</span><span class="o">.</span><span class="n">rb</span><span class="p">:</span><span class="mi">121</span><span class="ss">:in</span> <span class="sb">`to_liquid&#39;: undefined method `</span><span class="n">deep_merge</span><span class="err">&#39;</span> <span class="k">for</span> <span class="c1">#&lt;Hash:0x007f9303cf8490&gt; (NoMethodError)</span></code></pre></div>
 
 <p>自作のアーカイブを作成するプラグインの中にある deep_merge というメソッドが原因のようです。v2 以降(?)では、動かなくなってしまったので、deep_merge を単に、merge と変更すれば動くようになります。</p>
 
 <p>例えば、</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="k">def</span> <span class="nf">to_liquid</span><span class="p">(</span><span class="kp">attr</span> <span class="o">=</span> <span class="kp">nil</span><span class="p">)</span>      
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="k">def</span> <span class="nf">to_liquid</span><span class="p">(</span><span class="kp">attr</span> <span class="o">=</span> <span class="kp">nil</span><span class="p">)</span>      
 <span class="lineno">2</span>   <span class="nb">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">deep_merge</span><span class="p">({</span>
 <span class="lineno">3</span>                         <span class="s1">&#39;content&#39;</span> <span class="o">=&gt;</span> <span class="nb">self</span><span class="o">.</span><span class="n">content</span><span class="p">,</span>
 <span class="lineno">4</span>                         <span class="s1">&#39;year&#39;</span>    <span class="o">=&gt;</span> <span class="vi">@year</span>
@@ -233,7 +229,7 @@
 
 <p>といったコードを、</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="k">def</span> <span class="nf">to_liquid</span><span class="p">(</span><span class="kp">attr</span> <span class="o">=</span> <span class="kp">nil</span><span class="p">)</span>      
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="k">def</span> <span class="nf">to_liquid</span><span class="p">(</span><span class="kp">attr</span> <span class="o">=</span> <span class="kp">nil</span><span class="p">)</span>      
 <span class="lineno">2</span>   <span class="nb">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">merge</span><span class="p">({</span>
 <span class="lineno">3</span>                    <span class="s1">&#39;content&#39;</span> <span class="o">=&gt;</span> <span class="nb">self</span><span class="o">.</span><span class="n">content</span><span class="p">,</span>
 <span class="lineno">4</span>                    <span class="s1">&#39;year&#39;</span>    <span class="o">=&gt;</span> <span class="vi">@year</span>
@@ -386,22 +382,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -495,9 +486,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

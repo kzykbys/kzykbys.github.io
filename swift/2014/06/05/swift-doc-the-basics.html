@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -222,53 +218,53 @@
 
 <p>変数やコンスタントを一度、宣言するともう一度宣言することはできず、異なるタイプのデータを保存することもできない。また、コンスタントを変数へ、変数からコンスタントにもできない。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">10</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="lineno">2</span> <span class="n">number</span> <span class="o">=</span> <span class="s">&quot;10&quot;</span> <span class="c1">// error</span></code></pre></div>
 
 <h4 id="2.-予約語の変数/コンスタントとしての利用">2. 予約語の変数/コンスタントとしての利用</h4>
 
 <p>Swift の予約語を変数、コンスタントの名前に使用するしかない状況の時には、名前の周りを ` (back ticks) で囲むことで使用することができる。もちろん、非推奨。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="err">`</span><span class="n">func</span><span class="err">`</span> <span class="o">=</span> <span class="s">&quot;test1&quot;</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="err">`</span><span class="n">func</span><span class="err">`</span> <span class="o">=</span> <span class="s">&quot;test1&quot;</span>
 <span class="lineno">2</span> <span class="n">println</span><span class="p">(</span><span class="err">`</span><span class="n">func</span><span class="err">`</span><span class="p">)</span></code></pre></div>
 
 <h4 id="3.-変数/コンスタントの展開">3. 変数/コンスタントの展開</h4>
 
 <p>文字列の中で変数、コンスタントを使用するには、カッコでくくり、最初のカッコをバックスラッシュでエスケープすることにより、Swift が展開してくれる。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;The current value of friendlyWelcome is \(friendlyWelcome)&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;The current value of friendlyWelcome is \(friendlyWelcome)&quot;</span><span class="p">)</span>
 <span class="lineno">2</span> <span class="c1">// prints &quot;The current value of friendlyWelcome is Bonjour!”</span></code></pre></div>
 
 <h4 id="4.-コメントのネスト">4. コメントのネスト</h4>
 
 <p>C では出来なかった /**/ のコメントをネストすることができる。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="c1">// this comment works well</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="c1">// this comment works well</span>
 <span class="lineno">2</span> <span class="cm">/* hi /* wow */</span> <span class="n">yeah</span> <span class="err">*/</span></code></pre></div>
 
 <h4 id="5.-セミコロン">5. セミコロン</h4>
 
 <p>各ステートメントの終わりにセミコロンはいらない。でも、ステートメントを同じ行に書くときには必須。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">number1</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">var</span> <span class="n">number2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="n">println</span><span class="p">(</span><span class="n">number1</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">number1</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">var</span> <span class="n">number2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="n">println</span><span class="p">(</span><span class="n">number1</span><span class="p">)</span>
 <span class="lineno">2</span> <span class="n">var</span> <span class="n">number3</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="n">number4</span> <span class="o">=</span> <span class="mi">40</span><span class="p">;</span> <span class="n">println</span><span class="p">(</span><span class="n">number3</span><span class="p">)</span></code></pre></div>
 
 <h4 id="6.-浮動小数点数のデフォルトは-double">6. 浮動小数点数のデフォルトは Double</h4>
 
 <p>Swift 型推論をしてくれると同時に型に対して厳格です。上で見たように、一度、Int と宣言した変数に String 等の異なる型を保存することはエラーを吐きます。浮動小数点数の型推論は、明示的になされていなければ、Double です。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">dNum</span> <span class="o">:</span><span class="n">Double</span> <span class="o">=</span> <span class="mf">3.14</span> <span class="c1">// Double</span>
-<span class="lineno">2</span> <span class="n">var</span> <span class="n">fNum</span> <span class="o">:</span><span class="n">Float</span>  <span class="o">=</span> <span class="mf">3.14</span> <span class="c1">// Float</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="nl">dNum</span> <span class="p">:</span><span class="n">Double</span> <span class="o">=</span> <span class="mf">3.14</span> <span class="c1">// Double</span>
+<span class="lineno">2</span> <span class="n">var</span> <span class="nl">fNum</span> <span class="p">:</span><span class="n">Float</span>  <span class="o">=</span> <span class="mf">3.14</span> <span class="c1">// Float</span>
 <span class="lineno">3</span> <span class="n">dNum</span>             <span class="o">=</span> <span class="n">fNum</span> <span class="c1">// error</span>
 <span class="lineno">4</span> <span class="n">var</span> <span class="n">d2Num</span>        <span class="o">=</span> <span class="mf">3.14</span> <span class="c1">// Double</span>
-<span class="lineno">5</span> <span class="n">var</span> <span class="n">f2Num</span> <span class="o">:</span><span class="n">Float</span> <span class="o">=</span> <span class="mf">3.14</span> <span class="c1">// Float</span>
+<span class="lineno">5</span> <span class="n">var</span> <span class="nl">f2Num</span> <span class="p">:</span><span class="n">Float</span> <span class="o">=</span> <span class="mf">3.14</span> <span class="c1">// Float</span>
 <span class="lineno">6</span> <span class="n">d2Num</span>            <span class="o">=</span> <span class="n">f2Num</span> <span class="c1">// error</span></code></pre></div>
 
 <h4 id="7.-数字リテラル">7. 数字リテラル</h4>
 
 <p>数字リテラルにおいて、可読性を高めるために以下のような書き方ができる。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">padding0Double</span>  <span class="o">=</span> <span class="mf">000001234.456</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">padding0Double</span>  <span class="o">=</span> <span class="mf">000001234.456</span>
 <span class="lineno">2</span> <span class="n">let</span> <span class="n">oneMillion</span>      <span class="o">=</span> <span class="mi">1</span><span class="n">_000_000</span>
 <span class="lineno">3</span> <span class="n">let</span> <span class="n">justOverMillion</span> <span class="o">=</span> <span class="mi">1</span><span class="n">_000_000</span><span class="mf">.000</span><span class="n">_000_1</span></code></pre></div>
 
@@ -276,7 +272,7 @@
 
 <p>変数とコンスタントにおいての、浮動小数点と整数の変換は全て明示的に行う。Type(value) と、Type の initializer が受け取ることができる型の value を使用して、新しいオブジェクトを作成する</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="c1">// from int to float</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="c1">// from int to float</span>
 <span class="lineno">2</span> <span class="n">let</span> <span class="n">three</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="lineno">3</span> <span class="n">let</span> <span class="n">point</span> <span class="o">=</span> <span class="mf">0.14159</span>
 <span class="lineno">4</span> <span class="n">let</span> <span class="n">pi</span>    <span class="o">=</span> <span class="n">three</span> <span class="o">+</span> <span class="n">point</span> <span class="c1">// error</span>
@@ -286,13 +282,13 @@
 
 <p>これは、リテラルとは文脈が違う。下記のコードは ok。なぜならリテラルは型をまだ持っていないから。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">anotherPI</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">+</span> <span class="mf">0.12159</span></code></pre></div>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">anotherPI</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">+</span> <span class="mf">0.12159</span></code></pre></div>
 
 <h4 id="9.-int-は、条件として使えない">9. Int は、条件として使えない</h4>
 
 <p>Swift の型セーフのため、C のように 0 が false でそれ以外が true のように数値を条件分岐の直接使われない。下記のコードはエラー。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="lineno">2</span> <span class="k">if</span> <span class="n">i</span> <span class="p">{</span>
 <span class="lineno">3</span>   <span class="c1">// err</span>
 <span class="lineno">4</span> <span class="p">}</span></code></pre></div>
@@ -441,22 +437,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -550,9 +541,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

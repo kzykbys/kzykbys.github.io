@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -230,34 +226,34 @@
 
 <p>先ほどの Person-Apartmen の例を <code>weak</code> を使い書き直します。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">Person</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="n">let</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span>
-<span class="lineno"> 3</span>     <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span> <span class="n">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span> <span class="p">}</span>
-<span class="lineno"> 4</span>     <span class="n">var</span> <span class="n">apartment</span><span class="o">:</span> <span class="n">Apartment</span><span class="o">?</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">Person</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">let</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span>
+<span class="lineno"> 3</span>     <span class="n">init</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span> <span class="nb">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span> <span class="p">}</span>
+<span class="lineno"> 4</span>     <span class="n">var</span> <span class="nl">apartment</span><span class="p">:</span> <span class="n">Apartment</span><span class="o">?</span>
 <span class="lineno"> 5</span>     <span class="n">deinit</span> <span class="p">{</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;\(name) is being deinitialized&quot;</span><span class="p">)</span> <span class="p">}</span>
 <span class="lineno"> 6</span> <span class="p">}</span>
 <span class="lineno"> 7</span>  
-<span class="lineno"> 8</span> <span class="n">class</span> <span class="n">Apartment</span> <span class="p">{</span>
-<span class="lineno"> 9</span>     <span class="n">let</span> <span class="n">number</span><span class="o">:</span> <span class="n">Int</span>
-<span class="lineno">10</span>     <span class="n">init</span><span class="p">(</span><span class="n">number</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span> <span class="n">self</span><span class="p">.</span><span class="n">number</span> <span class="o">=</span> <span class="n">number</span> <span class="p">}</span>
-<span class="lineno">11</span>     <span class="n">weak</span> <span class="n">var</span> <span class="n">tenant</span><span class="o">:</span> <span class="n">Person</span><span class="o">?</span>
+<span class="lineno"> 8</span> <span class="k">class</span> <span class="n">Apartment</span> <span class="p">{</span>
+<span class="lineno"> 9</span>     <span class="n">let</span> <span class="nl">number</span><span class="p">:</span> <span class="n">Int</span>
+<span class="lineno">10</span>     <span class="n">init</span><span class="p">(</span><span class="nl">number</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span> <span class="nb">self</span><span class="p">.</span><span class="n">number</span> <span class="o">=</span> <span class="n">number</span> <span class="p">}</span>
+<span class="lineno">11</span>     <span class="k">weak</span> <span class="n">var</span> <span class="nl">tenant</span><span class="p">:</span> <span class="n">Person</span><span class="o">?</span>
 <span class="lineno">12</span>     <span class="n">deinit</span> <span class="p">{</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;Apartment #\(number) is being deinitialized&quot;</span><span class="p">)</span> <span class="p">}</span>
 <span class="lineno">13</span> <span class="p">}</span></code></pre></div>
 
 <p>Apartment の tenant プロパティが <code>weak</code> として宣言されています。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">john</span><span class="o">:</span> <span class="n">Person</span><span class="o">?</span>
-<span class="lineno">2</span> <span class="n">var</span> <span class="n">number73</span><span class="o">:</span> <span class="n">Apartment</span><span class="o">?</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="nl">john</span><span class="p">:</span> <span class="n">Person</span><span class="o">?</span>
+<span class="lineno">2</span> <span class="n">var</span> <span class="nl">number73</span><span class="p">:</span> <span class="n">Apartment</span><span class="o">?</span>
 <span class="lineno">3</span>  
-<span class="lineno">4</span> <span class="n">john</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;John Appleseed&quot;</span><span class="p">)</span>
-<span class="lineno">5</span> <span class="n">number73</span> <span class="o">=</span> <span class="n">Apartment</span><span class="p">(</span><span class="n">number</span><span class="o">:</span> <span class="mi">73</span><span class="p">)</span>
+<span class="lineno">4</span> <span class="n">john</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;John Appleseed&quot;</span><span class="p">)</span>
+<span class="lineno">5</span> <span class="n">number73</span> <span class="o">=</span> <span class="n">Apartment</span><span class="p">(</span><span class="nl">number</span><span class="p">:</span> <span class="mi">73</span><span class="p">)</span>
 <span class="lineno">6</span>  
 <span class="lineno">7</span> <span class="n">john</span><span class="o">!</span><span class="p">.</span><span class="n">apartment</span> <span class="o">=</span> <span class="n">number73</span>
 <span class="lineno">8</span> <span class="n">number73</span><span class="o">!</span><span class="p">.</span><span class="n">tenant</span> <span class="o">=</span> <span class="n">john</span></code></pre></div>
 
 <p>そして、Person のインスタンスを解放してみます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">john</span> <span class="o">=</span> <span class="nb">nil</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">john</span> <span class="o">=</span> <span class="nb">nil</span>
 <span class="lineno">2</span> <span class="c1">// prints &quot;John Appleseed is being deinitialized&quot;</span></code></pre></div>
 
 <p>この Person に対する <code>strong</code> 参照は、この <code>john = nil</code> で 0 になります。そのため、Person インスタンス は解放されました。このイメージを見ていただければわかりやすいと思います。Person Instance に向かっている矢印は、<code>weak</code> 参照だけです。</p>
@@ -266,7 +262,7 @@
 
 <p>そして、Apartment のインスタンスも解放します。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">number73</span> <span class="o">=</span> <span class="nb">nil</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">number73</span> <span class="o">=</span> <span class="nb">nil</span>
 <span class="lineno">2</span> <span class="c1">// prints &quot;Apartment #73 is being deinitialized&quot;</span></code></pre></div>
 
 <p>この Apartment インスタンスは <code>number73</code> と Person インスタンスのプロパティである <code>apartment</code> から <code>strong</code> 参照がありました。この <code>number73 = nil</code> により、<code>number73</code> からの <code>strong</code> 参照は消え、上記の <code>john = nil</code> により、Person インスタンスからの <code>strong</code> 参照もなくなっているので、メモリが解放されています。</p>
@@ -281,30 +277,30 @@
 
 <p>次は、先ほどとは少し違う例を見ます。Customer と CreditCard というクラスを見ていきます。Customer はクレジットカードを常に持っているかは分かりません。しかし、CreditCard クラスのインスタンスは常に顧客情報である Customer のインスタンスを持っています。つまり、CreditCard の Customer インスタンスを持つ プロパティは <code>unowned</code> として宣言されます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">Customer</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="n">let</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span>
-<span class="lineno"> 3</span>     <span class="n">var</span> <span class="n">card</span><span class="o">:</span> <span class="n">CreditCard</span><span class="o">?</span>
-<span class="lineno"> 4</span>     <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 5</span>         <span class="n">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">Customer</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">let</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span>
+<span class="lineno"> 3</span>     <span class="n">var</span> <span class="nl">card</span><span class="p">:</span> <span class="n">CreditCard</span><span class="o">?</span>
+<span class="lineno"> 4</span>     <span class="n">init</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 5</span>         <span class="nb">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
 <span class="lineno"> 6</span>     <span class="p">}</span>
 <span class="lineno"> 7</span>     <span class="n">deinit</span> <span class="p">{</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;\(name) is being deinitialized&quot;</span><span class="p">)</span> <span class="p">}</span>
 <span class="lineno"> 8</span> <span class="p">}</span>
 <span class="lineno"> 9</span>  
-<span class="lineno">10</span> <span class="n">class</span> <span class="n">CreditCard</span> <span class="p">{</span>
-<span class="lineno">11</span>     <span class="n">let</span> <span class="n">number</span><span class="o">:</span> <span class="n">Int</span>
-<span class="lineno">12</span>     <span class="n">unowned</span> <span class="n">let</span> <span class="n">customer</span><span class="o">:</span> <span class="n">Customer</span>
-<span class="lineno">13</span>     <span class="n">init</span><span class="p">(</span><span class="n">number</span><span class="o">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">customer</span><span class="o">:</span> <span class="n">Customer</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">14</span>         <span class="n">self</span><span class="p">.</span><span class="n">number</span> <span class="o">=</span> <span class="n">number</span>
-<span class="lineno">15</span>         <span class="n">self</span><span class="p">.</span><span class="n">customer</span> <span class="o">=</span> <span class="n">customer</span>
+<span class="lineno">10</span> <span class="k">class</span> <span class="n">CreditCard</span> <span class="p">{</span>
+<span class="lineno">11</span>     <span class="n">let</span> <span class="nl">number</span><span class="p">:</span> <span class="n">Int</span>
+<span class="lineno">12</span>     <span class="n">unowned</span> <span class="n">let</span> <span class="nl">customer</span><span class="p">:</span> <span class="n">Customer</span>
+<span class="lineno">13</span>     <span class="n">init</span><span class="p">(</span><span class="nl">number</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">customer</span><span class="p">:</span> <span class="n">Customer</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">14</span>         <span class="nb">self</span><span class="p">.</span><span class="n">number</span> <span class="o">=</span> <span class="n">number</span>
+<span class="lineno">15</span>         <span class="nb">self</span><span class="p">.</span><span class="n">customer</span> <span class="o">=</span> <span class="n">customer</span>
 <span class="lineno">16</span>     <span class="p">}</span>
 <span class="lineno">17</span>     <span class="n">deinit</span> <span class="p">{</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;Card #\(number) is being deinitialized&quot;</span><span class="p">)</span> <span class="p">}</span>
 <span class="lineno">18</span> <span class="p">}</span></code></pre></div>
 
 <p>そして、それぞれ初期化していきます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">john</span><span class="o">:</span> <span class="n">Customer</span><span class="o">?</span>
-<span class="lineno">2</span> <span class="n">john</span> <span class="o">=</span> <span class="n">Customer</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;John Appleseed&quot;</span><span class="p">)</span>
-<span class="lineno">3</span> <span class="n">john</span><span class="o">!</span><span class="p">.</span><span class="n">card</span> <span class="o">=</span> <span class="n">CreditCard</span><span class="p">(</span><span class="n">number</span><span class="o">:</span> <span class="mi">1234</span><span class="n">_5678_9012_3456</span><span class="p">,</span> <span class="n">customer</span><span class="o">:</span> <span class="n">john</span><span class="o">!</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="nl">john</span><span class="p">:</span> <span class="n">Customer</span><span class="o">?</span>
+<span class="lineno">2</span> <span class="n">john</span> <span class="o">=</span> <span class="n">Customer</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;John Appleseed&quot;</span><span class="p">)</span>
+<span class="lineno">3</span> <span class="n">john</span><span class="o">!</span><span class="p">.</span><span class="n">card</span> <span class="o">=</span> <span class="n">CreditCard</span><span class="p">(</span><span class="nl">number</span><span class="p">:</span> <span class="mi">1234</span><span class="n">_5678_9012_3456</span><span class="p">,</span> <span class="nl">customer</span><span class="p">:</span> <span class="n">john</span><span class="o">!</span><span class="p">)</span></code></pre></div>
 
 <p>この段階でこのようなイメージです。</p>
 
@@ -312,7 +308,7 @@
 
 <p>そして、解放します。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">john</span> <span class="o">=</span> <span class="nb">nil</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">john</span> <span class="o">=</span> <span class="nb">nil</span>
 <span class="lineno">2</span> <span class="c1">// prints &quot;John Appleseed is being deinitialized&quot;</span>
 <span class="lineno">3</span> <span class="c1">// prints &quot;Card #1234567890123456 is being deinitialized&quot;</span></code></pre></div>
 
@@ -328,21 +324,21 @@
 
 <p>そして、このセクションでみるのが、2 つのプロパティどちらものが常に値を持つことが期待されている場合です。ここでは、Country と City というクラスを使って考えていきます。国も街も常に値を持ちます。つまり、nil になりません。この例では、<code>unowned</code> 参照をプロパティに設定し、もう 1 つのクラスのプロパティには、Implicitly Unwrapped Optional (<code>!</code>)を設定すると、どちらのプロパティも直接アクセスすることができ、Reference Cycles を防ぐこともできます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">Country</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="n">let</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span>
-<span class="lineno"> 3</span>     <span class="n">let</span> <span class="n">capitalCity</span><span class="o">:</span> <span class="n">City</span><span class="o">!</span>
-<span class="lineno"> 4</span>     <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">capitalName</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 5</span>         <span class="n">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-<span class="lineno"> 6</span>         <span class="n">self</span><span class="p">.</span><span class="n">capitalCity</span> <span class="o">=</span> <span class="n">City</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">capitalName</span><span class="p">,</span> <span class="n">country</span><span class="o">:</span> <span class="n">self</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">Country</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">let</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span>
+<span class="lineno"> 3</span>     <span class="n">let</span> <span class="nl">capitalCity</span><span class="p">:</span> <span class="n">City</span><span class="o">!</span>
+<span class="lineno"> 4</span>     <span class="n">init</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">capitalName</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 5</span>         <span class="nb">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<span class="lineno"> 6</span>         <span class="nb">self</span><span class="p">.</span><span class="n">capitalCity</span> <span class="o">=</span> <span class="n">City</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">capitalName</span><span class="p">,</span> <span class="nl">country</span><span class="p">:</span> <span class="nb">self</span><span class="p">)</span>
 <span class="lineno"> 7</span>     <span class="p">}</span>
 <span class="lineno"> 8</span> <span class="p">}</span>
 <span class="lineno"> 9</span>  
-<span class="lineno">10</span> <span class="n">class</span> <span class="n">City</span> <span class="p">{</span>
-<span class="lineno">11</span>     <span class="n">let</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span>
-<span class="lineno">12</span>     <span class="n">unowned</span> <span class="n">let</span> <span class="n">country</span><span class="o">:</span> <span class="n">Country</span>
-<span class="lineno">13</span>     <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">country</span><span class="o">:</span> <span class="n">Country</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">14</span>         <span class="n">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-<span class="lineno">15</span>         <span class="n">self</span><span class="p">.</span><span class="n">country</span> <span class="o">=</span> <span class="n">country</span>
+<span class="lineno">10</span> <span class="k">class</span> <span class="n">City</span> <span class="p">{</span>
+<span class="lineno">11</span>     <span class="n">let</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span>
+<span class="lineno">12</span>     <span class="n">unowned</span> <span class="n">let</span> <span class="nl">country</span><span class="p">:</span> <span class="n">Country</span>
+<span class="lineno">13</span>     <span class="n">init</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">country</span><span class="p">:</span> <span class="n">Country</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">14</span>         <span class="nb">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<span class="lineno">15</span>         <span class="nb">self</span><span class="p">.</span><span class="n">country</span> <span class="o">=</span> <span class="n">country</span>
 <span class="lineno">16</span>     <span class="p">}</span>
 <span class="lineno">17</span> <span class="p">}</span></code></pre></div>
 
@@ -350,7 +346,7 @@
 
 <p>この an implicitly unwrapped optional property と <code>unowned</code> の組み合わせで、Strong Reference Cycles を発生させることなく、1 つステートメントで 2 つのインスタンスを作成できます。また、capitalCity は、unwrap (<code>!</code>) することなく、直接アクセスすることができます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">country</span> <span class="o">=</span> <span class="n">Country</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;Canada&quot;</span><span class="p">,</span> <span class="n">capitalName</span><span class="o">:</span> <span class="s">&quot;Ottawa&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">country</span> <span class="o">=</span> <span class="n">Country</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Canada&quot;</span><span class="p">,</span> <span class="nl">capitalName</span><span class="p">:</span> <span class="s">&quot;Ottawa&quot;</span><span class="p">)</span>
 <span class="lineno">2</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;\(country.name)&#39;s capital city is called \(country.capitalCity.name)&quot;</span><span class="p">)</span>
 <span class="lineno">3</span> <span class="c1">// prints &quot;Canada&#39;s capital city is called Ottawa&quot;</span></code></pre></div>
 
@@ -360,30 +356,30 @@
 
 <p>キャプチャリストの各要素は、クラスへの参照と <code>weak</code> か <code>unowned</code> キーワードの組み合わせにより定義されます。この組み合わせは、<code>[]</code> の中に描かれます。複数ある場合には、カンマで区切られます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="p">@</span><span class="n">lazy</span> <span class="n">var</span> <span class="n">someClosure</span><span class="o">:</span> <span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="o">=</span> <span class="p">{</span>
-<span class="lineno">2</span>     <span class="p">[</span><span class="n">unowned</span> <span class="n">self</span><span class="p">]</span> <span class="p">(</span><span class="n">index</span><span class="o">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">stringToProcess</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="k">in</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="p">@</span><span class="n">lazy</span> <span class="n">var</span> <span class="nl">someClosure</span><span class="p">:</span> <span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="o">=</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="p">[</span><span class="n">unowned</span> <span class="nb">self</span><span class="p">]</span> <span class="p">(</span><span class="nl">index</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">stringToProcess</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="k">in</span>
 <span class="lineno">3</span>     <span class="c1">// closure body goes here</span>
 <span class="lineno">4</span> <span class="p">}</span></code></pre></div>
 
 <p>クラスとクロージャが常に一緒に解放されるべき場合には、このキャプチャは <code>unowned</code> として宣言されます。それに対して、プログラムの中で参照が nil になる場合には、<code>weak</code> として宣言されます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">HTMLElement</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">HTMLElement</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     
-<span class="lineno"> 3</span>     <span class="n">let</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span>
-<span class="lineno"> 4</span>     <span class="n">let</span> <span class="n">text</span><span class="o">:</span> <span class="n">String</span><span class="o">?</span>
+<span class="lineno"> 3</span>     <span class="n">let</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span>
+<span class="lineno"> 4</span>     <span class="n">let</span> <span class="nl">text</span><span class="p">:</span> <span class="n">String</span><span class="o">?</span>
 <span class="lineno"> 5</span>     
-<span class="lineno"> 6</span>     <span class="p">@</span><span class="n">lazy</span> <span class="n">var</span> <span class="n">asHTML</span><span class="o">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="o">=</span> <span class="p">{</span>
-<span class="lineno"> 7</span>         <span class="p">[</span><span class="n">unowned</span> <span class="n">self</span><span class="p">]</span> <span class="k">in</span>
-<span class="lineno"> 8</span>         <span class="k">if</span> <span class="n">let</span> <span class="n">text</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">text</span> <span class="p">{</span>
+<span class="lineno"> 6</span>     <span class="p">@</span><span class="n">lazy</span> <span class="n">var</span> <span class="nl">asHTML</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="o">=</span> <span class="p">{</span>
+<span class="lineno"> 7</span>         <span class="p">[</span><span class="n">unowned</span> <span class="nb">self</span><span class="p">]</span> <span class="k">in</span>
+<span class="lineno"> 8</span>         <span class="k">if</span> <span class="n">let</span> <span class="n">text</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="n">text</span> <span class="p">{</span>
 <span class="lineno"> 9</span>             <span class="k">return</span> <span class="s">&quot;&lt;\(self.name)&gt;\(text)&lt;/\(self.name)&gt;&quot;</span>
 <span class="lineno">10</span>         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 <span class="lineno">11</span>             <span class="k">return</span> <span class="s">&quot;&lt;\(self.name) /&gt;&quot;</span>
 <span class="lineno">12</span>         <span class="p">}</span>
 <span class="lineno">13</span>     <span class="p">}</span>
 <span class="lineno">14</span>     
-<span class="lineno">15</span>     <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">text</span><span class="o">:</span> <span class="n">String</span><span class="o">?</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">16</span>         <span class="n">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-<span class="lineno">17</span>         <span class="n">self</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
+<span class="lineno">15</span>     <span class="n">init</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">text</span><span class="p">:</span> <span class="n">String</span><span class="o">?</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">16</span>         <span class="nb">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<span class="lineno">17</span>         <span class="nb">self</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
 <span class="lineno">18</span>     <span class="p">}</span>
 <span class="lineno">19</span>     
 <span class="lineno">20</span>     <span class="n">deinit</span> <span class="p">{</span>
@@ -394,7 +390,7 @@
 
 <p>例えばこのように使われます。HTMLElement クラスは、あるクロージャへの参照を持っています。この場合には、<code>unowned</code> として宣言されています。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">paragraph</span><span class="o">:</span> <span class="n">HTMLElement</span><span class="o">?</span> <span class="o">=</span> <span class="n">HTMLElement</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;p&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">:</span> <span class="s">&quot;hello, world&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="nl">paragraph</span><span class="p">:</span> <span class="n">HTMLElement</span><span class="o">?</span> <span class="o">=</span> <span class="n">HTMLElement</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;p&quot;</span><span class="p">,</span> <span class="nl">text</span><span class="p">:</span> <span class="s">&quot;hello, world&quot;</span><span class="p">)</span>
 <span class="lineno">2</span> <span class="n">println</span><span class="p">(</span><span class="n">paragraph</span><span class="o">!</span><span class="p">.</span><span class="n">asHTML</span><span class="p">())</span>
 <span class="lineno">3</span> <span class="c1">// prints &quot;&lt;p&gt;hello, world&lt;/p&gt;&quot;</span></code></pre></div>
 
@@ -404,7 +400,7 @@
 
 <p>解放すると、</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">paragraph</span> <span class="o">=</span> <span class="nb">nil</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">paragraph</span> <span class="o">=</span> <span class="nb">nil</span>
 <span class="lineno">2</span> <span class="c1">// prints &quot;p is being deinitialized&quot;</span></code></pre></div>
 
 					</div>
@@ -551,22 +547,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -660,9 +651,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

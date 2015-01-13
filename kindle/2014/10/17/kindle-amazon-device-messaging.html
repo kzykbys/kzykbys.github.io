@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -224,7 +220,7 @@
 
 <p>このSecurity Profileを作成したら、View Security Profileをクリックし、Kindle/Android Settingsタブを表示します。ここでやってAPIキーを作成できます。必要な情報は、<code>パッケージ名</code>、<code>signature(後述）</code>、<code>APIキーへの名前</code>。APIキーの名前は、任意です。パッケージ名もAndroidのマニフェストファイル等に書いてあるでしょう。<code>signature</code>は、少し操作が必要です。私が実際に試した方法は、APKファイルを用意し、ターミナルで下記のコマンドを実行しました。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="err">$</span> <span class="n">unzip</span> <span class="o">-</span><span class="n">p</span> <span class="p">{</span><span class="n">your</span><span class="o">-</span><span class="n">app</span><span class="p">.</span><span class="n">apk</span><span class="p">}</span> <span class="n">META</span><span class="o">-</span><span class="n">INF</span><span class="o">/</span><span class="n">CERT</span><span class="p">.</span><span class="n">RSA</span> <span class="o">|</span> <span class="n">keytool</span> <span class="o">-</span><span class="n">printcert</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">MD5</span></code></pre></div>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="err">$</span> <span class="n">unzip</span> <span class="o">-</span><span class="n">p</span> <span class="p">{</span><span class="n">your</span><span class="o">-</span><span class="n">app</span><span class="p">.</span><span class="n">apk</span><span class="p">}</span> <span class="n">META</span><span class="o">-</span><span class="n">INF</span><span class="o">/</span><span class="n">CERT</span><span class="p">.</span><span class="n">RSA</span> <span class="o">|</span> <span class="n">keytool</span> <span class="o">-</span><span class="n">printcert</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">MD5</span></code></pre></div>
 
 <p>これで、MD5: 2E:0B:46:F8:D0:4A:06:AC:18:7A:2E:B0:42:95:58:FE のようなアウトプットがあるはずです。この 2EからFEまでをコピペすればAPIキーを作成されます。</p>
 
@@ -242,63 +238,63 @@
 
 <p>次に、マニフェストファイルの設定、assetへ<code>api_key.txt</code>の追加、ReceiverとHandler(broadcast receiver)の実装です。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="o">&lt;</span><span class="n">manifest</span> <span class="n">xmlns</span><span class="o">:</span><span class="n">android</span><span class="o">=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
-<span class="lineno"> 2</span>    <span class="nl">xmlns:</span><span class="n">amazon</span><span class="o">=</span><span class="s">&quot;http://schemas.amazon.com/apk/res/android&quot;</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="o">&lt;</span><span class="n">manifest</span> <span class="nl">xmlns</span><span class="p">:</span><span class="n">android</span><span class="o">=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+<span class="lineno"> 2</span>    <span class="nl">xmlns</span><span class="p">:</span><span class="n">amazon</span><span class="o">=</span><span class="s">&quot;http://schemas.amazon.com/apk/res/android&quot;</span>
 <span class="lineno"> 3</span>    <span class="n">package</span><span class="o">=</span><span class="s">&quot;[YOUR PACKAGE NAME]&quot;</span>
-<span class="lineno"> 4</span>    <span class="nl">android:</span><span class="n">versionCode</span><span class="o">=</span><span class="s">&quot;1&quot;</span>
-<span class="lineno"> 5</span>    <span class="nl">android:</span><span class="n">versionName</span><span class="o">=</span><span class="s">&quot;1.0&quot;</span> <span class="o">&gt;</span>
+<span class="lineno"> 4</span>    <span class="nl">android</span><span class="p">:</span><span class="n">versionCode</span><span class="o">=</span><span class="s">&quot;1&quot;</span>
+<span class="lineno"> 5</span>    <span class="nl">android</span><span class="p">:</span><span class="n">versionName</span><span class="o">=</span><span class="s">&quot;1.0&quot;</span> <span class="o">&gt;</span>
 <span class="lineno"> 6</span>  
 <span class="lineno"> 7</span>    <span class="o">&lt;!--</span> <span class="n">Because</span> <span class="n">the</span> <span class="n">Fire</span> <span class="o">&lt;</span><span class="n">span</span> <span class="kt">id</span><span class="o">=</span><span class="s">&quot;XinhaEditingPostion&quot;</span><span class="o">&gt;&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="n">devices</span> <span class="n">that</span> <span class="n">support</span> <span class="n">ADM</span> <span class="n">are</span> <span class="n">based</span> <span class="n">on</span> <span class="n">Android</span> <span class="n">API</span> <span class="n">level</span> <span class="mi">15</span><span class="p">,</span>
 <span class="lineno"> 8</span>       <span class="n">your</span> <span class="n">minSdkVersion</span> <span class="n">must</span> <span class="n">be</span> <span class="nb">NO</span> <span class="n">GREATER</span> <span class="n">THAN</span> <span class="mi">15</span> <span class="p">(</span><span class="o">&lt;=</span><span class="mi">15</span><span class="p">).</span> <span class="n">You</span> <span class="n">may</span> <span class="n">have</span> <span class="n">a</span> <span class="n">lower</span> <span class="n">SDK</span> <span class="n">version</span><span class="p">,</span>
 <span class="lineno"> 9</span>       <span class="k">if</span> <span class="n">that</span> <span class="n">is</span> <span class="n">appropriate</span> <span class="k">for</span> <span class="n">your</span> <span class="n">app</span><span class="p">.</span> <span class="o">--&gt;</span>
 <span class="lineno">10</span>    <span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">sdk</span>
-<span class="lineno">11</span>       <span class="nl">android:</span><span class="n">minSdkVersion</span><span class="o">=</span><span class="s">&quot;15&quot;</span>
-<span class="lineno">12</span>       <span class="nl">android:</span><span class="n">targetSdkVersion</span><span class="o">=</span><span class="s">&quot;15&quot;</span> <span class="o">/&gt;</span>
+<span class="lineno">11</span>       <span class="nl">android</span><span class="p">:</span><span class="n">minSdkVersion</span><span class="o">=</span><span class="s">&quot;15&quot;</span>
+<span class="lineno">12</span>       <span class="nl">android</span><span class="p">:</span><span class="n">targetSdkVersion</span><span class="o">=</span><span class="s">&quot;15&quot;</span> <span class="o">/&gt;</span>
 <span class="lineno">13</span>  
 <span class="lineno">14</span>    <span class="o">&lt;!--</span> <span class="n">This</span> <span class="n">permission</span> <span class="n">ensures</span> <span class="n">that</span> <span class="n">no</span> <span class="n">other</span> <span class="n">application</span> <span class="n">can</span> <span class="n">intercept</span> <span class="n">your</span> <span class="n">ADM</span> <span class="n">messages</span><span class="p">.</span>
 <span class="lineno">15</span>       <span class="s">&quot;[YOUR PACKAGE NAME]&quot;</span> <span class="n">is</span> <span class="n">your</span> <span class="n">package</span> <span class="n">name</span> <span class="n">as</span> <span class="n">defined</span> <span class="k">in</span> <span class="n">your</span> <span class="o">&lt;</span><span class="n">manifest</span><span class="o">&gt;</span> <span class="n">tag</span><span class="p">.</span> <span class="o">--&gt;</span>
 <span class="lineno">16</span>    <span class="o">&lt;</span><span class="n">permission</span>
-<span class="lineno">17</span>       <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;[YOUR PACKAGE NAME].permission.RECEIVE_ADM_MESSAGE&quot;</span>
-<span class="lineno">18</span>       <span class="nl">android:</span><span class="n">protectionLevel</span><span class="o">=</span><span class="s">&quot;signature&quot;</span> <span class="o">/&gt;</span>
-<span class="lineno">19</span>    <span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="n">android</span><span class="o">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;[YOUR PACKAGE NAME].permission.RECEIVE_ADM_MESSAGE&quot;</span> <span class="o">/&gt;</span>
+<span class="lineno">17</span>       <span class="nl">android</span><span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;[YOUR PACKAGE NAME].permission.RECEIVE_ADM_MESSAGE&quot;</span>
+<span class="lineno">18</span>       <span class="nl">android</span><span class="p">:</span><span class="n">protectionLevel</span><span class="o">=</span><span class="s">&quot;signature&quot;</span> <span class="o">/&gt;</span>
+<span class="lineno">19</span>    <span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="nl">android</span><span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;[YOUR PACKAGE NAME].permission.RECEIVE_ADM_MESSAGE&quot;</span> <span class="o">/&gt;</span>
 <span class="lineno">20</span>  
 <span class="lineno">21</span>    <span class="o">&lt;!--</span> <span class="n">This</span> <span class="n">permission</span> <span class="n">allows</span> <span class="n">your</span> <span class="n">app</span> <span class="n">access</span> <span class="n">to</span> <span class="n">receive</span> <span class="n">push</span> <span class="n">notifications</span> <span class="n">from</span> <span class="n">ADM</span><span class="p">.</span> <span class="o">--&gt;</span>
-<span class="lineno">22</span>    <span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="n">android</span><span class="o">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;com.amazon.device.messaging.permission.RECEIVE&quot;</span> <span class="o">/&gt;</span>
+<span class="lineno">22</span>    <span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="nl">android</span><span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;com.amazon.device.messaging.permission.RECEIVE&quot;</span> <span class="o">/&gt;</span>
 <span class="lineno">23</span>  
 <span class="lineno">24</span>    <span class="o">&lt;!--</span> <span class="n">ADM</span> <span class="n">uses</span> <span class="n">WAKE_LOCK</span> <span class="n">to</span> <span class="n">keep</span> <span class="n">the</span> <span class="n">processor</span> <span class="n">from</span> <span class="n">sleeping</span> <span class="n">when</span> <span class="n">a</span> <span class="n">message</span> <span class="n">is</span> <span class="n">received</span><span class="p">.</span> <span class="o">--&gt;</span>
-<span class="lineno">25</span>    <span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="n">android</span><span class="o">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;android.permission.WAKE_LOCK&quot;</span> <span class="o">/&gt;</span>
+<span class="lineno">25</span>    <span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="nl">android</span><span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;android.permission.WAKE_LOCK&quot;</span> <span class="o">/&gt;</span>
 <span class="lineno">26</span>  
 <span class="lineno">27</span>    <span class="o">&lt;</span><span class="n">application</span>
-<span class="lineno">28</span>       <span class="nl">android:</span><span class="n">icon</span><span class="o">=</span><span class="s">&quot;@drawable/ic_launcher&quot;</span>
-<span class="lineno">29</span>       <span class="nl">android:</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;@string/app_name&quot;</span>
-<span class="lineno">30</span>       <span class="nl">android:</span><span class="n">theme</span><span class="o">=</span><span class="s">&quot;@style/AppTheme&quot;</span> <span class="o">&gt;</span>
+<span class="lineno">28</span>       <span class="nl">android</span><span class="p">:</span><span class="n">icon</span><span class="o">=</span><span class="s">&quot;@drawable/ic_launcher&quot;</span>
+<span class="lineno">29</span>       <span class="nl">android</span><span class="p">:</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;@string/app_name&quot;</span>
+<span class="lineno">30</span>       <span class="nl">android</span><span class="p">:</span><span class="n">theme</span><span class="o">=</span><span class="s">&quot;@style/AppTheme&quot;</span> <span class="o">&gt;</span>
 <span class="lineno">31</span>  
 <span class="lineno">32</span>       <span class="o">&lt;!--</span> <span class="n">You</span> <span class="n">must</span> <span class="n">explicitly</span> <span class="n">enable</span> <span class="n">ADM</span> <span class="n">and</span> <span class="n">declare</span> <span class="n">whether</span> <span class="n">your</span> <span class="n">app</span> <span class="n">cannot</span> <span class="n">work</span> <span class="n">without</span>
-<span class="lineno">33</span>          <span class="n">ADM</span> <span class="p">(</span><span class="n">android</span><span class="o">:</span><span class="n">required</span><span class="o">=</span><span class="s">&quot;true&quot;</span><span class="p">)</span> <span class="n">or</span> <span class="n">can</span> <span class="n">work</span> <span class="n">without</span> <span class="n">ADM</span> <span class="p">(</span><span class="n">android</span><span class="o">:</span><span class="n">required</span><span class="o">=</span><span class="s">&quot;false&quot;</span><span class="p">).</span>
-<span class="lineno">34</span>          <span class="n">If</span> <span class="n">you</span> <span class="n">specify</span> <span class="n">android</span><span class="o">:</span><span class="n">required</span><span class="o">=</span><span class="s">&quot;false&quot;</span><span class="p">,</span> <span class="n">your</span> <span class="n">app</span> <span class="n">must</span> <span class="n">degrade</span> <span class="n">gracefully</span> <span class="k">if</span> <span class="n">ADM</span>
+<span class="lineno">33</span>          <span class="n">ADM</span> <span class="p">(</span><span class="nl">android</span><span class="p">:</span><span class="n">required</span><span class="o">=</span><span class="s">&quot;true&quot;</span><span class="p">)</span> <span class="n">or</span> <span class="n">can</span> <span class="n">work</span> <span class="n">without</span> <span class="n">ADM</span> <span class="p">(</span><span class="nl">android</span><span class="p">:</span><span class="n">required</span><span class="o">=</span><span class="s">&quot;false&quot;</span><span class="p">).</span>
+<span class="lineno">34</span>          <span class="n">If</span> <span class="n">you</span> <span class="n">specify</span> <span class="nl">android</span><span class="p">:</span><span class="n">required</span><span class="o">=</span><span class="s">&quot;false&quot;</span><span class="p">,</span> <span class="n">your</span> <span class="n">app</span> <span class="n">must</span> <span class="n">degrade</span> <span class="n">gracefully</span> <span class="k">if</span> <span class="n">ADM</span>
 <span class="lineno">35</span>          <span class="n">is</span> <span class="n">unavailable</span><span class="p">.</span> <span class="o">--&gt;</span>
-<span class="lineno">36</span>       <span class="o">&lt;</span><span class="n">amazon</span><span class="o">:</span><span class="n">enable</span><span class="o">-</span><span class="n">feature</span>
-<span class="lineno">37</span>          <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;com.amazon.device.messaging&quot;</span>
-<span class="lineno">38</span>          <span class="nl">android:</span><span class="n">required</span><span class="o">=</span><span class="s">&quot;true&quot;</span><span class="o">/&gt;</span>
+<span class="lineno">36</span>       <span class="o">&lt;</span><span class="nl">amazon</span><span class="p">:</span><span class="n">enable</span><span class="o">-</span><span class="n">feature</span>
+<span class="lineno">37</span>          <span class="nl">android</span><span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;com.amazon.device.messaging&quot;</span>
+<span class="lineno">38</span>          <span class="nl">android</span><span class="p">:</span><span class="n">required</span><span class="o">=</span><span class="s">&quot;true&quot;</span><span class="o">/&gt;</span>
 <span class="lineno">39</span>  
 <span class="lineno">40</span>       <span class="o">&lt;!--</span> <span class="n">Provide</span> <span class="n">references</span> <span class="n">to</span> <span class="n">the</span> <span class="n">message</span> <span class="n">handler</span> <span class="n">and</span> <span class="n">broadcast</span> <span class="n">receiver</span> <span class="k">for</span> <span class="n">your</span> <span class="n">app</span> <span class="n">here</span><span class="p">.</span> <span class="n">Replace</span>
 <span class="lineno">41</span>          <span class="n">the</span> <span class="n">names</span> <span class="k">in</span> <span class="n">the</span> <span class="n">service</span> <span class="n">and</span> <span class="n">receiver</span> <span class="n">tags</span> <span class="n">with</span> <span class="n">names</span> <span class="n">appropriate</span> <span class="n">to</span> <span class="n">your</span> <span class="n">package</span><span class="p">.</span> <span class="o">--&gt;</span>
 <span class="lineno">42</span>       <span class="o">&lt;</span><span class="n">service</span>
-<span class="lineno">43</span>          <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;[YOUR SERVICE NAME]&quot;</span>
-<span class="lineno">44</span>          <span class="nl">android:</span><span class="n">exported</span><span class="o">=</span><span class="s">&quot;false&quot;</span> <span class="o">/&gt;</span>
+<span class="lineno">43</span>          <span class="nl">android</span><span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;[YOUR SERVICE NAME]&quot;</span>
+<span class="lineno">44</span>          <span class="nl">android</span><span class="p">:</span><span class="n">exported</span><span class="o">=</span><span class="s">&quot;false&quot;</span> <span class="o">/&gt;</span>
 <span class="lineno">45</span>  
 <span class="lineno">46</span>       <span class="o">&lt;!--</span> <span class="n">This</span> <span class="n">permission</span> <span class="n">ensures</span> <span class="n">that</span> <span class="n">only</span> <span class="n">ADM</span> <span class="n">can</span> <span class="n">send</span> <span class="n">your</span> <span class="n">app</span> <span class="n">registration</span> <span class="n">broadcasts</span><span class="p">.</span> <span class="o">--&gt;</span>
 <span class="lineno">47</span>       <span class="o">&lt;</span><span class="n">receiver</span>
-<span class="lineno">48</span>          <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;[YOUR RECEIVER NAME]&quot;</span>
-<span class="lineno">49</span>          <span class="nl">android:</span><span class="n">permission</span><span class="o">=</span><span class="s">&quot;com.amazon.device.messaging.permission.SEND&quot;</span> <span class="o">&gt;</span>
+<span class="lineno">48</span>          <span class="nl">android</span><span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;[YOUR RECEIVER NAME]&quot;</span>
+<span class="lineno">49</span>          <span class="nl">android</span><span class="p">:</span><span class="n">permission</span><span class="o">=</span><span class="s">&quot;com.amazon.device.messaging.permission.SEND&quot;</span> <span class="o">&gt;</span>
 <span class="lineno">50</span>  
 <span class="lineno">51</span>          <span class="o">&lt;!--</span> <span class="n">To</span> <span class="n">interact</span> <span class="n">with</span> <span class="n">ADM</span><span class="p">,</span> <span class="n">your</span> <span class="n">app</span> <span class="n">must</span> <span class="n">listen</span> <span class="k">for</span> <span class="n">the</span> <span class="n">following</span> <span class="n">intents</span><span class="p">.</span> <span class="o">--&gt;</span>
 <span class="lineno">52</span>          <span class="o">&lt;</span><span class="n">intent</span><span class="o">-</span><span class="n">filter</span><span class="o">&gt;</span>
-<span class="lineno">53</span>          <span class="o">&lt;</span><span class="n">action</span> <span class="n">android</span><span class="o">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;com.amazon.device.messaging.intent.REGISTRATION&quot;</span> <span class="o">/&gt;</span>
-<span class="lineno">54</span>          <span class="o">&lt;</span><span class="n">action</span> <span class="n">android</span><span class="o">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;com.amazon.device.messaging.intent.RECEIVE&quot;</span> <span class="o">/&gt;</span>
+<span class="lineno">53</span>          <span class="o">&lt;</span><span class="n">action</span> <span class="nl">android</span><span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;com.amazon.device.messaging.intent.REGISTRATION&quot;</span> <span class="o">/&gt;</span>
+<span class="lineno">54</span>          <span class="o">&lt;</span><span class="n">action</span> <span class="nl">android</span><span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;com.amazon.device.messaging.intent.RECEIVE&quot;</span> <span class="o">/&gt;</span>
 <span class="lineno">55</span>  
 <span class="lineno">56</span>          <span class="o">&lt;!--</span> <span class="n">You</span> <span class="n">must</span> <span class="n">replace</span> <span class="n">the</span> <span class="n">name</span> <span class="k">in</span> <span class="n">the</span> <span class="n">category</span> <span class="n">tag</span> <span class="n">with</span> <span class="n">your</span> <span class="n">app</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">package</span> <span class="n">name</span><span class="p">.</span> <span class="o">--&gt;</span>
-<span class="lineno">57</span>          <span class="o">&lt;</span><span class="n">category</span> <span class="n">android</span><span class="o">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;[YOUR PACKAGE NAME]&quot;</span> <span class="o">/&gt;</span>
+<span class="lineno">57</span>          <span class="o">&lt;</span><span class="n">category</span> <span class="nl">android</span><span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;[YOUR PACKAGE NAME]&quot;</span> <span class="o">/&gt;</span>
 <span class="lineno">58</span>          <span class="o">&lt;/</span><span class="n">intent</span><span class="o">-</span><span class="n">filter</span><span class="o">&gt;</span>
 <span class="lineno">59</span>  
 <span class="lineno">60</span>       <span class="o">&lt;/</span><span class="n">receiver</span><span class="o">&gt;</span>
@@ -309,13 +305,13 @@
 
 <p>そして、<code>api_key.txt</code>という名前でファイルをassetsフォルダに置かなければなりません。このファイルには、先ほどのAPIキーをスペース等なくコピペします。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">public</span> <span class="n">class</span> <span class="n">MyADMMessageHandler</span> <span class="n">extends</span> <span class="n">ADMMessageHandlerBase</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">public</span> <span class="k">class</span> <span class="n">MyADMMessageHandler</span> <span class="n">extends</span> <span class="n">ADMMessageHandlerBase</span>
 <span class="lineno"> 2</span> <span class="p">{</span>
-<span class="lineno"> 3</span>     <span class="n">public</span> <span class="k">static</span> <span class="n">class</span> <span class="n">Receiver</span> <span class="n">extends</span> <span class="n">ADMMessageReceiver</span>
+<span class="lineno"> 3</span>     <span class="n">public</span> <span class="k">static</span> <span class="k">class</span> <span class="n">Receiver</span> <span class="n">extends</span> <span class="n">ADMMessageReceiver</span>
 <span class="lineno"> 4</span>     <span class="p">{</span>
 <span class="lineno"> 5</span>         <span class="n">public</span> <span class="n">Receiver</span><span class="p">()</span>
 <span class="lineno"> 6</span>         <span class="p">{</span>
-<span class="lineno"> 7</span>             <span class="n">super</span><span class="p">(</span><span class="n">MyADMMessageHandler</span><span class="p">.</span><span class="n">class</span><span class="p">);</span>
+<span class="lineno"> 7</span>             <span class="nb">super</span><span class="p">(</span><span class="n">MyADMMessageHandler</span><span class="p">.</span><span class="k">class</span><span class="p">);</span>
 <span class="lineno"> 8</span>         <span class="p">}</span>
 <span class="lineno"> 9</span>   
 <span class="lineno">10</span>     <span class="c1">// Nothing else is required here; your broadcast receiver automatically</span>
@@ -396,9 +392,8 @@
 <a href="https://developer.amazon.com/appsandservices/apis/engage/device-messaging/tech-docs/04-integrating-your-app-with-adm">Integrating Your App with Amazon Device Messaging</a><br />
 <a href="https://developer.amazon.com/appsandservices/apis/engage/device-messaging/tech-docs/05-requesting-an-access-token">Requesting an Access Token for Amazon Device Messaging</a><br /></p>
 
-<hr />
-
-<p><a href="https://forums.developer.amazon.com/forums/thread.jspa?threadID=1224">Thread: why do API keys of game circle keep changing when refreshing the web page ?</a></p>
+<p><hr />
+<a href="https://forums.developer.amazon.com/forums/thread.jspa?threadID=1224">Thread: why do API keys of game circle keep changing when refreshing the web page ?</a></p>
 
 					</div>
 
@@ -544,22 +539,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -653,9 +643,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

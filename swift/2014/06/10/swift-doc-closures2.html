@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -220,7 +216,7 @@
 
 <p>Trailing Closure は、Closure を関数の最後の引数として渡し、さらにその Closure が長くなるような場合に役に立ちます。Trailing Closure は、関数の () の書きます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">func</span> <span class="nf">someFunctionThatTakesAClosure</span><span class="p">(</span><span class="n">closure</span><span class="o">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="p">())</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">func</span> <span class="nf">someFunctionThatTakesAClosure</span><span class="p">(</span><span class="nl">closure</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="p">())</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="c1">// function body goes here</span>
 <span class="lineno"> 3</span> <span class="p">}</span>
 <span class="lineno"> 4</span>  
@@ -240,7 +236,7 @@
 
 <p><a href="http://blog.kazuya.co/swift/2014/06/10/swift-doc-closures.html">以前</a> の Sort 関数の場合にはこのように書きます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">reversed</span> <span class="o">=</span> <span class="n">sort</span><span class="p">(</span><span class="n">names</span><span class="p">)</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="o">&gt;</span> <span class="err">$</span><span class="mi">1</span> <span class="p">}</span></code></pre></div>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">reversed</span> <span class="o">=</span> <span class="n">sort</span><span class="p">(</span><span class="n">names</span><span class="p">)</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="o">&gt;</span> <span class="err">$</span><span class="mi">1</span> <span class="p">}</span></code></pre></div>
 
 <p>この例では、あまり役に立ちませんが、Closure が長くなった時にちょっと便利です。</p>
 
@@ -248,7 +244,7 @@
 
 <p>配列の map 関数は、引数の Closure を配列の各要素に対して実行します。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">digitNames</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">digitNames</span> <span class="o">=</span> <span class="p">[</span>
 <span class="lineno"> 2</span>     <span class="mi">0</span><span class="o">:</span> <span class="s">&quot;Zero&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="o">:</span> <span class="s">&quot;One&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="o">:</span> <span class="s">&quot;Two&quot;</span><span class="p">,</span>   <span class="mi">3</span><span class="o">:</span> <span class="s">&quot;Three&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="o">:</span> <span class="s">&quot;Four&quot;</span><span class="p">,</span>
 <span class="lineno"> 3</span>     <span class="mi">5</span><span class="o">:</span> <span class="s">&quot;Five&quot;</span><span class="p">,</span> <span class="mi">6</span><span class="o">:</span> <span class="s">&quot;Six&quot;</span><span class="p">,</span> <span class="mi">7</span><span class="o">:</span> <span class="s">&quot;Seven&quot;</span><span class="p">,</span> <span class="mi">8</span><span class="o">:</span> <span class="s">&quot;Eight&quot;</span><span class="p">,</span> <span class="mi">9</span><span class="o">:</span> <span class="s">&quot;Nine&quot;</span>
 <span class="lineno"> 4</span> <span class="p">]</span>
@@ -276,7 +272,7 @@
 
 <p>一番イメージしやすいのは、ネストされた関数です。ネストされた関数は、ネストしている関数の引数、その本体で定義されている変数とコンスタントをキャプチャできます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">func</span> <span class="n">makeIncrementor</span><span class="p">(</span><span class="n">forIncrement</span> <span class="n">amount</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">func</span> <span class="n">makeIncrementor</span><span class="p">(</span><span class="n">forIncrement</span> <span class="nl">amount</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">var</span> <span class="n">runningTotal</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="lineno">3</span>     <span class="n">func</span> <span class="n">incrementor</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
 <span class="lineno">4</span>         <span class="n">runningTotal</span> <span class="o">+=</span> <span class="n">amount</span>
@@ -293,7 +289,7 @@
 
 <p>関数と Closure は、参照型です。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">incrementByTen</span> <span class="o">=</span> <span class="n">makeIncrementor</span><span class="p">(</span><span class="n">forIncrement</span><span class="o">:</span> <span class="mi">10</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">incrementByTen</span> <span class="o">=</span> <span class="n">makeIncrementor</span><span class="p">(</span><span class="nl">forIncrement</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span>
 <span class="lineno"> 2</span> 
 <span class="lineno"> 3</span> <span class="n">incrementByTen</span><span class="p">()</span>
 <span class="lineno"> 4</span> <span class="c1">// returns a value of 10</span>
@@ -302,7 +298,7 @@
 <span class="lineno"> 7</span> <span class="n">incrementByTen</span><span class="p">()</span>
 <span class="lineno"> 8</span> <span class="c1">// returns a value of 30</span>
 <span class="lineno"> 9</span> 
-<span class="lineno">10</span> <span class="n">let</span> <span class="n">incrementBySeven</span> <span class="o">=</span> <span class="n">makeIncrementor</span><span class="p">(</span><span class="n">forIncrement</span><span class="o">:</span> <span class="mi">7</span><span class="p">)</span>
+<span class="lineno">10</span> <span class="n">let</span> <span class="n">incrementBySeven</span> <span class="o">=</span> <span class="n">makeIncrementor</span><span class="p">(</span><span class="nl">forIncrement</span><span class="p">:</span> <span class="mi">7</span><span class="p">)</span>
 <span class="lineno">11</span> <span class="n">incrementBySeven</span><span class="p">()</span>
 <span class="lineno">12</span> <span class="c1">// returns a value of 7</span>
 <span class="lineno">13</span> <span class="n">incrementByTen</span><span class="p">()</span>
@@ -310,7 +306,7 @@
 
 <p>この例では、incrementByTen と incrementBySeven はともにコンスタントです。しかし、両者とも runningTotal を変更することができています。これは、関数と Closure が、参照型だからです。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">alsoIncrementByTen</span> <span class="o">=</span> <span class="n">incrementByTen</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">alsoIncrementByTen</span> <span class="o">=</span> <span class="n">incrementByTen</span>
 <span class="lineno">2</span> <span class="n">alsoIncrementByTen</span><span class="p">()</span>
 <span class="lineno">3</span> <span class="c1">// returns a value of 50</span></code></pre></div>
 
@@ -460,22 +456,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -569,9 +560,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

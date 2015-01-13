@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -220,15 +216,15 @@
 
 <p>今日は FBProfilePictureView を丸くする方法のメモ。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">NSUserDefaults</span> <span class="o">*</span><span class="n">ud</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSUserDefaults</span> <span class="n">standardUserDefaults</span><span class="p">];</span>
-<span class="lineno">2</span> <span class="n">self</span><span class="p">.</span><span class="n">profilePhoto</span><span class="p">.</span><span class="n">profileID</span> <span class="o">=</span> <span class="p">[</span><span class="n">ud</span> <span class="n">stringForKey</span><span class="o">:</span><span class="n">kFBID</span><span class="p">];</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="bp">NSUserDefaults</span> <span class="o">*</span><span class="n">ud</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSUserDefaults</span> <span class="n">standardUserDefaults</span><span class="p">];</span>
+<span class="lineno">2</span> <span class="nb">self</span><span class="p">.</span><span class="n">profilePhoto</span><span class="p">.</span><span class="n">profileID</span> <span class="o">=</span> <span class="p">[</span><span class="n">ud</span> <span class="nl">stringForKey</span><span class="p">:</span><span class="n">kFBID</span><span class="p">];</span>
 <span class="lineno">3</span> 
 <span class="lineno">4</span> <span class="c1">// border radius</span>
-<span class="lineno">5</span> <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">profilePhoto</span><span class="p">.</span><span class="n">layer</span> <span class="n">setCornerRadius</span><span class="o">:</span><span class="mf">80.0f</span><span class="p">];</span>
+<span class="lineno">5</span> <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">profilePhoto</span><span class="p">.</span><span class="n">layer</span> <span class="nl">setCornerRadius</span><span class="p">:</span><span class="mf">80.0f</span><span class="p">];</span>
 <span class="lineno">6</span> 
 <span class="lineno">7</span> <span class="c1">// border</span>
-<span class="lineno">8</span> <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">profilePhoto</span><span class="p">.</span><span class="n">layer</span> <span class="n">setBorderColor</span><span class="o">:</span><span class="p">[</span><span class="n">UIColor</span> <span class="n">whiteColor</span><span class="p">].</span><span class="n">CGColor</span><span class="p">];</span>
-<span class="lineno">9</span> <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">profilePhoto</span><span class="p">.</span><span class="n">layer</span> <span class="n">setBorderWidth</span><span class="o">:</span><span class="mf">1.5f</span><span class="p">];</span></code></pre></div>
+<span class="lineno">8</span> <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">profilePhoto</span><span class="p">.</span><span class="n">layer</span> <span class="nl">setBorderColor</span><span class="p">:[</span><span class="bp">UIColor</span> <span class="n">whiteColor</span><span class="p">].</span><span class="bp">CGColor</span><span class="p">];</span>
+<span class="lineno">9</span> <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">profilePhoto</span><span class="p">.</span><span class="n">layer</span> <span class="nl">setBorderWidth</span><span class="p">:</span><span class="mf">1.5f</span><span class="p">];</span></code></pre></div>
 
 <p><img src="/images/2014/06/1.png" alt=""></p>
 
@@ -378,22 +374,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -487,9 +478,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

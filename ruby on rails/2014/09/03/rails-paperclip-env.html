@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -218,7 +214,7 @@
 
 <p>まずは、個別に設定するために、<code>app/models/shared/attachment_helper.rb</code> に以下のようなファイルを作成します。</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno"> 1</span> <span class="k">module</span> <span class="nn">Shared</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno"> 1</span> <span class="k">module</span> <span class="nn">Shared</span>
 <span class="lineno"> 2</span>   <span class="k">module</span> <span class="nn">AttachmentHelper</span>
 <span class="lineno"> 3</span> 
 <span class="lineno"> 4</span>     <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">included</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>
@@ -260,7 +256,7 @@
 
 <p><code>Rails.env</code> の値によって Paperclip の設定を変更しています。そして、モデルの中では、モジュールをインクルードし、上記の <code>has_attachment</code> を使用します。</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno"> 1</span> <span class="k">class</span> <span class="nc">Lesson</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span> 
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno"> 1</span> <span class="k">class</span> <span class="nc">Lesson</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span> 
 <span class="lineno"> 2</span>   <span class="kp">include</span> <span class="no">Shared</span><span class="o">::</span><span class="no">AttachmentHelper</span>
 <span class="lineno"> 3</span>   <span class="c1"># For catcher image</span>
 <span class="lineno"> 4</span>   <span class="n">has_attachment</span> <span class="ss">:catcher</span><span class="p">,</span>
@@ -426,22 +422,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -535,9 +526,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

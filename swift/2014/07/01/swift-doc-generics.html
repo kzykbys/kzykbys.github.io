@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -224,7 +220,7 @@
 
 <p>まずは、Generics を導入するとどのような問題を解決することができるのか、みていきます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">func</span> <span class="nf">swapTwoInts</span><span class="p">(</span><span class="n">inout</span> <span class="n">a</span><span class="o">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">inout</span> <span class="n">b</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">func</span> <span class="nf">swapTwoInts</span><span class="p">(</span><span class="k">inout</span> <span class="nl">a</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="k">inout</span> <span class="nl">b</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">let</span> <span class="n">temporaryA</span> <span class="o">=</span> <span class="n">a</span>
 <span class="lineno"> 3</span>     <span class="n">a</span> <span class="o">=</span> <span class="n">b</span>
 <span class="lineno"> 4</span>     <span class="n">b</span> <span class="o">=</span> <span class="n">temporaryA</span>
@@ -244,7 +240,7 @@
 
 <p>まずは、上記の swap 関数を Generic に書いてみます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">func</span> <span class="n">swapTwoValues</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">inout</span> <span class="n">a</span><span class="o">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">inout</span> <span class="n">b</span><span class="o">:</span> <span class="n">T</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">func</span> <span class="n">swapTwoValues</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="k">inout</span> <span class="nl">a</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="k">inout</span> <span class="nl">b</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">let</span> <span class="n">temporaryA</span> <span class="o">=</span> <span class="n">a</span>
 <span class="lineno"> 3</span>     <span class="n">a</span> <span class="o">=</span> <span class="n">b</span>
 <span class="lineno"> 4</span>     <span class="n">b</span> <span class="o">=</span> <span class="n">temporaryA</span>
@@ -272,9 +268,9 @@
 
 <p>まずは、Generic でないスタックはこのようになります。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">IntStack</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">IntStack</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">var</span> <span class="n">items</span> <span class="o">=</span> <span class="n">Int</span><span class="p">[]()</span>
-<span class="lineno">3</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">push</span><span class="p">(</span><span class="n">item</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">3</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">push</span><span class="p">(</span><span class="nl">item</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">4</span>         <span class="n">items</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 <span class="lineno">5</span>     <span class="p">}</span>
 <span class="lineno">6</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">pop</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
@@ -284,9 +280,9 @@
 
 <p>push と pop をサポートしています。構造体内の items を変更するので、<code>mutating</code> キーワードが使用されています。このスタックは、Int でしか使用することができません。次に Generic なスタックをみていきます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">Stack</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">Stack</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">var</span> <span class="n">items</span> <span class="o">=</span> <span class="n">T</span><span class="p">[]()</span>
-<span class="lineno">3</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">push</span><span class="p">(</span><span class="n">item</span><span class="o">:</span> <span class="n">T</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">3</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">push</span><span class="p">(</span><span class="nl">item</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">4</span>         <span class="n">items</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 <span class="lineno">5</span>     <span class="p">}</span>
 <span class="lineno">6</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">pop</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">T</span> <span class="p">{</span>
@@ -296,7 +292,7 @@
 
 <p>ここでは、タイプ名の後に、<code>&lt;T&gt;</code> と書き、T を placeholder として使用することを宣言し、この T をタイプの定義内で使用しています。この T が、スタックを管理する items のデータタイプとして、push の引数のタイプとして、pop の返り値として使われています。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">stackOfStrings</span> <span class="o">=</span> <span class="n">Stack</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">()</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">stackOfStrings</span> <span class="o">=</span> <span class="n">Stack</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">()</span>
 <span class="lineno">2</span> <span class="n">stackOfStrings</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s">&quot;uno&quot;</span><span class="p">)</span>
 <span class="lineno">3</span> <span class="n">stackOfStrings</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s">&quot;dos&quot;</span><span class="p">)</span>
 <span class="lineno">4</span> <span class="n">stackOfStrings</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s">&quot;tres&quot;</span><span class="p">)</span>
@@ -307,13 +303,13 @@
 
 <p>今までみてきた swapTwoValues と Stack は文字通りどんなタイプでも受け入れることができました。しかし、受け入れることができるタイプに制限を加えることができたら、便利です。この制限は、あるクラスから継承されていること、あるプロトコルに準拠していることが指定できます。例えば、Swift の Dictionary のキーになれるのは、hashable なタイプだけです。つまり、Hashable プロトコルに準拠している必要があります。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">func</span> <span class="n">someFunction</span><span class="o">&lt;</span><span class="n">T</span><span class="o">:</span> <span class="n">SomeClass</span><span class="p">,</span> <span class="n">U</span><span class="o">:</span> <span class="n">SomeProtocol</span><span class="o">&gt;</span><span class="p">(</span><span class="n">someT</span><span class="o">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">someU</span><span class="o">:</span> <span class="n">U</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">func</span> <span class="n">someFunction</span><span class="o">&lt;</span><span class="nl">T</span><span class="p">:</span> <span class="n">SomeClass</span><span class="p">,</span> <span class="nl">U</span><span class="p">:</span> <span class="n">SomeProtocol</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">someT</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="nl">someU</span><span class="p">:</span> <span class="n">U</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="c1">// function body goes here</span>
 <span class="lineno">3</span> <span class="p">}</span></code></pre></div>
 
 <p>制限はこのように書くことができます。この例では、T は SomeClass を継承している必要があり、U は、SomeProtocol に準拠している必要があります。より具体的な例をみていきます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">func</span> <span class="n">findIndex</span><span class="o">&lt;</span><span class="n">T</span><span class="o">:</span> <span class="n">Equatable</span><span class="o">&gt;</span><span class="p">(</span><span class="n">array</span><span class="o">:</span> <span class="n">T</span><span class="p">[],</span> <span class="n">valueToFind</span><span class="o">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span><span class="o">?</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">func</span> <span class="n">findIndex</span><span class="o">&lt;</span><span class="nl">T</span><span class="p">:</span> <span class="n">Equatable</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">array</span><span class="p">:</span> <span class="n">T</span><span class="p">[],</span> <span class="nl">valueToFind</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span><span class="o">?</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="k">for</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="k">in</span> <span class="n">enumerate</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">3</span>         <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="n">valueToFind</span> <span class="p">{</span>
 <span class="lineno">4</span>             <span class="k">return</span> <span class="n">index</span>
@@ -324,7 +320,7 @@
 
 <p>この findIndex 関数は、配列の中からある値を探し、その index を返すというものです。この <code>&lt;T: Equatable&gt;</code> で、T は Equatable プロトコルに準拠している必要があるという制限を加えています。この制限がないと、この関数は、コンパイルエラーになります。それは、<code>value == valueToFind</code> の部分が原因です。全てのタイプに対して、== / != を使用できるとは限らないからです。Equatable は、== / != で比較ができるようにすることを求めるので、この制限をクリアしていれば、問題がありません。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">doubleIndex</span> <span class="o">=</span> <span class="n">findIndex</span><span class="p">([</span><span class="mf">3.14159</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span> <span class="mf">9.3</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">doubleIndex</span> <span class="o">=</span> <span class="n">findIndex</span><span class="p">([</span><span class="mf">3.14159</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span> <span class="mf">9.3</span><span class="p">)</span>
 <span class="lineno">2</span> <span class="c1">// doubleIndex is an optional Int with no value, because 9.3 is not in the array</span>
 <span class="lineno">3</span> <span class="n">let</span> <span class="n">stringIndex</span> <span class="o">=</span> <span class="n">findIndex</span><span class="p">([</span><span class="s">&quot;Mike&quot;</span><span class="p">,</span> <span class="s">&quot;Malcolm&quot;</span><span class="p">,</span> <span class="s">&quot;Andrea&quot;</span><span class="p">],</span> <span class="s">&quot;Andrea&quot;</span><span class="p">)</span>
 <span class="lineno">4</span> <span class="c1">// stringIndex is an optional Int containing a value of 2</span></code></pre></div>
@@ -333,19 +329,19 @@
 
 <p>プロトコルを定義する際に、プロトコルの定義内に associated タイプを使うと便利です。これは、プロトコルで使用できる placeholder (alias) 名です。プロトコルが実装される際に、この associated タイプに実際に何が入るのか決められます。例をみていきます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">Container</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">Container</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">typealias</span> <span class="n">ItemType</span>
-<span class="lineno">3</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="o">:</span> <span class="n">ItemType</span><span class="p">)</span>
-<span class="lineno">4</span>     <span class="n">var</span> <span class="n">count</span><span class="o">:</span> <span class="n">Int</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
-<span class="lineno">5</span>     <span class="n">subscript</span><span class="p">(</span><span class="n">i</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ItemType</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
+<span class="lineno">3</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">append</span><span class="p">(</span><span class="nl">item</span><span class="p">:</span> <span class="n">ItemType</span><span class="p">)</span>
+<span class="lineno">4</span>     <span class="n">var</span> <span class="nl">count</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
+<span class="lineno">5</span>     <span class="n">subscript</span><span class="p">(</span><span class="nl">i</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ItemType</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
 <span class="lineno">6</span> <span class="p">}</span></code></pre></div>
 
 <p>この Container プロトコルは、append メソッド、count プロパティ、subscript を要求しています。しかし、この Container がどのようなタイプを保存しているのかは要求していません。この Generic なタイプをプロトコルの定義内で使用するために、itemType という associated タイプを宣言し、使用しています。先ほどの Int スタックと Generic なスタックを Container プロトコルに準拠させてみます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">IntStack</span><span class="o">:</span> <span class="n">Container</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="nl">IntStack</span><span class="p">:</span> <span class="n">Container</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="c1">// original IntStack implementation</span>
 <span class="lineno"> 3</span>     <span class="n">var</span> <span class="n">items</span> <span class="o">=</span> <span class="n">Int</span><span class="p">[]()</span>
-<span class="lineno"> 4</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">push</span><span class="p">(</span><span class="n">item</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 4</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">push</span><span class="p">(</span><span class="nl">item</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 5</span>         <span class="n">items</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 <span class="lineno"> 6</span>     <span class="p">}</span>
 <span class="lineno"> 7</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">pop</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
@@ -353,13 +349,13 @@
 <span class="lineno"> 9</span>     <span class="p">}</span>
 <span class="lineno">10</span>     <span class="c1">// conformance to the Container protocol</span>
 <span class="lineno">11</span>     <span class="n">typealias</span> <span class="n">ItemType</span> <span class="o">=</span> <span class="n">Int</span>
-<span class="lineno">12</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">13</span>         <span class="n">self</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="lineno">12</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">append</span><span class="p">(</span><span class="nl">item</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">13</span>         <span class="nb">self</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 <span class="lineno">14</span>     <span class="p">}</span>
-<span class="lineno">15</span>     <span class="n">var</span> <span class="n">count</span><span class="o">:</span> <span class="n">Int</span> <span class="p">{</span>
+<span class="lineno">15</span>     <span class="n">var</span> <span class="nl">count</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span>
 <span class="lineno">16</span>     <span class="k">return</span> <span class="n">items</span><span class="p">.</span><span class="n">count</span>
 <span class="lineno">17</span>     <span class="p">}</span>
-<span class="lineno">18</span>     <span class="n">subscript</span><span class="p">(</span><span class="n">i</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
+<span class="lineno">18</span>     <span class="n">subscript</span><span class="p">(</span><span class="nl">i</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
 <span class="lineno">19</span>         <span class="k">return</span> <span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 <span class="lineno">20</span>     <span class="p">}</span>
 <span class="lineno">21</span> <span class="p">}</span>
@@ -367,20 +363,20 @@
 <span class="lineno">23</span> <span class="k">struct</span> <span class="n">Stack</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;:</span> <span class="n">Container</span> <span class="p">{</span>
 <span class="lineno">24</span>     <span class="c1">// original Stack&lt;T&gt; implementation</span>
 <span class="lineno">25</span>     <span class="n">var</span> <span class="n">items</span> <span class="o">=</span> <span class="n">T</span><span class="p">[]()</span>
-<span class="lineno">26</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">push</span><span class="p">(</span><span class="n">item</span><span class="o">:</span> <span class="n">T</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">26</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">push</span><span class="p">(</span><span class="nl">item</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">27</span>         <span class="n">items</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 <span class="lineno">28</span>     <span class="p">}</span>
 <span class="lineno">29</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">pop</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">T</span> <span class="p">{</span>
 <span class="lineno">30</span>         <span class="k">return</span> <span class="n">items</span><span class="p">.</span><span class="n">removeLast</span><span class="p">()</span>
 <span class="lineno">31</span>     <span class="p">}</span>
 <span class="lineno">32</span>     <span class="c1">// conformance to the Container protocol</span>
-<span class="lineno">33</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="o">:</span> <span class="n">T</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">34</span>         <span class="n">self</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="lineno">33</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">append</span><span class="p">(</span><span class="nl">item</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">34</span>         <span class="nb">self</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 <span class="lineno">35</span>     <span class="p">}</span>
-<span class="lineno">36</span>     <span class="n">var</span> <span class="n">count</span><span class="o">:</span> <span class="n">Int</span> <span class="p">{</span>
+<span class="lineno">36</span>     <span class="n">var</span> <span class="nl">count</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span>
 <span class="lineno">37</span>     <span class="k">return</span> <span class="n">items</span><span class="p">.</span><span class="n">count</span>
 <span class="lineno">38</span>     <span class="p">}</span>
-<span class="lineno">39</span>     <span class="n">subscript</span><span class="p">(</span><span class="n">i</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span> <span class="p">{</span>
+<span class="lineno">39</span>     <span class="n">subscript</span><span class="p">(</span><span class="nl">i</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span> <span class="p">{</span>
 <span class="lineno">40</span>         <span class="k">return</span> <span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 <span class="lineno">41</span>     <span class="p">}</span>
 <span class="lineno">42</span> <span class="p">}</span></code></pre></div>
@@ -391,10 +387,10 @@
 
 <p>4 のタイプ制限以外にも、associated タイプに制限を加えることも必要な場合があります。これは、<code>where</code> を使用して達成します。これにより、associated タイプが、あるプロトコルに準拠しているか、あるタイプの引数と associated タイプが同じであるか、制限を加えることができます。これは、実装されている場所の引数リストの中にて、宣言します。例をみていきます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">func</span> <span class="n">allItemsMatch</span><span class="o">&lt;</span>
-<span class="lineno"> 2</span>     <span class="nl">C1:</span> <span class="n">Container</span><span class="p">,</span> <span class="n">C2</span><span class="o">:</span> <span class="n">Container</span>
-<span class="lineno"> 3</span>     <span class="n">where</span> <span class="n">C1</span><span class="p">.</span><span class="n">ItemType</span> <span class="o">==</span> <span class="n">C2</span><span class="p">.</span><span class="n">ItemType</span><span class="p">,</span> <span class="n">C1</span><span class="p">.</span><span class="n">ItemType</span><span class="o">:</span> <span class="n">Equatable</span><span class="o">&gt;</span>
-<span class="lineno"> 4</span>     <span class="p">(</span><span class="n">someContainer</span><span class="o">:</span> <span class="n">C1</span><span class="p">,</span> <span class="n">anotherContainer</span><span class="o">:</span> <span class="n">C2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">func</span> <span class="n">allItemsMatch</span><span class="o">&lt;</span>
+<span class="lineno"> 2</span>     <span class="nl">C1</span><span class="p">:</span> <span class="n">Container</span><span class="p">,</span> <span class="nl">C2</span><span class="p">:</span> <span class="n">Container</span>
+<span class="lineno"> 3</span>     <span class="n">where</span> <span class="n">C1</span><span class="p">.</span><span class="n">ItemType</span> <span class="o">==</span> <span class="n">C2</span><span class="p">.</span><span class="n">ItemType</span><span class="p">,</span> <span class="n">C1</span><span class="p">.</span><span class="nl">ItemType</span><span class="p">:</span> <span class="n">Equatable</span><span class="o">&gt;</span>
+<span class="lineno"> 4</span>     <span class="p">(</span><span class="nl">someContainer</span><span class="p">:</span> <span class="n">C1</span><span class="p">,</span> <span class="nl">anotherContainer</span><span class="p">:</span> <span class="n">C2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
 <span class="lineno"> 5</span>         
 <span class="lineno"> 6</span>         <span class="c1">// check that both containers contain the same number of items</span>
 <span class="lineno"> 7</span>         <span class="k">if</span> <span class="n">someContainer</span><span class="p">.</span><span class="n">count</span> <span class="o">!=</span> <span class="n">anotherContainer</span><span class="p">.</span><span class="n">count</span> <span class="p">{</span>
@@ -415,7 +411,7 @@
 
 <p>Container プロトコルに準拠した 2 つの引数が、全く同じ値を内部に持っているかを確認する関数です。この allItemsMatch 関数は、引数に Generic な引数をとります。まず、&lt;&gt; 内で指定されているように、これらの引数は Container プロトコルに準拠している必要があります。さらに、<code>where</code> の後で、Associated タイプ（.ItemType）に制限を加えています。1 つ目は (<code>C1.ItemType == C2.ItemType</code>) は、2 つの Generics の要素が同じタイプであるということを指定しています。2 つ目は (<code>C1.ItemType: Equatable</code>)、要素が、Equatable プロトコルに準拠している必要があることを宣言しています。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">extension</span> <span class="n">Array</span><span class="o">:</span> <span class="n">Container</span> <span class="p">{}</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">extension</span> <span class="nl">Array</span><span class="p">:</span> <span class="n">Container</span> <span class="p">{}</span>
 <span class="lineno"> 2</span> 
 <span class="lineno"> 3</span> <span class="n">var</span> <span class="n">stackOfStrings</span> <span class="o">=</span> <span class="n">Stack</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">()</span>
 <span class="lineno"> 4</span> <span class="n">stackOfStrings</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s">&quot;uno&quot;</span><span class="p">)</span>
@@ -577,22 +573,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -686,9 +677,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

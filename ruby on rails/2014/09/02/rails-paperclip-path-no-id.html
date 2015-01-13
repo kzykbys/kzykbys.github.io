@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -218,14 +214,14 @@
 
 <p>下記のコードをモデルクラスのファイル等に追加。</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># To use string id for the path/url</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="c1"># To use string id for the path/url</span>
 <span class="lineno">2</span> <span class="no">Paperclip</span><span class="o">.</span><span class="n">interpolates</span> <span class="ss">:lesson_identifer</span> <span class="k">do</span> <span class="o">|</span><span class="n">attachment</span><span class="p">,</span> <span class="n">style</span><span class="o">|</span>
 <span class="lineno">3</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">attachment</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">lesson_identifer</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="lineno">4</span> <span class="k">end</span></code></pre></div>
 
 <p><code>:lesson_identifer</code> が、path/urlで使いたいモデルのアトリビュート。</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># For catcher image</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="c1"># For catcher image</span>
 <span class="lineno">2</span>   <span class="n">has_attached_file</span> <span class="ss">:catcher</span><span class="p">,</span>
 <span class="lineno">3</span>                     <span class="ss">:styles</span> <span class="o">=&gt;</span> <span class="p">{</span>
 <span class="lineno">4</span>                         <span class="ss">:big</span>  <span class="o">=&gt;</span> <span class="s2">&quot;2000x798&quot;</span><span class="p">,</span>
@@ -384,22 +380,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -493,9 +484,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

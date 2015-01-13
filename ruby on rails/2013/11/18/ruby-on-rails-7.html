@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -221,7 +217,7 @@
 
 <p>実際に動的なページを作っていくということは、アプリケーションをRESTアーキテクチャの習慣に従うということ。これを実現するための簡単な方法として、config/routes.rb に以下の行を追加。</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># config/routes.rb</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="c1"># config/routes.rb</span>
 <span class="lineno">2</span> <span class="n">resources</span> <span class="ss">:users</span>
 <span class="lineno">3</span> <span class="c1"># get &quot;users/new”</span></code></pre></div>
 
@@ -233,12 +229,12 @@
 
 <p>まずは、 view を作成する（app/views/users/show.html.erb）。new.html.erb は自動で生成されたが、今回は自分で作成しなければならない。</p>
 
-<div class="highlight"><pre><code class="erb"><span class="lineno">1</span> <span class="x"># app/views/users/show.html.erb</span>
+<div class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="lineno">1</span> <span class="x"># app/views/users/show.html.erb</span>
 <span class="lineno">2</span> <span class="cp">&lt;%=</span> <span class="vi">@user</span><span class="o">.</span><span class="n">name</span> <span class="cp">%&gt;</span><span class="x">, </span><span class="cp">&lt;%=</span> <span class="vi">@user</span><span class="o">.</span><span class="n">email</span> <span class="cp">%&gt;</span><span class="x"></span></code></pre></div>
 
 <p>＠user はインスタンス変数。これをコントローラー内で定義する。</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># app/controllers/users_controller.rb</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="c1"># app/controllers/users_controller.rb</span>
 <span class="lineno">2</span> <span class="k">def</span> <span class="nf">show</span>
 <span class="lineno">3</span>   <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
 <span class="lineno">4</span> <span class="k">end</span></code></pre></div>
@@ -249,7 +245,7 @@
 
 <p>まずは view を form_for メソッドを使って実装。もしエラーがある場合は、 shared/error_messages を表示させている。このエラーがあるかどうかは、shared/_error_messagedにて条件分岐をする。慣習的に、複数の controller に渡る view は sharedディレクトリに格納。</p>
 
-<div class="highlight"><pre><code class="erb"><span class="lineno"> 1</span> <span class="x"># app/views/users/new.html.erb</span>
+<div class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="lineno"> 1</span> <span class="x"># app/views/users/new.html.erb</span>
 <span class="lineno"> 2</span> <span class="cp">&lt;%</span> <span class="n">provide</span><span class="p">(</span><span class="ss">:title</span><span class="p">,</span> <span class="s1">&#39;Sign up&#39;</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="x"></span>
 <span class="lineno"> 3</span> <span class="x">&lt;h1&gt;Sign up&lt;/h1&gt;</span>
 <span class="lineno"> 4</span> <span class="x">&lt;div class=&quot;row&quot;]]</span>
@@ -274,7 +270,7 @@
 <span class="lineno">23</span> <span class="x">&lt;/div&gt;</span>
 <span class="lineno">24</span> <span class="x">&lt;/div&gt;</span></code></pre></div>
 
-<div class="highlight"><pre><code class="erb"><span class="lineno"> 1</span> <span class="x"># app/views/shared/_error_messages.html.erb </span>
+<div class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="lineno"> 1</span> <span class="x"># app/views/shared/_error_messages.html.erb </span>
 <span class="lineno"> 2</span> <span class="cp">&lt;%</span> <span class="k">if</span> <span class="vi">@user</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">any?</span> <span class="cp">%&gt;</span><span class="x"></span>
 <span class="lineno"> 3</span> <span class="x">  &lt;div id=&quot;error_explanation&quot;]]</span>
 <span class="lineno"> 4</span> <span class="x">    &lt;div class=&quot;alert alert-error&quot;]]</span>
@@ -290,14 +286,14 @@
 
 <p>form_for メソッドでは user インスタンス変数を使用しているので、それを controller で定義。</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># app/controllers/users_controller.rb</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="c1"># app/controllers/users_controller.rb</span>
 <span class="lineno">2</span> <span class="k">def</span> <span class="nf">new</span>
 <span class="lineno">3</span>   <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">new</span>
 <span class="lineno">4</span> <span class="k">end</span></code></pre></div>
 
 <p>上記で作成したフォームは submit された時に、/users に対してPOST する。RESTアーキテクチャでは、この操作は create アクションにあたる（上の画像）。よって、 controller で以下のように create アクションを作成。</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno"> 1</span> <span class="k">def</span> <span class="nf">create</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno"> 1</span> <span class="k">def</span> <span class="nf">create</span>
 <span class="lineno"> 2</span>   <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">user_params</span><span class="p">)</span>
 <span class="lineno"> 3</span>   <span class="k">if</span> <span class="vi">@user</span><span class="o">.</span><span class="n">save</span>
 <span class="lineno"> 4</span>     <span class="n">redirect_to</span> <span class="vi">@user</span>
@@ -457,22 +453,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -566,9 +557,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

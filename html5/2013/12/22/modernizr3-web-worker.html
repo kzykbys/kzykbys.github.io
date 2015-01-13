@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -214,7 +210,7 @@
 					<div class="post">
 						<p>Web worker はブラウザがバックグランドで Javascript を実行する方法です。これにより、複数のスレッドを同時に起動させ、複雑な計算や、リクエスを送ったり、ローカルストレージにアクセスすることができます。</p>
 
-<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="k">if</span> <span class="p">(</span><span class="nx">Modernizr</span><span class="p">.</span><span class="nx">webworkers</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno">1</span> <span class="k">if</span> <span class="p">(</span><span class="nx">Modernizr</span><span class="p">.</span><span class="nx">webworkers</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">2</span>      <span class="c1">// window.Worker is available!</span>
 <span class="lineno">3</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 <span class="lineno">4</span>      <span class="c1">// Your browser supports web workers.</span>
@@ -224,7 +220,7 @@
 
 <p>内部は、</p>
 
-<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="kd">function</span> <span class="nx">supports_web_workers</span><span class="p">(){</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno">1</span> <span class="kd">function</span> <span class="nx">supports_web_workers</span><span class="p">(){</span>
 <span class="lineno">2</span>      <span class="k">return</span> <span class="o">!!</span><span class="nb">window</span><span class="p">.</span><span class="nx">Worker</span><span class="p">;</span>
 <span class="lineno">3</span> <span class="p">}</span></code></pre></div>
 
@@ -372,22 +368,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -481,9 +472,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

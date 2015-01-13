@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -224,57 +220,57 @@
 
 <p>This is easily accomplished. Here is simple code :</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="cp">#import &quot;KKViewController.h&quot;</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="cp">#import &quot;KKViewController.h&quot;</span>
 <span class="lineno"> 2</span> 
 <span class="lineno"> 3</span> <span class="k">@interface</span> <span class="nc">KKViewController</span> <span class="p">()</span>
 <span class="lineno"> 4</span> 
-<span class="lineno"> 5</span> <span class="k">@property</span> <span class="p">(</span><span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="kt">IBOutlet</span> <span class="n">UITextField</span> <span class="o">*</span><span class="n">textfield</span><span class="p">;</span>
-<span class="lineno"> 6</span> <span class="k">@property</span> <span class="p">(</span><span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="kt">IBOutlet</span> <span class="n">UILabel</span>     <span class="o">*</span><span class="n">labelCount</span><span class="p">;</span>
+<span class="lineno"> 5</span> <span class="k">@property</span> <span class="p">(</span><span class="k">strong</span><span class="p">,</span> <span class="k">nonatomic</span><span class="p">)</span> <span class="kt">IBOutlet</span> <span class="bp">UITextField</span> <span class="o">*</span><span class="n">textfield</span><span class="p">;</span>
+<span class="lineno"> 6</span> <span class="k">@property</span> <span class="p">(</span><span class="k">strong</span><span class="p">,</span> <span class="k">nonatomic</span><span class="p">)</span> <span class="kt">IBOutlet</span> <span class="bp">UILabel</span>     <span class="o">*</span><span class="n">labelCount</span><span class="p">;</span>
 <span class="lineno"> 7</span> 
 <span class="lineno"> 8</span> <span class="k">@end</span>
 <span class="lineno"> 9</span> 
 <span class="lineno">10</span> <span class="k">@implementation</span> <span class="nc">KKViewController</span>
 <span class="lineno">11</span> 
-<span class="lineno">12</span> <span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidLoad</span>
+<span class="lineno">12</span> <span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidLoad</span>
 <span class="lineno">13</span> <span class="p">{</span>
-<span class="lineno">14</span>     <span class="p">[</span><span class="n">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
+<span class="lineno">14</span>     <span class="p">[</span><span class="nb">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
 <span class="lineno">15</span>     
 <span class="lineno">16</span>     <span class="c1">// Textfield</span>
-<span class="lineno">17</span>     <span class="n">self</span><span class="p">.</span><span class="n">textfield</span>                 <span class="o">=</span> <span class="p">[[</span><span class="n">UITextField</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
-<span class="lineno">18</span>     <span class="n">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">.</span><span class="n">frame</span>           <span class="o">=</span> <span class="n">CGRectMake</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span>
-<span class="lineno">19</span>     <span class="n">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">.</span><span class="n">borderStyle</span>     <span class="o">=</span> <span class="n">UITextBorderStyleRoundedRect</span><span class="p">;</span>
-<span class="lineno">20</span>     <span class="n">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">.</span><span class="n">placeholder</span>     <span class="o">=</span> <span class="s">@&quot;Type message for this people.&quot;</span><span class="p">;</span>
-<span class="lineno">21</span>     <span class="n">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">.</span><span class="n">clearButtonMode</span> <span class="o">=</span> <span class="n">UITextFieldViewModeWhileEditing</span><span class="p">;</span>
-<span class="lineno">22</span>     <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">textfield</span> <span class="n">addTarget</span><span class="o">:</span><span class="n">self</span>
-<span class="lineno">23</span>                        <span class="nl">action:</span><span class="k">@selector</span><span class="p">(</span><span class="n">textAttributesBasedOnTyping</span><span class="o">:</span><span class="p">)</span>
-<span class="lineno">24</span>              <span class="nl">forControlEvents:</span><span class="n">UIControlEventEditingChanged</span><span class="p">];</span>
+<span class="lineno">17</span>     <span class="nb">self</span><span class="p">.</span><span class="n">textfield</span>                 <span class="o">=</span> <span class="p">[[</span><span class="bp">UITextField</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="lineno">18</span>     <span class="nb">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">.</span><span class="n">frame</span>           <span class="o">=</span> <span class="n">CGRectMake</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span>
+<span class="lineno">19</span>     <span class="nb">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">.</span><span class="n">borderStyle</span>     <span class="o">=</span> <span class="n">UITextBorderStyleRoundedRect</span><span class="p">;</span>
+<span class="lineno">20</span>     <span class="nb">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">.</span><span class="n">placeholder</span>     <span class="o">=</span> <span class="s">@&quot;Type message for this people.&quot;</span><span class="p">;</span>
+<span class="lineno">21</span>     <span class="nb">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">.</span><span class="n">clearButtonMode</span> <span class="o">=</span> <span class="n">UITextFieldViewModeWhileEditing</span><span class="p">;</span>
+<span class="lineno">22</span>     <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">textfield</span> <span class="nl">addTarget</span><span class="p">:</span><span class="nb">self</span>
+<span class="lineno">23</span>                        <span class="nl">action</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nl">textAttributesBasedOnTyping</span><span class="p">:)</span>
+<span class="lineno">24</span>              <span class="nl">forControlEvents</span><span class="p">:</span><span class="n">UIControlEventEditingChanged</span><span class="p">];</span>
 <span class="lineno">25</span>     
-<span class="lineno">26</span>     <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="n">addSubview</span><span class="o">:</span><span class="n">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">];</span>
+<span class="lineno">26</span>     <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">addSubview</span><span class="p">:</span><span class="nb">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">];</span>
 <span class="lineno">27</span>     
 <span class="lineno">28</span>     <span class="c1">// Count Text</span>
-<span class="lineno">29</span>     <span class="n">self</span><span class="p">.</span><span class="n">labelCount</span>           <span class="o">=</span> <span class="p">[[</span><span class="n">UILabel</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
-<span class="lineno">30</span>     <span class="n">self</span><span class="p">.</span><span class="n">labelCount</span><span class="p">.</span><span class="n">frame</span>     <span class="o">=</span> <span class="n">CGRectMake</span><span class="p">(</span><span class="mi">140</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">);</span>
-<span class="lineno">31</span>     <span class="n">self</span><span class="p">.</span><span class="n">labelCount</span><span class="p">.</span><span class="n">text</span>      <span class="o">=</span> <span class="p">[</span><span class="n">NSString</span> <span class="n">stringWithFormat</span><span class="o">:</span><span class="s">@&quot;%i&quot;</span><span class="p">,</span><span class="mi">140</span> <span class="o">-</span> <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">.</span><span class="n">text</span> <span class="n">length</span><span class="p">]];</span>
-<span class="lineno">32</span>     <span class="n">self</span><span class="p">.</span><span class="n">labelCount</span><span class="p">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIColor</span> <span class="n">colorWithRed</span><span class="o">:</span><span class="mf">0.4</span> <span class="n">green</span><span class="o">:</span><span class="mf">0.4</span> <span class="n">blue</span><span class="o">:</span><span class="mf">0.4</span> <span class="n">alpha</span><span class="o">:</span><span class="mf">0.8</span><span class="p">];</span>
+<span class="lineno">29</span>     <span class="nb">self</span><span class="p">.</span><span class="n">labelCount</span>           <span class="o">=</span> <span class="p">[[</span><span class="bp">UILabel</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="lineno">30</span>     <span class="nb">self</span><span class="p">.</span><span class="n">labelCount</span><span class="p">.</span><span class="n">frame</span>     <span class="o">=</span> <span class="n">CGRectMake</span><span class="p">(</span><span class="mi">140</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">);</span>
+<span class="lineno">31</span>     <span class="nb">self</span><span class="p">.</span><span class="n">labelCount</span><span class="p">.</span><span class="n">text</span>      <span class="o">=</span> <span class="p">[</span><span class="bp">NSString</span> <span class="nl">stringWithFormat</span><span class="p">:</span><span class="s">@&quot;%i&quot;</span><span class="p">,</span><span class="mi">140</span> <span class="o">-</span> <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">.</span><span class="n">text</span> <span class="n">length</span><span class="p">]];</span>
+<span class="lineno">32</span>     <span class="nb">self</span><span class="p">.</span><span class="n">labelCount</span><span class="p">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIColor</span> <span class="nl">colorWithRed</span><span class="p">:</span><span class="mf">0.4</span> <span class="nl">green</span><span class="p">:</span><span class="mf">0.4</span> <span class="nl">blue</span><span class="p">:</span><span class="mf">0.4</span> <span class="nl">alpha</span><span class="p">:</span><span class="mf">0.8</span><span class="p">];</span>
 <span class="lineno">33</span>     
-<span class="lineno">34</span>     <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="n">addSubview</span><span class="o">:</span><span class="n">self</span><span class="p">.</span><span class="n">labelCount</span><span class="p">];</span>
+<span class="lineno">34</span>     <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">addSubview</span><span class="p">:</span><span class="nb">self</span><span class="p">.</span><span class="n">labelCount</span><span class="p">];</span>
 <span class="lineno">35</span>     
 <span class="lineno">36</span> <span class="p">}</span>
 <span class="lineno">37</span> 
-<span class="lineno">38</span> <span class="k">-</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">textAttributesBasedOnTyping:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nv">sender</span>
+<span class="lineno">38</span> <span class="p">-(</span><span class="kt">void</span><span class="p">)</span><span class="nf">textAttributesBasedOnTyping:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nv">sender</span>
 <span class="lineno">39</span> <span class="p">{</span>
-<span class="lineno">40</span>     <span class="k">if</span><span class="p">([</span><span class="n">sender</span> <span class="n">isKindOfClass</span><span class="o">:</span><span class="p">[</span><span class="n">UITextField</span> <span class="n">class</span><span class="p">]])</span>
+<span class="lineno">40</span>     <span class="k">if</span><span class="p">([</span><span class="n">sender</span> <span class="nl">isKindOfClass</span><span class="p">:[</span><span class="bp">UITextField</span> <span class="k">class</span><span class="p">]])</span>
 <span class="lineno">41</span>     <span class="p">{</span>
-<span class="lineno">42</span>         <span class="n">self</span><span class="p">.</span><span class="n">labelCount</span><span class="p">.</span><span class="n">text</span>     <span class="o">=</span> <span class="p">[</span><span class="n">NSString</span> <span class="n">stringWithFormat</span><span class="o">:</span><span class="s">@&quot;%i&quot;</span><span class="p">,</span><span class="mi">140</span> <span class="o">-</span> <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">.</span><span class="n">text</span> <span class="n">length</span><span class="p">]];</span>
+<span class="lineno">42</span>         <span class="nb">self</span><span class="p">.</span><span class="n">labelCount</span><span class="p">.</span><span class="n">text</span>     <span class="o">=</span> <span class="p">[</span><span class="bp">NSString</span> <span class="nl">stringWithFormat</span><span class="p">:</span><span class="s">@&quot;%i&quot;</span><span class="p">,</span><span class="mi">140</span> <span class="o">-</span> <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">.</span><span class="n">text</span> <span class="n">length</span><span class="p">]];</span>
 <span class="lineno">43</span>         
 <span class="lineno">44</span>         <span class="c1">// Change color by the count of text length</span>
-<span class="lineno">45</span>         <span class="k">if</span><span class="p">([</span><span class="n">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">.</span><span class="n">text</span> <span class="n">length</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">140</span><span class="p">)</span>
+<span class="lineno">45</span>         <span class="k">if</span><span class="p">([</span><span class="nb">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">.</span><span class="n">text</span> <span class="n">length</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">140</span><span class="p">)</span>
 <span class="lineno">46</span>         <span class="p">{</span>
-<span class="lineno">47</span>             <span class="n">self</span><span class="p">.</span><span class="n">labelCount</span><span class="p">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIColor</span> <span class="n">colorWithRed</span><span class="o">:</span><span class="mf">0.4</span> <span class="n">green</span><span class="o">:</span><span class="mf">0.4</span> <span class="n">blue</span><span class="o">:</span><span class="mf">0.4</span> <span class="n">alpha</span><span class="o">:</span><span class="mf">0.8</span><span class="p">];</span> <span class="c1">// Gray</span>
+<span class="lineno">47</span>             <span class="nb">self</span><span class="p">.</span><span class="n">labelCount</span><span class="p">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIColor</span> <span class="nl">colorWithRed</span><span class="p">:</span><span class="mf">0.4</span> <span class="nl">green</span><span class="p">:</span><span class="mf">0.4</span> <span class="nl">blue</span><span class="p">:</span><span class="mf">0.4</span> <span class="nl">alpha</span><span class="p">:</span><span class="mf">0.8</span><span class="p">];</span> <span class="c1">// Gray</span>
 <span class="lineno">48</span>         <span class="p">}</span>
 <span class="lineno">49</span>         <span class="k">else</span>
 <span class="lineno">50</span>         <span class="p">{</span>
-<span class="lineno">51</span>             <span class="n">self</span><span class="p">.</span><span class="n">labelCount</span><span class="p">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIColor</span> <span class="n">colorWithRed</span><span class="o">:</span><span class="mi">1</span> <span class="n">green</span><span class="o">:</span><span class="mi">0</span> <span class="n">blue</span><span class="o">:</span><span class="mi">0</span> <span class="n">alpha</span><span class="o">:</span><span class="mf">0.8</span><span class="p">];</span>  <span class="c1">// Red</span>
+<span class="lineno">51</span>             <span class="nb">self</span><span class="p">.</span><span class="n">labelCount</span><span class="p">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIColor</span> <span class="nl">colorWithRed</span><span class="p">:</span><span class="mi">1</span> <span class="nl">green</span><span class="p">:</span><span class="mi">0</span> <span class="nl">blue</span><span class="p">:</span><span class="mi">0</span> <span class="nl">alpha</span><span class="p">:</span><span class="mf">0.8</span><span class="p">];</span>  <span class="c1">// Red</span>
 <span class="lineno">52</span>         <span class="p">}</span>
 <span class="lineno">53</span>     <span class="p">}</span>
 <span class="lineno">54</span> <span class="p">}</span>
@@ -429,22 +425,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -538,9 +529,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

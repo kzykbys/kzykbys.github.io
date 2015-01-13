@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -220,7 +216,7 @@
 
 <p>作成したファイルに定数を書き出します。例えばこのような感じですね。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="c1">// constantVariable.h</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="c1">// constantVariable.h</span>
 <span class="lineno">2</span> <span class="cp">#ifndef Menu_constantVariable_h</span>
 <span class="lineno">3</span> <span class="cp">#define Menu_constantVariable_h</span>
 <span class="lineno">4</span>  
@@ -231,10 +227,10 @@
 
 <p>そして、次にこの定数がまとめられたヘッダーファイルをインクルードするという設定です。各々、これらの定数が必要なファイルでインクルードしてもよいのですが、少し面倒です。&quot; Supporting Files &quot; の中にある、*-Prefix.pch というファイルでインクルードしておくと、自動的に全てのファイルでインクルードされているので、いつでもどこでも定義した定数を使用することができ便利です。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="cp">#ifdef __OBJC__</span>
-<span class="lineno">2</span>     <span class="err">#</span><span class="n">import</span> <span class="o">&lt;</span><span class="n">UIKit</span><span class="o">/</span><span class="n">UIKit</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;</span>
-<span class="lineno">3</span>     <span class="err">#</span><span class="n">import</span> <span class="o">&lt;</span><span class="n">Foundation</span><span class="o">/</span><span class="n">Foundation</span><span class="p">.</span><span class="n">t</span><span class="o">&gt;</span>
-<span class="lineno">4</span>     <span class="err">#</span><span class="n">import</span> <span class="s">&quot;constantVariable.h&quot;</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="cp">#ifdef __OBJC__</span>
+<span class="lineno">2</span>     <span class="cp">#import &lt;UIKit/UIKit.h&gt;</span>
+<span class="lineno">3</span>     <span class="cp">#import &lt;Foundation/Foundation.t&gt;</span>
+<span class="lineno">4</span>     <span class="cp">#import &quot;constantVariable.h&quot;</span>
 <span class="lineno">5</span> <span class="cp">#endif</span></code></pre></div>
 
 					</div>
@@ -381,22 +377,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -490,9 +481,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

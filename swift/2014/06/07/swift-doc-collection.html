@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -226,20 +222,20 @@
 
 <p>Array 型を作成するには、二通りあります。しかし、二つ目の [] を使用した方法がより簡単なので、ドキュメントもこちらを使用しています。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">list1</span><span class="o">:</span> <span class="n">Array</span><span class="o">&lt;</span><span class="n">Int</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="lineno">2</span> <span class="n">var</span> <span class="n">list2</span><span class="o">:</span> <span class="n">Int</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span></code></pre></div>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="nl">list1</span><span class="p">:</span> <span class="n">Array</span><span class="o">&lt;</span><span class="n">Int</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="lineno">2</span> <span class="n">var</span> <span class="nl">list2</span><span class="p">:</span> <span class="n">Int</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span></code></pre></div>
 
 <h4 id="3.-array-の要素数">3. Array の要素数</h4>
 
 <p>Array の要素数を得るには、読み込み専用の count プロパティを参照します。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">list1</span><span class="p">.</span><span class="n">count</span> <span class="c1">// 3</span></code></pre></div>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">list1</span><span class="p">.</span><span class="n">count</span> <span class="c1">// 3</span></code></pre></div>
 
 <h4 id="4.-array-が空かのチェック">4. Array が空かのチェック</h4>
 
 <p>Array.count が 0 であるかをチェックするには、isEmpty プロパティを使用できます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">if</span> <span class="n">list2</span><span class="p">.</span><span class="n">isEmpty</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">if</span> <span class="n">list2</span><span class="p">.</span><span class="n">isEmpty</span> <span class="p">{</span>
 <span class="lineno">2</span>   <span class="n">println</span><span class="p">(</span><span class="s">&quot;This is empty array&quot;</span><span class="p">)</span>
 <span class="lineno">3</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 <span class="lineno">4</span>   <span class="n">println</span><span class="p">(</span><span class="s">&quot;This isn&#39;t empty array&quot;</span><span class="p">)</span>
@@ -251,17 +247,17 @@
 
 <p>まずは、append()を使用する方法。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">list2</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">list2</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span></code></pre></div>
 
 <p>次に、+= を使用する方法。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">list2</span> <span class="o">+=</span> <span class="mi">2</span> <span class="c1">// add one element</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">list2</span> <span class="o">+=</span> <span class="mi">2</span> <span class="c1">// add one element</span>
 <span class="lineno">2</span> <span class="n">list2</span> <span class="o">+=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="c1">// add multiple elements</span></code></pre></div>
 
 <p>また、insert(atIndex:) メソッドを使用する方法。index を指定しますが、上書きするのではなく、その要素の場所に新しく値を入れて、前後を調整してくれます。失う要素はないです。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="lineno">2</span> <span class="n">list</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">atIndex</span><span class="o">:</span> <span class="mi">0</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="lineno">2</span> <span class="n">list</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nl">atIndex</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
 <span class="lineno">3</span> <span class="n">list</span> <span class="c1">// [0, 1, 2, 3]</span></code></pre></div>
 
 <h4 id="6.-要素の削除">6. 要素の削除</h4>
@@ -270,21 +266,21 @@
 
 <p>まずは、removeAtIndex()。削除された結果生まれる隙間は後続の要素が埋めてくれます。また、削除された値を返します。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">removedItem</span> <span class="o">=</span> <span class="n">list</span><span class="p">.</span><span class="n">removeAtIndex</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">removedItem</span> <span class="o">=</span> <span class="n">list</span><span class="p">.</span><span class="n">removeAtIndex</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span></code></pre></div>
 
 <p>最後の要素を削除するには、removeLast()。また、削除された値を返します。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">removedItem</span> <span class="o">=</span> <span class="n">list</span><span class="p">.</span><span class="n">removeLast</span><span class="p">()</span></code></pre></div>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">removedItem</span> <span class="o">=</span> <span class="n">list</span><span class="p">.</span><span class="n">removeLast</span><span class="p">()</span></code></pre></div>
 
 <p>全て削除するには、removeAll(keepCapacity:)。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">list</span><span class="p">.</span><span class="n">removeAll</span><span class="p">(</span><span class="n">keepCapacity</span><span class="o">:</span> <span class="nb">true</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">list</span><span class="p">.</span><span class="n">removeAll</span><span class="p">(</span><span class="nl">keepCapacity</span><span class="p">:</span> <span class="nb">true</span><span class="p">)</span></code></pre></div>
 
 <h4 id="7.-要素の範囲選択">7. 要素の範囲選択</h4>
 
 <p>Array の要素を range operator のように選択することができます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 <span class="lineno">2</span> <span class="n">arr</span><span class="p">[</span><span class="mf">0.</span><span class="p">.</span><span class="mf">.2</span><span class="p">]</span> <span class="c1">// [1, 2, 3]</span>
 <span class="lineno">3</span> <span class="n">arr</span><span class="p">[</span><span class="mf">0..2</span><span class="p">]</span>  <span class="c1">// [1, 2]</span>
 <span class="lineno">4</span> <span class="n">arr</span><span class="p">[</span><span class="mf">0..2</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1">// [3, 4, 5]</span>
@@ -296,7 +292,7 @@
 
 <p>グローバル enumerate 関数を使用すれば、index と値の tuple を返してくれます。Array の index を使用したい時に便利です。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
 <span class="lineno">2</span> <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span> <span class="k">in</span> <span class="n">enumerate</span><span class="p">(</span><span class="n">list</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">3</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;\(i) : \(item)&quot;</span><span class="p">)</span>
 <span class="lineno">4</span> <span class="p">}</span>
@@ -310,24 +306,24 @@
 
 <p>ある型の空の Array の作成</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">someInts</span> <span class="o">=</span> <span class="n">Int</span><span class="p">[]()</span> <span class="c1">// count is 0</span></code></pre></div>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">someInts</span> <span class="o">=</span> <span class="n">Int</span><span class="p">[]()</span> <span class="c1">// count is 0</span></code></pre></div>
 
 <p>Array のリセット</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">someInts</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">someInts</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="lineno">2</span> <span class="n">someInts</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1">// empty Int Array</span></code></pre></div>
 
 <p>Array のサイズとデフォルト値を持っての初期化。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">threeDoubles</span> <span class="o">=</span> <span class="n">Dounle</span><span class="p">[](</span><span class="n">count</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">repeatedValue</span><span class="o">:</span> <span class="mf">0.0</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">threeDoubles</span> <span class="o">=</span> <span class="n">Dounle</span><span class="p">[](</span><span class="nl">count</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nl">repeatedValue</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">)</span>
 <span class="lineno">2</span> <span class="c1">// [0.0, 0.0, 0.0]</span>
-<span class="lineno">3</span> <span class="n">var</span> <span class="n">anotherThreeDoubles</span> <span class="o">=</span> <span class="n">Array</span><span class="p">(</span><span class="n">count</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">repeatedValue</span><span class="o">:</span> <span class="mf">2.5</span><span class="p">)</span></code></pre></div>
+<span class="lineno">3</span> <span class="n">var</span> <span class="n">anotherThreeDoubles</span> <span class="o">=</span> <span class="n">Array</span><span class="p">(</span><span class="nl">count</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nl">repeatedValue</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">)</span></code></pre></div>
 
 <h4 id="10.-array-の結合">10. Array の結合</h4>
 
 <p>String と同じ要領で二つの Array を結合できます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">threeDoubles</span> <span class="c1">// [0.0, 0.0, 0.0]</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">threeDoubles</span> <span class="c1">// [0.0, 0.0, 0.0]</span>
 <span class="lineno">2</span> <span class="n">anotherThreeDoubles</span> <span class="c1">// [2.5, 2.5, 2.5]</span>
 <span class="lineno">3</span> <span class="n">var</span> <span class="n">sixDoubles</span> <span class="o">=</span> <span class="n">threeDoubles</span> <span class="o">+</span> <span class="n">anotherThreeDoubles</span>
 <span class="lineno">4</span> <span class="c1">// sixDoubles is inferred as Double[], and equals [0.0, 0.0, 0.0, 2.5, 2.5, 2.5]</span></code></pre></div>
@@ -476,22 +472,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -585,9 +576,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

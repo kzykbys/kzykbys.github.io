@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -224,17 +220,17 @@
 
 <p>クラス等と同じようにプロトコルを定義できます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">SomeProtocol</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">SomeProtocol</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="c1">// protocol definition goes here</span>
 <span class="lineno">3</span> <span class="p">}</span></code></pre></div>
 
 <p>そして、タイプ（クラス・構造体・Enumeration）は、コロンで区切り、プロトコルに準拠していることを準拠(adopt)していることを宣言します。複数ある場合は、カンマで区切ります。クラスにプロトコルを採用したく、そのクラスがスーパークラスを持っている場合は、コロンの後にスーパークラスを書き、その後にカンマで区切りプロトコルを宣言します。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">SomeStructure</span><span class="o">:</span> <span class="n">FirstProtocol</span><span class="p">,</span> <span class="n">AnotherProtocol</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="nl">SomeStructure</span><span class="p">:</span> <span class="n">FirstProtocol</span><span class="p">,</span> <span class="n">AnotherProtocol</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="c1">// structure definition goes here</span>
 <span class="lineno">3</span> <span class="p">}</span>
 <span class="lineno">4</span> 
-<span class="lineno">5</span> <span class="n">class</span> <span class="n">SomeClass</span><span class="o">:</span> <span class="n">SomeSuperclass</span><span class="p">,</span> <span class="n">FirstProtocol</span><span class="p">,</span> <span class="n">AnotherProtocol</span> <span class="p">{</span>
+<span class="lineno">5</span> <span class="k">class</span> <span class="nl">SomeClass</span><span class="p">:</span> <span class="n">SomeSuperclass</span><span class="p">,</span> <span class="n">FirstProtocol</span><span class="p">,</span> <span class="n">AnotherProtocol</span> <span class="p">{</span>
 <span class="lineno">6</span>     <span class="c1">// class definition goes here</span>
 <span class="lineno">7</span> <span class="p">}</span></code></pre></div>
 
@@ -244,43 +240,43 @@
 
 <p>プロパティの要件は、変数として宣言すれば基本的に問題ありません。下記のように読み込み専用か読み込み書き込み可能かを指定します。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">SomeProtocol</span> <span class="p">{</span>
-<span class="lineno">2</span>     <span class="n">var</span> <span class="n">mustBeSettable</span><span class="o">:</span> <span class="n">Int</span> <span class="p">{</span> <span class="n">get</span> <span class="n">set</span> <span class="p">}</span>
-<span class="lineno">3</span>     <span class="n">var</span> <span class="n">doesNotNeedToBeSettable</span><span class="o">:</span> <span class="n">Int</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">SomeProtocol</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="n">var</span> <span class="nl">mustBeSettable</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span> <span class="n">get</span> <span class="n">set</span> <span class="p">}</span>
+<span class="lineno">3</span>     <span class="n">var</span> <span class="nl">doesNotNeedToBeSettable</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
 <span class="lineno">4</span> <span class="p">}</span></code></pre></div>
 
 <p>また、タイププロパティをプロトコルの中で定義する場合は、<code>class</code> キーワードを使用します。これは構造体・Enumeration においては、通常 <code>static</code> を使用しないといけないですが、<code>class</code> で統一して問題ありません。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">AnotherProtocol</span> <span class="p">{</span>
-<span class="lineno">2</span>     <span class="n">class</span> <span class="n">var</span> <span class="n">someTypeProperty</span><span class="o">:</span> <span class="n">Int</span> <span class="p">{</span> <span class="n">get</span> <span class="n">set</span> <span class="p">}</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">AnotherProtocol</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="k">class</span> <span class="n">var</span> <span class="nl">someTypeProperty</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span> <span class="n">get</span> <span class="n">set</span> <span class="p">}</span>
 <span class="lineno">3</span> <span class="p">}</span></code></pre></div>
 
 <p>簡単な例を見てみます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">FullyNamed</span> <span class="p">{</span>
-<span class="lineno">2</span>     <span class="n">var</span> <span class="n">fullName</span><span class="o">:</span> <span class="n">String</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">FullyNamed</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="n">var</span> <span class="nl">fullName</span><span class="p">:</span> <span class="n">String</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
 <span class="lineno">3</span> <span class="p">}</span>
 <span class="lineno">4</span> 
-<span class="lineno">5</span> <span class="k">struct</span> <span class="n">Person</span><span class="o">:</span> <span class="n">FullyNamed</span> <span class="p">{</span>
-<span class="lineno">6</span>     <span class="n">var</span> <span class="n">fullName</span><span class="o">:</span> <span class="n">String</span>
+<span class="lineno">5</span> <span class="k">struct</span> <span class="nl">Person</span><span class="p">:</span> <span class="n">FullyNamed</span> <span class="p">{</span>
+<span class="lineno">6</span>     <span class="n">var</span> <span class="nl">fullName</span><span class="p">:</span> <span class="n">String</span>
 <span class="lineno">7</span> <span class="p">}</span>
-<span class="lineno">8</span> <span class="n">let</span> <span class="n">john</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="n">fullName</span><span class="o">:</span> <span class="s">&quot;John Appleseed&quot;</span><span class="p">)</span>
+<span class="lineno">8</span> <span class="n">let</span> <span class="n">john</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="nl">fullName</span><span class="p">:</span> <span class="s">&quot;John Appleseed&quot;</span><span class="p">)</span>
 <span class="lineno">9</span> <span class="c1">// john.fullName is &quot;John Appleseed&quot;</span></code></pre></div>
 
 <p>これはフルネームを持つべきだというプロトコルです。Person 構造体は、これを Stored プロパティとして定義しています。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">Starship</span><span class="o">:</span> <span class="n">FullyNamed</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">prefix</span><span class="o">:</span> <span class="n">String</span><span class="o">?</span>
-<span class="lineno"> 3</span>     <span class="n">var</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span>
-<span class="lineno"> 4</span>     <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">prefix</span><span class="o">:</span> <span class="n">String</span><span class="o">?</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 5</span>         <span class="n">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-<span class="lineno"> 6</span>         <span class="n">self</span><span class="p">.</span><span class="n">prefix</span> <span class="o">=</span> <span class="n">prefix</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="nl">Starship</span><span class="p">:</span> <span class="n">FullyNamed</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">var</span> <span class="nl">prefix</span><span class="p">:</span> <span class="n">String</span><span class="o">?</span>
+<span class="lineno"> 3</span>     <span class="n">var</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span>
+<span class="lineno"> 4</span>     <span class="n">init</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">prefix</span><span class="p">:</span> <span class="n">String</span><span class="o">?</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 5</span>         <span class="nb">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<span class="lineno"> 6</span>         <span class="nb">self</span><span class="p">.</span><span class="n">prefix</span> <span class="o">=</span> <span class="n">prefix</span>
 <span class="lineno"> 7</span>     <span class="p">}</span>
-<span class="lineno"> 8</span>     <span class="n">var</span> <span class="n">fullName</span><span class="o">:</span> <span class="n">String</span> <span class="p">{</span>
+<span class="lineno"> 8</span>     <span class="n">var</span> <span class="nl">fullName</span><span class="p">:</span> <span class="n">String</span> <span class="p">{</span>
 <span class="lineno"> 9</span>     <span class="k">return</span> <span class="p">(</span><span class="n">prefix</span> <span class="o">?</span> <span class="n">prefix</span><span class="o">!</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">name</span>
 <span class="lineno">10</span>     <span class="p">}</span>
 <span class="lineno">11</span> <span class="p">}</span>
-<span class="lineno">12</span> <span class="n">var</span> <span class="n">ncc1701</span> <span class="o">=</span> <span class="n">Starship</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;Enterprise&quot;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">:</span> <span class="s">&quot;USS&quot;</span><span class="p">)</span>
+<span class="lineno">12</span> <span class="n">var</span> <span class="n">ncc1701</span> <span class="o">=</span> <span class="n">Starship</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Enterprise&quot;</span><span class="p">,</span> <span class="nl">prefix</span><span class="p">:</span> <span class="s">&quot;USS&quot;</span><span class="p">)</span>
 <span class="lineno">13</span> <span class="c1">// ncc1701.fullName is &quot;USS Enterprise&quot;</span></code></pre></div>
 
 <p>この Starship クラスは、フルネームを Computed プロパティとして定義しています。</p>
@@ -293,19 +289,19 @@
 
 <p>タイプメソッドの場合は、タイププロパティの時と同じように <code>class</code> キーワードを先に記述します。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">SomeProtocol</span> <span class="p">{</span>
-<span class="lineno">2</span>     <span class="n">class</span> <span class="n">func</span> <span class="n">someTypeMethod</span><span class="p">()</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">SomeProtocol</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="k">class</span> <span class="n">func</span> <span class="n">someTypeMethod</span><span class="p">()</span>
 <span class="lineno">3</span> <span class="p">}</span></code></pre></div>
 
 <p>1 つ例をみてみます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">RandomNumberGenerator</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">RandomNumberGenerator</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">func</span> <span class="n">random</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Double</span>
 <span class="lineno">3</span> <span class="p">}</span></code></pre></div>
 
 <p>インスタンスメソッドのため、<code>class</code> はありません。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">LinearCongruentialGenerator</span><span class="o">:</span> <span class="n">RandomNumberGenerator</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="nl">LinearCongruentialGenerator</span><span class="p">:</span> <span class="n">RandomNumberGenerator</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">lastRandom</span> <span class="o">=</span> <span class="mf">42.0</span>
 <span class="lineno"> 3</span>     <span class="n">let</span> <span class="n">m</span> <span class="o">=</span> <span class="mf">139968.0</span>
 <span class="lineno"> 4</span>     <span class="n">let</span> <span class="n">a</span> <span class="o">=</span> <span class="mf">3877.0</span>
@@ -325,20 +321,20 @@
 
 <p>メソッドがそのインスタンスを変更する場合もあります。構造体・Enumeratio のインスタンスメソッドの場合、<code>mutating</code> キーワードを使用します。クラスの場合は、必要がありませんが、プロトコルは構造体や Enumeration でも使用されるので、プロトコル側では <code>mutating</code> を書いておくことで、全てのケースに対応できます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">Togglable</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">Togglable</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">toggle</span><span class="p">()</span>
 <span class="lineno">3</span> <span class="p">}</span></code></pre></div>
 
 <p>toggle とはあるステートを変更することです。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="k">enum</span> <span class="n">OnOffSwitch</span><span class="o">:</span> <span class="n">Togglable</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">enum</span> <span class="nl">OnOffSwitch</span><span class="p">:</span> <span class="n">Togglable</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="k">case</span> <span class="n">Off</span><span class="p">,</span> <span class="n">On</span>
 <span class="lineno"> 3</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">toggle</span><span class="p">()</span> <span class="p">{</span>
-<span class="lineno"> 4</span>         <span class="k">switch</span> <span class="n">self</span> <span class="p">{</span>
-<span class="lineno"> 5</span>         <span class="k">case</span> <span class="n">Off</span>:
-<span class="lineno"> 6</span>             <span class="n">self</span> <span class="o">=</span> <span class="n">On</span>
-<span class="lineno"> 7</span>         <span class="k">case</span> <span class="n">On</span>:
-<span class="lineno"> 8</span>             <span class="n">self</span> <span class="o">=</span> <span class="n">Off</span>
+<span class="lineno"> 4</span>         <span class="k">switch</span> <span class="nb">self</span> <span class="p">{</span>
+<span class="lineno"> 5</span>         <span class="k">case</span> <span class="nl">Off</span><span class="p">:</span>
+<span class="lineno"> 6</span>             <span class="nb">self</span> <span class="o">=</span> <span class="n">On</span>
+<span class="lineno"> 7</span>         <span class="k">case</span> <span class="nl">On</span><span class="p">:</span>
+<span class="lineno"> 8</span>             <span class="nb">self</span> <span class="o">=</span> <span class="n">Off</span>
 <span class="lineno"> 9</span>         <span class="p">}</span>
 <span class="lineno">10</span>     <span class="p">}</span>
 <span class="lineno">11</span> <span class="p">}</span>
@@ -492,22 +488,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -601,9 +592,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

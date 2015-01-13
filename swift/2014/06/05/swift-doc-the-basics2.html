@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -222,27 +218,27 @@
 
 <p>Tuples は、複数の値を 1 つにまとめるためのもの。これにより、関数から複数の値を返してもらうことができる。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">http404Err</span> <span class="o">=</span> <span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="s">&quot;Not Found&quot;</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">http404Err</span> <span class="o">=</span> <span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="s">&quot;Not Found&quot;</span><span class="p">)</span></code></pre></div>
 
 <p>これは、(Int, String) 型の tuple と言うこともできる。どんな組み合わせでも作成することができる。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="p">(</span><span class="n">statusCode</span><span class="p">,</span> <span class="n">statusMsg</span><span class="p">)</span> <span class="o">=</span> <span class="n">http404Err</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="p">(</span><span class="n">statusCode</span><span class="p">,</span> <span class="n">statusMsg</span><span class="p">)</span> <span class="o">=</span> <span class="n">http404Err</span>
 <span class="lineno">2</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;The status code is \(statusCode)&quot;</span><span class="p">)</span> <span class="c1">// 404</span>
 <span class="lineno">3</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;The status msg is \(statusMsg)&quot;</span><span class="p">)</span>  <span class="c1">// Not Found</span></code></pre></div>
 
 <p>このように、各値へアクセスできる。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="p">(</span><span class="n">justCode</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">http404Err</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="p">(</span><span class="n">justCode</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">http404Err</span>
 <span class="lineno">2</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;The status code is \(statusCode)&quot;</span><span class="p">)</span>  <span class="c1">// 404</span></code></pre></div>
 
 <p>興味がない値に関しては、_ を使用することで名前をつける必要がない。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;The status code \(http404Err.0)&quot;</span><span class="p">)</span> <span class="c1">// 404</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;The status code \(http404Err.0)&quot;</span><span class="p">)</span> <span class="c1">// 404</span>
 <span class="lineno">2</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;The status code \(http404Err.1)&quot;</span><span class="p">)</span> <span class="c1">// Not Found</span></code></pre></div>
 
 <p>配列の index のように、数字でアクセスすることもできる。0 スタート。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">http404Err</span> <span class="o">=</span> <span class="p">(</span><span class="n">statusCode</span><span class="o">:</span> <span class="mi">404</span><span class="p">,</span> <span class="n">statusMsg</span><span class="o">:</span> <span class="s">&quot;Not Found&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">http404Err</span> <span class="o">=</span> <span class="p">(</span><span class="nl">statusCode</span><span class="p">:</span> <span class="mi">404</span><span class="p">,</span> <span class="nl">statusMsg</span><span class="p">:</span> <span class="s">&quot;Not Found&quot;</span><span class="p">)</span>
 <span class="lineno">2</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;The status code \(http404Err.statusCode)&quot;</span><span class="p">)</span> <span class="c1">// 404</span>
 <span class="lineno">3</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;The status code \(http404Err.statusMsg)&quot;</span><span class="p">)</span> <span class="c1">// Not Found</span></code></pre></div>
 
@@ -254,13 +250,13 @@
 
 <p>Swift には、Optionals という概念がある。名詞ぽい。これはある変数がある型の値を持つか、それとも全く持たないか、ということを明示的に示すもの。Optionals は型に ? を付けて宣言する。例えば、Int? といった感じ。Objective-C で nil にメッセージを送ってよくランタイムエラーを起こしてたので、堅牢に書くためのものだと思います。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="c1">// let possibleNum = &quot;234&quot;</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="c1">// let possibleNum = &quot;234&quot;</span>
 <span class="lineno">2</span> <span class="n">let</span> <span class="n">possibleNum</span> <span class="o">=</span> <span class="s">&quot;234dsdfa&quot;</span>
 <span class="lineno">3</span> <span class="n">let</span> <span class="n">convertedNum</span> <span class="o">=</span> <span class="n">possibleNum</span><span class="p">.</span><span class="n">toInt</span><span class="p">()</span></code></pre></div>
 
 <p>この例では、convertedNum  は、Int? と推論されている。toInt() メソッドは、String を Int に変換することができれば、Int を返し、そうでなければ、nil を返す。つまり、Optionals です。Optionals は if statement で値を持っているか確認することができる。ただの Int は、上記でみたように、if のような条件分岐で使用することができないが、Optionals (Int?) は使用可能。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="k">if</span> <span class="n">convertedNum</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">if</span> <span class="n">convertedNum</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="cm">/* we can access either ways, the ! means forced unwrapping */</span>
 <span class="lineno"> 3</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;\(possibleNum) has an integer value of \(convertedNum!)&quot;</span><span class="p">)</span> <span class="c1">// ok</span>
 <span class="lineno"> 4</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;\(possibleNum) has an integer value of \(convertedNum)&quot;</span><span class="p">)</span>  <span class="c1">// ok?</span>
@@ -277,7 +273,7 @@
 
 <p>Optional Binding は、Optional が値を持っているか確認し、もし持っているなら、その値を一時的な変数かコンスタントに保存して利用するというもの。if か while で使われる。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">possibleNum</span>  <span class="o">=</span> <span class="s">&quot;234&quot;</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">possibleNum</span>  <span class="o">=</span> <span class="s">&quot;234&quot;</span>
 <span class="lineno">2</span> 
 <span class="lineno">3</span> <span class="k">if</span> <span class="n">let</span> <span class="n">actualValue</span> <span class="o">=</span> <span class="n">possibleNum</span><span class="p">.</span><span class="n">toInt</span><span class="p">()</span> <span class="p">{</span>
 <span class="lineno">4</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;\(possibleNum) has an integer value of \(actualValue)&quot;</span><span class="p">)</span>
@@ -291,21 +287,21 @@
 
 <p>Objective-C の nil と Swift の nil は異なるもの。前者は、存在しないオブジェクトへのポインターですが、Swift では、ポインターではなく、ある型の値が欠落しているしてるということを表す。Optionals でないデータに nil をセットすることはできないので、ある変数/コンスタントが nil になることがある場合には、Optionals として宣言する必要がある。Optionals には、値が存在しない場合には、nil を明示的に代入してもよいし、特に指定しなければ、nil がセットされる。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">NotOptional</span><span class="o">:</span> <span class="n">Int</span>  <span class="o">=</span> <span class="mi">30</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="nl">NotOptional</span><span class="p">:</span> <span class="n">Int</span>  <span class="o">=</span> <span class="mi">30</span>
 <span class="lineno">2</span> <span class="n">NotOptional</span>           <span class="o">=</span> <span class="nb">nil</span> <span class="c1">// error, because NotOptional is not optional</span>
-<span class="lineno">3</span> <span class="n">var</span> <span class="n">YesOptional</span><span class="o">:</span> <span class="n">Int</span><span class="o">?</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="lineno">3</span> <span class="n">var</span> <span class="nl">YesOptional</span><span class="p">:</span> <span class="n">Int</span><span class="o">?</span> <span class="o">=</span> <span class="mi">30</span>
 <span class="lineno">4</span> <span class="n">YesOptional</span>           <span class="o">=</span> <span class="nb">nil</span> <span class="c1">// no problem, indicating explicitly the lack of value</span>
-<span class="lineno">5</span> <span class="n">var</span> <span class="n">AutoOptional</span><span class="o">:</span> <span class="n">Int</span><span class="o">?</span>      <span class="c1">// AutoOptional is set to nil</span></code></pre></div>
+<span class="lineno">5</span> <span class="n">var</span> <span class="nl">AutoOptional</span><span class="p">:</span> <span class="n">Int</span><span class="o">?</span>      <span class="c1">// AutoOptional is set to nil</span></code></pre></div>
 
 <h4 id="14.-implicitly-unwrapped-optionals">14. Implicitly unwrapped optionals</h4>
 
 <p>Optionals に対して、一度値がセットされた後は、常に値を持つと仮定することができる場合には、Implicitly unwrapped optionals というものが使える。これは、Optionals に対しても、自動的に unwrap (値にアクセス) する権限を与えるという風に考えることができる。つまり、値にアクセスする際に、! を付与する必要がない。Implicitly unwrapped optionals を使用するには、? の代わりに ! を宣言時にタイプする。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">possibleStr</span><span class="o">:</span> <span class="n">String</span><span class="o">?</span> <span class="o">=</span> <span class="s">&quot;A optional String&quot;</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="nl">possibleStr</span><span class="p">:</span> <span class="n">String</span><span class="o">?</span> <span class="o">=</span> <span class="s">&quot;A optional String&quot;</span>
 <span class="lineno">2</span> <span class="n">println</span><span class="p">(</span><span class="n">possibleStr</span><span class="o">!</span><span class="p">);</span> <span class="c1">// this is good</span>
 <span class="lineno">3</span> <span class="n">println</span><span class="p">(</span><span class="n">possibleStr</span><span class="p">);</span>  <span class="c1">// this works too...</span>
 <span class="lineno">4</span> 
-<span class="lineno">5</span> <span class="n">let</span> <span class="n">assumedStr</span><span class="o">:</span> <span class="n">String</span><span class="o">!</span> <span class="o">=</span> <span class="s">&quot;An implicitly unwrapped optional String&quot;</span>
+<span class="lineno">5</span> <span class="n">let</span> <span class="nl">assumedStr</span><span class="p">:</span> <span class="n">String</span><span class="o">!</span> <span class="o">=</span> <span class="s">&quot;An implicitly unwrapped optional String&quot;</span>
 <span class="lineno">6</span> <span class="n">println</span><span class="p">(</span><span class="n">assumedStr</span><span class="p">);</span>  <span class="c1">// no !</span>
 <span class="lineno">7</span> <span class="n">println</span><span class="p">(</span><span class="n">assumedStr</span><span class="o">!</span><span class="p">);</span> <span class="c1">// don’t have to put ! anyway, works tho</span></code></pre></div>
 
@@ -315,7 +311,7 @@
 
 <p>Assertions は、値がある条件を満たしているかをチェックするもの。もし、その条件を満たしていなかったら、プログラムは終了する。デバック時に役に立つ。assert() 関数を使用する。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">age</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">age</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
 <span class="lineno">2</span> <span class="n">assert</span><span class="p">(</span><span class="n">age</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&quot;Age should be positive value&quot;</span><span class="p">)</span>
 <span class="lineno">3</span> 
 <span class="lineno">4</span> <span class="cm">/* console output:</span>
@@ -468,22 +464,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -577,9 +568,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

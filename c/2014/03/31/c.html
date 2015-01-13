@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -220,22 +216,22 @@
 
 <p>switch 文の default fall through は意図して使われることは 3% 程度の割合でしかありません。下記のコードのように、意図して fall through を行っている場合以外は、各 case に break が必要です。</p>
 
-<div class="highlight"><pre><code class="c"><span class="lineno">1</span> <span class="c1">// desired fall through’s switch statement</span>
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="c1">// desired fall through’s switch statement</span>
 <span class="lineno">2</span> <span class="k">switch</span> <span class="p">(</span> <span class="n">operator</span><span class="o">-&gt;</span><span class="n">num_of_operands</span> <span class="p">)</span> <span class="p">{</span>
-<span class="lineno">3</span>      <span class="k">case</span> <span class="mi">2</span>: <span class="n">process_operand</span> <span class="p">(</span> <span class="n">operator</span><span class="o">-&gt;</span><span class="n">operator_2</span> <span class="p">)</span>
+<span class="lineno">3</span>      <span class="k">case</span> <span class="mi">2</span><span class="o">:</span> <span class="n">process_operand</span> <span class="p">(</span> <span class="n">operator</span><span class="o">-&gt;</span><span class="n">operator_2</span> <span class="p">)</span>
 <span class="lineno">4</span>               <span class="c1">// Fall through </span>
-<span class="lineno">5</span>      <span class="k">case</span> <span class="mi">1</span>: <span class="n">process_operand</span> <span class="p">(</span> <span class="n">operator</span><span class="o">-&gt;</span><span class="n">operator_1</span> <span class="p">)</span>
+<span class="lineno">5</span>      <span class="k">case</span> <span class="mi">1</span><span class="o">:</span> <span class="n">process_operand</span> <span class="p">(</span> <span class="n">operator</span><span class="o">-&gt;</span><span class="n">operator_1</span> <span class="p">)</span>
 <span class="lineno">6</span>      <span class="k">break</span><span class="p">;</span>
 <span class="lineno">7</span> <span class="p">}</span></code></pre></div>
 
 <p><strong>Default fall through</strong></p>
 
-<div class="highlight"><pre><code class="c"><span class="lineno"> 1</span> <span class="n">network</span> <span class="nf">code</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno"> 1</span> <span class="n">network</span> <span class="nf">code</span><span class="p">()</span> <span class="p">{</span>
 <span class="lineno"> 2</span>      <span class="k">switch</span> <span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 3</span>           <span class="k">case</span> <span class="n">THING1</span>:
+<span class="lineno"> 3</span>           <span class="k">case</span> <span class="nl">THING1</span><span class="p">:</span>
 <span class="lineno"> 4</span>                <span class="n">doit1</span><span class="p">();</span>
 <span class="lineno"> 5</span>                <span class="k">break</span><span class="p">;</span>
-<span class="lineno"> 6</span>           <span class="k">case</span> <span class="n">THING2</span>:
+<span class="lineno"> 6</span>           <span class="k">case</span> <span class="nl">THING2</span><span class="p">:</span>
 <span class="lineno"> 7</span>                <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">STUFF</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 8</span>                     <span class="n">do_first_stuff</span><span class="p">();</span>
 <span class="lineno"> 9</span>  
@@ -246,7 +242,7 @@
 <span class="lineno">14</span>                <span class="p">}</span>
 <span class="lineno">15</span>                <span class="n">initialize_modes_pointer</span><span class="p">();</span>  <span class="c1">// it’s not occurred when y == OTHER_STUFF!!</span>
 <span class="lineno">16</span>                <span class="k">break</span><span class="p">;</span>
-<span class="lineno">17</span>           <span class="nl">default:</span>
+<span class="lineno">17</span>           <span class="k">default</span><span class="o">:</span>
 <span class="lineno">18</span>                <span class="n">processing</span><span class="p">();</span>                              
 <span class="lineno">19</span>      <span class="p">}</span>
 <span class="lineno">20</span> <span class="p">}</span></code></pre></div>
@@ -278,7 +274,7 @@
 
 <h3 id="sin-of-omission-(-言語はすべきにもかかわらず、していない問題-)">Sin of Omission ( 言語はすべきにもかかわらず、していない問題 )</h3>
 
-<div class="highlight"><pre><code class="c"><span class="lineno">1</span> <span class="kt">char</span> <span class="o">*</span> <span class="nf">localized_time</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span> <span class="n">filename</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="kt">char</span> <span class="o">*</span> <span class="nf">localized_time</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span> <span class="n">filename</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">2</span>      <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">120</span><span class="p">];</span>
 <span class="lineno">3</span>      <span class="p">.</span>
 <span class="lineno">4</span>      <span class="p">.</span>
@@ -288,12 +284,12 @@
 
 <p>このコードは、上手く機能しません。C言語では、Automatic 変数 は、スタック上でメモリが割り当てられます。そして、この関数が終了すると、そのスタックは再利用され、オバーライドされます。そのため、ポインタを返したとしても、期待した結果は得られません。いくつかの解決策として、 </p>
 
-<div class="highlight"><pre><code class="c"><span class="lineno">1</span> <span class="c1">// string literal のポインタを返す方法</span>
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="c1">// string literal のポインタを返す方法</span>
 <span class="lineno">2</span> <span class="n">cahr</span> <span class="o">*</span><span class="nf">func</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="s">&quot;Only works for simple strings&quot;</span><span class="p">;</span> <span class="p">}</span></code></pre></div>
 
 <p>もちろんこれは動的に文字列を返したいときには役に立ちません。 </p>
 
-<div class="highlight"><pre><code class="c"><span class="lineno">1</span> <span class="c1">// グローバル変数</span>
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="c1">// グローバル変数</span>
 <span class="lineno">2</span> <span class="kt">char</span> <span class="o">*</span><span class="nf">fun</span><span class="p">()</span> <span class="p">{</span>
 <span class="lineno">3</span>      <span class="n">my_global_array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">.</span> <span class="p">.</span> <span class="p">.</span> 
 <span class="lineno">4</span>       
@@ -302,7 +298,7 @@
 
 <p>これも簡潔で簡単ですが、誰もがこのグローバル変数を変更してしまいます。 </p>
 
-<div class="highlight"><pre><code class="c"><span class="lineno">1</span> <span class="c1">// static </span>
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="c1">// static </span>
 <span class="lineno">2</span> <span class="kt">char</span> <span class="o">*</span><span class="nf">fun</span><span class="p">()</span> <span class="p">{</span>
 <span class="lineno">3</span>      <span class="k">static</span> <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
 <span class="lineno">4</span>      <span class="p">.</span>
@@ -313,7 +309,7 @@
 
 <p>static 配列を使用すれば、誰もが上書きしてしまう問題は回避することができます。プログラムがポインタを与えた関数だけ、この staic 配列を変更できます。しかし、他の関数がが上書きする前に、コピーする等の手間がかかります。 </p>
 
-<div class="highlight"><pre><code class="c"><span class="lineno">1</span> <span class="c1">// 明示的にメモリの割り当て</span>
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="c1">// 明示的にメモリの割り当て</span>
 <span class="lineno">2</span> <span class="kt">char</span> <span class="o">*</span><span class="nf">fun</span><span class="p">()</span> <span class="p">{</span>
 <span class="lineno">3</span>      <span class="kt">char</span> <span class="o">*</span><span class="n">s</span> <span class="o">=</span> <span class="n">mallo</span><span class="p">(</span><span class="mi">120</span><span class="p">);</span>
 <span class="lineno">4</span>      <span class="p">.</span>
@@ -324,7 +320,7 @@
 
 <p>static 配列を使用した時と同じように利点があり、かつ、この関数が何度呼び出されても、前の呼び出しの結果を上書きすることがありません。しかし、プログラムがメモリ管理をしなければなりません。プログラムが複雑になればなるほど、free を呼び出すことを頻繁に忘れてしまうでしょう。 </p>
 
-<div class="highlight"><pre><code class="c"><span class="lineno"> 1</span> <span class="c1">// 呼び出し元が、メモリ管理</span>
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno"> 1</span> <span class="c1">// 呼び出し元が、メモリ管理</span>
 <span class="lineno"> 2</span> <span class="kt">void</span> <span class="nf">func</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span> <span class="n">result</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 3</span>      <span class="p">.</span> <span class="p">.</span> <span class="p">.</span> 
 <span class="lineno"> 4</span>      <span class="n">strncpy</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="err">“</span><span class="n">That</span><span class="err">’</span><span class="n">d</span> <span class="n">be</span> <span class="n">in</span> <span class="n">the</span> <span class="n">data</span> <span class="n">segment</span><span class="p">,</span> <span class="n">Bob</span><span class="err">”</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
@@ -485,22 +481,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -594,9 +585,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

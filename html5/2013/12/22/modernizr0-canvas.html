@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -214,13 +210,13 @@
 					<div class="post">
 						<p>Modernizr は MIT ライセンスのオープンソースライブラリ。HTML5/CSS3のサポートがあるかどうかを簡単に判断することができる。</p>
 
-<div class="highlight"><pre><code class="html"><span class="lineno">1</span> <span class="nt">&lt;head&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="lineno">1</span> <span class="nt">&lt;head&gt;</span>
 <span class="lineno">2</span> <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
 <span class="lineno">3</span> <span class="nt">&lt;title&gt;</span>Dive Into HTML5<span class="nt">&lt;/title&gt;</span>
 <span class="lineno">4</span> <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;modernizr.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="lineno">5</span> <span class="nt">&lt;/head&gt;</span></code></pre></div>
 
-<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="k">if</span> <span class="p">(</span><span class="nx">Modernizr</span><span class="p">.</span><span class="nx">canvas</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno">1</span> <span class="k">if</span> <span class="p">(</span><span class="nx">Modernizr</span><span class="p">.</span><span class="nx">canvas</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">2</span> <span class="c1">// let&#39;s draw some shapes!</span>
 <span class="lineno">3</span>  
 <span class="lineno">4</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -232,7 +228,7 @@
 
 <p>内部では、</p>
 
-<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="k">if</span> <span class="p">(</span><span class="nx">Modernizr</span><span class="p">.</span><span class="nx">canvas</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno">1</span> <span class="k">if</span> <span class="p">(</span><span class="nx">Modernizr</span><span class="p">.</span><span class="nx">canvas</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">2</span> <span class="kd">function</span> <span class="nx">supports_canvas_text</span><span class="p">()</span> <span class="p">{</span>
 <span class="lineno">3</span>  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">supports_canvas</span><span class="p">())</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="p">}</span>
 <span class="lineno">4</span>  <span class="kd">var</span> <span class="nx">dummy_canvas</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;canvas&#39;</span><span class="p">);</span> <span class="kd">var</span> <span class="nx">context</span> <span class="o">=</span> <span class="nx">dummy_canvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s1">&#39;2d&#39;</span><span class="p">);</span>
@@ -385,22 +381,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -494,9 +485,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

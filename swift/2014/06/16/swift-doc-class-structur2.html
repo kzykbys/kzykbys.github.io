@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -224,7 +220,7 @@
 
 <p>Dictionary が変数やコンスタントに代入された時、また関数やメソッドの引数として渡された時には、キー/値はコピーして渡されます。キーや値がリファレンスタイプの時は、そのリファレンスがコピーされます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">ages</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;Peter&quot;</span><span class="o">:</span> <span class="mi">23</span><span class="p">,</span> <span class="s">&quot;Wei&quot;</span><span class="o">:</span> <span class="mi">35</span><span class="p">,</span> <span class="s">&quot;Anish&quot;</span><span class="o">:</span> <span class="mi">65</span><span class="p">,</span> <span class="s">&quot;Katya&quot;</span><span class="o">:</span> <span class="mi">19</span><span class="p">]</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">ages</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;Peter&quot;</span><span class="o">:</span> <span class="mi">23</span><span class="p">,</span> <span class="s">&quot;Wei&quot;</span><span class="o">:</span> <span class="mi">35</span><span class="p">,</span> <span class="s">&quot;Anish&quot;</span><span class="o">:</span> <span class="mi">65</span><span class="p">,</span> <span class="s">&quot;Katya&quot;</span><span class="o">:</span> <span class="mi">19</span><span class="p">]</span>
 <span class="lineno">2</span> <span class="n">var</span> <span class="n">copiedAges</span> <span class="o">=</span> <span class="n">ages</span>
 <span class="lineno">3</span> 
 <span class="lineno">4</span> <span class="n">copiedAges</span><span class="p">[</span><span class="s">&quot;Peter&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">24</span>
@@ -235,7 +231,7 @@
 
 <p>配列の代入とコピーはちょっと複雑です。配列が、変数やコンスタントに代入されるか、関数やメソッドの引数として渡された場合、&quot;この時点&quot;では配列はリファレンスとして渡されます。つまり、同じメモリ領域をシェアしています。配列の要素の値を変更したら、他のリファレンスしている変数等から確認することができます。下記の例では、a[0]を変更すると、b や c からも変更を確認することができます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">var</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">var</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="lineno"> 2</span> <span class="n">var</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
 <span class="lineno"> 3</span> <span class="n">var</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span>
 <span class="lineno"> 4</span> 
@@ -249,7 +245,7 @@
 
 <p>しかし、配列の長さを変える(要素の削除、追加)を伴う時には、配列がコピーされます。この実際に配列の長さを変更した際に、コピーされます。下記の例では、a 配列の長さを append() で変えています。そのため、b と c はこの時点で 古い a (a -&gt; (1, 2, 3)) のコピーを参照しています。したがって、a の値を変更しても b と c からは変更を確認することができません。ちなみに、この b と c は同じ配列のリファレンスを持っています。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">a</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">a</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="lineno">2</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">777</span>
 <span class="lineno">3</span> <span class="n">println</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="lineno">4</span> <span class="c1">// 777</span>
@@ -260,11 +256,11 @@
 
 <p>上記でみたように、いくつかの変数が同じ配列へのリファレンスを持っていると、ひとつの変数から配列に変更を与えると、他のリファレンスから参照した場合にも、その変更が適応されていまいます。関数等に配列を渡す際に、その変数が持つリファレンスがプログラムの中で唯一の参照元であるということを確認する方法があります。それが、unshare メソッドです。このメソッドは、変数にのみ使用できます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">b</span><span class="p">.</span><span class="n">unshare</span><span class="p">()</span></code></pre></div>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">b</span><span class="p">.</span><span class="n">unshare</span><span class="p">()</span></code></pre></div>
 
 <p>現在、b と c は同じリファレンスを持っています。そのため、b を変更すると c からその配列を参照した際に、b 側で行った変更が、c 側からも確認できます。これが好ましくない場合に、この unshare メソッドを使用します。この操作により、b へ新しいこの配列がコピーされ、b で b が持つ配列を変更しても、c へは影響を与えません。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">105</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">105</span>
 <span class="lineno">2</span> <span class="n">println</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="lineno">3</span> <span class="c1">// 777</span>
 <span class="lineno">4</span> <span class="n">println</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -274,7 +270,7 @@
 
 <p>ある 2 つの配列を参照してる変数に対して、同じ配列を参照しているかをチェックするには、===/!== オペレーターを使用します。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">if</span> <span class="n">b</span> <span class="o">===</span> <span class="n">c</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">if</span> <span class="n">b</span> <span class="o">===</span> <span class="n">c</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;b and c still share the same array elements.&quot;</span><span class="p">)</span>
 <span class="lineno">3</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 <span class="lineno">4</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;b and c now refer to two independent sets of array elements.&quot;</span><span class="p">)</span>
@@ -283,8 +279,8 @@
 
 <p>配列が代入された時点で(長さを変えた時点ではなく)、配列のコピーを実行して欲しい場合には、copy メソッドを使用します。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;Mohsen&quot;</span><span class="p">,</span> <span class="s">&quot;Hilary&quot;</span><span class="p">,</span> <span class="s">&quot;Justyn&quot;</span><span class="p">,</span> <span class="s">&quot;Amy&quot;</span><span class="p">,</span> <span class="s">&quot;Rich&quot;</span><span class="p">,</span> <span class="s">&quot;Graham&quot;</span><span class="p">,</span> <span class="s">&quot;Vic&quot;</span><span class="p">]</span>
-<span class="lineno">2</span> <span class="n">var</span> <span class="n">copiedNames</span> <span class="o">=</span> <span class="n">names</span><span class="p">.</span><span class="n">copy</span><span class="p">()</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;Mohsen&quot;</span><span class="p">,</span> <span class="s">&quot;Hilary&quot;</span><span class="p">,</span> <span class="s">&quot;Justyn&quot;</span><span class="p">,</span> <span class="s">&quot;Amy&quot;</span><span class="p">,</span> <span class="s">&quot;Rich&quot;</span><span class="p">,</span> <span class="s">&quot;Graham&quot;</span><span class="p">,</span> <span class="s">&quot;Vic&quot;</span><span class="p">]</span>
+<span class="lineno">2</span> <span class="n">var</span> <span class="n">copiedNames</span> <span class="o">=</span> <span class="n">names</span><span class="p">.</span><span class="k">copy</span><span class="p">()</span>
 <span class="lineno">3</span> 
 <span class="lineno">4</span> <span class="n">copiedNames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;Mo&quot;</span>
 <span class="lineno">5</span> <span class="n">println</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -436,22 +432,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -545,9 +536,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

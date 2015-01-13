@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -218,7 +214,7 @@
 
 <p>この2つの関数は文字列から特定の文字を探し出します。strchr は前(左)から、strrchr は後ろ（右）から検索。もし検索している文字が文字列の中にない場合は、NULLを返します。発見した場合には、その文字へのポインタを返します。</p>
 
-<div class="highlight"><pre><code class="c"><span class="lineno"> 1</span> <span class="kt">char</span> <span class="n">s1</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;I am the one, the only one.&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno"> 1</span> <span class="kt">char</span> <span class="n">s1</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;I am the one, the only one.&quot;</span><span class="p">;</span>
 <span class="lineno"> 2</span>     <span class="kt">char</span> <span class="o">*</span><span class="n">ptr1</span><span class="p">,</span> <span class="o">*</span><span class="n">ptr2</span><span class="p">;</span>
 <span class="lineno"> 3</span>     
 <span class="lineno"> 4</span>     <span class="n">ptr1</span> <span class="o">=</span> <span class="n">strchr</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="sc">&#39;o&#39;</span><span class="p">);</span>
@@ -250,7 +246,7 @@
 
 <p>strstr() は文字列の中から他の文字列を探し出します。例えば、cat が concatenate に含まれているのかを判断します。 strchr() / strrchr() と同じように、発見した場合にはそのアドレスを返し、そうでない場合には、NULL を返します。</p>
 
-<div class="highlight"><pre><code class="c"><span class="lineno"> 1</span> <span class="kt">char</span> <span class="n">a</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;cat&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno"> 1</span> <span class="kt">char</span> <span class="n">a</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;cat&quot;</span><span class="p">;</span>
 <span class="lineno"> 2</span>     <span class="kt">char</span> <span class="n">b</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;cattle&quot;</span><span class="p">;</span>
 <span class="lineno"> 3</span>     <span class="kt">char</span> <span class="n">c</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;concatenate&quot;</span><span class="p">;</span>
 <span class="lineno"> 4</span>     <span class="kt">char</span> <span class="n">d</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;fooboar&quot;</span><span class="p">;</span>
@@ -279,7 +275,7 @@
 
 <p>この2つの関数は、ある文字セットがある文字列に含まれているかを判断します。例えば、ある文字列が全て数字であるかを判断する際に、役に立ちます。そして、いくつの文字を文字列の中からチェックしたかを返します。</p>
 
-<div class="highlight"><pre><code class="c"><span class="lineno"> 1</span> <span class="kt">char</span> <span class="n">sentence</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;Hello, I am Kazuya!&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno"> 1</span> <span class="kt">char</span> <span class="n">sentence</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;Hello, I am Kazuya!&quot;</span><span class="p">;</span>
 <span class="lineno"> 2</span>     <span class="kt">char</span> <span class="n">nonsense</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;~*%#&quot;</span><span class="p">;</span>
 <span class="lineno"> 3</span>     <span class="kt">char</span> <span class="n">letters</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ\</span>
 <span class="lineno"> 4</span> <span class="s">                      abcdefghijklmnopqrstuvwxyz&quot;</span><span class="p">;</span>
@@ -311,7 +307,7 @@
 
 <p>この関数は、strcspn()と似ています。文字セットに含まれている文字を発見するまで、文字列を検索します。strcspn()と違うのは、いくつの文字をスキップしたのかを返すのではなく、その発見した文字へのポインタを返します。この関数は、区切り文字の位置を見つけたりする際に使われます。strchr()は、一度の検索にある文字１つを検索しますが、strpbrk()は、文字セットの中の全ての文字を検索することができます。</p>
 
-<div class="highlight"><pre><code class="c"><span class="lineno"> 1</span> <span class="kt">int</span> <span class="n">num_sentences</span><span class="p">;</span>
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno"> 1</span> <span class="kt">int</span> <span class="n">num_sentences</span><span class="p">;</span>
 <span class="lineno"> 2</span>     <span class="kt">int</span> <span class="nf">count_sentences</span><span class="p">();</span>
 <span class="lineno"> 3</span>     
 <span class="lineno"> 4</span>     <span class="n">num_sentences</span> <span class="o">=</span> <span class="n">count_sentences</span><span class="p">();</span>
@@ -360,7 +356,7 @@
 
 <p>strtok()関数は便利な関数です。ユーザーのインプットがカンマ区切りで入力されているような場合に、よく使われます。tokとはトークンのことです。私達が求めているものをトークンと呼ぶようです。下のコードの例では、出力する数字です。strtok()はターゲットの文字列とdelimitersを指定し、delimitersで区切られたトークンを取得します。トークンを見つけることができない（文字列がdelimitersか’\0\&#39;しか含まない）場合には、NULLを返します。</p>
 
-<div class="highlight"><pre><code class="c"><span class="lineno"> 1</span> <span class="kt">char</span> <span class="n">s</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;,,,,10  , 35, 40&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno"> 1</span> <span class="kt">char</span> <span class="n">s</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;,,,,10  , 35, 40&quot;</span><span class="p">;</span>
 <span class="lineno"> 2</span>     <span class="kt">char</span> <span class="o">*</span><span class="n">ptr1</span> <span class="o">=</span> <span class="n">strtok</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s">&quot;,</span><span class="se">\040\t</span><span class="s">&quot;</span><span class="p">);</span>
 <span class="lineno"> 3</span>     <span class="kt">char</span> <span class="o">*</span><span class="n">ptr2</span> <span class="o">=</span> <span class="n">strtok</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="s">&quot;,</span><span class="se">\040\t</span><span class="s">&quot;</span><span class="p">);</span>
 <span class="lineno"> 4</span>     <span class="kt">char</span> <span class="o">*</span><span class="n">ptr3</span> <span class="o">=</span> <span class="n">strtok</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="s">&quot;,</span><span class="se">\040\t</span><span class="s">&quot;</span><span class="p">);</span>
@@ -373,10 +369,10 @@
 <span class="lineno">11</span>     
 <span class="lineno">12</span>     <span class="o">/*=====</span>
 <span class="lineno">13</span>      
-<span class="lineno">14</span>      <span class="nl">ptr1:</span> <span class="mi">10</span>
-<span class="lineno">15</span>      <span class="nl">ptr2:</span> <span class="mi">35</span>
-<span class="lineno">16</span>      <span class="nl">ptr3:</span> <span class="mi">40</span>
-<span class="lineno">17</span>      <span class="nl">ptr4:</span> <span class="p">(</span><span class="n">null</span><span class="p">)</span>
+<span class="lineno">14</span>      <span class="nl">ptr1</span><span class="p">:</span> <span class="mi">10</span>
+<span class="lineno">15</span>      <span class="nl">ptr2</span><span class="p">:</span> <span class="mi">35</span>
+<span class="lineno">16</span>      <span class="nl">ptr3</span><span class="p">:</span> <span class="mi">40</span>
+<span class="lineno">17</span>      <span class="nl">ptr4</span><span class="p">:</span> <span class="p">(</span><span class="n">null</span><span class="p">)</span>
 <span class="lineno">18</span>      
 <span class="lineno">19</span>      <span class="o">*=====/</span></code></pre></div>
 
@@ -526,22 +522,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -635,9 +626,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

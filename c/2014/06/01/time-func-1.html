@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -218,7 +214,7 @@
 
 <p>time() 関数は、その関数のリターン値を直接使われることはあまりありませんが、他の time.h に関連された関数で使用されます。time() が返す値は、 ANSI C で強制的に定められているわけではありませんが、1970年1月からの経過した秒数を返します。time() のプロトタイプは、このように定義されています。</p>
 
-<div class="highlight"><pre><code class="c"><span class="lineno">1</span> <span class="kt">time_t</span> <span class="nf">time</span><span class="p">(</span><span class="kt">time_t</span> <span class="o">*</span><span class="n">timeval</span><span class="p">);</span></code></pre></div>
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="kt">time_t</span> <span class="nf">time</span><span class="p">(</span><span class="kt">time_t</span> <span class="o">*</span><span class="n">timeval</span><span class="p">);</span></code></pre></div>
 
 <p>time_t は、システム間の違いを吸収するためにありますが、long 型と考えて良いです。この後すぐに見る localtime()、gmttime()、asctime() 全てが、この time_t * を使用し、現在の時刻を違う形式で返します。</p>
 
@@ -226,7 +222,7 @@
 
 <p>いくつか time.h から抜粋して基本的な関数を見てみます。</p>
 
-<div class="highlight"><pre><code class="c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">tm</span> <span class="o">*</span><span class="nf">localtime</span><span class="p">(</span><span class="k">const</span> <span class="kt">time_t</span> <span class="o">*</span><span class="p">);</span>
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">tm</span> <span class="o">*</span><span class="nf">localtime</span><span class="p">(</span><span class="k">const</span> <span class="kt">time_t</span> <span class="o">*</span><span class="p">);</span>
 <span class="lineno">2</span> <span class="k">struct</span> <span class="n">tm</span> <span class="o">*</span><span class="nf">gmtime</span><span class="p">(</span><span class="k">const</span> <span class="kt">time_t</span> <span class="o">*</span><span class="p">);</span>
 <span class="lineno">3</span> <span class="kt">char</span> <span class="o">*</span><span class="nf">asctime</span><span class="p">(</span><span class="k">const</span> <span class="k">struct</span> <span class="n">tm</span> <span class="o">*</span><span class="p">);</span>
 <span class="lineno">4</span> <span class="kt">char</span> <span class="o">*</span><span class="nf">ctime</span><span class="p">(</span><span class="k">const</span> <span class="kt">time_t</span> <span class="o">*</span><span class="p">);</span></code></pre></div>
@@ -235,7 +231,7 @@
 
 <p>これらの使用例はこんな感じです。</p>
 
-<div class="highlight"><pre><code class="c"><span class="lineno"> 1</span> <span class="cp">#include &lt;stdio.h&gt;</span>
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno"> 1</span> <span class="cp">#include &lt;stdio.h&gt;</span>
 <span class="lineno"> 2</span> <span class="cp">#include &lt;time.h&gt;</span>
 <span class="lineno"> 3</span> 
 <span class="lineno"> 4</span> <span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -276,7 +272,7 @@
 
 <p>tm 構造体は、time.h にて、このように定義されています。</p>
 
-<div class="highlight"><pre><code class="c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">tm</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">tm</span> <span class="p">{</span>
 <span class="lineno"> 2</span>  <span class="kt">int</span> <span class="n">tm_sec</span><span class="p">;</span>       <span class="cm">/* seconds after the minute [0-60] */</span>
 <span class="lineno"> 3</span>  <span class="kt">int</span> <span class="n">tm_min</span><span class="p">;</span>       <span class="cm">/* minutes after the hour [0-59] */</span>
 <span class="lineno"> 4</span>  <span class="kt">int</span> <span class="n">tm_hour</span><span class="p">;</span>  <span class="cm">/* hours since midnight [0-23] */</span>
@@ -436,22 +432,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -545,9 +536,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

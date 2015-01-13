@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -218,9 +214,9 @@
 
 <p>この多対多の関係を作成するには、まず、中間モデルを作成し、この中間モデルがそれぞれのレコードで対応するアイテムとカテゴリを保存しておきます。そのため、まず下記のようにその中間モデルを作ります。</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="err">$</span> <span class="n">rails</span> <span class="n">g</span> <span class="n">migration</span> <span class="no">CreateCategoryItems</span></code></pre></div>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="err">$</span> <span class="n">rails</span> <span class="n">g</span> <span class="n">migration</span> <span class="no">CreateCategoryItems</span></code></pre></div>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno"> 1</span> <span class="c1"># 生成されたマイグレーションファイル</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno"> 1</span> <span class="c1"># 生成されたマイグレーションファイル</span>
 <span class="lineno"> 2</span> <span class="k">class</span> <span class="nc">CreateCategoryItems</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span>
 <span class="lineno"> 3</span>   <span class="k">def</span> <span class="nf">change</span>
 <span class="lineno"> 4</span>     <span class="n">create_table</span> <span class="p">:</span> <span class="n">category_items</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
@@ -233,7 +229,7 @@
 <span class="lineno">11</span>   <span class="k">end</span>
 <span class="lineno">12</span> <span class="k">end</span></code></pre></div>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># その中間モデルファイルも作成</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="c1"># その中間モデルファイルも作成</span>
 <span class="lineno">2</span> <span class="k">class</span> <span class="nc">CategoryItem</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
 <span class="lineno">3</span>   <span class="n">belongs_to</span> <span class="ss">:item</span>
 <span class="lineno">4</span>   <span class="n">belongs_to</span> <span class="ss">:category</span>
@@ -243,19 +239,19 @@
 
 <p>上記のように中間モデルを作成したら、次は具体的な多対多の関係になる２つのモデルを関連付けていきます。 </p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># item.rb</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="c1"># item.rb</span>
 <span class="lineno">2</span> <span class="c1"># Relationship with Category</span>
 <span class="lineno">3</span>   <span class="n">has_many</span> <span class="ss">:category_items</span> 
 <span class="lineno">4</span>   <span class="n">has_many</span> <span class="ss">:categories</span><span class="p">,</span> <span class="ss">:through</span> <span class="o">=&gt;</span> <span class="ss">:category_items</span></code></pre></div>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># major.rb</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="c1"># major.rb</span>
 <span class="lineno">2</span> <span class="c1"># Relationship with Item</span>
 <span class="lineno">3</span>   <span class="n">has_many</span> <span class="ss">:category_items</span> 
 <span class="lineno">4</span>   <span class="n">has_many</span> <span class="ss">:items</span><span class="p">,</span> <span class="ss">:through</span> <span class="o">=&gt;</span> <span class="ss">:category_items</span></code></pre></div>
 
 <p>これだけで多対多のモデル関係ができました。実際に成功したか確認するには、コンソールで、下記のように入力し、エラーがでなければ大丈夫でしょう。マイグレーションを適応するのを忘れずに。</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="err">$</span> <span class="n">rails</span> <span class="n">c</span> 
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="err">$</span> <span class="n">rails</span> <span class="n">c</span> 
 <span class="lineno">2</span> <span class="err">$</span> <span class="n">i</span> <span class="o">=</span> <span class="no">Item</span><span class="o">.</span><span class="n">first</span>
 <span class="lineno">3</span> <span class="err">$</span> <span class="n">i</span><span class="o">.</span><span class="n">categories</span><span class="o">.</span><span class="n">count</span></code></pre></div>
 
@@ -403,22 +399,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -512,9 +503,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

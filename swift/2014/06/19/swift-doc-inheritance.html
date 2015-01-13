@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -222,9 +218,9 @@
 
 <p>クラスは、他のクラスを継承することができます。継承により、メソッド、プロパティ、またサブスクリプト等の特性を継承したクラスを作成できます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">Vehicle</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">numberOfWheels</span><span class="o">:</span> <span class="n">Int</span>
-<span class="lineno"> 3</span>     <span class="n">var</span> <span class="n">maxPassengers</span><span class="o">:</span> <span class="n">Int</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">Vehicle</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">var</span> <span class="nl">numberOfWheels</span><span class="p">:</span> <span class="n">Int</span>
+<span class="lineno"> 3</span>     <span class="n">var</span> <span class="nl">maxPassengers</span><span class="p">:</span> <span class="n">Int</span>
 <span class="lineno"> 4</span>     <span class="n">func</span> <span class="n">description</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
 <span class="lineno"> 5</span>         <span class="k">return</span> <span class="s">&quot;\(numberOfWheels) wheels; up to \(maxPassengers) passengers&quot;</span>
 <span class="lineno"> 6</span>     <span class="p">}</span>
@@ -240,16 +236,16 @@
 
 <p>クラスを継承するには、サブクラス宣言時にクラス名の名前の後に : で区切り、継承されるクラス名を書きます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">Bicycle</span><span class="o">:</span> <span class="n">Vehicle</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="nl">Bicycle</span><span class="p">:</span> <span class="n">Vehicle</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">init</span><span class="p">()</span> <span class="p">{</span>
-<span class="lineno"> 3</span>         <span class="n">super</span><span class="p">.</span><span class="n">init</span><span class="p">()</span>
+<span class="lineno"> 3</span>         <span class="nb">super</span><span class="p">.</span><span class="n">init</span><span class="p">()</span>
 <span class="lineno"> 4</span>         <span class="n">numberOfWheels</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="lineno"> 5</span>     <span class="p">}</span>
 <span class="lineno"> 6</span> <span class="p">}</span>
 <span class="lineno"> 7</span> 
-<span class="lineno"> 8</span> <span class="n">class</span> <span class="n">Tandem</span><span class="o">:</span> <span class="n">Bicycle</span> <span class="p">{</span>
+<span class="lineno"> 8</span> <span class="k">class</span> <span class="nl">Tandem</span><span class="p">:</span> <span class="n">Bicycle</span> <span class="p">{</span>
 <span class="lineno"> 9</span>     <span class="n">init</span><span class="p">()</span> <span class="p">{</span>
-<span class="lineno">10</span>         <span class="n">super</span><span class="p">.</span><span class="n">init</span><span class="p">()</span>
+<span class="lineno">10</span>         <span class="nb">super</span><span class="p">.</span><span class="n">init</span><span class="p">()</span>
 <span class="lineno">11</span>         <span class="n">maxPassengers</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="lineno">12</span>     <span class="p">}</span>
 <span class="lineno">13</span> <span class="p">}</span></code></pre></div>
@@ -262,15 +258,15 @@
 
 <p>また、スーパークラスのメソッドやプロパティ、サブスクリプトをオーバーライドする際に、スーパークラスの実装をその中で使いたい場合があると思います。この時には、<code>super</code> キーワードを使用してアクセスできます。この Car サブクラスの例では、description メソッドをオーバーライドしています。また、この サブクラスの例では、description の中では、スーパークラスの サブクラスの例では、description メソッドを使用しています。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">Car</span><span class="o">:</span> <span class="n">Vehicle</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">speed</span><span class="o">:</span> <span class="n">Double</span> <span class="o">=</span> <span class="mf">0.0</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="nl">Car</span><span class="p">:</span> <span class="n">Vehicle</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">var</span> <span class="nl">speed</span><span class="p">:</span> <span class="n">Double</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="lineno"> 3</span>     <span class="n">init</span><span class="p">()</span> <span class="p">{</span>
-<span class="lineno"> 4</span>         <span class="n">super</span><span class="p">.</span><span class="n">init</span><span class="p">()</span>
+<span class="lineno"> 4</span>         <span class="nb">super</span><span class="p">.</span><span class="n">init</span><span class="p">()</span>
 <span class="lineno"> 5</span>         <span class="n">maxPassengers</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="lineno"> 6</span>         <span class="n">numberOfWheels</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="lineno"> 7</span>     <span class="p">}</span>
 <span class="lineno"> 8</span>     <span class="n">override</span> <span class="n">func</span> <span class="n">description</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
-<span class="lineno"> 9</span>         <span class="k">return</span> <span class="n">super</span><span class="p">.</span><span class="n">description</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;; &quot;</span>
+<span class="lineno"> 9</span>         <span class="k">return</span> <span class="nb">super</span><span class="p">.</span><span class="n">description</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;; &quot;</span>
 <span class="lineno">10</span>             <span class="o">+</span> <span class="s">&quot;traveling at \(speed) mph&quot;</span>
 <span class="lineno">11</span>     <span class="p">}</span>
 <span class="lineno">12</span> <span class="p">}</span></code></pre></div>
@@ -279,28 +275,28 @@
 
 <p>まずは、独自のゲッター・セッターをみていきます。継承されたプロパティが Stored property でも、Computed property でも、ゲッター・セッターを作成できます。ゲッター・セッターを実装することにより、スーパークラスの read-only のプロパティを read-write プロパティに変更することができます。しかし、read-write プロパティを read-only プロパティに変更することはできません。プロパティをオーバーライドする際に、セッターを実装する時にはゲッターも実装しなければなりません。もし、ゲッターを修正する必要がない場合には、ただスーパークラスのプロパティを返します。下記の SpeedLimitedCar はこのセッターだけ変更したい場合の例です。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">SpeedLimitedCar</span><span class="o">:</span> <span class="n">Car</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="n">override</span> <span class="n">var</span> <span class="n">speed</span><span class="o">:</span> <span class="n">Double</span>  <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="nl">SpeedLimitedCar</span><span class="p">:</span> <span class="n">Car</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">override</span> <span class="n">var</span> <span class="nl">speed</span><span class="p">:</span> <span class="n">Double</span>  <span class="p">{</span>
 <span class="lineno"> 3</span>     <span class="n">get</span> <span class="p">{</span>
-<span class="lineno"> 4</span>         <span class="k">return</span> <span class="n">super</span><span class="p">.</span><span class="n">speed</span>
+<span class="lineno"> 4</span>         <span class="k">return</span> <span class="nb">super</span><span class="p">.</span><span class="n">speed</span>
 <span class="lineno"> 5</span>     <span class="p">}</span>
 <span class="lineno"> 6</span>     <span class="n">set</span> <span class="p">{</span>
-<span class="lineno"> 7</span>         <span class="n">super</span><span class="p">.</span><span class="n">speed</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">newValue</span><span class="p">,</span> <span class="mf">40.0</span><span class="p">)</span>
+<span class="lineno"> 7</span>         <span class="nb">super</span><span class="p">.</span><span class="n">speed</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">newValue</span><span class="p">,</span> <span class="mf">40.0</span><span class="p">)</span>
 <span class="lineno"> 8</span>     <span class="p">}</span>
 <span class="lineno"> 9</span>     <span class="p">}</span>
 <span class="lineno">10</span> <span class="p">}</span></code></pre></div>
 
 <p>次に、プロパティオブザーバーのオーバーライドをみていきます。継承されたコンスタント Stored プロパティ、継承された read-only Computed プロパティには、プロパティオブザーバーを追加することはできません。なぜならば、これらの値に対して新しく値を設定することは許されていません。したがって、<code>willSet</code> や <code>didSet</code> を実装することはありません。また、セッターのオーバーライドとプロパティオブザーバーは、同時に作成できません。プロパティの値の変化を監視し、さらにセッターをオーバーライドしている場合には、この監視する機能をそのオーバーライドしたセッターのコードの中に書いてください。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">AutomaticCar</span><span class="o">:</span> <span class="n">Car</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="nl">AutomaticCar</span><span class="p">:</span> <span class="n">Car</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">gear</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="lineno"> 3</span>     <span class="n">override</span> <span class="n">var</span> <span class="n">speed</span><span class="o">:</span> <span class="n">Double</span> <span class="p">{</span>
+<span class="lineno"> 3</span>     <span class="n">override</span> <span class="n">var</span> <span class="nl">speed</span><span class="p">:</span> <span class="n">Double</span> <span class="p">{</span>
 <span class="lineno"> 4</span>     <span class="n">didSet</span> <span class="p">{</span>
 <span class="lineno"> 5</span>         <span class="n">gear</span> <span class="o">=</span> <span class="n">Int</span><span class="p">(</span><span class="n">speed</span> <span class="o">/</span> <span class="mf">10.0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="lineno"> 6</span>     <span class="p">}</span>
 <span class="lineno"> 7</span>     <span class="p">}</span>
 <span class="lineno"> 8</span>     <span class="n">override</span> <span class="n">func</span> <span class="n">description</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
-<span class="lineno"> 9</span>         <span class="k">return</span> <span class="n">super</span><span class="p">.</span><span class="n">description</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; in gear \(gear)&quot;</span>
+<span class="lineno"> 9</span>         <span class="k">return</span> <span class="nb">super</span><span class="p">.</span><span class="n">description</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; in gear \(gear)&quot;</span>
 <span class="lineno">10</span>     <span class="p">}</span>
 <span class="lineno">11</span> <span class="p">}</span></code></pre></div>
     
@@ -457,22 +453,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -566,9 +557,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

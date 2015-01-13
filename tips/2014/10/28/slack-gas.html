@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -218,7 +214,7 @@
 
 <p>Google Drive内で、Google Apps Scriptのプロジェクトを作成します。Newボタン、Moreと進み、Google Apps Scriptを探し選択します。Google Apps Scriptは、Googleサービスと連携でき、ドライブ上のファイル等を操作することができます。基本はJavascriptで書くことができます。まずは、Slackに飛ばす文章をスプレッドシートの情報をもとに作成します。この関数を定期的に実行されるように設定します。これはメニュー上の時計のアイコンから簡単に設定できます。</p>
 
-<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span> <span class="kd">function</span> <span class="nx">myFunction</span><span class="p">()</span> <span class="p">{</span>  
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno"> 1</span> <span class="kd">function</span> <span class="nx">myFunction</span><span class="p">()</span> <span class="p">{</span>  
 <span class="lineno"> 2</span>   <span class="kd">var</span> <span class="nx">ss</span> <span class="o">=</span> <span class="nx">SpreadsheetApp</span><span class="p">.</span><span class="nx">openById</span><span class="p">(</span><span class="s1">&#39;********&#39;</span><span class="p">);</span>  
 <span class="lineno"> 3</span>   <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">ss</span><span class="p">.</span><span class="nx">getDataRange</span><span class="p">().</span><span class="nx">getValues</span><span class="p">();</span>
 <span class="lineno"> 4</span>  
@@ -262,7 +258,7 @@
 
 <p><code>myFunction()</code>で作成したSlackに飛ばしたい文字列をこの<code>sendToSlack(body)</code>で実際にSlackに送信します。Slackの拡張機能の<a href="https://aoizemi.slack.com/services/new/incoming-webhook">Incoming WebHooks</a>にアクセスすると、下記のようなURLを指定されるので、そこにPostします。他にもたくさんの<a href="https://aoizemi.slack.com/services/new">API</a>があります。</p>
 
-<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span> <span class="kd">function</span> <span class="nx">sendToSlack</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno"> 1</span> <span class="kd">function</span> <span class="nx">sendToSlack</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 2</span>   <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">&quot;https://****.slack.com/services/hooks/incoming-webhook?token=****&quot;</span><span class="p">;</span>
 <span class="lineno"> 3</span>   <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;channel&quot;</span><span class="o">:</span> <span class="s2">&quot;#your_channel&quot;</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="o">:</span> <span class="s2">&quot;webhookbot&quot;</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="o">:</span> <span class="nx">body</span><span class="p">,</span> <span class="s2">&quot;icon_emoji&quot;</span><span class="o">:</span> <span class="s2">&quot;:ghost:&quot;</span><span class="p">};</span>
 <span class="lineno"> 4</span>   <span class="kd">var</span> <span class="nx">payload</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
@@ -422,22 +418,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -531,9 +522,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

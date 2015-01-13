@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -224,35 +220,35 @@
 
 <p>ブラックジャックの例を通してどのように Nested Type が使われるか見ていきます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">BlackjackCard</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">BlackjackCard</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     
 <span class="lineno"> 3</span>     <span class="c1">// nested Suit enumeration</span>
-<span class="lineno"> 4</span>     <span class="k">enum</span> <span class="n">Suit</span><span class="o">:</span> <span class="n">Character</span> <span class="p">{</span>
+<span class="lineno"> 4</span>     <span class="k">enum</span> <span class="nl">Suit</span><span class="p">:</span> <span class="n">Character</span> <span class="p">{</span>
 <span class="lineno"> 5</span>         <span class="k">case</span> <span class="n">Spades</span> <span class="o">=</span> <span class="s">&quot;♠&quot;</span><span class="p">,</span> <span class="n">Hearts</span> <span class="o">=</span> <span class="s">&quot;♡&quot;</span><span class="p">,</span> <span class="n">Diamonds</span> <span class="o">=</span> <span class="s">&quot;♢&quot;</span><span class="p">,</span> <span class="n">Clubs</span> <span class="o">=</span> <span class="s">&quot;♣&quot;</span>
 <span class="lineno"> 6</span>     <span class="p">}</span>
 <span class="lineno"> 7</span>     
 <span class="lineno"> 8</span>     <span class="c1">// nested Rank enumeration</span>
-<span class="lineno"> 9</span>     <span class="k">enum</span> <span class="n">Rank</span><span class="o">:</span> <span class="n">Int</span> <span class="p">{</span>
+<span class="lineno"> 9</span>     <span class="k">enum</span> <span class="nl">Rank</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span>
 <span class="lineno">10</span>         <span class="k">case</span> <span class="n">Two</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">Three</span><span class="p">,</span> <span class="n">Four</span><span class="p">,</span> <span class="n">Five</span><span class="p">,</span> <span class="n">Six</span><span class="p">,</span> <span class="n">Seven</span><span class="p">,</span> <span class="n">Eight</span><span class="p">,</span> <span class="n">Nine</span><span class="p">,</span> <span class="n">Ten</span>
 <span class="lineno">11</span>         <span class="k">case</span> <span class="n">Jack</span><span class="p">,</span> <span class="n">Queen</span><span class="p">,</span> <span class="n">King</span><span class="p">,</span> <span class="n">Ace</span>
 <span class="lineno">12</span>         <span class="k">struct</span> <span class="n">Values</span> <span class="p">{</span>
-<span class="lineno">13</span>             <span class="n">let</span> <span class="n">first</span><span class="o">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">second</span><span class="o">:</span> <span class="n">Int</span><span class="o">?</span>
+<span class="lineno">13</span>             <span class="n">let</span> <span class="nl">first</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">second</span><span class="p">:</span> <span class="n">Int</span><span class="o">?</span>
 <span class="lineno">14</span>         <span class="p">}</span>
-<span class="lineno">15</span>         <span class="n">var</span> <span class="n">values</span><span class="o">:</span> <span class="n">Values</span> <span class="p">{</span>
-<span class="lineno">16</span>         <span class="k">switch</span> <span class="n">self</span> <span class="p">{</span>
-<span class="lineno">17</span>         <span class="k">case</span> <span class="p">.</span><span class="n">Ace</span>:
-<span class="lineno">18</span>             <span class="k">return</span> <span class="n">Values</span><span class="p">(</span><span class="n">first</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">second</span><span class="o">:</span> <span class="mi">11</span><span class="p">)</span>
-<span class="lineno">19</span>         <span class="k">case</span> <span class="p">.</span><span class="n">Jack</span><span class="p">,</span> <span class="p">.</span><span class="n">Queen</span><span class="p">,</span> <span class="p">.</span><span class="n">King</span>:
-<span class="lineno">20</span>             <span class="k">return</span> <span class="n">Values</span><span class="p">(</span><span class="n">first</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span> <span class="n">second</span><span class="o">:</span> <span class="nb">nil</span><span class="p">)</span>
-<span class="lineno">21</span>         <span class="nl">default:</span>
-<span class="lineno">22</span>             <span class="k">return</span> <span class="n">Values</span><span class="p">(</span><span class="n">first</span><span class="o">:</span> <span class="n">self</span><span class="p">.</span><span class="n">toRaw</span><span class="p">(),</span> <span class="n">second</span><span class="o">:</span> <span class="nb">nil</span><span class="p">)</span>
+<span class="lineno">15</span>         <span class="n">var</span> <span class="nl">values</span><span class="p">:</span> <span class="n">Values</span> <span class="p">{</span>
+<span class="lineno">16</span>         <span class="k">switch</span> <span class="nb">self</span> <span class="p">{</span>
+<span class="lineno">17</span>         <span class="k">case</span> <span class="p">.</span><span class="nl">Ace</span><span class="p">:</span>
+<span class="lineno">18</span>             <span class="k">return</span> <span class="n">Values</span><span class="p">(</span><span class="nl">first</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nl">second</span><span class="p">:</span> <span class="mi">11</span><span class="p">)</span>
+<span class="lineno">19</span>         <span class="k">case</span> <span class="p">.</span><span class="n">Jack</span><span class="p">,</span> <span class="p">.</span><span class="n">Queen</span><span class="p">,</span> <span class="p">.</span><span class="nl">King</span><span class="p">:</span>
+<span class="lineno">20</span>             <span class="k">return</span> <span class="n">Values</span><span class="p">(</span><span class="nl">first</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nl">second</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+<span class="lineno">21</span>         <span class="k">default</span><span class="o">:</span>
+<span class="lineno">22</span>             <span class="k">return</span> <span class="n">Values</span><span class="p">(</span><span class="nl">first</span><span class="p">:</span> <span class="nb">self</span><span class="p">.</span><span class="n">toRaw</span><span class="p">(),</span> <span class="nl">second</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
 <span class="lineno">23</span>             <span class="p">}</span>
 <span class="lineno">24</span>         <span class="p">}</span>
 <span class="lineno">25</span>     <span class="p">}</span>
 <span class="lineno">26</span>     
 <span class="lineno">27</span>     <span class="c1">// BlackjackCard properties and methods</span>
-<span class="lineno">28</span>     <span class="n">let</span> <span class="n">rank</span><span class="o">:</span> <span class="n">Rank</span><span class="p">,</span> <span class="n">suit</span><span class="o">:</span> <span class="n">Suit</span>
-<span class="lineno">29</span>     <span class="n">var</span> <span class="n">description</span><span class="o">:</span> <span class="n">String</span> <span class="p">{</span>
+<span class="lineno">28</span>     <span class="n">let</span> <span class="nl">rank</span><span class="p">:</span> <span class="n">Rank</span><span class="p">,</span> <span class="nl">suit</span><span class="p">:</span> <span class="n">Suit</span>
+<span class="lineno">29</span>     <span class="n">var</span> <span class="nl">description</span><span class="p">:</span> <span class="n">String</span> <span class="p">{</span>
 <span class="lineno">30</span>     <span class="n">var</span> <span class="n">output</span> <span class="o">=</span> <span class="s">&quot;suit is \(suit.toRaw()),&quot;</span>
 <span class="lineno">31</span>         <span class="n">output</span> <span class="o">+=</span> <span class="s">&quot; value is \(rank.values.first)&quot;</span>
 <span class="lineno">32</span>         <span class="k">if</span> <span class="n">let</span> <span class="n">second</span> <span class="o">=</span> <span class="n">rank</span><span class="p">.</span><span class="n">values</span><span class="p">.</span><span class="n">second</span> <span class="p">{</span>
@@ -266,7 +262,7 @@
 
 <p>上記で定義した BlackjackCard 構造体をこのように初期化・参照できます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">theAceOfSpades</span> <span class="o">=</span> <span class="n">BlackjackCard</span><span class="p">(</span><span class="n">rank</span><span class="o">:</span> <span class="p">.</span><span class="n">Ace</span><span class="p">,</span> <span class="n">suit</span><span class="o">:</span> <span class="p">.</span><span class="n">Spades</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">theAceOfSpades</span> <span class="o">=</span> <span class="n">BlackjackCard</span><span class="p">(</span><span class="nl">rank</span><span class="p">:</span> <span class="p">.</span><span class="n">Ace</span><span class="p">,</span> <span class="nl">suit</span><span class="p">:</span> <span class="p">.</span><span class="n">Spades</span><span class="p">)</span>
 <span class="lineno">2</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;theAceOfSpades: \(theAceOfSpades.description)&quot;</span><span class="p">)</span>
 <span class="lineno">3</span> <span class="c1">// prints &quot;theAceOfSpades: suit is ♠, value is 1 or 11&quot;</span>
 <span class="lineno">4</span> 
@@ -419,22 +415,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -528,9 +519,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -226,13 +222,13 @@
 
 <p>String は順序のある Character type の集まり。だた一つの Character を作成するには、下記のように明示的に Character を書く。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">yenSign</span><span class="o">:</span> <span class="n">Character</span> <span class="o">=</span> <span class="s">&quot;¥&quot;</span></code></pre></div>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="nl">yenSign</span><span class="p">:</span> <span class="n">Character</span> <span class="o">=</span> <span class="s">&quot;¥&quot;</span></code></pre></div>
 
 <h4 id="3.-文字列の長さ">3. 文字列の長さ</h4>
 
 <p>文字列の長さを得るには、countElemetns というグローバル関数を使う。Swift では、英語でない言語や、絵文字をサポートしているので、文字によって、一つ一つの文字が異なるメモリ容量を持っています。そのため、文字列の長さを得るには、C のように始まりと終わりのポインタの差を返すといった単純なものではなく、文字列の各文字を全てチェックする必要があります。長い文字列を処理する際には、注意。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">unusualMenagerie</span> <span class="o">=</span> <span class="s">&quot;Koala 🐨, Snail 🐌, Penguin 🐧, Dromedary 🐪&quot;</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">unusualMenagerie</span> <span class="o">=</span> <span class="s">&quot;Koala 🐨, Snail 🐌, Penguin 🐧, Dromedary 🐪&quot;</span>
 <span class="lineno">2</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;unusualMenagerie has \(countElements(unusualMenagerie)) characters&quot;</span><span class="p">)</span>
 <span class="lineno">3</span> <span class="c1">// unusualMenagerie has 40 characters</span></code></pre></div>
 
@@ -242,7 +238,7 @@
 
 <p>hasPrefix と hasSuffix という文字列比較のメソッドがある。コードを見た方がわかりやすいと思います。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">fullName</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">fullName</span> <span class="o">=</span> <span class="p">[</span>
 <span class="lineno"> 2</span>         <span class="s">&quot;Kobayashi Kazuya&quot;</span><span class="p">,</span>
 <span class="lineno"> 3</span>         <span class="s">&quot;Kobayashi Taro&quot;</span><span class="p">,</span>
 <span class="lineno"> 4</span>         <span class="s">&quot;Suzuki Kazuya&quot;</span><span class="p">,</span>
@@ -409,22 +405,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -518,9 +509,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

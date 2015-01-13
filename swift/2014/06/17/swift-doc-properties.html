@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -224,11 +220,11 @@
 
 <p>Stored Properties は一番シンプルなプロパティです。クラスと構造体のインスタンスの中に保存されます。変数とコンスタント、両方とも使用可能です。デフォルト値を設定することもできますし、初期化の際に値を設定・修正することもできます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">FixedLengthRange</span> <span class="p">{</span>
-<span class="lineno">2</span>     <span class="n">var</span> <span class="n">firstValue</span><span class="o">:</span> <span class="n">Int</span>
-<span class="lineno">3</span>     <span class="n">let</span> <span class="n">length</span><span class="o">:</span> <span class="n">Int</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">FixedLengthRange</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="n">var</span> <span class="nl">firstValue</span><span class="p">:</span> <span class="n">Int</span>
+<span class="lineno">3</span>     <span class="n">let</span> <span class="nl">length</span><span class="p">:</span> <span class="n">Int</span>
 <span class="lineno">4</span> <span class="p">}</span>
-<span class="lineno">5</span> <span class="n">var</span> <span class="n">rangeOfThreeItems</span> <span class="o">=</span> <span class="n">FixedLengthRange</span><span class="p">(</span><span class="n">firstValue</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">length</span><span class="o">:</span> <span class="mi">3</span><span class="p">)</span>
+<span class="lineno">5</span> <span class="n">var</span> <span class="n">rangeOfThreeItems</span> <span class="o">=</span> <span class="n">FixedLengthRange</span><span class="p">(</span><span class="nl">firstValue</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">length</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
 <span class="lineno">6</span> <span class="c1">// the range represents integer values 0, 1, and 2</span>
 <span class="lineno">7</span> <span class="n">rangeOfThreeItems</span><span class="p">.</span><span class="n">firstValue</span> <span class="o">=</span> <span class="mi">6</span>
 <span class="lineno">8</span> <span class="c1">// the range now represents integer values 6, 7, and 8</span></code></pre></div>
@@ -237,16 +233,16 @@
 
 <p>この構造体は、変数として宣言されているので、変数プロパティを変更することができます。この例では、firstValue を変更しています。しかし、構造体がコンスタントの場合には、変更することができません。たとえ、その構造体のプロパティが firstValue のように変数として定義されていてもです。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">rangeOfFourItems</span> <span class="o">=</span> <span class="n">FixedLengthRange</span><span class="p">(</span><span class="n">firstValue</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">length</span><span class="o">:</span> <span class="mi">4</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">rangeOfFourItems</span> <span class="o">=</span> <span class="n">FixedLengthRange</span><span class="p">(</span><span class="nl">firstValue</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">length</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span>
 <span class="lineno">2</span> <span class="c1">// this range represents integer values 0, 1, 2, and 3</span>
 <span class="lineno">3</span> <span class="n">rangeOfFourItems</span><span class="p">.</span><span class="n">firstValue</span> <span class="o">=</span> <span class="mi">6</span>
 <span class="lineno">4</span> <span class="c1">// this will report an error, even thought firstValue is a variable property</span></code></pre></div>
 
 <p>この挙動は、<a href="http://blog.kazuya.co/swift/2014/06/16/swift-doc-class-structur.html">以前</a> みたように、構造体はバリュー、クラスはリファレンスという違いから生まれるものです。構造体は、バリューなので、一度コンスタントとして宣言されると変更することができません。クラスの場合には、クラスインスタンスの変数・コンスタントは、リファレンスを持っているだけなので、参照先の値を変更することができます。もちろん、参照先のプロパティは、コンスタントではなく、変数である必要があります。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">class</span> <span class="n">FixedLengthRange</span> <span class="p">{</span>
-<span class="lineno">2</span>     <span class="n">var</span> <span class="n">firstValue</span><span class="o">:</span> <span class="n">Int</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="lineno">3</span>     <span class="n">let</span> <span class="n">length</span><span class="o">:</span> <span class="n">Int</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">class</span> <span class="n">FixedLengthRange</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="n">var</span> <span class="nl">firstValue</span><span class="p">:</span> <span class="n">Int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="lineno">3</span>     <span class="n">let</span> <span class="nl">length</span><span class="p">:</span> <span class="n">Int</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="lineno">4</span> <span class="p">}</span>
 <span class="lineno">5</span> 
 <span class="lineno">6</span> <span class="n">let</span> <span class="n">rangeOfFourItems</span> <span class="o">=</span> <span class="n">FixedLengthRange</span><span class="p">()</span>
@@ -257,7 +253,7 @@
 
 <p>Lazy stored propeties というものがあります。これは、プロパティが初期値が使用される時まで作成されないというものです。初期値が外的要因に左右される場合や、初期化するのに時間がかかり実際に使用される時まで実行されることが望ましくない場合に便利です。Lazy stored peropeties を使用するには、<code>@lazy</code> キーワードをプロパティの前に使用します。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">class</span> <span class="n">DataManager</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">class</span> <span class="n">DataManager</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="p">@</span><span class="n">lazy</span> <span class="n">var</span> <span class="n">importer</span> <span class="o">=</span> <span class="n">DataImporter</span><span class="p">()</span>
 <span class="lineno">3</span>     <span class="n">var</span> <span class="n">data</span> <span class="o">=</span> <span class="n">String</span><span class="p">[]()</span>
 <span class="lineno">4</span>     <span class="c1">// the DataManager class would provide data management functionality here</span>
@@ -269,7 +265,7 @@
 
 <p>Stored Properties の他に、Computed Properties というものがあります。これは、クラスと構造体、さらに Enumeration でも使用できます。このプロパティは実際に値を保存しているのではなく、他のプロパティ等の値を計算して、その値を返すというプロパティです。Computed Properties はその都度計算されるので、変数として宣言されなければなりません。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">Point</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">Point</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="lineno"> 3</span> <span class="p">}</span>
 <span class="lineno"> 4</span> <span class="k">struct</span> <span class="n">Size</span> <span class="p">{</span>
@@ -278,11 +274,11 @@
 <span class="lineno"> 7</span> <span class="k">struct</span> <span class="n">Rect</span> <span class="p">{</span>
 <span class="lineno"> 8</span>     <span class="n">var</span> <span class="n">origin</span> <span class="o">=</span> <span class="n">Point</span><span class="p">()</span>
 <span class="lineno"> 9</span>     <span class="n">var</span> <span class="n">size</span> <span class="o">=</span> <span class="n">Size</span><span class="p">()</span>
-<span class="lineno">10</span>     <span class="n">var</span> <span class="n">center</span><span class="o">:</span> <span class="n">Point</span> <span class="p">{</span>
+<span class="lineno">10</span>     <span class="n">var</span> <span class="nl">center</span><span class="p">:</span> <span class="n">Point</span> <span class="p">{</span>
 <span class="lineno">11</span>      <span class="n">get</span> <span class="p">{</span>
 <span class="lineno">12</span>          <span class="n">let</span> <span class="n">centerX</span> <span class="o">=</span> <span class="n">origin</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
 <span class="lineno">13</span>          <span class="n">let</span> <span class="n">centerY</span> <span class="o">=</span> <span class="n">origin</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-<span class="lineno">14</span>          <span class="k">return</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="n">centerX</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="n">centerY</span><span class="p">)</span>
+<span class="lineno">14</span>          <span class="k">return</span> <span class="n">Point</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="n">centerX</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="n">centerY</span><span class="p">)</span>
 <span class="lineno">15</span>      <span class="p">}</span>
 <span class="lineno">16</span>      <span class="n">set</span><span class="p">(</span><span class="n">newCenter</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">17</span>          <span class="n">origin</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">newCenter</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
@@ -293,10 +289,10 @@
 
 <p>3 つの構造体があります。この Rect 構造体の center プロパティが、Computed Properties です。この center は、origin プロパティと size プロパティの値を使用して、値を返してます。こういうプロパティを Computed Properties と呼ぶようです。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">square</span> <span class="o">=</span> <span class="n">Rect</span><span class="p">(</span><span class="n">origin</span><span class="o">:</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mf">0.0</span><span class="p">),</span>
-<span class="lineno">2</span>     <span class="nl">size:</span> <span class="n">Size</span><span class="p">(</span><span class="n">width</span><span class="o">:</span> <span class="mf">10.0</span><span class="p">,</span> <span class="n">height</span><span class="o">:</span> <span class="mf">10.0</span><span class="p">))</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">square</span> <span class="o">=</span> <span class="n">Rect</span><span class="p">(</span><span class="nl">origin</span><span class="p">:</span> <span class="n">Point</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">),</span>
+<span class="lineno">2</span>     <span class="nl">size</span><span class="p">:</span> <span class="n">Size</span><span class="p">(</span><span class="nl">width</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">))</span>
 <span class="lineno">3</span> <span class="n">let</span> <span class="n">initialSquareCenter</span> <span class="o">=</span> <span class="n">square</span><span class="p">.</span><span class="n">center</span>
-<span class="lineno">4</span> <span class="n">square</span><span class="p">.</span><span class="n">center</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="mf">15.0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mf">15.0</span><span class="p">)</span>
+<span class="lineno">4</span> <span class="n">square</span><span class="p">.</span><span class="n">center</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="mf">15.0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mf">15.0</span><span class="p">)</span>
 <span class="lineno">5</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;square.origin is now at (\(square.origin.x), \(square.origin.y))&quot;</span><span class="p">)</span>
 <span class="lineno">6</span> <span class="c1">// prints &quot;square.origin is now at (10.0, 10.0)</span></code></pre></div>
 
@@ -306,20 +302,20 @@
 
 <p>上記のコードの Computed Properties のセッターをもう少し簡単に書くことができます。新しい値への名前を設定しなかった場合、Swift は自動的に newValue という名前を用意してくれ、それを使用することができます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">set</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">set</span> <span class="p">{</span>
 <span class="lineno">2</span>         <span class="n">origin</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">newValue</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
 <span class="lineno">3</span>         <span class="n">origin</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">newValue</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
 <span class="lineno">4</span> <span class="p">}</span></code></pre></div>
 
 <p>Computed Properties において、ゲッターはもちろん必要ですが、セッターは必ず実装しなければならないというわけではありません。つまり、read-only の Computed Properties を作成できます。<code>get</code> キーワードを削除し、下記の volume プロパティのように実装すれば OK です。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">Cuboid</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">Cuboid</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">var</span> <span class="n">width</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">depth</span> <span class="o">=</span> <span class="mf">0.0</span>
-<span class="lineno">3</span>     <span class="n">var</span> <span class="n">volume</span><span class="o">:</span> <span class="n">Double</span> <span class="p">{</span>
+<span class="lineno">3</span>     <span class="n">var</span> <span class="nl">volume</span><span class="p">:</span> <span class="n">Double</span> <span class="p">{</span>
 <span class="lineno">4</span>     <span class="k">return</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span> <span class="o">*</span> <span class="n">depth</span>
 <span class="lineno">5</span>     <span class="p">}</span>
 <span class="lineno">6</span> <span class="p">}</span>
-<span class="lineno">7</span> <span class="n">let</span> <span class="n">fourByFiveByTwo</span> <span class="o">=</span> <span class="n">Cuboid</span><span class="p">(</span><span class="n">width</span><span class="o">:</span> <span class="mf">4.0</span><span class="p">,</span> <span class="n">height</span><span class="o">:</span> <span class="mf">5.0</span><span class="p">,</span> <span class="n">depth</span><span class="o">:</span> <span class="mf">2.0</span><span class="p">)</span>
+<span class="lineno">7</span> <span class="n">let</span> <span class="n">fourByFiveByTwo</span> <span class="o">=</span> <span class="n">Cuboid</span><span class="p">(</span><span class="nl">width</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span> <span class="nl">depth</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">)</span>
 <span class="lineno">8</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)&quot;</span><span class="p">)</span>
 <span class="lineno">9</span> <span class="c1">// prints &quot;the volume of fourByFiveByTwo is 40.0</span></code></pre></div>
 
@@ -467,22 +463,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -576,9 +567,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

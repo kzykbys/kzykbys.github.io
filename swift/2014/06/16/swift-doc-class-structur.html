@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -248,16 +244,16 @@
 
 <p>クラスと構造体の定義、インスタンス化、プロパティへのアクセスは C や Objective-C とよく似ています。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="c1">// Define</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="c1">// Define</span>
 <span class="lineno"> 2</span> <span class="k">struct</span> <span class="n">Resolution</span> <span class="p">{</span>
 <span class="lineno"> 3</span>     <span class="n">var</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="lineno"> 4</span>     <span class="n">var</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="lineno"> 5</span> <span class="p">}</span>
-<span class="lineno"> 6</span> <span class="n">class</span> <span class="n">VideoMode</span> <span class="p">{</span>
+<span class="lineno"> 6</span> <span class="k">class</span> <span class="n">VideoMode</span> <span class="p">{</span>
 <span class="lineno"> 7</span>     <span class="n">var</span> <span class="n">resolution</span> <span class="o">=</span> <span class="n">Resolution</span><span class="p">()</span>
 <span class="lineno"> 8</span>     <span class="n">var</span> <span class="n">interlaced</span> <span class="o">=</span> <span class="nb">false</span>
 <span class="lineno"> 9</span>     <span class="n">var</span> <span class="n">frameRate</span> <span class="o">=</span> <span class="mf">0.0</span>
-<span class="lineno">10</span>     <span class="n">var</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="o">?</span>
+<span class="lineno">10</span>     <span class="n">var</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="o">?</span>
 <span class="lineno">11</span> <span class="p">}</span>
 <span class="lineno">12</span> <span class="c1">// Make instances</span>
 <span class="lineno">13</span> <span class="n">let</span> <span class="n">someResolution</span> <span class="o">=</span> <span class="n">Resolution</span><span class="p">()</span>
@@ -269,7 +265,7 @@
 
 <p>構造体は、常にプロパティの値を指定できるイニシャライザを使用できます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">vga</span> <span class="o">=</span> <span class="n">Resolution</span><span class="p">(</span><span class="n">width</span><span class="o">:</span> <span class="mi">640</span><span class="p">,</span> <span class="n">height</span><span class="o">:</span> <span class="mi">480</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">vga</span> <span class="o">=</span> <span class="n">Resolution</span><span class="p">(</span><span class="nl">width</span><span class="p">:</span> <span class="mi">640</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="mi">480</span><span class="p">)</span></code></pre></div>
 
 <h4 id="3.-リファレンスとコピー">3. リファレンスとコピー</h4>
 
@@ -429,22 +425,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -538,9 +529,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

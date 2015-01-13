@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -218,14 +214,14 @@
 
 <p>ローカルで Rails を書き、Heroku にデプロイすると css が適応されないという問題に出くわしました。調べに調べ、Heroku に関する設定等はチェックしたはずが、なかなか解決できなかったのですが、下記のコマンドを実行するとローカルと同じ環境を再現することに成功しました。</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># もし Heroku のデプロイに失敗したときは、次のコマンドを試してみて下さい。</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="c1"># もし Heroku のデプロイに失敗したときは、次のコマンドを試してみて下さい。</span>
 <span class="lineno">2</span> <span class="err">$</span> <span class="n">rake</span> <span class="ss">assets</span><span class="p">:</span><span class="n">precompile</span>
 <span class="lineno">3</span> <span class="err">$</span> <span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
 <span class="lineno">4</span> <span class="err">$</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;Add precompiled assets for Heroku&quot;</span></code></pre></div>
 
 <p>Herokuにデプロイする時に出る、このメッセージが関係あるのかな。ちょっと分からないです。 </p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="o">-----&gt;</span> <span class="no">Writing</span> <span class="n">config</span><span class="o">/</span><span class="n">database</span><span class="o">.</span><span class="n">yml</span> <span class="n">to</span> <span class="n">read</span> <span class="n">from</span> <span class="no">DATABASE_URL</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="o">-----&gt;</span> <span class="no">Writing</span> <span class="n">config</span><span class="o">/</span><span class="n">database</span><span class="o">.</span><span class="n">yml</span> <span class="n">to</span> <span class="n">read</span> <span class="n">from</span> <span class="no">DATABASE_URL</span>
 <span class="lineno">2</span>              <span class="no">Detected</span> <span class="n">manifest</span> <span class="n">file</span><span class="p">,</span> <span class="n">assuming</span> <span class="n">assets</span> <span class="n">were</span> <span class="n">compiled</span> <span class="n">locally</span></code></pre></div>
 
 <h3 id="参考">参考</h3>
@@ -376,22 +372,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -485,9 +476,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

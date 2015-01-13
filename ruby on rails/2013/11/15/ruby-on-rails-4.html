@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -220,7 +216,7 @@
 <p>ハッシュにおいてシンボルを使用する際の２つの記法
 後者は Ruby1.9 からサポート。どちらもよく使われているので、両方見分けがつけるように。</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="o">&gt;&gt;</span> <span class="n">h1</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">&quot;Michael Hartl&quot;</span><span class="p">,</span> <span class="ss">:email</span> <span class="o">=&gt;</span> <span class="s2">&quot;michael@example.com&quot;</span> <span class="p">}</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="o">&gt;&gt;</span> <span class="n">h1</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">&quot;Michael Hartl&quot;</span><span class="p">,</span> <span class="ss">:email</span> <span class="o">=&gt;</span> <span class="s2">&quot;michael@example.com&quot;</span> <span class="p">}</span>
 <span class="lineno">2</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:name</span><span class="o">=&gt;</span><span class="s2">&quot;Michael Hartl&quot;</span><span class="p">,</span> <span class="ss">:email</span><span class="o">=&gt;</span><span class="s2">&quot;michael@example.com&quot;</span><span class="p">}</span>
 <span class="lineno">3</span> <span class="o">&gt;&gt;</span> <span class="n">h2</span> <span class="o">=</span> <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Michael Hartl&quot;</span><span class="p">,</span> <span class="ss">email</span><span class="p">:</span> <span class="s2">&quot;michael@example.com&quot;</span> <span class="p">}</span>
 <span class="lineno">4</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:name</span><span class="o">=&gt;</span><span class="s2">&quot;Michael Hartl&quot;</span><span class="p">,</span> <span class="ss">:email</span><span class="o">=&gt;</span><span class="s2">&quot;michael@example.com&quot;</span><span class="p">}</span>
@@ -229,7 +225,7 @@
 
 <p>ハッシュのネストの例</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="o">&gt;&gt;</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># &#39;params&#39; というハッシュを定義する (&#39;parameters&#39; の略)。</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="o">&gt;&gt;</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># &#39;params&#39; というハッシュを定義する (&#39;parameters&#39; の略)。</span>
 <span class="lineno">2</span> <span class="o">=&gt;</span> <span class="p">{}</span><span class="o">&gt;&gt;</span> <span class="n">params</span><span class="o">[</span><span class="ss">:user</span><span class="o">]</span> <span class="o">=</span> <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;Michael Hartl&quot;</span><span class="p">,</span> <span class="ss">email</span><span class="p">:</span> <span class="s2">&quot;mhartl@example.com&quot;</span> <span class="p">}</span>
 <span class="lineno">3</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:name</span><span class="o">=&gt;</span><span class="s2">&quot;Michael Hartl&quot;</span><span class="p">,</span> <span class="ss">:email</span><span class="o">=&gt;</span><span class="s2">&quot;mhartl@example.com&quot;</span><span class="p">}</span>
 <span class="lineno">4</span> <span class="o">&gt;&gt;</span> <span class="n">params</span><span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:user</span><span class="o">=&gt;</span><span class="p">{</span><span class="ss">:name</span><span class="o">=&gt;</span><span class="s2">&quot;Michael Hartl&quot;</span><span class="p">,</span><span class="ss">:email</span><span class="o">=&gt;</span><span class="s2">&quot;mhartl@example.com&quot;</span><span class="p">}}</span>
@@ -238,7 +234,7 @@
 
 <p>ハッシュのコンストラクタは、配列等のコンストラクタと違い、デフォルト値を渡す。キーが存在しない場合に使用される。</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="o">&gt;&gt;</span> <span class="n">h</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="o">=&gt;</span> <span class="p">{}</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="o">&gt;&gt;</span> <span class="n">h</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="o">=&gt;</span> <span class="p">{}</span>
 <span class="lineno">2</span> <span class="o">&gt;&gt;</span> <span class="n">h</span><span class="o">[</span><span class="ss">:foo</span><span class="o">]</span> <span class="c1"># 存在しないキー :fooの値にわざとアクセスしてみる</span>
 <span class="lineno">3</span> <span class="o">=&gt;</span> <span class="kp">nil</span>
 <span class="lineno">4</span> <span class="o">&gt;&gt;</span> <span class="n">h</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># キーが存在しない場合のデフォルト値をnilから0に変更する</span>
@@ -250,7 +246,7 @@
 
 <p>関数の呼び出し方が少しとっつきにくいかった。丸括弧や波括弧を省略するケースがある。</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1">#関数呼び出しの丸かっこは省略可能。</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="c1">#関数呼び出しの丸かっこは省略可能。</span>
 <span class="lineno">2</span> <span class="n">stylesheet_link_tag</span><span class="p">(</span><span class="s2">&quot;application&quot;</span><span class="p">,</span> <span class="ss">media</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="s2">&quot;data-turbolinks-track&quot;</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">)</span>
 <span class="lineno">3</span> <span class="n">stylesheet_link_tag</span> <span class="s2">&quot;application&quot;</span><span class="p">,</span> <span class="ss">media</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span><span class="s2">&quot;data-turbolinks-track&quot;</span> <span class="o">=&gt;</span> <span class="kp">true</span>
 <span class="lineno">4</span> <span class="c1"># 最後の引数がハッシュの場合、波括弧は省略可能。</span>
@@ -263,7 +259,7 @@
 
 <p>Rubyの基本クラスを拡張することができる。</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="o">&gt;&gt;</span> <span class="k">class</span> <span class="nc">String</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="o">&gt;&gt;</span> <span class="k">class</span> <span class="nc">String</span>
 <span class="lineno">2</span> <span class="o">&gt;&gt;</span> <span class="c1"># 文字列が回文であればtrueを返す</span>
 <span class="lineno">3</span> <span class="o">&gt;&gt;</span> <span class="k">def</span> <span class="nf">palindrome?</span>
 <span class="lineno">4</span> <span class="o">&gt;&gt;</span> <span class="nb">self</span> <span class="o">==</span> <span class="nb">self</span><span class="o">.</span><span class="n">reverse</span>
@@ -275,7 +271,7 @@
 
 <p>アクセッサメソッド</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="k">class</span> <span class="nc">User</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="k">class</span> <span class="nc">User</span>
 <span class="lineno">2</span>   <span class="kp">attr_accessor</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:email</span>
 <span class="lineno">3</span>   <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">attributes</span> <span class="o">=</span> <span class="p">{})</span>
 <span class="lineno">4</span>     <span class="vi">@name</span>  <span class="o">=</span> <span class="n">attributes</span><span class="o">[</span><span class="ss">:name</span><span class="o">]</span>
@@ -434,22 +430,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -543,9 +534,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

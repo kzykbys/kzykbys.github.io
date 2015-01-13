@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -218,12 +214,12 @@
 
 <p>まずは、DBとの通信のトリガーになる&lt;select&gt;をページに追加します。ユーザーがページの&lt;select&gt;を変更すると、&lt;select&gt;のonchange()が起動します。onchange()からのちほど作成するカスタム関数を呼び出し、その関数からDBとの通信を発動します。そして、ページのコンテンツを変更します。</p>
 
-<div class="highlight"><pre><code class="erb"><span class="lineno">1</span> <span class="x"># test.html.erb</span>
+<div class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="lineno">1</span> <span class="x"># test.html.erb</span>
 <span class="lineno">2</span> <span class="cp">&lt;%=</span> <span class="n">collection_select</span><span class="p">(</span><span class="ss">:major</span><span class="p">,</span> <span class="ss">:id</span><span class="p">,</span> <span class="vi">@majors</span><span class="p">,</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span>  <span class="p">{</span><span class="ss">:prompt</span> <span class="o">=&gt;</span> <span class="s2">&quot;Please select your major&quot;</span><span class="p">},{</span><span class="ss">:onchange</span> <span class="o">=&gt;</span> <span class="s2">&quot;changeMajor()&quot;</span> <span class="p">})</span> <span class="cp">%&gt;</span><span class="x"></span></code></pre></div>
 
 <p>これにより、 @majors に格納されている major モデルの id と name がそれぞれ value と&lt;option&gt;&lt;/option&gt;に動的に記述されます。valueはサーバーに送信される値で、&lt;option&gt;&lt;/option&gt;はページに表示される文字列です。ここでは :prompt オプションにより何も表示されていない時には “Please select your major” と表示されるます。onchange() メソッドではこれから自分で作成する changeMajor()メソッドを&lt;select&gt;の&lt;option&gt;が変更されるたびに呼び出されます。また&lt;select&gt;のhtml属性idはmajor_idとなります。</p>
 
-<div class="highlight"><pre><code class="erb"><span class="lineno">1</span> <span class="x"># test.html.erb </span>
+<div class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="lineno">1</span> <span class="x"># test.html.erb </span>
 <span class="lineno">2</span> <span class="x">&lt;div id=&quot;classList&quot; style=&quot;display: inline;&quot;&gt;</span>
 <span class="lineno">3</span> <span class="x">    </span><span class="cp">&lt;%=</span> <span class="n">render</span> <span class="ss">:partial</span> <span class="o">=&gt;</span> <span class="s1">&#39;classList_body&#39;</span> <span class="cp">%&gt;</span><span class="x"></span>
 <span class="lineno">4</span> <span class="x">&lt;/div&gt;</span></code></pre></div>
@@ -232,7 +228,7 @@
 
 <h3 id="onchange-で呼ばれる-javascript-関数の準備">onchange で呼ばれる Javascript 関数の準備</h3>
 
-<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span> <span class="c1">// test.html.erb </span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno"> 1</span> <span class="c1">// test.html.erb </span>
 <span class="lineno"> 2</span> <span class="c1">// onchange メソッド</span>
 <span class="lineno"> 3</span> <span class="kd">function</span> <span class="nx">changeMajor</span><span class="p">(){</span>
 <span class="lineno"> 4</span>      <span class="kd">var</span> <span class="nx">select</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;major_id&#39;</span><span class="p">);</span>
@@ -251,7 +247,7 @@
 
 <h3 id="通信ごとに呼ばれるパーシャルの準備">通信ごとに呼ばれるパーシャルの準備</h3>
 
-<div class="highlight"><pre><code class="erb"><span class="lineno">1</span> <span class="x">#_classList_body.html.erb  </span>
+<div class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="lineno">1</span> <span class="x">#_classList_body.html.erb  </span>
 <span class="lineno">2</span> <span class="x">&lt;p&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@universityID</span> <span class="cp">%&gt;</span><span class="x">&lt;/p&gt;</span>
 <span class="lineno">3</span> <span class="x">&lt;p&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@majorID</span> <span class="cp">%&gt;</span><span class="x">&lt;/p&gt;</span></code></pre></div>
 
@@ -259,7 +255,7 @@
 
 <h3 id="javascriptファイルの準備">Javascriptファイルの準備</h3>
 
-<div class="highlight"><pre><code class="erb"><span class="lineno">1</span> <span class="x"># listEachClass.js.erb</span>
+<div class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="lineno">1</span> <span class="x"># listEachClass.js.erb</span>
 <span class="lineno">2</span> <span class="x"># 上記のtest.html.erbがあるviewフォルダにこのファイルを作成</span>
 <span class="lineno">3</span> <span class="x">$(&quot;#classList&quot;).html(&quot;</span><span class="cp">&lt;%=</span> <span class="n">escape_javascript</span><span class="p">(</span><span class="n">render</span> <span class="s1">&#39;classList_body&#39;</span><span class="p">,</span> <span class="ss">:majorID</span> <span class="o">=&gt;</span> <span class="vi">@majorID</span><span class="p">,</span> <span class="ss">:universityID</span> <span class="o">=&gt;</span> <span class="vi">@universityID</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="x">&quot;);</span></code></pre></div>
 
@@ -267,7 +263,7 @@
 
 <h3 id="コントローラーの準備">コントローラーの準備</h3>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="k">def</span> <span class="nf">listEachClass</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="k">def</span> <span class="nf">listEachClass</span>
 <span class="lineno">2</span>     <span class="nb">puts</span> <span class="s2">&quot;==== Here is the listEachClass!! ====&quot;</span>
 <span class="lineno">3</span>     <span class="vi">@majorID</span> <span class="o">=</span> <span class="n">params</span><span class="o">[</span><span class="ss">:majorID</span><span class="o">].</span><span class="n">to_i</span>
 <span class="lineno">4</span>     <span class="vi">@universityID</span> <span class="o">=</span> <span class="n">params</span><span class="o">[</span><span class="ss">:universityID</span><span class="o">].</span><span class="n">to_i</span>
@@ -424,22 +420,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -533,9 +524,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

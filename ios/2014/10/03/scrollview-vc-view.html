@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -218,14 +214,14 @@
 
 <p>まずは、UIScrollViewを持つViewController。ここでハマりました。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">MeemoListViewController</span><span class="o">:</span> <span class="n">UIViewController</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="nl">MeemoListViewController</span><span class="p">:</span> <span class="bp">UIViewController</span> <span class="p">{</span>
 <span class="lineno"> 2</span> 
-<span class="lineno"> 3</span>     <span class="p">@</span><span class="kt">IBOutlet</span> <span class="n">weak</span> <span class="n">var</span> <span class="n">scrollView</span><span class="o">:</span> <span class="n">UIScrollView</span><span class="o">!</span>
+<span class="lineno"> 3</span>     <span class="p">@</span><span class="kt">IBOutlet</span> <span class="k">weak</span> <span class="n">var</span> <span class="nl">scrollView</span><span class="p">:</span> <span class="bp">UIScrollView</span><span class="o">!</span>
 <span class="lineno"> 4</span>     
-<span class="lineno"> 5</span>     <span class="n">var</span> <span class="n">controllers</span> <span class="o">:</span> <span class="n">NSMutableArray</span><span class="o">!</span> <span class="c1">// 必須</span>
+<span class="lineno"> 5</span>     <span class="n">var</span> <span class="nl">controllers</span> <span class="p">:</span> <span class="bp">NSMutableArray</span><span class="o">!</span> <span class="c1">// 必須</span>
 <span class="lineno"> 6</span>     
 <span class="lineno"> 7</span>     <span class="n">override</span> <span class="n">func</span> <span class="n">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
-<span class="lineno"> 8</span>         <span class="n">super</span><span class="p">.</span><span class="n">viewDidLoad</span><span class="p">()</span>
+<span class="lineno"> 8</span>         <span class="nb">super</span><span class="p">.</span><span class="n">viewDidLoad</span><span class="p">()</span>
 <span class="lineno"> 9</span>         
 <span class="lineno">10</span>         <span class="c1">// Set up scroll view</span>
 <span class="lineno">11</span>         <span class="n">buildScrollView</span><span class="p">()</span>
@@ -233,38 +229,38 @@
 <span class="lineno">13</span> 
 <span class="lineno">14</span>     <span class="n">func</span> <span class="n">buildScrollView</span><span class="p">()</span> <span class="p">{</span>
 <span class="lineno">15</span>     
-<span class="lineno">16</span>      <span class="n">self</span><span class="p">.</span><span class="n">controllers</span> <span class="o">=</span> <span class="n">NSMutableArray</span><span class="p">(</span><span class="n">capacity</span><span class="o">:</span> <span class="mi">0</span><span class="p">)</span>
+<span class="lineno">16</span>      <span class="nb">self</span><span class="p">.</span><span class="n">controllers</span> <span class="o">=</span> <span class="bp">NSMutableArray</span><span class="p">(</span><span class="nl">capacity</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
 <span class="lineno">17</span>      
-<span class="lineno">18</span>      <span class="n">let</span> <span class="n">size</span> <span class="o">=</span> <span class="n">CGSizeMake</span><span class="p">(</span><span class="n">UIScreen</span><span class="p">.</span><span class="n">mainScreen</span><span class="p">().</span><span class="n">applicationFrame</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="n">UIScreen</span><span class="p">.</span><span class="n">mainScreen</span><span class="p">().</span><span class="n">applicationFrame</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span><span class="p">)</span>
-<span class="lineno">19</span>              <span class="n">self</span><span class="p">.</span><span class="n">scrollView</span><span class="p">.</span><span class="n">setTranslatesAutoresizingMaskIntoConstraints</span><span class="p">(</span><span class="nb">false</span><span class="p">)</span>
+<span class="lineno">18</span>      <span class="n">let</span> <span class="n">size</span> <span class="o">=</span> <span class="n">CGSizeMake</span><span class="p">(</span><span class="bp">UIScreen</span><span class="p">.</span><span class="n">mainScreen</span><span class="p">().</span><span class="n">applicationFrame</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">UIScreen</span><span class="p">.</span><span class="n">mainScreen</span><span class="p">().</span><span class="n">applicationFrame</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span><span class="p">)</span>
+<span class="lineno">19</span>              <span class="nb">self</span><span class="p">.</span><span class="n">scrollView</span><span class="p">.</span><span class="n">setTranslatesAutoresizingMaskIntoConstraints</span><span class="p">(</span><span class="nb">false</span><span class="p">)</span>
 <span class="lineno">20</span>      
 <span class="lineno">21</span>      <span class="c1">// Add Setting Page</span>
-<span class="lineno">22</span>      <span class="n">let</span> <span class="n">storyBordStt</span> <span class="o">=</span> <span class="n">UIStoryboard</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;SettingViewController&quot;</span><span class="p">,</span> <span class="n">bundle</span><span class="o">:</span> <span class="nb">nil</span><span class="p">)</span>
-<span class="lineno">23</span>      <span class="n">var</span> <span class="n">settingController</span> <span class="o">:</span> <span class="n">SettingViewController</span> <span class="o">=</span> <span class="n">storyBordStt</span><span class="p">.</span><span class="n">instantiateInitialViewController</span><span class="p">()</span> <span class="n">as</span> <span class="n">SettingViewController</span>
+<span class="lineno">22</span>      <span class="n">let</span> <span class="n">storyBordStt</span> <span class="o">=</span> <span class="bp">UIStoryboard</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;SettingViewController&quot;</span><span class="p">,</span> <span class="nl">bundle</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+<span class="lineno">23</span>      <span class="n">var</span> <span class="nl">settingController</span> <span class="p">:</span> <span class="n">SettingViewController</span> <span class="o">=</span> <span class="n">storyBordStt</span><span class="p">.</span><span class="n">instantiateInitialViewController</span><span class="p">()</span> <span class="n">as</span> <span class="n">SettingViewController</span>
 <span class="lineno">24</span>      <span class="n">var</span> <span class="n">settingView</span> <span class="o">=</span> <span class="n">settingController</span><span class="p">.</span><span class="n">view</span>
-<span class="lineno">25</span>      <span class="n">self</span><span class="p">.</span><span class="n">scrollView</span><span class="p">.</span><span class="n">addSubview</span><span class="p">(</span><span class="n">settingView</span><span class="p">)</span>
-<span class="lineno">26</span>      <span class="n">self</span><span class="p">.</span><span class="n">controllers</span><span class="p">.</span><span class="n">addObject</span><span class="p">(</span><span class="n">settingController</span><span class="p">)</span> <span class="c1">// 保持!</span>
+<span class="lineno">25</span>      <span class="nb">self</span><span class="p">.</span><span class="n">scrollView</span><span class="p">.</span><span class="n">addSubview</span><span class="p">(</span><span class="n">settingView</span><span class="p">)</span>
+<span class="lineno">26</span>      <span class="nb">self</span><span class="p">.</span><span class="n">controllers</span><span class="p">.</span><span class="n">addObject</span><span class="p">(</span><span class="n">settingController</span><span class="p">)</span> <span class="c1">// 保持!</span>
 <span class="lineno">27</span>      
 <span class="lineno">28</span>      <span class="c1">// Add Main Page</span>
-<span class="lineno">29</span>      <span class="n">let</span> <span class="n">stroBoardMain</span> <span class="o">=</span> <span class="n">UIStoryboard</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;MemoListViewController&quot;</span><span class="p">,</span> <span class="n">bundle</span><span class="o">:</span> <span class="nb">nil</span><span class="p">)</span>
-<span class="lineno">30</span>      <span class="n">var</span> <span class="n">mainController</span> <span class="o">:</span> <span class="n">MemoListViewController</span> <span class="o">=</span> <span class="n">stroBoardMain</span><span class="p">.</span><span class="n">instantiateInitialViewController</span><span class="p">()</span> <span class="n">as</span> <span class="n">MemoListViewController</span>
+<span class="lineno">29</span>      <span class="n">let</span> <span class="n">stroBoardMain</span> <span class="o">=</span> <span class="bp">UIStoryboard</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;MemoListViewController&quot;</span><span class="p">,</span> <span class="nl">bundle</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+<span class="lineno">30</span>      <span class="n">var</span> <span class="nl">mainController</span> <span class="p">:</span> <span class="n">MemoListViewController</span> <span class="o">=</span> <span class="n">stroBoardMain</span><span class="p">.</span><span class="n">instantiateInitialViewController</span><span class="p">()</span> <span class="n">as</span> <span class="n">MemoListViewController</span>
 <span class="lineno">31</span>      <span class="n">var</span> <span class="n">mainView</span> <span class="o">=</span> <span class="n">mainController</span><span class="p">.</span><span class="n">view</span>
-<span class="lineno">32</span>      <span class="n">self</span><span class="p">.</span><span class="n">scrollView</span><span class="p">.</span><span class="n">addSubview</span><span class="p">(</span><span class="n">mainView</span><span class="p">)</span>
-<span class="lineno">33</span>      <span class="n">self</span><span class="p">.</span><span class="n">controllers</span><span class="p">.</span><span class="n">addObject</span><span class="p">(</span><span class="n">mainController</span><span class="p">)</span> <span class="c1">// 保持!</span>
+<span class="lineno">32</span>      <span class="nb">self</span><span class="p">.</span><span class="n">scrollView</span><span class="p">.</span><span class="n">addSubview</span><span class="p">(</span><span class="n">mainView</span><span class="p">)</span>
+<span class="lineno">33</span>      <span class="nb">self</span><span class="p">.</span><span class="n">controllers</span><span class="p">.</span><span class="n">addObject</span><span class="p">(</span><span class="n">mainController</span><span class="p">)</span> <span class="c1">// 保持!</span>
 <span class="lineno">34</span> 
-<span class="lineno">35</span>      <span class="n">var</span> <span class="n">currentLoc</span> <span class="o">:</span> <span class="n">CGFloat</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="lineno">36</span>      <span class="n">var</span> <span class="n">subviews</span> <span class="o">:</span> <span class="n">Array</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">scrollView</span><span class="p">.</span><span class="n">subviews</span> <span class="n">as</span> <span class="n">Array</span><span class="o">&lt;</span><span class="n">UIView</span><span class="o">&gt;</span>
+<span class="lineno">35</span>      <span class="n">var</span> <span class="nl">currentLoc</span> <span class="p">:</span> <span class="n">CGFloat</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="lineno">36</span>      <span class="n">var</span> <span class="nl">subviews</span> <span class="p">:</span> <span class="n">Array</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="n">scrollView</span><span class="p">.</span><span class="n">subviews</span> <span class="n">as</span> <span class="n">Array</span><span class="o">&lt;</span><span class="bp">UIView</span><span class="o">&gt;</span>
 <span class="lineno">37</span>      
-<span class="lineno">38</span>      <span class="k">for</span> <span class="p">(</span><span class="n">viewBox</span> <span class="o">:</span> <span class="n">UIView</span><span class="p">)</span> <span class="k">in</span> <span class="n">subviews</span> <span class="p">{</span>
+<span class="lineno">38</span>      <span class="k">for</span> <span class="p">(</span><span class="nl">viewBox</span> <span class="p">:</span> <span class="bp">UIView</span><span class="p">)</span> <span class="k">in</span> <span class="n">subviews</span> <span class="p">{</span>
 <span class="lineno">39</span>          <span class="k">if</span> <span class="n">viewBox</span><span class="p">.</span><span class="n">tag</span> <span class="o">==</span> <span class="mi">100</span> <span class="p">{</span>
-<span class="lineno">40</span>              <span class="n">var</span> <span class="n">frame</span> <span class="o">:</span> <span class="n">CGRect</span> <span class="o">=</span> <span class="n">viewBox</span><span class="p">.</span><span class="n">frame</span>
+<span class="lineno">40</span>              <span class="n">var</span> <span class="nl">frame</span> <span class="p">:</span> <span class="bp">CGRect</span> <span class="o">=</span> <span class="n">viewBox</span><span class="p">.</span><span class="n">frame</span>
 <span class="lineno">41</span>              <span class="n">frame</span><span class="p">.</span><span class="n">origin</span> <span class="o">=</span> <span class="n">CGPointMake</span><span class="p">(</span><span class="n">currentLoc</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
 <span class="lineno">42</span>              <span class="n">viewBox</span><span class="p">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">frame</span><span class="p">;</span>
-<span class="lineno">43</span>              <span class="n">currentLoc</span> <span class="o">+=</span> <span class="p">(</span><span class="n">UIScreen</span><span class="p">.</span><span class="n">mainScreen</span><span class="p">().</span><span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span><span class="p">)</span>
+<span class="lineno">43</span>              <span class="n">currentLoc</span> <span class="o">+=</span> <span class="p">(</span><span class="bp">UIScreen</span><span class="p">.</span><span class="n">mainScreen</span><span class="p">().</span><span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span><span class="p">)</span>
 <span class="lineno">44</span>          <span class="p">}</span>
 <span class="lineno">45</span>      <span class="p">}</span>
 <span class="lineno">46</span>          
-<span class="lineno">47</span>      <span class="n">self</span><span class="p">.</span><span class="n">scrollView</span><span class="p">.</span><span class="n">contentSize</span> <span class="o">=</span> <span class="n">CGSizeMake</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">UIScreen</span><span class="p">.</span><span class="n">mainScreen</span><span class="p">().</span><span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="n">UIScreen</span><span class="p">.</span><span class="n">mainScreen</span><span class="p">().</span><span class="n">applicationFrame</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span><span class="p">)</span>
+<span class="lineno">47</span>      <span class="nb">self</span><span class="p">.</span><span class="n">scrollView</span><span class="p">.</span><span class="n">contentSize</span> <span class="o">=</span> <span class="n">CGSizeMake</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">UIScreen</span><span class="p">.</span><span class="n">mainScreen</span><span class="p">().</span><span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">UIScreen</span><span class="p">.</span><span class="n">mainScreen</span><span class="p">().</span><span class="n">applicationFrame</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span><span class="p">)</span>
 <span class="lineno">48</span>     <span class="p">}</span>
 <span class="lineno">49</span> <span class="p">}</span></code></pre></div>
 
@@ -421,22 +417,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -530,9 +521,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -216,7 +212,7 @@
 
 <p>ご存じの通り、unsign と sign の数字は、MSB をプラスかマイナスかを表現するために使用するかどうかの違いです。仮に 8 bits で数字を表現することを考えてみると、unsign は 8bits 全てを正の数を表すために使用します。そのため、8bits で表すことができる範囲は、0 から 255 です。一方、sign は MSB で符号を示します。MSB がセットされていれば、その 8bits で表された数字は負です。範囲は、-128 から 127 です。そこで、下記のような C のプログラムを見てみると、</p>
 
-<div class="highlight"><pre><code class="c"><span class="lineno"> 1</span> <span class="cp">#include &lt;stdio.h&gt;</span>
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno"> 1</span> <span class="cp">#include &lt;stdio.h&gt;</span>
 <span class="lineno"> 2</span>  
 <span class="lineno"> 3</span> <span class="kt">int</span> <span class="n">array</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">23</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">204</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">16</span><span class="p">};</span>
 <span class="lineno"> 4</span> <span class="cp">#define TOTAL_ELEMENTS (sizeof(array) / sizeof(array[0]))</span>
@@ -401,22 +397,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -510,9 +501,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

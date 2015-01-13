@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -220,13 +216,13 @@
 
 <p>適当なボタン等にアクションを設定して以下の様なコードを書く。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">-</span> <span class="p">(</span><span class="kt">IBAction</span><span class="p">)</span><span class="nf">showMenu:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nv">sender</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="p">-</span> <span class="p">(</span><span class="kt">IBAction</span><span class="p">)</span><span class="nf">showMenu:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nv">sender</span>
 <span class="lineno">2</span> <span class="p">{</span>
 <span class="lineno">3</span>     <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Here! Long time no see!!&quot;</span><span class="p">);</span>
 <span class="lineno">4</span>     <span class="n">KKMenuListViewController</span> <span class="o">*</span><span class="n">menulistView</span> <span class="o">=</span>
-<span class="lineno">5</span>         <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">storyboard</span> <span class="n">instantiateViewControllerWithIdentifier</span><span class="o">:</span><span class="s">@&quot;menuID&quot;</span><span class="p">];</span>
+<span class="lineno">5</span>         <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">storyboard</span> <span class="nl">instantiateViewControllerWithIdentifier</span><span class="p">:</span><span class="s">@&quot;menuID&quot;</span><span class="p">];</span>
 <span class="lineno">6</span>     <span class="n">menulistView</span><span class="p">.</span><span class="n">modalTransitionStyle</span> <span class="o">=</span> <span class="n">UIModalTransitionStyleCrossDissolve</span><span class="p">;</span>
-<span class="lineno">7</span>     <span class="p">[</span><span class="n">self</span> <span class="n">presentViewController</span><span class="o">:</span><span class="n">menulistView</span> <span class="n">animated</span><span class="o">:</span><span class="nb">YES</span> <span class="n">completion</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
+<span class="lineno">7</span>     <span class="p">[</span><span class="nb">self</span> <span class="nl">presentViewController</span><span class="p">:</span><span class="n">menulistView</span> <span class="nl">animated</span><span class="p">:</span><span class="nb">YES</span> <span class="nl">completion</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
 <span class="lineno">8</span> <span class="p">}</span></code></pre></div>
 
 <p>1 . presentModalViewController:animated の代わりに presentViewController:animated:completion というメソッドを使わないと警告でます。新しいメソッドの最後の引数、completionにはコールバックを指定し、モーダルビューが表示完了後に呼び出される。</p>
@@ -398,22 +394,17 @@ UIModalTransitionStylePartialCurl<br /></p>
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -507,9 +498,6 @@ UIModalTransitionStylePartialCurl<br /></p>
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

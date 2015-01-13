@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -225,46 +221,46 @@
 
 <p>メソッドの定義の方法は分かり易いと思います。クラス等のタイプ宣言時にそのまま関数を定義したように書きます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">Counter</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">count</span><span class="o">:</span> <span class="n">Int</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="lineno"> 3</span>     <span class="n">func</span> <span class="n">incrementBy</span><span class="p">(</span><span class="n">amount</span><span class="o">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">numberOfTimes</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">Counter</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">var</span> <span class="nl">count</span><span class="p">:</span> <span class="n">Int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="lineno"> 3</span>     <span class="n">func</span> <span class="n">incrementBy</span><span class="p">(</span><span class="nl">amount</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">numberOfTimes</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 4</span>         <span class="n">count</span> <span class="o">+=</span> <span class="n">amount</span> <span class="o">*</span> <span class="n">numberOfTimes</span>
 <span class="lineno"> 5</span>     <span class="p">}</span>
 <span class="lineno"> 6</span> <span class="p">}</span>
 <span class="lineno"> 7</span> 
 <span class="lineno"> 8</span> <span class="n">let</span> <span class="n">counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
-<span class="lineno"> 9</span> <span class="n">counter</span><span class="p">.</span><span class="n">incrementBy</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">numberOfTimes</span><span class="o">:</span> <span class="mi">3</span><span class="p">)</span>
+<span class="lineno"> 9</span> <span class="n">counter</span><span class="p">.</span><span class="n">incrementBy</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="nl">numberOfTimes</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
 <span class="lineno">10</span> <span class="c1">// counter value is now 15</span></code></pre></div>
 
 <p>メソッドの注意点として、まず、メソッド名は、最初の引数に関して、前置詞を付け、その引数に対して説明的にすると読みやすいです。この例では、<code>incrementBy</code> です。メソッド定義時には、1 つ目の引数の名前をメソッドの中で使用するために指定していますが、メソッドを呼ぶ際には必要ありません。しかし、2 つ目の引数では external name をタイプしなければなりません。</p>
 
 <p>これは関数をこのように定義した時と同じ挙動です。Objective-C に慣れていれば、コードを書く際には、分かりやすいと思います。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">func</span> <span class="nf">incrementBy</span><span class="p">(</span><span class="n">amount</span><span class="o">:</span> <span class="n">Int</span><span class="p">,</span> <span class="err">#</span><span class="n">numberOfTimes</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">func</span> <span class="nf">incrementBy</span><span class="p">(</span><span class="nl">amount</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="err">#</span><span class="nl">numberOfTimes</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">count</span> <span class="o">+=</span> <span class="n">amount</span> <span class="o">*</span> <span class="n">numberOfTimes</span>
 <span class="lineno">3</span> <span class="p">}</span></code></pre></div>
 
 <p>また、このように 1 つ目の引数に external name を付けたり、2 つ目の external name を省略することもできます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">class</span> <span class="n">Counter</span> <span class="p">{</span>
-<span class="lineno">2</span>     <span class="n">var</span> <span class="n">count</span><span class="o">:</span> <span class="n">Int</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="lineno">3</span>     <span class="n">func</span> <span class="n">incrementBy</span><span class="p">(</span><span class="n">a</span> <span class="n">amount</span><span class="o">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">_</span> <span class="n">numberOfTimes</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">class</span> <span class="n">Counter</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="n">var</span> <span class="nl">count</span><span class="p">:</span> <span class="n">Int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="lineno">3</span>     <span class="n">func</span> <span class="n">incrementBy</span><span class="p">(</span><span class="n">a</span> <span class="nl">amount</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">_</span> <span class="nl">numberOfTimes</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">4</span>         <span class="n">count</span> <span class="o">+=</span> <span class="n">amount</span> <span class="o">*</span> <span class="n">numberOfTimes</span>
 <span class="lineno">5</span>     <span class="p">}</span>
 <span class="lineno">6</span> <span class="p">}</span>
 <span class="lineno">7</span> 
 <span class="lineno">8</span> <span class="n">let</span> <span class="n">counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
-<span class="lineno">9</span> <span class="n">counter</span><span class="p">.</span><span class="n">incrementBy</span><span class="p">(</span><span class="n">a</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></code></pre></div>
+<span class="lineno">9</span> <span class="n">counter</span><span class="p">.</span><span class="n">incrementBy</span><span class="p">(</span><span class="nl">a</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></code></pre></div>
 
 <p>メソッドの引数の名前とプロパティの名前が同じ場合には、<code>self</code> キーワードを使用します。そうでない場合にも、<code>self</code> を使用できますが、必要はありません。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">Point</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">Point</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
-<span class="lineno"> 3</span>     <span class="n">func</span> <span class="n">isToTheRightOfX</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="n">Double</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
-<span class="lineno"> 4</span>         <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">x</span>
+<span class="lineno"> 3</span>     <span class="n">func</span> <span class="n">isToTheRightOfX</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+<span class="lineno"> 4</span>         <span class="k">return</span> <span class="nb">self</span><span class="p">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">x</span>
 <span class="lineno"> 5</span>     <span class="p">}</span>
 <span class="lineno"> 6</span> <span class="p">}</span>
-<span class="lineno"> 7</span> <span class="n">let</span> <span class="n">somePoint</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="mf">4.0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mf">5.0</span><span class="p">)</span>
+<span class="lineno"> 7</span> <span class="n">let</span> <span class="n">somePoint</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">)</span>
 <span class="lineno"> 8</span> <span class="k">if</span> <span class="n">somePoint</span><span class="p">.</span><span class="n">isToTheRightOfX</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 9</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;This point is to the right of the line where x == 1.0&quot;</span><span class="p">)</span>
 <span class="lineno">10</span> <span class="p">}</span>
@@ -274,40 +270,40 @@
 
 <p>構造体と Enumeration の Instance Methods は、プロパティの値をデフォルトでは、変更することができません。もし、プロパティの値をクラスのように変更したい場合には、<code>mutating</code> キーワードを <code>func</code> キーワードの前にタイプします。これにより、構造体と Enumeration においても、プロパティを変更することができるようになります。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">Point</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">Point</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
-<span class="lineno"> 3</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">moveByX</span><span class="p">(</span><span class="n">deltaX</span><span class="o">:</span> <span class="n">Double</span><span class="p">,</span> <span class="n">y</span> <span class="n">deltaY</span><span class="o">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 3</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">moveByX</span><span class="p">(</span><span class="nl">deltaX</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="n">y</span> <span class="nl">deltaY</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 4</span>         <span class="n">x</span> <span class="o">+=</span> <span class="n">deltaX</span>
 <span class="lineno"> 5</span>         <span class="n">y</span> <span class="o">+=</span> <span class="n">deltaY</span>
 <span class="lineno"> 6</span>     <span class="p">}</span>
 <span class="lineno"> 7</span> <span class="p">}</span>
 <span class="lineno"> 8</span> 
-<span class="lineno"> 9</span> <span class="n">var</span> <span class="n">somePoint</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mf">1.0</span><span class="p">)</span>
-<span class="lineno">10</span> <span class="n">somePoint</span><span class="p">.</span><span class="n">moveByX</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="lineno"> 9</span> <span class="n">var</span> <span class="n">somePoint</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="lineno">10</span> <span class="n">somePoint</span><span class="p">.</span><span class="n">moveByX</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">)</span>
 <span class="lineno">11</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;The point is now at (\(somePoint.x), \(somePoint.y))&quot;</span><span class="p">)</span>
 <span class="lineno">12</span> <span class="c1">// prints &quot;The point is now at (3.0, 4.0)</span></code></pre></div>
 
 <p>mutating メソッドは、<code>self</code> に全く新しいインスタンスを代入することもできます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">Point</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">Point</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
-<span class="lineno">3</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">moveByX</span><span class="p">(</span><span class="n">deltaX</span><span class="o">:</span> <span class="n">Double</span><span class="p">,</span> <span class="n">y</span> <span class="n">deltaY</span><span class="o">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">4</span>         <span class="n">self</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">deltaX</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="n">y</span> <span class="o">+</span> <span class="n">deltaY</span><span class="p">)</span>
+<span class="lineno">3</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">moveByX</span><span class="p">(</span><span class="nl">deltaX</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="n">y</span> <span class="nl">deltaY</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">4</span>         <span class="nb">self</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">deltaX</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="n">y</span> <span class="o">+</span> <span class="n">deltaY</span><span class="p">)</span>
 <span class="lineno">5</span>     <span class="p">}</span>
 <span class="lineno">6</span> <span class="p">}</span></code></pre></div>
 
 <p>これは上記でみた例と全く同じ結果を生みます。Enumeration ではこんな感じ。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="k">enum</span> <span class="n">TriStateSwitch</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">enum</span> <span class="n">TriStateSwitch</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="k">case</span> <span class="n">Off</span><span class="p">,</span> <span class="n">Low</span><span class="p">,</span> <span class="n">High</span>
 <span class="lineno"> 3</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">next</span><span class="p">()</span> <span class="p">{</span>
-<span class="lineno"> 4</span>         <span class="k">switch</span> <span class="n">self</span> <span class="p">{</span>
-<span class="lineno"> 5</span>         <span class="k">case</span> <span class="n">Off</span>:
-<span class="lineno"> 6</span>             <span class="n">self</span> <span class="o">=</span> <span class="n">Low</span>
-<span class="lineno"> 7</span>         <span class="k">case</span> <span class="n">Low</span>:
-<span class="lineno"> 8</span>             <span class="n">self</span> <span class="o">=</span> <span class="n">High</span>
-<span class="lineno"> 9</span>         <span class="k">case</span> <span class="n">High</span>:
-<span class="lineno">10</span>             <span class="n">self</span> <span class="o">=</span> <span class="n">Off</span>
+<span class="lineno"> 4</span>         <span class="k">switch</span> <span class="nb">self</span> <span class="p">{</span>
+<span class="lineno"> 5</span>         <span class="k">case</span> <span class="nl">Off</span><span class="p">:</span>
+<span class="lineno"> 6</span>             <span class="nb">self</span> <span class="o">=</span> <span class="n">Low</span>
+<span class="lineno"> 7</span>         <span class="k">case</span> <span class="nl">Low</span><span class="p">:</span>
+<span class="lineno"> 8</span>             <span class="nb">self</span> <span class="o">=</span> <span class="n">High</span>
+<span class="lineno"> 9</span>         <span class="k">case</span> <span class="nl">High</span><span class="p">:</span>
+<span class="lineno">10</span>             <span class="nb">self</span> <span class="o">=</span> <span class="n">Off</span>
 <span class="lineno">11</span>         <span class="p">}</span>
 <span class="lineno">12</span>     <span class="p">}</span>
 <span class="lineno">13</span> <span class="p">}</span>
@@ -321,8 +317,8 @@
 
 <p>タイプメソッドは、Objective-C においてクラスメソッドと同じようなものです。インスタンスに、メソッドコールをするのではなく、タイプ自体 (クラス、構造体、Enumeration) に呼び出しを行います。クラスに対して、タイプメソッドを作成するには、<code>class</code> キーワードを、構造体・Enumeration に対して、タイプメソッドを作成するには、<code>static</code> キーワードを func の前に置きます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">SomeClass</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="n">class</span> <span class="n">func</span> <span class="n">someTypeMethod</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">SomeClass</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="k">class</span> <span class="n">func</span> <span class="n">someTypeMethod</span><span class="p">()</span> <span class="p">{</span>
 <span class="lineno"> 3</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;Hi&quot;</span><span class="p">)</span>
 <span class="lineno"> 4</span>     <span class="p">}</span>
 <span class="lineno"> 5</span> <span class="p">}</span>
@@ -337,9 +333,9 @@
 
 <p>タイプメソッドの中では、そのタイプが持っている他のタイプメソッドやタイププロパティをタイプ名なしで呼び出すことができます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">LevelTracker</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">LevelTracker</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="k">static</span> <span class="n">var</span> <span class="n">highestUnlockedLevel</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="lineno">3</span>     <span class="k">static</span> <span class="n">func</span> <span class="n">unlockLevel</span><span class="p">(</span><span class="n">level</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">3</span>     <span class="k">static</span> <span class="n">func</span> <span class="n">unlockLevel</span><span class="p">(</span><span class="nl">level</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">4</span>         <span class="k">if</span> <span class="n">level</span> <span class="o">&gt;</span> <span class="n">highestUnlockedLevel</span> <span class="p">{</span> <span class="n">highestUnlockedLevel</span> <span class="o">=</span> <span class="n">level</span> <span class="p">}</span>
 <span class="lineno">5</span>     <span class="p">}</span>
 <span class="lineno">6</span> <span class="p">}</span></code></pre></div>
@@ -490,22 +486,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -599,9 +590,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

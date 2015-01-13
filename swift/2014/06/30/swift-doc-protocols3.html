@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -224,7 +220,7 @@
 
 <p>配列や Dictionary といった Collection にプロトコルをタイプとして保存することができます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">things</span><span class="o">:</span> <span class="n">TextRepresentable</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="n">game</span><span class="p">,</span> <span class="n">d12</span><span class="p">,</span> <span class="n">simonTheHamster</span><span class="p">]</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="nl">things</span><span class="p">:</span> <span class="n">TextRepresentable</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="n">game</span><span class="p">,</span> <span class="n">d12</span><span class="p">,</span> <span class="n">simonTheHamster</span><span class="p">]</span>
 <span class="lineno">2</span> 
 <span class="lineno">3</span> <span class="k">for</span> <span class="n">thing</span> <span class="k">in</span> <span class="n">things</span> <span class="p">{</span>
 <span class="lineno">4</span>     <span class="n">println</span><span class="p">(</span><span class="n">thing</span><span class="p">.</span><span class="n">asText</span><span class="p">())</span>
@@ -239,13 +235,13 @@
 
 <p>プロトコルは 1 つまたは複数のプロトコルを継承し、新しい要件を追加することもできます。プロトコルの文法は、クラスの継承と似ています。いくつかのプロトコルを継承することができるので、その場合は、カンマで区切ります。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">InheritingProtocol</span><span class="o">:</span> <span class="n">SomeProtocol</span><span class="p">,</span> <span class="n">AnotherProtocol</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="nl">InheritingProtocol</span><span class="p">:</span> <span class="n">SomeProtocol</span><span class="p">,</span> <span class="n">AnotherProtocol</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="c1">// protocol definition goes here</span>
 <span class="lineno">3</span> <span class="p">}</span></code></pre></div>
 
 <p>先ほどの TextRepresentable を継承し、新しいプロトコルを作成します。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">PrettyTextRepresentable</span><span class="o">:</span> <span class="n">TextRepresentable</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="nl">PrettyTextRepresentable</span><span class="p">:</span> <span class="n">TextRepresentable</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">func</span> <span class="n">asPrettyText</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span>
 <span class="lineno">3</span> <span class="p">}</span></code></pre></div>
 
@@ -255,20 +251,20 @@
 
 <p>いくつかのプロトコルの要件を満たしたタイプを一度に定義できたら便利です。そのため Swift では、いくつかのプロトコルを 1 つにまとめることができます。基本的なシンタックスは、<code>protocol&lt;SomeProtocol, AnotherProtocol&gt;</code> と &lt;&gt; で囲います。複数ある場合は、&lt;&gt; 内でカンマで区切ります。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">protocol</span> <span class="n">Named</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">protocol</span> <span class="n">Named</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">var</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
 <span class="lineno"> 3</span> <span class="p">}</span>
 <span class="lineno"> 4</span> <span class="n">protocol</span> <span class="n">Aged</span> <span class="p">{</span>
-<span class="lineno"> 5</span>     <span class="n">var</span> <span class="n">age</span><span class="o">:</span> <span class="n">Int</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
+<span class="lineno"> 5</span>     <span class="n">var</span> <span class="nl">age</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
 <span class="lineno"> 6</span> <span class="p">}</span>
-<span class="lineno"> 7</span> <span class="k">struct</span> <span class="n">Person</span><span class="o">:</span> <span class="n">Named</span><span class="p">,</span> <span class="n">Aged</span> <span class="p">{</span>
-<span class="lineno"> 8</span>     <span class="n">var</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span>
-<span class="lineno"> 9</span>     <span class="n">var</span> <span class="n">age</span><span class="o">:</span> <span class="n">Int</span>
+<span class="lineno"> 7</span> <span class="k">struct</span> <span class="nl">Person</span><span class="p">:</span> <span class="n">Named</span><span class="p">,</span> <span class="n">Aged</span> <span class="p">{</span>
+<span class="lineno"> 8</span>     <span class="n">var</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span>
+<span class="lineno"> 9</span>     <span class="n">var</span> <span class="nl">age</span><span class="p">:</span> <span class="n">Int</span>
 <span class="lineno">10</span> <span class="p">}</span>
-<span class="lineno">11</span> <span class="n">func</span> <span class="n">wishHappyBirthday</span><span class="p">(</span><span class="n">celebrator</span><span class="o">:</span> <span class="n">protocol</span><span class="o">&lt;</span><span class="n">Named</span><span class="p">,</span> <span class="n">Aged</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">11</span> <span class="n">func</span> <span class="n">wishHappyBirthday</span><span class="p">(</span><span class="nl">celebrator</span><span class="p">:</span> <span class="n">protocol</span><span class="o">&lt;</span><span class="n">Named</span><span class="p">,</span> <span class="n">Aged</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">12</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;Happy birthday \(celebrator.name) - you&#39;re \(celebrator.age)!&quot;</span><span class="p">)</span>
 <span class="lineno">13</span> <span class="p">}</span>
-<span class="lineno">14</span> <span class="n">let</span> <span class="n">birthdayPerson</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;Malcolm&quot;</span><span class="p">,</span> <span class="n">age</span><span class="o">:</span> <span class="mi">21</span><span class="p">)</span>
+<span class="lineno">14</span> <span class="n">let</span> <span class="n">birthdayPerson</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Malcolm&quot;</span><span class="p">,</span> <span class="nl">age</span><span class="p">:</span> <span class="mi">21</span><span class="p">)</span>
 <span class="lineno">15</span> <span class="n">wishHappyBirthday</span><span class="p">(</span><span class="n">birthdayPerson</span><span class="p">)</span>
 <span class="lineno">16</span> <span class="c1">// prints &quot;Happy birthday Malcolm - you&#39;re 21!&quot;</span></code></pre></div>
 
@@ -280,33 +276,33 @@
 
 <p>タイプキャスティングのように <code>is</code> や <code>as</code> を使用して、あるプロコトルに準拠しているか確認、特定のプロトコルへキャストすることができます。まずは、例のプロトコルを用意していきます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="p">@</span><span class="n">objc</span> <span class="n">protocol</span> <span class="n">HasArea</span> <span class="p">{</span>
-<span class="lineno">2</span>     <span class="n">var</span> <span class="n">area</span><span class="o">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="p">@</span><span class="n">objc</span> <span class="n">protocol</span> <span class="n">HasArea</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="n">var</span> <span class="nl">area</span><span class="p">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
 <span class="lineno">3</span> <span class="p">}</span></code></pre></div>
 
 <p>この HasArea プロトコルのように、<code>@objc</code> 属性が付いているプロトコルのみ、プロトコルに準拠しているか確認することができます。また、この <code>@objc</code> を付けた場合、このプロトコルは、クラスにのみ実装されます。構造体・Enumeration は使用することができません。例をみていきます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">Circle</span><span class="o">:</span> <span class="n">HasArea</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="nl">Circle</span><span class="p">:</span> <span class="n">HasArea</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">let</span> <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.1415927</span>
-<span class="lineno"> 3</span>     <span class="n">var</span> <span class="n">radius</span><span class="o">:</span> <span class="n">Double</span>
-<span class="lineno"> 4</span>     <span class="n">var</span> <span class="n">area</span><span class="o">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">radius</span> <span class="p">}</span>
-<span class="lineno"> 5</span>     <span class="n">init</span><span class="p">(</span><span class="n">radius</span><span class="o">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span> <span class="n">self</span><span class="p">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">radius</span> <span class="p">}</span>
+<span class="lineno"> 3</span>     <span class="n">var</span> <span class="nl">radius</span><span class="p">:</span> <span class="n">Double</span>
+<span class="lineno"> 4</span>     <span class="n">var</span> <span class="nl">area</span><span class="p">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">radius</span> <span class="p">}</span>
+<span class="lineno"> 5</span>     <span class="n">init</span><span class="p">(</span><span class="nl">radius</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span> <span class="nb">self</span><span class="p">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">radius</span> <span class="p">}</span>
 <span class="lineno"> 6</span> <span class="p">}</span>
-<span class="lineno"> 7</span> <span class="n">class</span> <span class="n">Country</span><span class="o">:</span> <span class="n">HasArea</span> <span class="p">{</span>
-<span class="lineno"> 8</span>     <span class="n">var</span> <span class="n">area</span><span class="o">:</span> <span class="n">Double</span>
-<span class="lineno"> 9</span>     <span class="n">init</span><span class="p">(</span><span class="n">area</span><span class="o">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span> <span class="n">self</span><span class="p">.</span><span class="n">area</span> <span class="o">=</span> <span class="n">area</span> <span class="p">}</span>
+<span class="lineno"> 7</span> <span class="k">class</span> <span class="nl">Country</span><span class="p">:</span> <span class="n">HasArea</span> <span class="p">{</span>
+<span class="lineno"> 8</span>     <span class="n">var</span> <span class="nl">area</span><span class="p">:</span> <span class="n">Double</span>
+<span class="lineno"> 9</span>     <span class="n">init</span><span class="p">(</span><span class="nl">area</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span> <span class="nb">self</span><span class="p">.</span><span class="n">area</span> <span class="o">=</span> <span class="n">area</span> <span class="p">}</span>
 <span class="lineno">10</span> <span class="p">}</span>
-<span class="lineno">11</span> <span class="n">class</span> <span class="n">Animal</span> <span class="p">{</span>
-<span class="lineno">12</span>     <span class="n">var</span> <span class="n">legs</span><span class="o">:</span> <span class="n">Int</span>
-<span class="lineno">13</span>     <span class="n">init</span><span class="p">(</span><span class="n">legs</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span> <span class="n">self</span><span class="p">.</span><span class="n">legs</span> <span class="o">=</span> <span class="n">legs</span> <span class="p">}</span>
+<span class="lineno">11</span> <span class="k">class</span> <span class="n">Animal</span> <span class="p">{</span>
+<span class="lineno">12</span>     <span class="n">var</span> <span class="nl">legs</span><span class="p">:</span> <span class="n">Int</span>
+<span class="lineno">13</span>     <span class="n">init</span><span class="p">(</span><span class="nl">legs</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span> <span class="nb">self</span><span class="p">.</span><span class="n">legs</span> <span class="o">=</span> <span class="n">legs</span> <span class="p">}</span>
 <span class="lineno">14</span> <span class="p">}</span></code></pre></div>
 
 <p>この HasArea プロトコルに準拠している 2 つのクラスと、そうでないクラスを 1 つがあります。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">objects</span><span class="o">:</span> <span class="n">AnyObject</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span>
-<span class="lineno"> 2</span>     <span class="n">Circle</span><span class="p">(</span><span class="n">radius</span><span class="o">:</span> <span class="mf">2.0</span><span class="p">),</span>
-<span class="lineno"> 3</span>     <span class="n">Country</span><span class="p">(</span><span class="n">area</span><span class="o">:</span> <span class="mi">243</span><span class="n">_610</span><span class="p">),</span>
-<span class="lineno"> 4</span>     <span class="n">Animal</span><span class="p">(</span><span class="n">legs</span><span class="o">:</span> <span class="mi">4</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="nl">objects</span><span class="p">:</span> <span class="n">AnyObject</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span>
+<span class="lineno"> 2</span>     <span class="n">Circle</span><span class="p">(</span><span class="nl">radius</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">),</span>
+<span class="lineno"> 3</span>     <span class="n">Country</span><span class="p">(</span><span class="nl">area</span><span class="p">:</span> <span class="mi">243</span><span class="n">_610</span><span class="p">),</span>
+<span class="lineno"> 4</span>     <span class="n">Animal</span><span class="p">(</span><span class="nl">legs</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span>
 <span class="lineno"> 5</span> <span class="p">]</span>
 <span class="lineno"> 6</span> 
 <span class="lineno"> 7</span> <span class="k">for</span> <span class="n">object</span> <span class="k">in</span> <span class="n">objects</span> <span class="p">{</span>
@@ -330,18 +326,18 @@
 
 <p>この選択的なプロトコルの要件は、<code>@objc</code> 属性と一緒に使用されます。つまり、これはクラスでしか使えません。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="p">@</span><span class="n">objc</span> <span class="n">protocol</span> <span class="n">CounterDataSource</span> <span class="p">{</span>
-<span class="lineno">2</span>     <span class="k">@optional</span> <span class="n">func</span> <span class="n">incrementForCount</span><span class="p">(</span><span class="n">count</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span>
-<span class="lineno">3</span>     <span class="k">@optional</span> <span class="n">var</span> <span class="n">fixedIncrement</span><span class="o">:</span> <span class="n">Int</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="p">@</span><span class="n">objc</span> <span class="n">protocol</span> <span class="n">CounterDataSource</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="k">@optional</span> <span class="n">func</span> <span class="n">incrementForCount</span><span class="p">(</span><span class="nl">count</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span>
+<span class="lineno">3</span>     <span class="k">@optional</span> <span class="n">var</span> <span class="nl">fixedIncrement</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
 <span class="lineno">4</span> <span class="p">}</span></code></pre></div>
 
 <p>このプロトコルは、引数を 1 つ取る incrementForCount 関数とプロパティを実装することを求めていますが、これは任意です。</p>
 
 <p>そして、下記の Counter クラスをみてみます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="p">@</span><span class="n">objc</span> <span class="n">class</span> <span class="n">Counter</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="p">@</span><span class="n">objc</span> <span class="k">class</span> <span class="n">Counter</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="lineno"> 3</span>     <span class="n">var</span> <span class="n">dataSource</span><span class="o">:</span> <span class="n">CounterDataSource</span><span class="o">?</span>
+<span class="lineno"> 3</span>     <span class="n">var</span> <span class="nl">dataSource</span><span class="p">:</span> <span class="n">CounterDataSource</span><span class="o">?</span>
 <span class="lineno"> 4</span>     <span class="n">func</span> <span class="n">increment</span><span class="p">()</span> <span class="p">{</span>
 <span class="lineno"> 5</span>         <span class="k">if</span> <span class="n">let</span> <span class="n">amount</span> <span class="o">=</span> <span class="n">dataSource</span><span class="o">?</span><span class="p">.</span><span class="n">incrementForCount</span><span class="o">?</span><span class="p">(</span><span class="n">count</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 6</span>             <span class="n">count</span> <span class="o">+=</span> <span class="n">amount</span>
@@ -355,13 +351,13 @@
 
 <p>ここから、実際に選択的な要件がどのように使われるかみていきます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">class</span> <span class="n">ThreeSource</span><span class="o">:</span> <span class="n">CounterDataSource</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">class</span> <span class="nl">ThreeSource</span><span class="p">:</span> <span class="n">CounterDataSource</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">let</span> <span class="n">fixedIncrement</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="lineno">3</span> <span class="p">}</span></code></pre></div>
 
 <p>まずは、シンプルなクラスから。この ThreeSource は、先ほどの CounterDataSource のプロパティ要件を実装しています。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">var</span> <span class="n">counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">var</span> <span class="n">counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
 <span class="lineno"> 2</span> <span class="n">counter</span><span class="p">.</span><span class="n">dataSource</span> <span class="o">=</span> <span class="n">ThreeSource</span><span class="p">()</span>
 <span class="lineno"> 3</span> <span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">.</span><span class="mf">.4</span> <span class="p">{</span>
 <span class="lineno"> 4</span>     <span class="n">counter</span><span class="p">.</span><span class="n">increment</span><span class="p">()</span>
@@ -376,8 +372,8 @@
 
 <p>ちょっと複雑な例をみてみます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">TowardsZeroSource</span><span class="o">:</span> <span class="n">CounterDataSource</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="n">func</span> <span class="n">incrementForCount</span><span class="p">(</span><span class="n">count</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="nl">TowardsZeroSource</span><span class="p">:</span> <span class="n">CounterDataSource</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">func</span> <span class="n">incrementForCount</span><span class="p">(</span><span class="nl">count</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
 <span class="lineno"> 3</span>         <span class="k">if</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
 <span class="lineno"> 4</span>             <span class="k">return</span> <span class="mi">0</span>
 <span class="lineno"> 5</span>         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
@@ -390,7 +386,7 @@
 
 <p>このクラスは、CounterDataSource プロトコルの incrementForCount 関数を実装しています。count が 0 になるようにする処理です。実際には、</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">counter</span><span class="p">.</span><span class="n">count</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">counter</span><span class="p">.</span><span class="n">count</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>
 <span class="lineno"> 2</span> <span class="n">counter</span><span class="p">.</span><span class="n">dataSource</span> <span class="o">=</span> <span class="n">TowardsZeroSource</span><span class="p">()</span>
 <span class="lineno"> 3</span> <span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">.</span><span class="mf">.5</span> <span class="p">{</span>
 <span class="lineno"> 4</span>     <span class="n">counter</span><span class="p">.</span><span class="n">increment</span><span class="p">()</span>
@@ -548,22 +544,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -657,9 +648,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

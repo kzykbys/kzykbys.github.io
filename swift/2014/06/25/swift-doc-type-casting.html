@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -224,37 +220,37 @@
 
 <p>まずは、この Type Casting をデモンストレイトするためにクラスを用意します。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">MediaItem</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span>
-<span class="lineno"> 3</span>     <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 4</span>         <span class="n">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">MediaItem</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">var</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span>
+<span class="lineno"> 3</span>     <span class="n">init</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 4</span>         <span class="nb">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
 <span class="lineno"> 5</span>     <span class="p">}</span>
 <span class="lineno"> 6</span> <span class="p">}</span>
 <span class="lineno"> 7</span> 
-<span class="lineno"> 8</span> <span class="n">class</span> <span class="n">Movie</span><span class="o">:</span> <span class="n">MediaItem</span> <span class="p">{</span>
-<span class="lineno"> 9</span>     <span class="n">var</span> <span class="n">director</span><span class="o">:</span> <span class="n">String</span>
-<span class="lineno">10</span>     <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">director</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">11</span>         <span class="n">self</span><span class="p">.</span><span class="n">director</span> <span class="o">=</span> <span class="n">director</span>
-<span class="lineno">12</span>         <span class="n">super</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">name</span><span class="p">)</span>
+<span class="lineno"> 8</span> <span class="k">class</span> <span class="nl">Movie</span><span class="p">:</span> <span class="n">MediaItem</span> <span class="p">{</span>
+<span class="lineno"> 9</span>     <span class="n">var</span> <span class="nl">director</span><span class="p">:</span> <span class="n">String</span>
+<span class="lineno">10</span>     <span class="n">init</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">director</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">11</span>         <span class="nb">self</span><span class="p">.</span><span class="n">director</span> <span class="o">=</span> <span class="n">director</span>
+<span class="lineno">12</span>         <span class="nb">super</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">name</span><span class="p">)</span>
 <span class="lineno">13</span>     <span class="p">}</span>
 <span class="lineno">14</span> <span class="p">}</span>
 <span class="lineno">15</span>  
-<span class="lineno">16</span> <span class="n">class</span> <span class="n">Song</span><span class="o">:</span> <span class="n">MediaItem</span> <span class="p">{</span>
-<span class="lineno">17</span>     <span class="n">var</span> <span class="n">artist</span><span class="o">:</span> <span class="n">String</span>
-<span class="lineno">18</span>     <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">artist</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">19</span>         <span class="n">self</span><span class="p">.</span><span class="n">artist</span> <span class="o">=</span> <span class="n">artist</span>
-<span class="lineno">20</span>         <span class="n">super</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">name</span><span class="p">)</span>
+<span class="lineno">16</span> <span class="k">class</span> <span class="nl">Song</span><span class="p">:</span> <span class="n">MediaItem</span> <span class="p">{</span>
+<span class="lineno">17</span>     <span class="n">var</span> <span class="nl">artist</span><span class="p">:</span> <span class="n">String</span>
+<span class="lineno">18</span>     <span class="n">init</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">artist</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">19</span>         <span class="nb">self</span><span class="p">.</span><span class="n">artist</span> <span class="o">=</span> <span class="n">artist</span>
+<span class="lineno">20</span>         <span class="nb">super</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">name</span><span class="p">)</span>
 <span class="lineno">21</span>     <span class="p">}</span>
 <span class="lineno">22</span> <span class="p">}</span></code></pre></div>
 
 <p>そして、初期化。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">library</span> <span class="o">=</span> <span class="p">[</span>
-<span class="lineno">2</span>     <span class="n">Movie</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;Casablanca&quot;</span><span class="p">,</span> <span class="n">director</span><span class="o">:</span> <span class="s">&quot;Michael Curtiz&quot;</span><span class="p">),</span>
-<span class="lineno">3</span>     <span class="n">Song</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;Blue Suede Shoes&quot;</span><span class="p">,</span> <span class="n">artist</span><span class="o">:</span> <span class="s">&quot;Elvis Presley&quot;</span><span class="p">),</span>
-<span class="lineno">4</span>     <span class="n">Movie</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;Citizen Kane&quot;</span><span class="p">,</span> <span class="n">director</span><span class="o">:</span> <span class="s">&quot;Orson Welles&quot;</span><span class="p">),</span>
-<span class="lineno">5</span>     <span class="n">Song</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;The One And Only&quot;</span><span class="p">,</span> <span class="n">artist</span><span class="o">:</span> <span class="s">&quot;Chesney Hawkes&quot;</span><span class="p">),</span>
-<span class="lineno">6</span>     <span class="n">Song</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;Never Gonna Give You Up&quot;</span><span class="p">,</span> <span class="n">artist</span><span class="o">:</span> <span class="s">&quot;Rick Astley&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">library</span> <span class="o">=</span> <span class="p">[</span>
+<span class="lineno">2</span>     <span class="n">Movie</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Casablanca&quot;</span><span class="p">,</span> <span class="nl">director</span><span class="p">:</span> <span class="s">&quot;Michael Curtiz&quot;</span><span class="p">),</span>
+<span class="lineno">3</span>     <span class="n">Song</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Blue Suede Shoes&quot;</span><span class="p">,</span> <span class="nl">artist</span><span class="p">:</span> <span class="s">&quot;Elvis Presley&quot;</span><span class="p">),</span>
+<span class="lineno">4</span>     <span class="n">Movie</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Citizen Kane&quot;</span><span class="p">,</span> <span class="nl">director</span><span class="p">:</span> <span class="s">&quot;Orson Welles&quot;</span><span class="p">),</span>
+<span class="lineno">5</span>     <span class="n">Song</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;The One And Only&quot;</span><span class="p">,</span> <span class="nl">artist</span><span class="p">:</span> <span class="s">&quot;Chesney Hawkes&quot;</span><span class="p">),</span>
+<span class="lineno">6</span>     <span class="n">Song</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Never Gonna Give You Up&quot;</span><span class="p">,</span> <span class="nl">artist</span><span class="p">:</span> <span class="s">&quot;Rick Astley&quot;</span><span class="p">)</span>
 <span class="lineno">7</span> <span class="p">]</span>
 <span class="lineno">8</span> <span class="c1">// the type of &quot;library&quot; is inferred to be MediaItem[]&quot;</span></code></pre></div>
 
@@ -264,7 +260,7 @@
 
 <p>あるタイプが（クラス）が、あるサブクラスであるかを確認するには、<code>is</code> オペレータを使います。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">var</span> <span class="n">movieCount</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">var</span> <span class="n">movieCount</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="lineno"> 2</span> <span class="n">var</span> <span class="n">songCount</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="lineno"> 3</span>  
 <span class="lineno"> 4</span> <span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">library</span> <span class="p">{</span>
@@ -284,7 +280,7 @@
 
 <p>あるコンスタンス・変数が、あるサブクラスであることが推定される場合には、<code>as</code> オペレータを使いキャストします。もちろん、キャスティングは失敗することがあります。そのため <code>as?</code> という Optional にも対応しています。<code>as</code> を使い間違ったキャストをするとランタイムエラーになります。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">library</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">library</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="k">if</span> <span class="n">let</span> <span class="n">movie</span> <span class="o">=</span> <span class="n">item</span> <span class="n">as</span><span class="o">?</span> <span class="n">Movie</span> <span class="p">{</span>
 <span class="lineno"> 3</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;Movie: &#39;\(movie.name)&#39;, dir. \(movie.director)&quot;</span><span class="p">)</span>
 <span class="lineno"> 4</span>     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">let</span> <span class="n">song</span> <span class="o">=</span> <span class="n">item</span> <span class="n">as</span><span class="o">?</span> <span class="n">Song</span> <span class="p">{</span>
@@ -306,15 +302,15 @@
 
 <p>まずは、<code>AnyObject</code> からみていきます。<code>AnyObject</code> はどんなクラスタイプでも表すことができます。Cocoa API を扱っているときに、<code>AnyObject[]</code> を受け取ることがよくあります。Objective-C の id のようなものですかね。AnyObject がどんなタイプのインスタンスを持っているかわかっている時には、この AnyObject をキャストして使用できます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">someObjects</span><span class="o">:</span> <span class="n">AnyObject</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span>
-<span class="lineno">2</span>     <span class="n">Movie</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;2001: A Space Odyssey&quot;</span><span class="p">,</span> <span class="n">director</span><span class="o">:</span> <span class="s">&quot;Stanley Kubrick&quot;</span><span class="p">),</span>
-<span class="lineno">3</span>     <span class="n">Movie</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;Moon&quot;</span><span class="p">,</span> <span class="n">director</span><span class="o">:</span> <span class="s">&quot;Duncan Jones&quot;</span><span class="p">),</span>
-<span class="lineno">4</span>     <span class="n">Movie</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;Alien&quot;</span><span class="p">,</span> <span class="n">director</span><span class="o">:</span> <span class="s">&quot;Ridley Scott&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="nl">someObjects</span><span class="p">:</span> <span class="n">AnyObject</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span>
+<span class="lineno">2</span>     <span class="n">Movie</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;2001: A Space Odyssey&quot;</span><span class="p">,</span> <span class="nl">director</span><span class="p">:</span> <span class="s">&quot;Stanley Kubrick&quot;</span><span class="p">),</span>
+<span class="lineno">3</span>     <span class="n">Movie</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Moon&quot;</span><span class="p">,</span> <span class="nl">director</span><span class="p">:</span> <span class="s">&quot;Duncan Jones&quot;</span><span class="p">),</span>
+<span class="lineno">4</span>     <span class="n">Movie</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Alien&quot;</span><span class="p">,</span> <span class="nl">director</span><span class="p">:</span> <span class="s">&quot;Ridley Scott&quot;</span><span class="p">)</span>
 <span class="lineno">5</span> <span class="p">]</span></code></pre></div>
 
 <p>このように <code>AnyObject[]</code> に Movie のインスタンスを格納しています。この場合には、問題なくキャスト(<code>as</code>)して使用します。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">for</span> <span class="n">object</span> <span class="k">in</span> <span class="n">someObjects</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">for</span> <span class="n">object</span> <span class="k">in</span> <span class="n">someObjects</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">let</span> <span class="n">movie</span> <span class="o">=</span> <span class="n">object</span> <span class="n">as</span> <span class="n">Movie</span>
 <span class="lineno">3</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;Movie: &#39;\(movie.name)&#39;, dir. \(movie.director)&quot;</span><span class="p">)</span>
 <span class="lineno">4</span> <span class="p">}</span>
@@ -324,7 +320,7 @@
 
 <p>このようにより簡潔に書くこともできます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">for</span> <span class="n">movie</span> <span class="k">in</span> <span class="n">someObjects</span> <span class="n">as</span> <span class="n">Movie</span><span class="p">[]</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">for</span> <span class="n">movie</span> <span class="k">in</span> <span class="n">someObjects</span> <span class="n">as</span> <span class="n">Movie</span><span class="p">[]</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;Movie: &#39;\(movie.name)&#39;, dir. \(movie.director)&quot;</span><span class="p">)</span>
 <span class="lineno">3</span> <span class="p">}</span>
 <span class="lineno">4</span> <span class="c1">// Movie: &#39;2001: A Space Odyssey&#39;, dir. Stanley Kubrick</span>
@@ -333,7 +329,7 @@
 
 <p>次に <code>Any</code> をみていきます。<code>Any</code> は、どんなタイプのインスタンスも表すことができます。しかし、関数はできません。<code>AnyObject</code> は、どんなクラスタイプでしたが、<code>Any</code> は、文字通り関数以外何に対しても使えます。下記の例では、Int や Double, tuple 等を配列の中に保存しています。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">things</span> <span class="o">=</span> <span class="n">Any</span><span class="p">[]()</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">things</span> <span class="o">=</span> <span class="n">Any</span><span class="p">[]()</span>
 <span class="lineno">2</span>  
 <span class="lineno">3</span> <span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="lineno">4</span> <span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
@@ -341,29 +337,29 @@
 <span class="lineno">6</span> <span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mf">3.14159</span><span class="p">)</span>
 <span class="lineno">7</span> <span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">)</span>
 <span class="lineno">8</span> <span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">((</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">))</span>
-<span class="lineno">9</span> <span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">Movie</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;Ghostbusters&quot;</span><span class="p">,</span> <span class="n">director</span><span class="o">:</span> <span class="s">&quot;Ivan Reitman&quot;</span><span class="p">))</span></code></pre></div>
+<span class="lineno">9</span> <span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">Movie</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Ghostbusters&quot;</span><span class="p">,</span> <span class="nl">director</span><span class="p">:</span> <span class="s">&quot;Ivan Reitman&quot;</span><span class="p">))</span></code></pre></div>
 
 <p>上記のようにこの things 変数は、どんなタイプでも格納しています。これを処理するために switch 文を使ってそれぞれ対応できます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="k">for</span> <span class="n">thing</span> <span class="k">in</span> <span class="n">things</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">for</span> <span class="n">thing</span> <span class="k">in</span> <span class="n">things</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="k">switch</span> <span class="n">thing</span> <span class="p">{</span>
-<span class="lineno"> 3</span>     <span class="k">case</span> <span class="mi">0</span> <span class="n">as</span> <span class="n">Int</span>:
+<span class="lineno"> 3</span>     <span class="k">case</span> <span class="mi">0</span> <span class="n">as</span> <span class="nl">Int</span><span class="p">:</span>
 <span class="lineno"> 4</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;zero as an Int&quot;</span><span class="p">)</span>
-<span class="lineno"> 5</span>     <span class="k">case</span> <span class="mi">0</span> <span class="n">as</span> <span class="n">Double</span>:
+<span class="lineno"> 5</span>     <span class="k">case</span> <span class="mi">0</span> <span class="n">as</span> <span class="nl">Double</span><span class="p">:</span>
 <span class="lineno"> 6</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;zero as a Double&quot;</span><span class="p">)</span>
-<span class="lineno"> 7</span>     <span class="k">case</span> <span class="n">let</span> <span class="n">someInt</span> <span class="n">as</span> <span class="n">Int</span>:
+<span class="lineno"> 7</span>     <span class="k">case</span> <span class="n">let</span> <span class="n">someInt</span> <span class="n">as</span> <span class="nl">Int</span><span class="p">:</span>
 <span class="lineno"> 8</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;an integer value of \(someInt)&quot;</span><span class="p">)</span>
-<span class="lineno"> 9</span>     <span class="k">case</span> <span class="n">let</span> <span class="n">someDouble</span> <span class="n">as</span> <span class="n">Double</span> <span class="n">where</span> <span class="n">someDouble</span> <span class="o">&gt;</span> <span class="mi">0</span>:
+<span class="lineno"> 9</span>     <span class="k">case</span> <span class="n">let</span> <span class="n">someDouble</span> <span class="n">as</span> <span class="n">Double</span> <span class="n">where</span> <span class="n">someDouble</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">:</span>
 <span class="lineno">10</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;a positive double value of \(someDouble)&quot;</span><span class="p">)</span>
-<span class="lineno">11</span>     <span class="k">case</span> <span class="n">is</span> <span class="n">Double</span>:
+<span class="lineno">11</span>     <span class="k">case</span> <span class="n">is</span> <span class="nl">Double</span><span class="p">:</span>
 <span class="lineno">12</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;some other double value that I don&#39;t want to print&quot;</span><span class="p">)</span>
-<span class="lineno">13</span>     <span class="k">case</span> <span class="n">let</span> <span class="n">someString</span> <span class="n">as</span> <span class="n">String</span>:
+<span class="lineno">13</span>     <span class="k">case</span> <span class="n">let</span> <span class="n">someString</span> <span class="n">as</span> <span class="nl">String</span><span class="p">:</span>
 <span class="lineno">14</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;a string value of </span><span class="se">\&quot;</span><span class="s">\(someString)</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">)</span>
-<span class="lineno">15</span>     <span class="k">case</span> <span class="n">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="n">as</span> <span class="p">(</span><span class="n">Double</span><span class="p">,</span> <span class="n">Double</span><span class="p">)</span>:
+<span class="lineno">15</span>     <span class="k">case</span> <span class="n">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="n">as</span> <span class="p">(</span><span class="n">Double</span><span class="p">,</span> <span class="n">Double</span><span class="p">)</span><span class="o">:</span>
 <span class="lineno">16</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;an (x, y) point at \(x), \(y)&quot;</span><span class="p">)</span>
-<span class="lineno">17</span>     <span class="k">case</span> <span class="n">let</span> <span class="n">movie</span> <span class="n">as</span> <span class="n">Movie</span>:
+<span class="lineno">17</span>     <span class="k">case</span> <span class="n">let</span> <span class="n">movie</span> <span class="n">as</span> <span class="nl">Movie</span><span class="p">:</span>
 <span class="lineno">18</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;a movie called &#39;\(movie.name)&#39;, dir. \(movie.director)&quot;</span><span class="p">)</span>
-<span class="lineno">19</span>     <span class="nl">default:</span>
+<span class="lineno">19</span>     <span class="k">default</span><span class="o">:</span>
 <span class="lineno">20</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;something else&quot;</span><span class="p">)</span>
 <span class="lineno">21</span>     <span class="p">}</span>
 <span class="lineno">22</span> <span class="p">}</span>
@@ -522,22 +518,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -631,9 +622,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

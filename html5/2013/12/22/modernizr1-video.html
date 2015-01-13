@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -214,7 +210,7 @@
 					<div class="post">
 						<p>Modernizr で video タグのサポートチェックの方法。 </p>
 
-<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span> <span class="k">if</span> <span class="p">(</span><span class="nx">Modernizr</span><span class="p">.</span><span class="nx">video</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//*0</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno"> 1</span> <span class="k">if</span> <span class="p">(</span><span class="nx">Modernizr</span><span class="p">.</span><span class="nx">video</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//*0</span>
 <span class="lineno"> 2</span>      <span class="c1">// let&#39;s play some video! but what kind?</span>
 <span class="lineno"> 3</span>      <span class="k">if</span> <span class="p">(</span><span class="nx">Modernizr</span><span class="p">.</span><span class="nx">video</span><span class="p">.</span><span class="nx">webm</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// *1</span>
 <span class="lineno"> 4</span>      <span class="c1">// try WebM</span>
@@ -234,21 +230,21 @@ major browsers, including Chrome, Firefox, and Opera.</p>
 
 <p>3 . Safari, iPhone etc </p>
 
-<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="c1">// 1</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno">1</span> <span class="c1">// 1</span>
 <span class="lineno">2</span> <span class="kd">function</span> <span class="nx">supports_webm_video</span><span class="p">()</span> <span class="p">{</span>
 <span class="lineno">3</span>      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">supports_video</span><span class="p">())</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="p">}</span>
 <span class="lineno">4</span>      <span class="kd">var</span> <span class="nx">v</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;video&quot;</span><span class="p">);</span>
 <span class="lineno">5</span>      <span class="k">return</span> <span class="nx">v</span><span class="p">.</span><span class="nx">canPlayType</span><span class="p">(</span><span class="err">&#39;</span><span class="nx">video</span><span class="o">/</span><span class="nx">webm</span><span class="p">;</span> <span class="nx">codecs</span><span class="o">=</span><span class="s2">&quot;vp8, vorbis&quot;</span><span class="err">’</span><span class="p">);</span>
 <span class="lineno">6</span> <span class="p">}</span></code></pre></div>
 
-<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="c1">// 2</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno">1</span> <span class="c1">// 2</span>
 <span class="lineno">2</span> <span class="kd">function</span> <span class="nx">supports_ogg_theora_video</span><span class="p">()</span> <span class="p">{</span>
 <span class="lineno">3</span>  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">supports_video</span><span class="p">())</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="p">}</span>
 <span class="lineno">4</span>  <span class="kd">var</span> <span class="nx">v</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;video&quot;</span><span class="p">);</span>
 <span class="lineno">5</span>  <span class="k">return</span> <span class="nx">v</span><span class="p">.</span><span class="nx">canPlayType</span><span class="p">(</span><span class="s1">&#39;video/ogg; codecs=&quot;theora, vorbis&quot;&#39;</span><span class="p">);</span>
 <span class="lineno">6</span> <span class="p">}</span></code></pre></div>
 
-<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="c1">// 3</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno">1</span> <span class="c1">// 3</span>
 <span class="lineno">2</span> <span class="kd">function</span> <span class="nx">supports_h264_baseline_video</span><span class="p">()</span> <span class="p">{</span>
 <span class="lineno">3</span>      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">supports_video</span><span class="p">())</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="p">}</span>
 <span class="lineno">4</span>      <span class="kd">var</span> <span class="nx">v</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;video&quot;</span><span class="p">);</span>
@@ -405,22 +401,17 @@ major browsers, including Chrome, Firefox, and Opera.</p>
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -514,9 +505,6 @@ major browsers, including Chrome, Firefox, and Opera.</p>
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

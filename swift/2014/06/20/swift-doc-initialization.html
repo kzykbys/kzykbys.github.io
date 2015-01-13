@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -228,8 +224,8 @@
 
 <p>Initializer は <code>init</code> キーワードを使用し、引数を持たないインスタンスメソッドのように記述します。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">Fahrenheit</span> <span class="p">{</span>
-<span class="lineno">2</span>     <span class="n">var</span> <span class="n">temperature</span><span class="o">:</span> <span class="n">Double</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">Fahrenheit</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="n">var</span> <span class="nl">temperature</span><span class="p">:</span> <span class="n">Double</span>
 <span class="lineno">3</span>     <span class="n">init</span><span class="p">()</span> <span class="p">{</span>
 <span class="lineno">4</span>         <span class="n">temperature</span> <span class="o">=</span> <span class="mf">32.0</span>
 <span class="lineno">5</span>     <span class="p">}</span>
@@ -240,7 +236,7 @@
 
 <p>しかし、いつも同じ初期値を取る場合には、Initializer を使用するより、プロパティにデフォルト値を持たせる方が得策です。こちらの方が、Swift の型推論を使用し記述が簡単ですし、デフォルト Initializer や Initializer を継承させる場合に便利です。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">Fahrenheit</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">Fahrenheit</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">var</span> <span class="n">temperature</span> <span class="o">=</span> <span class="mf">32.0</span>
 <span class="lineno">3</span> <span class="p">}</span></code></pre></div>
 
@@ -250,31 +246,31 @@
 
 <p>まずは、Initializer に引数を持たせる例です。関数やメソッドと同じように使用できます。下記の例では、2 つの Initializer を定義し、どちらも引数を取っています。また、External な引数の名前も持っています。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">Celsius</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">temperatureInCelsius</span><span class="o">:</span> <span class="n">Double</span> <span class="o">=</span> <span class="mf">0.0</span>
-<span class="lineno"> 3</span>     <span class="n">init</span><span class="p">(</span><span class="n">fromFahrenheit</span> <span class="n">fahrenheit</span><span class="o">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">Celsius</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">var</span> <span class="nl">temperatureInCelsius</span><span class="p">:</span> <span class="n">Double</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="lineno"> 3</span>     <span class="n">init</span><span class="p">(</span><span class="n">fromFahrenheit</span> <span class="nl">fahrenheit</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 4</span>         <span class="n">temperatureInCelsius</span> <span class="o">=</span> <span class="p">(</span><span class="n">fahrenheit</span> <span class="o">-</span> <span class="mf">32.0</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1.8</span>
 <span class="lineno"> 5</span>     <span class="p">}</span>
-<span class="lineno"> 6</span>     <span class="n">init</span><span class="p">(</span><span class="n">fromKelvin</span> <span class="n">kelvin</span><span class="o">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 6</span>     <span class="n">init</span><span class="p">(</span><span class="n">fromKelvin</span> <span class="nl">kelvin</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 7</span>         <span class="n">temperatureInCelsius</span> <span class="o">=</span> <span class="n">kelvin</span> <span class="o">-</span> <span class="mf">273.15</span>
 <span class="lineno"> 8</span>     <span class="p">}</span>
 <span class="lineno"> 9</span> <span class="p">}</span>
-<span class="lineno">10</span> <span class="n">let</span> <span class="n">boilingPointOfWater</span> <span class="o">=</span> <span class="n">Celsius</span><span class="p">(</span><span class="n">fromFahrenheit</span><span class="o">:</span> <span class="mf">212.0</span><span class="p">)</span>
+<span class="lineno">10</span> <span class="n">let</span> <span class="n">boilingPointOfWater</span> <span class="o">=</span> <span class="n">Celsius</span><span class="p">(</span><span class="nl">fromFahrenheit</span><span class="p">:</span> <span class="mf">212.0</span><span class="p">)</span>
 <span class="lineno">11</span> <span class="c1">// boilingPointOfWater.temperatureInCelsius is 100.0</span>
-<span class="lineno">12</span> <span class="n">let</span> <span class="n">freezingPointOfWater</span> <span class="o">=</span> <span class="n">Celsius</span><span class="p">(</span><span class="n">fromKelvin</span><span class="o">:</span> <span class="mf">273.15</span><span class="p">)</span>
+<span class="lineno">12</span> <span class="n">let</span> <span class="n">freezingPointOfWater</span> <span class="o">=</span> <span class="n">Celsius</span><span class="p">(</span><span class="nl">fromKelvin</span><span class="p">:</span> <span class="mf">273.15</span><span class="p">)</span>
 <span class="lineno">13</span> <span class="c1">// freezingPointOfWater.temperatureInCelsius is 0.0</span></code></pre></div>
 
 <p>このように Initializer は引数の外的な名前と Initializer の中で使う内的な名前を両方持つことができます。これはメソッドも関数と同じです。しかし、全ての Initializer は <code>init</code> と同じ名前を持つので、どの Initializer が呼ばれるかを決定するのに引数や引数の型は重要な意味を持ちます。そのため、Swift は全ての Initializer に対して、外的な名前を作成します。これは、内的な名前と同じです。つまり、<code>#</code> を引数の前に記述した場合と同じです。もし、外的な名前を用意したくない場合には、<code>_</code> を使用します。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">Color</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">Color</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">let</span> <span class="n">red</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">green</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">blue</span> <span class="o">=</span> <span class="mf">0.0</span>
-<span class="lineno">3</span>     <span class="n">init</span><span class="p">(</span><span class="n">red</span><span class="o">:</span> <span class="n">Double</span><span class="p">,</span> <span class="n">green</span><span class="o">:</span> <span class="n">Double</span><span class="p">,</span> <span class="n">blue</span><span class="o">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">4</span>         <span class="n">self</span><span class="p">.</span><span class="n">red</span>   <span class="o">=</span> <span class="n">red</span>
-<span class="lineno">5</span>         <span class="n">self</span><span class="p">.</span><span class="n">green</span> <span class="o">=</span> <span class="n">green</span>
-<span class="lineno">6</span>         <span class="n">self</span><span class="p">.</span><span class="n">blue</span>  <span class="o">=</span> <span class="n">blue</span>
+<span class="lineno">3</span>     <span class="n">init</span><span class="p">(</span><span class="nl">red</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="nl">green</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="nl">blue</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">4</span>         <span class="nb">self</span><span class="p">.</span><span class="n">red</span>   <span class="o">=</span> <span class="n">red</span>
+<span class="lineno">5</span>         <span class="nb">self</span><span class="p">.</span><span class="n">green</span> <span class="o">=</span> <span class="n">green</span>
+<span class="lineno">6</span>         <span class="nb">self</span><span class="p">.</span><span class="n">blue</span>  <span class="o">=</span> <span class="n">blue</span>
 <span class="lineno">7</span>     <span class="p">}</span>
 <span class="lineno">8</span> <span class="p">}</span>
-<span class="lineno">9</span> <span class="n">let</span> <span class="n">magenta</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">red</span><span class="o">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">green</span><span class="o">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">blue</span><span class="o">:</span> <span class="mf">1.0</span><span class="p">)</span></code></pre></div>
+<span class="lineno">9</span> <span class="n">let</span> <span class="n">magenta</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="nl">red</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="nl">green</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nl">blue</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span></code></pre></div>
 
 <p>このように Initializer を呼ぶ出す際に、全ての引数に対して外的な引数名を指定しなければなりません。</p>
 
@@ -282,17 +278,17 @@
 
 <p>また、コンスタントのプロパティは、初期化の際であれば修正することができます。クラスの場合には、そのプロパティを持っている該当クラスでのみ変更可能です。サブクラスの Initializer の中では変更ができません。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">SurveyQuestion</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="n">let</span> <span class="n">text</span><span class="o">:</span> <span class="n">String</span>
-<span class="lineno"> 3</span>     <span class="n">var</span> <span class="n">response</span><span class="o">:</span> <span class="n">String</span><span class="o">?</span>
-<span class="lineno"> 4</span>     <span class="n">init</span><span class="p">(</span><span class="n">text</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 5</span>         <span class="n">self</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">SurveyQuestion</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">let</span> <span class="nl">text</span><span class="p">:</span> <span class="n">String</span>
+<span class="lineno"> 3</span>     <span class="n">var</span> <span class="nl">response</span><span class="p">:</span> <span class="n">String</span><span class="o">?</span>
+<span class="lineno"> 4</span>     <span class="n">init</span><span class="p">(</span><span class="nl">text</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 5</span>         <span class="nb">self</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
 <span class="lineno"> 6</span>     <span class="p">}</span>
 <span class="lineno"> 7</span>     <span class="n">func</span> <span class="n">ask</span><span class="p">()</span> <span class="p">{</span>
 <span class="lineno"> 8</span>         <span class="n">println</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 <span class="lineno"> 9</span>     <span class="p">}</span>
 <span class="lineno">10</span> <span class="p">}</span>
-<span class="lineno">11</span> <span class="n">let</span> <span class="n">beetsQuestion</span> <span class="o">=</span> <span class="n">SurveyQuestion</span><span class="p">(</span><span class="n">text</span><span class="o">:</span> <span class="s">&quot;How about beets?&quot;</span><span class="p">)</span>
+<span class="lineno">11</span> <span class="n">let</span> <span class="n">beetsQuestion</span> <span class="o">=</span> <span class="n">SurveyQuestion</span><span class="p">(</span><span class="nl">text</span><span class="p">:</span> <span class="s">&quot;How about beets?&quot;</span><span class="p">)</span>
 <span class="lineno">12</span> <span class="n">beetsQuestion</span><span class="p">.</span><span class="n">ask</span><span class="p">()</span>
 <span class="lineno">13</span> <span class="c1">// prints &quot;How about beets?&quot;</span>
 <span class="lineno">14</span> <span class="n">beetsQuestion</span><span class="p">.</span><span class="n">response</span> <span class="o">=</span> <span class="s">&quot;I also like beets. (But not with cheese.)</span></code></pre></div>
@@ -303,8 +299,8 @@
 
 <p>Swift は、デフォルトの Initializer を作成することがあります。構造体かベースクラスにおいて、全てのプロパティに対してデフォルト値が設定され、Initializer が提供されていない場合に作成されます。このデフォルト Initializer はこのプロパティのデフォルト値を使用したインスタンスを作成してくれます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">class</span> <span class="n">ShoppingListItem</span> <span class="p">{</span>
-<span class="lineno">2</span>     <span class="n">var</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="o">?</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">class</span> <span class="n">ShoppingListItem</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="n">var</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="o">?</span>
 <span class="lineno">3</span>     <span class="n">var</span> <span class="n">quantity</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="lineno">4</span>     <span class="n">var</span> <span class="n">purchased</span> <span class="o">=</span> <span class="nb">false</span>
 <span class="lineno">5</span> <span class="p">}</span>
@@ -312,10 +308,10 @@
 
 <p>同じ デフォルトで作成される Initializer に構造体の Initializer があります。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">Size</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">Size</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">var</span> <span class="n">width</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="lineno">3</span> <span class="p">}</span>
-<span class="lineno">4</span> <span class="n">let</span> <span class="n">twoByTwo</span> <span class="o">=</span> <span class="n">Size</span><span class="p">(</span><span class="n">width</span><span class="o">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">height</span><span class="o">:</span> <span class="mf">2.0</span><span class="p">)</span> <span class="c1">// default memberwise initializer</span></code></pre></div>
+<span class="lineno">4</span> <span class="n">let</span> <span class="n">twoByTwo</span> <span class="o">=</span> <span class="n">Size</span><span class="p">(</span><span class="nl">width</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">)</span> <span class="c1">// default memberwise initializer</span></code></pre></div>
 
 <p>上記の Size 構造体のようにプロパティの全てにデフォルト値が設定され、Initializer が定義されていない場合には、このように memberwise initializer が作成されます。各プロパティ名が外的な引数の名前になります。</p>
 
@@ -325,7 +321,7 @@
 
 <p>構造体・Enumeration のようなバリュータイプでは、同じタイプの中にある Initializer を <code>self.init</code> で呼び出し、独自の Initializer を作成できます。ここで注意しておきたいのが、独自の Initializer を定義した場合、3 でみた Default Initializer は使うことができなくなります。この制約により、インスタンスを作成する際に大事なセットアップが必要な場合、他の誰かが Default Initializer を利用して、大事なセットアップを回避してまうことを防ぐことがきます。Default Initializer と Memberwise Initializer で初期化させたい場合には、Extension という仕組みがあります。Extension に関しては、まだ勉強できていないので次回以降に記事にしたいと思います。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">Size</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">Size</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">width</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="lineno"> 3</span> <span class="p">}</span>
 <span class="lineno"> 4</span> <span class="k">struct</span> <span class="n">Point</span> <span class="p">{</span>
@@ -335,14 +331,14 @@
 <span class="lineno"> 8</span>     <span class="n">var</span> <span class="n">origin</span> <span class="o">=</span> <span class="n">Point</span><span class="p">()</span>
 <span class="lineno"> 9</span>     <span class="n">var</span> <span class="n">size</span> <span class="o">=</span> <span class="n">Size</span><span class="p">()</span>
 <span class="lineno">10</span>     <span class="n">init</span><span class="p">()</span> <span class="p">{}</span>
-<span class="lineno">11</span>     <span class="n">init</span><span class="p">(</span><span class="n">origin</span><span class="o">:</span> <span class="n">Point</span><span class="p">,</span> <span class="n">size</span><span class="o">:</span> <span class="n">Size</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">12</span>         <span class="n">self</span><span class="p">.</span><span class="n">origin</span> <span class="o">=</span> <span class="n">origin</span>
-<span class="lineno">13</span>         <span class="n">self</span><span class="p">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">size</span>
+<span class="lineno">11</span>     <span class="n">init</span><span class="p">(</span><span class="nl">origin</span><span class="p">:</span> <span class="n">Point</span><span class="p">,</span> <span class="nl">size</span><span class="p">:</span> <span class="n">Size</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">12</span>         <span class="nb">self</span><span class="p">.</span><span class="n">origin</span> <span class="o">=</span> <span class="n">origin</span>
+<span class="lineno">13</span>         <span class="nb">self</span><span class="p">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">size</span>
 <span class="lineno">14</span>     <span class="p">}</span>
-<span class="lineno">15</span>     <span class="n">init</span><span class="p">(</span><span class="n">center</span><span class="o">:</span> <span class="n">Point</span><span class="p">,</span> <span class="n">size</span><span class="o">:</span> <span class="n">Size</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">15</span>     <span class="n">init</span><span class="p">(</span><span class="nl">center</span><span class="p">:</span> <span class="n">Point</span><span class="p">,</span> <span class="nl">size</span><span class="p">:</span> <span class="n">Size</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">16</span>         <span class="n">let</span> <span class="n">originX</span> <span class="o">=</span> <span class="n">center</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
 <span class="lineno">17</span>         <span class="n">let</span> <span class="n">originY</span> <span class="o">=</span> <span class="n">center</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-<span class="lineno">18</span>         <span class="n">self</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">origin</span><span class="o">:</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="n">originX</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="n">originY</span><span class="p">),</span> <span class="n">size</span><span class="o">:</span> <span class="n">size</span><span class="p">)</span>
+<span class="lineno">18</span>         <span class="nb">self</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="nl">origin</span><span class="p">:</span> <span class="n">Point</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="n">originX</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="n">originY</span><span class="p">),</span> <span class="nl">size</span><span class="p">:</span> <span class="n">size</span><span class="p">)</span>
 <span class="lineno">19</span>     <span class="p">}</span>
 <span class="lineno">20</span> <span class="p">}</span></code></pre></div>
 
@@ -492,22 +488,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -601,9 +592,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

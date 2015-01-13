@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -222,7 +218,7 @@
 
 <p>Array や Dictionary, range operator 等でよく使用する for-in において、その範囲に各要素自体を使用する必要がない場合には、_ を使用できます。下記の例は、3^10 を計算しています。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">base</span> <span class="o">=</span> <span class="mi">3</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">base</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="lineno">2</span> <span class="n">let</span> <span class="n">power</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="lineno">3</span> <span class="n">var</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="lineno">4</span> <span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">..</span><span class="n">power</span> <span class="p">{</span>
@@ -237,15 +233,15 @@
 
 <p>C と Swift の swtich はちょっと違います。この母音か子音か、それ以外かを区別する switch は、</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">someCharacter</span><span class="o">:</span> <span class="n">Character</span> <span class="o">=</span> <span class="s">&quot;e&quot;</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="nl">someCharacter</span><span class="p">:</span> <span class="n">Character</span> <span class="o">=</span> <span class="s">&quot;e&quot;</span>
 <span class="lineno"> 2</span> 
 <span class="lineno"> 3</span> <span class="k">switch</span> <span class="n">someCharacter</span> <span class="p">{</span>
-<span class="lineno"> 4</span>     <span class="k">case</span> <span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;e&quot;</span><span class="p">,</span> <span class="s">&quot;i&quot;</span><span class="p">,</span> <span class="s">&quot;o&quot;</span><span class="p">,</span> <span class="s">&quot;u&quot;</span>:
+<span class="lineno"> 4</span>     <span class="k">case</span> <span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;e&quot;</span><span class="p">,</span> <span class="s">&quot;i&quot;</span><span class="p">,</span> <span class="s">&quot;o&quot;</span><span class="p">,</span> <span class="s">&quot;u&quot;</span><span class="o">:</span>
 <span class="lineno"> 5</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;\(someCharacter) is a vowel&quot;</span><span class="p">)</span>
 <span class="lineno"> 6</span>     <span class="k">case</span> <span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="s">&quot;c&quot;</span><span class="p">,</span> <span class="s">&quot;d&quot;</span><span class="p">,</span> <span class="s">&quot;f&quot;</span><span class="p">,</span> <span class="s">&quot;g&quot;</span><span class="p">,</span> <span class="s">&quot;h&quot;</span><span class="p">,</span> <span class="s">&quot;j&quot;</span><span class="p">,</span> <span class="s">&quot;k&quot;</span><span class="p">,</span> <span class="s">&quot;l&quot;</span><span class="p">,</span> <span class="s">&quot;m&quot;</span><span class="p">,</span>
 <span class="lineno"> 7</span>     <span class="s">&quot;n&quot;</span><span class="p">,</span> <span class="s">&quot;p&quot;</span><span class="p">,</span> <span class="s">&quot;q&quot;</span><span class="p">,</span> <span class="s">&quot;r&quot;</span><span class="p">,</span> <span class="s">&quot;s&quot;</span><span class="p">,</span> <span class="s">&quot;t&quot;</span><span class="p">,</span> <span class="s">&quot;v&quot;</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">,</span> <span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="s">&quot;z&quot;</span><span class="o">:</span>
 <span class="lineno"> 8</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;\(someCharacter) is a consonant&quot;</span><span class="p">)</span>
-<span class="lineno"> 9</span>     <span class="nl">default:</span>
+<span class="lineno"> 9</span>     <span class="k">default</span><span class="o">:</span>
 <span class="lineno">10</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;\(someCharacter) is not a vowel or a consonant&quot;</span><span class="p">)</span>
 <span class="lineno">11</span> <span class="p">}</span>
 <span class="lineno">12</span> <span class="cm">/* Output:</span>
@@ -258,24 +254,24 @@
 
 <p>range operator を使用して、switch 文の場合分けをすることができます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">someCharacter</span><span class="o">:</span> <span class="n">Character</span> <span class="o">=</span> <span class="s">&quot;e&quot;</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="nl">someCharacter</span><span class="p">:</span> <span class="n">Character</span> <span class="o">=</span> <span class="s">&quot;e&quot;</span>
 <span class="lineno"> 2</span> <span class="n">let</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">3</span><span class="n">_000_000_000_000</span>
 <span class="lineno"> 3</span> <span class="n">let</span> <span class="n">countedThings</span> <span class="o">=</span> <span class="s">&quot;stars in the Milky Way&quot;</span>
-<span class="lineno"> 4</span> <span class="n">var</span> <span class="n">naturalCount</span><span class="o">:</span> <span class="n">String</span>
+<span class="lineno"> 4</span> <span class="n">var</span> <span class="nl">naturalCount</span><span class="p">:</span> <span class="n">String</span>
 <span class="lineno"> 5</span> <span class="k">switch</span> <span class="n">count</span> <span class="p">{</span>
-<span class="lineno"> 6</span> <span class="k">case</span> <span class="mi">0</span>:
+<span class="lineno"> 6</span> <span class="k">case</span> <span class="mi">0</span><span class="o">:</span>
 <span class="lineno"> 7</span>     <span class="n">naturalCount</span> <span class="o">=</span> <span class="s">&quot;no&quot;</span>
-<span class="lineno"> 8</span> <span class="k">case</span> <span class="mf">1.</span><span class="p">.</span><span class="mf">.3</span>:
+<span class="lineno"> 8</span> <span class="k">case</span> <span class="mf">1.</span><span class="p">.</span><span class="mf">.3</span><span class="o">:</span>
 <span class="lineno"> 9</span>     <span class="n">naturalCount</span> <span class="o">=</span> <span class="s">&quot;a few&quot;</span>
-<span class="lineno">10</span> <span class="k">case</span> <span class="mf">4.</span><span class="p">.</span><span class="mf">.9</span>:
+<span class="lineno">10</span> <span class="k">case</span> <span class="mf">4.</span><span class="p">.</span><span class="mf">.9</span><span class="o">:</span>
 <span class="lineno">11</span>     <span class="n">naturalCount</span> <span class="o">=</span> <span class="s">&quot;several&quot;</span>
-<span class="lineno">12</span> <span class="k">case</span> <span class="mf">10.</span><span class="p">.</span><span class="mf">.99</span>:
+<span class="lineno">12</span> <span class="k">case</span> <span class="mf">10.</span><span class="p">.</span><span class="mf">.99</span><span class="o">:</span>
 <span class="lineno">13</span>     <span class="n">naturalCount</span> <span class="o">=</span> <span class="s">&quot;tens of&quot;</span>
-<span class="lineno">14</span> <span class="k">case</span> <span class="mf">100.</span><span class="p">.</span><span class="mf">.999</span>:
+<span class="lineno">14</span> <span class="k">case</span> <span class="mf">100.</span><span class="p">.</span><span class="mf">.999</span><span class="o">:</span>
 <span class="lineno">15</span>     <span class="n">naturalCount</span> <span class="o">=</span> <span class="s">&quot;hundreds of&quot;</span>
-<span class="lineno">16</span> <span class="k">case</span> <span class="mf">1000.</span><span class="p">.</span><span class="mf">.999</span><span class="n">_999</span>:
+<span class="lineno">16</span> <span class="k">case</span> <span class="mf">1000.</span><span class="p">.</span><span class="mf">.999</span><span class="nl">_999</span><span class="p">:</span>
 <span class="lineno">17</span>     <span class="n">naturalCount</span> <span class="o">=</span> <span class="s">&quot;thousands of&quot;</span>
-<span class="lineno">18</span> <span class="nl">default:</span>
+<span class="lineno">18</span> <span class="k">default</span><span class="o">:</span>
 <span class="lineno">19</span>     <span class="n">naturalCount</span> <span class="o">=</span> <span class="s">&quot;millions and millions of&quot;</span>
 <span class="lineno">20</span> <span class="p">}</span>
 <span class="lineno">21</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;There are \(naturalCount) \(countedThings).&quot;</span><span class="p">)</span>
@@ -285,17 +281,17 @@
 
 <p>switch 文の場合分けを tuple で、行うこともできます。_ は、何に対してもマッチするという意味です。下記の Apple による例では、座標軸がどこに対応しているかをチェックしています。まずは、原点をチェックし、そして、x軸, y軸, 青い box の中、それ以外という順にチェックしています。一つのケースが該当されると、それ以外は無視されます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">somePoint</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">somePoint</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="lineno"> 2</span> <span class="k">switch</span> <span class="n">somePoint</span> <span class="p">{</span>
-<span class="lineno"> 3</span> <span class="k">case</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>:
+<span class="lineno"> 3</span> <span class="k">case</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span>
 <span class="lineno"> 4</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;(0, 0) is at the origin&quot;</span><span class="p">)</span>
-<span class="lineno"> 5</span> <span class="k">case</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>:
+<span class="lineno"> 5</span> <span class="k">case</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span>
 <span class="lineno"> 6</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;(\(somePoint.0), 0) is on the x-axis&quot;</span><span class="p">)</span>
-<span class="lineno"> 7</span> <span class="k">case</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span>:
+<span class="lineno"> 7</span> <span class="k">case</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span><span class="o">:</span>
 <span class="lineno"> 8</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;(0, \(somePoint.1)) is on the y-axis&quot;</span><span class="p">)</span>
-<span class="lineno"> 9</span> <span class="k">case</span> <span class="p">(</span><span class="o">-</span><span class="mf">2.</span><span class="p">.</span><span class="mf">.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.</span><span class="p">.</span><span class="mf">.2</span><span class="p">)</span>:
+<span class="lineno"> 9</span> <span class="k">case</span> <span class="p">(</span><span class="o">-</span><span class="mf">2.</span><span class="p">.</span><span class="mf">.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.</span><span class="p">.</span><span class="mf">.2</span><span class="p">)</span><span class="o">:</span>
 <span class="lineno">10</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;(\(somePoint.0), \(somePoint.1)) is inside the box&quot;</span><span class="p">)</span>
-<span class="lineno">11</span> <span class="nl">default:</span>
+<span class="lineno">11</span> <span class="k">default</span><span class="o">:</span>
 <span class="lineno">12</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;(\(somePoint.0), \(somePoint.1)) is outside of the box&quot;</span><span class="p">)</span>
 <span class="lineno">13</span> <span class="p">}</span>
 <span class="lineno">14</span> <span class="c1">// prints &quot;(1, 1) is inside the box</span></code></pre></div>
@@ -306,13 +302,13 @@
 
 <p>各ケースの実行コードの中で使用できるようにコンスタントか変数を binding することができます。まずは、このコードを見てください。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">anotherPoint</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">anotherPoint</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="lineno"> 2</span> <span class="k">switch</span> <span class="n">anotherPoint</span> <span class="p">{</span>
-<span class="lineno"> 3</span> <span class="k">case</span> <span class="p">(</span><span class="n">let</span> <span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>:
+<span class="lineno"> 3</span> <span class="k">case</span> <span class="p">(</span><span class="n">let</span> <span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span>
 <span class="lineno"> 4</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;on the x-axis with an x value of \(x)&quot;</span><span class="p">)</span>
-<span class="lineno"> 5</span> <span class="k">case</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">let</span> <span class="n">y</span><span class="p">)</span>:
+<span class="lineno"> 5</span> <span class="k">case</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">let</span> <span class="n">y</span><span class="p">)</span><span class="o">:</span>
 <span class="lineno"> 6</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;on the y-axis with a y value of \(y)&quot;</span><span class="p">)</span>
-<span class="lineno"> 7</span> <span class="k">case</span> <span class="n">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>:
+<span class="lineno"> 7</span> <span class="k">case</span> <span class="n">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">:</span>
 <span class="lineno"> 8</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;somewhere else at (\(x), \(y))&quot;</span><span class="p">)</span>
 <span class="lineno"> 9</span> <span class="p">}</span>
 <span class="lineno">10</span> <span class="c1">// prints &quot;on the x-axis with an x value of 2</span></code></pre></div>
@@ -323,13 +319,13 @@
 
 <p>switch ケースに where を追加して、余分に条件を指定することができます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">yetAnotherPoint</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">yetAnotherPoint</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 <span class="lineno"> 2</span> <span class="k">switch</span> <span class="n">yetAnotherPoint</span> <span class="p">{</span>
-<span class="lineno"> 3</span> <span class="k">case</span> <span class="n">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="n">where</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span>:
+<span class="lineno"> 3</span> <span class="k">case</span> <span class="n">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="n">where</span> <span class="n">x</span> <span class="o">==</span> <span class="nl">y</span><span class="p">:</span>
 <span class="lineno"> 4</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;(\(x), \(y)) is on the line x == y&quot;</span><span class="p">)</span>
-<span class="lineno"> 5</span> <span class="k">case</span> <span class="n">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="n">where</span> <span class="n">x</span> <span class="o">==</span> <span class="o">-</span><span class="n">y</span>:
+<span class="lineno"> 5</span> <span class="k">case</span> <span class="n">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="n">where</span> <span class="n">x</span> <span class="o">==</span> <span class="o">-</span><span class="nl">y</span><span class="p">:</span>
 <span class="lineno"> 6</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;(\(x), \(y)) is on the line x == -y&quot;</span><span class="p">)</span>
-<span class="lineno"> 7</span> <span class="k">case</span> <span class="n">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>:
+<span class="lineno"> 7</span> <span class="k">case</span> <span class="n">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">:</span>
 <span class="lineno"> 8</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;(\(x), \(y)) is just some arbitrary point&quot;</span><span class="p">)</span>
 <span class="lineno"> 9</span> <span class="p">}</span>
 <span class="lineno">10</span> <span class="c1">// prints &quot;(1, -1) is on the line x == -y</span></code></pre></div>
@@ -340,13 +336,13 @@
 
 <p>上記で見たように、Swift の switch は、C のように fall through しない。もし、C と同じ挙動をして欲しい時には、fallthrough を使用する。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">integerToDescribe</span> <span class="o">=</span> <span class="mi">5</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">integerToDescribe</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="lineno"> 2</span> <span class="n">var</span> <span class="n">description</span> <span class="o">=</span> <span class="s">&quot;The number \(integerToDescribe) is&quot;</span>
 <span class="lineno"> 3</span> <span class="k">switch</span> <span class="n">integerToDescribe</span> <span class="p">{</span>
-<span class="lineno"> 4</span> <span class="k">case</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span>:
+<span class="lineno"> 4</span> <span class="k">case</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="o">:</span>
 <span class="lineno"> 5</span>     <span class="n">description</span> <span class="o">+=</span> <span class="s">&quot; a prime number, and also&quot;</span>
 <span class="lineno"> 6</span>     <span class="n">fallthrough</span>
-<span class="lineno"> 7</span> <span class="nl">default:</span>
+<span class="lineno"> 7</span> <span class="k">default</span><span class="o">:</span>
 <span class="lineno"> 8</span>     <span class="n">description</span> <span class="o">+=</span> <span class="s">&quot; an integer.&quot;</span>
 <span class="lineno"> 9</span> <span class="p">}</span>
 <span class="lineno">10</span> <span class="n">println</span><span class="p">(</span><span class="n">description</span><span class="p">)</span>
@@ -360,16 +356,16 @@
 
 <p>そのために、ループ、switch に対してラベル付けする方法があります。ラベルの名前に続いて : をタイプして、ループか switch の前に置くだけです。そして、break の後にラベルの名前を書くことにより、そのループか switch を終わらせます。また、continu の後に、ラベルの名前を書くことにより、その場所へジャンプします。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="nl">gameLoop:</span> <span class="k">while</span> <span class="n">square</span> <span class="o">!=</span> <span class="n">finalSquare</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="nl">gameLoop</span><span class="p">:</span> <span class="k">while</span> <span class="n">square</span> <span class="o">!=</span> <span class="n">finalSquare</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="k">if</span> <span class="o">++</span><span class="n">diceRoll</span> <span class="o">==</span> <span class="mi">7</span> <span class="p">{</span> <span class="n">diceRoll</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">}</span>
 <span class="lineno"> 3</span>     <span class="k">switch</span> <span class="n">square</span> <span class="o">+</span> <span class="n">diceRoll</span> <span class="p">{</span>
-<span class="lineno"> 4</span>     <span class="k">case</span> <span class="n">finalSquare</span>:
+<span class="lineno"> 4</span>     <span class="k">case</span> <span class="nl">finalSquare</span><span class="p">:</span>
 <span class="lineno"> 5</span>         <span class="c1">// diceRoll will move us to the final square, so the game is over</span>
 <span class="lineno"> 6</span>         <span class="k">break</span> <span class="n">gameLoop</span>
-<span class="lineno"> 7</span>     <span class="k">case</span> <span class="n">let</span> <span class="n">newSquare</span> <span class="n">where</span> <span class="n">newSquare</span> <span class="o">&gt;</span> <span class="n">finalSquare</span>:
+<span class="lineno"> 7</span>     <span class="k">case</span> <span class="n">let</span> <span class="n">newSquare</span> <span class="n">where</span> <span class="n">newSquare</span> <span class="o">&gt;</span> <span class="nl">finalSquare</span><span class="p">:</span>
 <span class="lineno"> 8</span>         <span class="c1">// diceRoll will move us beyond the final square, so roll again</span>
 <span class="lineno"> 9</span>         <span class="k">continue</span> <span class="n">gameLoop</span>
-<span class="lineno">10</span>     <span class="nl">default:</span>
+<span class="lineno">10</span>     <span class="k">default</span><span class="o">:</span>
 <span class="lineno">11</span>         <span class="c1">// this is a valid move, so find out its effect</span>
 <span class="lineno">12</span>         <span class="n">square</span> <span class="o">+=</span> <span class="n">diceRoll</span>
 <span class="lineno">13</span>         <span class="n">square</span> <span class="o">+=</span> <span class="n">board</span><span class="p">[</span><span class="n">square</span><span class="p">]</span>
@@ -523,22 +519,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -632,9 +623,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -218,17 +214,17 @@
 
 <p>Navigation Bar のタイトル(真ん中)に文字列を表示する以外にも、画像等を置くことができます。そのためには、Navigation Bar Item の <code>titleView</code> プロパティを使用します。この <code>titleView</code> プロパティには、UIView のサブクラスならなんでも設定可能。今回は画像を設定します。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidLoad</span><span class="p">{</span>
-<span class="lineno"> 2</span>  <span class="p">[</span><span class="n">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidLoad</span><span class="p">{</span>
+<span class="lineno"> 2</span>  <span class="p">[</span><span class="nb">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
 <span class="lineno"> 3</span> 
 <span class="lineno"> 4</span>  <span class="cm">/* Create an Image View to replace the Title View */</span>
-<span class="lineno"> 5</span>  <span class="n">UIImageView</span> <span class="o">*</span><span class="n">imageView</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UIImageView</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithFrame</span><span class="o">:</span><span class="n">CGRectMake</span><span class="p">(</span><span class="mf">0.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">100.0f</span><span class="p">,</span> <span class="mf">40.0f</span><span class="p">)];</span>
+<span class="lineno"> 5</span>  <span class="bp">UIImageView</span> <span class="o">*</span><span class="n">imageView</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">UIImageView</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithFrame</span><span class="p">:</span><span class="n">CGRectMake</span><span class="p">(</span><span class="mf">0.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">100.0f</span><span class="p">,</span> <span class="mf">40.0f</span><span class="p">)];</span>
 <span class="lineno"> 6</span>  <span class="n">imageView</span><span class="p">.</span><span class="n">contentMode</span> <span class="o">=</span> <span class="n">UIViewContentModeScaleAspectFit</span><span class="p">;</span>
 <span class="lineno"> 7</span> 
 <span class="lineno"> 8</span>  <span class="cm">/* Load an image. Be careful, this image will be cached */</span>
-<span class="lineno"> 9</span>  <span class="n">UIImage</span> <span class="o">*</span><span class="n">image</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIImage</span> <span class="n">imageNamed</span><span class="o">:</span><span class="s">@&quot;Logo&quot;</span><span class="p">];</span> <span class="cm">/* Set the image of the Image View */</span>
-<span class="lineno">10</span>  <span class="p">[</span><span class="n">imageView</span> <span class="n">setImage</span><span class="o">:</span><span class="n">image</span><span class="p">];</span> <span class="cm">/* Set the Title View */</span>
-<span class="lineno">11</span>     <span class="n">self</span><span class="p">.</span><span class="n">navigationItem</span><span class="p">.</span><span class="n">titleView</span> <span class="o">=</span> <span class="n">imageView</span><span class="p">;</span>
+<span class="lineno"> 9</span>  <span class="bp">UIImage</span> <span class="o">*</span><span class="n">image</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIImage</span> <span class="nl">imageNamed</span><span class="p">:</span><span class="s">@&quot;Logo&quot;</span><span class="p">];</span> <span class="cm">/* Set the image of the Image View */</span>
+<span class="lineno">10</span>  <span class="p">[</span><span class="n">imageView</span> <span class="nl">setImage</span><span class="p">:</span><span class="n">image</span><span class="p">];</span> <span class="cm">/* Set the Title View */</span>
+<span class="lineno">11</span>     <span class="nb">self</span><span class="p">.</span><span class="n">navigationItem</span><span class="p">.</span><span class="n">titleView</span> <span class="o">=</span> <span class="n">imageView</span><span class="p">;</span>
 <span class="lineno">12</span> <span class="p">}</span></code></pre></div>
 
 <p>Apple は、この <code>titleView</code> の高さが 128 points 以上にならないよう勧めているようです。もし、高さ 128 pixels の画像を設定した場合、Retina ディスプレイでは、64 points になります。300 pixels では、150 points になってしまいます。これらを調整するために、ビューの contentMode を <code>UIViewContentModeScaleAspectFit</code> に設定することで、調整してくれます。</p>
@@ -333,10 +329,10 @@
 
 <p>これらの値をこんな感じに。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">self</span><span class="p">.</span><span class="n">navigationItem</span><span class="p">.</span><span class="n">leftBarButtonItem</span> <span class="o">=</span>
-<span class="lineno">2</span>   <span class="p">[[</span><span class="n">UIBarButtonItem</span> <span class="n">alloc</span><span class="p">]</span>
-<span class="lineno">3</span>       <span class="nl">initWithBarButtonSystemItem:</span><span class="n">UIBarButtonSystemItemDone</span> <span class="n">target</span><span class="o">:</span><span class="n">self</span>
-<span class="lineno">4</span>       <span class="nl">action:</span><span class="k">@selector</span><span class="p">(</span><span class="n">performAdd</span><span class="o">:</span><span class="p">)];</span></code></pre></div>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="nb">self</span><span class="p">.</span><span class="n">navigationItem</span><span class="p">.</span><span class="n">leftBarButtonItem</span> <span class="o">=</span>
+<span class="lineno">2</span>   <span class="p">[[</span><span class="bp">UIBarButtonItem</span> <span class="n">alloc</span><span class="p">]</span>
+<span class="lineno">3</span>       <span class="nl">initWithBarButtonSystemItem</span><span class="p">:</span><span class="n">UIBarButtonSystemItemDone</span> <span class="nl">target</span><span class="p">:</span><span class="nb">self</span>
+<span class="lineno">4</span>       <span class="nl">action</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nl">performAdd</span><span class="p">:)];</span></code></pre></div>
 
 <p>UIBarButtonSystemItem Enumeration には他にも、UIBarButtonSystemItemFlexibleSpace と UIBarButtonSystemItemFixedSpace とアイテム間の幅を調整するものがあります。また、UIBarButtonSystemItemPageCurl という toolbar の中で使用するものがあります。</p>
 
@@ -344,14 +340,14 @@
 
 <p>上記のシステムのボタンを使い以外にも、自分のビューを追加することができます。<code>initWithCustomView:</code> Initializer によって実装します。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">self</span><span class="p">.</span><span class="n">title</span> <span class="o">=</span> <span class="s">@&quot;Button Demo&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="nb">self</span><span class="p">.</span><span class="n">title</span> <span class="o">=</span> <span class="s">@&quot;Button Demo&quot;</span><span class="p">;</span>
 <span class="lineno">2</span> 
-<span class="lineno">3</span> <span class="n">UISwitch</span> <span class="o">*</span><span class="n">simpleSwitch</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UISwitch</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="lineno">3</span> <span class="bp">UISwitch</span> <span class="o">*</span><span class="n">simpleSwitch</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">UISwitch</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
 <span class="lineno">4</span> <span class="n">simpleSwitch</span><span class="p">.</span><span class="n">on</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span>
-<span class="lineno">5</span> <span class="p">[</span><span class="n">simpleSwitch</span> <span class="n">addTarget</span><span class="o">:</span><span class="n">self</span>
-<span class="lineno">6</span>                  <span class="nl">action:</span><span class="k">@selector</span><span class="p">(</span><span class="n">switchIsChanged</span><span class="o">:</span><span class="p">)</span> <span class="n">forControlEvents</span><span class="o">:</span><span class="n">UIControlEventValueChanged</span><span class="p">];</span>
-<span class="lineno">7</span> <span class="n">self</span><span class="p">.</span><span class="n">navigationItem</span><span class="p">.</span><span class="n">rightBarButtonItem</span> <span class="o">=</span>
-<span class="lineno">8</span> <span class="p">[[</span><span class="n">UIBarButtonItem</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithCustomView</span><span class="o">:</span><span class="n">simpleSwitch</span><span class="p">];</span></code></pre></div>
+<span class="lineno">5</span> <span class="p">[</span><span class="n">simpleSwitch</span> <span class="nl">addTarget</span><span class="p">:</span><span class="nb">self</span>
+<span class="lineno">6</span>                  <span class="nl">action</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nl">switchIsChanged</span><span class="p">:)</span> <span class="nl">forControlEvents</span><span class="p">:</span><span class="n">UIControlEventValueChanged</span><span class="p">];</span>
+<span class="lineno">7</span> <span class="nb">self</span><span class="p">.</span><span class="n">navigationItem</span><span class="p">.</span><span class="n">rightBarButtonItem</span> <span class="o">=</span>
+<span class="lineno">8</span> <span class="p">[[</span><span class="bp">UIBarButtonItem</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithCustomView</span><span class="p">:</span><span class="n">simpleSwitch</span><span class="p">];</span></code></pre></div>
 
 <p>このように UISwitch も追加できます。画像等を追加したり、自由自在にカスタマイズすることができます。</p>
 
@@ -505,22 +501,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -614,9 +605,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

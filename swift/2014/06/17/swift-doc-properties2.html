@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -228,8 +224,8 @@
 
 <p>この Property Observers は、プロパティが初期化される際には呼ばれません。あくまで、プロパティが変更される際に、呼ばれるものです。しかし、新しい値と古い値が同じ値でも、これらの Observers は呼ばれます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">StepCounter</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">totalSteps</span><span class="o">:</span> <span class="n">Int</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">StepCounter</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">var</span> <span class="nl">totalSteps</span><span class="p">:</span> <span class="n">Int</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">{</span>
 <span class="lineno"> 3</span>         <span class="n">willSet</span><span class="p">(</span><span class="n">newTotalSteps</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 4</span>             <span class="n">println</span><span class="p">(</span><span class="s">&quot;About to set totalSteps to \(newTotalSteps)&quot;</span><span class="p">)</span>
 <span class="lineno"> 5</span>         <span class="p">}</span>
@@ -259,20 +255,20 @@
 
 <p>Type Propertiesを宣言する方法は、、構造体と Enumeration の Type Properties には、<code>static</code> キーワードを使用します。クラスの Type Properties には、<code>class</code> キーワードを使用します。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">SomeStructure</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">SomeStructure</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="k">static</span> <span class="n">var</span> <span class="n">storedTypeProperty</span> <span class="o">=</span> <span class="s">&quot;Some value.&quot;</span>
-<span class="lineno"> 3</span>     <span class="k">static</span> <span class="n">var</span> <span class="n">computedTypeProperty</span><span class="o">:</span> <span class="n">Int</span> <span class="p">{</span>
+<span class="lineno"> 3</span>     <span class="k">static</span> <span class="n">var</span> <span class="nl">computedTypeProperty</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span>
 <span class="lineno"> 4</span>     <span class="c1">// return an Int value here</span>
 <span class="lineno"> 5</span>     <span class="p">}</span>
 <span class="lineno"> 6</span> <span class="p">}</span>
 <span class="lineno"> 7</span> <span class="k">enum</span> <span class="n">SomeEnumeration</span> <span class="p">{</span>
 <span class="lineno"> 8</span>     <span class="k">static</span> <span class="n">var</span> <span class="n">storedTypeProperty</span> <span class="o">=</span> <span class="s">&quot;Some value.&quot;</span>
-<span class="lineno"> 9</span>     <span class="k">static</span> <span class="n">var</span> <span class="n">computedTypeProperty</span><span class="o">:</span> <span class="n">Int</span> <span class="p">{</span>
+<span class="lineno"> 9</span>     <span class="k">static</span> <span class="n">var</span> <span class="nl">computedTypeProperty</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span>
 <span class="lineno">10</span>     <span class="c1">// return an Int value here</span>
 <span class="lineno">11</span>     <span class="p">}</span>
 <span class="lineno">12</span> <span class="p">}</span>
-<span class="lineno">13</span> <span class="n">class</span> <span class="n">SomeClass</span> <span class="p">{</span>
-<span class="lineno">14</span>     <span class="n">class</span> <span class="n">var</span> <span class="n">computedTypeProperty</span><span class="o">:</span> <span class="n">Int</span> <span class="p">{</span>
+<span class="lineno">13</span> <span class="k">class</span> <span class="n">SomeClass</span> <span class="p">{</span>
+<span class="lineno">14</span>     <span class="k">class</span> <span class="n">var</span> <span class="nl">computedTypeProperty</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span>
 <span class="lineno">15</span>     <span class="c1">// return an Int value here</span>
 <span class="lineno">16</span>     <span class="p">}</span>
 <span class="lineno">17</span> <span class="p">}</span></code></pre></div>
@@ -281,9 +277,9 @@
 
 <p>Enumeration には、Stored Properties を使用できないので、<code>static</code> を除き、Stored Properties (インスタンスプロパティ) を作成しようとするとエラーになります。Computed Properties は使用できるので、<code>static</code> を除き、Computed Properties として使用しても問題ありません。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">enum</span> <span class="n">SomeEnumTest</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">enum</span> <span class="n">SomeEnumTest</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">var</span> <span class="n">storedTypeProperty</span> <span class="o">=</span> <span class="s">&quot;Some value.&quot;</span> <span class="c1">// err : No Stored Properties for enum</span>
-<span class="lineno">3</span>     <span class="n">var</span> <span class="n">computedTypeProperty</span><span class="o">:</span> <span class="n">Int</span> <span class="p">{</span> <span class="c1">// OK : YES Computed Properties for enum</span>
+<span class="lineno">3</span>     <span class="n">var</span> <span class="nl">computedTypeProperty</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span> <span class="c1">// OK : YES Computed Properties for enum</span>
 <span class="lineno">4</span>         <span class="k">return</span> <span class="mi">42</span>
 <span class="lineno">5</span>     <span class="p">}</span>
 <span class="lineno">6</span>     <span class="n">Case</span> <span class="n">Test</span>
@@ -291,7 +287,7 @@
 
 <p>このように使用します。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">println</span><span class="p">(</span><span class="n">SomeClass</span><span class="p">.</span><span class="n">computedTypeProperty</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">println</span><span class="p">(</span><span class="n">SomeClass</span><span class="p">.</span><span class="n">computedTypeProperty</span><span class="p">)</span>
 <span class="lineno"> 2</span> <span class="c1">// prints &quot;42&quot;</span>
 <span class="lineno"> 3</span>  
 <span class="lineno"> 4</span> <span class="n">println</span><span class="p">(</span><span class="n">SomeStructure</span><span class="p">.</span><span class="n">storedTypeProperty</span><span class="p">)</span>
@@ -449,22 +445,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -558,9 +549,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -224,7 +220,7 @@
 
 <p>まずは、基本的な Swift での Enumeration。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">enum</span> <span class="n">CompassPoint</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">enum</span> <span class="n">CompassPoint</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="k">case</span> <span class="n">North</span>
 <span class="lineno">3</span>     <span class="k">case</span> <span class="n">South</span>
 <span class="lineno">4</span>     <span class="k">case</span> <span class="n">East</span>
@@ -235,7 +231,7 @@
 
 <p>C や Objective-C では、Enumeration を定義すると、0,1,...n と自動的に値が推定されていましたが、Swift では違います。Swift では、Nort といったメンバーがそれ自体の値です。(fully-fledged values)</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">enum</span> <span class="n">Planet</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">enum</span> <span class="n">Planet</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="k">case</span> <span class="n">Mercury</span><span class="p">,</span> <span class="n">Venus</span><span class="p">,</span> <span class="n">Earth</span><span class="p">,</span> <span class="n">Mars</span><span class="p">,</span> <span class="n">Jupiter</span><span class="p">,</span> <span class="n">Saturn</span><span class="p">,</span> <span class="n">Uranus</span><span class="p">,</span> <span class="n">Neptune</span>
 <span class="lineno">3</span> <span class="p">}</span></code></pre></div>
 
@@ -243,7 +239,7 @@
 
 <p>Enumeration は下記のように、変数に代入できます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">directionToHead</span> <span class="o">=</span> <span class="n">CompassPoint</span><span class="p">.</span><span class="n">West</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">directionToHead</span> <span class="o">=</span> <span class="n">CompassPoint</span><span class="p">.</span><span class="n">West</span>
 <span class="lineno">2</span> <span class="n">directionToHead</span> <span class="o">=</span> <span class="p">.</span><span class="n">East</span></code></pre></div>
 
 <p>二度目の代入の際には、CompassPoint といった Enumeration 自体の名前は省略できます。</p>
@@ -252,15 +248,15 @@
 
 <p>Enumeration と一緒によく使われるのが Switch 文ですね。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">directionToHead</span> <span class="o">=</span> <span class="p">.</span><span class="n">South</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">directionToHead</span> <span class="o">=</span> <span class="p">.</span><span class="n">South</span>
 <span class="lineno"> 2</span> <span class="k">switch</span> <span class="n">directionToHead</span> <span class="p">{</span>
-<span class="lineno"> 3</span> <span class="k">case</span> <span class="p">.</span><span class="n">North</span>:
+<span class="lineno"> 3</span> <span class="k">case</span> <span class="p">.</span><span class="nl">North</span><span class="p">:</span>
 <span class="lineno"> 4</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;Lots of planets have a north&quot;</span><span class="p">)</span>
-<span class="lineno"> 5</span> <span class="k">case</span> <span class="p">.</span><span class="n">South</span>:
+<span class="lineno"> 5</span> <span class="k">case</span> <span class="p">.</span><span class="nl">South</span><span class="p">:</span>
 <span class="lineno"> 6</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;Watch out for penguins&quot;</span><span class="p">)</span>
-<span class="lineno"> 7</span> <span class="k">case</span> <span class="p">.</span><span class="n">East</span>:
+<span class="lineno"> 7</span> <span class="k">case</span> <span class="p">.</span><span class="nl">East</span><span class="p">:</span>
 <span class="lineno"> 8</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;Where the sun rises&quot;</span><span class="p">)</span>
-<span class="lineno"> 9</span> <span class="k">case</span> <span class="p">.</span><span class="n">West</span>:
+<span class="lineno"> 9</span> <span class="k">case</span> <span class="p">.</span><span class="nl">West</span><span class="p">:</span>
 <span class="lineno">10</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;Where the skies are blue&quot;</span><span class="p">)</span>
 <span class="lineno">11</span> <span class="p">}</span>
 <span class="lineno">12</span> <span class="c1">// prints &quot;Watch out for penguins</span></code></pre></div>
@@ -273,31 +269,31 @@
 
 <p>例えば、こんな感じ。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">enum</span> <span class="n">Barcode</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">enum</span> <span class="n">Barcode</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="k">case</span> <span class="n">UPCA</span><span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Int</span><span class="p">,</span> <span class="n">Int</span><span class="p">)</span>
 <span class="lineno">3</span>     <span class="k">case</span> <span class="n">QRCode</span><span class="p">(</span><span class="n">String</span><span class="p">)</span>
 <span class="lineno">4</span> <span class="p">}</span></code></pre></div>
 
 <p>これは、Barcode という Enumeration を定義しています。この Barcode は、UPCA か QRCode の 2 つのうちどちらかのメンバーになります。UPCA とは、普通の縦にたくさんある線があるバーコードのことです。それぞれのバーコードによって、関連する値は違います。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">productBarcode</span> <span class="o">=</span> <span class="n">Barcode</span><span class="p">.</span><span class="n">UPCA</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">85909</span><span class="n">_51226</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">productBarcode</span> <span class="o">=</span> <span class="n">Barcode</span><span class="p">.</span><span class="n">UPCA</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">85909</span><span class="n">_51226</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="lineno">2</span> <span class="n">productBarcode</span> <span class="o">=</span> <span class="p">.</span><span class="n">QRCode</span><span class="p">(</span><span class="s">&quot;ABCDEFGHIJKLMNOP&quot;</span><span class="p">)</span></code></pre></div>
 
 <p>まず、１行目で、Barcode.UPCA の変数を作成。この .UPCA は、関連した値として、3 つの整数を持っています。2 行目のように、違うタイプのバーコードを代入することもできます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">switch</span> <span class="n">productBarcode</span> <span class="p">{</span>
-<span class="lineno">2</span> <span class="k">case</span> <span class="p">.</span><span class="n">UPCA</span><span class="p">(</span><span class="n">let</span> <span class="n">numberSystem</span><span class="p">,</span> <span class="n">let</span> <span class="n">identifier</span><span class="p">,</span> <span class="n">let</span> <span class="n">check</span><span class="p">)</span>:
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">switch</span> <span class="n">productBarcode</span> <span class="p">{</span>
+<span class="lineno">2</span> <span class="k">case</span> <span class="p">.</span><span class="n">UPCA</span><span class="p">(</span><span class="n">let</span> <span class="n">numberSystem</span><span class="p">,</span> <span class="n">let</span> <span class="n">identifier</span><span class="p">,</span> <span class="n">let</span> <span class="n">check</span><span class="p">)</span><span class="o">:</span>
 <span class="lineno">3</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;UPC-A with value of \(numberSystem), \(identifier), \(check).&quot;</span><span class="p">)</span>
-<span class="lineno">4</span> <span class="k">case</span> <span class="p">.</span><span class="n">QRCode</span><span class="p">(</span><span class="n">let</span> <span class="n">productCode</span><span class="p">)</span>:
+<span class="lineno">4</span> <span class="k">case</span> <span class="p">.</span><span class="n">QRCode</span><span class="p">(</span><span class="n">let</span> <span class="n">productCode</span><span class="p">)</span><span class="o">:</span>
 <span class="lineno">5</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;QR code with value of \(productCode).&quot;</span><span class="p">)</span>
 <span class="lineno">6</span> <span class="p">}</span></code></pre></div>
 
 <p>上記のように<code>case</code> の中で、関連した値を取り出すことができます。上記のように全ての関連した値が、変数かコンスタントで統一されいれば、全ての var/let を書く必要はなく、メンバー名の前に書くことができます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">switch</span> <span class="n">productBarcode</span> <span class="p">{</span>
-<span class="lineno">2</span> <span class="k">case</span> <span class="n">let</span> <span class="p">.</span><span class="n">UPCA</span><span class="p">(</span><span class="n">numberSystem</span><span class="p">,</span> <span class="n">identifier</span><span class="p">,</span> <span class="n">check</span><span class="p">)</span>:
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">switch</span> <span class="n">productBarcode</span> <span class="p">{</span>
+<span class="lineno">2</span> <span class="k">case</span> <span class="n">let</span> <span class="p">.</span><span class="n">UPCA</span><span class="p">(</span><span class="n">numberSystem</span><span class="p">,</span> <span class="n">identifier</span><span class="p">,</span> <span class="n">check</span><span class="p">)</span><span class="o">:</span>
 <span class="lineno">3</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;UPC-A with value of \(numberSystem), \(identifier), \(check).&quot;</span><span class="p">)</span>
-<span class="lineno">4</span> <span class="k">case</span> <span class="n">let</span> <span class="p">.</span><span class="n">QRCode</span><span class="p">(</span><span class="n">productCode</span><span class="p">)</span>:
+<span class="lineno">4</span> <span class="k">case</span> <span class="n">let</span> <span class="p">.</span><span class="n">QRCode</span><span class="p">(</span><span class="n">productCode</span><span class="p">)</span><span class="o">:</span>
 <span class="lineno">5</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;QR code with value of \(productCode).&quot;</span><span class="p">)</span>
 <span class="lineno">6</span> <span class="p">}</span>
 <span class="lineno">7</span> <span class="c1">// prints &quot;QR code with value of ABCDEFGHIJKLMNOP.</span></code></pre></div>
@@ -306,7 +302,7 @@
 
 <p>関連ある値とは少し違った、raw values というものも使えます。これも各メンバーに対して、値を関連付けます。全ての値が同じ型である場合には、Enumeration 宣言時に、定義することができます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">enum</span> <span class="n">ASCIIControlCharacter</span><span class="o">:</span> <span class="n">Character</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">enum</span> <span class="nl">ASCIIControlCharacter</span><span class="p">:</span> <span class="n">Character</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="k">case</span> <span class="n">Tab</span> <span class="o">=</span> <span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span>
 <span class="lineno">3</span>     <span class="k">case</span> <span class="n">LineFeed</span> <span class="o">=</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
 <span class="lineno">4</span>     <span class="k">case</span> <span class="n">CarriageReturn</span> <span class="o">=</span> <span class="s">&quot;</span><span class="se">\r</span><span class="s">&quot;</span>
@@ -316,7 +312,7 @@
 
 <p>また、Raw values は、各 Enumeration 内でユニークでなければなりません。整数が使用された場合には、C のように自動で値が代入されます。例えば、</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">enum</span> <span class="n">Planet</span><span class="o">:</span> <span class="n">Int</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">enum</span> <span class="nl">Planet</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="k">case</span> <span class="n">Mercury</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Venus</span><span class="p">,</span> <span class="n">Earth</span><span class="p">,</span> <span class="n">Mars</span><span class="p">,</span> <span class="n">Jupiter</span><span class="p">,</span> <span class="n">Saturn</span><span class="p">,</span> <span class="n">Uranus</span><span class="p">,</span> <span class="n">Neptune</span>
 <span class="lineno">3</span> <span class="p">}</span></code></pre></div>
 
@@ -324,11 +320,11 @@
 
 <p>Raw values にアクセスするには、toRaw() メソッドを使用します。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">earthsOrder</span> <span class="o">=</span> <span class="n">Planet</span><span class="p">.</span><span class="n">Earth</span><span class="p">.</span><span class="n">toRaw</span><span class="p">()</span></code></pre></div>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">earthsOrder</span> <span class="o">=</span> <span class="n">Planet</span><span class="p">.</span><span class="n">Earth</span><span class="p">.</span><span class="n">toRaw</span><span class="p">()</span></code></pre></div>
 
 <p>逆に、fromRaw() メソッドを使用して、raw values からメンバー値を探すこともできます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">possiblePlanet</span> <span class="o">=</span> <span class="n">Planet</span><span class="p">.</span><span class="n">fromRaw</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">possiblePlanet</span> <span class="o">=</span> <span class="n">Planet</span><span class="p">.</span><span class="n">fromRaw</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
 <span class="lineno">2</span> <span class="c1">// possiblePlanet is of type Planet? and equals Planet.Uranus</span></code></pre></div>
 
 					</div>
@@ -475,22 +471,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -584,9 +575,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

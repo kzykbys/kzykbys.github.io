@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -224,7 +220,7 @@
 
 <p>簡単に表に表示できるように、二次元の[-1, 1] × [-1, 1] の範囲に インプットを限定して実装します。コードは、<a href="http://datasciencelab.wordpress.com/2014/01/10/machine-learning-classics-the-perceptron/">このサイト</a>のプログラムを少しシンプルにしたものです。</p>
 
-<div class="highlight"><pre><code class="python"><span class="lineno"> 1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="lineno"> 2</span> <span class="kn">import</span> <span class="nn">random</span>
 <span class="lineno"> 3</span> <span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">subprocess</span>
 <span class="lineno"> 4</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
@@ -248,7 +244,7 @@
 
 <p>まずは、ランダムにインプットを作成します。求めるべきファンクションは np.sign(self.V.T.dot(x)) ですね。よって s には、+1 か -1 が返されます。N はサンプルのサイズです。この例では、あまり考慮に入れていませんが、bias を別に定義することがあります。x0 に固定の 1 を保存してるため、w0 を bias として置き換え、bias を簡単に考慮することができます。</p>
 
-<div class="highlight"><pre><code class="python"><span class="lineno"> 1</span> <span class="k">def</span> <span class="nf">classification_error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vec</span><span class="p">,</span> <span class="n">pts</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="k">def</span> <span class="nf">classification_error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vec</span><span class="p">,</span> <span class="n">pts</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
 <span class="lineno"> 2</span>         <span class="c"># Error defined as fraction of misclassified points</span>
 <span class="lineno"> 3</span>         <span class="k">if</span> <span class="ow">not</span> <span class="n">pts</span><span class="p">:</span>
 <span class="lineno"> 4</span>             <span class="n">pts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span>
@@ -287,7 +283,7 @@
 
 <p>この部分がこのアルゴリズムの肝になります。pla 関数がその本体です。まずは、調整する W をゼロに初期化します。インプットデータセットが全て正しく分類されるまで while 文で回します。classification_error 関数でエラーがあるか確認し、ループの条件を確認。もしエラーがありループが継続される場合には、choose_miscl_point 関数で間違って分類されている点をランダムに選び、W を更新します。この繰り返しで、正しく分類されるように W 調整し、終了です。実行するには、</p>
 
-<div class="highlight"><pre><code class="python"><span class="lineno">1</span> <span class="c"># Execute percetron algorithm</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno">1</span> <span class="c"># Execute percetron algorithm</span>
 <span class="lineno">2</span> <span class="n">p</span> <span class="o">=</span> <span class="n">Perceptron</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
 <span class="lineno">3</span> <span class="n">p</span><span class="o">.</span><span class="n">pla</span><span class="p">()</span>
 <span class="lineno">4</span> <span class="n">p</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">generate_points</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="n">p</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span></code></pre></div>
@@ -452,22 +448,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -561,9 +552,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

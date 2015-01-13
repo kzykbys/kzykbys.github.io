@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -222,16 +218,16 @@
 
 <p><a href="http://blog.kazuya.co/swift/2014/06/05/swift-doc-the-basics2.html">以前</a>、Tuple についてみたように、関数は C と違い、いくつかの値を返すことができます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">func</span> <span class="nf">count</span><span class="p">(</span><span class="n">string</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">vowels</span><span class="o">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">consonants</span><span class="o">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">others</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">func</span> <span class="nf">count</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nl">vowels</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">consonants</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">others</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">vowels</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">consonants</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">others</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="lineno"> 3</span>     <span class="k">for</span> <span class="n">character</span> <span class="k">in</span> <span class="n">string</span> <span class="p">{</span>
 <span class="lineno"> 4</span>         <span class="k">switch</span> <span class="n">String</span><span class="p">(</span><span class="n">character</span><span class="p">).</span><span class="n">lowercaseString</span> <span class="p">{</span>
-<span class="lineno"> 5</span>         <span class="k">case</span> <span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;e&quot;</span><span class="p">,</span> <span class="s">&quot;i&quot;</span><span class="p">,</span> <span class="s">&quot;o&quot;</span><span class="p">,</span> <span class="s">&quot;u&quot;</span>:
+<span class="lineno"> 5</span>         <span class="k">case</span> <span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;e&quot;</span><span class="p">,</span> <span class="s">&quot;i&quot;</span><span class="p">,</span> <span class="s">&quot;o&quot;</span><span class="p">,</span> <span class="s">&quot;u&quot;</span><span class="o">:</span>
 <span class="lineno"> 6</span>             <span class="o">++</span><span class="n">vowels</span>
 <span class="lineno"> 7</span>         <span class="k">case</span> <span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="s">&quot;c&quot;</span><span class="p">,</span> <span class="s">&quot;d&quot;</span><span class="p">,</span> <span class="s">&quot;f&quot;</span><span class="p">,</span> <span class="s">&quot;g&quot;</span><span class="p">,</span> <span class="s">&quot;h&quot;</span><span class="p">,</span> <span class="s">&quot;j&quot;</span><span class="p">,</span> <span class="s">&quot;k&quot;</span><span class="p">,</span> <span class="s">&quot;l&quot;</span><span class="p">,</span> <span class="s">&quot;m&quot;</span><span class="p">,</span>
 <span class="lineno"> 8</span>         <span class="s">&quot;n&quot;</span><span class="p">,</span> <span class="s">&quot;p&quot;</span><span class="p">,</span> <span class="s">&quot;q&quot;</span><span class="p">,</span> <span class="s">&quot;r&quot;</span><span class="p">,</span> <span class="s">&quot;s&quot;</span><span class="p">,</span> <span class="s">&quot;t&quot;</span><span class="p">,</span> <span class="s">&quot;v&quot;</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">,</span> <span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="s">&quot;z&quot;</span><span class="o">:</span>
 <span class="lineno"> 9</span>             <span class="o">++</span><span class="n">consonants</span>
-<span class="lineno">10</span>         <span class="nl">default:</span>
+<span class="lineno">10</span>         <span class="k">default</span><span class="o">:</span>
 <span class="lineno">11</span>             <span class="o">++</span><span class="n">others</span>
 <span class="lineno">12</span>         <span class="p">}</span>
 <span class="lineno">13</span>     <span class="p">}</span>
@@ -240,7 +236,7 @@
 
 <p>最後の return 文 が tuple。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">total</span> <span class="o">=</span> <span class="n">count</span><span class="p">(</span><span class="s">&quot;some arbitrary string!&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">total</span> <span class="o">=</span> <span class="n">count</span><span class="p">(</span><span class="s">&quot;some arbitrary string!&quot;</span><span class="p">)</span>
 <span class="lineno">2</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;\(total.vowels) vowels and \(total.consonants) consonants&quot;</span><span class="p">)</span>
 <span class="lineno">3</span> <span class="c1">// prints &quot;6 vowels and 13 consonants</span></code></pre></div>
 
@@ -250,24 +246,24 @@
 
 <p>関数を呼ぶ際に、もっと説明的にするために、外的に引数に対して名前を付けることができます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">func</span> <span class="n">join</span><span class="p">(</span><span class="n">s1</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">s2</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">joiner</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">func</span> <span class="n">join</span><span class="p">(</span><span class="nl">s1</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">s2</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">joiner</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="k">return</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">joiner</span> <span class="o">+</span> <span class="n">s2</span>
 <span class="lineno">3</span> <span class="p">}</span></code></pre></div>
 
 <p>この関数は、External Parameter Name がない普通の関数です。この関数を呼ぶ際には、</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">join</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="s">&quot;world&quot;</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">join</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="s">&quot;world&quot;</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="p">)</span></code></pre></div>
 
 <p>とします。これだけだと、３つの String を渡す時に、それぞれどのような役割を持った String を持つのか分かりにくいです。特に第三者がコードを読む際に、あまり親切ではありません。それらを明示的に示すのが External Parameter Name です。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">func</span> <span class="n">join</span><span class="p">(</span><span class="n">string</span> <span class="n">s1</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">toString</span> <span class="n">s2</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">withJoiner</span> <span class="n">joiner</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">func</span> <span class="n">join</span><span class="p">(</span><span class="n">string</span> <span class="nl">s1</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">toString</span> <span class="nl">s2</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">withJoiner</span> <span class="nl">joiner</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span>
 <span class="lineno">2</span>     <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
 <span class="lineno">3</span>         <span class="k">return</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">joiner</span> <span class="o">+</span> <span class="n">s2</span>
 <span class="lineno">4</span> <span class="p">}</span></code></pre></div>
 
 <p>この External Parameter Name の例は、s1 に対して、string。s2 に対して、toString。joiner に対して、withJoiner という External Parameter Name をつけています。s1 の類の変数名を、local parameter name と呼び、関数の中で使います。また、関数の中でのみ有効です。この関数を呼ぶ際には、Objective-C みたいに下記のように書きます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">join</span><span class="p">(</span><span class="n">string</span><span class="o">:</span> <span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="n">toString</span><span class="o">:</span> <span class="s">&quot;world&quot;</span><span class="p">,</span> <span class="n">withJoiner</span><span class="o">:</span> <span class="s">&quot;, &quot;</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">join</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="nl">toString</span><span class="p">:</span> <span class="s">&quot;world&quot;</span><span class="p">,</span> <span class="nl">withJoiner</span><span class="p">:</span> <span class="s">&quot;, &quot;</span><span class="p">)</span>
 <span class="lineno">2</span> <span class="c1">// returns &quot;hello, world”</span></code></pre></div>
 
 <p>External Parameter Name を定義した場合、関数を呼ぶ際には、必ず External Parameter Name もつけなければいけません。</p>
@@ -276,7 +272,7 @@
 
 <p>もし、External Parameter Name も Local Parameter Name も同じ名前であればよい時には、関数を定義する際に少し簡単に書くことができます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">func</span> <span class="n">containsCharacter</span><span class="p">(</span><span class="err">#</span><span class="n">string</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span> <span class="err">#</span><span class="n">characterToFind</span><span class="o">:</span> <span class="n">Character</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">func</span> <span class="n">containsCharacter</span><span class="p">(</span><span class="err">#</span><span class="nl">string</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="err">#</span><span class="nl">characterToFind</span><span class="p">:</span> <span class="n">Character</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="k">for</span> <span class="n">character</span> <span class="k">in</span> <span class="n">string</span> <span class="p">{</span>
 <span class="lineno">3</span>         <span class="k">if</span> <span class="n">character</span> <span class="o">==</span> <span class="n">characterToFind</span> <span class="p">{</span>
 <span class="lineno">4</span>             <span class="k">return</span> <span class="nb">true</span>
@@ -287,26 +283,26 @@
 
 <p>この #parameterName という書式を使うことで、External Parameter Name と Local Parameter Name を同時に定義できます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">containsAVee</span> <span class="o">=</span> <span class="n">containsCharacter</span><span class="p">(</span><span class="n">string</span><span class="o">:</span> <span class="s">&quot;aardvark&quot;</span><span class="p">,</span> <span class="n">characterToFind</span><span class="o">:</span> <span class="s">&quot;v&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">containsAVee</span> <span class="o">=</span> <span class="n">containsCharacter</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">&quot;aardvark&quot;</span><span class="p">,</span> <span class="nl">characterToFind</span><span class="p">:</span> <span class="s">&quot;v&quot;</span><span class="p">)</span>
 <span class="lineno">2</span> <span class="c1">// containsAVee equals true, because &quot;aardvark&quot; contains a &quot;v”</span></code></pre></div>
 
 <h4 id="4.-引数のデフォルト値">4. 引数のデフォルト値</h4>
 
 <p>デフォルトで使われる引数の値を関数定義時に指定できます。関数呼び出し時に、その引数が省略された場合には、そのデフォルト値が自動的に使用されます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">func</span> <span class="n">join</span><span class="p">(</span><span class="n">string</span> <span class="n">s1</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">toString</span> <span class="n">s2</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span>
-<span class="lineno">2</span>     <span class="n">withJoiner</span> <span class="n">joiner</span><span class="o">:</span> <span class="n">String</span> <span class="o">=</span> <span class="s">&quot; &quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">func</span> <span class="n">join</span><span class="p">(</span><span class="n">string</span> <span class="nl">s1</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">toString</span> <span class="nl">s2</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span>
+<span class="lineno">2</span>     <span class="n">withJoiner</span> <span class="nl">joiner</span><span class="p">:</span> <span class="n">String</span> <span class="o">=</span> <span class="s">&quot; &quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
 <span class="lineno">3</span>         <span class="k">return</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">joiner</span> <span class="o">+</span> <span class="n">s2</span>
 <span class="lineno">4</span> <span class="p">}</span></code></pre></div>
 
 <p>まずは、普通の呼び方。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">join</span><span class="p">(</span><span class="n">string</span><span class="o">:</span> <span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="n">toString</span><span class="o">:</span> <span class="s">&quot;world&quot;</span><span class="p">,</span> <span class="n">withJoiner</span><span class="o">:</span> <span class="s">&quot;-&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">join</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="nl">toString</span><span class="p">:</span> <span class="s">&quot;world&quot;</span><span class="p">,</span> <span class="nl">withJoiner</span><span class="p">:</span> <span class="s">&quot;-&quot;</span><span class="p">)</span>
 <span class="lineno">2</span> <span class="c1">// returns &quot;hello-world&quot;</span></code></pre></div>
 
 <p>デフォルト値を使用する場合。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">join</span><span class="p">(</span><span class="n">string</span><span class="o">:</span> <span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="n">toString</span><span class="o">:</span> <span class="s">&quot;world&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">join</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="nl">toString</span><span class="p">:</span> <span class="s">&quot;world&quot;</span><span class="p">)</span>
 <span class="lineno">2</span> <span class="c1">// returns &quot;hello world”</span></code></pre></div>
 
 <p>引数のデフォルト値を定義する際は、関数定義の引数リストの最後に書くようにします。このことにより、デフォルト値がない引数をいつも同じ順番で書け、コードが読みやすくなります。</p>
@@ -315,13 +311,13 @@
 
 <p>関数の引数にデフォルトを使用する場合に、Swift は自動的に External Parameter Name を定義してくれます。例えば、</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">func</span> <span class="n">join</span><span class="p">(</span><span class="n">s1</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">s2</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">joiner</span><span class="o">:</span> <span class="n">String</span> <span class="o">=</span> <span class="s">&quot; &quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">func</span> <span class="n">join</span><span class="p">(</span><span class="nl">s1</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">s2</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">joiner</span><span class="p">:</span> <span class="n">String</span> <span class="o">=</span> <span class="s">&quot; &quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="k">return</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">joiner</span> <span class="o">+</span> <span class="n">s2</span>
 <span class="lineno">3</span> <span class="p">}</span></code></pre></div>
 
 <p>と joiner に対して自動的に同じ名前の External Parameter Name が定義されています。joiner はデフォルト値を持っているためです。そのため、関数を呼ぶ際には、</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">join</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="s">&quot;world&quot;</span><span class="p">,</span> <span class="n">joiner</span><span class="o">:</span> <span class="s">&quot;-&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">join</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="s">&quot;world&quot;</span><span class="p">,</span> <span class="nl">joiner</span><span class="p">:</span> <span class="s">&quot;-&quot;</span><span class="p">)</span>
 <span class="lineno">2</span> <span class="c1">// returns &quot;hello-world</span>
 <span class="lineno">3</span> <span class="c1">// or </span>
 <span class="lineno">4</span> <span class="n">join</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="s">&quot;world&quot;</span><span class="p">)</span>
@@ -329,7 +325,7 @@
 
 <p>デフォルト値を持つ引数を関数に渡す際には、External Parameter Name を省略できません。もし、どうしても External Parameter Name を使いたくない時には、_ を関数定義時に追加することで Swift が自動的に External Parameter Name を定義するのを防ぐことができます。しかし、基本的に、デフォルト値を持つ引数に External Parameter Name はあった方がよいようです。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">func</span> <span class="n">join</span><span class="p">(</span><span class="n">s1</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">s2</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">_</span> <span class="n">joiner</span><span class="o">:</span> <span class="n">String</span> <span class="o">=</span> <span class="s">&quot; &quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">func</span> <span class="n">join</span><span class="p">(</span><span class="nl">s1</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">s2</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">_</span> <span class="nl">joiner</span><span class="p">:</span> <span class="n">String</span> <span class="o">=</span> <span class="s">&quot; &quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="k">return</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">joiner</span> <span class="o">+</span> <span class="n">s2</span>
 <span class="lineno">3</span> <span class="p">}</span>        
 <span class="lineno">4</span> <span class="n">join</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="s">&quot;world&quot;</span><span class="p">,</span> <span class="s">&quot;-&quot;</span><span class="p">)</span> <span class="c1">// now, you can do this</span></code></pre></div>
@@ -478,22 +474,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -587,9 +578,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

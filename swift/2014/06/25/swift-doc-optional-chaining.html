@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -226,11 +222,11 @@
 
 <p>ここからどのように Optional Chaining を使用するのかをみていきます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">class</span> <span class="n">Person</span> <span class="p">{</span>
-<span class="lineno">2</span>     <span class="n">var</span> <span class="n">residence</span><span class="o">:</span> <span class="n">Residence</span><span class="o">?</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">class</span> <span class="n">Person</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="n">var</span> <span class="nl">residence</span><span class="p">:</span> <span class="n">Residence</span><span class="o">?</span>
 <span class="lineno">3</span> <span class="p">}</span>
 <span class="lineno">4</span>  
-<span class="lineno">5</span> <span class="n">class</span> <span class="n">Residence</span> <span class="p">{</span>
+<span class="lineno">5</span> <span class="k">class</span> <span class="n">Residence</span> <span class="p">{</span>
 <span class="lineno">6</span>     <span class="n">var</span> <span class="n">numberOfRooms</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="lineno">7</span> <span class="p">}</span></code></pre></div>
 
@@ -238,7 +234,7 @@
 
 <p>これをもとに <code>!</code> と <code>?</code> の違いをみていきます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">john</span> <span class="o">=</span> <span class="n">Person</span><span class="p">()</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">john</span> <span class="o">=</span> <span class="n">Person</span><span class="p">()</span>
 <span class="lineno">2</span> <span class="n">let</span> <span class="n">roomCount</span> <span class="o">=</span> <span class="n">john</span><span class="p">.</span><span class="n">residence</span><span class="o">!</span><span class="p">.</span><span class="n">numberOfRooms</span>
 <span class="lineno">3</span> <span class="c1">// this triggers a runtime error</span></code></pre></div>
 
@@ -246,7 +242,7 @@
 
 <p>次に Optional Chaining の例です。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">if</span> <span class="n">let</span> <span class="n">roomCount</span> <span class="o">=</span> <span class="n">john</span><span class="p">.</span><span class="n">residence</span><span class="o">?</span><span class="p">.</span><span class="n">numberOfRooms</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">if</span> <span class="n">let</span> <span class="n">roomCount</span> <span class="o">=</span> <span class="n">john</span><span class="p">.</span><span class="n">residence</span><span class="o">?</span><span class="p">.</span><span class="n">numberOfRooms</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;John&#39;s residence has \(roomCount) room(s).&quot;</span><span class="p">)</span>
 <span class="lineno">3</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 <span class="lineno">4</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;Unable to retrieve the number of rooms.&quot;</span><span class="p">)</span>
@@ -261,33 +257,33 @@
 
 <p>まずは、この例のためにクラスを用意します。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">class</span> <span class="n">Person</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">residence</span><span class="o">:</span> <span class="n">Residence</span><span class="o">?</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">Person</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">var</span> <span class="nl">residence</span><span class="p">:</span> <span class="n">Residence</span><span class="o">?</span>
 <span class="lineno"> 3</span> <span class="p">}</span>
 <span class="lineno"> 4</span> 
-<span class="lineno"> 5</span> <span class="n">class</span> <span class="n">Residence</span> <span class="p">{</span>
+<span class="lineno"> 5</span> <span class="k">class</span> <span class="n">Residence</span> <span class="p">{</span>
 <span class="lineno"> 6</span>     <span class="n">var</span> <span class="n">rooms</span> <span class="o">=</span> <span class="n">Room</span><span class="p">[]()</span>
-<span class="lineno"> 7</span>     <span class="n">var</span> <span class="n">numberOfRooms</span><span class="o">:</span> <span class="n">Int</span> <span class="p">{</span>
+<span class="lineno"> 7</span>     <span class="n">var</span> <span class="nl">numberOfRooms</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span>
 <span class="lineno"> 8</span>     <span class="k">return</span> <span class="n">rooms</span><span class="p">.</span><span class="n">count</span>
 <span class="lineno"> 9</span>     <span class="p">}</span>
-<span class="lineno">10</span>     <span class="n">subscript</span><span class="p">(</span><span class="n">i</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Room</span> <span class="p">{</span>
+<span class="lineno">10</span>     <span class="n">subscript</span><span class="p">(</span><span class="nl">i</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Room</span> <span class="p">{</span>
 <span class="lineno">11</span>         <span class="k">return</span> <span class="n">rooms</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 <span class="lineno">12</span>     <span class="p">}</span>
 <span class="lineno">13</span>     <span class="n">func</span> <span class="n">printNumberOfRooms</span><span class="p">()</span> <span class="p">{</span>
 <span class="lineno">14</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;The number of rooms is \(numberOfRooms)&quot;</span><span class="p">)</span>
 <span class="lineno">15</span>     <span class="p">}</span>
-<span class="lineno">16</span>     <span class="n">var</span> <span class="n">address</span><span class="o">:</span> <span class="n">Address</span><span class="o">?</span>
+<span class="lineno">16</span>     <span class="n">var</span> <span class="nl">address</span><span class="p">:</span> <span class="n">Address</span><span class="o">?</span>
 <span class="lineno">17</span> <span class="p">}</span>
 <span class="lineno">18</span> 
-<span class="lineno">19</span> <span class="n">class</span> <span class="n">Room</span> <span class="p">{</span>
-<span class="lineno">20</span>     <span class="n">let</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span>
-<span class="lineno">21</span>     <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span> <span class="n">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span> <span class="p">}</span>
+<span class="lineno">19</span> <span class="k">class</span> <span class="n">Room</span> <span class="p">{</span>
+<span class="lineno">20</span>     <span class="n">let</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span>
+<span class="lineno">21</span>     <span class="n">init</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span> <span class="nb">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span> <span class="p">}</span>
 <span class="lineno">22</span> <span class="p">}</span>
 <span class="lineno">23</span> 
-<span class="lineno">24</span> <span class="n">class</span> <span class="n">Address</span> <span class="p">{</span>
-<span class="lineno">25</span>     <span class="n">var</span> <span class="n">buildingName</span><span class="o">:</span> <span class="n">String</span><span class="o">?</span>
-<span class="lineno">26</span>     <span class="n">var</span> <span class="n">buildingNumber</span><span class="o">:</span> <span class="n">String</span><span class="o">?</span>
-<span class="lineno">27</span>     <span class="n">var</span> <span class="n">street</span><span class="o">:</span> <span class="n">String</span><span class="o">?</span>
+<span class="lineno">24</span> <span class="k">class</span> <span class="n">Address</span> <span class="p">{</span>
+<span class="lineno">25</span>     <span class="n">var</span> <span class="nl">buildingName</span><span class="p">:</span> <span class="n">String</span><span class="o">?</span>
+<span class="lineno">26</span>     <span class="n">var</span> <span class="nl">buildingNumber</span><span class="p">:</span> <span class="n">String</span><span class="o">?</span>
+<span class="lineno">27</span>     <span class="n">var</span> <span class="nl">street</span><span class="p">:</span> <span class="n">String</span><span class="o">?</span>
 <span class="lineno">28</span>     <span class="n">func</span> <span class="n">buildingIdentifier</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span><span class="o">?</span> <span class="p">{</span>
 <span class="lineno">29</span>         <span class="k">if</span> <span class="n">buildingName</span> <span class="p">{</span>
 <span class="lineno">30</span>             <span class="k">return</span> <span class="n">buildingName</span>
@@ -303,7 +299,7 @@
 
 <p>まずは、メソッドを呼んでみます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">john</span> <span class="o">=</span> <span class="n">Person</span><span class="p">()</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">john</span> <span class="o">=</span> <span class="n">Person</span><span class="p">()</span>
 <span class="lineno">2</span> <span class="k">if</span> <span class="n">john</span><span class="p">.</span><span class="n">residence</span><span class="o">?</span><span class="p">.</span><span class="n">printNumberOfRooms</span><span class="p">()</span> <span class="p">{</span>
 <span class="lineno">3</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;It was possible to print the number of rooms.&quot;</span><span class="p">)</span>
 <span class="lineno">4</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -315,7 +311,7 @@
 
 <p>次に、サブスクリプトを呼んでみます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">if</span> <span class="n">let</span> <span class="n">firstRoomName</span> <span class="o">=</span> <span class="n">john</span><span class="p">.</span><span class="n">residence</span><span class="o">?</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">name</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">if</span> <span class="n">let</span> <span class="n">firstRoomName</span> <span class="o">=</span> <span class="n">john</span><span class="p">.</span><span class="n">residence</span><span class="o">?</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">name</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;The first room name is \(firstRoomName).&quot;</span><span class="p">)</span>
 <span class="lineno">3</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 <span class="lineno">4</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;Unable to retrieve the first room name.&quot;</span><span class="p">)</span>
@@ -324,9 +320,9 @@
 
 <p>サブスクリプトは [] の前に <code>?</code> を置きます。結果は先ほどと同じです。次に、値を初期化して試してみます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">johnsHouse</span> <span class="o">=</span> <span class="n">Residence</span><span class="p">()</span>
-<span class="lineno"> 2</span> <span class="n">johnsHouse</span><span class="p">.</span><span class="n">rooms</span> <span class="o">+=</span> <span class="n">Room</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;Living Room&quot;</span><span class="p">)</span>
-<span class="lineno"> 3</span> <span class="n">johnsHouse</span><span class="p">.</span><span class="n">rooms</span> <span class="o">+=</span> <span class="n">Room</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">&quot;Kitchen&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">johnsHouse</span> <span class="o">=</span> <span class="n">Residence</span><span class="p">()</span>
+<span class="lineno"> 2</span> <span class="n">johnsHouse</span><span class="p">.</span><span class="n">rooms</span> <span class="o">+=</span> <span class="n">Room</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Living Room&quot;</span><span class="p">)</span>
+<span class="lineno"> 3</span> <span class="n">johnsHouse</span><span class="p">.</span><span class="n">rooms</span> <span class="o">+=</span> <span class="n">Room</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Kitchen&quot;</span><span class="p">)</span>
 <span class="lineno"> 4</span> <span class="n">john</span><span class="p">.</span><span class="n">residence</span> <span class="o">=</span> <span class="n">johnsHouse</span>
 <span class="lineno"> 5</span>  
 <span class="lineno"> 6</span> <span class="k">if</span> <span class="n">let</span> <span class="n">firstRoomName</span> <span class="o">=</span> <span class="n">john</span><span class="p">.</span><span class="n">residence</span><span class="o">?</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">name</span> <span class="p">{</span>
@@ -338,7 +334,7 @@
 
 <p>次に、何層も Optional が重なっている例です。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">if</span> <span class="n">let</span> <span class="n">johnsStreet</span> <span class="o">=</span> <span class="n">john</span><span class="p">.</span><span class="n">residence</span><span class="o">?</span><span class="p">.</span><span class="n">dress</span><span class="o">?</span><span class="p">.</span><span class="n">street</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">if</span> <span class="n">let</span> <span class="n">johnsStreet</span> <span class="o">=</span> <span class="n">john</span><span class="p">.</span><span class="n">residence</span><span class="o">?</span><span class="p">.</span><span class="n">dress</span><span class="o">?</span><span class="p">.</span><span class="n">street</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;John&#39;s street name is \(johnsStreet).&quot;</span><span class="p">)</span>
 <span class="lineno">3</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 <span class="lineno">4</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;Unable to retrieve the address.&quot;</span><span class="p">)</span>
@@ -347,7 +343,7 @@
 
 <p>今、この john.residence は値を持っています。しかし、その residence が持っている address は nil なので、nil を返し、false になります。このように何層になっていても使えるので便利です。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">johnsAddress</span> <span class="o">=</span> <span class="n">Address</span><span class="p">()</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">johnsAddress</span> <span class="o">=</span> <span class="n">Address</span><span class="p">()</span>
 <span class="lineno"> 2</span> <span class="n">johnsAddress</span><span class="p">.</span><span class="n">buildingName</span> <span class="o">=</span> <span class="s">&quot;The Larches&quot;</span>
 <span class="lineno"> 3</span> <span class="n">johnsAddress</span><span class="p">.</span><span class="n">street</span> <span class="o">=</span> <span class="s">&quot;Laurel Street&quot;</span>
 <span class="lineno"> 4</span> <span class="n">john</span><span class="p">.</span><span class="n">residence</span><span class="o">!</span><span class="p">.</span><span class="n">address</span> <span class="o">=</span> <span class="n">johnsAddress</span>
@@ -363,7 +359,7 @@
 
 <p>次にメソッドを見ていきます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="k">if</span> <span class="n">let</span> <span class="n">upper</span> <span class="o">=</span> <span class="n">john</span><span class="p">.</span><span class="n">residence</span><span class="o">?</span><span class="p">.</span><span class="n">address</span><span class="o">?</span><span class="p">.</span><span class="n">buildingIdentifier</span><span class="p">()</span><span class="o">?</span><span class="p">.</span><span class="n">uppercaseString</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">if</span> <span class="n">let</span> <span class="n">upper</span> <span class="o">=</span> <span class="n">john</span><span class="p">.</span><span class="n">residence</span><span class="o">?</span><span class="p">.</span><span class="n">address</span><span class="o">?</span><span class="p">.</span><span class="n">buildingIdentifier</span><span class="p">()</span><span class="o">?</span><span class="p">.</span><span class="n">uppercaseString</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;John&#39;s uppercase building identifier is \(upper).&quot;</span><span class="p">)</span>
 <span class="lineno">3</span> <span class="p">}</span>
 <span class="lineno">4</span> <span class="c1">// prints &quot;John&#39;s uppercase building identifier is THE LARCHES.&quot;</span></code></pre></div>
@@ -514,22 +510,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -623,9 +614,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

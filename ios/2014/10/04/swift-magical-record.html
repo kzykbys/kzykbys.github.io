@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -218,7 +214,7 @@
 
 <p>まずは、Xcodeのプロジェクトに <code>[プロジェクト名]-Bridging-Header.h</code> というファイルを作成します。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="cp">#ifndef Meemo_Meemo_Bridging_Header_h</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="cp">#ifndef Meemo_Meemo_Bridging_Header_h</span>
 <span class="lineno">2</span> <span class="cp">#define Meemo_Meemo_Bridging_Header_h</span>
 <span class="lineno">3</span> 
 <span class="lineno">4</span> <span class="cp">#import &quot;CoreData+MagicalRecord.h&quot; </span><span class="c1">// 追加!</span>
@@ -247,7 +243,7 @@
 
 <p>AppDelegate.swift の didFinishLaunchingWithOptions に</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="c1">// Magical Record Initialization</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="c1">// Magical Record Initialization</span>
 <span class="lineno">2</span> <span class="n">MagicalRecord</span><span class="p">.</span><span class="n">setupCoreDataStackWithAutoMigratingSqliteStoreNamed</span><span class="p">(</span><span class="s">&quot;Meemo.sqlite”)</span></code></pre></div>
 
 <p>このコードを追加する。</p>
@@ -256,13 +252,13 @@
 
 <p>保存の際には、</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">photoMemo</span> <span class="o">=</span> <span class="n">KKMemo</span><span class="p">.</span><span class="n">MR_createEntity</span><span class="p">()</span> <span class="n">as</span> <span class="n">KKMemo</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">photoMemo</span> <span class="o">=</span> <span class="n">KKMemo</span><span class="p">.</span><span class="n">MR_createEntity</span><span class="p">()</span> <span class="n">as</span> <span class="n">KKMemo</span>
 <span class="lineno">2</span> <span class="n">photoMemo</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="err">“</span><span class="n">sample</span><span class="err">”</span>
 <span class="lineno">3</span> <span class="n">photoMemo</span><span class="p">.</span><span class="n">managedObjectContext</span><span class="p">.</span><span class="n">MR_saveToPersistentStoreAndWait</span><span class="p">()</span></code></pre></div>
 
 <p>実際にデータを呼ぶ出すときには、</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">memosObjects</span> <span class="o">=</span> <span class="n">KKMemo</span><span class="p">.</span><span class="n">MR_findAll</span><span class="p">()</span></code></pre></div>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">memosObjects</span> <span class="o">=</span> <span class="n">KKMemo</span><span class="p">.</span><span class="n">MR_findAll</span><span class="p">()</span></code></pre></div>
 
 <h4 id="参考">参考</h4>
 
@@ -413,22 +409,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -522,9 +513,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

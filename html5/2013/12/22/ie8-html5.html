@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -222,12 +218,12 @@
 
 <p>これではCSSを適応させたりする際に問題が発生します。その解決方法として、ダミーの要素を作成します。</p>
 
-<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="c">&lt;!--</span><span class="p">[</span><span class="k">if</span> <span class="nx">lt</span> <span class="nx">IE</span> <span class="mi">9</span><span class="p">]</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno">1</span> <span class="c">&lt;!--</span><span class="p">[</span><span class="k">if</span> <span class="nx">lt</span> <span class="nx">IE</span> <span class="mi">9</span><span class="p">]</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
 <span class="lineno">2</span> <span class="kd">var</span> <span class="nx">e</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;abbr,article,aside,audio,canvas,datalist,details,&quot;</span> <span class="o">+</span> <span class="s2">&quot;figure,footer,header,hgroup,mark,menu,meter,nav,output,&quot;</span> <span class="o">+</span> <span class="s2">&quot;progress,section,time,video&quot;</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">);</span>
 <span class="lineno">3</span> <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="nx">e</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
 <span class="lineno">4</span> <span class="p">}</span> <span class="o">&lt;</span><span class="err">/script&gt; &lt;![endif]—&gt;</span></code></pre></div>
 
-<div class="highlight"><pre><code class="html"><span class="lineno">1</span> <span class="c">&lt;!--[if lt IE 9]&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="lineno">1</span> <span class="c">&lt;!--[if lt IE 9]&gt;</span>
 <span class="lineno">2</span> <span class="c">&lt;script src=&quot;http://html5shiv.googlecode.com/svn/trunk/html5.js&quot;&gt;&lt;/script&gt; </span>
 <span class="lineno">3</span> <span class="c">&lt;![endif]—&gt;</span></code></pre></div>
 
@@ -379,22 +375,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -488,9 +479,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

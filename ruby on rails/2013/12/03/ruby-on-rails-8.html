@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -225,20 +221,20 @@
 
 <p>RESTfulなURLを自動生成するため、以下の行をルーティングファイルに追加。このコントローラーはセッションを管理するだけなので、new（ページ表示）、create（セッションスタート - ログイン）、destory（セッションエンド - ログアウト）の３つだけ作成。</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># routes.rb</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="c1"># routes.rb</span>
 <span class="lineno">2</span> <span class="n">resources</span> <span class="ss">:sessions</span><span class="p">,</span> <span class="ss">only</span><span class="p">:</span> <span class="o">[</span><span class="ss">:new</span><span class="p">,</span> <span class="ss">:create</span><span class="p">,</span> <span class="ss">:destroy</span><span class="o">]</span>
 <span class="lineno">3</span> <span class="n">match</span> <span class="s1">&#39;/signin&#39;</span><span class="p">,</span>  <span class="ss">to</span><span class="p">:</span> <span class="s1">&#39;sessions#new&#39;</span><span class="p">,</span>  <span class="ss">via</span><span class="p">:</span> <span class="s1">&#39;get&#39;</span>
 <span class="lineno">4</span> <span class="n">match</span> <span class="s1">&#39;/signout&#39;</span><span class="p">,</span> <span class="ss">to</span><span class="p">:</span> <span class="s1">&#39;sessions#destroy&#39;</span><span class="p">,</span>   <span class="ss">via</span><span class="p">:</span> <span class="err">‘</span><span class="n">delete</span><span class="err">&#39;</span></code></pre></div>
 
 <p>そして、 ログインする際の View を実際に作成します。 View の Sessions フォルダに new.html.erbを作成します。注意点として、 セッションを作成するときには @user 変数のような存在がないため、前の章とは違う形式で form_for を書きます。（ form_tag を使った方が一般的のようですが、未確認。）具体的には、</p>
 
-<div class="highlight"><pre><code class="erb"><span class="lineno">1</span> <span class="cp">&lt;%=</span> <span class="n">form_for</span><span class="p">(</span><span class="ss">:session</span><span class="p">,</span> <span class="ss">url</span><span class="p">:</span> <span class="n">sessions_path</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="cp">%&gt;</span><span class="x"></span></code></pre></div>
+<div class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="lineno">1</span> <span class="cp">&lt;%=</span> <span class="n">form_for</span><span class="p">(</span><span class="ss">:session</span><span class="p">,</span> <span class="ss">url</span><span class="p">:</span> <span class="n">sessions_path</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="cp">%&gt;</span><span class="x"></span></code></pre></div>
 
 <p>ここでの sessions_path は /sessions への POST リクエスト。変数を使い、 form_for(@user) のように書くと、Rails は勝手に、/users への POST リクエスト と認識するが、今回のようなケースでは上記のように URL とリソースを指定しなければならない。</p>
 
 <p>そして、コントローラーの作成。比較的わかりやすいと思います。アドレスから Studentモデルを検索し、それを変数に代入。そのアドレスのStudentモデルが存在し、かつ、パスワードが正しければ、if 分の最初のブロックが実行されます。authenticateメソッドは、ユーザー登録時に使った、has_secure_password が提供しています。</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno"> 1</span> <span class="c1"># sessions_controller.rb</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno"> 1</span> <span class="c1"># sessions_controller.rb</span>
 <span class="lineno"> 2</span> <span class="k">def</span> <span class="nf">create</span>
 <span class="lineno"> 3</span>   <span class="n">student</span> <span class="o">=</span> <span class="no">Student</span><span class="o">.</span><span class="n">find_by</span><span class="p">(</span><span class="ss">email</span><span class="p">:</span> <span class="n">params</span><span class="o">[</span><span class="ss">:session</span><span class="o">][</span><span class="ss">:email</span><span class="o">].</span><span class="n">downcase</span><span class="p">)</span>
 <span class="lineno"> 4</span>   <span class="k">if</span> <span class="n">student</span> <span class="o">&amp;&amp;</span> <span class="n">student</span><span class="o">.</span><span class="n">authenticate</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:session</span><span class="o">][</span><span class="ss">:password</span><span class="o">]</span><span class="p">)</span>
@@ -252,7 +248,7 @@
 
 <p>ログイン成功時に実行される sign_in関数をこれから実装していきます。これはログイン状態を永続化し、ユーザーがログアウトするまで、セッションを保持します。また、この関数は、ビューやコントローラー両方から使用する必要があるので、この sign_in 関数を SessionHelper というモジュール（Sessionコントローラー作成時に生成されている）に書き、Application コントローラーにてこれをインクルードする。これにより、コントローラー内でこのヘルパーを使用することができるようになる。ちなみに、ビューはデフォルトで、全てのヘルパーが使える。</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># application_controller.rb</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="c1"># application_controller.rb</span>
 <span class="lineno">2</span> <span class="k">class</span> <span class="nc">ApplicationController</span> <span class="o">&lt;</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">Base</span>
 <span class="lineno">3</span>   <span class="n">protect_from_forgery</span> <span class="ss">with</span><span class="p">:</span> <span class="ss">:exception</span>
 <span class="lineno">4</span>   <span class="kp">include</span> <span class="no">SessionsHelper</span>
@@ -260,7 +256,7 @@
 
 <p>そして、永続的なセッションを実装するために cookie を使用します。この cookie の記憶トークンと Student は関連付けられている必要があるので、Student モデルにカラムとインデックスを追加する。</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno"> 1</span> <span class="c1"># マイグレーションの生成</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno"> 1</span> <span class="c1"># マイグレーションの生成</span>
 <span class="lineno"> 2</span> <span class="err">$</span> <span class="n">rails</span> <span class="n">generate</span> <span class="n">migration</span> <span class="n">add_remember_token_to_users</span>
 <span class="lineno"> 3</span>  
 <span class="lineno"> 4</span> <span class="c1"># [ts]_add_remember_token_to_users.rb</span>
@@ -420,22 +416,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -529,9 +520,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

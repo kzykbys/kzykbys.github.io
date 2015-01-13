@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -224,11 +220,11 @@
 
 <p>Extensions は、<code>extension</code> キーワードを使用して宣言されます。また、既存のタイプがプロトコルに準拠するように拡大することもできます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">extension</span> <span class="n">SomeType</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">extension</span> <span class="n">SomeType</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="c1">// new functionality to add to SomeType goes here</span>
 <span class="lineno">3</span> <span class="p">}</span>
 <span class="lineno">4</span> 
-<span class="lineno">5</span> <span class="n">extension</span> <span class="n">SomeType</span><span class="o">:</span> <span class="n">SomeProtocol</span><span class="p">,</span> <span class="n">AnotherProtocol</span> <span class="p">{</span>
+<span class="lineno">5</span> <span class="n">extension</span> <span class="nl">SomeType</span><span class="p">:</span> <span class="n">SomeProtocol</span><span class="p">,</span> <span class="n">AnotherProtocol</span> <span class="p">{</span>
 <span class="lineno">6</span>     <span class="c1">// implementation of protocol requirements goes here</span>
 <span class="lineno">7</span> <span class="p">}</span></code></pre></div>
 
@@ -236,12 +232,12 @@
 
 <p>Extension は、Computed インスタンスプロパティと Computed タイププロパティを追加することができます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">extension</span> <span class="n">Double</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">km</span><span class="o">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="n">self</span> <span class="o">*</span> <span class="mi">1</span><span class="n">_000</span><span class="mf">.0</span> <span class="p">}</span>
-<span class="lineno"> 3</span>     <span class="n">var</span> <span class="n">m</span><span class="o">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="n">self</span> <span class="p">}</span>
-<span class="lineno"> 4</span>     <span class="n">var</span> <span class="n">cm</span><span class="o">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="n">self</span> <span class="o">/</span> <span class="mf">100.0</span> <span class="p">}</span>
-<span class="lineno"> 5</span>     <span class="n">var</span> <span class="n">mm</span><span class="o">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="n">self</span> <span class="o">/</span> <span class="mi">1</span><span class="n">_000</span><span class="mf">.0</span> <span class="p">}</span>
-<span class="lineno"> 6</span>     <span class="n">var</span> <span class="n">ft</span><span class="o">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="n">self</span> <span class="o">/</span> <span class="mf">3.28084</span> <span class="p">}</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">extension</span> <span class="n">Double</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">var</span> <span class="nl">km</span><span class="p">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">self</span> <span class="o">*</span> <span class="mi">1</span><span class="n">_000</span><span class="mf">.0</span> <span class="p">}</span>
+<span class="lineno"> 3</span>     <span class="n">var</span> <span class="nl">m</span><span class="p">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">self</span> <span class="p">}</span>
+<span class="lineno"> 4</span>     <span class="n">var</span> <span class="nl">cm</span><span class="p">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">self</span> <span class="o">/</span> <span class="mf">100.0</span> <span class="p">}</span>
+<span class="lineno"> 5</span>     <span class="n">var</span> <span class="nl">mm</span><span class="p">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">self</span> <span class="o">/</span> <span class="mi">1</span><span class="n">_000</span><span class="mf">.0</span> <span class="p">}</span>
+<span class="lineno"> 6</span>     <span class="n">var</span> <span class="nl">ft</span><span class="p">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">self</span> <span class="o">/</span> <span class="mf">3.28084</span> <span class="p">}</span>
 <span class="lineno"> 7</span> <span class="p">}</span>
 <span class="lineno"> 8</span> <span class="n">let</span> <span class="n">oneInch</span> <span class="o">=</span> <span class="mf">25.4</span><span class="p">.</span><span class="n">mm</span>
 <span class="lineno"> 9</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;One inch is \(oneInch) meters&quot;</span><span class="p">)</span>
@@ -262,7 +258,7 @@
 
 <p>構造体や Enumeration に新しく Initializer を追加する際、もしそのタイプが全ての Stored プロパティに初期値を持っていれば、このデフォルト Initializer と Memberwise Initioaliszer を Extension の中で呼ぶことができます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">Size</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">Size</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">width</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="lineno"> 3</span> <span class="p">}</span>
 <span class="lineno"> 4</span> <span class="k">struct</span> <span class="n">Point</span> <span class="p">{</span>
@@ -274,10 +270,10 @@
 <span class="lineno">10</span> <span class="p">}</span>
 <span class="lineno">11</span> 
 <span class="lineno">12</span> <span class="n">extension</span> <span class="n">Rect</span> <span class="p">{</span>
-<span class="lineno">13</span>     <span class="n">init</span><span class="p">(</span><span class="n">center</span><span class="o">:</span> <span class="n">Point</span><span class="p">,</span> <span class="n">size</span><span class="o">:</span> <span class="n">Size</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">13</span>     <span class="n">init</span><span class="p">(</span><span class="nl">center</span><span class="p">:</span> <span class="n">Point</span><span class="p">,</span> <span class="nl">size</span><span class="p">:</span> <span class="n">Size</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">14</span>         <span class="n">let</span> <span class="n">originX</span> <span class="o">=</span> <span class="n">center</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
 <span class="lineno">15</span>         <span class="n">let</span> <span class="n">originY</span> <span class="o">=</span> <span class="n">center</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-<span class="lineno">16</span>         <span class="n">self</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">origin</span><span class="o">:</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="n">originX</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="n">originY</span><span class="p">),</span> <span class="n">size</span><span class="o">:</span> <span class="n">size</span><span class="p">)</span>
+<span class="lineno">16</span>         <span class="nb">self</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="nl">origin</span><span class="p">:</span> <span class="n">Point</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="n">originX</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="n">originY</span><span class="p">),</span> <span class="nl">size</span><span class="p">:</span> <span class="n">size</span><span class="p">)</span>
 <span class="lineno">17</span>     <span class="p">}</span>
 <span class="lineno">18</span> <span class="p">}</span></code></pre></div>
 
@@ -287,9 +283,9 @@
 
 <p>Extension は、新しいインスタンスメソッドとタイプメソッドを追加することができます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">extension</span> <span class="n">Int</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="n">func</span> <span class="n">repetitions</span><span class="p">(</span><span class="n">task</span><span class="o">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="p">())</span> <span class="p">{</span>
-<span class="lineno"> 3</span>         <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mf">0.</span><span class="p">.</span><span class="n">self</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">extension</span> <span class="n">Int</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">func</span> <span class="n">repetitions</span><span class="p">(</span><span class="nl">task</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="p">())</span> <span class="p">{</span>
+<span class="lineno"> 3</span>         <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mf">0.</span><span class="p">.</span><span class="nb">self</span> <span class="p">{</span>
 <span class="lineno"> 4</span>             <span class="n">task</span><span class="p">()</span>
 <span class="lineno"> 5</span>         <span class="p">}</span>
 <span class="lineno"> 6</span>     <span class="p">}</span>
@@ -313,9 +309,9 @@
 
 <p>Extension により追加されたインスタンスメソッドは、インスタンス自体に変更を加えることができます。構造体・Enumeration のメソッドが self やそのプロパティを修正する場合には、<code>mutating</code> キーワードを使用しなければなりません。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">extension</span> <span class="n">Int</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">extension</span> <span class="n">Int</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">square</span><span class="p">()</span> <span class="p">{</span>
-<span class="lineno">3</span>         <span class="n">self</span> <span class="o">=</span> <span class="n">self</span> <span class="o">*</span> <span class="n">self</span>
+<span class="lineno">3</span>         <span class="nb">self</span> <span class="o">=</span> <span class="nb">self</span> <span class="o">*</span> <span class="nb">self</span>
 <span class="lineno">4</span>     <span class="p">}</span>
 <span class="lineno">5</span> <span class="p">}</span>
 <span class="lineno">6</span> <span class="n">var</span> <span class="n">someInt</span> <span class="o">=</span> <span class="mi">3</span>
@@ -326,13 +322,13 @@
 
 <p>Extension は、サブスクリプトを追加することができます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">extension</span> <span class="n">Int</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="n">subscript</span><span class="p">(</span><span class="n">digitIndex</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">extension</span> <span class="n">Int</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="n">subscript</span><span class="p">(</span><span class="nl">digitIndex</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
 <span class="lineno"> 3</span>         <span class="n">var</span> <span class="n">decimalBase</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="lineno"> 4</span>             <span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">..</span><span class="n">digitIndex</span> <span class="p">{</span>
 <span class="lineno"> 5</span>                 <span class="n">decimalBase</span> <span class="o">*=</span> <span class="mi">10</span>
 <span class="lineno"> 6</span>             <span class="p">}</span>
-<span class="lineno"> 7</span>             <span class="k">return</span> <span class="p">(</span><span class="n">self</span> <span class="o">/</span> <span class="n">decimalBase</span><span class="p">)</span> <span class="o">%</span> <span class="mi">10</span>
+<span class="lineno"> 7</span>             <span class="k">return</span> <span class="p">(</span><span class="nb">self</span> <span class="o">/</span> <span class="n">decimalBase</span><span class="p">)</span> <span class="o">%</span> <span class="mi">10</span>
 <span class="lineno"> 8</span>     <span class="p">}</span>
 <span class="lineno"> 9</span> <span class="p">}</span>
 <span class="lineno">10</span> <span class="mi">746381295</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -353,18 +349,18 @@
 
 <p>Extension は、Nested Type を追加することもできます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">extension</span> <span class="n">Character</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">extension</span> <span class="n">Character</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="k">enum</span> <span class="n">Kind</span> <span class="p">{</span>
 <span class="lineno"> 3</span>         <span class="k">case</span> <span class="n">Vowel</span><span class="p">,</span> <span class="n">Consonant</span><span class="p">,</span> <span class="n">Other</span>
 <span class="lineno"> 4</span>     <span class="p">}</span>
-<span class="lineno"> 5</span>     <span class="n">var</span> <span class="n">kind</span><span class="o">:</span> <span class="n">Kind</span> <span class="p">{</span>
-<span class="lineno"> 6</span>     <span class="k">switch</span> <span class="n">String</span><span class="p">(</span><span class="n">self</span><span class="p">).</span><span class="n">lowercaseString</span> <span class="p">{</span>
-<span class="lineno"> 7</span>     <span class="k">case</span> <span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;e&quot;</span><span class="p">,</span> <span class="s">&quot;i&quot;</span><span class="p">,</span> <span class="s">&quot;o&quot;</span><span class="p">,</span> <span class="s">&quot;u&quot;</span>:
+<span class="lineno"> 5</span>     <span class="n">var</span> <span class="nl">kind</span><span class="p">:</span> <span class="n">Kind</span> <span class="p">{</span>
+<span class="lineno"> 6</span>     <span class="k">switch</span> <span class="n">String</span><span class="p">(</span><span class="nb">self</span><span class="p">).</span><span class="n">lowercaseString</span> <span class="p">{</span>
+<span class="lineno"> 7</span>     <span class="k">case</span> <span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;e&quot;</span><span class="p">,</span> <span class="s">&quot;i&quot;</span><span class="p">,</span> <span class="s">&quot;o&quot;</span><span class="p">,</span> <span class="s">&quot;u&quot;</span><span class="o">:</span>
 <span class="lineno"> 8</span>         <span class="k">return</span> <span class="p">.</span><span class="n">Vowel</span>
 <span class="lineno"> 9</span>     <span class="k">case</span> <span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="s">&quot;c&quot;</span><span class="p">,</span> <span class="s">&quot;d&quot;</span><span class="p">,</span> <span class="s">&quot;f&quot;</span><span class="p">,</span> <span class="s">&quot;g&quot;</span><span class="p">,</span> <span class="s">&quot;h&quot;</span><span class="p">,</span> <span class="s">&quot;j&quot;</span><span class="p">,</span> <span class="s">&quot;k&quot;</span><span class="p">,</span> <span class="s">&quot;l&quot;</span><span class="p">,</span> <span class="s">&quot;m&quot;</span><span class="p">,</span>
 <span class="lineno">10</span>     <span class="s">&quot;n&quot;</span><span class="p">,</span> <span class="s">&quot;p&quot;</span><span class="p">,</span> <span class="s">&quot;q&quot;</span><span class="p">,</span> <span class="s">&quot;r&quot;</span><span class="p">,</span> <span class="s">&quot;s&quot;</span><span class="p">,</span> <span class="s">&quot;t&quot;</span><span class="p">,</span> <span class="s">&quot;v&quot;</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">,</span> <span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="s">&quot;z&quot;</span><span class="o">:</span>
 <span class="lineno">11</span>         <span class="k">return</span> <span class="p">.</span><span class="n">Consonant</span>
-<span class="lineno">12</span>     <span class="nl">default:</span>
+<span class="lineno">12</span>     <span class="k">default</span><span class="o">:</span>
 <span class="lineno">13</span>         <span class="k">return</span> <span class="p">.</span><span class="n">Other</span>
 <span class="lineno">14</span>         <span class="p">}</span>
 <span class="lineno">15</span>     <span class="p">}</span>
@@ -374,15 +370,15 @@
 
 <p>例えばこのように使用可能です。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">func</span> <span class="nf">printLetterKinds</span><span class="p">(</span><span class="n">word</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">func</span> <span class="nf">printLetterKinds</span><span class="p">(</span><span class="nl">word</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;&#39;\(word)&#39; is made up of the following kinds of letters:&quot;</span><span class="p">)</span>
 <span class="lineno"> 3</span>     <span class="k">for</span> <span class="n">character</span> <span class="k">in</span> <span class="n">word</span> <span class="p">{</span>
 <span class="lineno"> 4</span>         <span class="k">switch</span> <span class="n">character</span><span class="p">.</span><span class="n">kind</span> <span class="p">{</span>
-<span class="lineno"> 5</span>         <span class="k">case</span> <span class="p">.</span><span class="n">Vowel</span>:
+<span class="lineno"> 5</span>         <span class="k">case</span> <span class="p">.</span><span class="nl">Vowel</span><span class="p">:</span>
 <span class="lineno"> 6</span>             <span class="n">print</span><span class="p">(</span><span class="s">&quot;vowel &quot;</span><span class="p">)</span>
-<span class="lineno"> 7</span>         <span class="k">case</span> <span class="p">.</span><span class="n">Consonant</span>:
+<span class="lineno"> 7</span>         <span class="k">case</span> <span class="p">.</span><span class="nl">Consonant</span><span class="p">:</span>
 <span class="lineno"> 8</span>             <span class="n">print</span><span class="p">(</span><span class="s">&quot;consonant &quot;</span><span class="p">)</span>
-<span class="lineno"> 9</span>         <span class="k">case</span> <span class="p">.</span><span class="n">Other</span>:
+<span class="lineno"> 9</span>         <span class="k">case</span> <span class="p">.</span><span class="nl">Other</span><span class="p">:</span>
 <span class="lineno">10</span>             <span class="n">print</span><span class="p">(</span><span class="s">&quot;other &quot;</span><span class="p">)</span>
 <span class="lineno">11</span>         <span class="p">}</span>
 <span class="lineno">12</span>     <span class="p">}</span>
@@ -538,22 +534,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -647,9 +638,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>

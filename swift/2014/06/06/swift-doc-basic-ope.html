@@ -159,10 +159,6 @@
 				<a href="/2014/10/">2014/10</a>
 			</li>
 		
-			<li>
-				<a href="/2014/12/">2014/12</a>
-			</li>
-		
 	</ul>
 
 </div>
@@ -222,7 +218,7 @@
 
 <p>Swift では、条件で assignment を間違って使用してしまうことをふせぐため、assignment (=) では、値を返さない。なので、このコードはエラー。このおかげで、等価比較 (==) をしようとしたが、= をひとつだけ打ってしまうようなエラーをコンパイル時に見つけることができる。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="lineno">2</span> <span class="n">let</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="lineno">3</span> 
 <span class="lineno">4</span> <span class="k">if</span> <span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="p">{</span>
@@ -233,7 +229,7 @@
 
 <p>% は余りを返すオペレーターですね。Swift では、浮動小数点に対しても使用することができます。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="lineno">2</span> <span class="n">var</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="lineno">3</span> <span class="n">a</span> <span class="o">%</span> <span class="mi">3</span> <span class="c1">// 1</span>
 <span class="lineno">4</span> 
@@ -245,7 +241,7 @@
 
 <p>通常のロジカルオペレーターに加えて、同一のオブジェクトへの参照かどうかを判定するオペレーターがある。通常の == / != は値を比較するが、=== / !== は同じオブジェクトかどうかの参照自体の比較をする。</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="n">var</span> <span class="n">str1</span> <span class="o">=</span> <span class="s">&quot;dog&quot;</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">var</span> <span class="n">str1</span> <span class="o">=</span> <span class="s">&quot;dog&quot;</span>
 <span class="lineno"> 2</span> <span class="n">var</span> <span class="n">str2</span> <span class="o">=</span> <span class="n">String</span><span class="p">(</span><span class="s">&quot;cat&quot;</span><span class="p">)</span>
 <span class="lineno"> 3</span> <span class="n">var</span> <span class="n">str3</span> <span class="o">=</span> <span class="n">String</span><span class="p">(</span><span class="s">&quot;cat&quot;</span><span class="p">)</span>
 <span class="lineno"> 4</span> <span class="n">var</span> <span class="n">str4</span> <span class="o">=</span> <span class="s">&quot;bird&quot;</span>
@@ -261,7 +257,7 @@
 
 <p>ループ等で使われる Range Operator というものがある。a...b は、a 以上 b 以下 (b を含む)、a..b は、a 以上 b より下 (b を含まない)</p>
 
-<div class="highlight"><pre><code class="objective-c"><span class="lineno"> 1</span> <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mf">0.</span><span class="p">.</span><span class="mf">.5</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mf">0.</span><span class="p">.</span><span class="mf">.5</span> <span class="p">{</span>
 <span class="lineno"> 2</span>  <span class="n">println</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <span class="lineno"> 3</span> <span class="p">}</span>
 <span class="lineno"> 4</span> <span class="cm">/* Output:</span>
@@ -428,22 +424,17 @@
             (9)
          </a> |          
       
-   		<a href="/2014/12/">2014/12
-            (0)
-         </a> |          
-      
    </p>
 
 <hr />
 
 <h3>Work</h3>			   
    <p class="side_content">
-     <a href="http://uppluslab.com/meeemo/">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
       <img src="/images/meeemo_banner.png" />
       <br />
      </a>
    </p>
-
 <hr />
 				</div>
 
@@ -537,9 +528,6 @@
 	    					</a> | 
 	    			   
 	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2014/12/">2014/12
 	    					</a> | 
 	    			   
     			   </p>
