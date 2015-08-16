@@ -10,8 +10,8 @@
   padding: 0;
 }
 
-a { 
-	text-decoration : none; 
+a {
+	text-decoration : none;
 	color: #F98807;
 }
 a:hover {
@@ -27,7 +27,7 @@ html {
 /*	background: url(/images/12_col.gif) repeat-y top center; */
 	background-color: #F2EBE4;
 	font-color: #4e443c;
-	line-height: 1.5; 
+	line-height: 1.5;
 	font-size: 100%;
 }
 
@@ -66,6 +66,10 @@ h4 {
 	font-family: 'Josefin Sans', "ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro";
 }
 
+h5 {
+  text-decoration: underline;
+}
+
 hgroup h2, h4, h5, h6 {
 	font-size: 16px; /* 16px */
 	line-height: 1.5; /* 24px */
@@ -78,7 +82,7 @@ hgroup h2, h4, h5, h6 {
 
 p { margin: 1em 0; }
 
-img { 
+img {
 	vertical-align: middle;
 	max-width: 100%;
 }
@@ -211,7 +215,7 @@ pre {
 	}
 
 	header {
-		text-align: center;		
+		text-align: center;
 		padding-top: 24px;
 	}
 
