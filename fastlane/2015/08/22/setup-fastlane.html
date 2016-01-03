@@ -1,0 +1,706 @@
+	<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>fastlaneをセットアップして、ユニットテストの実行とカバレッジ確認</title>        
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />        
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+		<link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/jquery.sidr.dark.css">
+		<link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+
+        <!-- jQuery -->
+<script src="/javascript/jquery-1.11.1.min.js"></script>
+<!-- slide menu -->
+<script src="/javascript/jquery.sidr.min.js"></script>
+<!-- For FB like buttom -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=571082556301479&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+	</head>
+	
+	<body>
+    
+        <div id="mobile-sticky-menu">
+	<a   class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
+	<!-- <img class="slide-menu" id="mobile-logo" src="/images/a.png" width="24" height="24" alt="" /> -->
+</div>
+
+<div id="sidr">
+	<!-- Your content -->
+	<!-- <h4>Share</h4> -->
+
+	<h4>Category</h4>
+	<ul>
+	   
+		   <li>
+		   		<a href="/categories/objective-c">objective-c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/other">other</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/node-js">node.js</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/tips">tips</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/html5">html5</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/algorithms">algorithms</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/machine-learning">machine learning</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/c">c</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ruby">ruby</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/swift">swift</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/ios">ios</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/books">books</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/kindle">kindle</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/nginx">nginx</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/capistrano">capistrano</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/chef">chef</a>
+		   </li>
+	   
+		   <li>
+		   		<a href="/categories/fastlane">fastlane</a>
+		   </li>
+	   
+    </ul>
+	<h4>Archive</h4>
+	<ul>
+		
+			<li>
+				<a href="/2013/08/">2013/08</a>
+			</li>
+		
+			<li>
+				<a href="/2013/09/">2013/09</a>
+			</li>
+		
+			<li>
+				<a href="/2013/11/">2013/11</a>
+			</li>
+		
+			<li>
+				<a href="/2013/12/">2013/12</a>
+			</li>
+		
+			<li>
+				<a href="/2014/01/">2014/01</a>
+			</li>
+		
+			<li>
+				<a href="/2014/03/">2014/03</a>
+			</li>
+		
+			<li>
+				<a href="/2014/04/">2014/04</a>
+			</li>
+		
+			<li>
+				<a href="/2014/05/">2014/05</a>
+			</li>
+		
+			<li>
+				<a href="/2014/06/">2014/06</a>
+			</li>
+		
+			<li>
+				<a href="/2014/07/">2014/07</a>
+			</li>
+		
+			<li>
+				<a href="/2014/08/">2014/08</a>
+			</li>
+		
+			<li>
+				<a href="/2014/09/">2014/09</a>
+			</li>
+		
+			<li>
+				<a href="/2014/10/">2014/10</a>
+			</li>
+		
+			<li>
+				<a href="/2015/02/">2015/02</a>
+			</li>
+		
+			<li>
+				<a href="/2015/07/">2015/07</a>
+			</li>
+		
+			<li>
+				<a href="/2015/08/">2015/08</a>
+			</li>
+		
+			<li>
+				<a href="/2016/01/">2016/01</a>
+			</li>
+		
+	</ul>
+
+</div>
+
+        <div class="site">
+
+			<!-- title -->
+			<!-- Header -->
+<header>
+<h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
+	<hr />
+</header>
+
+			<div id="contents">
+				
+				<div id="main">
+					<h3><a href="">fastlaneをセットアップして、ユニットテストの実行とカバレッジ確認</a></h3>
+					<span class="author">
+						<span class="date">2015-08-22 18:00:00 +0900</span>
+					</span>
+
+					<hr />
+					<div id="social-buttom">
+	<!-- Social Buttoms -->
+	<ul>
+		<li>
+			<!-- Pocket -->
+			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
+			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+		</li>		
+		<li>
+			<!-- Vertical Twitter -->
+			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		</li>				
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//fastlane/2015/08/22/setup-fastlane.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+		</li>				
+		<li style="margine-left: 10px;!important">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="fastlaneをセットアップして、ユニットテストの実行とカバレッジ確認" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+	</ul>
+</div>
+
+		      		<hr class="clear-list"/>
+
+					<div class="post">
+						<p>fastlaneという、iOSのデプロイ等の作業を自動化してくれるツールを使用してみました。今回は、fastlaneのセットアップをして、XCTフレームワークのユニットテストの実行、さらにテストコードカバレッジの表示までfastlaneの開発パイプラインに定義して処理をしてみます。</p>
+
+<h4 id="fastlaneのセットアップ">fastlaneのセットアップ</h4>
+
+<p>まずは、gemでfastlaneのインストール。</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="n">sudo</span> <span class="n">gem</span> <span class="n">install</span> <span class="n">fastlane</span> <span class="o">--</span><span class="n">verbose</span></code></pre></div>
+
+<p>今回は既存のiOSプロジェクトを使用します。自分のiOSプロジェクトがあるディレクトリの直下に移動して、
+fastlaneの初期設定を開始します。</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="n">cd</span> <span class="o">[</span><span class="n">your_project_folder</span><span class="o">]</span>
+<span class="err">$</span> <span class="n">fastlane</span> <span class="n">init</span></code></pre></div>
+
+<p>いくつかの質問に答える必要があります。細かいログは省略しています。ここでは、公式サイトのセットアップガイドに従っています。</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">get</span> <span class="n">started?</span> <span class="no">This</span> <span class="n">will</span> <span class="n">move</span> <span class="n">your</span> <span class="no">Deliverfile</span> <span class="ow">and</span> <span class="no">Snapfile</span> <span class="p">(</span><span class="k">if</span> <span class="n">they</span> <span class="n">exist</span><span class="p">)</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
+<span class="n">y</span>
+
+<span class="no">Do</span> <span class="n">you</span> <span class="n">have</span> <span class="n">everything</span> <span class="n">commited</span> <span class="k">in</span> <span class="n">version</span> <span class="n">control?</span> <span class="no">If</span> <span class="ow">not</span> <span class="n">please</span> <span class="k">do</span> <span class="n">so!</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
+<span class="n">y</span>
+
+<span class="no">App</span> <span class="no">Identifier</span> <span class="p">(</span><span class="n">com</span><span class="o">.</span><span class="n">krausefx</span><span class="o">.</span><span class="n">app</span><span class="p">):</span> <span class="n">your_app_identifer</span>
+
+<span class="no">Your</span> <span class="no">Apple</span> <span class="no">ID</span> <span class="p">(</span><span class="n">fastlane</span><span class="vi">@krausefx</span><span class="o">.</span><span class="n">com</span><span class="p">):</span> <span class="n">your_apple_id</span>
+
+<span class="no">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">setup</span> <span class="s1">&#39;deliver&#39;</span><span class="p">,</span> <span class="n">which</span> <span class="n">is</span> <span class="n">used</span> <span class="n">to</span> <span class="n">upload</span> <span class="n">app</span> <span class="n">screenshots</span><span class="p">,</span> <span class="n">app</span> <span class="n">metadata</span> <span class="ow">and</span> <span class="n">app</span> <span class="n">updates</span> <span class="n">to</span> <span class="n">the</span> <span class="no">App</span> <span class="no">Store</span> <span class="ow">or</span> <span class="no">Apple</span> <span class="no">TestFlight</span><span class="p">?</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
+<span class="n">y</span>
+
+<span class="no">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="no">Deliver</span> <span class="n">to</span> <span class="n">automatically</span> <span class="n">create</span> <span class="n">the</span> <span class="no">Deliverfile</span> <span class="k">for</span> <span class="n">you</span> <span class="n">based</span> <span class="n">on</span> <span class="n">your</span> <span class="n">current</span> <span class="n">app?</span> <span class="no">The</span> <span class="n">app</span> <span class="n">has</span> <span class="n">to</span> <span class="n">be</span> <span class="k">in</span> <span class="n">the</span> <span class="no">App</span> <span class="no">Store</span> <span class="n">to</span> <span class="n">use</span> <span class="n">this</span> <span class="n">feature</span><span class="o">.</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
+<span class="n">y</span>
+
+<span class="no">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">setup</span> <span class="s1">&#39;snapshot&#39;</span><span class="p">,</span> <span class="n">which</span> <span class="n">will</span> <span class="n">help</span> <span class="n">you</span> <span class="n">to</span> <span class="n">automatically</span> <span class="n">take</span> <span class="n">screenshots</span> <span class="n">of</span> <span class="n">your</span> <span class="n">iOS</span> <span class="n">app</span> <span class="k">in</span> <span class="n">all</span> <span class="n">languages</span><span class="o">/</span><span class="n">devices?</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
+<span class="n">y</span>
+
+<span class="no">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">use</span> <span class="s1">&#39;sigh&#39;</span><span class="p">,</span> <span class="n">which</span> <span class="n">will</span> <span class="n">maintain</span> <span class="ow">and</span> <span class="n">download</span> <span class="n">the</span> <span class="n">provisioning</span> <span class="n">profile</span> <span class="k">for</span> <span class="n">your</span> <span class="n">app?</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
+<span class="n">y</span>
+
+<span class="ss">Optional</span><span class="p">:</span> <span class="no">The</span> <span class="n">scheme</span> <span class="nb">name</span> <span class="n">of</span> <span class="n">your</span> <span class="ss">app</span><span class="p">:</span> <span class="p">(</span><span class="no">If</span> <span class="n">you</span> <span class="n">don</span><span class="err">&#39;</span><span class="n">t</span> <span class="n">need</span> <span class="n">one</span><span class="p">,</span> <span class="n">just</span> <span class="n">hit</span> <span class="no">Enter</span><span class="o">.</span><span class="p">)</span>
+<span class="o">[</span><span class="n">just</span> <span class="n">hit</span> <span class="no">Enter</span><span class="o">]</span></code></pre></div>
+
+<p>これでfastlaneのセットアップが完了です。この状態で</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="n">cd</span> <span class="o">[</span><span class="n">your_project_folder</span><span class="o">]</span>
+<span class="err">$</span> <span class="n">fastlane</span> <span class="n">ios</span> <span class="nb">test</span></code></pre></div>
+
+<p>でFastfileで定義されているtestレーンが実行されます。
+（上記のようにセットアップしていれば、testレーンではsnapshotアクションのみ実行されるはずです。Snapfileにschemeを記述する行があるので、ここに記述すればエラーなしで動きます。）
+これでfastlaneのセットアップは完了したので、次にユニットテストの実行とテストカバレッジを表示するためにtestレーンに設定していきます。</p>
+
+<h4 id="xctest-アクション">xctest アクション</h4>
+
+<p>xctest アクションを使って、xctestフレームワークを使ったユニットテストを実行する処理をtestレーンに追加してみます。<code>$ fastlane actions</code> で、使用できるアクションの一覧を表示できるので覗いてみるとおもしろいです。</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Fastfile</span>
+<span class="n">desc</span> <span class="s2">&quot;Runs all the tests&quot;</span>
+  <span class="n">lane</span> <span class="ss">:test</span> <span class="k">do</span>
+    <span class="c1"># snapshot</span>
+    <span class="n">xctest</span><span class="p">(</span>
+      <span class="ss">scheme</span><span class="p">:</span> <span class="s2">&quot;ShareCla&quot;</span><span class="p">,</span>
+      <span class="ss">destination</span><span class="p">:</span> <span class="s2">&quot;platform=iOS Simulator,name=iPhone 6,OS=8.4&quot;</span><span class="p">,</span>
+      <span class="ss">reports</span><span class="p">:</span> <span class="o">[</span><span class="p">{</span>
+        <span class="ss">report</span><span class="p">:</span> <span class="s1">&#39;html&#39;</span><span class="p">,</span>
+        <span class="ss">output</span><span class="p">:</span> <span class="s1">&#39;./build/reports/xctest/test-report.html&#39;</span><span class="p">,</span>  <span class="c1"># will use XCODE_BUILD_PATH/report, if output is not provided</span>
+        <span class="ss">screenshots</span><span class="p">:</span> <span class="mi">1</span>
+      <span class="p">}</span><span class="o">]</span>
+    <span class="p">)</span>
+  <span class="k">end</span></code></pre></div>
+
+<p>上記のようにFastfileを編集して、<code>$ fastlane ios test</code> を実行すると、コンソールにテストの結果が表示され、テストの<code>project_directory/build/reports/xctest/test-report.html</code> にも見やすい形でレポートしてくれます。</p>
+
+<h4 id="テストカバレッジレポート">テストカバレッジレポート</h4>
+
+<p>次にテストコードカバレッジレポートをtestレーンに追加してみます。今回はiOSのテストカバレッジを確認するために2つの方法を試してみました。</p>
+
+<h5 id="gcovr-アクション">gcovr アクション</h5>
+
+<p>１つは、<code>gcovr</code> アクションを使用する方法です。</p>
+
+<p>まずは、カバレッジを表示するために必要なファイルを生成するためXcode側でいくつかの設定をする必要があります。</p>
+
+<p>Xcodeで対象となるターゲットを選択し、Debug時に、<code>Instrument Program Flow</code> 、<code>Generate Test Coverage Files</code> と <code>Generate Debug Symbols</code> を <code>YES</code> に設定します。Appleのドキュメントには、このファイル群を生成するために、新しくビルド設定を追加するように推奨されていますが、私はとりあえず、<code>Debug</code> に対して、この3つの設定をしてしまいました。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text"># Fastfile
+gcovr(
+  html: true,
+  html_details: true,
+  output: &quot;./build/reports/gcovr/report.html&quot;
+)
+</code></pre></div>
+<p>このようにFastfileのtestレーンに追記します。この状態で、<code>$ fastlane ios test</code> を実行すると gcovr アクションが実行され、指定したディレクトリにカバレッジレポートのhtmlが存在するはずです。これをブラウザで開けば確認できます。</p>
+
+<h5 id="frankencover.it">frankencover.it</h5>
+
+<p>今回はもう１つ <code>frankencover.it</code> というツールも使用してみました。こちらも gcovrアクションを使用した時のようにXcodeの設定を忘れずにしてください。</p>
+
+<p>そして下記のコマンドを実行します。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ brew install groovy
+$ brew install lcov
+</code></pre></div>
+<p>あとは、このようにコマンドを実行すれば、カバレッジが表示されるはずです。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ groovy http://frankencover.it/with -source-dir ../ShareCla -output-dir ../build/reports/frankencover
+</code></pre></div>
+<p>fastlaneには現状、frankencover.it用のアクションはないので、上記のコマンドを実行するために、シェルスクリプトを用意します。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text"># ./fastlane/report_code_coverage.sh
+
+#!/bin/sh
+$ groovy http://frankencover.it/with -source-dir ../ShareCla -output-dir ../build/reports/frankencover
+</code></pre></div>
+<p>今回は、上記のシェルスクリプトをfastlaneディレクトリ直下に配置します。
+fastlaneは、<code>sh /path/to/script</code> と記述するだけで任意のシェルスクリプトを実行することができます。これをfastlaneディレクトリ直下に入れ、実行権限を付与し、fastlaneコマンドを実行すれば完了です。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text"># Fastfile
+sh &quot;./report_code_coverage.sh&quot;
+</code></pre></div>
+<p>これで frankencover.it でもテストコードカバレッジを表示することができました。</p>
+
+<h4 id="参考">参考</h4>
+
+<p><a href="https://fastlane.tools/">fastlane</a><br />
+<a href="https://developer.apple.com/library/ios/qa/qa1514/_index.html">Technical Q&amp;A QA1514 ~ Configuring Xcode for Code Coverage ~</a> <br />
+<a href="https://github.com/KrauseFx/fastlane/blob/master/docs/Actions.md#gcovr">fastlane/Actions.md at master · KrauseFx/fastlane</a><br />
+<a href="http://frankencover.it/">frankencover.it</a><br /></p>
+
+					</div>
+
+				</div>
+
+				<div id="sub">
+				   <div class="side_box">
+   <h3>About</h3>
+      <p class="side_content">
+         <i>Kazuya Kobayashi</i><br />
+         - I'm a once law student trying to be computer geek.<br />
+         - ギークになりたい。<br />
+         <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a>
+      </p>
+</div>
+
+<hr />
+
+<h3>Work</h3>
+   <p class="side_content">
+     <a href="http://uppluslab.com/meeemo/" onclick="ga('send', 'event', 'meeemo', 'click', 'side_ads');">
+      <img src="/images/meeemo_banner.png" style="margin-bottom:6px;"/>
+      <br />
+     </a>
+     <a href="http://sharecla.com/" onclick="ga('send', 'event', 'sharecla', 'click', 'side_ads');">
+      <img src="/images/sharecla_banner.png" style="margin-bottom:6px;"/>
+      <br />
+     </a>
+   </p>
+<hr />
+
+<h3>Elsewhere</h3>
+   <p class="side_content">
+      <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+      <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+      <a href="https://github.com/kzykbys">Github</a>
+   </p>
+
+<hr />
+
+<h3>Category</h3>
+   <p class="side_content">|
+      
+   	   <a href="/categories/objective-c">objective-c
+            (11)
+         </a> |
+      
+   	   <a href="/categories/other">other
+            (6)
+         </a> |
+      
+   	   <a href="/categories/node-js">node.js
+            (1)
+         </a> |
+      
+   	   <a href="/categories/ruby-on-rails">ruby on rails
+            (24)
+         </a> |
+      
+   	   <a href="/categories/tips">tips
+            (8)
+         </a> |
+      
+   	   <a href="/categories/html5">html5
+            (8)
+         </a> |
+      
+   	   <a href="/categories/algorithms">algorithms
+            (2)
+         </a> |
+      
+   	   <a href="/categories/machine-learning">machine learning
+            (5)
+         </a> |
+      
+   	   <a href="/categories/c">c
+            (14)
+         </a> |
+      
+   	   <a href="/categories/ruby">ruby
+            (5)
+         </a> |
+      
+   	   <a href="/categories/swift">swift
+            (34)
+         </a> |
+      
+   	   <a href="/categories/ios">ios
+            (6)
+         </a> |
+      
+   	   <a href="/categories/books">books
+            (4)
+         </a> |
+      
+   	   <a href="/categories/kindle">kindle
+            (3)
+         </a> |
+      
+   	   <a href="/categories/nginx">nginx
+            (1)
+         </a> |
+      
+   	   <a href="/categories/capistrano">capistrano
+            (1)
+         </a> |
+      
+   	   <a href="/categories/chef">chef
+            (2)
+         </a> |
+      
+   	   <a href="/categories/fastlane">fastlane
+            (1)
+         </a> |
+      
+   </p>
+
+<hr />
+
+<h3>Archive</h3>
+   <p class="side_content">|
+      
+   		<a href="/2013/08/">2013/08
+            (2)
+         </a> |
+      
+   		<a href="/2013/09/">2013/09
+            (4)
+         </a> |
+      
+   		<a href="/2013/11/">2013/11
+            (11)
+         </a> |
+      
+   		<a href="/2013/12/">2013/12
+            (21)
+         </a> |
+      
+   		<a href="/2014/01/">2014/01
+            (5)
+         </a> |
+      
+   		<a href="/2014/03/">2014/03
+            (6)
+         </a> |
+      
+   		<a href="/2014/04/">2014/04
+            (7)
+         </a> |
+      
+   		<a href="/2014/05/">2014/05
+            (11)
+         </a> |
+      
+   		<a href="/2014/06/">2014/06
+            (40)
+         </a> |
+      
+   		<a href="/2014/07/">2014/07
+            (5)
+         </a> |
+      
+   		<a href="/2014/08/">2014/08
+            (3)
+         </a> |
+      
+   		<a href="/2014/09/">2014/09
+            (4)
+         </a> |
+      
+   		<a href="/2014/10/">2014/10
+            (9)
+         </a> |
+      
+   		<a href="/2015/02/">2015/02
+            (2)
+         </a> |
+      
+   		<a href="/2015/07/">2015/07
+            (2)
+         </a> |
+      
+   		<a href="/2015/08/">2015/08
+            (3)
+         </a> |
+      
+   		<a href="/2016/01/">2016/01
+            (1)
+         </a> |
+      
+   </p>
+
+<hr />
+
+				</div>
+
+			</div>
+
+
+		</div>
+
+				<div class="footer">
+		   <div class="footer_inner">
+			   <div class="contact">
+				   <h4>About</h4>
+				   <p>Kazuya Kobayashi<br />
+				   - I'm a once law student trying to be computer geek.<br />
+				   - ギークになりたい。<br />
+				   <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a></p>
+				   <h4>Elsewhere</h4>
+				   <p>
+					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+					   <a href="https://github.com/kzykbys">Github</a></p>
+				   <h4>Category</h4>
+				   <p>|
+					   
+						   <a href="/categories/objective-c">objective-c</a> | 
+					   
+						   <a href="/categories/other">other</a> | 
+					   
+						   <a href="/categories/node-js">node.js</a> | 
+					   
+						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
+					   
+						   <a href="/categories/tips">tips</a> | 
+					   
+						   <a href="/categories/html5">html5</a> | 
+					   
+						   <a href="/categories/algorithms">algorithms</a> | 
+					   
+						   <a href="/categories/machine-learning">machine learning</a> | 
+					   
+						   <a href="/categories/c">c</a> | 
+					   
+						   <a href="/categories/ruby">ruby</a> | 
+					   
+						   <a href="/categories/swift">swift</a> | 
+					   
+						   <a href="/categories/ios">ios</a> | 
+					   
+						   <a href="/categories/books">books</a> | 
+					   
+						   <a href="/categories/kindle">kindle</a> | 
+					   
+						   <a href="/categories/nginx">nginx</a> | 
+					   
+						   <a href="/categories/capistrano">capistrano</a> | 
+					   
+						   <a href="/categories/chef">chef</a> | 
+					   
+						   <a href="/categories/fastlane">fastlane</a> | 
+					   
+				   </p>
+				   <h4>Archive</h4>
+					   <p>|
+					   
+	    					<a href="/2013/08/">2013/08
+	    					</a> | 
+	    			   
+	    					<a href="/2013/09/">2013/09
+	    					</a> | 
+	    			   
+	    					<a href="/2013/11/">2013/11
+	    					</a> | 
+	    			   
+	    					<a href="/2013/12/">2013/12
+	    					</a> | 
+	    			   
+	    					<a href="/2014/01/">2014/01
+	    					</a> | 
+	    			   
+	    					<a href="/2014/03/">2014/03
+	    					</a> | 
+	    			   
+	    					<a href="/2014/04/">2014/04
+	    					</a> | 
+	    			   
+	    					<a href="/2014/05/">2014/05
+	    					</a> | 
+	    			   
+	    					<a href="/2014/06/">2014/06
+	    					</a> | 
+	    			   
+	    					<a href="/2014/07/">2014/07
+	    					</a> | 
+	    			   
+	    					<a href="/2014/08/">2014/08
+	    					</a> | 
+	    			   
+	    					<a href="/2014/09/">2014/09
+	    					</a> | 
+	    			   
+	    					<a href="/2014/10/">2014/10
+	    					</a> | 
+	    			   
+	    					<a href="/2015/02/">2015/02
+	    					</a> | 
+	    			   
+	    					<a href="/2015/07/">2015/07
+	    					</a> | 
+	    			   
+	    					<a href="/2015/08/">2015/08
+	    					</a> | 
+	    			   
+	    					<a href="/2016/01/">2016/01
+	    					</a> | 
+	    			   
+    			   </p>
+			   </div>
+		   </div>
+	   	</div>
+
+	   		  
+	  	<!-- Sdir (slide menu for small screen) -->
+
+<script>
+	
+  	$(document).ready(function() {
+		$('#mobile-menu-button').sidr();	  
+  	});
+
+  	$('#mobile-menu-button').click(function(e){
+  	});
+
+  	$('html').click(function(e){
+  		$.sidr('close', 'sidr');
+  	});
+
+</script>
+	  	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28952627-6', 'kazuya.co');
+  ga('send', 'pageview');
+
+</script>
+
+	</body>
+</html>
