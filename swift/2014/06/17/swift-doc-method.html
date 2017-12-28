@@ -46,80 +46,81 @@
 
 	<h4>Category</h4>
 	<ul>
-	   
-		   <li>
-		   		<a href="/categories/objective-c">objective-c</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/other">other</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/node-js">node.js</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/tips">tips</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/html5">html5</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/algorithms">algorithms</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/machine-learning">machine learning</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/c">c</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ruby">ruby</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/swift">swift</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ios">ios</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/books">books</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/kindle">kindle</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/nginx">nginx</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/capistrano">capistrano</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/chef">chef</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/fastlane">fastlane</a>
-		   </li>
-	   
-    </ul>
+		
+			<li>
+				<a href="/categories/objective-c">Objective-C</a>
+			</li>
+		
+			<li>
+				<a href="/categories/other">Other</a>
+			</li>
+		
+			<li>
+				<a href="/categories/node-js">Node.js</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ruby-on-rails">Ruby on Rails</a>
+			</li>
+		
+			<li>
+				<a href="/categories/tips">Tips</a>
+			</li>
+		
+			<li>
+				<a href="/categories/html5">HTML5</a>
+			</li>
+		
+			<li>
+				<a href="/categories/algorithms">Algorithms</a>
+			</li>
+		
+			<li>
+				<a href="/categories/machine-learning">Machine Learning</a>
+			</li>
+		
+			<li>
+				<a href="/categories/c">C</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ruby">Ruby</a>
+			</li>
+		
+			<li>
+				<a href="/categories/swift">Swift</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ios">iOS</a>
+			</li>
+		
+			<li>
+				<a href="/categories/books">Books</a>
+			</li>
+		
+			<li>
+				<a href="/categories/kindle">Kindle</a>
+			</li>
+		
+			<li>
+				<a href="/categories/nginx">Nginx</a>
+			</li>
+		
+			<li>
+				<a href="/categories/capistrano">Capistrano</a>
+			</li>
+		
+			<li>
+				<a href="/categories/chef">Chef</a>
+			</li>
+		
+			<li>
+				<a href="/categories/fastlane">fastlane</a>
+			</li>
+		
+	</ul>
+
 	<h4>Archive</h4>
 	<ul>
 		
@@ -191,6 +192,10 @@
 				<a href="/2016/01/">2016/01</a>
 			</li>
 		
+			<li>
+				<a href="/2017/12/">2017/12</a>
+			</li>
+		
 	</ul>
 
 </div>
@@ -253,7 +258,7 @@
 
 <p>メソッドの定義の方法は分かり易いと思います。クラス等のタイプ宣言時にそのまま関数を定義したように書きます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">Counter</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">Counter</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">var</span> <span class="nl">count</span><span class="p">:</span> <span class="n">Int</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="lineno"> 3</span>     <span class="n">func</span> <span class="n">incrementBy</span><span class="p">(</span><span class="nl">amount</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">numberOfTimes</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 4</span>         <span class="n">count</span> <span class="o">+=</span> <span class="n">amount</span> <span class="o">*</span> <span class="n">numberOfTimes</span>
@@ -262,19 +267,19 @@
 <span class="lineno"> 7</span> 
 <span class="lineno"> 8</span> <span class="n">let</span> <span class="n">counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
 <span class="lineno"> 9</span> <span class="n">counter</span><span class="p">.</span><span class="n">incrementBy</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="nl">numberOfTimes</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
-<span class="lineno">10</span> <span class="c1">// counter value is now 15</span></code></pre></div>
+<span class="lineno">10</span> <span class="c1">// counter value is now 15</span></code></pre></figure>
 
 <p>メソッドの注意点として、まず、メソッド名は、最初の引数に関して、前置詞を付け、その引数に対して説明的にすると読みやすいです。この例では、<code>incrementBy</code> です。メソッド定義時には、1 つ目の引数の名前をメソッドの中で使用するために指定していますが、メソッドを呼ぶ際には必要ありません。しかし、2 つ目の引数では external name をタイプしなければなりません。</p>
 
 <p>これは関数をこのように定義した時と同じ挙動です。Objective-C に慣れていれば、コードを書く際には、分かりやすいと思います。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">func</span> <span class="nf">incrementBy</span><span class="p">(</span><span class="nl">amount</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="err">#</span><span class="nl">numberOfTimes</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">func</span> <span class="nf">incrementBy</span><span class="p">(</span><span class="nl">amount</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="err">#</span><span class="nl">numberOfTimes</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">count</span> <span class="o">+=</span> <span class="n">amount</span> <span class="o">*</span> <span class="n">numberOfTimes</span>
-<span class="lineno">3</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">3</span> <span class="p">}</span></code></pre></figure>
 
 <p>また、このように 1 つ目の引数に external name を付けたり、2 つ目の external name を省略することもできます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">class</span> <span class="n">Counter</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">class</span> <span class="n">Counter</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">var</span> <span class="nl">count</span><span class="p">:</span> <span class="n">Int</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="lineno">3</span>     <span class="n">func</span> <span class="n">incrementBy</span><span class="p">(</span><span class="n">a</span> <span class="nl">amount</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">_</span> <span class="nl">numberOfTimes</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">4</span>         <span class="n">count</span> <span class="o">+=</span> <span class="n">amount</span> <span class="o">*</span> <span class="n">numberOfTimes</span>
@@ -282,11 +287,11 @@
 <span class="lineno">6</span> <span class="p">}</span>
 <span class="lineno">7</span> 
 <span class="lineno">8</span> <span class="n">let</span> <span class="n">counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
-<span class="lineno">9</span> <span class="n">counter</span><span class="p">.</span><span class="n">incrementBy</span><span class="p">(</span><span class="nl">a</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></code></pre></div>
+<span class="lineno">9</span> <span class="n">counter</span><span class="p">.</span><span class="n">incrementBy</span><span class="p">(</span><span class="nl">a</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></code></pre></figure>
 
 <p>メソッドの引数の名前とプロパティの名前が同じ場合には、<code>self</code> キーワードを使用します。そうでない場合にも、<code>self</code> を使用できますが、必要はありません。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">Point</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">Point</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="lineno"> 3</span>     <span class="n">func</span> <span class="n">isToTheRightOfX</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
 <span class="lineno"> 4</span>         <span class="k">return</span> <span class="nb">self</span><span class="p">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">x</span>
@@ -296,13 +301,13 @@
 <span class="lineno"> 8</span> <span class="k">if</span> <span class="n">somePoint</span><span class="p">.</span><span class="n">isToTheRightOfX</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 9</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;This point is to the right of the line where x == 1.0&quot;</span><span class="p">)</span>
 <span class="lineno">10</span> <span class="p">}</span>
-<span class="lineno">11</span> <span class="c1">// prints &quot;This point is to the right of the line where x == 1.0</span></code></pre></div>
+<span class="lineno">11</span> <span class="c1">// prints &quot;This point is to the right of the line where x == 1.0</span></code></pre></figure>
 
 <h4 id="2.-構造体と-enumeration-の-instance-methods">2. 構造体と Enumeration の Instance Methods</h4>
 
 <p>構造体と Enumeration の Instance Methods は、プロパティの値をデフォルトでは、変更することができません。もし、プロパティの値をクラスのように変更したい場合には、<code>mutating</code> キーワードを <code>func</code> キーワードの前にタイプします。これにより、構造体と Enumeration においても、プロパティを変更することができるようになります。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">Point</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">Point</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="lineno"> 3</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">moveByX</span><span class="p">(</span><span class="nl">deltaX</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="n">y</span> <span class="nl">deltaY</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 4</span>         <span class="n">x</span> <span class="o">+=</span> <span class="n">deltaX</span>
@@ -313,20 +318,20 @@
 <span class="lineno"> 9</span> <span class="n">var</span> <span class="n">somePoint</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span>
 <span class="lineno">10</span> <span class="n">somePoint</span><span class="p">.</span><span class="n">moveByX</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">)</span>
 <span class="lineno">11</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;The point is now at (\(somePoint.x), \(somePoint.y))&quot;</span><span class="p">)</span>
-<span class="lineno">12</span> <span class="c1">// prints &quot;The point is now at (3.0, 4.0)</span></code></pre></div>
+<span class="lineno">12</span> <span class="c1">// prints &quot;The point is now at (3.0, 4.0)</span></code></pre></figure>
 
 <p>mutating メソッドは、<code>self</code> に全く新しいインスタンスを代入することもできます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">Point</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">Point</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="lineno">3</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">moveByX</span><span class="p">(</span><span class="nl">deltaX</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="n">y</span> <span class="nl">deltaY</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">4</span>         <span class="nb">self</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">deltaX</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="n">y</span> <span class="o">+</span> <span class="n">deltaY</span><span class="p">)</span>
 <span class="lineno">5</span>     <span class="p">}</span>
-<span class="lineno">6</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">6</span> <span class="p">}</span></code></pre></figure>
 
 <p>これは上記でみた例と全く同じ結果を生みます。Enumeration ではこんな感じ。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">enum</span> <span class="n">TriStateSwitch</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">enum</span> <span class="n">TriStateSwitch</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="k">case</span> <span class="n">Off</span><span class="p">,</span> <span class="n">Low</span><span class="p">,</span> <span class="n">High</span>
 <span class="lineno"> 3</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">next</span><span class="p">()</span> <span class="p">{</span>
 <span class="lineno"> 4</span>         <span class="k">switch</span> <span class="nb">self</span> <span class="p">{</span>
@@ -343,13 +348,13 @@
 <span class="lineno">15</span> <span class="n">ovenLight</span><span class="p">.</span><span class="n">next</span><span class="p">()</span>
 <span class="lineno">16</span> <span class="c1">// ovenLight is now equal to .High</span>
 <span class="lineno">17</span> <span class="n">ovenLight</span><span class="p">.</span><span class="n">next</span><span class="p">()</span>
-<span class="lineno">18</span> <span class="c1">// ovenLight is now equal to .Off</span></code></pre></div>
+<span class="lineno">18</span> <span class="c1">// ovenLight is now equal to .Off</span></code></pre></figure>
 
 <h4 id="3.-type-methods">3. Type Methods</h4>
 
 <p>タイプメソッドは、Objective-C においてクラスメソッドと同じようなものです。インスタンスに、メソッドコールをするのではなく、タイプ自体 (クラス、構造体、Enumeration) に呼び出しを行います。クラスに対して、タイプメソッドを作成するには、<code>class</code> キーワードを、構造体・Enumeration に対して、タイプメソッドを作成するには、<code>static</code> キーワードを func の前に置きます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">SomeClass</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">SomeClass</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="k">class</span> <span class="n">func</span> <span class="n">someTypeMethod</span><span class="p">()</span> <span class="p">{</span>
 <span class="lineno"> 3</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;Hi&quot;</span><span class="p">)</span>
 <span class="lineno"> 4</span>     <span class="p">}</span>
@@ -361,16 +366,16 @@
 <span class="lineno">10</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;Hi&quot;</span><span class="p">)</span>
 <span class="lineno">11</span>     <span class="p">}</span>
 <span class="lineno">12</span> <span class="p">}</span>
-<span class="lineno">13</span> <span class="n">SomeStruct</span><span class="p">.</span><span class="n">someTypeMethod</span><span class="p">()</span></code></pre></div>
+<span class="lineno">13</span> <span class="n">SomeStruct</span><span class="p">.</span><span class="n">someTypeMethod</span><span class="p">()</span></code></pre></figure>
 
 <p>タイプメソッドの中では、そのタイプが持っている他のタイプメソッドやタイププロパティをタイプ名なしで呼び出すことができます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">LevelTracker</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">LevelTracker</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="k">static</span> <span class="n">var</span> <span class="n">highestUnlockedLevel</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="lineno">3</span>     <span class="k">static</span> <span class="n">func</span> <span class="n">unlockLevel</span><span class="p">(</span><span class="nl">level</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">4</span>         <span class="k">if</span> <span class="n">level</span> <span class="o">&gt;</span> <span class="n">highestUnlockedLevel</span> <span class="p">{</span> <span class="n">highestUnlockedLevel</span> <span class="o">=</span> <span class="n">level</span> <span class="p">}</span>
 <span class="lineno">5</span>     <span class="p">}</span>
-<span class="lineno">6</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">6</span> <span class="p">}</span></code></pre></figure>
 
 <p>本来、<code>LevelTracker.highestUnlockedLevel</code> と書きタイププロパティを参照しますが、このタイプメソッドの中では、<code>LevelTracker</code> というタイプ名を省略することができます。</p>
 
@@ -416,80 +421,79 @@
 <h3>Category</h3>
    <p class="side_content">|
       
-   	   <a href="/categories/objective-c">objective-c
-            (11)
-         </a> |
+        <a href="/categories/objective-c">
+          Objective-C(11)
+        </a> |
       
-   	   <a href="/categories/other">other
-            (6)
-         </a> |
+        <a href="/categories/other">
+          Other(6)
+        </a> |
       
-   	   <a href="/categories/node-js">node.js
-            (1)
-         </a> |
+        <a href="/categories/node-js">
+          Node.js(1)
+        </a> |
       
-   	   <a href="/categories/ruby-on-rails">ruby on rails
-            (24)
-         </a> |
+        <a href="/categories/ruby-on-rails">
+          Ruby on Rails(24)
+        </a> |
       
-   	   <a href="/categories/tips">tips
-            (8)
-         </a> |
+        <a href="/categories/tips">
+          Tips(8)
+        </a> |
       
-   	   <a href="/categories/html5">html5
-            (8)
-         </a> |
+        <a href="/categories/html5">
+          HTML5(8)
+        </a> |
       
-   	   <a href="/categories/algorithms">algorithms
-            (2)
-         </a> |
+        <a href="/categories/algorithms">
+          Algorithms(2)
+        </a> |
       
-   	   <a href="/categories/machine-learning">machine learning
-            (5)
-         </a> |
+        <a href="/categories/machine-learning">
+          Machine Learning(5)
+        </a> |
       
-   	   <a href="/categories/c">c
-            (14)
-         </a> |
+        <a href="/categories/c">
+          C(14)
+        </a> |
       
-   	   <a href="/categories/ruby">ruby
-            (5)
-         </a> |
+        <a href="/categories/ruby">
+          Ruby(5)
+        </a> |
       
-   	   <a href="/categories/swift">swift
-            (34)
-         </a> |
+        <a href="/categories/swift">
+          Swift(34)
+        </a> |
       
-   	   <a href="/categories/ios">ios
-            (6)
-         </a> |
+        <a href="/categories/ios">
+          iOS(6)
+        </a> |
       
-   	   <a href="/categories/books">books
-            (4)
-         </a> |
+        <a href="/categories/books">
+          Books(5)
+        </a> |
       
-   	   <a href="/categories/kindle">kindle
-            (3)
-         </a> |
+        <a href="/categories/kindle">
+          Kindle(3)
+        </a> |
       
-   	   <a href="/categories/nginx">nginx
-            (1)
-         </a> |
+        <a href="/categories/nginx">
+          Nginx(1)
+        </a> |
       
-   	   <a href="/categories/capistrano">capistrano
-            (1)
-         </a> |
+        <a href="/categories/capistrano">
+          Capistrano(1)
+        </a> |
       
-   	   <a href="/categories/chef">chef
-            (2)
-         </a> |
+        <a href="/categories/chef">
+          Chef(2)
+        </a> |
       
-   	   <a href="/categories/fastlane">fastlane
-            (1)
-         </a> |
+        <a href="/categories/fastlane">
+          fastlane(1)
+        </a> |
       
    </p>
-
 <hr />
 
 <h3>Archive</h3>
@@ -563,6 +567,10 @@
             (1)
          </a> |
       
+   		<a href="/2017/12/">2017/12
+            (1)
+         </a> |
+      
    </p>
 
 <hr />
@@ -586,102 +594,106 @@
 				   <p>
 					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
 					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
-					   <a href="https://github.com/kzykbys">Github</a></p>
-				   <h4>Category</h4>
-				   <p>|
-					   
-						   <a href="/categories/objective-c">objective-c</a> | 
-					   
-						   <a href="/categories/other">other</a> | 
-					   
-						   <a href="/categories/node-js">node.js</a> | 
-					   
-						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
-					   
-						   <a href="/categories/tips">tips</a> | 
-					   
-						   <a href="/categories/html5">html5</a> | 
-					   
-						   <a href="/categories/algorithms">algorithms</a> | 
-					   
-						   <a href="/categories/machine-learning">machine learning</a> | 
-					   
-						   <a href="/categories/c">c</a> | 
-					   
-						   <a href="/categories/ruby">ruby</a> | 
-					   
-						   <a href="/categories/swift">swift</a> | 
-					   
-						   <a href="/categories/ios">ios</a> | 
-					   
-						   <a href="/categories/books">books</a> | 
-					   
-						   <a href="/categories/kindle">kindle</a> | 
-					   
-						   <a href="/categories/nginx">nginx</a> | 
-					   
-						   <a href="/categories/capistrano">capistrano</a> | 
-					   
-						   <a href="/categories/chef">chef</a> | 
-					   
-						   <a href="/categories/fastlane">fastlane</a> | 
-					   
-				   </p>
-				   <h4>Archive</h4>
-					   <p>|
-					   
-	    					<a href="/2013/08/">2013/08
-	    					</a> | 
-	    			   
-	    					<a href="/2013/09/">2013/09
-	    					</a> | 
-	    			   
-	    					<a href="/2013/11/">2013/11
-	    					</a> | 
-	    			   
-	    					<a href="/2013/12/">2013/12
-	    					</a> | 
-	    			   
-	    					<a href="/2014/01/">2014/01
-	    					</a> | 
-	    			   
-	    					<a href="/2014/03/">2014/03
-	    					</a> | 
-	    			   
-	    					<a href="/2014/04/">2014/04
-	    					</a> | 
-	    			   
-	    					<a href="/2014/05/">2014/05
-	    					</a> | 
-	    			   
-	    					<a href="/2014/06/">2014/06
-	    					</a> | 
-	    			   
-	    					<a href="/2014/07/">2014/07
-	    					</a> | 
-	    			   
-	    					<a href="/2014/08/">2014/08
-	    					</a> | 
-	    			   
-	    					<a href="/2014/09/">2014/09
-	    					</a> | 
-	    			   
-	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2015/02/">2015/02
-	    					</a> | 
-	    			   
-	    					<a href="/2015/07/">2015/07
-	    					</a> | 
-	    			   
-	    					<a href="/2015/08/">2015/08
-	    					</a> | 
-	    			   
-	    					<a href="/2016/01/">2016/01
-	    					</a> | 
-	    			   
-    			   </p>
+					   <a href="https://github.com/kzykbys">Github</a>
+					</p>
+					<h4>Category</h4>
+					<p>|
+						
+							<a href="/categories/objective-c">Objective-C</a> | 
+						
+							<a href="/categories/other">Other</a> | 
+						
+							<a href="/categories/node-js">Node.js</a> | 
+						
+							<a href="/categories/ruby-on-rails">Ruby on Rails</a> | 
+						
+							<a href="/categories/tips">Tips</a> | 
+						
+							<a href="/categories/html5">HTML5</a> | 
+						
+							<a href="/categories/algorithms">Algorithms</a> | 
+						
+							<a href="/categories/machine-learning">Machine Learning</a> | 
+						
+							<a href="/categories/c">C</a> | 
+						
+							<a href="/categories/ruby">Ruby</a> | 
+						
+							<a href="/categories/swift">Swift</a> | 
+						
+							<a href="/categories/ios">iOS</a> | 
+						
+							<a href="/categories/books">Books</a> | 
+						
+							<a href="/categories/kindle">Kindle</a> | 
+						
+							<a href="/categories/nginx">Nginx</a> | 
+						
+							<a href="/categories/capistrano">Capistrano</a> | 
+						
+							<a href="/categories/chef">Chef</a> | 
+						
+							<a href="/categories/fastlane">fastlane</a> | 
+						
+					</p>
+					<h4>Archive</h4>
+						<p>|
+						
+							<a href="/2013/08/">2013/08
+							</a> | 
+						
+							<a href="/2013/09/">2013/09
+							</a> | 
+						
+							<a href="/2013/11/">2013/11
+							</a> | 
+						
+							<a href="/2013/12/">2013/12
+							</a> | 
+						
+							<a href="/2014/01/">2014/01
+							</a> | 
+						
+							<a href="/2014/03/">2014/03
+							</a> | 
+						
+							<a href="/2014/04/">2014/04
+							</a> | 
+						
+							<a href="/2014/05/">2014/05
+							</a> | 
+						
+							<a href="/2014/06/">2014/06
+							</a> | 
+						
+							<a href="/2014/07/">2014/07
+							</a> | 
+						
+							<a href="/2014/08/">2014/08
+							</a> | 
+						
+							<a href="/2014/09/">2014/09
+							</a> | 
+						
+							<a href="/2014/10/">2014/10
+							</a> | 
+						
+							<a href="/2015/02/">2015/02
+							</a> | 
+						
+							<a href="/2015/07/">2015/07
+							</a> | 
+						
+							<a href="/2015/08/">2015/08
+							</a> | 
+						
+							<a href="/2016/01/">2016/01
+							</a> | 
+						
+							<a href="/2017/12/">2017/12
+							</a> | 
+						
+					</p>
 			   </div>
 		   </div>
 	   	</div>

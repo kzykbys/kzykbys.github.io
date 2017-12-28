@@ -46,80 +46,81 @@
 
 	<h4>Category</h4>
 	<ul>
-	   
-		   <li>
-		   		<a href="/categories/objective-c">objective-c</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/other">other</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/node-js">node.js</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/tips">tips</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/html5">html5</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/algorithms">algorithms</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/machine-learning">machine learning</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/c">c</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ruby">ruby</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/swift">swift</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ios">ios</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/books">books</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/kindle">kindle</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/nginx">nginx</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/capistrano">capistrano</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/chef">chef</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/fastlane">fastlane</a>
-		   </li>
-	   
-    </ul>
+		
+			<li>
+				<a href="/categories/objective-c">Objective-C</a>
+			</li>
+		
+			<li>
+				<a href="/categories/other">Other</a>
+			</li>
+		
+			<li>
+				<a href="/categories/node-js">Node.js</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ruby-on-rails">Ruby on Rails</a>
+			</li>
+		
+			<li>
+				<a href="/categories/tips">Tips</a>
+			</li>
+		
+			<li>
+				<a href="/categories/html5">HTML5</a>
+			</li>
+		
+			<li>
+				<a href="/categories/algorithms">Algorithms</a>
+			</li>
+		
+			<li>
+				<a href="/categories/machine-learning">Machine Learning</a>
+			</li>
+		
+			<li>
+				<a href="/categories/c">C</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ruby">Ruby</a>
+			</li>
+		
+			<li>
+				<a href="/categories/swift">Swift</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ios">iOS</a>
+			</li>
+		
+			<li>
+				<a href="/categories/books">Books</a>
+			</li>
+		
+			<li>
+				<a href="/categories/kindle">Kindle</a>
+			</li>
+		
+			<li>
+				<a href="/categories/nginx">Nginx</a>
+			</li>
+		
+			<li>
+				<a href="/categories/capistrano">Capistrano</a>
+			</li>
+		
+			<li>
+				<a href="/categories/chef">Chef</a>
+			</li>
+		
+			<li>
+				<a href="/categories/fastlane">fastlane</a>
+			</li>
+		
+	</ul>
+
 	<h4>Archive</h4>
 	<ul>
 		
@@ -191,6 +192,10 @@
 				<a href="/2016/01/">2016/01</a>
 			</li>
 		
+			<li>
+				<a href="/2017/12/">2017/12</a>
+			</li>
+		
 	</ul>
 
 </div>
@@ -253,20 +258,20 @@
 
 <p>RESTfulなURLを自動生成するため、以下の行をルーティングファイルに追加。このコントローラーはセッションを管理するだけなので、new（ページ表示）、create（セッションスタート - ログイン）、destory（セッションエンド - ログアウト）の３つだけ作成。</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="c1"># routes.rb</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="c1"># routes.rb</span>
 <span class="lineno">2</span> <span class="n">resources</span> <span class="ss">:sessions</span><span class="p">,</span> <span class="ss">only</span><span class="p">:</span> <span class="o">[</span><span class="ss">:new</span><span class="p">,</span> <span class="ss">:create</span><span class="p">,</span> <span class="ss">:destroy</span><span class="o">]</span>
 <span class="lineno">3</span> <span class="n">match</span> <span class="s1">&#39;/signin&#39;</span><span class="p">,</span>  <span class="ss">to</span><span class="p">:</span> <span class="s1">&#39;sessions#new&#39;</span><span class="p">,</span>  <span class="ss">via</span><span class="p">:</span> <span class="s1">&#39;get&#39;</span>
-<span class="lineno">4</span> <span class="n">match</span> <span class="s1">&#39;/signout&#39;</span><span class="p">,</span> <span class="ss">to</span><span class="p">:</span> <span class="s1">&#39;sessions#destroy&#39;</span><span class="p">,</span>   <span class="ss">via</span><span class="p">:</span> <span class="err">‘</span><span class="n">delete</span><span class="err">&#39;</span></code></pre></div>
+<span class="lineno">4</span> <span class="n">match</span> <span class="s1">&#39;/signout&#39;</span><span class="p">,</span> <span class="ss">to</span><span class="p">:</span> <span class="s1">&#39;sessions#destroy&#39;</span><span class="p">,</span>   <span class="ss">via</span><span class="p">:</span> <span class="err">‘</span><span class="n">delete</span><span class="err">&#39;</span></code></pre></figure>
 
 <p>そして、 ログインする際の View を実際に作成します。 View の Sessions フォルダに new.html.erbを作成します。注意点として、 セッションを作成するときには @user 変数のような存在がないため、前の章とは違う形式で form_for を書きます。（ form_tag を使った方が一般的のようですが、未確認。）具体的には、</p>
 
-<div class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="lineno">1</span> <span class="cp">&lt;%=</span> <span class="n">form_for</span><span class="p">(</span><span class="ss">:session</span><span class="p">,</span> <span class="ss">url</span><span class="p">:</span> <span class="n">sessions_path</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="cp">%&gt;</span><span class="x"></span></code></pre></div>
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="lineno">1</span> <span class="cp">&lt;%=</span> <span class="n">form_for</span><span class="p">(</span><span class="ss">:session</span><span class="p">,</span> <span class="ss">url</span><span class="p">:</span> <span class="n">sessions_path</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="cp">%&gt;</span><span class="x"></span></code></pre></figure>
 
 <p>ここでの sessions_path は /sessions への POST リクエスト。変数を使い、 form_for(@user) のように書くと、Rails は勝手に、/users への POST リクエスト と認識するが、今回のようなケースでは上記のように URL とリソースを指定しなければならない。</p>
 
 <p>そして、コントローラーの作成。比較的わかりやすいと思います。アドレスから Studentモデルを検索し、それを変数に代入。そのアドレスのStudentモデルが存在し、かつ、パスワードが正しければ、if 分の最初のブロックが実行されます。authenticateメソッドは、ユーザー登録時に使った、has_secure_password が提供しています。</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno"> 1</span> <span class="c1"># sessions_controller.rb</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno"> 1</span> <span class="c1"># sessions_controller.rb</span>
 <span class="lineno"> 2</span> <span class="k">def</span> <span class="nf">create</span>
 <span class="lineno"> 3</span>   <span class="n">student</span> <span class="o">=</span> <span class="no">Student</span><span class="o">.</span><span class="n">find_by</span><span class="p">(</span><span class="ss">email</span><span class="p">:</span> <span class="n">params</span><span class="o">[</span><span class="ss">:session</span><span class="o">][</span><span class="ss">:email</span><span class="o">].</span><span class="n">downcase</span><span class="p">)</span>
 <span class="lineno"> 4</span>   <span class="k">if</span> <span class="n">student</span> <span class="o">&amp;&amp;</span> <span class="n">student</span><span class="o">.</span><span class="n">authenticate</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:session</span><span class="o">][</span><span class="ss">:password</span><span class="o">]</span><span class="p">)</span>
@@ -276,19 +281,19 @@
 <span class="lineno"> 8</span>     <span class="n">flash</span><span class="o">.</span><span class="n">now</span><span class="o">[</span><span class="ss">:error</span><span class="o">]</span> <span class="o">=</span> <span class="s1">&#39;Invalid email/password combination&#39;</span>
 <span class="lineno"> 9</span>     <span class="n">render</span> <span class="s1">&#39;new&#39;</span>
 <span class="lineno">10</span>   <span class="k">end</span>
-<span class="lineno">11</span> <span class="k">end</span></code></pre></div>
+<span class="lineno">11</span> <span class="k">end</span></code></pre></figure>
 
 <p>ログイン成功時に実行される sign_in関数をこれから実装していきます。これはログイン状態を永続化し、ユーザーがログアウトするまで、セッションを保持します。また、この関数は、ビューやコントローラー両方から使用する必要があるので、この sign_in 関数を SessionHelper というモジュール（Sessionコントローラー作成時に生成されている）に書き、Application コントローラーにてこれをインクルードする。これにより、コントローラー内でこのヘルパーを使用することができるようになる。ちなみに、ビューはデフォルトで、全てのヘルパーが使える。</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="c1"># application_controller.rb</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="c1"># application_controller.rb</span>
 <span class="lineno">2</span> <span class="k">class</span> <span class="nc">ApplicationController</span> <span class="o">&lt;</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">Base</span>
 <span class="lineno">3</span>   <span class="n">protect_from_forgery</span> <span class="ss">with</span><span class="p">:</span> <span class="ss">:exception</span>
 <span class="lineno">4</span>   <span class="kp">include</span> <span class="no">SessionsHelper</span>
-<span class="lineno">5</span> <span class="k">end</span></code></pre></div>
+<span class="lineno">5</span> <span class="k">end</span></code></pre></figure>
 
 <p>そして、永続的なセッションを実装するために cookie を使用します。この cookie の記憶トークンと Student は関連付けられている必要があるので、Student モデルにカラムとインデックスを追加する。</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno"> 1</span> <span class="c1"># マイグレーションの生成</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno"> 1</span> <span class="c1"># マイグレーションの生成</span>
 <span class="lineno"> 2</span> <span class="err">$</span> <span class="n">rails</span> <span class="n">generate</span> <span class="n">migration</span> <span class="n">add_remember_token_to_users</span>
 <span class="lineno"> 3</span>  
 <span class="lineno"> 4</span> <span class="c1"># [ts]_add_remember_token_to_users.rb</span>
@@ -300,7 +305,7 @@
 <span class="lineno">10</span> <span class="k">end</span>
 <span class="lineno">11</span>  
 <span class="lineno">12</span> <span class="c1"># マイグレーションの適応</span>
-<span class="lineno">13</span> <span class="err">$</span> <span class="n">bundle</span> <span class="nb">exec</span> <span class="n">rake</span> <span class="ss">db</span><span class="p">:</span><span class="n">migrate</span></code></pre></div>
+<span class="lineno">13</span> <span class="err">$</span> <span class="n">bundle</span> <span class="nb">exec</span> <span class="n">rake</span> <span class="ss">db</span><span class="p">:</span><span class="n">migrate</span></code></pre></figure>
 
 <p>続きます。</p>
 
@@ -346,80 +351,79 @@
 <h3>Category</h3>
    <p class="side_content">|
       
-   	   <a href="/categories/objective-c">objective-c
-            (11)
-         </a> |
+        <a href="/categories/objective-c">
+          Objective-C(11)
+        </a> |
       
-   	   <a href="/categories/other">other
-            (6)
-         </a> |
+        <a href="/categories/other">
+          Other(6)
+        </a> |
       
-   	   <a href="/categories/node-js">node.js
-            (1)
-         </a> |
+        <a href="/categories/node-js">
+          Node.js(1)
+        </a> |
       
-   	   <a href="/categories/ruby-on-rails">ruby on rails
-            (24)
-         </a> |
+        <a href="/categories/ruby-on-rails">
+          Ruby on Rails(24)
+        </a> |
       
-   	   <a href="/categories/tips">tips
-            (8)
-         </a> |
+        <a href="/categories/tips">
+          Tips(8)
+        </a> |
       
-   	   <a href="/categories/html5">html5
-            (8)
-         </a> |
+        <a href="/categories/html5">
+          HTML5(8)
+        </a> |
       
-   	   <a href="/categories/algorithms">algorithms
-            (2)
-         </a> |
+        <a href="/categories/algorithms">
+          Algorithms(2)
+        </a> |
       
-   	   <a href="/categories/machine-learning">machine learning
-            (5)
-         </a> |
+        <a href="/categories/machine-learning">
+          Machine Learning(5)
+        </a> |
       
-   	   <a href="/categories/c">c
-            (14)
-         </a> |
+        <a href="/categories/c">
+          C(14)
+        </a> |
       
-   	   <a href="/categories/ruby">ruby
-            (5)
-         </a> |
+        <a href="/categories/ruby">
+          Ruby(5)
+        </a> |
       
-   	   <a href="/categories/swift">swift
-            (34)
-         </a> |
+        <a href="/categories/swift">
+          Swift(34)
+        </a> |
       
-   	   <a href="/categories/ios">ios
-            (6)
-         </a> |
+        <a href="/categories/ios">
+          iOS(6)
+        </a> |
       
-   	   <a href="/categories/books">books
-            (4)
-         </a> |
+        <a href="/categories/books">
+          Books(5)
+        </a> |
       
-   	   <a href="/categories/kindle">kindle
-            (3)
-         </a> |
+        <a href="/categories/kindle">
+          Kindle(3)
+        </a> |
       
-   	   <a href="/categories/nginx">nginx
-            (1)
-         </a> |
+        <a href="/categories/nginx">
+          Nginx(1)
+        </a> |
       
-   	   <a href="/categories/capistrano">capistrano
-            (1)
-         </a> |
+        <a href="/categories/capistrano">
+          Capistrano(1)
+        </a> |
       
-   	   <a href="/categories/chef">chef
-            (2)
-         </a> |
+        <a href="/categories/chef">
+          Chef(2)
+        </a> |
       
-   	   <a href="/categories/fastlane">fastlane
-            (1)
-         </a> |
+        <a href="/categories/fastlane">
+          fastlane(1)
+        </a> |
       
    </p>
-
 <hr />
 
 <h3>Archive</h3>
@@ -493,6 +497,10 @@
             (1)
          </a> |
       
+   		<a href="/2017/12/">2017/12
+            (1)
+         </a> |
+      
    </p>
 
 <hr />
@@ -516,102 +524,106 @@
 				   <p>
 					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
 					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
-					   <a href="https://github.com/kzykbys">Github</a></p>
-				   <h4>Category</h4>
-				   <p>|
-					   
-						   <a href="/categories/objective-c">objective-c</a> | 
-					   
-						   <a href="/categories/other">other</a> | 
-					   
-						   <a href="/categories/node-js">node.js</a> | 
-					   
-						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
-					   
-						   <a href="/categories/tips">tips</a> | 
-					   
-						   <a href="/categories/html5">html5</a> | 
-					   
-						   <a href="/categories/algorithms">algorithms</a> | 
-					   
-						   <a href="/categories/machine-learning">machine learning</a> | 
-					   
-						   <a href="/categories/c">c</a> | 
-					   
-						   <a href="/categories/ruby">ruby</a> | 
-					   
-						   <a href="/categories/swift">swift</a> | 
-					   
-						   <a href="/categories/ios">ios</a> | 
-					   
-						   <a href="/categories/books">books</a> | 
-					   
-						   <a href="/categories/kindle">kindle</a> | 
-					   
-						   <a href="/categories/nginx">nginx</a> | 
-					   
-						   <a href="/categories/capistrano">capistrano</a> | 
-					   
-						   <a href="/categories/chef">chef</a> | 
-					   
-						   <a href="/categories/fastlane">fastlane</a> | 
-					   
-				   </p>
-				   <h4>Archive</h4>
-					   <p>|
-					   
-	    					<a href="/2013/08/">2013/08
-	    					</a> | 
-	    			   
-	    					<a href="/2013/09/">2013/09
-	    					</a> | 
-	    			   
-	    					<a href="/2013/11/">2013/11
-	    					</a> | 
-	    			   
-	    					<a href="/2013/12/">2013/12
-	    					</a> | 
-	    			   
-	    					<a href="/2014/01/">2014/01
-	    					</a> | 
-	    			   
-	    					<a href="/2014/03/">2014/03
-	    					</a> | 
-	    			   
-	    					<a href="/2014/04/">2014/04
-	    					</a> | 
-	    			   
-	    					<a href="/2014/05/">2014/05
-	    					</a> | 
-	    			   
-	    					<a href="/2014/06/">2014/06
-	    					</a> | 
-	    			   
-	    					<a href="/2014/07/">2014/07
-	    					</a> | 
-	    			   
-	    					<a href="/2014/08/">2014/08
-	    					</a> | 
-	    			   
-	    					<a href="/2014/09/">2014/09
-	    					</a> | 
-	    			   
-	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2015/02/">2015/02
-	    					</a> | 
-	    			   
-	    					<a href="/2015/07/">2015/07
-	    					</a> | 
-	    			   
-	    					<a href="/2015/08/">2015/08
-	    					</a> | 
-	    			   
-	    					<a href="/2016/01/">2016/01
-	    					</a> | 
-	    			   
-    			   </p>
+					   <a href="https://github.com/kzykbys">Github</a>
+					</p>
+					<h4>Category</h4>
+					<p>|
+						
+							<a href="/categories/objective-c">Objective-C</a> | 
+						
+							<a href="/categories/other">Other</a> | 
+						
+							<a href="/categories/node-js">Node.js</a> | 
+						
+							<a href="/categories/ruby-on-rails">Ruby on Rails</a> | 
+						
+							<a href="/categories/tips">Tips</a> | 
+						
+							<a href="/categories/html5">HTML5</a> | 
+						
+							<a href="/categories/algorithms">Algorithms</a> | 
+						
+							<a href="/categories/machine-learning">Machine Learning</a> | 
+						
+							<a href="/categories/c">C</a> | 
+						
+							<a href="/categories/ruby">Ruby</a> | 
+						
+							<a href="/categories/swift">Swift</a> | 
+						
+							<a href="/categories/ios">iOS</a> | 
+						
+							<a href="/categories/books">Books</a> | 
+						
+							<a href="/categories/kindle">Kindle</a> | 
+						
+							<a href="/categories/nginx">Nginx</a> | 
+						
+							<a href="/categories/capistrano">Capistrano</a> | 
+						
+							<a href="/categories/chef">Chef</a> | 
+						
+							<a href="/categories/fastlane">fastlane</a> | 
+						
+					</p>
+					<h4>Archive</h4>
+						<p>|
+						
+							<a href="/2013/08/">2013/08
+							</a> | 
+						
+							<a href="/2013/09/">2013/09
+							</a> | 
+						
+							<a href="/2013/11/">2013/11
+							</a> | 
+						
+							<a href="/2013/12/">2013/12
+							</a> | 
+						
+							<a href="/2014/01/">2014/01
+							</a> | 
+						
+							<a href="/2014/03/">2014/03
+							</a> | 
+						
+							<a href="/2014/04/">2014/04
+							</a> | 
+						
+							<a href="/2014/05/">2014/05
+							</a> | 
+						
+							<a href="/2014/06/">2014/06
+							</a> | 
+						
+							<a href="/2014/07/">2014/07
+							</a> | 
+						
+							<a href="/2014/08/">2014/08
+							</a> | 
+						
+							<a href="/2014/09/">2014/09
+							</a> | 
+						
+							<a href="/2014/10/">2014/10
+							</a> | 
+						
+							<a href="/2015/02/">2015/02
+							</a> | 
+						
+							<a href="/2015/07/">2015/07
+							</a> | 
+						
+							<a href="/2015/08/">2015/08
+							</a> | 
+						
+							<a href="/2016/01/">2016/01
+							</a> | 
+						
+							<a href="/2017/12/">2017/12
+							</a> | 
+						
+					</p>
 			   </div>
 		   </div>
 	   	</div>

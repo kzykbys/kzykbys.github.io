@@ -46,80 +46,81 @@
 
 	<h4>Category</h4>
 	<ul>
-	   
-		   <li>
-		   		<a href="/categories/objective-c">objective-c</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/other">other</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/node-js">node.js</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/tips">tips</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/html5">html5</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/algorithms">algorithms</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/machine-learning">machine learning</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/c">c</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ruby">ruby</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/swift">swift</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ios">ios</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/books">books</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/kindle">kindle</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/nginx">nginx</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/capistrano">capistrano</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/chef">chef</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/fastlane">fastlane</a>
-		   </li>
-	   
-    </ul>
+		
+			<li>
+				<a href="/categories/objective-c">Objective-C</a>
+			</li>
+		
+			<li>
+				<a href="/categories/other">Other</a>
+			</li>
+		
+			<li>
+				<a href="/categories/node-js">Node.js</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ruby-on-rails">Ruby on Rails</a>
+			</li>
+		
+			<li>
+				<a href="/categories/tips">Tips</a>
+			</li>
+		
+			<li>
+				<a href="/categories/html5">HTML5</a>
+			</li>
+		
+			<li>
+				<a href="/categories/algorithms">Algorithms</a>
+			</li>
+		
+			<li>
+				<a href="/categories/machine-learning">Machine Learning</a>
+			</li>
+		
+			<li>
+				<a href="/categories/c">C</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ruby">Ruby</a>
+			</li>
+		
+			<li>
+				<a href="/categories/swift">Swift</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ios">iOS</a>
+			</li>
+		
+			<li>
+				<a href="/categories/books">Books</a>
+			</li>
+		
+			<li>
+				<a href="/categories/kindle">Kindle</a>
+			</li>
+		
+			<li>
+				<a href="/categories/nginx">Nginx</a>
+			</li>
+		
+			<li>
+				<a href="/categories/capistrano">Capistrano</a>
+			</li>
+		
+			<li>
+				<a href="/categories/chef">Chef</a>
+			</li>
+		
+			<li>
+				<a href="/categories/fastlane">fastlane</a>
+			</li>
+		
+	</ul>
+
 	<h4>Archive</h4>
 	<ul>
 		
@@ -191,6 +192,10 @@
 				<a href="/2016/01/">2016/01</a>
 			</li>
 		
+			<li>
+				<a href="/2017/12/">2017/12</a>
+			</li>
+		
 	</ul>
 
 </div>
@@ -256,7 +261,7 @@
 
 <p>この Property Observers は、プロパティが初期化される際には呼ばれません。あくまで、プロパティが変更される際に、呼ばれるものです。しかし、新しい値と古い値が同じ値でも、これらの Observers は呼ばれます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">StepCounter</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">StepCounter</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">var</span> <span class="nl">totalSteps</span><span class="p">:</span> <span class="n">Int</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">{</span>
 <span class="lineno"> 3</span>         <span class="n">willSet</span><span class="p">(</span><span class="n">newTotalSteps</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 4</span>             <span class="n">println</span><span class="p">(</span><span class="s">&quot;About to set totalSteps to \(newTotalSteps)&quot;</span><span class="p">)</span>
@@ -277,7 +282,7 @@
 <span class="lineno">19</span> <span class="c1">// Added 160 steps</span>
 <span class="lineno">20</span> <span class="n">stepCounter</span><span class="p">.</span><span class="n">totalSteps</span> <span class="o">=</span> <span class="mi">896</span>
 <span class="lineno">21</span> <span class="c1">// About to set totalSteps to 896</span>
-<span class="lineno">22</span> <span class="c1">// Added 536 steps</span></code></pre></div>
+<span class="lineno">22</span> <span class="c1">// Added 536 steps</span></code></pre></figure>
 
 <p>上記の <code>willSet</code> と <code>didSet</code> の実装方法は多少違いがあります。<code>willSet</code> は、新しい値である引数の名前を自分で指定しています。この例では、<code>newTotalSteps</code> です。そして、この <code>newTotalSteps</code> を println() の中で使用しています。もし、この名前を自分で指定しなかった場合、<code>newValue</code> という名前を処理の中で使用できます。<code>didSet</code> は引数の名前を指定していません。自動的に割り当てられる <code>oldValue</code> という引数名を使用して処理をしています。もちろん、<code>willSet</code> と同じように自分で引数の名前を指定することもできます。</p>
 
@@ -287,7 +292,7 @@
 
 <p>Type Propertiesを宣言する方法は、、構造体と Enumeration の Type Properties には、<code>static</code> キーワードを使用します。クラスの Type Properties には、<code>class</code> キーワードを使用します。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">SomeStructure</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">SomeStructure</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="k">static</span> <span class="n">var</span> <span class="n">storedTypeProperty</span> <span class="o">=</span> <span class="s">&quot;Some value.&quot;</span>
 <span class="lineno"> 3</span>     <span class="k">static</span> <span class="n">var</span> <span class="nl">computedTypeProperty</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span>
 <span class="lineno"> 4</span>     <span class="c1">// return an Int value here</span>
@@ -303,23 +308,23 @@
 <span class="lineno">14</span>     <span class="k">class</span> <span class="n">var</span> <span class="nl">computedTypeProperty</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span>
 <span class="lineno">15</span>     <span class="c1">// return an Int value here</span>
 <span class="lineno">16</span>     <span class="p">}</span>
-<span class="lineno">17</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">17</span> <span class="p">}</span></code></pre></figure>
 
 <p>この例では、Computed Properties においてゲッターしか設定していませんが、Computed Properties と同じようにゲッターセッター両方使用できます。</p>
 
 <p>Enumeration には、Stored Properties を使用できないので、<code>static</code> を除き、Stored Properties (インスタンスプロパティ) を作成しようとするとエラーになります。Computed Properties は使用できるので、<code>static</code> を除き、Computed Properties として使用しても問題ありません。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">enum</span> <span class="n">SomeEnumTest</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">enum</span> <span class="n">SomeEnumTest</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">var</span> <span class="n">storedTypeProperty</span> <span class="o">=</span> <span class="s">&quot;Some value.&quot;</span> <span class="c1">// err : No Stored Properties for enum</span>
 <span class="lineno">3</span>     <span class="n">var</span> <span class="nl">computedTypeProperty</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span> <span class="c1">// OK : YES Computed Properties for enum</span>
 <span class="lineno">4</span>         <span class="k">return</span> <span class="mi">42</span>
 <span class="lineno">5</span>     <span class="p">}</span>
 <span class="lineno">6</span>     <span class="n">Case</span> <span class="n">Test</span>
-<span class="lineno">7</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">7</span> <span class="p">}</span></code></pre></figure>
 
 <p>このように使用します。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">println</span><span class="p">(</span><span class="n">SomeClass</span><span class="p">.</span><span class="n">computedTypeProperty</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">println</span><span class="p">(</span><span class="n">SomeClass</span><span class="p">.</span><span class="n">computedTypeProperty</span><span class="p">)</span>
 <span class="lineno"> 2</span> <span class="c1">// prints &quot;42&quot;</span>
 <span class="lineno"> 3</span>  
 <span class="lineno"> 4</span> <span class="n">println</span><span class="p">(</span><span class="n">SomeStructure</span><span class="p">.</span><span class="n">storedTypeProperty</span><span class="p">)</span>
@@ -331,7 +336,7 @@
 <span class="lineno">10</span> 
 <span class="lineno">11</span> <span class="n">var</span> <span class="n">some</span> <span class="o">=</span> <span class="n">SomeEnumTest</span><span class="p">.</span><span class="n">Test</span>
 <span class="lineno">12</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;Hi, \(some.computedTypeProperty)&quot;</span><span class="p">)</span>
-<span class="lineno">13</span> <span class="c1">// prints &quot;Hi, 42&quot; ( add static before var storedTypeProperty to test )</span></code></pre></div>
+<span class="lineno">13</span> <span class="c1">// prints &quot;Hi, 42&quot; ( add static before var storedTypeProperty to test )</span></code></pre></figure>
 
 					</div>
 
@@ -375,80 +380,79 @@
 <h3>Category</h3>
    <p class="side_content">|
       
-   	   <a href="/categories/objective-c">objective-c
-            (11)
-         </a> |
+        <a href="/categories/objective-c">
+          Objective-C(11)
+        </a> |
       
-   	   <a href="/categories/other">other
-            (6)
-         </a> |
+        <a href="/categories/other">
+          Other(6)
+        </a> |
       
-   	   <a href="/categories/node-js">node.js
-            (1)
-         </a> |
+        <a href="/categories/node-js">
+          Node.js(1)
+        </a> |
       
-   	   <a href="/categories/ruby-on-rails">ruby on rails
-            (24)
-         </a> |
+        <a href="/categories/ruby-on-rails">
+          Ruby on Rails(24)
+        </a> |
       
-   	   <a href="/categories/tips">tips
-            (8)
-         </a> |
+        <a href="/categories/tips">
+          Tips(8)
+        </a> |
       
-   	   <a href="/categories/html5">html5
-            (8)
-         </a> |
+        <a href="/categories/html5">
+          HTML5(8)
+        </a> |
       
-   	   <a href="/categories/algorithms">algorithms
-            (2)
-         </a> |
+        <a href="/categories/algorithms">
+          Algorithms(2)
+        </a> |
       
-   	   <a href="/categories/machine-learning">machine learning
-            (5)
-         </a> |
+        <a href="/categories/machine-learning">
+          Machine Learning(5)
+        </a> |
       
-   	   <a href="/categories/c">c
-            (14)
-         </a> |
+        <a href="/categories/c">
+          C(14)
+        </a> |
       
-   	   <a href="/categories/ruby">ruby
-            (5)
-         </a> |
+        <a href="/categories/ruby">
+          Ruby(5)
+        </a> |
       
-   	   <a href="/categories/swift">swift
-            (34)
-         </a> |
+        <a href="/categories/swift">
+          Swift(34)
+        </a> |
       
-   	   <a href="/categories/ios">ios
-            (6)
-         </a> |
+        <a href="/categories/ios">
+          iOS(6)
+        </a> |
       
-   	   <a href="/categories/books">books
-            (4)
-         </a> |
+        <a href="/categories/books">
+          Books(5)
+        </a> |
       
-   	   <a href="/categories/kindle">kindle
-            (3)
-         </a> |
+        <a href="/categories/kindle">
+          Kindle(3)
+        </a> |
       
-   	   <a href="/categories/nginx">nginx
-            (1)
-         </a> |
+        <a href="/categories/nginx">
+          Nginx(1)
+        </a> |
       
-   	   <a href="/categories/capistrano">capistrano
-            (1)
-         </a> |
+        <a href="/categories/capistrano">
+          Capistrano(1)
+        </a> |
       
-   	   <a href="/categories/chef">chef
-            (2)
-         </a> |
+        <a href="/categories/chef">
+          Chef(2)
+        </a> |
       
-   	   <a href="/categories/fastlane">fastlane
-            (1)
-         </a> |
+        <a href="/categories/fastlane">
+          fastlane(1)
+        </a> |
       
    </p>
-
 <hr />
 
 <h3>Archive</h3>
@@ -522,6 +526,10 @@
             (1)
          </a> |
       
+   		<a href="/2017/12/">2017/12
+            (1)
+         </a> |
+      
    </p>
 
 <hr />
@@ -545,102 +553,106 @@
 				   <p>
 					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
 					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
-					   <a href="https://github.com/kzykbys">Github</a></p>
-				   <h4>Category</h4>
-				   <p>|
-					   
-						   <a href="/categories/objective-c">objective-c</a> | 
-					   
-						   <a href="/categories/other">other</a> | 
-					   
-						   <a href="/categories/node-js">node.js</a> | 
-					   
-						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
-					   
-						   <a href="/categories/tips">tips</a> | 
-					   
-						   <a href="/categories/html5">html5</a> | 
-					   
-						   <a href="/categories/algorithms">algorithms</a> | 
-					   
-						   <a href="/categories/machine-learning">machine learning</a> | 
-					   
-						   <a href="/categories/c">c</a> | 
-					   
-						   <a href="/categories/ruby">ruby</a> | 
-					   
-						   <a href="/categories/swift">swift</a> | 
-					   
-						   <a href="/categories/ios">ios</a> | 
-					   
-						   <a href="/categories/books">books</a> | 
-					   
-						   <a href="/categories/kindle">kindle</a> | 
-					   
-						   <a href="/categories/nginx">nginx</a> | 
-					   
-						   <a href="/categories/capistrano">capistrano</a> | 
-					   
-						   <a href="/categories/chef">chef</a> | 
-					   
-						   <a href="/categories/fastlane">fastlane</a> | 
-					   
-				   </p>
-				   <h4>Archive</h4>
-					   <p>|
-					   
-	    					<a href="/2013/08/">2013/08
-	    					</a> | 
-	    			   
-	    					<a href="/2013/09/">2013/09
-	    					</a> | 
-	    			   
-	    					<a href="/2013/11/">2013/11
-	    					</a> | 
-	    			   
-	    					<a href="/2013/12/">2013/12
-	    					</a> | 
-	    			   
-	    					<a href="/2014/01/">2014/01
-	    					</a> | 
-	    			   
-	    					<a href="/2014/03/">2014/03
-	    					</a> | 
-	    			   
-	    					<a href="/2014/04/">2014/04
-	    					</a> | 
-	    			   
-	    					<a href="/2014/05/">2014/05
-	    					</a> | 
-	    			   
-	    					<a href="/2014/06/">2014/06
-	    					</a> | 
-	    			   
-	    					<a href="/2014/07/">2014/07
-	    					</a> | 
-	    			   
-	    					<a href="/2014/08/">2014/08
-	    					</a> | 
-	    			   
-	    					<a href="/2014/09/">2014/09
-	    					</a> | 
-	    			   
-	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2015/02/">2015/02
-	    					</a> | 
-	    			   
-	    					<a href="/2015/07/">2015/07
-	    					</a> | 
-	    			   
-	    					<a href="/2015/08/">2015/08
-	    					</a> | 
-	    			   
-	    					<a href="/2016/01/">2016/01
-	    					</a> | 
-	    			   
-    			   </p>
+					   <a href="https://github.com/kzykbys">Github</a>
+					</p>
+					<h4>Category</h4>
+					<p>|
+						
+							<a href="/categories/objective-c">Objective-C</a> | 
+						
+							<a href="/categories/other">Other</a> | 
+						
+							<a href="/categories/node-js">Node.js</a> | 
+						
+							<a href="/categories/ruby-on-rails">Ruby on Rails</a> | 
+						
+							<a href="/categories/tips">Tips</a> | 
+						
+							<a href="/categories/html5">HTML5</a> | 
+						
+							<a href="/categories/algorithms">Algorithms</a> | 
+						
+							<a href="/categories/machine-learning">Machine Learning</a> | 
+						
+							<a href="/categories/c">C</a> | 
+						
+							<a href="/categories/ruby">Ruby</a> | 
+						
+							<a href="/categories/swift">Swift</a> | 
+						
+							<a href="/categories/ios">iOS</a> | 
+						
+							<a href="/categories/books">Books</a> | 
+						
+							<a href="/categories/kindle">Kindle</a> | 
+						
+							<a href="/categories/nginx">Nginx</a> | 
+						
+							<a href="/categories/capistrano">Capistrano</a> | 
+						
+							<a href="/categories/chef">Chef</a> | 
+						
+							<a href="/categories/fastlane">fastlane</a> | 
+						
+					</p>
+					<h4>Archive</h4>
+						<p>|
+						
+							<a href="/2013/08/">2013/08
+							</a> | 
+						
+							<a href="/2013/09/">2013/09
+							</a> | 
+						
+							<a href="/2013/11/">2013/11
+							</a> | 
+						
+							<a href="/2013/12/">2013/12
+							</a> | 
+						
+							<a href="/2014/01/">2014/01
+							</a> | 
+						
+							<a href="/2014/03/">2014/03
+							</a> | 
+						
+							<a href="/2014/04/">2014/04
+							</a> | 
+						
+							<a href="/2014/05/">2014/05
+							</a> | 
+						
+							<a href="/2014/06/">2014/06
+							</a> | 
+						
+							<a href="/2014/07/">2014/07
+							</a> | 
+						
+							<a href="/2014/08/">2014/08
+							</a> | 
+						
+							<a href="/2014/09/">2014/09
+							</a> | 
+						
+							<a href="/2014/10/">2014/10
+							</a> | 
+						
+							<a href="/2015/02/">2015/02
+							</a> | 
+						
+							<a href="/2015/07/">2015/07
+							</a> | 
+						
+							<a href="/2015/08/">2015/08
+							</a> | 
+						
+							<a href="/2016/01/">2016/01
+							</a> | 
+						
+							<a href="/2017/12/">2017/12
+							</a> | 
+						
+					</p>
 			   </div>
 		   </div>
 	   	</div>

@@ -46,80 +46,81 @@
 
 	<h4>Category</h4>
 	<ul>
-	   
-		   <li>
-		   		<a href="/categories/objective-c">objective-c</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/other">other</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/node-js">node.js</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/tips">tips</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/html5">html5</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/algorithms">algorithms</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/machine-learning">machine learning</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/c">c</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ruby">ruby</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/swift">swift</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ios">ios</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/books">books</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/kindle">kindle</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/nginx">nginx</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/capistrano">capistrano</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/chef">chef</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/fastlane">fastlane</a>
-		   </li>
-	   
-    </ul>
+		
+			<li>
+				<a href="/categories/objective-c">Objective-C</a>
+			</li>
+		
+			<li>
+				<a href="/categories/other">Other</a>
+			</li>
+		
+			<li>
+				<a href="/categories/node-js">Node.js</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ruby-on-rails">Ruby on Rails</a>
+			</li>
+		
+			<li>
+				<a href="/categories/tips">Tips</a>
+			</li>
+		
+			<li>
+				<a href="/categories/html5">HTML5</a>
+			</li>
+		
+			<li>
+				<a href="/categories/algorithms">Algorithms</a>
+			</li>
+		
+			<li>
+				<a href="/categories/machine-learning">Machine Learning</a>
+			</li>
+		
+			<li>
+				<a href="/categories/c">C</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ruby">Ruby</a>
+			</li>
+		
+			<li>
+				<a href="/categories/swift">Swift</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ios">iOS</a>
+			</li>
+		
+			<li>
+				<a href="/categories/books">Books</a>
+			</li>
+		
+			<li>
+				<a href="/categories/kindle">Kindle</a>
+			</li>
+		
+			<li>
+				<a href="/categories/nginx">Nginx</a>
+			</li>
+		
+			<li>
+				<a href="/categories/capistrano">Capistrano</a>
+			</li>
+		
+			<li>
+				<a href="/categories/chef">Chef</a>
+			</li>
+		
+			<li>
+				<a href="/categories/fastlane">fastlane</a>
+			</li>
+		
+	</ul>
+
 	<h4>Archive</h4>
 	<ul>
 		
@@ -191,6 +192,10 @@
 				<a href="/2016/01/">2016/01</a>
 			</li>
 		
+			<li>
+				<a href="/2017/12/">2017/12</a>
+			</li>
+		
 	</ul>
 
 </div>
@@ -252,7 +257,7 @@
 
 <p>例をみてみます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">Dice</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">Dice</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">let</span> <span class="nl">sides</span><span class="p">:</span> <span class="n">Int</span>
 <span class="lineno"> 3</span>     <span class="n">let</span> <span class="nl">generator</span><span class="p">:</span> <span class="n">RandomNumberGenerator</span>
 <span class="lineno"> 4</span>     <span class="n">init</span><span class="p">(</span><span class="nl">sides</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">generator</span><span class="p">:</span> <span class="n">RandomNumberGenerator</span><span class="p">)</span> <span class="p">{</span>
@@ -262,11 +267,11 @@
 <span class="lineno"> 8</span>     <span class="n">func</span> <span class="n">roll</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
 <span class="lineno"> 9</span>         <span class="k">return</span> <span class="n">Int</span><span class="p">(</span><span class="n">generator</span><span class="p">.</span><span class="n">random</span><span class="p">()</span> <span class="o">*</span> <span class="n">Double</span><span class="p">(</span><span class="n">sides</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="lineno">10</span>     <span class="p">}</span>
-<span class="lineno">11</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">11</span> <span class="p">}</span></code></pre></figure>
 
 <p>この Dice クラスは generator というプロパティを持っています。このプロパティは、<a href="http://blog.kazuya.co/swift/2014/06/30/swift-doc-protocols.html">以前</a> みた RandomNumberGenerator プロトコルです。この generator プロパティには、RandomNumberGenerator プロトコルに準拠してる限りどんなタイプでも設定することができます。また、Initializer の引数のタイプとしてもこのプロトコルは使われています。generator が RandomNumberGenerator プロトコルに準拠していることが保証されているので、安心して random メソッドを使用することができます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">d6</span> <span class="o">=</span> <span class="n">Dice</span><span class="p">(</span><span class="nl">sides</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="nl">generator</span><span class="p">:</span> <span class="n">LinearCongruentialGenerator</span><span class="p">())</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">d6</span> <span class="o">=</span> <span class="n">Dice</span><span class="p">(</span><span class="nl">sides</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="nl">generator</span><span class="p">:</span> <span class="n">LinearCongruentialGenerator</span><span class="p">())</span>
 <span class="lineno">2</span> <span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">.</span><span class="mf">.5</span> <span class="p">{</span>
 <span class="lineno">3</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;Random dice roll is \(d6.roll())&quot;</span><span class="p">)</span>
 <span class="lineno">4</span> <span class="p">}</span>
@@ -274,7 +279,7 @@
 <span class="lineno">6</span> <span class="c1">// Random dice roll is 5</span>
 <span class="lineno">7</span> <span class="c1">// Random dice roll is 4</span>
 <span class="lineno">8</span> <span class="c1">// Random dice roll is 5</span>
-<span class="lineno">9</span> <span class="c1">// Random dice roll is 4</span></code></pre></div>
+<span class="lineno">9</span> <span class="c1">// Random dice roll is 4</span></code></pre></figure>
 
 <p>このように実際に使用されます。</p>
 
@@ -282,7 +287,7 @@
 
 <p>Delegation とはデザインパターンの 1 つで、クラス・構造体のある責任(機能)を他のタイプのインスタンスに転嫁することです。この Delegation は、転嫁される責任をまとめたプロトコルによって実装されます。例をみていきます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">DiceGame</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">DiceGame</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">var</span> <span class="nl">dice</span><span class="p">:</span> <span class="n">Dice</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
 <span class="lineno">3</span>     <span class="n">func</span> <span class="n">play</span><span class="p">()</span>
 <span class="lineno">4</span> <span class="p">}</span>
@@ -290,13 +295,13 @@
 <span class="lineno">6</span>     <span class="n">func</span> <span class="n">gameDidStart</span><span class="p">(</span><span class="nl">game</span><span class="p">:</span> <span class="n">DiceGame</span><span class="p">)</span>
 <span class="lineno">7</span>     <span class="n">func</span> <span class="n">game</span><span class="p">(</span><span class="nl">game</span><span class="p">:</span> <span class="n">DiceGame</span><span class="p">,</span> <span class="n">didStartNewTurnWithDiceRoll</span> <span class="nl">diceRoll</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span>
 <span class="lineno">8</span>     <span class="n">func</span> <span class="n">gameDidEnd</span><span class="p">(</span><span class="nl">game</span><span class="p">:</span> <span class="n">DiceGame</span><span class="p">)</span>
-<span class="lineno">9</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">9</span> <span class="p">}</span></code></pre></figure>
 
 <p>DiceGame プロトコルは、サイコロを持つどんなゲームにでも採用されることができます。DiceGameDelegate プロトコルは、そのゲームの状況を観察するどんなタイプにでも採用されることができます。</p>
 
 <p>このプロトコルを使い Snakes and Ladders というゲームの実装をしてみます。ゲームの内容は、iBooks の Control Flow にあります。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="nl">SnakesAndLadders</span><span class="p">:</span> <span class="n">DiceGame</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="nl">SnakesAndLadders</span><span class="p">:</span> <span class="n">DiceGame</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">let</span> <span class="n">finalSquare</span> <span class="o">=</span> <span class="mi">25</span>
 <span class="lineno"> 3</span>     <span class="n">let</span> <span class="n">dice</span> <span class="o">=</span> <span class="n">Dice</span><span class="p">(</span><span class="nl">sides</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="nl">generator</span><span class="p">:</span> <span class="n">LinearCongruentialGenerator</span><span class="p">())</span>
 <span class="lineno"> 4</span>     <span class="n">var</span> <span class="n">square</span> <span class="o">=</span> <span class="mi">0</span>
@@ -325,7 +330,7 @@
 <span class="lineno">27</span>         <span class="p">}</span>
 <span class="lineno">28</span>         <span class="n">delegate</span><span class="o">?</span><span class="p">.</span><span class="n">gameDidEnd</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span>
 <span class="lineno">29</span>     <span class="p">}</span>
-<span class="lineno">30</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">30</span> <span class="p">}</span></code></pre></figure>
 
 <p>ここで定義したクラス SnakesAndLadders が DiceGame プロトコルに準拠しています。play メソッドと dice プロパティを持っています。このクラスがゲームの本体です。</p>
 
@@ -335,7 +340,7 @@
 
 <p>肝心の転嫁された処理は、例えばこのように実装することができるでしょう。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="nl">DiceGameTracker</span><span class="p">:</span> <span class="n">DiceGameDelegate</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="nl">DiceGameTracker</span><span class="p">:</span> <span class="n">DiceGameDelegate</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">numberOfTurns</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="lineno"> 3</span>     <span class="n">func</span> <span class="n">gameDidStart</span><span class="p">(</span><span class="nl">game</span><span class="p">:</span> <span class="n">DiceGame</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 4</span>         <span class="n">numberOfTurns</span> <span class="o">=</span> <span class="mi">0</span>
@@ -351,13 +356,13 @@
 <span class="lineno">14</span>     <span class="n">func</span> <span class="n">gameDidEnd</span><span class="p">(</span><span class="nl">game</span><span class="p">:</span> <span class="n">DiceGame</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">15</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;The game lasted for \(numberOfTurns) turns&quot;</span><span class="p">)</span>
 <span class="lineno">16</span>     <span class="p">}</span>
-<span class="lineno">17</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">17</span> <span class="p">}</span></code></pre></figure>
 
 <p>状況を print しているだけのシンプルなクラスです。DiceGameDelegate プロトコルに準拠し、そのためのメソッドを実装しています。</p>
 
 <p>gameDidStart の引数の game は、SnakesAndLadders タイプではなく、DiceGame タイプです。そのため、DiceGame プロトコルで実装されているメソッド・プロパティにしかアクセスすることができません。しかし、適切なクラスにキャストすることはできます。この例では、game は SnakesAndLadders (DiceGame に準拠している) のインスタンスであることを確認しています。(<code>game is SnakesAndLadders</code> の部分)</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">tracker</span> <span class="o">=</span> <span class="n">DiceGameTracker</span><span class="p">()</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">tracker</span> <span class="o">=</span> <span class="n">DiceGameTracker</span><span class="p">()</span>
 <span class="lineno"> 2</span> <span class="n">let</span> <span class="n">game</span> <span class="o">=</span> <span class="n">SnakesAndLadders</span><span class="p">()</span>
 <span class="lineno"> 3</span> <span class="n">game</span><span class="p">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="n">tracker</span>
 <span class="lineno"> 4</span> <span class="n">game</span><span class="p">.</span><span class="n">play</span><span class="p">()</span>
@@ -367,7 +372,7 @@
 <span class="lineno"> 8</span> <span class="c1">// Rolled a 5</span>
 <span class="lineno"> 9</span> <span class="c1">// Rolled a 4</span>
 <span class="lineno">10</span> <span class="c1">// Rolled a 5</span>
-<span class="lineno">11</span> <span class="c1">// The game lasted for 4 turns</span></code></pre></div>
+<span class="lineno">11</span> <span class="c1">// The game lasted for 4 turns</span></code></pre></figure>
 
 <p>ゲームのルールが分からなくとも Delegate というデザインパターンがプロトコルを通して実装されたことが分かると思います。</p>
 
@@ -375,13 +380,13 @@
 
 <p>たとえ、もとのソースコードに対するアクセス権がなくとも、Extension により既存タイプをあるプロトコルに準拠させることができます。例をみていきます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">TextRepresentable</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">TextRepresentable</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">func</span> <span class="n">asText</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span>
-<span class="lineno">3</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">3</span> <span class="p">}</span></code></pre></figure>
 
 <p>これはどんなタイプに対しても文字列として表現させるためメソッドを実装するプオロトコルです。これを先ほどの Dice クラス と SnakesAndLadders クラスに対し、Extension によって、この TextRepresentable プロトコルに準拠させるにはこのようにします。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">extension</span> <span class="nl">Dice</span><span class="p">:</span> <span class="n">TextRepresentable</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">extension</span> <span class="nl">Dice</span><span class="p">:</span> <span class="n">TextRepresentable</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">func</span> <span class="n">asText</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
 <span class="lineno"> 3</span>         <span class="k">return</span> <span class="s">&quot;A \(sides)-sided dice&quot;</span>
 <span class="lineno"> 4</span>     <span class="p">}</span>
@@ -391,33 +396,33 @@
 <span class="lineno"> 8</span>     <span class="n">func</span> <span class="n">asText</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
 <span class="lineno"> 9</span>         <span class="k">return</span> <span class="s">&quot;A game of Snakes and Ladders with \(finalSquare) squares&quot;</span>
 <span class="lineno">10</span>     <span class="p">}</span>
-<span class="lineno">11</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">11</span> <span class="p">}</span></code></pre></figure>
 
 <p>プロトコルの名前は、タイプの名前の後にコロンを書き、宣言されます。そして、下記のように使用できます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">d12</span> <span class="o">=</span> <span class="n">Dice</span><span class="p">(</span><span class="nl">sides</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="nl">generator</span><span class="p">:</span> <span class="n">LinearCongruentialGenerator</span><span class="p">())</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">d12</span> <span class="o">=</span> <span class="n">Dice</span><span class="p">(</span><span class="nl">sides</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="nl">generator</span><span class="p">:</span> <span class="n">LinearCongruentialGenerator</span><span class="p">())</span>
 <span class="lineno">2</span> <span class="n">println</span><span class="p">(</span><span class="n">d12</span><span class="p">.</span><span class="n">asText</span><span class="p">())</span>
 <span class="lineno">3</span> <span class="c1">// prints &quot;A 12-sided dice&quot;</span>
 <span class="lineno">4</span> 
 <span class="lineno">5</span> <span class="n">println</span><span class="p">(</span><span class="n">game</span><span class="p">.</span><span class="n">asText</span><span class="p">())</span>
-<span class="lineno">6</span> <span class="c1">// prints &quot;A game of Snakes and Ladders with 25 squares&quot;</span></code></pre></div>
+<span class="lineno">6</span> <span class="c1">// prints &quot;A game of Snakes and Ladders with 25 squares&quot;</span></code></pre></figure>
 
 <p>すでにあるタイプがプロトコルの全ての要件を満たしても、プロトコルに準拠されていることが明示されていない場合には、空の Extension にて正式に準拠させることができます。あるタイプは、全ての要件を満たしているとしても、自動的にはプロトコルには準拠されないので、明示的に宣言する必要があります。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">Hamster</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">Hamster</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">var</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span>
 <span class="lineno">3</span>     <span class="n">func</span> <span class="n">asText</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
 <span class="lineno">4</span>         <span class="k">return</span> <span class="s">&quot;A hamster named \(name)&quot;</span>
 <span class="lineno">5</span>     <span class="p">}</span>
 <span class="lineno">6</span> <span class="p">}</span>
-<span class="lineno">7</span> <span class="n">extension</span> <span class="nl">Hamster</span><span class="p">:</span> <span class="n">TextRepresentable</span> <span class="p">{}</span></code></pre></div>
+<span class="lineno">7</span> <span class="n">extension</span> <span class="nl">Hamster</span><span class="p">:</span> <span class="n">TextRepresentable</span> <span class="p">{}</span></code></pre></figure>
 
 <p>これにより、Hamster のインスタンスは、どこでも TextRepresentable タイプとして使用することができます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">simonTheHamster</span> <span class="o">=</span> <span class="n">Hamster</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Simon&quot;</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">simonTheHamster</span> <span class="o">=</span> <span class="n">Hamster</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Simon&quot;</span><span class="p">)</span>
 <span class="lineno">2</span> <span class="n">let</span> <span class="nl">somethingTextRepresentable</span><span class="p">:</span> <span class="n">TextRepresentable</span> <span class="o">=</span> <span class="n">simonTheHamster</span>
 <span class="lineno">3</span> <span class="n">println</span><span class="p">(</span><span class="n">somethingTextRepresentable</span><span class="p">.</span><span class="n">asText</span><span class="p">())</span>
-<span class="lineno">4</span> <span class="c1">// prints &quot;A hamster named Simon&quot;</span></code></pre></div>
+<span class="lineno">4</span> <span class="c1">// prints &quot;A hamster named Simon&quot;</span></code></pre></figure>
 
 					</div>
 
@@ -461,80 +466,79 @@
 <h3>Category</h3>
    <p class="side_content">|
       
-   	   <a href="/categories/objective-c">objective-c
-            (11)
-         </a> |
+        <a href="/categories/objective-c">
+          Objective-C(11)
+        </a> |
       
-   	   <a href="/categories/other">other
-            (6)
-         </a> |
+        <a href="/categories/other">
+          Other(6)
+        </a> |
       
-   	   <a href="/categories/node-js">node.js
-            (1)
-         </a> |
+        <a href="/categories/node-js">
+          Node.js(1)
+        </a> |
       
-   	   <a href="/categories/ruby-on-rails">ruby on rails
-            (24)
-         </a> |
+        <a href="/categories/ruby-on-rails">
+          Ruby on Rails(24)
+        </a> |
       
-   	   <a href="/categories/tips">tips
-            (8)
-         </a> |
+        <a href="/categories/tips">
+          Tips(8)
+        </a> |
       
-   	   <a href="/categories/html5">html5
-            (8)
-         </a> |
+        <a href="/categories/html5">
+          HTML5(8)
+        </a> |
       
-   	   <a href="/categories/algorithms">algorithms
-            (2)
-         </a> |
+        <a href="/categories/algorithms">
+          Algorithms(2)
+        </a> |
       
-   	   <a href="/categories/machine-learning">machine learning
-            (5)
-         </a> |
+        <a href="/categories/machine-learning">
+          Machine Learning(5)
+        </a> |
       
-   	   <a href="/categories/c">c
-            (14)
-         </a> |
+        <a href="/categories/c">
+          C(14)
+        </a> |
       
-   	   <a href="/categories/ruby">ruby
-            (5)
-         </a> |
+        <a href="/categories/ruby">
+          Ruby(5)
+        </a> |
       
-   	   <a href="/categories/swift">swift
-            (34)
-         </a> |
+        <a href="/categories/swift">
+          Swift(34)
+        </a> |
       
-   	   <a href="/categories/ios">ios
-            (6)
-         </a> |
+        <a href="/categories/ios">
+          iOS(6)
+        </a> |
       
-   	   <a href="/categories/books">books
-            (4)
-         </a> |
+        <a href="/categories/books">
+          Books(5)
+        </a> |
       
-   	   <a href="/categories/kindle">kindle
-            (3)
-         </a> |
+        <a href="/categories/kindle">
+          Kindle(3)
+        </a> |
       
-   	   <a href="/categories/nginx">nginx
-            (1)
-         </a> |
+        <a href="/categories/nginx">
+          Nginx(1)
+        </a> |
       
-   	   <a href="/categories/capistrano">capistrano
-            (1)
-         </a> |
+        <a href="/categories/capistrano">
+          Capistrano(1)
+        </a> |
       
-   	   <a href="/categories/chef">chef
-            (2)
-         </a> |
+        <a href="/categories/chef">
+          Chef(2)
+        </a> |
       
-   	   <a href="/categories/fastlane">fastlane
-            (1)
-         </a> |
+        <a href="/categories/fastlane">
+          fastlane(1)
+        </a> |
       
    </p>
-
 <hr />
 
 <h3>Archive</h3>
@@ -608,6 +612,10 @@
             (1)
          </a> |
       
+   		<a href="/2017/12/">2017/12
+            (1)
+         </a> |
+      
    </p>
 
 <hr />
@@ -631,102 +639,106 @@
 				   <p>
 					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
 					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
-					   <a href="https://github.com/kzykbys">Github</a></p>
-				   <h4>Category</h4>
-				   <p>|
-					   
-						   <a href="/categories/objective-c">objective-c</a> | 
-					   
-						   <a href="/categories/other">other</a> | 
-					   
-						   <a href="/categories/node-js">node.js</a> | 
-					   
-						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
-					   
-						   <a href="/categories/tips">tips</a> | 
-					   
-						   <a href="/categories/html5">html5</a> | 
-					   
-						   <a href="/categories/algorithms">algorithms</a> | 
-					   
-						   <a href="/categories/machine-learning">machine learning</a> | 
-					   
-						   <a href="/categories/c">c</a> | 
-					   
-						   <a href="/categories/ruby">ruby</a> | 
-					   
-						   <a href="/categories/swift">swift</a> | 
-					   
-						   <a href="/categories/ios">ios</a> | 
-					   
-						   <a href="/categories/books">books</a> | 
-					   
-						   <a href="/categories/kindle">kindle</a> | 
-					   
-						   <a href="/categories/nginx">nginx</a> | 
-					   
-						   <a href="/categories/capistrano">capistrano</a> | 
-					   
-						   <a href="/categories/chef">chef</a> | 
-					   
-						   <a href="/categories/fastlane">fastlane</a> | 
-					   
-				   </p>
-				   <h4>Archive</h4>
-					   <p>|
-					   
-	    					<a href="/2013/08/">2013/08
-	    					</a> | 
-	    			   
-	    					<a href="/2013/09/">2013/09
-	    					</a> | 
-	    			   
-	    					<a href="/2013/11/">2013/11
-	    					</a> | 
-	    			   
-	    					<a href="/2013/12/">2013/12
-	    					</a> | 
-	    			   
-	    					<a href="/2014/01/">2014/01
-	    					</a> | 
-	    			   
-	    					<a href="/2014/03/">2014/03
-	    					</a> | 
-	    			   
-	    					<a href="/2014/04/">2014/04
-	    					</a> | 
-	    			   
-	    					<a href="/2014/05/">2014/05
-	    					</a> | 
-	    			   
-	    					<a href="/2014/06/">2014/06
-	    					</a> | 
-	    			   
-	    					<a href="/2014/07/">2014/07
-	    					</a> | 
-	    			   
-	    					<a href="/2014/08/">2014/08
-	    					</a> | 
-	    			   
-	    					<a href="/2014/09/">2014/09
-	    					</a> | 
-	    			   
-	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2015/02/">2015/02
-	    					</a> | 
-	    			   
-	    					<a href="/2015/07/">2015/07
-	    					</a> | 
-	    			   
-	    					<a href="/2015/08/">2015/08
-	    					</a> | 
-	    			   
-	    					<a href="/2016/01/">2016/01
-	    					</a> | 
-	    			   
-    			   </p>
+					   <a href="https://github.com/kzykbys">Github</a>
+					</p>
+					<h4>Category</h4>
+					<p>|
+						
+							<a href="/categories/objective-c">Objective-C</a> | 
+						
+							<a href="/categories/other">Other</a> | 
+						
+							<a href="/categories/node-js">Node.js</a> | 
+						
+							<a href="/categories/ruby-on-rails">Ruby on Rails</a> | 
+						
+							<a href="/categories/tips">Tips</a> | 
+						
+							<a href="/categories/html5">HTML5</a> | 
+						
+							<a href="/categories/algorithms">Algorithms</a> | 
+						
+							<a href="/categories/machine-learning">Machine Learning</a> | 
+						
+							<a href="/categories/c">C</a> | 
+						
+							<a href="/categories/ruby">Ruby</a> | 
+						
+							<a href="/categories/swift">Swift</a> | 
+						
+							<a href="/categories/ios">iOS</a> | 
+						
+							<a href="/categories/books">Books</a> | 
+						
+							<a href="/categories/kindle">Kindle</a> | 
+						
+							<a href="/categories/nginx">Nginx</a> | 
+						
+							<a href="/categories/capistrano">Capistrano</a> | 
+						
+							<a href="/categories/chef">Chef</a> | 
+						
+							<a href="/categories/fastlane">fastlane</a> | 
+						
+					</p>
+					<h4>Archive</h4>
+						<p>|
+						
+							<a href="/2013/08/">2013/08
+							</a> | 
+						
+							<a href="/2013/09/">2013/09
+							</a> | 
+						
+							<a href="/2013/11/">2013/11
+							</a> | 
+						
+							<a href="/2013/12/">2013/12
+							</a> | 
+						
+							<a href="/2014/01/">2014/01
+							</a> | 
+						
+							<a href="/2014/03/">2014/03
+							</a> | 
+						
+							<a href="/2014/04/">2014/04
+							</a> | 
+						
+							<a href="/2014/05/">2014/05
+							</a> | 
+						
+							<a href="/2014/06/">2014/06
+							</a> | 
+						
+							<a href="/2014/07/">2014/07
+							</a> | 
+						
+							<a href="/2014/08/">2014/08
+							</a> | 
+						
+							<a href="/2014/09/">2014/09
+							</a> | 
+						
+							<a href="/2014/10/">2014/10
+							</a> | 
+						
+							<a href="/2015/02/">2015/02
+							</a> | 
+						
+							<a href="/2015/07/">2015/07
+							</a> | 
+						
+							<a href="/2015/08/">2015/08
+							</a> | 
+						
+							<a href="/2016/01/">2016/01
+							</a> | 
+						
+							<a href="/2017/12/">2017/12
+							</a> | 
+						
+					</p>
 			   </div>
 		   </div>
 	   	</div>

@@ -46,80 +46,81 @@
 
 	<h4>Category</h4>
 	<ul>
-	   
-		   <li>
-		   		<a href="/categories/objective-c">objective-c</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/other">other</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/node-js">node.js</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/tips">tips</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/html5">html5</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/algorithms">algorithms</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/machine-learning">machine learning</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/c">c</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ruby">ruby</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/swift">swift</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ios">ios</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/books">books</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/kindle">kindle</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/nginx">nginx</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/capistrano">capistrano</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/chef">chef</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/fastlane">fastlane</a>
-		   </li>
-	   
-    </ul>
+		
+			<li>
+				<a href="/categories/objective-c">Objective-C</a>
+			</li>
+		
+			<li>
+				<a href="/categories/other">Other</a>
+			</li>
+		
+			<li>
+				<a href="/categories/node-js">Node.js</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ruby-on-rails">Ruby on Rails</a>
+			</li>
+		
+			<li>
+				<a href="/categories/tips">Tips</a>
+			</li>
+		
+			<li>
+				<a href="/categories/html5">HTML5</a>
+			</li>
+		
+			<li>
+				<a href="/categories/algorithms">Algorithms</a>
+			</li>
+		
+			<li>
+				<a href="/categories/machine-learning">Machine Learning</a>
+			</li>
+		
+			<li>
+				<a href="/categories/c">C</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ruby">Ruby</a>
+			</li>
+		
+			<li>
+				<a href="/categories/swift">Swift</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ios">iOS</a>
+			</li>
+		
+			<li>
+				<a href="/categories/books">Books</a>
+			</li>
+		
+			<li>
+				<a href="/categories/kindle">Kindle</a>
+			</li>
+		
+			<li>
+				<a href="/categories/nginx">Nginx</a>
+			</li>
+		
+			<li>
+				<a href="/categories/capistrano">Capistrano</a>
+			</li>
+		
+			<li>
+				<a href="/categories/chef">Chef</a>
+			</li>
+		
+			<li>
+				<a href="/categories/fastlane">fastlane</a>
+			</li>
+		
+	</ul>
+
 	<h4>Archive</h4>
 	<ul>
 		
@@ -191,6 +192,10 @@
 				<a href="/2016/01/">2016/01</a>
 			</li>
 		
+			<li>
+				<a href="/2017/12/">2017/12</a>
+			</li>
+		
 	</ul>
 
 </div>
@@ -252,44 +257,44 @@
 
 <p>Stored Properties は一番シンプルなプロパティです。クラスと構造体のインスタンスの中に保存されます。変数とコンスタント、両方とも使用可能です。デフォルト値を設定することもできますし、初期化の際に値を設定・修正することもできます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">FixedLengthRange</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">FixedLengthRange</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">var</span> <span class="nl">firstValue</span><span class="p">:</span> <span class="n">Int</span>
 <span class="lineno">3</span>     <span class="n">let</span> <span class="nl">length</span><span class="p">:</span> <span class="n">Int</span>
 <span class="lineno">4</span> <span class="p">}</span>
 <span class="lineno">5</span> <span class="n">var</span> <span class="n">rangeOfThreeItems</span> <span class="o">=</span> <span class="n">FixedLengthRange</span><span class="p">(</span><span class="nl">firstValue</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">length</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
 <span class="lineno">6</span> <span class="c1">// the range represents integer values 0, 1, and 2</span>
 <span class="lineno">7</span> <span class="n">rangeOfThreeItems</span><span class="p">.</span><span class="n">firstValue</span> <span class="o">=</span> <span class="mi">6</span>
-<span class="lineno">8</span> <span class="c1">// the range now represents integer values 6, 7, and 8</span></code></pre></div>
+<span class="lineno">8</span> <span class="c1">// the range now represents integer values 6, 7, and 8</span></code></pre></figure>
 
 <p>上記の構造体は、変数のプロパティとコンスタントのプロパティを持っています。length コンスタントプロパティは、初期化後、修正することができません。</p>
 
 <p>この構造体は、変数として宣言されているので、変数プロパティを変更することができます。この例では、firstValue を変更しています。しかし、構造体がコンスタントの場合には、変更することができません。たとえ、その構造体のプロパティが firstValue のように変数として定義されていてもです。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">rangeOfFourItems</span> <span class="o">=</span> <span class="n">FixedLengthRange</span><span class="p">(</span><span class="nl">firstValue</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">length</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">rangeOfFourItems</span> <span class="o">=</span> <span class="n">FixedLengthRange</span><span class="p">(</span><span class="nl">firstValue</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">length</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span>
 <span class="lineno">2</span> <span class="c1">// this range represents integer values 0, 1, 2, and 3</span>
 <span class="lineno">3</span> <span class="n">rangeOfFourItems</span><span class="p">.</span><span class="n">firstValue</span> <span class="o">=</span> <span class="mi">6</span>
-<span class="lineno">4</span> <span class="c1">// this will report an error, even thought firstValue is a variable property</span></code></pre></div>
+<span class="lineno">4</span> <span class="c1">// this will report an error, even thought firstValue is a variable property</span></code></pre></figure>
 
 <p>この挙動は、<a href="http://blog.kazuya.co/swift/2014/06/16/swift-doc-class-structur.html">以前</a> みたように、構造体はバリュー、クラスはリファレンスという違いから生まれるものです。構造体は、バリューなので、一度コンスタントとして宣言されると変更することができません。クラスの場合には、クラスインスタンスの変数・コンスタントは、リファレンスを持っているだけなので、参照先の値を変更することができます。もちろん、参照先のプロパティは、コンスタントではなく、変数である必要があります。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">class</span> <span class="n">FixedLengthRange</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">class</span> <span class="n">FixedLengthRange</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">var</span> <span class="nl">firstValue</span><span class="p">:</span> <span class="n">Int</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="lineno">3</span>     <span class="n">let</span> <span class="nl">length</span><span class="p">:</span> <span class="n">Int</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="lineno">4</span> <span class="p">}</span>
 <span class="lineno">5</span> 
 <span class="lineno">6</span> <span class="n">let</span> <span class="n">rangeOfFourItems</span> <span class="o">=</span> <span class="n">FixedLengthRange</span><span class="p">()</span>
 <span class="lineno">7</span> <span class="n">rangeOfFourItems</span><span class="p">.</span><span class="n">firstValue</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1">// can change even rangeOfFourItems is constant</span>
-<span class="lineno">8</span> <span class="n">rangeOfFourItems</span><span class="p">.</span><span class="n">length</span> <span class="o">=</span> <span class="mi">10</span>     <span class="c1">// cannot change because length is constant</span></code></pre></div>
+<span class="lineno">8</span> <span class="n">rangeOfFourItems</span><span class="p">.</span><span class="n">length</span> <span class="o">=</span> <span class="mi">10</span>     <span class="c1">// cannot change because length is constant</span></code></pre></figure>
 
 <h4 id="2.-lazy-stored-properties">2. Lazy Stored Properties</h4>
 
 <p>Lazy stored propeties というものがあります。これは、プロパティが初期値が使用される時まで作成されないというものです。初期値が外的要因に左右される場合や、初期化するのに時間がかかり実際に使用される時まで実行されることが望ましくない場合に便利です。Lazy stored peropeties を使用するには、<code>@lazy</code> キーワードをプロパティの前に使用します。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">class</span> <span class="n">DataManager</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">class</span> <span class="n">DataManager</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="p">@</span><span class="n">lazy</span> <span class="n">var</span> <span class="n">importer</span> <span class="o">=</span> <span class="n">DataImporter</span><span class="p">()</span>
 <span class="lineno">3</span>     <span class="n">var</span> <span class="n">data</span> <span class="o">=</span> <span class="n">String</span><span class="p">[]()</span>
 <span class="lineno">4</span>     <span class="c1">// the DataManager class would provide data management functionality here</span>
-<span class="lineno">5</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">5</span> <span class="p">}</span></code></pre></figure>
 
 <p>この DataManager クラスは、DataImporter クラスの importer プロパティを持ちます。DataImporter クラスは、データをインプットファイル等からロードし、コンテンツを処理して、クラスを初期化することが想定されます。つまり、DataImporter のインスタンスを作成するのに時間がかかります。そのため、DataManager を作成すると同時に、DataImporter クラスのプロパティを初期化することはあまり得策ではありません。そこで、実際にこのプロパティを使用する時まで、このプロパティを初期化するのを遅らせたい場合に、<code>@lazy</code> を使用します。</p>
 
@@ -297,7 +302,7 @@
 
 <p>Stored Properties の他に、Computed Properties というものがあります。これは、クラスと構造体、さらに Enumeration でも使用できます。このプロパティは実際に値を保存しているのではなく、他のプロパティ等の値を計算して、その値を返すというプロパティです。Computed Properties はその都度計算されるので、変数として宣言されなければなりません。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">Point</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">Point</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="lineno"> 3</span> <span class="p">}</span>
 <span class="lineno"> 4</span> <span class="k">struct</span> <span class="n">Size</span> <span class="p">{</span>
@@ -317,16 +322,16 @@
 <span class="lineno">18</span>          <span class="n">origin</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">newCenter</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
 <span class="lineno">19</span>      <span class="p">}</span>
 <span class="lineno">20</span>     <span class="p">}</span>
-<span class="lineno">21</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">21</span> <span class="p">}</span></code></pre></figure>
 
 <p>3 つの構造体があります。この Rect 構造体の center プロパティが、Computed Properties です。この center は、origin プロパティと size プロパティの値を使用して、値を返してます。こういうプロパティを Computed Properties と呼ぶようです。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">square</span> <span class="o">=</span> <span class="n">Rect</span><span class="p">(</span><span class="nl">origin</span><span class="p">:</span> <span class="n">Point</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">),</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">square</span> <span class="o">=</span> <span class="n">Rect</span><span class="p">(</span><span class="nl">origin</span><span class="p">:</span> <span class="n">Point</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">),</span>
 <span class="lineno">2</span>     <span class="nl">size</span><span class="p">:</span> <span class="n">Size</span><span class="p">(</span><span class="nl">width</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">))</span>
 <span class="lineno">3</span> <span class="n">let</span> <span class="n">initialSquareCenter</span> <span class="o">=</span> <span class="n">square</span><span class="p">.</span><span class="n">center</span>
 <span class="lineno">4</span> <span class="n">square</span><span class="p">.</span><span class="n">center</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="mf">15.0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mf">15.0</span><span class="p">)</span>
 <span class="lineno">5</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;square.origin is now at (\(square.origin.x), \(square.origin.y))&quot;</span><span class="p">)</span>
-<span class="lineno">6</span> <span class="c1">// prints &quot;square.origin is now at (10.0, 10.0)</span></code></pre></div>
+<span class="lineno">6</span> <span class="c1">// prints &quot;square.origin is now at (10.0, 10.0)</span></code></pre></figure>
 
 <p>このように使用します。</p>
 
@@ -334,14 +339,14 @@
 
 <p>上記のコードの Computed Properties のセッターをもう少し簡単に書くことができます。新しい値への名前を設定しなかった場合、Swift は自動的に newValue という名前を用意してくれ、それを使用することができます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">set</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">set</span> <span class="p">{</span>
 <span class="lineno">2</span>         <span class="n">origin</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">newValue</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
 <span class="lineno">3</span>         <span class="n">origin</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">newValue</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-<span class="lineno">4</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">4</span> <span class="p">}</span></code></pre></figure>
 
 <p>Computed Properties において、ゲッターはもちろん必要ですが、セッターは必ず実装しなければならないというわけではありません。つまり、read-only の Computed Properties を作成できます。<code>get</code> キーワードを削除し、下記の volume プロパティのように実装すれば OK です。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">Cuboid</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">Cuboid</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">var</span> <span class="n">width</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">depth</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="lineno">3</span>     <span class="n">var</span> <span class="nl">volume</span><span class="p">:</span> <span class="n">Double</span> <span class="p">{</span>
 <span class="lineno">4</span>     <span class="k">return</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span> <span class="o">*</span> <span class="n">depth</span>
@@ -349,7 +354,7 @@
 <span class="lineno">6</span> <span class="p">}</span>
 <span class="lineno">7</span> <span class="n">let</span> <span class="n">fourByFiveByTwo</span> <span class="o">=</span> <span class="n">Cuboid</span><span class="p">(</span><span class="nl">width</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span> <span class="nl">depth</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">)</span>
 <span class="lineno">8</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)&quot;</span><span class="p">)</span>
-<span class="lineno">9</span> <span class="c1">// prints &quot;the volume of fourByFiveByTwo is 40.0</span></code></pre></div>
+<span class="lineno">9</span> <span class="c1">// prints &quot;the volume of fourByFiveByTwo is 40.0</span></code></pre></figure>
 
 					</div>
 
@@ -393,80 +398,79 @@
 <h3>Category</h3>
    <p class="side_content">|
       
-   	   <a href="/categories/objective-c">objective-c
-            (11)
-         </a> |
+        <a href="/categories/objective-c">
+          Objective-C(11)
+        </a> |
       
-   	   <a href="/categories/other">other
-            (6)
-         </a> |
+        <a href="/categories/other">
+          Other(6)
+        </a> |
       
-   	   <a href="/categories/node-js">node.js
-            (1)
-         </a> |
+        <a href="/categories/node-js">
+          Node.js(1)
+        </a> |
       
-   	   <a href="/categories/ruby-on-rails">ruby on rails
-            (24)
-         </a> |
+        <a href="/categories/ruby-on-rails">
+          Ruby on Rails(24)
+        </a> |
       
-   	   <a href="/categories/tips">tips
-            (8)
-         </a> |
+        <a href="/categories/tips">
+          Tips(8)
+        </a> |
       
-   	   <a href="/categories/html5">html5
-            (8)
-         </a> |
+        <a href="/categories/html5">
+          HTML5(8)
+        </a> |
       
-   	   <a href="/categories/algorithms">algorithms
-            (2)
-         </a> |
+        <a href="/categories/algorithms">
+          Algorithms(2)
+        </a> |
       
-   	   <a href="/categories/machine-learning">machine learning
-            (5)
-         </a> |
+        <a href="/categories/machine-learning">
+          Machine Learning(5)
+        </a> |
       
-   	   <a href="/categories/c">c
-            (14)
-         </a> |
+        <a href="/categories/c">
+          C(14)
+        </a> |
       
-   	   <a href="/categories/ruby">ruby
-            (5)
-         </a> |
+        <a href="/categories/ruby">
+          Ruby(5)
+        </a> |
       
-   	   <a href="/categories/swift">swift
-            (34)
-         </a> |
+        <a href="/categories/swift">
+          Swift(34)
+        </a> |
       
-   	   <a href="/categories/ios">ios
-            (6)
-         </a> |
+        <a href="/categories/ios">
+          iOS(6)
+        </a> |
       
-   	   <a href="/categories/books">books
-            (4)
-         </a> |
+        <a href="/categories/books">
+          Books(5)
+        </a> |
       
-   	   <a href="/categories/kindle">kindle
-            (3)
-         </a> |
+        <a href="/categories/kindle">
+          Kindle(3)
+        </a> |
       
-   	   <a href="/categories/nginx">nginx
-            (1)
-         </a> |
+        <a href="/categories/nginx">
+          Nginx(1)
+        </a> |
       
-   	   <a href="/categories/capistrano">capistrano
-            (1)
-         </a> |
+        <a href="/categories/capistrano">
+          Capistrano(1)
+        </a> |
       
-   	   <a href="/categories/chef">chef
-            (2)
-         </a> |
+        <a href="/categories/chef">
+          Chef(2)
+        </a> |
       
-   	   <a href="/categories/fastlane">fastlane
-            (1)
-         </a> |
+        <a href="/categories/fastlane">
+          fastlane(1)
+        </a> |
       
    </p>
-
 <hr />
 
 <h3>Archive</h3>
@@ -540,6 +544,10 @@
             (1)
          </a> |
       
+   		<a href="/2017/12/">2017/12
+            (1)
+         </a> |
+      
    </p>
 
 <hr />
@@ -563,102 +571,106 @@
 				   <p>
 					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
 					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
-					   <a href="https://github.com/kzykbys">Github</a></p>
-				   <h4>Category</h4>
-				   <p>|
-					   
-						   <a href="/categories/objective-c">objective-c</a> | 
-					   
-						   <a href="/categories/other">other</a> | 
-					   
-						   <a href="/categories/node-js">node.js</a> | 
-					   
-						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
-					   
-						   <a href="/categories/tips">tips</a> | 
-					   
-						   <a href="/categories/html5">html5</a> | 
-					   
-						   <a href="/categories/algorithms">algorithms</a> | 
-					   
-						   <a href="/categories/machine-learning">machine learning</a> | 
-					   
-						   <a href="/categories/c">c</a> | 
-					   
-						   <a href="/categories/ruby">ruby</a> | 
-					   
-						   <a href="/categories/swift">swift</a> | 
-					   
-						   <a href="/categories/ios">ios</a> | 
-					   
-						   <a href="/categories/books">books</a> | 
-					   
-						   <a href="/categories/kindle">kindle</a> | 
-					   
-						   <a href="/categories/nginx">nginx</a> | 
-					   
-						   <a href="/categories/capistrano">capistrano</a> | 
-					   
-						   <a href="/categories/chef">chef</a> | 
-					   
-						   <a href="/categories/fastlane">fastlane</a> | 
-					   
-				   </p>
-				   <h4>Archive</h4>
-					   <p>|
-					   
-	    					<a href="/2013/08/">2013/08
-	    					</a> | 
-	    			   
-	    					<a href="/2013/09/">2013/09
-	    					</a> | 
-	    			   
-	    					<a href="/2013/11/">2013/11
-	    					</a> | 
-	    			   
-	    					<a href="/2013/12/">2013/12
-	    					</a> | 
-	    			   
-	    					<a href="/2014/01/">2014/01
-	    					</a> | 
-	    			   
-	    					<a href="/2014/03/">2014/03
-	    					</a> | 
-	    			   
-	    					<a href="/2014/04/">2014/04
-	    					</a> | 
-	    			   
-	    					<a href="/2014/05/">2014/05
-	    					</a> | 
-	    			   
-	    					<a href="/2014/06/">2014/06
-	    					</a> | 
-	    			   
-	    					<a href="/2014/07/">2014/07
-	    					</a> | 
-	    			   
-	    					<a href="/2014/08/">2014/08
-	    					</a> | 
-	    			   
-	    					<a href="/2014/09/">2014/09
-	    					</a> | 
-	    			   
-	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2015/02/">2015/02
-	    					</a> | 
-	    			   
-	    					<a href="/2015/07/">2015/07
-	    					</a> | 
-	    			   
-	    					<a href="/2015/08/">2015/08
-	    					</a> | 
-	    			   
-	    					<a href="/2016/01/">2016/01
-	    					</a> | 
-	    			   
-    			   </p>
+					   <a href="https://github.com/kzykbys">Github</a>
+					</p>
+					<h4>Category</h4>
+					<p>|
+						
+							<a href="/categories/objective-c">Objective-C</a> | 
+						
+							<a href="/categories/other">Other</a> | 
+						
+							<a href="/categories/node-js">Node.js</a> | 
+						
+							<a href="/categories/ruby-on-rails">Ruby on Rails</a> | 
+						
+							<a href="/categories/tips">Tips</a> | 
+						
+							<a href="/categories/html5">HTML5</a> | 
+						
+							<a href="/categories/algorithms">Algorithms</a> | 
+						
+							<a href="/categories/machine-learning">Machine Learning</a> | 
+						
+							<a href="/categories/c">C</a> | 
+						
+							<a href="/categories/ruby">Ruby</a> | 
+						
+							<a href="/categories/swift">Swift</a> | 
+						
+							<a href="/categories/ios">iOS</a> | 
+						
+							<a href="/categories/books">Books</a> | 
+						
+							<a href="/categories/kindle">Kindle</a> | 
+						
+							<a href="/categories/nginx">Nginx</a> | 
+						
+							<a href="/categories/capistrano">Capistrano</a> | 
+						
+							<a href="/categories/chef">Chef</a> | 
+						
+							<a href="/categories/fastlane">fastlane</a> | 
+						
+					</p>
+					<h4>Archive</h4>
+						<p>|
+						
+							<a href="/2013/08/">2013/08
+							</a> | 
+						
+							<a href="/2013/09/">2013/09
+							</a> | 
+						
+							<a href="/2013/11/">2013/11
+							</a> | 
+						
+							<a href="/2013/12/">2013/12
+							</a> | 
+						
+							<a href="/2014/01/">2014/01
+							</a> | 
+						
+							<a href="/2014/03/">2014/03
+							</a> | 
+						
+							<a href="/2014/04/">2014/04
+							</a> | 
+						
+							<a href="/2014/05/">2014/05
+							</a> | 
+						
+							<a href="/2014/06/">2014/06
+							</a> | 
+						
+							<a href="/2014/07/">2014/07
+							</a> | 
+						
+							<a href="/2014/08/">2014/08
+							</a> | 
+						
+							<a href="/2014/09/">2014/09
+							</a> | 
+						
+							<a href="/2014/10/">2014/10
+							</a> | 
+						
+							<a href="/2015/02/">2015/02
+							</a> | 
+						
+							<a href="/2015/07/">2015/07
+							</a> | 
+						
+							<a href="/2015/08/">2015/08
+							</a> | 
+						
+							<a href="/2016/01/">2016/01
+							</a> | 
+						
+							<a href="/2017/12/">2017/12
+							</a> | 
+						
+					</p>
 			   </div>
 		   </div>
 	   	</div>

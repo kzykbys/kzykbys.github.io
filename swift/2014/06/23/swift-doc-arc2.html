@@ -46,80 +46,81 @@
 
 	<h4>Category</h4>
 	<ul>
-	   
-		   <li>
-		   		<a href="/categories/objective-c">objective-c</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/other">other</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/node-js">node.js</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/tips">tips</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/html5">html5</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/algorithms">algorithms</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/machine-learning">machine learning</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/c">c</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ruby">ruby</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/swift">swift</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ios">ios</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/books">books</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/kindle">kindle</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/nginx">nginx</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/capistrano">capistrano</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/chef">chef</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/fastlane">fastlane</a>
-		   </li>
-	   
-    </ul>
+		
+			<li>
+				<a href="/categories/objective-c">Objective-C</a>
+			</li>
+		
+			<li>
+				<a href="/categories/other">Other</a>
+			</li>
+		
+			<li>
+				<a href="/categories/node-js">Node.js</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ruby-on-rails">Ruby on Rails</a>
+			</li>
+		
+			<li>
+				<a href="/categories/tips">Tips</a>
+			</li>
+		
+			<li>
+				<a href="/categories/html5">HTML5</a>
+			</li>
+		
+			<li>
+				<a href="/categories/algorithms">Algorithms</a>
+			</li>
+		
+			<li>
+				<a href="/categories/machine-learning">Machine Learning</a>
+			</li>
+		
+			<li>
+				<a href="/categories/c">C</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ruby">Ruby</a>
+			</li>
+		
+			<li>
+				<a href="/categories/swift">Swift</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ios">iOS</a>
+			</li>
+		
+			<li>
+				<a href="/categories/books">Books</a>
+			</li>
+		
+			<li>
+				<a href="/categories/kindle">Kindle</a>
+			</li>
+		
+			<li>
+				<a href="/categories/nginx">Nginx</a>
+			</li>
+		
+			<li>
+				<a href="/categories/capistrano">Capistrano</a>
+			</li>
+		
+			<li>
+				<a href="/categories/chef">Chef</a>
+			</li>
+		
+			<li>
+				<a href="/categories/fastlane">fastlane</a>
+			</li>
+		
+	</ul>
+
 	<h4>Archive</h4>
 	<ul>
 		
@@ -191,6 +192,10 @@
 				<a href="/2016/01/">2016/01</a>
 			</li>
 		
+			<li>
+				<a href="/2017/12/">2017/12</a>
+			</li>
+		
 	</ul>
 
 </div>
@@ -258,7 +263,7 @@
 
 <p>先ほどの Person-Apartmen の例を <code>weak</code> を使い書き直します。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">Person</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">Person</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">let</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span>
 <span class="lineno"> 3</span>     <span class="n">init</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span> <span class="nb">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span> <span class="p">}</span>
 <span class="lineno"> 4</span>     <span class="n">var</span> <span class="nl">apartment</span><span class="p">:</span> <span class="n">Apartment</span><span class="o">?</span>
@@ -270,23 +275,23 @@
 <span class="lineno">10</span>     <span class="n">init</span><span class="p">(</span><span class="nl">number</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span> <span class="nb">self</span><span class="p">.</span><span class="n">number</span> <span class="o">=</span> <span class="n">number</span> <span class="p">}</span>
 <span class="lineno">11</span>     <span class="k">weak</span> <span class="n">var</span> <span class="nl">tenant</span><span class="p">:</span> <span class="n">Person</span><span class="o">?</span>
 <span class="lineno">12</span>     <span class="n">deinit</span> <span class="p">{</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;Apartment #\(number) is being deinitialized&quot;</span><span class="p">)</span> <span class="p">}</span>
-<span class="lineno">13</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">13</span> <span class="p">}</span></code></pre></figure>
 
 <p>Apartment の tenant プロパティが <code>weak</code> として宣言されています。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="nl">john</span><span class="p">:</span> <span class="n">Person</span><span class="o">?</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="nl">john</span><span class="p">:</span> <span class="n">Person</span><span class="o">?</span>
 <span class="lineno">2</span> <span class="n">var</span> <span class="nl">number73</span><span class="p">:</span> <span class="n">Apartment</span><span class="o">?</span>
 <span class="lineno">3</span>  
 <span class="lineno">4</span> <span class="n">john</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;John Appleseed&quot;</span><span class="p">)</span>
 <span class="lineno">5</span> <span class="n">number73</span> <span class="o">=</span> <span class="n">Apartment</span><span class="p">(</span><span class="nl">number</span><span class="p">:</span> <span class="mi">73</span><span class="p">)</span>
 <span class="lineno">6</span>  
 <span class="lineno">7</span> <span class="n">john</span><span class="o">!</span><span class="p">.</span><span class="n">apartment</span> <span class="o">=</span> <span class="n">number73</span>
-<span class="lineno">8</span> <span class="n">number73</span><span class="o">!</span><span class="p">.</span><span class="n">tenant</span> <span class="o">=</span> <span class="n">john</span></code></pre></div>
+<span class="lineno">8</span> <span class="n">number73</span><span class="o">!</span><span class="p">.</span><span class="n">tenant</span> <span class="o">=</span> <span class="n">john</span></code></pre></figure>
 
 <p>そして、Person のインスタンスを解放してみます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">john</span> <span class="o">=</span> <span class="nb">nil</span>
-<span class="lineno">2</span> <span class="c1">// prints &quot;John Appleseed is being deinitialized&quot;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">john</span> <span class="o">=</span> <span class="nb">nil</span>
+<span class="lineno">2</span> <span class="c1">// prints &quot;John Appleseed is being deinitialized&quot;</span></code></pre></figure>
 
 <p>この Person に対する <code>strong</code> 参照は、この <code>john = nil</code> で 0 になります。そのため、Person インスタンス は解放されました。このイメージを見ていただければわかりやすいと思います。Person Instance に向かっている矢印は、<code>weak</code> 参照だけです。</p>
 
@@ -294,8 +299,8 @@
 
 <p>そして、Apartment のインスタンスも解放します。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">number73</span> <span class="o">=</span> <span class="nb">nil</span>
-<span class="lineno">2</span> <span class="c1">// prints &quot;Apartment #73 is being deinitialized&quot;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">number73</span> <span class="o">=</span> <span class="nb">nil</span>
+<span class="lineno">2</span> <span class="c1">// prints &quot;Apartment #73 is being deinitialized&quot;</span></code></pre></figure>
 
 <p>この Apartment インスタンスは <code>number73</code> と Person インスタンスのプロパティである <code>apartment</code> から <code>strong</code> 参照がありました。この <code>number73 = nil</code> により、<code>number73</code> からの <code>strong</code> 参照は消え、上記の <code>john = nil</code> により、Person インスタンスからの <code>strong</code> 参照もなくなっているので、メモリが解放されています。</p>
 
@@ -309,7 +314,7 @@
 
 <p>次は、先ほどとは少し違う例を見ます。Customer と CreditCard というクラスを見ていきます。Customer はクレジットカードを常に持っているかは分かりません。しかし、CreditCard クラスのインスタンスは常に顧客情報である Customer のインスタンスを持っています。つまり、CreditCard の Customer インスタンスを持つ プロパティは <code>unowned</code> として宣言されます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">Customer</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">Customer</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">let</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span>
 <span class="lineno"> 3</span>     <span class="n">var</span> <span class="nl">card</span><span class="p">:</span> <span class="n">CreditCard</span><span class="o">?</span>
 <span class="lineno"> 4</span>     <span class="n">init</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
@@ -326,13 +331,13 @@
 <span class="lineno">15</span>         <span class="nb">self</span><span class="p">.</span><span class="n">customer</span> <span class="o">=</span> <span class="n">customer</span>
 <span class="lineno">16</span>     <span class="p">}</span>
 <span class="lineno">17</span>     <span class="n">deinit</span> <span class="p">{</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;Card #\(number) is being deinitialized&quot;</span><span class="p">)</span> <span class="p">}</span>
-<span class="lineno">18</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">18</span> <span class="p">}</span></code></pre></figure>
 
 <p>そして、それぞれ初期化していきます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="nl">john</span><span class="p">:</span> <span class="n">Customer</span><span class="o">?</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="nl">john</span><span class="p">:</span> <span class="n">Customer</span><span class="o">?</span>
 <span class="lineno">2</span> <span class="n">john</span> <span class="o">=</span> <span class="n">Customer</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;John Appleseed&quot;</span><span class="p">)</span>
-<span class="lineno">3</span> <span class="n">john</span><span class="o">!</span><span class="p">.</span><span class="n">card</span> <span class="o">=</span> <span class="n">CreditCard</span><span class="p">(</span><span class="nl">number</span><span class="p">:</span> <span class="mi">1234</span><span class="n">_5678_9012_3456</span><span class="p">,</span> <span class="nl">customer</span><span class="p">:</span> <span class="n">john</span><span class="o">!</span><span class="p">)</span></code></pre></div>
+<span class="lineno">3</span> <span class="n">john</span><span class="o">!</span><span class="p">.</span><span class="n">card</span> <span class="o">=</span> <span class="n">CreditCard</span><span class="p">(</span><span class="nl">number</span><span class="p">:</span> <span class="mi">1234</span><span class="n">_5678_9012_3456</span><span class="p">,</span> <span class="nl">customer</span><span class="p">:</span> <span class="n">john</span><span class="o">!</span><span class="p">)</span></code></pre></figure>
 
 <p>この段階でこのようなイメージです。</p>
 
@@ -340,9 +345,9 @@
 
 <p>そして、解放します。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">john</span> <span class="o">=</span> <span class="nb">nil</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">john</span> <span class="o">=</span> <span class="nb">nil</span>
 <span class="lineno">2</span> <span class="c1">// prints &quot;John Appleseed is being deinitialized&quot;</span>
-<span class="lineno">3</span> <span class="c1">// prints &quot;Card #1234567890123456 is being deinitialized&quot;</span></code></pre></div>
+<span class="lineno">3</span> <span class="c1">// prints &quot;Card #1234567890123456 is being deinitialized&quot;</span></code></pre></figure>
 
 <p>それぞれの <code>strong</code> 参照がなくなるので、両方のインスタンスが解放されます。</p>
 
@@ -356,7 +361,7 @@
 
 <p>そして、このセクションでみるのが、2 つのプロパティどちらものが常に値を持つことが期待されている場合です。ここでは、Country と City というクラスを使って考えていきます。国も街も常に値を持ちます。つまり、nil になりません。この例では、<code>unowned</code> 参照をプロパティに設定し、もう 1 つのクラスのプロパティには、Implicitly Unwrapped Optional (<code>!</code>)を設定すると、どちらのプロパティも直接アクセスすることができ、Reference Cycles を防ぐこともできます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">Country</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">Country</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">let</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span>
 <span class="lineno"> 3</span>     <span class="n">let</span> <span class="nl">capitalCity</span><span class="p">:</span> <span class="n">City</span><span class="o">!</span>
 <span class="lineno"> 4</span>     <span class="n">init</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">capitalName</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
@@ -372,15 +377,15 @@
 <span class="lineno">14</span>         <span class="nb">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
 <span class="lineno">15</span>         <span class="nb">self</span><span class="p">.</span><span class="n">country</span> <span class="o">=</span> <span class="n">country</span>
 <span class="lineno">16</span>     <span class="p">}</span>
-<span class="lineno">17</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">17</span> <span class="p">}</span></code></pre></figure>
 
 <p>この 2 つのクラスを初期化するには、Country の Initializer を使用します。通常、Initializer の中から、self は渡せません。<a href="http://blog.kazuya.co/swift/2014/06/20/swift-doc-initialization2.html">以前</a> みたようにクラスの二段階初期化によるためです。しかし、Country の capitalCity プロパティを an implicitly unwrapped optional property として宣言します。これにより、nil がデフォルト値が設定されます。そして、Country クラスの name プロパティが設定され、初期化されたとみなされた後、self を使用して、City の Initializer に自身を渡すことができます。</p>
 
 <p>この an implicitly unwrapped optional property と <code>unowned</code> の組み合わせで、Strong Reference Cycles を発生させることなく、1 つステートメントで 2 つのインスタンスを作成できます。また、capitalCity は、unwrap (<code>!</code>) することなく、直接アクセスすることができます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">country</span> <span class="o">=</span> <span class="n">Country</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Canada&quot;</span><span class="p">,</span> <span class="nl">capitalName</span><span class="p">:</span> <span class="s">&quot;Ottawa&quot;</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">country</span> <span class="o">=</span> <span class="n">Country</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Canada&quot;</span><span class="p">,</span> <span class="nl">capitalName</span><span class="p">:</span> <span class="s">&quot;Ottawa&quot;</span><span class="p">)</span>
 <span class="lineno">2</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;\(country.name)&#39;s capital city is called \(country.capitalCity.name)&quot;</span><span class="p">)</span>
-<span class="lineno">3</span> <span class="c1">// prints &quot;Canada&#39;s capital city is called Ottawa&quot;</span></code></pre></div>
+<span class="lineno">3</span> <span class="c1">// prints &quot;Canada&#39;s capital city is called Ottawa&quot;</span></code></pre></figure>
 
 <h4 id="6.-strong-reference-cycles-の解消---closures">6. Strong Reference Cycles の解消 - Closures</h4>
 
@@ -388,14 +393,14 @@
 
 <p>キャプチャリストの各要素は、クラスへの参照と <code>weak</code> か <code>unowned</code> キーワードの組み合わせにより定義されます。この組み合わせは、<code>[]</code> の中に描かれます。複数ある場合には、カンマで区切られます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="p">@</span><span class="n">lazy</span> <span class="n">var</span> <span class="nl">someClosure</span><span class="p">:</span> <span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="o">=</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="p">@</span><span class="n">lazy</span> <span class="n">var</span> <span class="nl">someClosure</span><span class="p">:</span> <span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="o">=</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="p">[</span><span class="n">unowned</span> <span class="nb">self</span><span class="p">]</span> <span class="p">(</span><span class="nl">index</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">stringToProcess</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="k">in</span>
 <span class="lineno">3</span>     <span class="c1">// closure body goes here</span>
-<span class="lineno">4</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">4</span> <span class="p">}</span></code></pre></figure>
 
 <p>クラスとクロージャが常に一緒に解放されるべき場合には、このキャプチャは <code>unowned</code> として宣言されます。それに対して、プログラムの中で参照が nil になる場合には、<code>weak</code> として宣言されます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">HTMLElement</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">HTMLElement</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     
 <span class="lineno"> 3</span>     <span class="n">let</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span>
 <span class="lineno"> 4</span>     <span class="n">let</span> <span class="nl">text</span><span class="p">:</span> <span class="n">String</span><span class="o">?</span>
@@ -418,13 +423,13 @@
 <span class="lineno">21</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;\(name) is being deinitialized&quot;</span><span class="p">)</span>
 <span class="lineno">22</span>     <span class="p">}</span>
 <span class="lineno">23</span>     
-<span class="lineno">24</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">24</span> <span class="p">}</span></code></pre></figure>
 
 <p>例えばこのように使われます。HTMLElement クラスは、あるクロージャへの参照を持っています。この場合には、<code>unowned</code> として宣言されています。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="nl">paragraph</span><span class="p">:</span> <span class="n">HTMLElement</span><span class="o">?</span> <span class="o">=</span> <span class="n">HTMLElement</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;p&quot;</span><span class="p">,</span> <span class="nl">text</span><span class="p">:</span> <span class="s">&quot;hello, world&quot;</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="nl">paragraph</span><span class="p">:</span> <span class="n">HTMLElement</span><span class="o">?</span> <span class="o">=</span> <span class="n">HTMLElement</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;p&quot;</span><span class="p">,</span> <span class="nl">text</span><span class="p">:</span> <span class="s">&quot;hello, world&quot;</span><span class="p">)</span>
 <span class="lineno">2</span> <span class="n">println</span><span class="p">(</span><span class="n">paragraph</span><span class="o">!</span><span class="p">.</span><span class="n">asHTML</span><span class="p">())</span>
-<span class="lineno">3</span> <span class="c1">// prints &quot;&lt;p&gt;hello, world&lt;/p&gt;&quot;</span></code></pre></div>
+<span class="lineno">3</span> <span class="c1">// prints &quot;&lt;p&gt;hello, world&lt;/p&gt;&quot;</span></code></pre></figure>
 
 <p>イメージとしてこんな感じ。</p>
 
@@ -432,8 +437,8 @@
 
 <p>解放すると、</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">paragraph</span> <span class="o">=</span> <span class="nb">nil</span>
-<span class="lineno">2</span> <span class="c1">// prints &quot;p is being deinitialized&quot;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">paragraph</span> <span class="o">=</span> <span class="nb">nil</span>
+<span class="lineno">2</span> <span class="c1">// prints &quot;p is being deinitialized&quot;</span></code></pre></figure>
 
 					</div>
 
@@ -477,80 +482,79 @@
 <h3>Category</h3>
    <p class="side_content">|
       
-   	   <a href="/categories/objective-c">objective-c
-            (11)
-         </a> |
+        <a href="/categories/objective-c">
+          Objective-C(11)
+        </a> |
       
-   	   <a href="/categories/other">other
-            (6)
-         </a> |
+        <a href="/categories/other">
+          Other(6)
+        </a> |
       
-   	   <a href="/categories/node-js">node.js
-            (1)
-         </a> |
+        <a href="/categories/node-js">
+          Node.js(1)
+        </a> |
       
-   	   <a href="/categories/ruby-on-rails">ruby on rails
-            (24)
-         </a> |
+        <a href="/categories/ruby-on-rails">
+          Ruby on Rails(24)
+        </a> |
       
-   	   <a href="/categories/tips">tips
-            (8)
-         </a> |
+        <a href="/categories/tips">
+          Tips(8)
+        </a> |
       
-   	   <a href="/categories/html5">html5
-            (8)
-         </a> |
+        <a href="/categories/html5">
+          HTML5(8)
+        </a> |
       
-   	   <a href="/categories/algorithms">algorithms
-            (2)
-         </a> |
+        <a href="/categories/algorithms">
+          Algorithms(2)
+        </a> |
       
-   	   <a href="/categories/machine-learning">machine learning
-            (5)
-         </a> |
+        <a href="/categories/machine-learning">
+          Machine Learning(5)
+        </a> |
       
-   	   <a href="/categories/c">c
-            (14)
-         </a> |
+        <a href="/categories/c">
+          C(14)
+        </a> |
       
-   	   <a href="/categories/ruby">ruby
-            (5)
-         </a> |
+        <a href="/categories/ruby">
+          Ruby(5)
+        </a> |
       
-   	   <a href="/categories/swift">swift
-            (34)
-         </a> |
+        <a href="/categories/swift">
+          Swift(34)
+        </a> |
       
-   	   <a href="/categories/ios">ios
-            (6)
-         </a> |
+        <a href="/categories/ios">
+          iOS(6)
+        </a> |
       
-   	   <a href="/categories/books">books
-            (4)
-         </a> |
+        <a href="/categories/books">
+          Books(5)
+        </a> |
       
-   	   <a href="/categories/kindle">kindle
-            (3)
-         </a> |
+        <a href="/categories/kindle">
+          Kindle(3)
+        </a> |
       
-   	   <a href="/categories/nginx">nginx
-            (1)
-         </a> |
+        <a href="/categories/nginx">
+          Nginx(1)
+        </a> |
       
-   	   <a href="/categories/capistrano">capistrano
-            (1)
-         </a> |
+        <a href="/categories/capistrano">
+          Capistrano(1)
+        </a> |
       
-   	   <a href="/categories/chef">chef
-            (2)
-         </a> |
+        <a href="/categories/chef">
+          Chef(2)
+        </a> |
       
-   	   <a href="/categories/fastlane">fastlane
-            (1)
-         </a> |
+        <a href="/categories/fastlane">
+          fastlane(1)
+        </a> |
       
    </p>
-
 <hr />
 
 <h3>Archive</h3>
@@ -624,6 +628,10 @@
             (1)
          </a> |
       
+   		<a href="/2017/12/">2017/12
+            (1)
+         </a> |
+      
    </p>
 
 <hr />
@@ -647,102 +655,106 @@
 				   <p>
 					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
 					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
-					   <a href="https://github.com/kzykbys">Github</a></p>
-				   <h4>Category</h4>
-				   <p>|
-					   
-						   <a href="/categories/objective-c">objective-c</a> | 
-					   
-						   <a href="/categories/other">other</a> | 
-					   
-						   <a href="/categories/node-js">node.js</a> | 
-					   
-						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
-					   
-						   <a href="/categories/tips">tips</a> | 
-					   
-						   <a href="/categories/html5">html5</a> | 
-					   
-						   <a href="/categories/algorithms">algorithms</a> | 
-					   
-						   <a href="/categories/machine-learning">machine learning</a> | 
-					   
-						   <a href="/categories/c">c</a> | 
-					   
-						   <a href="/categories/ruby">ruby</a> | 
-					   
-						   <a href="/categories/swift">swift</a> | 
-					   
-						   <a href="/categories/ios">ios</a> | 
-					   
-						   <a href="/categories/books">books</a> | 
-					   
-						   <a href="/categories/kindle">kindle</a> | 
-					   
-						   <a href="/categories/nginx">nginx</a> | 
-					   
-						   <a href="/categories/capistrano">capistrano</a> | 
-					   
-						   <a href="/categories/chef">chef</a> | 
-					   
-						   <a href="/categories/fastlane">fastlane</a> | 
-					   
-				   </p>
-				   <h4>Archive</h4>
-					   <p>|
-					   
-	    					<a href="/2013/08/">2013/08
-	    					</a> | 
-	    			   
-	    					<a href="/2013/09/">2013/09
-	    					</a> | 
-	    			   
-	    					<a href="/2013/11/">2013/11
-	    					</a> | 
-	    			   
-	    					<a href="/2013/12/">2013/12
-	    					</a> | 
-	    			   
-	    					<a href="/2014/01/">2014/01
-	    					</a> | 
-	    			   
-	    					<a href="/2014/03/">2014/03
-	    					</a> | 
-	    			   
-	    					<a href="/2014/04/">2014/04
-	    					</a> | 
-	    			   
-	    					<a href="/2014/05/">2014/05
-	    					</a> | 
-	    			   
-	    					<a href="/2014/06/">2014/06
-	    					</a> | 
-	    			   
-	    					<a href="/2014/07/">2014/07
-	    					</a> | 
-	    			   
-	    					<a href="/2014/08/">2014/08
-	    					</a> | 
-	    			   
-	    					<a href="/2014/09/">2014/09
-	    					</a> | 
-	    			   
-	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2015/02/">2015/02
-	    					</a> | 
-	    			   
-	    					<a href="/2015/07/">2015/07
-	    					</a> | 
-	    			   
-	    					<a href="/2015/08/">2015/08
-	    					</a> | 
-	    			   
-	    					<a href="/2016/01/">2016/01
-	    					</a> | 
-	    			   
-    			   </p>
+					   <a href="https://github.com/kzykbys">Github</a>
+					</p>
+					<h4>Category</h4>
+					<p>|
+						
+							<a href="/categories/objective-c">Objective-C</a> | 
+						
+							<a href="/categories/other">Other</a> | 
+						
+							<a href="/categories/node-js">Node.js</a> | 
+						
+							<a href="/categories/ruby-on-rails">Ruby on Rails</a> | 
+						
+							<a href="/categories/tips">Tips</a> | 
+						
+							<a href="/categories/html5">HTML5</a> | 
+						
+							<a href="/categories/algorithms">Algorithms</a> | 
+						
+							<a href="/categories/machine-learning">Machine Learning</a> | 
+						
+							<a href="/categories/c">C</a> | 
+						
+							<a href="/categories/ruby">Ruby</a> | 
+						
+							<a href="/categories/swift">Swift</a> | 
+						
+							<a href="/categories/ios">iOS</a> | 
+						
+							<a href="/categories/books">Books</a> | 
+						
+							<a href="/categories/kindle">Kindle</a> | 
+						
+							<a href="/categories/nginx">Nginx</a> | 
+						
+							<a href="/categories/capistrano">Capistrano</a> | 
+						
+							<a href="/categories/chef">Chef</a> | 
+						
+							<a href="/categories/fastlane">fastlane</a> | 
+						
+					</p>
+					<h4>Archive</h4>
+						<p>|
+						
+							<a href="/2013/08/">2013/08
+							</a> | 
+						
+							<a href="/2013/09/">2013/09
+							</a> | 
+						
+							<a href="/2013/11/">2013/11
+							</a> | 
+						
+							<a href="/2013/12/">2013/12
+							</a> | 
+						
+							<a href="/2014/01/">2014/01
+							</a> | 
+						
+							<a href="/2014/03/">2014/03
+							</a> | 
+						
+							<a href="/2014/04/">2014/04
+							</a> | 
+						
+							<a href="/2014/05/">2014/05
+							</a> | 
+						
+							<a href="/2014/06/">2014/06
+							</a> | 
+						
+							<a href="/2014/07/">2014/07
+							</a> | 
+						
+							<a href="/2014/08/">2014/08
+							</a> | 
+						
+							<a href="/2014/09/">2014/09
+							</a> | 
+						
+							<a href="/2014/10/">2014/10
+							</a> | 
+						
+							<a href="/2015/02/">2015/02
+							</a> | 
+						
+							<a href="/2015/07/">2015/07
+							</a> | 
+						
+							<a href="/2015/08/">2015/08
+							</a> | 
+						
+							<a href="/2016/01/">2016/01
+							</a> | 
+						
+							<a href="/2017/12/">2017/12
+							</a> | 
+						
+					</p>
 			   </div>
 		   </div>
 	   	</div>

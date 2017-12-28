@@ -46,80 +46,81 @@
 
 	<h4>Category</h4>
 	<ul>
-	   
-		   <li>
-		   		<a href="/categories/objective-c">objective-c</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/other">other</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/node-js">node.js</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/tips">tips</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/html5">html5</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/algorithms">algorithms</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/machine-learning">machine learning</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/c">c</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ruby">ruby</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/swift">swift</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ios">ios</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/books">books</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/kindle">kindle</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/nginx">nginx</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/capistrano">capistrano</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/chef">chef</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/fastlane">fastlane</a>
-		   </li>
-	   
-    </ul>
+		
+			<li>
+				<a href="/categories/objective-c">Objective-C</a>
+			</li>
+		
+			<li>
+				<a href="/categories/other">Other</a>
+			</li>
+		
+			<li>
+				<a href="/categories/node-js">Node.js</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ruby-on-rails">Ruby on Rails</a>
+			</li>
+		
+			<li>
+				<a href="/categories/tips">Tips</a>
+			</li>
+		
+			<li>
+				<a href="/categories/html5">HTML5</a>
+			</li>
+		
+			<li>
+				<a href="/categories/algorithms">Algorithms</a>
+			</li>
+		
+			<li>
+				<a href="/categories/machine-learning">Machine Learning</a>
+			</li>
+		
+			<li>
+				<a href="/categories/c">C</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ruby">Ruby</a>
+			</li>
+		
+			<li>
+				<a href="/categories/swift">Swift</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ios">iOS</a>
+			</li>
+		
+			<li>
+				<a href="/categories/books">Books</a>
+			</li>
+		
+			<li>
+				<a href="/categories/kindle">Kindle</a>
+			</li>
+		
+			<li>
+				<a href="/categories/nginx">Nginx</a>
+			</li>
+		
+			<li>
+				<a href="/categories/capistrano">Capistrano</a>
+			</li>
+		
+			<li>
+				<a href="/categories/chef">Chef</a>
+			</li>
+		
+			<li>
+				<a href="/categories/fastlane">fastlane</a>
+			</li>
+		
+	</ul>
+
 	<h4>Archive</h4>
 	<ul>
 		
@@ -191,6 +192,10 @@
 				<a href="/2016/01/">2016/01</a>
 			</li>
 		
+			<li>
+				<a href="/2017/12/">2017/12</a>
+			</li>
+		
 	</ul>
 
 </div>
@@ -248,17 +253,17 @@
 
 <p>switch 文の default fall through は意図して使われることは 3% 程度の割合でしかありません。下記のコードのように、意図して fall through を行っている場合以外は、各 case に break が必要です。</p>
 
-<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="c1">// desired fall through’s switch statement</span>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="c1">// desired fall through’s switch statement</span>
 <span class="lineno">2</span> <span class="k">switch</span> <span class="p">(</span> <span class="n">operator</span><span class="o">-&gt;</span><span class="n">num_of_operands</span> <span class="p">)</span> <span class="p">{</span>
 <span class="lineno">3</span>      <span class="k">case</span> <span class="mi">2</span><span class="o">:</span> <span class="n">process_operand</span> <span class="p">(</span> <span class="n">operator</span><span class="o">-&gt;</span><span class="n">operator_2</span> <span class="p">)</span>
 <span class="lineno">4</span>               <span class="c1">// Fall through </span>
 <span class="lineno">5</span>      <span class="k">case</span> <span class="mi">1</span><span class="o">:</span> <span class="n">process_operand</span> <span class="p">(</span> <span class="n">operator</span><span class="o">-&gt;</span><span class="n">operator_1</span> <span class="p">)</span>
 <span class="lineno">6</span>      <span class="k">break</span><span class="p">;</span>
-<span class="lineno">7</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">7</span> <span class="p">}</span> </code></pre></figure>
 
 <p><strong>Default fall through</strong></p>
 
-<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno"> 1</span> <span class="n">network</span> <span class="nf">code</span><span class="p">()</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno"> 1</span> <span class="n">network</span> <span class="nf">code</span><span class="p">()</span> <span class="p">{</span>
 <span class="lineno"> 2</span>      <span class="k">switch</span> <span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 3</span>           <span class="k">case</span> <span class="nl">THING1</span><span class="p">:</span>
 <span class="lineno"> 4</span>                <span class="n">doit1</span><span class="p">();</span>
@@ -277,7 +282,7 @@
 <span class="lineno">17</span>           <span class="k">default</span><span class="o">:</span>
 <span class="lineno">18</span>                <span class="n">processing</span><span class="p">();</span>                              
 <span class="lineno">19</span>      <span class="p">}</span>
-<span class="lineno">20</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">20</span> <span class="p">}</span></code></pre></figure>
 
 <p>if 文を抜けようとして使用した break が switch 文を抜け出してしまい必要な初期化が行われない例。このバグにより、1990年1月15日の午後、９時間以上にわたってアメリカのAT&amp;Tの大部分のネットワークが使用不可能になった。AT&amp;Tの114年の歴史の中で一番最初の悲惨な事件を起こしてしまいました。</p>
 
@@ -306,53 +311,53 @@
 
 <h3 id="sin-of-omission-(-言語はすべきにもかかわらず、していない問題-)">Sin of Omission ( 言語はすべきにもかかわらず、していない問題 )</h3>
 
-<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="kt">char</span> <span class="o">*</span> <span class="nf">localized_time</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span> <span class="n">filename</span><span class="p">)</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="kt">char</span> <span class="o">*</span> <span class="nf">localized_time</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span> <span class="n">filename</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">2</span>      <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">120</span><span class="p">];</span>
 <span class="lineno">3</span>      <span class="p">.</span>
 <span class="lineno">4</span>      <span class="p">.</span>
 <span class="lineno">5</span>      <span class="p">.</span>
 <span class="lineno">6</span>      <span class="k">return</span> <span class="n">buffer</span>
-<span class="lineno">7</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">7</span> <span class="p">}</span></code></pre></figure>
 
 <p>このコードは、上手く機能しません。C言語では、Automatic 変数 は、スタック上でメモリが割り当てられます。そして、この関数が終了すると、そのスタックは再利用され、オバーライドされます。そのため、ポインタを返したとしても、期待した結果は得られません。いくつかの解決策として、 </p>
 
-<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="c1">// string literal のポインタを返す方法</span>
-<span class="lineno">2</span> <span class="n">cahr</span> <span class="o">*</span><span class="nf">func</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="s">&quot;Only works for simple strings&quot;</span><span class="p">;</span> <span class="p">}</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="c1">// string literal のポインタを返す方法</span>
+<span class="lineno">2</span> <span class="n">cahr</span> <span class="o">*</span><span class="nf">func</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="s">&quot;Only works for simple strings&quot;</span><span class="p">;</span> <span class="p">}</span></code></pre></figure>
 
 <p>もちろんこれは動的に文字列を返したいときには役に立ちません。 </p>
 
-<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="c1">// グローバル変数</span>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="c1">// グローバル変数</span>
 <span class="lineno">2</span> <span class="kt">char</span> <span class="o">*</span><span class="nf">fun</span><span class="p">()</span> <span class="p">{</span>
 <span class="lineno">3</span>      <span class="n">my_global_array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">.</span> <span class="p">.</span> <span class="p">.</span> 
 <span class="lineno">4</span>       
 <span class="lineno">5</span>      <span class="k">return</span> <span class="n">my_global_array</span><span class="p">;</span>
-<span class="lineno">6</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">6</span> <span class="p">}</span></code></pre></figure>
 
 <p>これも簡潔で簡単ですが、誰もがこのグローバル変数を変更してしまいます。 </p>
 
-<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="c1">// static </span>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="c1">// static </span>
 <span class="lineno">2</span> <span class="kt">char</span> <span class="o">*</span><span class="nf">fun</span><span class="p">()</span> <span class="p">{</span>
 <span class="lineno">3</span>      <span class="k">static</span> <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
 <span class="lineno">4</span>      <span class="p">.</span>
 <span class="lineno">5</span>      <span class="p">.</span>
 <span class="lineno">6</span>      <span class="p">.</span>     
 <span class="lineno">7</span>      <span class="k">return</span> <span class="n">buffer</span><span class="p">;</span>
-<span class="lineno">8</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">8</span> <span class="p">}</span></code></pre></figure>
 
 <p>static 配列を使用すれば、誰もが上書きしてしまう問題は回避することができます。プログラムがポインタを与えた関数だけ、この staic 配列を変更できます。しかし、他の関数がが上書きする前に、コピーする等の手間がかかります。 </p>
 
-<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="c1">// 明示的にメモリの割り当て</span>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="c1">// 明示的にメモリの割り当て</span>
 <span class="lineno">2</span> <span class="kt">char</span> <span class="o">*</span><span class="nf">fun</span><span class="p">()</span> <span class="p">{</span>
 <span class="lineno">3</span>      <span class="kt">char</span> <span class="o">*</span><span class="n">s</span> <span class="o">=</span> <span class="n">mallo</span><span class="p">(</span><span class="mi">120</span><span class="p">);</span>
 <span class="lineno">4</span>      <span class="p">.</span>
 <span class="lineno">5</span>      <span class="p">.</span>
 <span class="lineno">6</span>      <span class="p">.</span>     
 <span class="lineno">7</span>      <span class="k">return</span> <span class="n">s</span><span class="p">;</span>
-<span class="lineno">8</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">8</span> <span class="p">}</span></code></pre></figure>
 
 <p>static 配列を使用した時と同じように利点があり、かつ、この関数が何度呼び出されても、前の呼び出しの結果を上書きすることがありません。しかし、プログラムがメモリ管理をしなければなりません。プログラムが複雑になればなるほど、free を呼び出すことを頻繁に忘れてしまうでしょう。 </p>
 
-<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno"> 1</span> <span class="c1">// 呼び出し元が、メモリ管理</span>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno"> 1</span> <span class="c1">// 呼び出し元が、メモリ管理</span>
 <span class="lineno"> 2</span> <span class="kt">void</span> <span class="nf">func</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span> <span class="n">result</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 3</span>      <span class="p">.</span> <span class="p">.</span> <span class="p">.</span> 
 <span class="lineno"> 4</span>      <span class="n">strncpy</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="err">“</span><span class="n">That</span><span class="err">’</span><span class="n">d</span> <span class="n">be</span> <span class="n">in</span> <span class="n">the</span> <span class="n">data</span> <span class="n">segment</span><span class="p">,</span> <span class="n">Bob</span><span class="err">”</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
@@ -361,7 +366,7 @@
 <span class="lineno"> 7</span> <span class="n">buffer</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
 <span class="lineno"> 8</span> <span class="n">func</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
 <span class="lineno"> 9</span>      <span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
-<span class="lineno">10</span> <span class="n">free</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span></code></pre></div>
+<span class="lineno">10</span> <span class="n">free</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span></code></pre></figure>
 
 <p>この方法なら、メモリ管理をなるべく一つの場所に実行できます。呼び出し元の近くにメモリ管理の処理を書いておけば忘れた等の最低限のミスは防ぐことができます。 </p>
 
@@ -411,80 +416,79 @@
 <h3>Category</h3>
    <p class="side_content">|
       
-   	   <a href="/categories/objective-c">objective-c
-            (11)
-         </a> |
+        <a href="/categories/objective-c">
+          Objective-C(11)
+        </a> |
       
-   	   <a href="/categories/other">other
-            (6)
-         </a> |
+        <a href="/categories/other">
+          Other(6)
+        </a> |
       
-   	   <a href="/categories/node-js">node.js
-            (1)
-         </a> |
+        <a href="/categories/node-js">
+          Node.js(1)
+        </a> |
       
-   	   <a href="/categories/ruby-on-rails">ruby on rails
-            (24)
-         </a> |
+        <a href="/categories/ruby-on-rails">
+          Ruby on Rails(24)
+        </a> |
       
-   	   <a href="/categories/tips">tips
-            (8)
-         </a> |
+        <a href="/categories/tips">
+          Tips(8)
+        </a> |
       
-   	   <a href="/categories/html5">html5
-            (8)
-         </a> |
+        <a href="/categories/html5">
+          HTML5(8)
+        </a> |
       
-   	   <a href="/categories/algorithms">algorithms
-            (2)
-         </a> |
+        <a href="/categories/algorithms">
+          Algorithms(2)
+        </a> |
       
-   	   <a href="/categories/machine-learning">machine learning
-            (5)
-         </a> |
+        <a href="/categories/machine-learning">
+          Machine Learning(5)
+        </a> |
       
-   	   <a href="/categories/c">c
-            (14)
-         </a> |
+        <a href="/categories/c">
+          C(14)
+        </a> |
       
-   	   <a href="/categories/ruby">ruby
-            (5)
-         </a> |
+        <a href="/categories/ruby">
+          Ruby(5)
+        </a> |
       
-   	   <a href="/categories/swift">swift
-            (34)
-         </a> |
+        <a href="/categories/swift">
+          Swift(34)
+        </a> |
       
-   	   <a href="/categories/ios">ios
-            (6)
-         </a> |
+        <a href="/categories/ios">
+          iOS(6)
+        </a> |
       
-   	   <a href="/categories/books">books
-            (4)
-         </a> |
+        <a href="/categories/books">
+          Books(5)
+        </a> |
       
-   	   <a href="/categories/kindle">kindle
-            (3)
-         </a> |
+        <a href="/categories/kindle">
+          Kindle(3)
+        </a> |
       
-   	   <a href="/categories/nginx">nginx
-            (1)
-         </a> |
+        <a href="/categories/nginx">
+          Nginx(1)
+        </a> |
       
-   	   <a href="/categories/capistrano">capistrano
-            (1)
-         </a> |
+        <a href="/categories/capistrano">
+          Capistrano(1)
+        </a> |
       
-   	   <a href="/categories/chef">chef
-            (2)
-         </a> |
+        <a href="/categories/chef">
+          Chef(2)
+        </a> |
       
-   	   <a href="/categories/fastlane">fastlane
-            (1)
-         </a> |
+        <a href="/categories/fastlane">
+          fastlane(1)
+        </a> |
       
    </p>
-
 <hr />
 
 <h3>Archive</h3>
@@ -558,6 +562,10 @@
             (1)
          </a> |
       
+   		<a href="/2017/12/">2017/12
+            (1)
+         </a> |
+      
    </p>
 
 <hr />
@@ -581,102 +589,106 @@
 				   <p>
 					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
 					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
-					   <a href="https://github.com/kzykbys">Github</a></p>
-				   <h4>Category</h4>
-				   <p>|
-					   
-						   <a href="/categories/objective-c">objective-c</a> | 
-					   
-						   <a href="/categories/other">other</a> | 
-					   
-						   <a href="/categories/node-js">node.js</a> | 
-					   
-						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
-					   
-						   <a href="/categories/tips">tips</a> | 
-					   
-						   <a href="/categories/html5">html5</a> | 
-					   
-						   <a href="/categories/algorithms">algorithms</a> | 
-					   
-						   <a href="/categories/machine-learning">machine learning</a> | 
-					   
-						   <a href="/categories/c">c</a> | 
-					   
-						   <a href="/categories/ruby">ruby</a> | 
-					   
-						   <a href="/categories/swift">swift</a> | 
-					   
-						   <a href="/categories/ios">ios</a> | 
-					   
-						   <a href="/categories/books">books</a> | 
-					   
-						   <a href="/categories/kindle">kindle</a> | 
-					   
-						   <a href="/categories/nginx">nginx</a> | 
-					   
-						   <a href="/categories/capistrano">capistrano</a> | 
-					   
-						   <a href="/categories/chef">chef</a> | 
-					   
-						   <a href="/categories/fastlane">fastlane</a> | 
-					   
-				   </p>
-				   <h4>Archive</h4>
-					   <p>|
-					   
-	    					<a href="/2013/08/">2013/08
-	    					</a> | 
-	    			   
-	    					<a href="/2013/09/">2013/09
-	    					</a> | 
-	    			   
-	    					<a href="/2013/11/">2013/11
-	    					</a> | 
-	    			   
-	    					<a href="/2013/12/">2013/12
-	    					</a> | 
-	    			   
-	    					<a href="/2014/01/">2014/01
-	    					</a> | 
-	    			   
-	    					<a href="/2014/03/">2014/03
-	    					</a> | 
-	    			   
-	    					<a href="/2014/04/">2014/04
-	    					</a> | 
-	    			   
-	    					<a href="/2014/05/">2014/05
-	    					</a> | 
-	    			   
-	    					<a href="/2014/06/">2014/06
-	    					</a> | 
-	    			   
-	    					<a href="/2014/07/">2014/07
-	    					</a> | 
-	    			   
-	    					<a href="/2014/08/">2014/08
-	    					</a> | 
-	    			   
-	    					<a href="/2014/09/">2014/09
-	    					</a> | 
-	    			   
-	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2015/02/">2015/02
-	    					</a> | 
-	    			   
-	    					<a href="/2015/07/">2015/07
-	    					</a> | 
-	    			   
-	    					<a href="/2015/08/">2015/08
-	    					</a> | 
-	    			   
-	    					<a href="/2016/01/">2016/01
-	    					</a> | 
-	    			   
-    			   </p>
+					   <a href="https://github.com/kzykbys">Github</a>
+					</p>
+					<h4>Category</h4>
+					<p>|
+						
+							<a href="/categories/objective-c">Objective-C</a> | 
+						
+							<a href="/categories/other">Other</a> | 
+						
+							<a href="/categories/node-js">Node.js</a> | 
+						
+							<a href="/categories/ruby-on-rails">Ruby on Rails</a> | 
+						
+							<a href="/categories/tips">Tips</a> | 
+						
+							<a href="/categories/html5">HTML5</a> | 
+						
+							<a href="/categories/algorithms">Algorithms</a> | 
+						
+							<a href="/categories/machine-learning">Machine Learning</a> | 
+						
+							<a href="/categories/c">C</a> | 
+						
+							<a href="/categories/ruby">Ruby</a> | 
+						
+							<a href="/categories/swift">Swift</a> | 
+						
+							<a href="/categories/ios">iOS</a> | 
+						
+							<a href="/categories/books">Books</a> | 
+						
+							<a href="/categories/kindle">Kindle</a> | 
+						
+							<a href="/categories/nginx">Nginx</a> | 
+						
+							<a href="/categories/capistrano">Capistrano</a> | 
+						
+							<a href="/categories/chef">Chef</a> | 
+						
+							<a href="/categories/fastlane">fastlane</a> | 
+						
+					</p>
+					<h4>Archive</h4>
+						<p>|
+						
+							<a href="/2013/08/">2013/08
+							</a> | 
+						
+							<a href="/2013/09/">2013/09
+							</a> | 
+						
+							<a href="/2013/11/">2013/11
+							</a> | 
+						
+							<a href="/2013/12/">2013/12
+							</a> | 
+						
+							<a href="/2014/01/">2014/01
+							</a> | 
+						
+							<a href="/2014/03/">2014/03
+							</a> | 
+						
+							<a href="/2014/04/">2014/04
+							</a> | 
+						
+							<a href="/2014/05/">2014/05
+							</a> | 
+						
+							<a href="/2014/06/">2014/06
+							</a> | 
+						
+							<a href="/2014/07/">2014/07
+							</a> | 
+						
+							<a href="/2014/08/">2014/08
+							</a> | 
+						
+							<a href="/2014/09/">2014/09
+							</a> | 
+						
+							<a href="/2014/10/">2014/10
+							</a> | 
+						
+							<a href="/2015/02/">2015/02
+							</a> | 
+						
+							<a href="/2015/07/">2015/07
+							</a> | 
+						
+							<a href="/2015/08/">2015/08
+							</a> | 
+						
+							<a href="/2016/01/">2016/01
+							</a> | 
+						
+							<a href="/2017/12/">2017/12
+							</a> | 
+						
+					</p>
 			   </div>
 		   </div>
 	   	</div>

@@ -46,80 +46,81 @@
 
 	<h4>Category</h4>
 	<ul>
-	   
-		   <li>
-		   		<a href="/categories/objective-c">objective-c</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/other">other</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/node-js">node.js</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/tips">tips</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/html5">html5</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/algorithms">algorithms</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/machine-learning">machine learning</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/c">c</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ruby">ruby</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/swift">swift</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ios">ios</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/books">books</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/kindle">kindle</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/nginx">nginx</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/capistrano">capistrano</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/chef">chef</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/fastlane">fastlane</a>
-		   </li>
-	   
-    </ul>
+		
+			<li>
+				<a href="/categories/objective-c">Objective-C</a>
+			</li>
+		
+			<li>
+				<a href="/categories/other">Other</a>
+			</li>
+		
+			<li>
+				<a href="/categories/node-js">Node.js</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ruby-on-rails">Ruby on Rails</a>
+			</li>
+		
+			<li>
+				<a href="/categories/tips">Tips</a>
+			</li>
+		
+			<li>
+				<a href="/categories/html5">HTML5</a>
+			</li>
+		
+			<li>
+				<a href="/categories/algorithms">Algorithms</a>
+			</li>
+		
+			<li>
+				<a href="/categories/machine-learning">Machine Learning</a>
+			</li>
+		
+			<li>
+				<a href="/categories/c">C</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ruby">Ruby</a>
+			</li>
+		
+			<li>
+				<a href="/categories/swift">Swift</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ios">iOS</a>
+			</li>
+		
+			<li>
+				<a href="/categories/books">Books</a>
+			</li>
+		
+			<li>
+				<a href="/categories/kindle">Kindle</a>
+			</li>
+		
+			<li>
+				<a href="/categories/nginx">Nginx</a>
+			</li>
+		
+			<li>
+				<a href="/categories/capistrano">Capistrano</a>
+			</li>
+		
+			<li>
+				<a href="/categories/chef">Chef</a>
+			</li>
+		
+			<li>
+				<a href="/categories/fastlane">fastlane</a>
+			</li>
+		
+	</ul>
+
 	<h4>Archive</h4>
 	<ul>
 		
@@ -191,6 +192,10 @@
 				<a href="/2016/01/">2016/01</a>
 			</li>
 		
+			<li>
+				<a href="/2017/12/">2017/12</a>
+			</li>
+		
 	</ul>
 
 </div>
@@ -252,14 +257,14 @@
 
 <p>配列や Dictionary といった Collection にプロトコルをタイプとして保存することができます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="nl">things</span><span class="p">:</span> <span class="n">TextRepresentable</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="n">game</span><span class="p">,</span> <span class="n">d12</span><span class="p">,</span> <span class="n">simonTheHamster</span><span class="p">]</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="nl">things</span><span class="p">:</span> <span class="n">TextRepresentable</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="n">game</span><span class="p">,</span> <span class="n">d12</span><span class="p">,</span> <span class="n">simonTheHamster</span><span class="p">]</span>
 <span class="lineno">2</span> 
 <span class="lineno">3</span> <span class="k">for</span> <span class="n">thing</span> <span class="k">in</span> <span class="n">things</span> <span class="p">{</span>
 <span class="lineno">4</span>     <span class="n">println</span><span class="p">(</span><span class="n">thing</span><span class="p">.</span><span class="n">asText</span><span class="p">())</span>
 <span class="lineno">5</span> <span class="p">}</span>
 <span class="lineno">6</span> <span class="c1">// A game of Snakes and Ladders with 25 squares</span>
 <span class="lineno">7</span> <span class="c1">// A 12-sided dice</span>
-<span class="lineno">8</span> <span class="c1">// A hamster named Simon</span></code></pre></div>
+<span class="lineno">8</span> <span class="c1">// A hamster named Simon</span></code></pre></figure>
 
 <p>この thing は TextRepresentable タイプです。Dice や DiceGame, Hamster ではありません。</p>
 
@@ -267,15 +272,15 @@
 
 <p>プロトコルは 1 つまたは複数のプロトコルを継承し、新しい要件を追加することもできます。プロトコルの文法は、クラスの継承と似ています。いくつかのプロトコルを継承することができるので、その場合は、カンマで区切ります。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="nl">InheritingProtocol</span><span class="p">:</span> <span class="n">SomeProtocol</span><span class="p">,</span> <span class="n">AnotherProtocol</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="nl">InheritingProtocol</span><span class="p">:</span> <span class="n">SomeProtocol</span><span class="p">,</span> <span class="n">AnotherProtocol</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="c1">// protocol definition goes here</span>
-<span class="lineno">3</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">3</span> <span class="p">}</span></code></pre></figure>
 
 <p>先ほどの TextRepresentable を継承し、新しいプロトコルを作成します。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="nl">PrettyTextRepresentable</span><span class="p">:</span> <span class="n">TextRepresentable</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="nl">PrettyTextRepresentable</span><span class="p">:</span> <span class="n">TextRepresentable</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">func</span> <span class="n">asPrettyText</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span>
-<span class="lineno">3</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">3</span> <span class="p">}</span></code></pre></figure>
 
 <p>この PrettyTextRepresentable に準拠するには、TextRepresentable の要件と PrettyTextRepresentable の要件を両方を満たさなければなりません。</p>
 
@@ -283,7 +288,7 @@
 
 <p>いくつかのプロトコルの要件を満たしたタイプを一度に定義できたら便利です。そのため Swift では、いくつかのプロトコルを 1 つにまとめることができます。基本的なシンタックスは、<code>protocol&lt;SomeProtocol, AnotherProtocol&gt;</code> と &lt;&gt; で囲います。複数ある場合は、&lt;&gt; 内でカンマで区切ります。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">protocol</span> <span class="n">Named</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">protocol</span> <span class="n">Named</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">var</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
 <span class="lineno"> 3</span> <span class="p">}</span>
 <span class="lineno"> 4</span> <span class="n">protocol</span> <span class="n">Aged</span> <span class="p">{</span>
@@ -298,7 +303,7 @@
 <span class="lineno">13</span> <span class="p">}</span>
 <span class="lineno">14</span> <span class="n">let</span> <span class="n">birthdayPerson</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Malcolm&quot;</span><span class="p">,</span> <span class="nl">age</span><span class="p">:</span> <span class="mi">21</span><span class="p">)</span>
 <span class="lineno">15</span> <span class="n">wishHappyBirthday</span><span class="p">(</span><span class="n">birthdayPerson</span><span class="p">)</span>
-<span class="lineno">16</span> <span class="c1">// prints &quot;Happy birthday Malcolm - you&#39;re 21!&quot;</span></code></pre></div>
+<span class="lineno">16</span> <span class="c1">// prints &quot;Happy birthday Malcolm - you&#39;re 21!&quot;</span></code></pre></figure>
 
 <p>この例では、2 つのプロトコルが存在しています。この 2 つのプロトコルを満たしたのが、Person 構造体です。また、このコンテキストでのグローバル関数 wishHappyBirthday は引数として結合されたプロトコルをとっています。Person 構造体は、この両者の要件を満たしているので、最後の行のようにこの関数の引数として使用することができます。</p>
 
@@ -308,13 +313,13 @@
 
 <p>タイプキャスティングのように <code>is</code> や <code>as</code> を使用して、あるプロコトルに準拠しているか確認、特定のプロトコルへキャストすることができます。まずは、例のプロトコルを用意していきます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="p">@</span><span class="n">objc</span> <span class="n">protocol</span> <span class="n">HasArea</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="p">@</span><span class="n">objc</span> <span class="n">protocol</span> <span class="n">HasArea</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">var</span> <span class="nl">area</span><span class="p">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
-<span class="lineno">3</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">3</span> <span class="p">}</span></code></pre></figure>
 
 <p>この HasArea プロトコルのように、<code>@objc</code> 属性が付いているプロトコルのみ、プロトコルに準拠しているか確認することができます。また、この <code>@objc</code> を付けた場合、このプロトコルは、クラスにのみ実装されます。構造体・Enumeration は使用することができません。例をみていきます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="nl">Circle</span><span class="p">:</span> <span class="n">HasArea</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="nl">Circle</span><span class="p">:</span> <span class="n">HasArea</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">let</span> <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.1415927</span>
 <span class="lineno"> 3</span>     <span class="n">var</span> <span class="nl">radius</span><span class="p">:</span> <span class="n">Double</span>
 <span class="lineno"> 4</span>     <span class="n">var</span> <span class="nl">area</span><span class="p">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">radius</span> <span class="p">}</span>
@@ -327,11 +332,11 @@
 <span class="lineno">11</span> <span class="k">class</span> <span class="n">Animal</span> <span class="p">{</span>
 <span class="lineno">12</span>     <span class="n">var</span> <span class="nl">legs</span><span class="p">:</span> <span class="n">Int</span>
 <span class="lineno">13</span>     <span class="n">init</span><span class="p">(</span><span class="nl">legs</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span> <span class="nb">self</span><span class="p">.</span><span class="n">legs</span> <span class="o">=</span> <span class="n">legs</span> <span class="p">}</span>
-<span class="lineno">14</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">14</span> <span class="p">}</span></code></pre></figure>
 
 <p>この HasArea プロトコルに準拠している 2 つのクラスと、そうでないクラスを 1 つがあります。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="nl">objects</span><span class="p">:</span> <span class="n">AnyObject</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="nl">objects</span><span class="p">:</span> <span class="n">AnyObject</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span>
 <span class="lineno"> 2</span>     <span class="n">Circle</span><span class="p">(</span><span class="nl">radius</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">),</span>
 <span class="lineno"> 3</span>     <span class="n">Country</span><span class="p">(</span><span class="nl">area</span><span class="p">:</span> <span class="mi">243</span><span class="n">_610</span><span class="p">),</span>
 <span class="lineno"> 4</span>     <span class="n">Animal</span><span class="p">(</span><span class="nl">legs</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span>
@@ -346,7 +351,7 @@
 <span class="lineno">13</span> <span class="p">}</span>
 <span class="lineno">14</span> <span class="c1">// Area is 12.5663708</span>
 <span class="lineno">15</span> <span class="c1">// Area is 243610.0</span>
-<span class="lineno">16</span> <span class="c1">// Something that doesn&#39;t have an area</span></code></pre></div>
+<span class="lineno">16</span> <span class="c1">// Something that doesn&#39;t have an area</span></code></pre></figure>
 
 <p>このようにあるインスタンスがプロコトルに準拠しているかを確認し、それによって処理を変更しています。objectWithArea のタイプは、HasArea か nil です。したがって、プロトコルが定義している area プロパティにしかアクセスすることはできません。タイプが Circle や Country、Animal ではないからです。</p>
 
@@ -358,16 +363,16 @@
 
 <p>この選択的なプロトコルの要件は、<code>@objc</code> 属性と一緒に使用されます。つまり、これはクラスでしか使えません。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="p">@</span><span class="n">objc</span> <span class="n">protocol</span> <span class="n">CounterDataSource</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="p">@</span><span class="n">objc</span> <span class="n">protocol</span> <span class="n">CounterDataSource</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="k">@optional</span> <span class="n">func</span> <span class="n">incrementForCount</span><span class="p">(</span><span class="nl">count</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span>
 <span class="lineno">3</span>     <span class="k">@optional</span> <span class="n">var</span> <span class="nl">fixedIncrement</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
-<span class="lineno">4</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">4</span> <span class="p">}</span></code></pre></figure>
 
 <p>このプロトコルは、引数を 1 つ取る incrementForCount 関数とプロパティを実装することを求めていますが、これは任意です。</p>
 
 <p>そして、下記の Counter クラスをみてみます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="p">@</span><span class="n">objc</span> <span class="k">class</span> <span class="n">Counter</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="p">@</span><span class="n">objc</span> <span class="k">class</span> <span class="n">Counter</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="lineno"> 3</span>     <span class="n">var</span> <span class="nl">dataSource</span><span class="p">:</span> <span class="n">CounterDataSource</span><span class="o">?</span>
 <span class="lineno"> 4</span>     <span class="n">func</span> <span class="n">increment</span><span class="p">()</span> <span class="p">{</span>
@@ -377,19 +382,19 @@
 <span class="lineno"> 8</span>             <span class="n">count</span> <span class="o">+=</span> <span class="n">amount</span>
 <span class="lineno"> 9</span>         <span class="p">}</span>
 <span class="lineno">10</span>     <span class="p">}</span>
-<span class="lineno">11</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">11</span> <span class="p">}</span></code></pre></figure>
 
 <p>このクラスは、プロパティに dataSource という Optional のプロパティを持っています。これが、上記の CounterDataSource プロトコルです。この increment メソッドにて、実際の処理を行っています。この中で、各プロトコルが実装されているかを確認し、ある場合は、それらを使用して、処理をしています。そもそも dataSource プロパティが nil の場合も考えられるので、2 段階に確認をしています。</p>
 
 <p>ここから、実際に選択的な要件がどのように使われるかみていきます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">class</span> <span class="nl">ThreeSource</span><span class="p">:</span> <span class="n">CounterDataSource</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">class</span> <span class="nl">ThreeSource</span><span class="p">:</span> <span class="n">CounterDataSource</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">let</span> <span class="n">fixedIncrement</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="lineno">3</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">3</span> <span class="p">}</span></code></pre></figure>
 
 <p>まずは、シンプルなクラスから。この ThreeSource は、先ほどの CounterDataSource のプロパティ要件を実装しています。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">var</span> <span class="n">counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">var</span> <span class="n">counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
 <span class="lineno"> 2</span> <span class="n">counter</span><span class="p">.</span><span class="n">dataSource</span> <span class="o">=</span> <span class="n">ThreeSource</span><span class="p">()</span>
 <span class="lineno"> 3</span> <span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">.</span><span class="mf">.4</span> <span class="p">{</span>
 <span class="lineno"> 4</span>     <span class="n">counter</span><span class="p">.</span><span class="n">increment</span><span class="p">()</span>
@@ -398,13 +403,13 @@
 <span class="lineno"> 7</span> <span class="c1">// 3</span>
 <span class="lineno"> 8</span> <span class="c1">// 6</span>
 <span class="lineno"> 9</span> <span class="c1">// 9</span>
-<span class="lineno">10</span> <span class="c1">// 12</span></code></pre></div>
+<span class="lineno">10</span> <span class="c1">// 12</span></code></pre></figure>
 
 <p>この TreeSource クラスは、プロトコルのプロパティ要件しか満たしていないので、increment メソッドの 2 つ目の処理が実行されます。この場合は、3 つずつ count が追加されていきます。</p>
 
 <p>ちょっと複雑な例をみてみます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="nl">TowardsZeroSource</span><span class="p">:</span> <span class="n">CounterDataSource</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="nl">TowardsZeroSource</span><span class="p">:</span> <span class="n">CounterDataSource</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">func</span> <span class="n">incrementForCount</span><span class="p">(</span><span class="nl">count</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
 <span class="lineno"> 3</span>         <span class="k">if</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
 <span class="lineno"> 4</span>             <span class="k">return</span> <span class="mi">0</span>
@@ -414,11 +419,11 @@
 <span class="lineno"> 8</span>             <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
 <span class="lineno"> 9</span>         <span class="p">}</span>
 <span class="lineno">10</span>     <span class="p">}</span>
-<span class="lineno">11</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">11</span> <span class="p">}</span></code></pre></figure>
 
 <p>このクラスは、CounterDataSource プロトコルの incrementForCount 関数を実装しています。count が 0 になるようにする処理です。実際には、</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">counter</span><span class="p">.</span><span class="n">count</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">counter</span><span class="p">.</span><span class="n">count</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>
 <span class="lineno"> 2</span> <span class="n">counter</span><span class="p">.</span><span class="n">dataSource</span> <span class="o">=</span> <span class="n">TowardsZeroSource</span><span class="p">()</span>
 <span class="lineno"> 3</span> <span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">.</span><span class="mf">.5</span> <span class="p">{</span>
 <span class="lineno"> 4</span>     <span class="n">counter</span><span class="p">.</span><span class="n">increment</span><span class="p">()</span>
@@ -428,7 +433,7 @@
 <span class="lineno"> 8</span> <span class="c1">// -2</span>
 <span class="lineno"> 9</span> <span class="c1">// -1</span>
 <span class="lineno">10</span> <span class="c1">// 0</span>
-<span class="lineno">11</span> <span class="c1">// 0</span></code></pre></div>
+<span class="lineno">11</span> <span class="c1">// 0</span></code></pre></figure>
 
 <p>このようになります。</p>
 
@@ -474,80 +479,79 @@
 <h3>Category</h3>
    <p class="side_content">|
       
-   	   <a href="/categories/objective-c">objective-c
-            (11)
-         </a> |
+        <a href="/categories/objective-c">
+          Objective-C(11)
+        </a> |
       
-   	   <a href="/categories/other">other
-            (6)
-         </a> |
+        <a href="/categories/other">
+          Other(6)
+        </a> |
       
-   	   <a href="/categories/node-js">node.js
-            (1)
-         </a> |
+        <a href="/categories/node-js">
+          Node.js(1)
+        </a> |
       
-   	   <a href="/categories/ruby-on-rails">ruby on rails
-            (24)
-         </a> |
+        <a href="/categories/ruby-on-rails">
+          Ruby on Rails(24)
+        </a> |
       
-   	   <a href="/categories/tips">tips
-            (8)
-         </a> |
+        <a href="/categories/tips">
+          Tips(8)
+        </a> |
       
-   	   <a href="/categories/html5">html5
-            (8)
-         </a> |
+        <a href="/categories/html5">
+          HTML5(8)
+        </a> |
       
-   	   <a href="/categories/algorithms">algorithms
-            (2)
-         </a> |
+        <a href="/categories/algorithms">
+          Algorithms(2)
+        </a> |
       
-   	   <a href="/categories/machine-learning">machine learning
-            (5)
-         </a> |
+        <a href="/categories/machine-learning">
+          Machine Learning(5)
+        </a> |
       
-   	   <a href="/categories/c">c
-            (14)
-         </a> |
+        <a href="/categories/c">
+          C(14)
+        </a> |
       
-   	   <a href="/categories/ruby">ruby
-            (5)
-         </a> |
+        <a href="/categories/ruby">
+          Ruby(5)
+        </a> |
       
-   	   <a href="/categories/swift">swift
-            (34)
-         </a> |
+        <a href="/categories/swift">
+          Swift(34)
+        </a> |
       
-   	   <a href="/categories/ios">ios
-            (6)
-         </a> |
+        <a href="/categories/ios">
+          iOS(6)
+        </a> |
       
-   	   <a href="/categories/books">books
-            (4)
-         </a> |
+        <a href="/categories/books">
+          Books(5)
+        </a> |
       
-   	   <a href="/categories/kindle">kindle
-            (3)
-         </a> |
+        <a href="/categories/kindle">
+          Kindle(3)
+        </a> |
       
-   	   <a href="/categories/nginx">nginx
-            (1)
-         </a> |
+        <a href="/categories/nginx">
+          Nginx(1)
+        </a> |
       
-   	   <a href="/categories/capistrano">capistrano
-            (1)
-         </a> |
+        <a href="/categories/capistrano">
+          Capistrano(1)
+        </a> |
       
-   	   <a href="/categories/chef">chef
-            (2)
-         </a> |
+        <a href="/categories/chef">
+          Chef(2)
+        </a> |
       
-   	   <a href="/categories/fastlane">fastlane
-            (1)
-         </a> |
+        <a href="/categories/fastlane">
+          fastlane(1)
+        </a> |
       
    </p>
-
 <hr />
 
 <h3>Archive</h3>
@@ -621,6 +625,10 @@
             (1)
          </a> |
       
+   		<a href="/2017/12/">2017/12
+            (1)
+         </a> |
+      
    </p>
 
 <hr />
@@ -644,102 +652,106 @@
 				   <p>
 					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
 					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
-					   <a href="https://github.com/kzykbys">Github</a></p>
-				   <h4>Category</h4>
-				   <p>|
-					   
-						   <a href="/categories/objective-c">objective-c</a> | 
-					   
-						   <a href="/categories/other">other</a> | 
-					   
-						   <a href="/categories/node-js">node.js</a> | 
-					   
-						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
-					   
-						   <a href="/categories/tips">tips</a> | 
-					   
-						   <a href="/categories/html5">html5</a> | 
-					   
-						   <a href="/categories/algorithms">algorithms</a> | 
-					   
-						   <a href="/categories/machine-learning">machine learning</a> | 
-					   
-						   <a href="/categories/c">c</a> | 
-					   
-						   <a href="/categories/ruby">ruby</a> | 
-					   
-						   <a href="/categories/swift">swift</a> | 
-					   
-						   <a href="/categories/ios">ios</a> | 
-					   
-						   <a href="/categories/books">books</a> | 
-					   
-						   <a href="/categories/kindle">kindle</a> | 
-					   
-						   <a href="/categories/nginx">nginx</a> | 
-					   
-						   <a href="/categories/capistrano">capistrano</a> | 
-					   
-						   <a href="/categories/chef">chef</a> | 
-					   
-						   <a href="/categories/fastlane">fastlane</a> | 
-					   
-				   </p>
-				   <h4>Archive</h4>
-					   <p>|
-					   
-	    					<a href="/2013/08/">2013/08
-	    					</a> | 
-	    			   
-	    					<a href="/2013/09/">2013/09
-	    					</a> | 
-	    			   
-	    					<a href="/2013/11/">2013/11
-	    					</a> | 
-	    			   
-	    					<a href="/2013/12/">2013/12
-	    					</a> | 
-	    			   
-	    					<a href="/2014/01/">2014/01
-	    					</a> | 
-	    			   
-	    					<a href="/2014/03/">2014/03
-	    					</a> | 
-	    			   
-	    					<a href="/2014/04/">2014/04
-	    					</a> | 
-	    			   
-	    					<a href="/2014/05/">2014/05
-	    					</a> | 
-	    			   
-	    					<a href="/2014/06/">2014/06
-	    					</a> | 
-	    			   
-	    					<a href="/2014/07/">2014/07
-	    					</a> | 
-	    			   
-	    					<a href="/2014/08/">2014/08
-	    					</a> | 
-	    			   
-	    					<a href="/2014/09/">2014/09
-	    					</a> | 
-	    			   
-	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2015/02/">2015/02
-	    					</a> | 
-	    			   
-	    					<a href="/2015/07/">2015/07
-	    					</a> | 
-	    			   
-	    					<a href="/2015/08/">2015/08
-	    					</a> | 
-	    			   
-	    					<a href="/2016/01/">2016/01
-	    					</a> | 
-	    			   
-    			   </p>
+					   <a href="https://github.com/kzykbys">Github</a>
+					</p>
+					<h4>Category</h4>
+					<p>|
+						
+							<a href="/categories/objective-c">Objective-C</a> | 
+						
+							<a href="/categories/other">Other</a> | 
+						
+							<a href="/categories/node-js">Node.js</a> | 
+						
+							<a href="/categories/ruby-on-rails">Ruby on Rails</a> | 
+						
+							<a href="/categories/tips">Tips</a> | 
+						
+							<a href="/categories/html5">HTML5</a> | 
+						
+							<a href="/categories/algorithms">Algorithms</a> | 
+						
+							<a href="/categories/machine-learning">Machine Learning</a> | 
+						
+							<a href="/categories/c">C</a> | 
+						
+							<a href="/categories/ruby">Ruby</a> | 
+						
+							<a href="/categories/swift">Swift</a> | 
+						
+							<a href="/categories/ios">iOS</a> | 
+						
+							<a href="/categories/books">Books</a> | 
+						
+							<a href="/categories/kindle">Kindle</a> | 
+						
+							<a href="/categories/nginx">Nginx</a> | 
+						
+							<a href="/categories/capistrano">Capistrano</a> | 
+						
+							<a href="/categories/chef">Chef</a> | 
+						
+							<a href="/categories/fastlane">fastlane</a> | 
+						
+					</p>
+					<h4>Archive</h4>
+						<p>|
+						
+							<a href="/2013/08/">2013/08
+							</a> | 
+						
+							<a href="/2013/09/">2013/09
+							</a> | 
+						
+							<a href="/2013/11/">2013/11
+							</a> | 
+						
+							<a href="/2013/12/">2013/12
+							</a> | 
+						
+							<a href="/2014/01/">2014/01
+							</a> | 
+						
+							<a href="/2014/03/">2014/03
+							</a> | 
+						
+							<a href="/2014/04/">2014/04
+							</a> | 
+						
+							<a href="/2014/05/">2014/05
+							</a> | 
+						
+							<a href="/2014/06/">2014/06
+							</a> | 
+						
+							<a href="/2014/07/">2014/07
+							</a> | 
+						
+							<a href="/2014/08/">2014/08
+							</a> | 
+						
+							<a href="/2014/09/">2014/09
+							</a> | 
+						
+							<a href="/2014/10/">2014/10
+							</a> | 
+						
+							<a href="/2015/02/">2015/02
+							</a> | 
+						
+							<a href="/2015/07/">2015/07
+							</a> | 
+						
+							<a href="/2015/08/">2015/08
+							</a> | 
+						
+							<a href="/2016/01/">2016/01
+							</a> | 
+						
+							<a href="/2017/12/">2017/12
+							</a> | 
+						
+					</p>
 			   </div>
 		   </div>
 	   	</div>

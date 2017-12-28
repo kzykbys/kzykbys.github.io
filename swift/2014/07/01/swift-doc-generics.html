@@ -46,80 +46,81 @@
 
 	<h4>Category</h4>
 	<ul>
-	   
-		   <li>
-		   		<a href="/categories/objective-c">objective-c</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/other">other</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/node-js">node.js</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/tips">tips</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/html5">html5</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/algorithms">algorithms</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/machine-learning">machine learning</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/c">c</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ruby">ruby</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/swift">swift</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ios">ios</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/books">books</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/kindle">kindle</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/nginx">nginx</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/capistrano">capistrano</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/chef">chef</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/fastlane">fastlane</a>
-		   </li>
-	   
-    </ul>
+		
+			<li>
+				<a href="/categories/objective-c">Objective-C</a>
+			</li>
+		
+			<li>
+				<a href="/categories/other">Other</a>
+			</li>
+		
+			<li>
+				<a href="/categories/node-js">Node.js</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ruby-on-rails">Ruby on Rails</a>
+			</li>
+		
+			<li>
+				<a href="/categories/tips">Tips</a>
+			</li>
+		
+			<li>
+				<a href="/categories/html5">HTML5</a>
+			</li>
+		
+			<li>
+				<a href="/categories/algorithms">Algorithms</a>
+			</li>
+		
+			<li>
+				<a href="/categories/machine-learning">Machine Learning</a>
+			</li>
+		
+			<li>
+				<a href="/categories/c">C</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ruby">Ruby</a>
+			</li>
+		
+			<li>
+				<a href="/categories/swift">Swift</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ios">iOS</a>
+			</li>
+		
+			<li>
+				<a href="/categories/books">Books</a>
+			</li>
+		
+			<li>
+				<a href="/categories/kindle">Kindle</a>
+			</li>
+		
+			<li>
+				<a href="/categories/nginx">Nginx</a>
+			</li>
+		
+			<li>
+				<a href="/categories/capistrano">Capistrano</a>
+			</li>
+		
+			<li>
+				<a href="/categories/chef">Chef</a>
+			</li>
+		
+			<li>
+				<a href="/categories/fastlane">fastlane</a>
+			</li>
+		
+	</ul>
+
 	<h4>Archive</h4>
 	<ul>
 		
@@ -191,6 +192,10 @@
 				<a href="/2016/01/">2016/01</a>
 			</li>
 		
+			<li>
+				<a href="/2017/12/">2017/12</a>
+			</li>
+		
 	</ul>
 
 </div>
@@ -252,7 +257,7 @@
 
 <p>まずは、Generics を導入するとどのような問題を解決することができるのか、みていきます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">func</span> <span class="nf">swapTwoInts</span><span class="p">(</span><span class="k">inout</span> <span class="nl">a</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="k">inout</span> <span class="nl">b</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">func</span> <span class="nf">swapTwoInts</span><span class="p">(</span><span class="k">inout</span> <span class="nl">a</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="k">inout</span> <span class="nl">b</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">let</span> <span class="n">temporaryA</span> <span class="o">=</span> <span class="n">a</span>
 <span class="lineno"> 3</span>     <span class="n">a</span> <span class="o">=</span> <span class="n">b</span>
 <span class="lineno"> 4</span>     <span class="n">b</span> <span class="o">=</span> <span class="n">temporaryA</span>
@@ -262,7 +267,7 @@
 <span class="lineno"> 8</span> <span class="n">var</span> <span class="n">anotherInt</span> <span class="o">=</span> <span class="mi">107</span>
 <span class="lineno"> 9</span> <span class="n">swapTwoInts</span><span class="p">(</span><span class="o">&amp;</span><span class="n">someInt</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">anotherInt</span><span class="p">)</span>
 <span class="lineno">10</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;someInt is now \(someInt), and anotherInt is now \(anotherInt)&quot;</span><span class="p">)</span>
-<span class="lineno">11</span> <span class="c1">// prints &quot;someInt is now 107, and anotherInt is now 3&quot;</span></code></pre></div>
+<span class="lineno">11</span> <span class="c1">// prints &quot;someInt is now 107, and anotherInt is now 3&quot;</span></code></pre></figure>
 
 <p>基本的な swap 関数です。in-out 引数にして、関数の呼び出し後も変更が持続されるようにしています。</p>
 
@@ -272,7 +277,7 @@
 
 <p>まずは、上記の swap 関数を Generic に書いてみます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">func</span> <span class="n">swapTwoValues</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="k">inout</span> <span class="nl">a</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="k">inout</span> <span class="nl">b</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">func</span> <span class="n">swapTwoValues</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="k">inout</span> <span class="nl">a</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="k">inout</span> <span class="nl">b</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">let</span> <span class="n">temporaryA</span> <span class="o">=</span> <span class="n">a</span>
 <span class="lineno"> 3</span>     <span class="n">a</span> <span class="o">=</span> <span class="n">b</span>
 <span class="lineno"> 4</span>     <span class="n">b</span> <span class="o">=</span> <span class="n">temporaryA</span>
@@ -286,7 +291,7 @@
 <span class="lineno">12</span> <span class="n">var</span> <span class="n">someString</span> <span class="o">=</span> <span class="s">&quot;hello&quot;</span>
 <span class="lineno">13</span> <span class="n">var</span> <span class="n">anotherString</span> <span class="o">=</span> <span class="s">&quot;world&quot;</span>
 <span class="lineno">14</span> <span class="n">swapTwoValues</span><span class="p">(</span><span class="o">&amp;</span><span class="n">someString</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">anotherString</span><span class="p">)</span>
-<span class="lineno">15</span> <span class="c1">// someString is now &quot;world&quot;, and anotherString is now &quot;hello&quot;</span></code></pre></div>
+<span class="lineno">15</span> <span class="c1">// someString is now &quot;world&quot;, and anotherString is now &quot;hello&quot;</span></code></pre></figure>
 
 <p>この Generic な関数は、タイプを指定する際に、placeholder タイプ名を使用しています。(<code>T</code>) この T には、どんなタイプでも入ることができます。a も b も T なので、この 2 つの引数は同じタイプであるということが分かります。この &quot;T&quot; というは伝統的に使われているもので、なんでも構いません。しかし、もっと複雑な Generic 関数を書く際には、<code>KeyType</code> や <code>ValueType</code> 等、より説明的にした方がよいでしょう。この際に、タイプ名を大文字から始めタイプであるということを分かりやすくしたほうがよいです。また、関数名の後に、<code>&lt;T&gt;</code> と置き、placeholder タイプ名をこの関数内で使用すると宣言しています。複数のタイプを指定したい場合は、&lt;&gt; 内でカンマ区切りで書くことができます。</p>
 
@@ -300,7 +305,7 @@
 
 <p>まずは、Generic でないスタックはこのようになります。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">IntStack</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">IntStack</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">var</span> <span class="n">items</span> <span class="o">=</span> <span class="n">Int</span><span class="p">[]()</span>
 <span class="lineno">3</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">push</span><span class="p">(</span><span class="nl">item</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">4</span>         <span class="n">items</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
@@ -308,11 +313,11 @@
 <span class="lineno">6</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">pop</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
 <span class="lineno">7</span>         <span class="k">return</span> <span class="n">items</span><span class="p">.</span><span class="n">removeLast</span><span class="p">()</span>
 <span class="lineno">8</span>     <span class="p">}</span>
-<span class="lineno">9</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">9</span> <span class="p">}</span></code></pre></figure>
 
 <p>push と pop をサポートしています。構造体内の items を変更するので、<code>mutating</code> キーワードが使用されています。このスタックは、Int でしか使用することができません。次に Generic なスタックをみていきます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">Stack</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">Stack</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">var</span> <span class="n">items</span> <span class="o">=</span> <span class="n">T</span><span class="p">[]()</span>
 <span class="lineno">3</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">push</span><span class="p">(</span><span class="nl">item</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">4</span>         <span class="n">items</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
@@ -320,57 +325,57 @@
 <span class="lineno">6</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">pop</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">T</span> <span class="p">{</span>
 <span class="lineno">7</span>         <span class="k">return</span> <span class="n">items</span><span class="p">.</span><span class="n">removeLast</span><span class="p">()</span>
 <span class="lineno">8</span>     <span class="p">}</span>
-<span class="lineno">9</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">9</span> <span class="p">}</span></code></pre></figure>
 
 <p>ここでは、タイプ名の後に、<code>&lt;T&gt;</code> と書き、T を placeholder として使用することを宣言し、この T をタイプの定義内で使用しています。この T が、スタックを管理する items のデータタイプとして、push の引数のタイプとして、pop の返り値として使われています。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">stackOfStrings</span> <span class="o">=</span> <span class="n">Stack</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">()</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">stackOfStrings</span> <span class="o">=</span> <span class="n">Stack</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">()</span>
 <span class="lineno">2</span> <span class="n">stackOfStrings</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s">&quot;uno&quot;</span><span class="p">)</span>
 <span class="lineno">3</span> <span class="n">stackOfStrings</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s">&quot;dos&quot;</span><span class="p">)</span>
 <span class="lineno">4</span> <span class="n">stackOfStrings</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s">&quot;tres&quot;</span><span class="p">)</span>
 <span class="lineno">5</span> <span class="n">stackOfStrings</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s">&quot;cuatro&quot;</span><span class="p">)</span>
-<span class="lineno">6</span> <span class="c1">// the stack now contains 4 strings</span></code></pre></div>
+<span class="lineno">6</span> <span class="c1">// the stack now contains 4 strings</span></code></pre></figure>
 
 <h4 id="4.-タイプ制限">4. タイプ制限</h4>
 
 <p>今までみてきた swapTwoValues と Stack は文字通りどんなタイプでも受け入れることができました。しかし、受け入れることができるタイプに制限を加えることができたら、便利です。この制限は、あるクラスから継承されていること、あるプロトコルに準拠していることが指定できます。例えば、Swift の Dictionary のキーになれるのは、hashable なタイプだけです。つまり、Hashable プロトコルに準拠している必要があります。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">func</span> <span class="n">someFunction</span><span class="o">&lt;</span><span class="nl">T</span><span class="p">:</span> <span class="n">SomeClass</span><span class="p">,</span> <span class="nl">U</span><span class="p">:</span> <span class="n">SomeProtocol</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">someT</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="nl">someU</span><span class="p">:</span> <span class="n">U</span><span class="p">)</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">func</span> <span class="n">someFunction</span><span class="o">&lt;</span><span class="nl">T</span><span class="p">:</span> <span class="n">SomeClass</span><span class="p">,</span> <span class="nl">U</span><span class="p">:</span> <span class="n">SomeProtocol</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">someT</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="nl">someU</span><span class="p">:</span> <span class="n">U</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="c1">// function body goes here</span>
-<span class="lineno">3</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">3</span> <span class="p">}</span></code></pre></figure>
 
 <p>制限はこのように書くことができます。この例では、T は SomeClass を継承している必要があり、U は、SomeProtocol に準拠している必要があります。より具体的な例をみていきます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">func</span> <span class="n">findIndex</span><span class="o">&lt;</span><span class="nl">T</span><span class="p">:</span> <span class="n">Equatable</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">array</span><span class="p">:</span> <span class="n">T</span><span class="p">[],</span> <span class="nl">valueToFind</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span><span class="o">?</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">func</span> <span class="n">findIndex</span><span class="o">&lt;</span><span class="nl">T</span><span class="p">:</span> <span class="n">Equatable</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">array</span><span class="p">:</span> <span class="n">T</span><span class="p">[],</span> <span class="nl">valueToFind</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span><span class="o">?</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="k">for</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="k">in</span> <span class="n">enumerate</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">3</span>         <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="n">valueToFind</span> <span class="p">{</span>
 <span class="lineno">4</span>             <span class="k">return</span> <span class="n">index</span>
 <span class="lineno">5</span>         <span class="p">}</span>
 <span class="lineno">6</span>     <span class="p">}</span>
 <span class="lineno">7</span>     <span class="k">return</span> <span class="nb">nil</span>
-<span class="lineno">8</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">8</span> <span class="p">}</span></code></pre></figure>
 
 <p>この findIndex 関数は、配列の中からある値を探し、その index を返すというものです。この <code>&lt;T: Equatable&gt;</code> で、T は Equatable プロトコルに準拠している必要があるという制限を加えています。この制限がないと、この関数は、コンパイルエラーになります。それは、<code>value == valueToFind</code> の部分が原因です。全てのタイプに対して、== / != を使用できるとは限らないからです。Equatable は、== / != で比較ができるようにすることを求めるので、この制限をクリアしていれば、問題がありません。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">doubleIndex</span> <span class="o">=</span> <span class="n">findIndex</span><span class="p">([</span><span class="mf">3.14159</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span> <span class="mf">9.3</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">doubleIndex</span> <span class="o">=</span> <span class="n">findIndex</span><span class="p">([</span><span class="mf">3.14159</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span> <span class="mf">9.3</span><span class="p">)</span>
 <span class="lineno">2</span> <span class="c1">// doubleIndex is an optional Int with no value, because 9.3 is not in the array</span>
 <span class="lineno">3</span> <span class="n">let</span> <span class="n">stringIndex</span> <span class="o">=</span> <span class="n">findIndex</span><span class="p">([</span><span class="s">&quot;Mike&quot;</span><span class="p">,</span> <span class="s">&quot;Malcolm&quot;</span><span class="p">,</span> <span class="s">&quot;Andrea&quot;</span><span class="p">],</span> <span class="s">&quot;Andrea&quot;</span><span class="p">)</span>
-<span class="lineno">4</span> <span class="c1">// stringIndex is an optional Int containing a value of 2</span></code></pre></div>
+<span class="lineno">4</span> <span class="c1">// stringIndex is an optional Int containing a value of 2</span></code></pre></figure>
 
 <h4 id="5.-associated-タイプ">5. Associated タイプ</h4>
 
 <p>プロトコルを定義する際に、プロトコルの定義内に associated タイプを使うと便利です。これは、プロトコルで使用できる placeholder (alias) 名です。プロトコルが実装される際に、この associated タイプに実際に何が入るのか決められます。例をみていきます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">Container</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="n">Container</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">typealias</span> <span class="n">ItemType</span>
 <span class="lineno">3</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">append</span><span class="p">(</span><span class="nl">item</span><span class="p">:</span> <span class="n">ItemType</span><span class="p">)</span>
 <span class="lineno">4</span>     <span class="n">var</span> <span class="nl">count</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
 <span class="lineno">5</span>     <span class="n">subscript</span><span class="p">(</span><span class="nl">i</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ItemType</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
-<span class="lineno">6</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">6</span> <span class="p">}</span></code></pre></figure>
 
 <p>この Container プロトコルは、append メソッド、count プロパティ、subscript を要求しています。しかし、この Container がどのようなタイプを保存しているのかは要求していません。この Generic なタイプをプロトコルの定義内で使用するために、itemType という associated タイプを宣言し、使用しています。先ほどの Int スタックと Generic なスタックを Container プロトコルに準拠させてみます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="nl">IntStack</span><span class="p">:</span> <span class="n">Container</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="nl">IntStack</span><span class="p">:</span> <span class="n">Container</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="c1">// original IntStack implementation</span>
 <span class="lineno"> 3</span>     <span class="n">var</span> <span class="n">items</span> <span class="o">=</span> <span class="n">Int</span><span class="p">[]()</span>
 <span class="lineno"> 4</span>     <span class="n">mutating</span> <span class="n">func</span> <span class="n">push</span><span class="p">(</span><span class="nl">item</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
@@ -411,7 +416,7 @@
 <span class="lineno">39</span>     <span class="n">subscript</span><span class="p">(</span><span class="nl">i</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span> <span class="p">{</span>
 <span class="lineno">40</span>         <span class="k">return</span> <span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 <span class="lineno">41</span>     <span class="p">}</span>
-<span class="lineno">42</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">42</span> <span class="p">}</span></code></pre></figure>
 
 <p>IntStack では、<code>typealias ItemType = Int</code> を associated タイプが何であるか明示的に宣言していますが、これは必要はありません。</p>
 
@@ -419,7 +424,7 @@
 
 <p>4 のタイプ制限以外にも、associated タイプに制限を加えることも必要な場合があります。これは、<code>where</code> を使用して達成します。これにより、associated タイプが、あるプロトコルに準拠しているか、あるタイプの引数と associated タイプが同じであるか、制限を加えることができます。これは、実装されている場所の引数リストの中にて、宣言します。例をみていきます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">func</span> <span class="n">allItemsMatch</span><span class="o">&lt;</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">func</span> <span class="n">allItemsMatch</span><span class="o">&lt;</span>
 <span class="lineno"> 2</span>     <span class="nl">C1</span><span class="p">:</span> <span class="n">Container</span><span class="p">,</span> <span class="nl">C2</span><span class="p">:</span> <span class="n">Container</span>
 <span class="lineno"> 3</span>     <span class="n">where</span> <span class="n">C1</span><span class="p">.</span><span class="n">ItemType</span> <span class="o">==</span> <span class="n">C2</span><span class="p">.</span><span class="n">ItemType</span><span class="p">,</span> <span class="n">C1</span><span class="p">.</span><span class="nl">ItemType</span><span class="p">:</span> <span class="n">Equatable</span><span class="o">&gt;</span>
 <span class="lineno"> 4</span>     <span class="p">(</span><span class="nl">someContainer</span><span class="p">:</span> <span class="n">C1</span><span class="p">,</span> <span class="nl">anotherContainer</span><span class="p">:</span> <span class="n">C2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
@@ -439,11 +444,11 @@
 <span class="lineno">18</span>         <span class="c1">// all items match, so return true</span>
 <span class="lineno">19</span>         <span class="k">return</span> <span class="nb">true</span>
 <span class="lineno">20</span>         
-<span class="lineno">21</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">21</span> <span class="p">}</span></code></pre></figure>
 
 <p>Container プロトコルに準拠した 2 つの引数が、全く同じ値を内部に持っているかを確認する関数です。この allItemsMatch 関数は、引数に Generic な引数をとります。まず、&lt;&gt; 内で指定されているように、これらの引数は Container プロトコルに準拠している必要があります。さらに、<code>where</code> の後で、Associated タイプ（.ItemType）に制限を加えています。1 つ目は (<code>C1.ItemType == C2.ItemType</code>) は、2 つの Generics の要素が同じタイプであるということを指定しています。2 つ目は (<code>C1.ItemType: Equatable</code>)、要素が、Equatable プロトコルに準拠している必要があることを宣言しています。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">extension</span> <span class="nl">Array</span><span class="p">:</span> <span class="n">Container</span> <span class="p">{}</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">extension</span> <span class="nl">Array</span><span class="p">:</span> <span class="n">Container</span> <span class="p">{}</span>
 <span class="lineno"> 2</span> 
 <span class="lineno"> 3</span> <span class="n">var</span> <span class="n">stackOfStrings</span> <span class="o">=</span> <span class="n">Stack</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">()</span>
 <span class="lineno"> 4</span> <span class="n">stackOfStrings</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s">&quot;uno&quot;</span><span class="p">)</span>
@@ -457,7 +462,7 @@
 <span class="lineno">12</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 <span class="lineno">13</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;Not all items match.&quot;</span><span class="p">)</span>
 <span class="lineno">14</span> <span class="p">}</span>
-<span class="lineno">15</span> <span class="c1">// prints &quot;All items match.</span></code></pre></div>
+<span class="lineno">15</span> <span class="c1">// prints &quot;All items match.</span></code></pre></figure>
 
 <p>この allItemsMatch 関数は、引数として Container に準拠し、where 以降に指定した制限もクリアしていれば、引数として取ることができます。同じタイプである必要はありません。（この場合は配列と Stack）Array に Extension により、Container に準拠させることにより、スタックと配列の中身を全て比較しています。</p>
 
@@ -503,80 +508,79 @@
 <h3>Category</h3>
    <p class="side_content">|
       
-   	   <a href="/categories/objective-c">objective-c
-            (11)
-         </a> |
+        <a href="/categories/objective-c">
+          Objective-C(11)
+        </a> |
       
-   	   <a href="/categories/other">other
-            (6)
-         </a> |
+        <a href="/categories/other">
+          Other(6)
+        </a> |
       
-   	   <a href="/categories/node-js">node.js
-            (1)
-         </a> |
+        <a href="/categories/node-js">
+          Node.js(1)
+        </a> |
       
-   	   <a href="/categories/ruby-on-rails">ruby on rails
-            (24)
-         </a> |
+        <a href="/categories/ruby-on-rails">
+          Ruby on Rails(24)
+        </a> |
       
-   	   <a href="/categories/tips">tips
-            (8)
-         </a> |
+        <a href="/categories/tips">
+          Tips(8)
+        </a> |
       
-   	   <a href="/categories/html5">html5
-            (8)
-         </a> |
+        <a href="/categories/html5">
+          HTML5(8)
+        </a> |
       
-   	   <a href="/categories/algorithms">algorithms
-            (2)
-         </a> |
+        <a href="/categories/algorithms">
+          Algorithms(2)
+        </a> |
       
-   	   <a href="/categories/machine-learning">machine learning
-            (5)
-         </a> |
+        <a href="/categories/machine-learning">
+          Machine Learning(5)
+        </a> |
       
-   	   <a href="/categories/c">c
-            (14)
-         </a> |
+        <a href="/categories/c">
+          C(14)
+        </a> |
       
-   	   <a href="/categories/ruby">ruby
-            (5)
-         </a> |
+        <a href="/categories/ruby">
+          Ruby(5)
+        </a> |
       
-   	   <a href="/categories/swift">swift
-            (34)
-         </a> |
+        <a href="/categories/swift">
+          Swift(34)
+        </a> |
       
-   	   <a href="/categories/ios">ios
-            (6)
-         </a> |
+        <a href="/categories/ios">
+          iOS(6)
+        </a> |
       
-   	   <a href="/categories/books">books
-            (4)
-         </a> |
+        <a href="/categories/books">
+          Books(5)
+        </a> |
       
-   	   <a href="/categories/kindle">kindle
-            (3)
-         </a> |
+        <a href="/categories/kindle">
+          Kindle(3)
+        </a> |
       
-   	   <a href="/categories/nginx">nginx
-            (1)
-         </a> |
+        <a href="/categories/nginx">
+          Nginx(1)
+        </a> |
       
-   	   <a href="/categories/capistrano">capistrano
-            (1)
-         </a> |
+        <a href="/categories/capistrano">
+          Capistrano(1)
+        </a> |
       
-   	   <a href="/categories/chef">chef
-            (2)
-         </a> |
+        <a href="/categories/chef">
+          Chef(2)
+        </a> |
       
-   	   <a href="/categories/fastlane">fastlane
-            (1)
-         </a> |
+        <a href="/categories/fastlane">
+          fastlane(1)
+        </a> |
       
    </p>
-
 <hr />
 
 <h3>Archive</h3>
@@ -650,6 +654,10 @@
             (1)
          </a> |
       
+   		<a href="/2017/12/">2017/12
+            (1)
+         </a> |
+      
    </p>
 
 <hr />
@@ -673,102 +681,106 @@
 				   <p>
 					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
 					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
-					   <a href="https://github.com/kzykbys">Github</a></p>
-				   <h4>Category</h4>
-				   <p>|
-					   
-						   <a href="/categories/objective-c">objective-c</a> | 
-					   
-						   <a href="/categories/other">other</a> | 
-					   
-						   <a href="/categories/node-js">node.js</a> | 
-					   
-						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
-					   
-						   <a href="/categories/tips">tips</a> | 
-					   
-						   <a href="/categories/html5">html5</a> | 
-					   
-						   <a href="/categories/algorithms">algorithms</a> | 
-					   
-						   <a href="/categories/machine-learning">machine learning</a> | 
-					   
-						   <a href="/categories/c">c</a> | 
-					   
-						   <a href="/categories/ruby">ruby</a> | 
-					   
-						   <a href="/categories/swift">swift</a> | 
-					   
-						   <a href="/categories/ios">ios</a> | 
-					   
-						   <a href="/categories/books">books</a> | 
-					   
-						   <a href="/categories/kindle">kindle</a> | 
-					   
-						   <a href="/categories/nginx">nginx</a> | 
-					   
-						   <a href="/categories/capistrano">capistrano</a> | 
-					   
-						   <a href="/categories/chef">chef</a> | 
-					   
-						   <a href="/categories/fastlane">fastlane</a> | 
-					   
-				   </p>
-				   <h4>Archive</h4>
-					   <p>|
-					   
-	    					<a href="/2013/08/">2013/08
-	    					</a> | 
-	    			   
-	    					<a href="/2013/09/">2013/09
-	    					</a> | 
-	    			   
-	    					<a href="/2013/11/">2013/11
-	    					</a> | 
-	    			   
-	    					<a href="/2013/12/">2013/12
-	    					</a> | 
-	    			   
-	    					<a href="/2014/01/">2014/01
-	    					</a> | 
-	    			   
-	    					<a href="/2014/03/">2014/03
-	    					</a> | 
-	    			   
-	    					<a href="/2014/04/">2014/04
-	    					</a> | 
-	    			   
-	    					<a href="/2014/05/">2014/05
-	    					</a> | 
-	    			   
-	    					<a href="/2014/06/">2014/06
-	    					</a> | 
-	    			   
-	    					<a href="/2014/07/">2014/07
-	    					</a> | 
-	    			   
-	    					<a href="/2014/08/">2014/08
-	    					</a> | 
-	    			   
-	    					<a href="/2014/09/">2014/09
-	    					</a> | 
-	    			   
-	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2015/02/">2015/02
-	    					</a> | 
-	    			   
-	    					<a href="/2015/07/">2015/07
-	    					</a> | 
-	    			   
-	    					<a href="/2015/08/">2015/08
-	    					</a> | 
-	    			   
-	    					<a href="/2016/01/">2016/01
-	    					</a> | 
-	    			   
-    			   </p>
+					   <a href="https://github.com/kzykbys">Github</a>
+					</p>
+					<h4>Category</h4>
+					<p>|
+						
+							<a href="/categories/objective-c">Objective-C</a> | 
+						
+							<a href="/categories/other">Other</a> | 
+						
+							<a href="/categories/node-js">Node.js</a> | 
+						
+							<a href="/categories/ruby-on-rails">Ruby on Rails</a> | 
+						
+							<a href="/categories/tips">Tips</a> | 
+						
+							<a href="/categories/html5">HTML5</a> | 
+						
+							<a href="/categories/algorithms">Algorithms</a> | 
+						
+							<a href="/categories/machine-learning">Machine Learning</a> | 
+						
+							<a href="/categories/c">C</a> | 
+						
+							<a href="/categories/ruby">Ruby</a> | 
+						
+							<a href="/categories/swift">Swift</a> | 
+						
+							<a href="/categories/ios">iOS</a> | 
+						
+							<a href="/categories/books">Books</a> | 
+						
+							<a href="/categories/kindle">Kindle</a> | 
+						
+							<a href="/categories/nginx">Nginx</a> | 
+						
+							<a href="/categories/capistrano">Capistrano</a> | 
+						
+							<a href="/categories/chef">Chef</a> | 
+						
+							<a href="/categories/fastlane">fastlane</a> | 
+						
+					</p>
+					<h4>Archive</h4>
+						<p>|
+						
+							<a href="/2013/08/">2013/08
+							</a> | 
+						
+							<a href="/2013/09/">2013/09
+							</a> | 
+						
+							<a href="/2013/11/">2013/11
+							</a> | 
+						
+							<a href="/2013/12/">2013/12
+							</a> | 
+						
+							<a href="/2014/01/">2014/01
+							</a> | 
+						
+							<a href="/2014/03/">2014/03
+							</a> | 
+						
+							<a href="/2014/04/">2014/04
+							</a> | 
+						
+							<a href="/2014/05/">2014/05
+							</a> | 
+						
+							<a href="/2014/06/">2014/06
+							</a> | 
+						
+							<a href="/2014/07/">2014/07
+							</a> | 
+						
+							<a href="/2014/08/">2014/08
+							</a> | 
+						
+							<a href="/2014/09/">2014/09
+							</a> | 
+						
+							<a href="/2014/10/">2014/10
+							</a> | 
+						
+							<a href="/2015/02/">2015/02
+							</a> | 
+						
+							<a href="/2015/07/">2015/07
+							</a> | 
+						
+							<a href="/2015/08/">2015/08
+							</a> | 
+						
+							<a href="/2016/01/">2016/01
+							</a> | 
+						
+							<a href="/2017/12/">2017/12
+							</a> | 
+						
+					</p>
 			   </div>
 		   </div>
 	   	</div>

@@ -46,80 +46,81 @@
 
 	<h4>Category</h4>
 	<ul>
-	   
-		   <li>
-		   		<a href="/categories/objective-c">objective-c</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/other">other</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/node-js">node.js</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/tips">tips</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/html5">html5</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/algorithms">algorithms</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/machine-learning">machine learning</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/c">c</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ruby">ruby</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/swift">swift</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ios">ios</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/books">books</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/kindle">kindle</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/nginx">nginx</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/capistrano">capistrano</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/chef">chef</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/fastlane">fastlane</a>
-		   </li>
-	   
-    </ul>
+		
+			<li>
+				<a href="/categories/objective-c">Objective-C</a>
+			</li>
+		
+			<li>
+				<a href="/categories/other">Other</a>
+			</li>
+		
+			<li>
+				<a href="/categories/node-js">Node.js</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ruby-on-rails">Ruby on Rails</a>
+			</li>
+		
+			<li>
+				<a href="/categories/tips">Tips</a>
+			</li>
+		
+			<li>
+				<a href="/categories/html5">HTML5</a>
+			</li>
+		
+			<li>
+				<a href="/categories/algorithms">Algorithms</a>
+			</li>
+		
+			<li>
+				<a href="/categories/machine-learning">Machine Learning</a>
+			</li>
+		
+			<li>
+				<a href="/categories/c">C</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ruby">Ruby</a>
+			</li>
+		
+			<li>
+				<a href="/categories/swift">Swift</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ios">iOS</a>
+			</li>
+		
+			<li>
+				<a href="/categories/books">Books</a>
+			</li>
+		
+			<li>
+				<a href="/categories/kindle">Kindle</a>
+			</li>
+		
+			<li>
+				<a href="/categories/nginx">Nginx</a>
+			</li>
+		
+			<li>
+				<a href="/categories/capistrano">Capistrano</a>
+			</li>
+		
+			<li>
+				<a href="/categories/chef">Chef</a>
+			</li>
+		
+			<li>
+				<a href="/categories/fastlane">fastlane</a>
+			</li>
+		
+	</ul>
+
 	<h4>Archive</h4>
 	<ul>
 		
@@ -191,6 +192,10 @@
 				<a href="/2016/01/">2016/01</a>
 			</li>
 		
+			<li>
+				<a href="/2017/12/">2017/12</a>
+			</li>
+		
 	</ul>
 
 </div>
@@ -247,11 +252,11 @@
 
 <p>まずは、VagrantのAWSに関するプラグインのインストール。</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="n">vagrant</span> <span class="n">plugin</span> <span class="n">install</span> <span class="n">vagrant</span><span class="o">-</span><span class="n">aws</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="n">vagrant</span> <span class="n">plugin</span> <span class="n">install</span> <span class="n">vagrant</span><span class="o">-</span><span class="n">aws</span></code></pre></figure>
 
 <p>そして、EC2のインスタンスを起動する際に仮に使うboxのインストール。すぐに終わります。</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="n">vagrant</span> <span class="n">box</span> <span class="n">add</span> <span class="n">dummy</span> <span class="ss">https</span><span class="p">:</span><span class="sr">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mitchellh</span><span class="o">/</span><span class="n">vagrant</span><span class="o">-</span><span class="n">aws</span><span class="o">/</span><span class="n">raw</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">dummy</span><span class="o">.</span><span class="n">box</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="n">vagrant</span> <span class="n">box</span> <span class="n">add</span> <span class="n">dummy</span> <span class="ss">https</span><span class="p">:</span><span class="sr">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mitchellh</span><span class="o">/</span><span class="n">vagrant</span><span class="o">-</span><span class="n">aws</span><span class="o">/</span><span class="n">raw</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">dummy</span><span class="o">.</span><span class="n">box</span></code></pre></figure>
 
 <h4 id="aws側の準備">AWS側の準備</h4>
 
@@ -276,7 +281,7 @@
 
 <p>このpemファイルに対して、</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="n">chmod</span> <span class="mi">600</span> <span class="o">~</span><span class="sr">/.ssh/</span><span class="n">chef_guide</span><span class="o">.</span><span class="n">pem</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="n">chmod</span> <span class="mi">600</span> <span class="o">~</span><span class="sr">/.ssh/</span><span class="n">chef_guide</span><span class="o">.</span><span class="n">pem</span></code></pre></figure>
 
 <p>としてアクセス権を変更しておきましょう。</p>
 
@@ -292,21 +297,21 @@
 不用意にバージョン管理システムで管理等をするのは危険です。
 そのため、これらの値は、環境変数等に保存して、それらを参照するようにしましょう。</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">export</span> <span class="no">AWS_ACCESS_KEY_ID</span><span class="o">=</span><span class="n">abc</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">export</span> <span class="no">AWS_ACCESS_KEY_ID</span><span class="o">=</span><span class="n">abc</span>
 <span class="n">export</span> <span class="no">AWS_SECRET_KEY</span><span class="o">=</span><span class="n">abc</span>
 <span class="n">export</span> <span class="no">AWS_KEYPAIR_NAME</span><span class="o">=</span><span class="n">chef_guide</span>
-<span class="n">export</span> <span class="no">AWS_ACCESS_KEY_ID</span><span class="o">=</span><span class="vg">$HOME</span><span class="o">/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">chef_guide</span><span class="o">.</span><span class="n">pem</span></code></pre></div>
+<span class="n">export</span> <span class="no">AWS_ACCESS_KEY_ID</span><span class="o">=</span><span class="vg">$HOME</span><span class="o">/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">chef_guide</span><span class="o">.</span><span class="n">pem</span></code></pre></figure>
 
 <p>私の場合は、<code>~/.bash_profile</code> にこのように記述して読み込みます。</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="n">source</span> <span class="o">~</span><span class="sr">/.bash_profile</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="n">source</span> <span class="o">~</span><span class="sr">/.bash_profile</span></code></pre></figure>
 
 <h4 id="vagrantfile">Vagrantfile</h4>
 
 <p>そして、EC2のインスタンスをVagrantから起動する最後の仕上げのVagrantfileの編集です。
 今まで作った値等を設定しているのがわかると思います。</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># -*- mode: ruby -*-</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># -*- mode: ruby -*-</span>
 <span class="c1"># vi: set ft=ruby :</span>
 <span class="no">VAGRANTFILE_API_VERSION</span> <span class="o">=</span> <span class="s2">&quot;2&quot;</span>
 
@@ -339,33 +344,33 @@
     <span class="c1"># インスタンスタイプを設定</span>
     <span class="n">aws</span><span class="o">.</span><span class="n">instance_type</span> <span class="o">=</span> <span class="n">instance_type</span>
   <span class="k">end</span>
-<span class="k">end</span></code></pre></div>
+<span class="k">end</span></code></pre></figure>
 
 <h4 id="ec2インスタンスの起動">EC2インスタンスの起動</h4>
 
 <p>そして、ついにEC2のインスタンスを起動します。
 Vagrantfileがあるディレクトリで、</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="n">vagrant</span> <span class="n">up</span> <span class="o">--</span><span class="n">provider</span><span class="o">=</span><span class="n">aws</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="n">vagrant</span> <span class="n">up</span> <span class="o">--</span><span class="n">provider</span><span class="o">=</span><span class="n">aws</span>
 <span class="ow">or</span>
-<span class="err">$</span> <span class="no">VAGRANT_LOG</span><span class="o">=</span><span class="n">info</span> <span class="n">vagrant</span> <span class="n">up</span> <span class="o">--</span><span class="n">provider</span><span class="o">=</span><span class="n">aws</span></code></pre></div>
+<span class="err">$</span> <span class="no">VAGRANT_LOG</span><span class="o">=</span><span class="n">info</span> <span class="n">vagrant</span> <span class="n">up</span> <span class="o">--</span><span class="n">provider</span><span class="o">=</span><span class="n">aws</span></code></pre></figure>
 
 <p>とすれば完了です！AWSのコンソール上で、インスタンスが立ち上がっているのが確認できると思います。すごい！
 エラーが出た時には2つ目のコマンドのように、ログを出力させればだいたいわかると思います。</p>
 
 <p>私がハマった箇所としては、</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">==&gt;</span> <span class="ss">default</span><span class="p">:</span> <span class="no">Waiting</span> <span class="k">for</span> <span class="no">SSH</span> <span class="n">to</span> <span class="n">become</span> <span class="n">available</span><span class="o">.</span><span class="n">.</span><span class="o">.</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">==&gt;</span> <span class="ss">default</span><span class="p">:</span> <span class="no">Waiting</span> <span class="k">for</span> <span class="no">SSH</span> <span class="n">to</span> <span class="n">become</span> <span class="n">available</span><span class="o">.</span><span class="n">.</span><span class="o">.</span></code></pre></figure>
 
 <p>の部分のログで、SSHが通らなかったです。原因は、上で解説したように <code>*.pem</code> にアクセス権を変更していなかったり、セキュリティグループの名前のタイプミスでした。</p>
 
 <p>また、上記の <code>==&gt; default: Waiting for SSH to become available...</code> はちょっと長い時間かかります。僕はこれが長くてエラーだと勝手に思い何度も奮闘しましたが、2~5分くらい待つと普通に起動しました。ちょっとせっかちでした。
 最後に載せている参考文献によると10分して、このログが次へ進まなかったら、エラーだろうということです。</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">==&gt;</span> <span class="ss">default</span><span class="p">:</span> <span class="no">Waiting</span> <span class="k">for</span> <span class="n">instance</span> <span class="n">to</span> <span class="n">become</span> <span class="s2">&quot;ready&quot;</span><span class="o">.</span><span class="n">.</span><span class="o">.</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">==&gt;</span> <span class="ss">default</span><span class="p">:</span> <span class="no">Waiting</span> <span class="k">for</span> <span class="n">instance</span> <span class="n">to</span> <span class="n">become</span> <span class="s2">&quot;ready&quot;</span><span class="o">.</span><span class="n">.</span><span class="o">.</span>
 <span class="o">==&gt;</span> <span class="ss">default</span><span class="p">:</span> <span class="no">Waiting</span> <span class="k">for</span> <span class="no">SSH</span> <span class="n">to</span> <span class="n">become</span> <span class="n">available</span><span class="o">.</span><span class="n">.</span><span class="o">.</span>
 <span class="o">==&gt;</span> <span class="ss">default</span><span class="p">:</span> <span class="no">Machine</span> <span class="n">is</span> <span class="n">booted</span> <span class="ow">and</span> <span class="n">ready</span> <span class="k">for</span> <span class="n">use!</span>
-<span class="o">==&gt;</span> <span class="ss">default</span><span class="p">:</span> <span class="no">Rsyncing</span> <span class="ss">folder</span><span class="p">:</span> <span class="sr">/Users/</span><span class="n">kzykbys</span><span class="o">/</span><span class="no">Vagrant</span><span class="o">/</span><span class="n">chef</span><span class="o">-</span><span class="n">aws</span><span class="o">/</span> <span class="o">=&gt;</span> <span class="sr">/vagrant</span></code></pre></div>
+<span class="o">==&gt;</span> <span class="ss">default</span><span class="p">:</span> <span class="no">Rsyncing</span> <span class="ss">folder</span><span class="p">:</span> <span class="sr">/Users/</span><span class="n">kzykbys</span><span class="o">/</span><span class="no">Vagrant</span><span class="o">/</span><span class="n">chef</span><span class="o">-</span><span class="n">aws</span><span class="o">/</span> <span class="o">=&gt;</span> <span class="sr">/vagrant</span></code></pre></figure>
 
 <p>のように最後まで出力されていれば大丈夫のはず。</p>
 
@@ -376,7 +381,7 @@ Vagrantfileがあるディレクトリで、</p>
 今回は、<a href="http://blog.kazuya.co/chef/2015/08/13/chef-nginx.html">前回</a>と同じくnginxを起動させてブラウザでアクセスしてみます。
 やっていることも前回とほぼ同じです。</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="n">knife</span> <span class="n">solo</span> <span class="n">init</span> <span class="o">.</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="n">knife</span> <span class="n">solo</span> <span class="n">init</span> <span class="o">.</span>
 <span class="err">$</span> <span class="n">vagrant</span> <span class="n">ssh</span><span class="o">-</span><span class="n">config</span> <span class="o">--</span><span class="n">host</span> <span class="n">ec2</span><span class="o">-</span><span class="n">chef</span> <span class="o">&gt;&gt;</span> <span class="o">~</span><span class="sr">/.ssh/</span><span class="n">config</span>
 <span class="err">$</span> <span class="n">knife</span> <span class="n">solo</span> <span class="n">prepare</span> <span class="n">ec2</span><span class="o">-</span><span class="n">chef</span>
 <span class="err">$</span> <span class="n">knife</span> <span class="n">cookbook</span> <span class="n">create</span> <span class="n">nginx</span> <span class="o">-</span><span class="n">o</span> <span class="n">site</span><span class="o">-</span><span class="n">cookbooks</span>
@@ -405,11 +410,11 @@ Vagrantfileがあるディレクトリで、</p>
   <span class="s2">&quot;automatic&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="s2">&quot;ipaddress&quot;</span><span class="p">:</span> <span class="s2">&quot;ec2-chef6&quot;</span>
   <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span></code></pre></figure>
 
 <p>そして、最後にクックブックを適応させれば完了です！</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="n">knife</span> <span class="n">solo</span> <span class="n">cook</span> <span class="n">ec2</span><span class="o">-</span><span class="n">chef</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="n">knife</span> <span class="n">solo</span> <span class="n">cook</span> <span class="n">ec2</span><span class="o">-</span><span class="n">chef</span></code></pre></figure>
 
 <p>これで、VagrantからEC2インスタンスを起動して、Chefによりnginxのインストール・起動が成功しているはずです！
 AWSのコンソールから該当インスタンスのパブリックIPを確認して、ブラウザでアクセスするとnginxの初期画面が見れるはずです。</p>
@@ -423,7 +428,7 @@ AWSのコンソールから該当インスタンスのパブリックIPを確認
 
 <p>まずは、Vagranfileを編集します。</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># -*- mode: ruby -*-</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># -*- mode: ruby -*-</span>
 <span class="c1"># vi: set ft=ruby :</span>
 <span class="no">VAGRANTFILE_API_VERSION</span> <span class="o">=</span> <span class="s2">&quot;2&quot;</span>
 
@@ -472,25 +477,25 @@ AWSのコンソールから該当インスタンスのパブリックIPを確認
 <span class="sx">      recipe[nginx]</span>
 <span class="sx">    ]</span>
   <span class="k">end</span>
-<span class="k">end</span></code></pre></div>
+<span class="k">end</span></code></pre></figure>
 
 <p><code>vagrant-omnibus</code>というプラグインを使用し、該当ノードに最新のChefを自動でセットアップされるようにしました。
 また、<code>config.vm.provision :chef_solo</code> の行で、今までNodeオブジェクトに記載していたものを指定しています。</p>
 
 <p>そして、<code>vagrant-omnibus</code> のインストール(一度のみ)します。</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="n">vagrant</span> <span class="n">plugin</span> <span class="n">install</span> <span class="n">vagrant</span><span class="o">-</span><span class="n">omnibus</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="n">vagrant</span> <span class="n">plugin</span> <span class="n">install</span> <span class="n">vagrant</span><span class="o">-</span><span class="n">omnibus</span></code></pre></figure>
 
 <p>そして、コミュニティクックブックのインポートをします。</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="n">berks</span> <span class="n">vendor</span> <span class="n">cookbooks</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="n">berks</span> <span class="n">vendor</span> <span class="n">cookbooks</span></code></pre></figure>
 
 <p>このインポートも <code>vagrant-berkshelf</code> のようなプラグインを使えば良さそうですが、上手く行かなかったのでとりあえず、手動でインポートしました。</p>
 
 <p>後は、下記のようにvagrant upしたり、適宜クックブックを適応させれば、knife solo と同じようにnginxがインストール・起動しているはずです。</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="n">vagrant</span> <span class="n">up</span> <span class="err">—</span><span class="n">provision</span>
-<span class="err">$</span> <span class="n">vagrant</span> <span class="n">provision</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="n">vagrant</span> <span class="n">up</span> <span class="err">—</span><span class="n">provision</span>
+<span class="err">$</span> <span class="n">vagrant</span> <span class="n">provision</span></code></pre></figure>
 
 <h4 id="参考">参考</h4>
 
@@ -538,80 +543,79 @@ AWSのコンソールから該当インスタンスのパブリックIPを確認
 <h3>Category</h3>
    <p class="side_content">|
       
-   	   <a href="/categories/objective-c">objective-c
-            (11)
-         </a> |
+        <a href="/categories/objective-c">
+          Objective-C(11)
+        </a> |
       
-   	   <a href="/categories/other">other
-            (6)
-         </a> |
+        <a href="/categories/other">
+          Other(6)
+        </a> |
       
-   	   <a href="/categories/node-js">node.js
-            (1)
-         </a> |
+        <a href="/categories/node-js">
+          Node.js(1)
+        </a> |
       
-   	   <a href="/categories/ruby-on-rails">ruby on rails
-            (24)
-         </a> |
+        <a href="/categories/ruby-on-rails">
+          Ruby on Rails(24)
+        </a> |
       
-   	   <a href="/categories/tips">tips
-            (8)
-         </a> |
+        <a href="/categories/tips">
+          Tips(8)
+        </a> |
       
-   	   <a href="/categories/html5">html5
-            (8)
-         </a> |
+        <a href="/categories/html5">
+          HTML5(8)
+        </a> |
       
-   	   <a href="/categories/algorithms">algorithms
-            (2)
-         </a> |
+        <a href="/categories/algorithms">
+          Algorithms(2)
+        </a> |
       
-   	   <a href="/categories/machine-learning">machine learning
-            (5)
-         </a> |
+        <a href="/categories/machine-learning">
+          Machine Learning(5)
+        </a> |
       
-   	   <a href="/categories/c">c
-            (14)
-         </a> |
+        <a href="/categories/c">
+          C(14)
+        </a> |
       
-   	   <a href="/categories/ruby">ruby
-            (5)
-         </a> |
+        <a href="/categories/ruby">
+          Ruby(5)
+        </a> |
       
-   	   <a href="/categories/swift">swift
-            (34)
-         </a> |
+        <a href="/categories/swift">
+          Swift(34)
+        </a> |
       
-   	   <a href="/categories/ios">ios
-            (6)
-         </a> |
+        <a href="/categories/ios">
+          iOS(6)
+        </a> |
       
-   	   <a href="/categories/books">books
-            (4)
-         </a> |
+        <a href="/categories/books">
+          Books(5)
+        </a> |
       
-   	   <a href="/categories/kindle">kindle
-            (3)
-         </a> |
+        <a href="/categories/kindle">
+          Kindle(3)
+        </a> |
       
-   	   <a href="/categories/nginx">nginx
-            (1)
-         </a> |
+        <a href="/categories/nginx">
+          Nginx(1)
+        </a> |
       
-   	   <a href="/categories/capistrano">capistrano
-            (1)
-         </a> |
+        <a href="/categories/capistrano">
+          Capistrano(1)
+        </a> |
       
-   	   <a href="/categories/chef">chef
-            (2)
-         </a> |
+        <a href="/categories/chef">
+          Chef(2)
+        </a> |
       
-   	   <a href="/categories/fastlane">fastlane
-            (1)
-         </a> |
+        <a href="/categories/fastlane">
+          fastlane(1)
+        </a> |
       
    </p>
-
 <hr />
 
 <h3>Archive</h3>
@@ -685,6 +689,10 @@ AWSのコンソールから該当インスタンスのパブリックIPを確認
             (1)
          </a> |
       
+   		<a href="/2017/12/">2017/12
+            (1)
+         </a> |
+      
    </p>
 
 <hr />
@@ -708,102 +716,106 @@ AWSのコンソールから該当インスタンスのパブリックIPを確認
 				   <p>
 					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
 					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
-					   <a href="https://github.com/kzykbys">Github</a></p>
-				   <h4>Category</h4>
-				   <p>|
-					   
-						   <a href="/categories/objective-c">objective-c</a> | 
-					   
-						   <a href="/categories/other">other</a> | 
-					   
-						   <a href="/categories/node-js">node.js</a> | 
-					   
-						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
-					   
-						   <a href="/categories/tips">tips</a> | 
-					   
-						   <a href="/categories/html5">html5</a> | 
-					   
-						   <a href="/categories/algorithms">algorithms</a> | 
-					   
-						   <a href="/categories/machine-learning">machine learning</a> | 
-					   
-						   <a href="/categories/c">c</a> | 
-					   
-						   <a href="/categories/ruby">ruby</a> | 
-					   
-						   <a href="/categories/swift">swift</a> | 
-					   
-						   <a href="/categories/ios">ios</a> | 
-					   
-						   <a href="/categories/books">books</a> | 
-					   
-						   <a href="/categories/kindle">kindle</a> | 
-					   
-						   <a href="/categories/nginx">nginx</a> | 
-					   
-						   <a href="/categories/capistrano">capistrano</a> | 
-					   
-						   <a href="/categories/chef">chef</a> | 
-					   
-						   <a href="/categories/fastlane">fastlane</a> | 
-					   
-				   </p>
-				   <h4>Archive</h4>
-					   <p>|
-					   
-	    					<a href="/2013/08/">2013/08
-	    					</a> | 
-	    			   
-	    					<a href="/2013/09/">2013/09
-	    					</a> | 
-	    			   
-	    					<a href="/2013/11/">2013/11
-	    					</a> | 
-	    			   
-	    					<a href="/2013/12/">2013/12
-	    					</a> | 
-	    			   
-	    					<a href="/2014/01/">2014/01
-	    					</a> | 
-	    			   
-	    					<a href="/2014/03/">2014/03
-	    					</a> | 
-	    			   
-	    					<a href="/2014/04/">2014/04
-	    					</a> | 
-	    			   
-	    					<a href="/2014/05/">2014/05
-	    					</a> | 
-	    			   
-	    					<a href="/2014/06/">2014/06
-	    					</a> | 
-	    			   
-	    					<a href="/2014/07/">2014/07
-	    					</a> | 
-	    			   
-	    					<a href="/2014/08/">2014/08
-	    					</a> | 
-	    			   
-	    					<a href="/2014/09/">2014/09
-	    					</a> | 
-	    			   
-	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2015/02/">2015/02
-	    					</a> | 
-	    			   
-	    					<a href="/2015/07/">2015/07
-	    					</a> | 
-	    			   
-	    					<a href="/2015/08/">2015/08
-	    					</a> | 
-	    			   
-	    					<a href="/2016/01/">2016/01
-	    					</a> | 
-	    			   
-    			   </p>
+					   <a href="https://github.com/kzykbys">Github</a>
+					</p>
+					<h4>Category</h4>
+					<p>|
+						
+							<a href="/categories/objective-c">Objective-C</a> | 
+						
+							<a href="/categories/other">Other</a> | 
+						
+							<a href="/categories/node-js">Node.js</a> | 
+						
+							<a href="/categories/ruby-on-rails">Ruby on Rails</a> | 
+						
+							<a href="/categories/tips">Tips</a> | 
+						
+							<a href="/categories/html5">HTML5</a> | 
+						
+							<a href="/categories/algorithms">Algorithms</a> | 
+						
+							<a href="/categories/machine-learning">Machine Learning</a> | 
+						
+							<a href="/categories/c">C</a> | 
+						
+							<a href="/categories/ruby">Ruby</a> | 
+						
+							<a href="/categories/swift">Swift</a> | 
+						
+							<a href="/categories/ios">iOS</a> | 
+						
+							<a href="/categories/books">Books</a> | 
+						
+							<a href="/categories/kindle">Kindle</a> | 
+						
+							<a href="/categories/nginx">Nginx</a> | 
+						
+							<a href="/categories/capistrano">Capistrano</a> | 
+						
+							<a href="/categories/chef">Chef</a> | 
+						
+							<a href="/categories/fastlane">fastlane</a> | 
+						
+					</p>
+					<h4>Archive</h4>
+						<p>|
+						
+							<a href="/2013/08/">2013/08
+							</a> | 
+						
+							<a href="/2013/09/">2013/09
+							</a> | 
+						
+							<a href="/2013/11/">2013/11
+							</a> | 
+						
+							<a href="/2013/12/">2013/12
+							</a> | 
+						
+							<a href="/2014/01/">2014/01
+							</a> | 
+						
+							<a href="/2014/03/">2014/03
+							</a> | 
+						
+							<a href="/2014/04/">2014/04
+							</a> | 
+						
+							<a href="/2014/05/">2014/05
+							</a> | 
+						
+							<a href="/2014/06/">2014/06
+							</a> | 
+						
+							<a href="/2014/07/">2014/07
+							</a> | 
+						
+							<a href="/2014/08/">2014/08
+							</a> | 
+						
+							<a href="/2014/09/">2014/09
+							</a> | 
+						
+							<a href="/2014/10/">2014/10
+							</a> | 
+						
+							<a href="/2015/02/">2015/02
+							</a> | 
+						
+							<a href="/2015/07/">2015/07
+							</a> | 
+						
+							<a href="/2015/08/">2015/08
+							</a> | 
+						
+							<a href="/2016/01/">2016/01
+							</a> | 
+						
+							<a href="/2017/12/">2017/12
+							</a> | 
+						
+					</p>
 			   </div>
 		   </div>
 	   	</div>

@@ -46,80 +46,81 @@
 
 	<h4>Category</h4>
 	<ul>
-	   
-		   <li>
-		   		<a href="/categories/objective-c">objective-c</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/other">other</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/node-js">node.js</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/tips">tips</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/html5">html5</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/algorithms">algorithms</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/machine-learning">machine learning</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/c">c</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ruby">ruby</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/swift">swift</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ios">ios</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/books">books</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/kindle">kindle</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/nginx">nginx</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/capistrano">capistrano</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/chef">chef</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/fastlane">fastlane</a>
-		   </li>
-	   
-    </ul>
+		
+			<li>
+				<a href="/categories/objective-c">Objective-C</a>
+			</li>
+		
+			<li>
+				<a href="/categories/other">Other</a>
+			</li>
+		
+			<li>
+				<a href="/categories/node-js">Node.js</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ruby-on-rails">Ruby on Rails</a>
+			</li>
+		
+			<li>
+				<a href="/categories/tips">Tips</a>
+			</li>
+		
+			<li>
+				<a href="/categories/html5">HTML5</a>
+			</li>
+		
+			<li>
+				<a href="/categories/algorithms">Algorithms</a>
+			</li>
+		
+			<li>
+				<a href="/categories/machine-learning">Machine Learning</a>
+			</li>
+		
+			<li>
+				<a href="/categories/c">C</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ruby">Ruby</a>
+			</li>
+		
+			<li>
+				<a href="/categories/swift">Swift</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ios">iOS</a>
+			</li>
+		
+			<li>
+				<a href="/categories/books">Books</a>
+			</li>
+		
+			<li>
+				<a href="/categories/kindle">Kindle</a>
+			</li>
+		
+			<li>
+				<a href="/categories/nginx">Nginx</a>
+			</li>
+		
+			<li>
+				<a href="/categories/capistrano">Capistrano</a>
+			</li>
+		
+			<li>
+				<a href="/categories/chef">Chef</a>
+			</li>
+		
+			<li>
+				<a href="/categories/fastlane">fastlane</a>
+			</li>
+		
+	</ul>
+
 	<h4>Archive</h4>
 	<ul>
 		
@@ -191,6 +192,10 @@
 				<a href="/2016/01/">2016/01</a>
 			</li>
 		
+			<li>
+				<a href="/2017/12/">2017/12</a>
+			</li>
+		
 	</ul>
 
 </div>
@@ -252,27 +257,27 @@
 
 <p>まずは、基本的な Swift での Enumeration。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">enum</span> <span class="n">CompassPoint</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">enum</span> <span class="n">CompassPoint</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="k">case</span> <span class="n">North</span>
 <span class="lineno">3</span>     <span class="k">case</span> <span class="n">South</span>
 <span class="lineno">4</span>     <span class="k">case</span> <span class="n">East</span>
 <span class="lineno">5</span>     <span class="k">case</span> <span class="n">West</span>
-<span class="lineno">6</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">6</span> <span class="p">}</span></code></pre></figure>
 
 <p><code>enum</code> キーワードで Enumeration を定義します。North や South は、この Enumeration のメンバー値 (member values)、またはメンバー(members)と呼ばれます。<code>case</code> キーワードが新しいメンバーが定義されることを指示しています。</p>
 
 <p>C や Objective-C では、Enumeration を定義すると、0,1,...n と自動的に値が推定されていましたが、Swift では違います。Swift では、Nort といったメンバーがそれ自体の値です。(fully-fledged values)</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">enum</span> <span class="n">Planet</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">enum</span> <span class="n">Planet</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="k">case</span> <span class="n">Mercury</span><span class="p">,</span> <span class="n">Venus</span><span class="p">,</span> <span class="n">Earth</span><span class="p">,</span> <span class="n">Mars</span><span class="p">,</span> <span class="n">Jupiter</span><span class="p">,</span> <span class="n">Saturn</span><span class="p">,</span> <span class="n">Uranus</span><span class="p">,</span> <span class="n">Neptune</span>
-<span class="lineno">3</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">3</span> <span class="p">}</span></code></pre></figure>
 
 <p>このようにカンマで区切って書くこともできます。Enumeration 自体の名前は、上記の CompassPoint や Planet のように大文字で始めます。また、複数形ではなく、単数形を使用するべきです。</p>
 
 <p>Enumeration は下記のように、変数に代入できます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">directionToHead</span> <span class="o">=</span> <span class="n">CompassPoint</span><span class="p">.</span><span class="n">West</span>
-<span class="lineno">2</span> <span class="n">directionToHead</span> <span class="o">=</span> <span class="p">.</span><span class="n">East</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">directionToHead</span> <span class="o">=</span> <span class="n">CompassPoint</span><span class="p">.</span><span class="n">West</span>
+<span class="lineno">2</span> <span class="n">directionToHead</span> <span class="o">=</span> <span class="p">.</span><span class="n">East</span></code></pre></figure>
 
 <p>二度目の代入の際には、CompassPoint といった Enumeration 自体の名前は省略できます。</p>
 
@@ -280,7 +285,7 @@
 
 <p>Enumeration と一緒によく使われるのが Switch 文ですね。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">directionToHead</span> <span class="o">=</span> <span class="p">.</span><span class="n">South</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">directionToHead</span> <span class="o">=</span> <span class="p">.</span><span class="n">South</span>
 <span class="lineno"> 2</span> <span class="k">switch</span> <span class="n">directionToHead</span> <span class="p">{</span>
 <span class="lineno"> 3</span> <span class="k">case</span> <span class="p">.</span><span class="nl">North</span><span class="p">:</span>
 <span class="lineno"> 4</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;Lots of planets have a north&quot;</span><span class="p">)</span>
@@ -291,7 +296,7 @@
 <span class="lineno"> 9</span> <span class="k">case</span> <span class="p">.</span><span class="nl">West</span><span class="p">:</span>
 <span class="lineno">10</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;Where the skies are blue&quot;</span><span class="p">)</span>
 <span class="lineno">11</span> <span class="p">}</span>
-<span class="lineno">12</span> <span class="c1">// prints &quot;Watch out for penguins</span></code></pre></div>
+<span class="lineno">12</span> <span class="c1">// prints &quot;Watch out for penguins</span></code></pre></figure>
 
 <p><a href="http://blog.kazuya.co/swift/2014/06/08/swift-doc-controll-flow.html">Switch 文に関する記事</a>でも書いたように、Switch 文は exhaustive でないといけないので、このように全てのメンバーをタイプしなければなりません。そうでないと、コンパイルエラーになります。もちろん、全てのメンバーを列挙する代わりに、<code>default</code> キーワードも使用できます。</p>
 
@@ -301,63 +306,63 @@
 
 <p>例えば、こんな感じ。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">enum</span> <span class="n">Barcode</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">enum</span> <span class="n">Barcode</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="k">case</span> <span class="n">UPCA</span><span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Int</span><span class="p">,</span> <span class="n">Int</span><span class="p">)</span>
 <span class="lineno">3</span>     <span class="k">case</span> <span class="n">QRCode</span><span class="p">(</span><span class="n">String</span><span class="p">)</span>
-<span class="lineno">4</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">4</span> <span class="p">}</span></code></pre></figure>
 
 <p>これは、Barcode という Enumeration を定義しています。この Barcode は、UPCA か QRCode の 2 つのうちどちらかのメンバーになります。UPCA とは、普通の縦にたくさんある線があるバーコードのことです。それぞれのバーコードによって、関連する値は違います。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">productBarcode</span> <span class="o">=</span> <span class="n">Barcode</span><span class="p">.</span><span class="n">UPCA</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">85909</span><span class="n">_51226</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="lineno">2</span> <span class="n">productBarcode</span> <span class="o">=</span> <span class="p">.</span><span class="n">QRCode</span><span class="p">(</span><span class="s">&quot;ABCDEFGHIJKLMNOP&quot;</span><span class="p">)</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">productBarcode</span> <span class="o">=</span> <span class="n">Barcode</span><span class="p">.</span><span class="n">UPCA</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">85909</span><span class="n">_51226</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="lineno">2</span> <span class="n">productBarcode</span> <span class="o">=</span> <span class="p">.</span><span class="n">QRCode</span><span class="p">(</span><span class="s">&quot;ABCDEFGHIJKLMNOP&quot;</span><span class="p">)</span></code></pre></figure>
 
 <p>まず、１行目で、Barcode.UPCA の変数を作成。この .UPCA は、関連した値として、3 つの整数を持っています。2 行目のように、違うタイプのバーコードを代入することもできます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">switch</span> <span class="n">productBarcode</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">switch</span> <span class="n">productBarcode</span> <span class="p">{</span>
 <span class="lineno">2</span> <span class="k">case</span> <span class="p">.</span><span class="n">UPCA</span><span class="p">(</span><span class="n">let</span> <span class="n">numberSystem</span><span class="p">,</span> <span class="n">let</span> <span class="n">identifier</span><span class="p">,</span> <span class="n">let</span> <span class="n">check</span><span class="p">)</span><span class="o">:</span>
 <span class="lineno">3</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;UPC-A with value of \(numberSystem), \(identifier), \(check).&quot;</span><span class="p">)</span>
 <span class="lineno">4</span> <span class="k">case</span> <span class="p">.</span><span class="n">QRCode</span><span class="p">(</span><span class="n">let</span> <span class="n">productCode</span><span class="p">)</span><span class="o">:</span>
 <span class="lineno">5</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;QR code with value of \(productCode).&quot;</span><span class="p">)</span>
-<span class="lineno">6</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">6</span> <span class="p">}</span></code></pre></figure>
 
 <p>上記のように<code>case</code> の中で、関連した値を取り出すことができます。上記のように全ての関連した値が、変数かコンスタントで統一されいれば、全ての var/let を書く必要はなく、メンバー名の前に書くことができます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">switch</span> <span class="n">productBarcode</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">switch</span> <span class="n">productBarcode</span> <span class="p">{</span>
 <span class="lineno">2</span> <span class="k">case</span> <span class="n">let</span> <span class="p">.</span><span class="n">UPCA</span><span class="p">(</span><span class="n">numberSystem</span><span class="p">,</span> <span class="n">identifier</span><span class="p">,</span> <span class="n">check</span><span class="p">)</span><span class="o">:</span>
 <span class="lineno">3</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;UPC-A with value of \(numberSystem), \(identifier), \(check).&quot;</span><span class="p">)</span>
 <span class="lineno">4</span> <span class="k">case</span> <span class="n">let</span> <span class="p">.</span><span class="n">QRCode</span><span class="p">(</span><span class="n">productCode</span><span class="p">)</span><span class="o">:</span>
 <span class="lineno">5</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;QR code with value of \(productCode).&quot;</span><span class="p">)</span>
 <span class="lineno">6</span> <span class="p">}</span>
-<span class="lineno">7</span> <span class="c1">// prints &quot;QR code with value of ABCDEFGHIJKLMNOP.</span></code></pre></div>
+<span class="lineno">7</span> <span class="c1">// prints &quot;QR code with value of ABCDEFGHIJKLMNOP.</span></code></pre></figure>
 
 <h4 id="4.-raw-values">4. Raw Values</h4>
 
 <p>関連ある値とは少し違った、raw values というものも使えます。これも各メンバーに対して、値を関連付けます。全ての値が同じ型である場合には、Enumeration 宣言時に、定義することができます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">enum</span> <span class="nl">ASCIIControlCharacter</span><span class="p">:</span> <span class="n">Character</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">enum</span> <span class="nl">ASCIIControlCharacter</span><span class="p">:</span> <span class="n">Character</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="k">case</span> <span class="n">Tab</span> <span class="o">=</span> <span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span>
 <span class="lineno">3</span>     <span class="k">case</span> <span class="n">LineFeed</span> <span class="o">=</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
 <span class="lineno">4</span>     <span class="k">case</span> <span class="n">CarriageReturn</span> <span class="o">=</span> <span class="s">&quot;</span><span class="se">\r</span><span class="s">&quot;</span>
-<span class="lineno">5</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">5</span> <span class="p">}</span></code></pre></figure>
 
 <p>Raw values は、関連ある値とは違い、Enumeration が宣言された時に、決定されます。そして、宣言時にデータ型を宣言しなければなりません。上記の例では、<code>: Character</code> を省略できません。関連ある値は、新しい変数やコンスタントを Enumeration をもとに作成した時に決定されます。</p>
 
 <p>また、Raw values は、各 Enumeration 内でユニークでなければなりません。整数が使用された場合には、C のように自動で値が代入されます。例えば、</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">enum</span> <span class="nl">Planet</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">enum</span> <span class="nl">Planet</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="k">case</span> <span class="n">Mercury</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Venus</span><span class="p">,</span> <span class="n">Earth</span><span class="p">,</span> <span class="n">Mars</span><span class="p">,</span> <span class="n">Jupiter</span><span class="p">,</span> <span class="n">Saturn</span><span class="p">,</span> <span class="n">Uranus</span><span class="p">,</span> <span class="n">Neptune</span>
-<span class="lineno">3</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">3</span> <span class="p">}</span></code></pre></figure>
 
 <p>何も指定しなくとも、Venus は 2 という raw values を持っています。1 ずつ増えるので、もちろんユニークです。</p>
 
 <p>Raw values にアクセスするには、toRaw() メソッドを使用します。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">earthsOrder</span> <span class="o">=</span> <span class="n">Planet</span><span class="p">.</span><span class="n">Earth</span><span class="p">.</span><span class="n">toRaw</span><span class="p">()</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">earthsOrder</span> <span class="o">=</span> <span class="n">Planet</span><span class="p">.</span><span class="n">Earth</span><span class="p">.</span><span class="n">toRaw</span><span class="p">()</span></code></pre></figure>
 
 <p>逆に、fromRaw() メソッドを使用して、raw values からメンバー値を探すこともできます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">possiblePlanet</span> <span class="o">=</span> <span class="n">Planet</span><span class="p">.</span><span class="n">fromRaw</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
-<span class="lineno">2</span> <span class="c1">// possiblePlanet is of type Planet? and equals Planet.Uranus</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">possiblePlanet</span> <span class="o">=</span> <span class="n">Planet</span><span class="p">.</span><span class="n">fromRaw</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="lineno">2</span> <span class="c1">// possiblePlanet is of type Planet? and equals Planet.Uranus</span></code></pre></figure>
 
 					</div>
 
@@ -401,80 +406,79 @@
 <h3>Category</h3>
    <p class="side_content">|
       
-   	   <a href="/categories/objective-c">objective-c
-            (11)
-         </a> |
+        <a href="/categories/objective-c">
+          Objective-C(11)
+        </a> |
       
-   	   <a href="/categories/other">other
-            (6)
-         </a> |
+        <a href="/categories/other">
+          Other(6)
+        </a> |
       
-   	   <a href="/categories/node-js">node.js
-            (1)
-         </a> |
+        <a href="/categories/node-js">
+          Node.js(1)
+        </a> |
       
-   	   <a href="/categories/ruby-on-rails">ruby on rails
-            (24)
-         </a> |
+        <a href="/categories/ruby-on-rails">
+          Ruby on Rails(24)
+        </a> |
       
-   	   <a href="/categories/tips">tips
-            (8)
-         </a> |
+        <a href="/categories/tips">
+          Tips(8)
+        </a> |
       
-   	   <a href="/categories/html5">html5
-            (8)
-         </a> |
+        <a href="/categories/html5">
+          HTML5(8)
+        </a> |
       
-   	   <a href="/categories/algorithms">algorithms
-            (2)
-         </a> |
+        <a href="/categories/algorithms">
+          Algorithms(2)
+        </a> |
       
-   	   <a href="/categories/machine-learning">machine learning
-            (5)
-         </a> |
+        <a href="/categories/machine-learning">
+          Machine Learning(5)
+        </a> |
       
-   	   <a href="/categories/c">c
-            (14)
-         </a> |
+        <a href="/categories/c">
+          C(14)
+        </a> |
       
-   	   <a href="/categories/ruby">ruby
-            (5)
-         </a> |
+        <a href="/categories/ruby">
+          Ruby(5)
+        </a> |
       
-   	   <a href="/categories/swift">swift
-            (34)
-         </a> |
+        <a href="/categories/swift">
+          Swift(34)
+        </a> |
       
-   	   <a href="/categories/ios">ios
-            (6)
-         </a> |
+        <a href="/categories/ios">
+          iOS(6)
+        </a> |
       
-   	   <a href="/categories/books">books
-            (4)
-         </a> |
+        <a href="/categories/books">
+          Books(5)
+        </a> |
       
-   	   <a href="/categories/kindle">kindle
-            (3)
-         </a> |
+        <a href="/categories/kindle">
+          Kindle(3)
+        </a> |
       
-   	   <a href="/categories/nginx">nginx
-            (1)
-         </a> |
+        <a href="/categories/nginx">
+          Nginx(1)
+        </a> |
       
-   	   <a href="/categories/capistrano">capistrano
-            (1)
-         </a> |
+        <a href="/categories/capistrano">
+          Capistrano(1)
+        </a> |
       
-   	   <a href="/categories/chef">chef
-            (2)
-         </a> |
+        <a href="/categories/chef">
+          Chef(2)
+        </a> |
       
-   	   <a href="/categories/fastlane">fastlane
-            (1)
-         </a> |
+        <a href="/categories/fastlane">
+          fastlane(1)
+        </a> |
       
    </p>
-
 <hr />
 
 <h3>Archive</h3>
@@ -548,6 +552,10 @@
             (1)
          </a> |
       
+   		<a href="/2017/12/">2017/12
+            (1)
+         </a> |
+      
    </p>
 
 <hr />
@@ -571,102 +579,106 @@
 				   <p>
 					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
 					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
-					   <a href="https://github.com/kzykbys">Github</a></p>
-				   <h4>Category</h4>
-				   <p>|
-					   
-						   <a href="/categories/objective-c">objective-c</a> | 
-					   
-						   <a href="/categories/other">other</a> | 
-					   
-						   <a href="/categories/node-js">node.js</a> | 
-					   
-						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
-					   
-						   <a href="/categories/tips">tips</a> | 
-					   
-						   <a href="/categories/html5">html5</a> | 
-					   
-						   <a href="/categories/algorithms">algorithms</a> | 
-					   
-						   <a href="/categories/machine-learning">machine learning</a> | 
-					   
-						   <a href="/categories/c">c</a> | 
-					   
-						   <a href="/categories/ruby">ruby</a> | 
-					   
-						   <a href="/categories/swift">swift</a> | 
-					   
-						   <a href="/categories/ios">ios</a> | 
-					   
-						   <a href="/categories/books">books</a> | 
-					   
-						   <a href="/categories/kindle">kindle</a> | 
-					   
-						   <a href="/categories/nginx">nginx</a> | 
-					   
-						   <a href="/categories/capistrano">capistrano</a> | 
-					   
-						   <a href="/categories/chef">chef</a> | 
-					   
-						   <a href="/categories/fastlane">fastlane</a> | 
-					   
-				   </p>
-				   <h4>Archive</h4>
-					   <p>|
-					   
-	    					<a href="/2013/08/">2013/08
-	    					</a> | 
-	    			   
-	    					<a href="/2013/09/">2013/09
-	    					</a> | 
-	    			   
-	    					<a href="/2013/11/">2013/11
-	    					</a> | 
-	    			   
-	    					<a href="/2013/12/">2013/12
-	    					</a> | 
-	    			   
-	    					<a href="/2014/01/">2014/01
-	    					</a> | 
-	    			   
-	    					<a href="/2014/03/">2014/03
-	    					</a> | 
-	    			   
-	    					<a href="/2014/04/">2014/04
-	    					</a> | 
-	    			   
-	    					<a href="/2014/05/">2014/05
-	    					</a> | 
-	    			   
-	    					<a href="/2014/06/">2014/06
-	    					</a> | 
-	    			   
-	    					<a href="/2014/07/">2014/07
-	    					</a> | 
-	    			   
-	    					<a href="/2014/08/">2014/08
-	    					</a> | 
-	    			   
-	    					<a href="/2014/09/">2014/09
-	    					</a> | 
-	    			   
-	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2015/02/">2015/02
-	    					</a> | 
-	    			   
-	    					<a href="/2015/07/">2015/07
-	    					</a> | 
-	    			   
-	    					<a href="/2015/08/">2015/08
-	    					</a> | 
-	    			   
-	    					<a href="/2016/01/">2016/01
-	    					</a> | 
-	    			   
-    			   </p>
+					   <a href="https://github.com/kzykbys">Github</a>
+					</p>
+					<h4>Category</h4>
+					<p>|
+						
+							<a href="/categories/objective-c">Objective-C</a> | 
+						
+							<a href="/categories/other">Other</a> | 
+						
+							<a href="/categories/node-js">Node.js</a> | 
+						
+							<a href="/categories/ruby-on-rails">Ruby on Rails</a> | 
+						
+							<a href="/categories/tips">Tips</a> | 
+						
+							<a href="/categories/html5">HTML5</a> | 
+						
+							<a href="/categories/algorithms">Algorithms</a> | 
+						
+							<a href="/categories/machine-learning">Machine Learning</a> | 
+						
+							<a href="/categories/c">C</a> | 
+						
+							<a href="/categories/ruby">Ruby</a> | 
+						
+							<a href="/categories/swift">Swift</a> | 
+						
+							<a href="/categories/ios">iOS</a> | 
+						
+							<a href="/categories/books">Books</a> | 
+						
+							<a href="/categories/kindle">Kindle</a> | 
+						
+							<a href="/categories/nginx">Nginx</a> | 
+						
+							<a href="/categories/capistrano">Capistrano</a> | 
+						
+							<a href="/categories/chef">Chef</a> | 
+						
+							<a href="/categories/fastlane">fastlane</a> | 
+						
+					</p>
+					<h4>Archive</h4>
+						<p>|
+						
+							<a href="/2013/08/">2013/08
+							</a> | 
+						
+							<a href="/2013/09/">2013/09
+							</a> | 
+						
+							<a href="/2013/11/">2013/11
+							</a> | 
+						
+							<a href="/2013/12/">2013/12
+							</a> | 
+						
+							<a href="/2014/01/">2014/01
+							</a> | 
+						
+							<a href="/2014/03/">2014/03
+							</a> | 
+						
+							<a href="/2014/04/">2014/04
+							</a> | 
+						
+							<a href="/2014/05/">2014/05
+							</a> | 
+						
+							<a href="/2014/06/">2014/06
+							</a> | 
+						
+							<a href="/2014/07/">2014/07
+							</a> | 
+						
+							<a href="/2014/08/">2014/08
+							</a> | 
+						
+							<a href="/2014/09/">2014/09
+							</a> | 
+						
+							<a href="/2014/10/">2014/10
+							</a> | 
+						
+							<a href="/2015/02/">2015/02
+							</a> | 
+						
+							<a href="/2015/07/">2015/07
+							</a> | 
+						
+							<a href="/2015/08/">2015/08
+							</a> | 
+						
+							<a href="/2016/01/">2016/01
+							</a> | 
+						
+							<a href="/2017/12/">2017/12
+							</a> | 
+						
+					</p>
 			   </div>
 		   </div>
 	   	</div>

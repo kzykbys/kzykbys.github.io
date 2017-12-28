@@ -46,80 +46,81 @@
 
 	<h4>Category</h4>
 	<ul>
-	   
-		   <li>
-		   		<a href="/categories/objective-c">objective-c</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/other">other</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/node-js">node.js</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/tips">tips</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/html5">html5</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/algorithms">algorithms</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/machine-learning">machine learning</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/c">c</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ruby">ruby</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/swift">swift</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ios">ios</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/books">books</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/kindle">kindle</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/nginx">nginx</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/capistrano">capistrano</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/chef">chef</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/fastlane">fastlane</a>
-		   </li>
-	   
-    </ul>
+		
+			<li>
+				<a href="/categories/objective-c">Objective-C</a>
+			</li>
+		
+			<li>
+				<a href="/categories/other">Other</a>
+			</li>
+		
+			<li>
+				<a href="/categories/node-js">Node.js</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ruby-on-rails">Ruby on Rails</a>
+			</li>
+		
+			<li>
+				<a href="/categories/tips">Tips</a>
+			</li>
+		
+			<li>
+				<a href="/categories/html5">HTML5</a>
+			</li>
+		
+			<li>
+				<a href="/categories/algorithms">Algorithms</a>
+			</li>
+		
+			<li>
+				<a href="/categories/machine-learning">Machine Learning</a>
+			</li>
+		
+			<li>
+				<a href="/categories/c">C</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ruby">Ruby</a>
+			</li>
+		
+			<li>
+				<a href="/categories/swift">Swift</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ios">iOS</a>
+			</li>
+		
+			<li>
+				<a href="/categories/books">Books</a>
+			</li>
+		
+			<li>
+				<a href="/categories/kindle">Kindle</a>
+			</li>
+		
+			<li>
+				<a href="/categories/nginx">Nginx</a>
+			</li>
+		
+			<li>
+				<a href="/categories/capistrano">Capistrano</a>
+			</li>
+		
+			<li>
+				<a href="/categories/chef">Chef</a>
+			</li>
+		
+			<li>
+				<a href="/categories/fastlane">fastlane</a>
+			</li>
+		
+	</ul>
+
 	<h4>Archive</h4>
 	<ul>
 		
@@ -191,6 +192,10 @@
 				<a href="/2016/01/">2016/01</a>
 			</li>
 		
+			<li>
+				<a href="/2017/12/">2017/12</a>
+			</li>
+		
 	</ul>
 
 </div>
@@ -250,80 +255,80 @@
 
 <p>変数やコンスタントを一度、宣言するともう一度宣言することはできず、異なるタイプのデータを保存することもできない。また、コンスタントを変数へ、変数からコンスタントにもできない。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="lineno">2</span> <span class="n">number</span> <span class="o">=</span> <span class="s">&quot;10&quot;</span> <span class="c1">// error</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="lineno">2</span> <span class="n">number</span> <span class="o">=</span> <span class="s">&quot;10&quot;</span> <span class="c1">// error</span></code></pre></figure>
 
 <h4 id="2.-予約語の変数/コンスタントとしての利用">2. 予約語の変数/コンスタントとしての利用</h4>
 
 <p>Swift の予約語を変数、コンスタントの名前に使用するしかない状況の時には、名前の周りを ` (back ticks) で囲むことで使用することができる。もちろん、非推奨。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="err">`</span><span class="n">func</span><span class="err">`</span> <span class="o">=</span> <span class="s">&quot;test1&quot;</span>
-<span class="lineno">2</span> <span class="n">println</span><span class="p">(</span><span class="err">`</span><span class="n">func</span><span class="err">`</span><span class="p">)</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="err">`</span><span class="n">func</span><span class="err">`</span> <span class="o">=</span> <span class="s">&quot;test1&quot;</span>
+<span class="lineno">2</span> <span class="n">println</span><span class="p">(</span><span class="err">`</span><span class="n">func</span><span class="err">`</span><span class="p">)</span></code></pre></figure>
 
 <h4 id="3.-変数/コンスタントの展開">3. 変数/コンスタントの展開</h4>
 
 <p>文字列の中で変数、コンスタントを使用するには、カッコでくくり、最初のカッコをバックスラッシュでエスケープすることにより、Swift が展開してくれる。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;The current value of friendlyWelcome is \(friendlyWelcome)&quot;</span><span class="p">)</span>
-<span class="lineno">2</span> <span class="c1">// prints &quot;The current value of friendlyWelcome is Bonjour!”</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;The current value of friendlyWelcome is \(friendlyWelcome)&quot;</span><span class="p">)</span>
+<span class="lineno">2</span> <span class="c1">// prints &quot;The current value of friendlyWelcome is Bonjour!”</span></code></pre></figure>
 
 <h4 id="4.-コメントのネスト">4. コメントのネスト</h4>
 
 <p>C では出来なかった /**/ のコメントをネストすることができる。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="c1">// this comment works well</span>
-<span class="lineno">2</span> <span class="cm">/* hi /* wow */</span> <span class="n">yeah</span> <span class="err">*/</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="c1">// this comment works well</span>
+<span class="lineno">2</span> <span class="cm">/* hi /* wow */</span> <span class="n">yeah</span> <span class="err">*/</span></code></pre></figure>
 
 <h4 id="5.-セミコロン">5. セミコロン</h4>
 
 <p>各ステートメントの終わりにセミコロンはいらない。でも、ステートメントを同じ行に書くときには必須。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">number1</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">var</span> <span class="n">number2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="n">println</span><span class="p">(</span><span class="n">number1</span><span class="p">)</span>
-<span class="lineno">2</span> <span class="n">var</span> <span class="n">number3</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="n">number4</span> <span class="o">=</span> <span class="mi">40</span><span class="p">;</span> <span class="n">println</span><span class="p">(</span><span class="n">number3</span><span class="p">)</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">number1</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">var</span> <span class="n">number2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="n">println</span><span class="p">(</span><span class="n">number1</span><span class="p">)</span>
+<span class="lineno">2</span> <span class="n">var</span> <span class="n">number3</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="n">number4</span> <span class="o">=</span> <span class="mi">40</span><span class="p">;</span> <span class="n">println</span><span class="p">(</span><span class="n">number3</span><span class="p">)</span></code></pre></figure>
 
 <h4 id="6.-浮動小数点数のデフォルトは-double">6. 浮動小数点数のデフォルトは Double</h4>
 
 <p>Swift 型推論をしてくれると同時に型に対して厳格です。上で見たように、一度、Int と宣言した変数に String 等の異なる型を保存することはエラーを吐きます。浮動小数点数の型推論は、明示的になされていなければ、Double です。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="nl">dNum</span> <span class="p">:</span><span class="n">Double</span> <span class="o">=</span> <span class="mf">3.14</span> <span class="c1">// Double</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="nl">dNum</span> <span class="p">:</span><span class="n">Double</span> <span class="o">=</span> <span class="mf">3.14</span> <span class="c1">// Double</span>
 <span class="lineno">2</span> <span class="n">var</span> <span class="nl">fNum</span> <span class="p">:</span><span class="n">Float</span>  <span class="o">=</span> <span class="mf">3.14</span> <span class="c1">// Float</span>
 <span class="lineno">3</span> <span class="n">dNum</span>             <span class="o">=</span> <span class="n">fNum</span> <span class="c1">// error</span>
 <span class="lineno">4</span> <span class="n">var</span> <span class="n">d2Num</span>        <span class="o">=</span> <span class="mf">3.14</span> <span class="c1">// Double</span>
 <span class="lineno">5</span> <span class="n">var</span> <span class="nl">f2Num</span> <span class="p">:</span><span class="n">Float</span> <span class="o">=</span> <span class="mf">3.14</span> <span class="c1">// Float</span>
-<span class="lineno">6</span> <span class="n">d2Num</span>            <span class="o">=</span> <span class="n">f2Num</span> <span class="c1">// error</span></code></pre></div>
+<span class="lineno">6</span> <span class="n">d2Num</span>            <span class="o">=</span> <span class="n">f2Num</span> <span class="c1">// error</span></code></pre></figure>
 
 <h4 id="7.-数字リテラル">7. 数字リテラル</h4>
 
 <p>数字リテラルにおいて、可読性を高めるために以下のような書き方ができる。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">padding0Double</span>  <span class="o">=</span> <span class="mf">000001234.456</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">padding0Double</span>  <span class="o">=</span> <span class="mf">000001234.456</span>
 <span class="lineno">2</span> <span class="n">let</span> <span class="n">oneMillion</span>      <span class="o">=</span> <span class="mi">1</span><span class="n">_000_000</span>
-<span class="lineno">3</span> <span class="n">let</span> <span class="n">justOverMillion</span> <span class="o">=</span> <span class="mi">1</span><span class="n">_000_000</span><span class="mf">.000</span><span class="n">_000_1</span></code></pre></div>
+<span class="lineno">3</span> <span class="n">let</span> <span class="n">justOverMillion</span> <span class="o">=</span> <span class="mi">1</span><span class="n">_000_000</span><span class="mf">.000</span><span class="n">_000_1</span></code></pre></figure>
 
 <h4 id="8.-型変換">8. 型変換</h4>
 
 <p>変数とコンスタントにおいての、浮動小数点と整数の変換は全て明示的に行う。Type(value) と、Type の initializer が受け取ることができる型の value を使用して、新しいオブジェクトを作成する</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="c1">// from int to float</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="c1">// from int to float</span>
 <span class="lineno">2</span> <span class="n">let</span> <span class="n">three</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="lineno">3</span> <span class="n">let</span> <span class="n">point</span> <span class="o">=</span> <span class="mf">0.14159</span>
 <span class="lineno">4</span> <span class="n">let</span> <span class="n">pi</span>    <span class="o">=</span> <span class="n">three</span> <span class="o">+</span> <span class="n">point</span> <span class="c1">// error</span>
 <span class="lineno">5</span> <span class="n">let</span> <span class="n">pi</span>    <span class="o">=</span> <span class="n">Double</span><span class="p">(</span><span class="n">three</span><span class="p">)</span> <span class="o">+</span> <span class="n">point</span> <span class="c1">// ok</span>
 <span class="lineno">6</span> <span class="c1">// from float to int</span>
-<span class="lineno">7</span> <span class="n">let</span> <span class="n">integerPI</span> <span class="o">=</span> <span class="n">Int</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span></code></pre></div>
+<span class="lineno">7</span> <span class="n">let</span> <span class="n">integerPI</span> <span class="o">=</span> <span class="n">Int</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span></code></pre></figure>
 
 <p>これは、リテラルとは文脈が違う。下記のコードは ok。なぜならリテラルは型をまだ持っていないから。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">anotherPI</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">+</span> <span class="mf">0.12159</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">anotherPI</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">+</span> <span class="mf">0.12159</span></code></pre></figure>
 
 <h4 id="9.-int-は、条件として使えない">9. Int は、条件として使えない</h4>
 
 <p>Swift の型セーフのため、C のように 0 が false でそれ以外が true のように数値を条件分岐の直接使われない。下記のコードはエラー。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="lineno">2</span> <span class="k">if</span> <span class="n">i</span> <span class="p">{</span>
 <span class="lineno">3</span>   <span class="c1">// err</span>
-<span class="lineno">4</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">4</span> <span class="p">}</span></code></pre></figure>
 
 					</div>
 
@@ -367,80 +372,79 @@
 <h3>Category</h3>
    <p class="side_content">|
       
-   	   <a href="/categories/objective-c">objective-c
-            (11)
-         </a> |
+        <a href="/categories/objective-c">
+          Objective-C(11)
+        </a> |
       
-   	   <a href="/categories/other">other
-            (6)
-         </a> |
+        <a href="/categories/other">
+          Other(6)
+        </a> |
       
-   	   <a href="/categories/node-js">node.js
-            (1)
-         </a> |
+        <a href="/categories/node-js">
+          Node.js(1)
+        </a> |
       
-   	   <a href="/categories/ruby-on-rails">ruby on rails
-            (24)
-         </a> |
+        <a href="/categories/ruby-on-rails">
+          Ruby on Rails(24)
+        </a> |
       
-   	   <a href="/categories/tips">tips
-            (8)
-         </a> |
+        <a href="/categories/tips">
+          Tips(8)
+        </a> |
       
-   	   <a href="/categories/html5">html5
-            (8)
-         </a> |
+        <a href="/categories/html5">
+          HTML5(8)
+        </a> |
       
-   	   <a href="/categories/algorithms">algorithms
-            (2)
-         </a> |
+        <a href="/categories/algorithms">
+          Algorithms(2)
+        </a> |
       
-   	   <a href="/categories/machine-learning">machine learning
-            (5)
-         </a> |
+        <a href="/categories/machine-learning">
+          Machine Learning(5)
+        </a> |
       
-   	   <a href="/categories/c">c
-            (14)
-         </a> |
+        <a href="/categories/c">
+          C(14)
+        </a> |
       
-   	   <a href="/categories/ruby">ruby
-            (5)
-         </a> |
+        <a href="/categories/ruby">
+          Ruby(5)
+        </a> |
       
-   	   <a href="/categories/swift">swift
-            (34)
-         </a> |
+        <a href="/categories/swift">
+          Swift(34)
+        </a> |
       
-   	   <a href="/categories/ios">ios
-            (6)
-         </a> |
+        <a href="/categories/ios">
+          iOS(6)
+        </a> |
       
-   	   <a href="/categories/books">books
-            (4)
-         </a> |
+        <a href="/categories/books">
+          Books(5)
+        </a> |
       
-   	   <a href="/categories/kindle">kindle
-            (3)
-         </a> |
+        <a href="/categories/kindle">
+          Kindle(3)
+        </a> |
       
-   	   <a href="/categories/nginx">nginx
-            (1)
-         </a> |
+        <a href="/categories/nginx">
+          Nginx(1)
+        </a> |
       
-   	   <a href="/categories/capistrano">capistrano
-            (1)
-         </a> |
+        <a href="/categories/capistrano">
+          Capistrano(1)
+        </a> |
       
-   	   <a href="/categories/chef">chef
-            (2)
-         </a> |
+        <a href="/categories/chef">
+          Chef(2)
+        </a> |
       
-   	   <a href="/categories/fastlane">fastlane
-            (1)
-         </a> |
+        <a href="/categories/fastlane">
+          fastlane(1)
+        </a> |
       
    </p>
-
 <hr />
 
 <h3>Archive</h3>
@@ -514,6 +518,10 @@
             (1)
          </a> |
       
+   		<a href="/2017/12/">2017/12
+            (1)
+         </a> |
+      
    </p>
 
 <hr />
@@ -537,102 +545,106 @@
 				   <p>
 					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
 					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
-					   <a href="https://github.com/kzykbys">Github</a></p>
-				   <h4>Category</h4>
-				   <p>|
-					   
-						   <a href="/categories/objective-c">objective-c</a> | 
-					   
-						   <a href="/categories/other">other</a> | 
-					   
-						   <a href="/categories/node-js">node.js</a> | 
-					   
-						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
-					   
-						   <a href="/categories/tips">tips</a> | 
-					   
-						   <a href="/categories/html5">html5</a> | 
-					   
-						   <a href="/categories/algorithms">algorithms</a> | 
-					   
-						   <a href="/categories/machine-learning">machine learning</a> | 
-					   
-						   <a href="/categories/c">c</a> | 
-					   
-						   <a href="/categories/ruby">ruby</a> | 
-					   
-						   <a href="/categories/swift">swift</a> | 
-					   
-						   <a href="/categories/ios">ios</a> | 
-					   
-						   <a href="/categories/books">books</a> | 
-					   
-						   <a href="/categories/kindle">kindle</a> | 
-					   
-						   <a href="/categories/nginx">nginx</a> | 
-					   
-						   <a href="/categories/capistrano">capistrano</a> | 
-					   
-						   <a href="/categories/chef">chef</a> | 
-					   
-						   <a href="/categories/fastlane">fastlane</a> | 
-					   
-				   </p>
-				   <h4>Archive</h4>
-					   <p>|
-					   
-	    					<a href="/2013/08/">2013/08
-	    					</a> | 
-	    			   
-	    					<a href="/2013/09/">2013/09
-	    					</a> | 
-	    			   
-	    					<a href="/2013/11/">2013/11
-	    					</a> | 
-	    			   
-	    					<a href="/2013/12/">2013/12
-	    					</a> | 
-	    			   
-	    					<a href="/2014/01/">2014/01
-	    					</a> | 
-	    			   
-	    					<a href="/2014/03/">2014/03
-	    					</a> | 
-	    			   
-	    					<a href="/2014/04/">2014/04
-	    					</a> | 
-	    			   
-	    					<a href="/2014/05/">2014/05
-	    					</a> | 
-	    			   
-	    					<a href="/2014/06/">2014/06
-	    					</a> | 
-	    			   
-	    					<a href="/2014/07/">2014/07
-	    					</a> | 
-	    			   
-	    					<a href="/2014/08/">2014/08
-	    					</a> | 
-	    			   
-	    					<a href="/2014/09/">2014/09
-	    					</a> | 
-	    			   
-	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2015/02/">2015/02
-	    					</a> | 
-	    			   
-	    					<a href="/2015/07/">2015/07
-	    					</a> | 
-	    			   
-	    					<a href="/2015/08/">2015/08
-	    					</a> | 
-	    			   
-	    					<a href="/2016/01/">2016/01
-	    					</a> | 
-	    			   
-    			   </p>
+					   <a href="https://github.com/kzykbys">Github</a>
+					</p>
+					<h4>Category</h4>
+					<p>|
+						
+							<a href="/categories/objective-c">Objective-C</a> | 
+						
+							<a href="/categories/other">Other</a> | 
+						
+							<a href="/categories/node-js">Node.js</a> | 
+						
+							<a href="/categories/ruby-on-rails">Ruby on Rails</a> | 
+						
+							<a href="/categories/tips">Tips</a> | 
+						
+							<a href="/categories/html5">HTML5</a> | 
+						
+							<a href="/categories/algorithms">Algorithms</a> | 
+						
+							<a href="/categories/machine-learning">Machine Learning</a> | 
+						
+							<a href="/categories/c">C</a> | 
+						
+							<a href="/categories/ruby">Ruby</a> | 
+						
+							<a href="/categories/swift">Swift</a> | 
+						
+							<a href="/categories/ios">iOS</a> | 
+						
+							<a href="/categories/books">Books</a> | 
+						
+							<a href="/categories/kindle">Kindle</a> | 
+						
+							<a href="/categories/nginx">Nginx</a> | 
+						
+							<a href="/categories/capistrano">Capistrano</a> | 
+						
+							<a href="/categories/chef">Chef</a> | 
+						
+							<a href="/categories/fastlane">fastlane</a> | 
+						
+					</p>
+					<h4>Archive</h4>
+						<p>|
+						
+							<a href="/2013/08/">2013/08
+							</a> | 
+						
+							<a href="/2013/09/">2013/09
+							</a> | 
+						
+							<a href="/2013/11/">2013/11
+							</a> | 
+						
+							<a href="/2013/12/">2013/12
+							</a> | 
+						
+							<a href="/2014/01/">2014/01
+							</a> | 
+						
+							<a href="/2014/03/">2014/03
+							</a> | 
+						
+							<a href="/2014/04/">2014/04
+							</a> | 
+						
+							<a href="/2014/05/">2014/05
+							</a> | 
+						
+							<a href="/2014/06/">2014/06
+							</a> | 
+						
+							<a href="/2014/07/">2014/07
+							</a> | 
+						
+							<a href="/2014/08/">2014/08
+							</a> | 
+						
+							<a href="/2014/09/">2014/09
+							</a> | 
+						
+							<a href="/2014/10/">2014/10
+							</a> | 
+						
+							<a href="/2015/02/">2015/02
+							</a> | 
+						
+							<a href="/2015/07/">2015/07
+							</a> | 
+						
+							<a href="/2015/08/">2015/08
+							</a> | 
+						
+							<a href="/2016/01/">2016/01
+							</a> | 
+						
+							<a href="/2017/12/">2017/12
+							</a> | 
+						
+					</p>
 			   </div>
 		   </div>
 	   	</div>

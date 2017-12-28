@@ -46,80 +46,81 @@
 
 	<h4>Category</h4>
 	<ul>
-	   
-		   <li>
-		   		<a href="/categories/objective-c">objective-c</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/other">other</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/node-js">node.js</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ruby-on-rails">ruby on rails</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/tips">tips</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/html5">html5</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/algorithms">algorithms</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/machine-learning">machine learning</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/c">c</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ruby">ruby</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/swift">swift</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/ios">ios</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/books">books</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/kindle">kindle</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/nginx">nginx</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/capistrano">capistrano</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/chef">chef</a>
-		   </li>
-	   
-		   <li>
-		   		<a href="/categories/fastlane">fastlane</a>
-		   </li>
-	   
-    </ul>
+		
+			<li>
+				<a href="/categories/objective-c">Objective-C</a>
+			</li>
+		
+			<li>
+				<a href="/categories/other">Other</a>
+			</li>
+		
+			<li>
+				<a href="/categories/node-js">Node.js</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ruby-on-rails">Ruby on Rails</a>
+			</li>
+		
+			<li>
+				<a href="/categories/tips">Tips</a>
+			</li>
+		
+			<li>
+				<a href="/categories/html5">HTML5</a>
+			</li>
+		
+			<li>
+				<a href="/categories/algorithms">Algorithms</a>
+			</li>
+		
+			<li>
+				<a href="/categories/machine-learning">Machine Learning</a>
+			</li>
+		
+			<li>
+				<a href="/categories/c">C</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ruby">Ruby</a>
+			</li>
+		
+			<li>
+				<a href="/categories/swift">Swift</a>
+			</li>
+		
+			<li>
+				<a href="/categories/ios">iOS</a>
+			</li>
+		
+			<li>
+				<a href="/categories/books">Books</a>
+			</li>
+		
+			<li>
+				<a href="/categories/kindle">Kindle</a>
+			</li>
+		
+			<li>
+				<a href="/categories/nginx">Nginx</a>
+			</li>
+		
+			<li>
+				<a href="/categories/capistrano">Capistrano</a>
+			</li>
+		
+			<li>
+				<a href="/categories/chef">Chef</a>
+			</li>
+		
+			<li>
+				<a href="/categories/fastlane">fastlane</a>
+			</li>
+		
+	</ul>
+
 	<h4>Archive</h4>
 	<ul>
 		
@@ -191,6 +192,10 @@
 				<a href="/2016/01/">2016/01</a>
 			</li>
 		
+			<li>
+				<a href="/2017/12/">2017/12</a>
+			</li>
+		
 	</ul>
 
 </div>
@@ -252,7 +257,7 @@
 
 <p>まずは、この Type Casting をデモンストレイトするためにクラスを用意します。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">MediaItem</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">MediaItem</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="n">var</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span>
 <span class="lineno"> 3</span>     <span class="n">init</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 4</span>         <span class="nb">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
@@ -273,18 +278,18 @@
 <span class="lineno">19</span>         <span class="nb">self</span><span class="p">.</span><span class="n">artist</span> <span class="o">=</span> <span class="n">artist</span>
 <span class="lineno">20</span>         <span class="nb">super</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">name</span><span class="p">)</span>
 <span class="lineno">21</span>     <span class="p">}</span>
-<span class="lineno">22</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">22</span> <span class="p">}</span></code></pre></figure>
 
 <p>そして、初期化。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">library</span> <span class="o">=</span> <span class="p">[</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">library</span> <span class="o">=</span> <span class="p">[</span>
 <span class="lineno">2</span>     <span class="n">Movie</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Casablanca&quot;</span><span class="p">,</span> <span class="nl">director</span><span class="p">:</span> <span class="s">&quot;Michael Curtiz&quot;</span><span class="p">),</span>
 <span class="lineno">3</span>     <span class="n">Song</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Blue Suede Shoes&quot;</span><span class="p">,</span> <span class="nl">artist</span><span class="p">:</span> <span class="s">&quot;Elvis Presley&quot;</span><span class="p">),</span>
 <span class="lineno">4</span>     <span class="n">Movie</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Citizen Kane&quot;</span><span class="p">,</span> <span class="nl">director</span><span class="p">:</span> <span class="s">&quot;Orson Welles&quot;</span><span class="p">),</span>
 <span class="lineno">5</span>     <span class="n">Song</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;The One And Only&quot;</span><span class="p">,</span> <span class="nl">artist</span><span class="p">:</span> <span class="s">&quot;Chesney Hawkes&quot;</span><span class="p">),</span>
 <span class="lineno">6</span>     <span class="n">Song</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Never Gonna Give You Up&quot;</span><span class="p">,</span> <span class="nl">artist</span><span class="p">:</span> <span class="s">&quot;Rick Astley&quot;</span><span class="p">)</span>
 <span class="lineno">7</span> <span class="p">]</span>
-<span class="lineno">8</span> <span class="c1">// the type of &quot;library&quot; is inferred to be MediaItem[]&quot;</span></code></pre></div>
+<span class="lineno">8</span> <span class="c1">// the type of &quot;library&quot; is inferred to be MediaItem[]&quot;</span></code></pre></figure>
 
 <p>この library 配列は、Movie を Song のインスタンスを持っています。これらのインスタンスのスーパークラスは、どちらも MediaItem なので、Swift はこの共通のタイプ（クラス）を推論してくれます。つまり、library 配列は、<code>MediaItem[]</code> という型になります。</p>
 
@@ -292,7 +297,7 @@
 
 <p>あるタイプが（クラス）が、あるサブクラスであるかを確認するには、<code>is</code> オペレータを使います。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">var</span> <span class="n">movieCount</span> <span class="o">=</span> <span class="mi">0</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">var</span> <span class="n">movieCount</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="lineno"> 2</span> <span class="n">var</span> <span class="n">songCount</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="lineno"> 3</span>  
 <span class="lineno"> 4</span> <span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">library</span> <span class="p">{</span>
@@ -304,7 +309,7 @@
 <span class="lineno">10</span> <span class="p">}</span>
 <span class="lineno">11</span>  
 <span class="lineno">12</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;Media library contains \(movieCount) movies and \(songCount) songs&quot;</span><span class="p">)</span>
-<span class="lineno">13</span> <span class="c1">// prints &quot;Media library contains 2 movies and 3 songs&quot;</span></code></pre></div>
+<span class="lineno">13</span> <span class="c1">// prints &quot;Media library contains 2 movies and 3 songs&quot;</span></code></pre></figure>
 
 <p>このコードは、library 配列が保持する要素が Movie インスタンスか Song インスタンスかを確認して、それぞれ数を数えています。読みやすいと思います。</p>
 
@@ -312,7 +317,7 @@
 
 <p>あるコンスタンス・変数が、あるサブクラスであることが推定される場合には、<code>as</code> オペレータを使いキャストします。もちろん、キャスティングは失敗することがあります。そのため <code>as?</code> という Optional にも対応しています。<code>as</code> を使い間違ったキャストをするとランタイムエラーになります。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">library</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">library</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="k">if</span> <span class="n">let</span> <span class="n">movie</span> <span class="o">=</span> <span class="n">item</span> <span class="n">as</span><span class="o">?</span> <span class="n">Movie</span> <span class="p">{</span>
 <span class="lineno"> 3</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;Movie: &#39;\(movie.name)&#39;, dir. \(movie.director)&quot;</span><span class="p">)</span>
 <span class="lineno"> 4</span>     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">let</span> <span class="n">song</span> <span class="o">=</span> <span class="n">item</span> <span class="n">as</span><span class="o">?</span> <span class="n">Song</span> <span class="p">{</span>
@@ -324,7 +329,7 @@
 <span class="lineno">10</span> <span class="c1">// Song: &#39;Blue Suede Shoes&#39;, by Elvis Presley</span>
 <span class="lineno">11</span> <span class="c1">// Movie: &#39;Citizen Kane&#39;, dir. Orson Welles</span>
 <span class="lineno">12</span> <span class="c1">// Song: &#39;The One And Only&#39;, by Chesney Hawkes</span>
-<span class="lineno">13</span> <span class="c1">// Song: &#39;Never Gonna Give You Up&#39;, by Rick Astley</span></code></pre></div>
+<span class="lineno">13</span> <span class="c1">// Song: &#39;Never Gonna Give You Up&#39;, by Rick Astley</span></code></pre></figure>
 
 <p>この例は、各サブクラス特有のプロパティにアクセスしているので、キャスティング必須です。<code>as?</code> を使い条件分岐し、それぞれ対応しています。</p>
 
@@ -334,34 +339,34 @@
 
 <p>まずは、<code>AnyObject</code> からみていきます。<code>AnyObject</code> はどんなクラスタイプでも表すことができます。Cocoa API を扱っているときに、<code>AnyObject[]</code> を受け取ることがよくあります。Objective-C の id のようなものですかね。AnyObject がどんなタイプのインスタンスを持っているかわかっている時には、この AnyObject をキャストして使用できます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="nl">someObjects</span><span class="p">:</span> <span class="n">AnyObject</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="nl">someObjects</span><span class="p">:</span> <span class="n">AnyObject</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span>
 <span class="lineno">2</span>     <span class="n">Movie</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;2001: A Space Odyssey&quot;</span><span class="p">,</span> <span class="nl">director</span><span class="p">:</span> <span class="s">&quot;Stanley Kubrick&quot;</span><span class="p">),</span>
 <span class="lineno">3</span>     <span class="n">Movie</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Moon&quot;</span><span class="p">,</span> <span class="nl">director</span><span class="p">:</span> <span class="s">&quot;Duncan Jones&quot;</span><span class="p">),</span>
 <span class="lineno">4</span>     <span class="n">Movie</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Alien&quot;</span><span class="p">,</span> <span class="nl">director</span><span class="p">:</span> <span class="s">&quot;Ridley Scott&quot;</span><span class="p">)</span>
-<span class="lineno">5</span> <span class="p">]</span></code></pre></div>
+<span class="lineno">5</span> <span class="p">]</span></code></pre></figure>
 
 <p>このように <code>AnyObject[]</code> に Movie のインスタンスを格納しています。この場合には、問題なくキャスト(<code>as</code>)して使用します。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">for</span> <span class="n">object</span> <span class="k">in</span> <span class="n">someObjects</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">for</span> <span class="n">object</span> <span class="k">in</span> <span class="n">someObjects</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">let</span> <span class="n">movie</span> <span class="o">=</span> <span class="n">object</span> <span class="n">as</span> <span class="n">Movie</span>
 <span class="lineno">3</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;Movie: &#39;\(movie.name)&#39;, dir. \(movie.director)&quot;</span><span class="p">)</span>
 <span class="lineno">4</span> <span class="p">}</span>
 <span class="lineno">5</span> <span class="c1">// Movie: &#39;2001: A Space Odyssey&#39;, dir. Stanley Kubrick</span>
 <span class="lineno">6</span> <span class="c1">// Movie: &#39;Moon&#39;, dir. Duncan Jones</span>
-<span class="lineno">7</span> <span class="c1">// Movie: &#39;Alien&#39;, dir. Ridley Scott</span></code></pre></div>
+<span class="lineno">7</span> <span class="c1">// Movie: &#39;Alien&#39;, dir. Ridley Scott</span></code></pre></figure>
 
 <p>このようにより簡潔に書くこともできます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">for</span> <span class="n">movie</span> <span class="k">in</span> <span class="n">someObjects</span> <span class="n">as</span> <span class="n">Movie</span><span class="p">[]</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">for</span> <span class="n">movie</span> <span class="k">in</span> <span class="n">someObjects</span> <span class="n">as</span> <span class="n">Movie</span><span class="p">[]</span> <span class="p">{</span>
 <span class="lineno">2</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;Movie: &#39;\(movie.name)&#39;, dir. \(movie.director)&quot;</span><span class="p">)</span>
 <span class="lineno">3</span> <span class="p">}</span>
 <span class="lineno">4</span> <span class="c1">// Movie: &#39;2001: A Space Odyssey&#39;, dir. Stanley Kubrick</span>
 <span class="lineno">5</span> <span class="c1">// Movie: &#39;Moon&#39;, dir. Duncan Jones</span>
-<span class="lineno">6</span> <span class="c1">// Movie: &#39;Alien&#39;, dir. Ridley Scott</span></code></pre></div>
+<span class="lineno">6</span> <span class="c1">// Movie: &#39;Alien&#39;, dir. Ridley Scott</span></code></pre></figure>
 
 <p>次に <code>Any</code> をみていきます。<code>Any</code> は、どんなタイプのインスタンスも表すことができます。しかし、関数はできません。<code>AnyObject</code> は、どんなクラスタイプでしたが、<code>Any</code> は、文字通り関数以外何に対しても使えます。下記の例では、Int や Double, tuple 等を配列の中に保存しています。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">things</span> <span class="o">=</span> <span class="n">Any</span><span class="p">[]()</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">things</span> <span class="o">=</span> <span class="n">Any</span><span class="p">[]()</span>
 <span class="lineno">2</span>  
 <span class="lineno">3</span> <span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="lineno">4</span> <span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
@@ -369,11 +374,11 @@
 <span class="lineno">6</span> <span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mf">3.14159</span><span class="p">)</span>
 <span class="lineno">7</span> <span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">)</span>
 <span class="lineno">8</span> <span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">((</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">))</span>
-<span class="lineno">9</span> <span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">Movie</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Ghostbusters&quot;</span><span class="p">,</span> <span class="nl">director</span><span class="p">:</span> <span class="s">&quot;Ivan Reitman&quot;</span><span class="p">))</span></code></pre></div>
+<span class="lineno">9</span> <span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">Movie</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Ghostbusters&quot;</span><span class="p">,</span> <span class="nl">director</span><span class="p">:</span> <span class="s">&quot;Ivan Reitman&quot;</span><span class="p">))</span></code></pre></figure>
 
 <p>上記のようにこの things 変数は、どんなタイプでも格納しています。これを処理するために switch 文を使ってそれぞれ対応できます。</p>
 
-<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">for</span> <span class="n">thing</span> <span class="k">in</span> <span class="n">things</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">for</span> <span class="n">thing</span> <span class="k">in</span> <span class="n">things</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="k">switch</span> <span class="n">thing</span> <span class="p">{</span>
 <span class="lineno"> 3</span>     <span class="k">case</span> <span class="mi">0</span> <span class="n">as</span> <span class="nl">Int</span><span class="p">:</span>
 <span class="lineno"> 4</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;zero as an Int&quot;</span><span class="p">)</span>
@@ -402,7 +407,7 @@
 <span class="lineno">27</span> <span class="c1">// a positive double value of 3.14159</span>
 <span class="lineno">28</span> <span class="c1">// a string value of &quot;hello&quot;</span>
 <span class="lineno">29</span> <span class="c1">// an (x, y) point at 3.0, 5.0</span>
-<span class="lineno">30</span> <span class="c1">// a movie called &#39;Ghostbusters&#39;, dir. Ivan Reitman</span></code></pre></div>
+<span class="lineno">30</span> <span class="c1">// a movie called &#39;Ghostbusters&#39;, dir. Ivan Reitman</span></code></pre></figure>
 
 <p>この switch 文では、<code>as</code>（forced version of the type cast operator）を使っていますが、switch 文のコンテキストではいつも安全です。</p>
 
@@ -448,80 +453,79 @@
 <h3>Category</h3>
    <p class="side_content">|
       
-   	   <a href="/categories/objective-c">objective-c
-            (11)
-         </a> |
+        <a href="/categories/objective-c">
+          Objective-C(11)
+        </a> |
       
-   	   <a href="/categories/other">other
-            (6)
-         </a> |
+        <a href="/categories/other">
+          Other(6)
+        </a> |
       
-   	   <a href="/categories/node-js">node.js
-            (1)
-         </a> |
+        <a href="/categories/node-js">
+          Node.js(1)
+        </a> |
       
-   	   <a href="/categories/ruby-on-rails">ruby on rails
-            (24)
-         </a> |
+        <a href="/categories/ruby-on-rails">
+          Ruby on Rails(24)
+        </a> |
       
-   	   <a href="/categories/tips">tips
-            (8)
-         </a> |
+        <a href="/categories/tips">
+          Tips(8)
+        </a> |
       
-   	   <a href="/categories/html5">html5
-            (8)
-         </a> |
+        <a href="/categories/html5">
+          HTML5(8)
+        </a> |
       
-   	   <a href="/categories/algorithms">algorithms
-            (2)
-         </a> |
+        <a href="/categories/algorithms">
+          Algorithms(2)
+        </a> |
       
-   	   <a href="/categories/machine-learning">machine learning
-            (5)
-         </a> |
+        <a href="/categories/machine-learning">
+          Machine Learning(5)
+        </a> |
       
-   	   <a href="/categories/c">c
-            (14)
-         </a> |
+        <a href="/categories/c">
+          C(14)
+        </a> |
       
-   	   <a href="/categories/ruby">ruby
-            (5)
-         </a> |
+        <a href="/categories/ruby">
+          Ruby(5)
+        </a> |
       
-   	   <a href="/categories/swift">swift
-            (34)
-         </a> |
+        <a href="/categories/swift">
+          Swift(34)
+        </a> |
       
-   	   <a href="/categories/ios">ios
-            (6)
-         </a> |
+        <a href="/categories/ios">
+          iOS(6)
+        </a> |
       
-   	   <a href="/categories/books">books
-            (4)
-         </a> |
+        <a href="/categories/books">
+          Books(5)
+        </a> |
       
-   	   <a href="/categories/kindle">kindle
-            (3)
-         </a> |
+        <a href="/categories/kindle">
+          Kindle(3)
+        </a> |
       
-   	   <a href="/categories/nginx">nginx
-            (1)
-         </a> |
+        <a href="/categories/nginx">
+          Nginx(1)
+        </a> |
       
-   	   <a href="/categories/capistrano">capistrano
-            (1)
-         </a> |
+        <a href="/categories/capistrano">
+          Capistrano(1)
+        </a> |
       
-   	   <a href="/categories/chef">chef
-            (2)
-         </a> |
+        <a href="/categories/chef">
+          Chef(2)
+        </a> |
       
-   	   <a href="/categories/fastlane">fastlane
-            (1)
-         </a> |
+        <a href="/categories/fastlane">
+          fastlane(1)
+        </a> |
       
    </p>
-
 <hr />
 
 <h3>Archive</h3>
@@ -595,6 +599,10 @@
             (1)
          </a> |
       
+   		<a href="/2017/12/">2017/12
+            (1)
+         </a> |
+      
    </p>
 
 <hr />
@@ -618,102 +626,106 @@
 				   <p>
 					   <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
 					   <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
-					   <a href="https://github.com/kzykbys">Github</a></p>
-				   <h4>Category</h4>
-				   <p>|
-					   
-						   <a href="/categories/objective-c">objective-c</a> | 
-					   
-						   <a href="/categories/other">other</a> | 
-					   
-						   <a href="/categories/node-js">node.js</a> | 
-					   
-						   <a href="/categories/ruby-on-rails">ruby on rails</a> | 
-					   
-						   <a href="/categories/tips">tips</a> | 
-					   
-						   <a href="/categories/html5">html5</a> | 
-					   
-						   <a href="/categories/algorithms">algorithms</a> | 
-					   
-						   <a href="/categories/machine-learning">machine learning</a> | 
-					   
-						   <a href="/categories/c">c</a> | 
-					   
-						   <a href="/categories/ruby">ruby</a> | 
-					   
-						   <a href="/categories/swift">swift</a> | 
-					   
-						   <a href="/categories/ios">ios</a> | 
-					   
-						   <a href="/categories/books">books</a> | 
-					   
-						   <a href="/categories/kindle">kindle</a> | 
-					   
-						   <a href="/categories/nginx">nginx</a> | 
-					   
-						   <a href="/categories/capistrano">capistrano</a> | 
-					   
-						   <a href="/categories/chef">chef</a> | 
-					   
-						   <a href="/categories/fastlane">fastlane</a> | 
-					   
-				   </p>
-				   <h4>Archive</h4>
-					   <p>|
-					   
-	    					<a href="/2013/08/">2013/08
-	    					</a> | 
-	    			   
-	    					<a href="/2013/09/">2013/09
-	    					</a> | 
-	    			   
-	    					<a href="/2013/11/">2013/11
-	    					</a> | 
-	    			   
-	    					<a href="/2013/12/">2013/12
-	    					</a> | 
-	    			   
-	    					<a href="/2014/01/">2014/01
-	    					</a> | 
-	    			   
-	    					<a href="/2014/03/">2014/03
-	    					</a> | 
-	    			   
-	    					<a href="/2014/04/">2014/04
-	    					</a> | 
-	    			   
-	    					<a href="/2014/05/">2014/05
-	    					</a> | 
-	    			   
-	    					<a href="/2014/06/">2014/06
-	    					</a> | 
-	    			   
-	    					<a href="/2014/07/">2014/07
-	    					</a> | 
-	    			   
-	    					<a href="/2014/08/">2014/08
-	    					</a> | 
-	    			   
-	    					<a href="/2014/09/">2014/09
-	    					</a> | 
-	    			   
-	    					<a href="/2014/10/">2014/10
-	    					</a> | 
-	    			   
-	    					<a href="/2015/02/">2015/02
-	    					</a> | 
-	    			   
-	    					<a href="/2015/07/">2015/07
-	    					</a> | 
-	    			   
-	    					<a href="/2015/08/">2015/08
-	    					</a> | 
-	    			   
-	    					<a href="/2016/01/">2016/01
-	    					</a> | 
-	    			   
-    			   </p>
+					   <a href="https://github.com/kzykbys">Github</a>
+					</p>
+					<h4>Category</h4>
+					<p>|
+						
+							<a href="/categories/objective-c">Objective-C</a> | 
+						
+							<a href="/categories/other">Other</a> | 
+						
+							<a href="/categories/node-js">Node.js</a> | 
+						
+							<a href="/categories/ruby-on-rails">Ruby on Rails</a> | 
+						
+							<a href="/categories/tips">Tips</a> | 
+						
+							<a href="/categories/html5">HTML5</a> | 
+						
+							<a href="/categories/algorithms">Algorithms</a> | 
+						
+							<a href="/categories/machine-learning">Machine Learning</a> | 
+						
+							<a href="/categories/c">C</a> | 
+						
+							<a href="/categories/ruby">Ruby</a> | 
+						
+							<a href="/categories/swift">Swift</a> | 
+						
+							<a href="/categories/ios">iOS</a> | 
+						
+							<a href="/categories/books">Books</a> | 
+						
+							<a href="/categories/kindle">Kindle</a> | 
+						
+							<a href="/categories/nginx">Nginx</a> | 
+						
+							<a href="/categories/capistrano">Capistrano</a> | 
+						
+							<a href="/categories/chef">Chef</a> | 
+						
+							<a href="/categories/fastlane">fastlane</a> | 
+						
+					</p>
+					<h4>Archive</h4>
+						<p>|
+						
+							<a href="/2013/08/">2013/08
+							</a> | 
+						
+							<a href="/2013/09/">2013/09
+							</a> | 
+						
+							<a href="/2013/11/">2013/11
+							</a> | 
+						
+							<a href="/2013/12/">2013/12
+							</a> | 
+						
+							<a href="/2014/01/">2014/01
+							</a> | 
+						
+							<a href="/2014/03/">2014/03
+							</a> | 
+						
+							<a href="/2014/04/">2014/04
+							</a> | 
+						
+							<a href="/2014/05/">2014/05
+							</a> | 
+						
+							<a href="/2014/06/">2014/06
+							</a> | 
+						
+							<a href="/2014/07/">2014/07
+							</a> | 
+						
+							<a href="/2014/08/">2014/08
+							</a> | 
+						
+							<a href="/2014/09/">2014/09
+							</a> | 
+						
+							<a href="/2014/10/">2014/10
+							</a> | 
+						
+							<a href="/2015/02/">2015/02
+							</a> | 
+						
+							<a href="/2015/07/">2015/07
+							</a> | 
+						
+							<a href="/2015/08/">2015/08
+							</a> | 
+						
+							<a href="/2016/01/">2016/01
+							</a> | 
+						
+							<a href="/2017/12/">2017/12
+							</a> | 
+						
+					</p>
 			   </div>
 		   </div>
 	   	</div>
