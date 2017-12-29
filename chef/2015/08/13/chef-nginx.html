@@ -221,24 +221,24 @@
 					<div id="social-buttom">
 	<!-- Social Buttoms -->
 	<ul>
+		<li id="hatena-area" style="margin-right: 30px">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Chef Solo で CentOS6.5 に Nginx のインストールと起動" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//chef/2015/08/13/chef-nginx.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			</li>
 		<li>
 			<!-- Pocket -->
 			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
 			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
 		</li>		
-		<li>
+		<li  style="margine-left: 10px;!important">
 			<!-- Vertical Twitter -->
 			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		</li>				
-		<li>
-			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//chef/2015/08/13/chef-nginx.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
-		</li>				
-		<li style="margine-left: 10px;!important">
-			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Chef Solo で CentOS6.5 に Nginx のインストールと起動" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-		</li>		
+		</li>
 	</ul>
 </div>
 
@@ -252,7 +252,7 @@
 <p>まず、CentOSのイメージがない場合は追加</p>
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Vagrantの用意</span>
-<span class="err">$</span> <span class="n">vagrant</span> <span class="n">box</span> <span class="n">add</span> <span class="n">opscode</span><span class="o">-</span><span class="n">centos</span><span class="o">-</span><span class="mi">6</span><span class="o">.</span><span class="mi">5</span> <span class="ss">http</span><span class="p">:</span><span class="sr">//o</span><span class="n">pscode</span><span class="o">-</span><span class="n">vm</span><span class="o">-</span><span class="n">bento</span><span class="o">.</span><span class="n">s3</span><span class="o">.</span><span class="n">amazonaws</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">vagrant</span><span class="o">/</span><span class="n">virtualbox</span><span class="o">/</span><span class="n">opscode_centos</span><span class="o">-</span><span class="mi">6</span><span class="o">.</span><span class="mi">5</span><span class="n">_chef</span><span class="o">-</span><span class="n">provisionerless</span><span class="o">.</span><span class="n">box</span></code></pre></figure>
+<span class="err">$</span> <span class="n">vagrant</span> <span class="n">box</span> <span class="n">add</span> <span class="n">opscode</span><span class="o">-</span><span class="n">centos</span><span class="o">-</span><span class="mi">6</span><span class="o">.</span><span class="mi">5</span> <span class="n">http</span><span class="ss">:/</span><span class="o">/</span><span class="n">opscode</span><span class="o">-</span><span class="n">vm</span><span class="o">-</span><span class="n">bento</span><span class="p">.</span><span class="nf">s3</span><span class="p">.</span><span class="nf">amazonaws</span><span class="p">.</span><span class="nf">com</span><span class="o">/</span><span class="n">vagrant</span><span class="o">/</span><span class="n">virtualbox</span><span class="o">/</span><span class="n">opscode_centos</span><span class="o">-</span><span class="mi">6</span><span class="o">.</span><span class="mi">5</span><span class="n">_chef</span><span class="o">-</span><span class="n">provisionerless</span><span class="p">.</span><span class="nf">box</span></code></pre></figure>
 
 <p>作業ディレクトリの作成</p>
 
@@ -276,8 +276,8 @@
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Vagrantのネットワーク設定</span>
 
 <span class="c1"># Vagrantfile</span>
-<span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span> <span class="o">=</span> <span class="s2">&quot;opscode-centos-6.5&quot;</span>
-<span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">network</span> <span class="ss">:private_network</span><span class="p">,</span> <span class="ss">ip</span><span class="p">:</span><span class="s2">&quot;192.168.50.10&quot;</span> <span class="c1"># ← 追記</span></code></pre></figure>
+<span class="n">config</span><span class="p">.</span><span class="nf">vm</span><span class="p">.</span><span class="nf">box</span> <span class="o">=</span> <span class="s2">"opscode-centos-6.5"</span>
+<span class="n">config</span><span class="p">.</span><span class="nf">vm</span><span class="p">.</span><span class="nf">network</span> <span class="ss">:private_network</span><span class="p">,</span> <span class="n">ip</span><span class="ss">:"192.168.50.10"</span> <span class="c1"># ← 追記</span></code></pre></figure>
 
 <p>Vagrantのリロード</p>
 
@@ -309,21 +309,21 @@
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="n">knife</span> <span class="n">cookbook</span> <span class="n">create</span> <span class="n">nginx</span> <span class="o">-</span><span class="n">o</span> <span class="n">site</span><span class="o">-</span><span class="n">cookbooks</span>
 
 <span class="c1"># site-cookbooks/nginx/recipes</span>
-<span class="n">include_recipe</span> <span class="s2">&quot;yum-epel&quot;</span>
+<span class="n">include_recipe</span> <span class="s2">"yum-epel"</span>
 
-<span class="n">package</span> <span class="s2">&quot;nginx&quot;</span> <span class="k">do</span>
+<span class="n">package</span> <span class="s2">"nginx"</span> <span class="k">do</span>
   <span class="n">action</span> <span class="ss">:install</span>
 <span class="k">end</span>
 
-<span class="n">service</span> <span class="s2">&quot;nginx&quot;</span> <span class="k">do</span>
-  <span class="n">action</span> <span class="o">[</span> <span class="ss">:enable</span><span class="p">,</span> <span class="ss">:start</span> <span class="o">]</span>
+<span class="n">service</span> <span class="s2">"nginx"</span> <span class="k">do</span>
+  <span class="n">action</span> <span class="p">[</span> <span class="ss">:enable</span><span class="p">,</span> <span class="ss">:start</span> <span class="p">]</span>
   <span class="n">supports</span> <span class="ss">:status</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">:restart</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">:reload</span> <span class="o">=&gt;</span> <span class="kp">true</span>
 <span class="k">end</span></code></pre></figure>
 
 <p>第三者のクックブックを使用するため、Berksfileの編集</p>
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Berksfile</span>
-<span class="n">cookbook</span> <span class="s1">&#39;yum-epel&#39;</span> <span class="c1"># ← 追記</span></code></pre></figure>
+<span class="n">cookbook</span> <span class="s1">'yum-epel'</span> <span class="c1"># ← 追記</span></code></pre></figure>
 
 <h4 id="nodeオブジェクトの編集">Nodeオブジェクトの編集</h4>
 
@@ -331,12 +331,12 @@
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># nodes/nginx-example.json</span>
 <span class="p">{</span>
-  <span class="s2">&quot;run_list&quot;</span><span class="p">:</span> <span class="o">[</span>
-    <span class="s2">&quot;recipe[yum-epel]&quot;</span><span class="p">,</span> <span class="c1"># ← 追記</span>
-    <span class="s2">&quot;recipe[nginx]&quot;</span>     <span class="c1"># ← 追記</span>
-  <span class="o">]</span><span class="p">,</span>
-  <span class="s2">&quot;automatic&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">&quot;ipaddress&quot;</span><span class="p">:</span> <span class="s2">&quot;nginx-example&quot;</span>
+  <span class="s2">"run_list"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">"recipe[yum-epel]"</span><span class="p">,</span> <span class="c1"># ← 追記</span>
+    <span class="s2">"recipe[nginx]"</span>     <span class="c1"># ← 追記</span>
+  <span class="p">],</span>
+  <span class="s2">"automatic"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"ipaddress"</span><span class="p">:</span> <span class="s2">"nginx-example"</span>
   <span class="p">}</span>
 <span class="p">}</span></code></pre></figure>
 

@@ -221,24 +221,24 @@
 					<div id="social-buttom">
 	<!-- Social Buttoms -->
 	<ul>
+		<li id="hatena-area" style="margin-right: 30px">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="難しい C の宣言の読解 right-left rule" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//c/2014/06/02/difficult-declarations-in-c.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			</li>
 		<li>
 			<!-- Pocket -->
 			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
 			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
 		</li>		
-		<li>
+		<li  style="margine-left: 10px;!important">
 			<!-- Vertical Twitter -->
 			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		</li>				
-		<li>
-			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//c/2014/06/02/difficult-declarations-in-c.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
-		</li>				
-		<li style="margine-left: 10px;!important">
-			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="難しい C の宣言の読解 right-left rule" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-		</li>		
+		</li>
 	</ul>
 </div>
 
@@ -251,10 +251,14 @@
 
 <p>まずは、本当に簡単な例から。right-left rule は、最初に変数の名前から読み始めます。ここでは、p です。そして、右へ左へと繰り返して読みます。この int *p[5] の例であれば、</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="n">p</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="cm">/* p は 5 つの ”何かの” 要素を持つ配列 */</span>
-<span class="lineno">2</span> <span class="o">*</span><span class="n">p</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="cm">/* p は 5 つの ”何かの” 要素へのポインタを持つ配列 */</span>
-<span class="lineno">3</span> <span class="o">*</span><span class="n">p</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="cm">/* [5] の右には何もないので、左へ */</span>
-<span class="lineno">4</span> <span class="kt">int</span> <span class="o">*</span><span class="n">p</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="cm">/* p は 5 つの int 要素へのポインタを持つ配列 */</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="n">p</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="cm">/* p は 5 つの ”何かの” 要素を持つ配列 */</span>
+<span class="o">*</span><span class="n">p</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="cm">/* p は 5 つの ”何かの” 要素へのポインタを持つ配列 */</span>
+<span class="o">*</span><span class="n">p</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="cm">/* [5] の右には何もないので、左へ */</span>
+<span class="kt">int</span> <span class="o">*</span><span class="n">p</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="cm">/* p は 5 つの int 要素へのポインタを持つ配列 */</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>このルールを適応すれば難しい宣言での読み解けます。</p>
 
@@ -262,19 +266,27 @@
 
 <p>先ほどのルールにもう 1 つだけルールを加えます。それは、変数名のまわりの括弧は先に終わらせるということです。この例で言えば、(*f) を先に読み終えるということです。では、見ていきます。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="cm">/* 括弧内の右には何もないので左へ */</span>
-<span class="lineno">2</span> <span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">)</span> <span class="cm">/* f は “何かの” ポインタ */</span>
-<span class="lineno">3</span> <span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">)(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="cm">/* f は int を引数に持つ関数へのポインタ */</span>
-<span class="lineno">4</span> <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">)(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="cm">/* f は int を引数に持ち、int を返す関数へのポインタ */</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="cm">/* 括弧内の右には何もないので左へ */</span>
+<span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">)</span> <span class="cm">/* f は “何かの” ポインタ */</span>
+<span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">)(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="cm">/* f は int を引数に持つ関数へのポインタ */</span>
+<span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">)(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="cm">/* f は int を引数に持ち、int を返す関数へのポインタ */</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h3 id="int-(*p)[20]">int (*p)[20]</h3>
 
 <p>2 つ目の例と同じように変数名のまわりの括弧を終わらせます。そして、純粋に右左右左を繰り返します。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="cm">/* 括弧内の右には何もないので左へ */</span>
-<span class="lineno">2</span> <span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">)</span> <span class="cm">/* p は “何かの” ポインタ */</span>
-<span class="lineno">3</span> <span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">)[</span><span class="mi">20</span><span class="p">]</span> <span class="cm">/* p は 20 つの “何かの” 要素を持つ配列へのポインタ */</span>
-<span class="lineno">4</span> <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">)</span> <span class="p">[</span><span class="mi">20</span><span class="p">]</span> <span class="cm">/* p は 20 つの int 要素を持つ配列へのポインタ */</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="cm">/* 括弧内の右には何もないので左へ */</span>
+<span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">)</span> <span class="cm">/* p は “何かの” ポインタ */</span>
+<span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">)[</span><span class="mi">20</span><span class="p">]</span> <span class="cm">/* p は 20 つの “何かの” 要素を持つ配列へのポインタ */</span>
+<span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">)</span> <span class="p">[</span><span class="mi">20</span><span class="p">]</span> <span class="cm">/* p は 20 つの int 要素を持つ配列へのポインタ */</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>1 つ目の例とこの 3 つ目例は見た目が似ているのに大きく異なりますね。1 つ目は、20個の int へのポインタを持つ配列。2 つ目は、たった 1 つのポインタです。</p>
 
@@ -282,10 +294,14 @@
 
 <p>この辺りから個人的にキツイ。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="cm">/* f は 5 つの “何かの” 要素を持つ配列 */</span>
-<span class="lineno">2</span> <span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="cm">/* f は 5 つの “何かの” ポインタを持つ配列 */</span>
-<span class="lineno">3</span> <span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">[</span><span class="mi">5</span><span class="p">])(</span><span class="kt">float</span> <span class="n">f</span><span class="p">)</span> <span class="cm">/* f は float 引数を持つ関数へのポインタ 5 つを持つ配列 */</span>
-<span class="lineno">4</span> <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">[</span><span class="mi">5</span><span class="p">])(</span><span class="kt">float</span> <span class="n">f</span><span class="p">)</span> <span class="cm">/* f は、float 引数を持ち、int を返す関数へのポインタ 5 つを持つ配列 */</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="cm">/* f は 5 つの “何かの” 要素を持つ配列 */</span>
+<span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="cm">/* f は 5 つの “何かの” ポインタを持つ配列 */</span>
+<span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">[</span><span class="mi">5</span><span class="p">])(</span><span class="kt">float</span> <span class="n">f</span><span class="p">)</span> <span class="cm">/* f は float 引数を持つ関数へのポインタ 5 つを持つ配列 */</span>
+<span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">[</span><span class="mi">5</span><span class="p">])(</span><span class="kt">float</span> <span class="n">f</span><span class="p">)</span> <span class="cm">/* f は、float 引数を持ち、int を返す関数へのポインタ 5 つを持つ配列 */</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>こいつが配列には見えない。</p>
 
@@ -293,10 +309,14 @@
 
 <p>関数へのポインタを返す関数です。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">))</span> <span class="cm">/* func は int 引数を持つ関数 */</span>
-<span class="lineno">2</span> <span class="p">(</span><span class="o">*</span><span class="n">func</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">))</span> <span class="cm">/* func は int 引数を持ち、”何かへの” ポインタを返す関数*/</span>
-<span class="lineno">3</span> <span class="p">(</span><span class="o">*</span><span class="n">func</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">))(</span><span class="kt">int</span><span class="p">)</span> <span class="cm">/* func は int 引数を持ち、&quot;int 引数を持つ関数への” ポインタを返す関数*/</span>
-<span class="lineno">4</span> <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">func</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">))(</span><span class="kt">int</span><span class="p">)</span> <span class="cm">/* func は int 引数を持ち、”int 引数を持ち、int を返す関数への” ポインタを返す関数*/</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">))</span> <span class="cm">/* func は int 引数を持つ関数 */</span>
+<span class="p">(</span><span class="o">*</span><span class="n">func</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">))</span> <span class="cm">/* func は int 引数を持ち、”何かへの” ポインタを返す関数*/</span>
+<span class="p">(</span><span class="o">*</span><span class="n">func</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">))(</span><span class="kt">int</span><span class="p">)</span> <span class="cm">/* func は int 引数を持ち、"int 引数を持つ関数への” ポインタを返す関数*/</span>
+<span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">func</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">))(</span><span class="kt">int</span><span class="p">)</span> <span class="cm">/* func は int 引数を持ち、”int 引数を持ち、int を返す関数への” ポインタを返す関数*/</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>もうむちゃくちゃですね。簡単には読み解けませんでした。</p>
 

@@ -221,24 +221,24 @@
 					<div id="social-buttom">
 	<!-- Social Buttoms -->
 	<ul>
+		<li id="hatena-area" style="margin-right: 30px">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Unsign と Sign の注意点" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//c/2014/03/31/unsign-sign.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			</li>
 		<li>
 			<!-- Pocket -->
 			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
 			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
 		</li>		
-		<li>
+		<li  style="margine-left: 10px;!important">
 			<!-- Vertical Twitter -->
 			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		</li>				
-		<li>
-			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//c/2014/03/31/unsign-sign.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
-		</li>				
-		<li style="margine-left: 10px;!important">
-			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Unsign と Sign の注意点" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-		</li>		
+		</li>
 	</ul>
 </div>
 
@@ -249,37 +249,68 @@
 
 <p>ご存じの通り、unsign と sign の数字は、MSB をプラスかマイナスかを表現するために使用するかどうかの違いです。仮に 8 bits で数字を表現することを考えてみると、unsign は 8bits 全てを正の数を表すために使用します。そのため、8bits で表すことができる範囲は、0 から 255 です。一方、sign は MSB で符号を示します。MSB がセットされていれば、その 8bits で表された数字は負です。範囲は、-128 から 127 です。そこで、下記のような C のプログラムを見てみると、</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno"> 1</span> <span class="cp">#include &lt;stdio.h&gt;</span>
-<span class="lineno"> 2</span>  
-<span class="lineno"> 3</span> <span class="kt">int</span> <span class="n">array</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">23</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">204</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">16</span><span class="p">};</span>
-<span class="lineno"> 4</span> <span class="cp">#define TOTAL_ELEMENTS (sizeof(array) / sizeof(array[0]))</span>
-<span class="lineno"> 5</span>  
-<span class="lineno"> 6</span> <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
-<span class="lineno"> 7</span> <span class="p">{</span>
-<span class="lineno"> 8</span>  
-<span class="lineno"> 9</span>     <span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-<span class="lineno">10</span>      
-<span class="lineno">11</span>     <span class="k">if</span><span class="p">(</span><span class="n">d</span> <span class="o">&lt;=</span> <span class="n">TOTAL_ELEMENTS</span><span class="p">){</span> <span class="c1">// false</span>
-<span class="lineno">12</span>         <span class="cm">/*</span>
-<span class="lineno">13</span> <span class="cm">         * This if statement is false, because the logical statement</span>
-<span class="lineno">14</span> <span class="cm">         * compares two values as unsign integer. sizeof() return unsign value.</span>
-<span class="lineno">15</span> <span class="cm">         * In 8 bits, -1 is 11111111b, FFh and  255 decimal number.</span>
-<span class="lineno">16</span> <span class="cm">         * So, it compares 255d and 7 (the number of elements). =&gt; false</span>
-<span class="lineno">17</span> <span class="cm">         */</span>
-<span class="lineno">18</span>         <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Invalid</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-<span class="lineno">19</span>     <span class="p">}</span>
-<span class="lineno">20</span>      
-<span class="lineno">21</span>     <span class="k">if</span><span class="p">(</span><span class="n">d</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">TOTAL_ELEMENTS</span><span class="p">){</span> <span class="c1">// true</span>
-<span class="lineno">22</span>         <span class="cm">/*</span>
-<span class="lineno">23</span> <span class="cm">         * We cast unsign integer into sign integer.</span>
-<span class="lineno">24</span> <span class="cm">         * In this context, -1 is literally -1. </span>
-<span class="lineno">25</span> <span class="cm">         * So, it compares -1 and 7 (the number of elements). =&gt; true</span>
-<span class="lineno">26</span> <span class="cm">         */</span>
-<span class="lineno">27</span>         <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Expected Result.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-<span class="lineno">28</span>         <span class="n">printf</span><span class="p">(</span><span class="s">&quot;TOTAL_ELEMENTS : %lu</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">TOTAL_ELEMENTS</span><span class="p">);</span>
-<span class="lineno">29</span>     <span class="p">}</span>
-<span class="lineno">30</span>     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="lineno">31</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31</pre></td><td class="code"><pre><span class="cp">#include &lt;stdio.h&gt;
+</span> 
+<span class="kt">int</span> <span class="n">array</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">23</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">204</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">16</span><span class="p">};</span>
+<span class="cp">#define TOTAL_ELEMENTS (sizeof(array) / sizeof(array[0]))
+</span> 
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+ 
+    <span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+     
+    <span class="k">if</span><span class="p">(</span><span class="n">d</span> <span class="o">&lt;=</span> <span class="n">TOTAL_ELEMENTS</span><span class="p">){</span> <span class="c1">// false
+</span>        <span class="cm">/*
+         * This if statement is false, because the logical statement
+         * compares two values as unsign integer. sizeof() return unsign value.
+         * In 8 bits, -1 is 11111111b, FFh and  255 decimal number.
+         * So, it compares 255d and 7 (the number of elements). =&gt; false
+         */</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Invalid</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+     
+    <span class="k">if</span><span class="p">(</span><span class="n">d</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">TOTAL_ELEMENTS</span><span class="p">){</span> <span class="c1">// true
+</span>        <span class="cm">/*
+         * We cast unsign integer into sign integer.
+         * In this context, -1 is literally -1. 
+         * So, it compares -1 and 7 (the number of elements). =&gt; true
+         */</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Expected Result.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"TOTAL_ELEMENTS : %lu</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">TOTAL_ELEMENTS</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>一つ目の if 文は false を返します。sizeof が unsign integer を返すので、この比較は unsign で実行されます。-1 は、0xFF、十進数で 255であり、配列の要素数より大きいです。そのため、この if 文の中は実行されません。
 二つ目の if 文は、unsign integer である、TOTAL_ELEMENTS をキャストし、sign integer として扱うため、期待している結果が表示されます。</p>

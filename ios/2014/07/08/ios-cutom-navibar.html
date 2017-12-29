@@ -221,24 +221,24 @@
 					<div id="social-buttom">
 	<!-- Social Buttoms -->
 	<ul>
+		<li id="hatena-area" style="margin-right: 30px">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Navigation Bar のカスタマイズ" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//ios/2014/07/08/ios-cutom-navibar.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			</li>
 		<li>
 			<!-- Pocket -->
 			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
 			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
 		</li>		
-		<li>
+		<li  style="margine-left: 10px;!important">
 			<!-- Vertical Twitter -->
 			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		</li>				
-		<li>
-			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//ios/2014/07/08/ios-cutom-navibar.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
-		</li>				
-		<li style="margine-left: 10px;!important">
-			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Navigation Bar のカスタマイズ" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-		</li>		
+		</li>
 	</ul>
 </div>
 
@@ -251,18 +251,30 @@
 
 <p>Navigation Bar のタイトル(真ん中)に文字列を表示する以外にも、画像等を置くことができます。そのためには、Navigation Bar Item の <code>titleView</code> プロパティを使用します。この <code>titleView</code> プロパティには、UIView のサブクラスならなんでも設定可能。今回は画像を設定します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidLoad</span><span class="p">{</span>
-<span class="lineno"> 2</span>  <span class="p">[</span><span class="nb">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
-<span class="lineno"> 3</span> 
-<span class="lineno"> 4</span>  <span class="cm">/* Create an Image View to replace the Title View */</span>
-<span class="lineno"> 5</span>  <span class="bp">UIImageView</span> <span class="o">*</span><span class="n">imageView</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">UIImageView</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithFrame</span><span class="p">:</span><span class="n">CGRectMake</span><span class="p">(</span><span class="mf">0.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">100.0f</span><span class="p">,</span> <span class="mf">40.0f</span><span class="p">)];</span>
-<span class="lineno"> 6</span>  <span class="n">imageView</span><span class="p">.</span><span class="n">contentMode</span> <span class="o">=</span> <span class="n">UIViewContentModeScaleAspectFit</span><span class="p">;</span>
-<span class="lineno"> 7</span> 
-<span class="lineno"> 8</span>  <span class="cm">/* Load an image. Be careful, this image will be cached */</span>
-<span class="lineno"> 9</span>  <span class="bp">UIImage</span> <span class="o">*</span><span class="n">image</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIImage</span> <span class="nl">imageNamed</span><span class="p">:</span><span class="s">@&quot;Logo&quot;</span><span class="p">];</span> <span class="cm">/* Set the image of the Image View */</span>
-<span class="lineno">10</span>  <span class="p">[</span><span class="n">imageView</span> <span class="nl">setImage</span><span class="p">:</span><span class="n">image</span><span class="p">];</span> <span class="cm">/* Set the Title View */</span>
-<span class="lineno">11</span>     <span class="nb">self</span><span class="p">.</span><span class="n">navigationItem</span><span class="p">.</span><span class="n">titleView</span> <span class="o">=</span> <span class="n">imageView</span><span class="p">;</span>
-<span class="lineno">12</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre>- (void)viewDidLoad{
+    [super viewDidLoad];
+
+    /* Create an Image View to replace the Title View */
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 100.0f, 40.0f)];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+
+    /* Load an image. Be careful, this image will be cached */
+    UIImage *image = [UIImage imageNamed:@"Logo"]; /* Set the image of the Image View */
+    [imageView setImage:image]; /* Set the Title View */
+    self.navigationItem.titleView = imageView;
+}<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Apple は、この <code>titleView</code> の高さが 128 points 以上にならないよう勧めているようです。もし、高さ 128 pixels の画像を設定した場合、Retina ディスプレイでは、64 points になります。300 pixels では、150 points になってしまいます。これらを調整するために、ビューの contentMode を <code>UIViewContentModeScaleAspectFit</code> に設定することで、調整してくれます。</p>
 
@@ -366,10 +378,14 @@
 
 <p>これらの値をこんな感じに。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="nb">self</span><span class="p">.</span><span class="n">navigationItem</span><span class="p">.</span><span class="n">leftBarButtonItem</span> <span class="o">=</span>
-<span class="lineno">2</span>   <span class="p">[[</span><span class="bp">UIBarButtonItem</span> <span class="n">alloc</span><span class="p">]</span>
-<span class="lineno">3</span>       <span class="nl">initWithBarButtonSystemItem</span><span class="p">:</span><span class="n">UIBarButtonSystemItemDone</span> <span class="nl">target</span><span class="p">:</span><span class="nb">self</span>
-<span class="lineno">4</span>       <span class="nl">action</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nl">performAdd</span><span class="p">:)];</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>self.navigationItem.leftBarButtonItem =
+    [[UIBarButtonItem alloc]
+        initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self
+        action:@selector(performAdd:)];<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>UIBarButtonSystemItem Enumeration には他にも、UIBarButtonSystemItemFlexibleSpace と UIBarButtonSystemItemFixedSpace とアイテム間の幅を調整するものがあります。また、UIBarButtonSystemItemPageCurl という toolbar の中で使用するものがあります。</p>
 
@@ -377,14 +393,22 @@
 
 <p>上記のシステムのボタンを使い以外にも、自分のビューを追加することができます。<code>initWithCustomView:</code> Initializer によって実装します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="nb">self</span><span class="p">.</span><span class="n">title</span> <span class="o">=</span> <span class="s">@&quot;Button Demo&quot;</span><span class="p">;</span>
-<span class="lineno">2</span> 
-<span class="lineno">3</span> <span class="bp">UISwitch</span> <span class="o">*</span><span class="n">simpleSwitch</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">UISwitch</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
-<span class="lineno">4</span> <span class="n">simpleSwitch</span><span class="p">.</span><span class="n">on</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span>
-<span class="lineno">5</span> <span class="p">[</span><span class="n">simpleSwitch</span> <span class="nl">addTarget</span><span class="p">:</span><span class="nb">self</span>
-<span class="lineno">6</span>                  <span class="nl">action</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nl">switchIsChanged</span><span class="p">:)</span> <span class="nl">forControlEvents</span><span class="p">:</span><span class="n">UIControlEventValueChanged</span><span class="p">];</span>
-<span class="lineno">7</span> <span class="nb">self</span><span class="p">.</span><span class="n">navigationItem</span><span class="p">.</span><span class="n">rightBarButtonItem</span> <span class="o">=</span>
-<span class="lineno">8</span> <span class="p">[[</span><span class="bp">UIBarButtonItem</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithCustomView</span><span class="p">:</span><span class="n">simpleSwitch</span><span class="p">];</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre>self.title = @"Button Demo";
+
+UISwitch *simpleSwitch = [[UISwitch alloc] init];
+simpleSwitch.on = YES;
+[simpleSwitch addTarget:self
+                 action:@selector(switchIsChanged:) forControlEvents:UIControlEventValueChanged];
+self.navigationItem.rightBarButtonItem =
+[[UIBarButtonItem alloc] initWithCustomView:simpleSwitch];<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>このように UISwitch も追加できます。画像等を追加したり、自由自在にカスタマイズすることができます。</p>
 

@@ -221,24 +221,24 @@
 					<div id="social-buttom">
 	<!-- Social Buttoms -->
 	<ul>
+		<li id="hatena-area" style="margin-right: 30px">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="The Swift Programming Language ~ Protocols [Collection, Inheritance, Composition, Casting, Optional]" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//swift/2014/06/30/swift-doc-protocols3.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			</li>
 		<li>
 			<!-- Pocket -->
 			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
 			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
 		</li>		
-		<li>
+		<li  style="margine-left: 10px;!important">
 			<!-- Vertical Twitter -->
 			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		</li>				
-		<li>
-			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//swift/2014/06/30/swift-doc-protocols3.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
-		</li>				
-		<li style="margine-left: 10px;!important">
-			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="The Swift Programming Language ~ Protocols [Collection, Inheritance, Composition, Casting, Optional]" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-		</li>		
+		</li>
 	</ul>
 </div>
 
@@ -257,14 +257,22 @@
 
 <p>配列や Dictionary といった Collection にプロトコルをタイプとして保存することができます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="nl">things</span><span class="p">:</span> <span class="n">TextRepresentable</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="n">game</span><span class="p">,</span> <span class="n">d12</span><span class="p">,</span> <span class="n">simonTheHamster</span><span class="p">]</span>
-<span class="lineno">2</span> 
-<span class="lineno">3</span> <span class="k">for</span> <span class="n">thing</span> <span class="k">in</span> <span class="n">things</span> <span class="p">{</span>
-<span class="lineno">4</span>     <span class="n">println</span><span class="p">(</span><span class="n">thing</span><span class="p">.</span><span class="n">asText</span><span class="p">())</span>
-<span class="lineno">5</span> <span class="p">}</span>
-<span class="lineno">6</span> <span class="c1">// A game of Snakes and Ladders with 25 squares</span>
-<span class="lineno">7</span> <span class="c1">// A 12-sided dice</span>
-<span class="lineno">8</span> <span class="c1">// A hamster named Simon</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre>let things: TextRepresentable[] = [game, d12, simonTheHamster]
+
+for thing in things {
+    println(thing.asText())
+}
+// A game of Snakes and Ladders with 25 squares
+// A 12-sided dice
+// A hamster named Simon<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>この thing は TextRepresentable タイプです。Dice や DiceGame, Hamster ではありません。</p>
 
@@ -272,15 +280,21 @@
 
 <p>プロトコルは 1 つまたは複数のプロトコルを継承し、新しい要件を追加することもできます。プロトコルの文法は、クラスの継承と似ています。いくつかのプロトコルを継承することができるので、その場合は、カンマで区切ります。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="nl">InheritingProtocol</span><span class="p">:</span> <span class="n">SomeProtocol</span><span class="p">,</span> <span class="n">AnotherProtocol</span> <span class="p">{</span>
-<span class="lineno">2</span>     <span class="c1">// protocol definition goes here</span>
-<span class="lineno">3</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>protocol InheritingProtocol: SomeProtocol, AnotherProtocol {
+    // protocol definition goes here
+}<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>先ほどの TextRepresentable を継承し、新しいプロトコルを作成します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">protocol</span> <span class="nl">PrettyTextRepresentable</span><span class="p">:</span> <span class="n">TextRepresentable</span> <span class="p">{</span>
-<span class="lineno">2</span>     <span class="n">func</span> <span class="n">asPrettyText</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span>
-<span class="lineno">3</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>protocol PrettyTextRepresentable: TextRepresentable {
+    func asPrettyText() -&gt; String
+}<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>この PrettyTextRepresentable に準拠するには、TextRepresentable の要件と PrettyTextRepresentable の要件を両方を満たさなければなりません。</p>
 
@@ -288,22 +302,38 @@
 
 <p>いくつかのプロトコルの要件を満たしたタイプを一度に定義できたら便利です。そのため Swift では、いくつかのプロトコルを 1 つにまとめることができます。基本的なシンタックスは、<code>protocol&lt;SomeProtocol, AnotherProtocol&gt;</code> と &lt;&gt; で囲います。複数ある場合は、&lt;&gt; 内でカンマで区切ります。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">protocol</span> <span class="n">Named</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="n">var</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
-<span class="lineno"> 3</span> <span class="p">}</span>
-<span class="lineno"> 4</span> <span class="n">protocol</span> <span class="n">Aged</span> <span class="p">{</span>
-<span class="lineno"> 5</span>     <span class="n">var</span> <span class="nl">age</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
-<span class="lineno"> 6</span> <span class="p">}</span>
-<span class="lineno"> 7</span> <span class="k">struct</span> <span class="nl">Person</span><span class="p">:</span> <span class="n">Named</span><span class="p">,</span> <span class="n">Aged</span> <span class="p">{</span>
-<span class="lineno"> 8</span>     <span class="n">var</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span>
-<span class="lineno"> 9</span>     <span class="n">var</span> <span class="nl">age</span><span class="p">:</span> <span class="n">Int</span>
-<span class="lineno">10</span> <span class="p">}</span>
-<span class="lineno">11</span> <span class="n">func</span> <span class="n">wishHappyBirthday</span><span class="p">(</span><span class="nl">celebrator</span><span class="p">:</span> <span class="n">protocol</span><span class="o">&lt;</span><span class="n">Named</span><span class="p">,</span> <span class="n">Aged</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">12</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;Happy birthday \(celebrator.name) - you&#39;re \(celebrator.age)!&quot;</span><span class="p">)</span>
-<span class="lineno">13</span> <span class="p">}</span>
-<span class="lineno">14</span> <span class="n">let</span> <span class="n">birthdayPerson</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Malcolm&quot;</span><span class="p">,</span> <span class="nl">age</span><span class="p">:</span> <span class="mi">21</span><span class="p">)</span>
-<span class="lineno">15</span> <span class="n">wishHappyBirthday</span><span class="p">(</span><span class="n">birthdayPerson</span><span class="p">)</span>
-<span class="lineno">16</span> <span class="c1">// prints &quot;Happy birthday Malcolm - you&#39;re 21!&quot;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre>protocol Named {
+    var name: String { get }
+}
+protocol Aged {
+    var age: Int { get }
+}
+struct Person: Named, Aged {
+    var name: String
+    var age: Int
+}
+func wishHappyBirthday(celebrator: protocol&lt;Named, Aged&gt;) {
+    println("Happy birthday \(celebrator.name) - you're \(celebrator.age)!")
+}
+let birthdayPerson = Person(name: "Malcolm", age: 21)
+wishHappyBirthday(birthdayPerson)
+// prints "Happy birthday Malcolm - you're 21!"<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>この例では、2 つのプロトコルが存在しています。この 2 つのプロトコルを満たしたのが、Person 構造体です。また、このコンテキストでのグローバル関数 wishHappyBirthday は引数として結合されたプロトコルをとっています。Person 構造体は、この両者の要件を満たしているので、最後の行のようにこの関数の引数として使用することができます。</p>
 
@@ -313,45 +343,78 @@
 
 <p>タイプキャスティングのように <code>is</code> や <code>as</code> を使用して、あるプロコトルに準拠しているか確認、特定のプロトコルへキャストすることができます。まずは、例のプロトコルを用意していきます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="p">@</span><span class="n">objc</span> <span class="n">protocol</span> <span class="n">HasArea</span> <span class="p">{</span>
-<span class="lineno">2</span>     <span class="n">var</span> <span class="nl">area</span><span class="p">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
-<span class="lineno">3</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>@objc protocol HasArea {
+    var area: Double { get }
+}<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>この HasArea プロトコルのように、<code>@objc</code> 属性が付いているプロトコルのみ、プロトコルに準拠しているか確認することができます。また、この <code>@objc</code> を付けた場合、このプロトコルは、クラスにのみ実装されます。構造体・Enumeration は使用することができません。例をみていきます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="nl">Circle</span><span class="p">:</span> <span class="n">HasArea</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="n">let</span> <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.1415927</span>
-<span class="lineno"> 3</span>     <span class="n">var</span> <span class="nl">radius</span><span class="p">:</span> <span class="n">Double</span>
-<span class="lineno"> 4</span>     <span class="n">var</span> <span class="nl">area</span><span class="p">:</span> <span class="n">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">radius</span> <span class="p">}</span>
-<span class="lineno"> 5</span>     <span class="n">init</span><span class="p">(</span><span class="nl">radius</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span> <span class="nb">self</span><span class="p">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">radius</span> <span class="p">}</span>
-<span class="lineno"> 6</span> <span class="p">}</span>
-<span class="lineno"> 7</span> <span class="k">class</span> <span class="nl">Country</span><span class="p">:</span> <span class="n">HasArea</span> <span class="p">{</span>
-<span class="lineno"> 8</span>     <span class="n">var</span> <span class="nl">area</span><span class="p">:</span> <span class="n">Double</span>
-<span class="lineno"> 9</span>     <span class="n">init</span><span class="p">(</span><span class="nl">area</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span> <span class="nb">self</span><span class="p">.</span><span class="n">area</span> <span class="o">=</span> <span class="n">area</span> <span class="p">}</span>
-<span class="lineno">10</span> <span class="p">}</span>
-<span class="lineno">11</span> <span class="k">class</span> <span class="n">Animal</span> <span class="p">{</span>
-<span class="lineno">12</span>     <span class="n">var</span> <span class="nl">legs</span><span class="p">:</span> <span class="n">Int</span>
-<span class="lineno">13</span>     <span class="n">init</span><span class="p">(</span><span class="nl">legs</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span> <span class="nb">self</span><span class="p">.</span><span class="n">legs</span> <span class="o">=</span> <span class="n">legs</span> <span class="p">}</span>
-<span class="lineno">14</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre>class Circle: HasArea {
+    let pi = 3.1415927
+    var radius: Double
+    var area: Double { return pi * radius * radius }
+    init(radius: Double) { self.radius = radius }
+}
+class Country: HasArea {
+    var area: Double
+    init(area: Double) { self.area = area }
+}
+class Animal {
+    var legs: Int
+    init(legs: Int) { self.legs = legs }
+}<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>この HasArea プロトコルに準拠している 2 つのクラスと、そうでないクラスを 1 つがあります。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="nl">objects</span><span class="p">:</span> <span class="n">AnyObject</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span>
-<span class="lineno"> 2</span>     <span class="n">Circle</span><span class="p">(</span><span class="nl">radius</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">),</span>
-<span class="lineno"> 3</span>     <span class="n">Country</span><span class="p">(</span><span class="nl">area</span><span class="p">:</span> <span class="mi">243</span><span class="n">_610</span><span class="p">),</span>
-<span class="lineno"> 4</span>     <span class="n">Animal</span><span class="p">(</span><span class="nl">legs</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span>
-<span class="lineno"> 5</span> <span class="p">]</span>
-<span class="lineno"> 6</span> 
-<span class="lineno"> 7</span> <span class="k">for</span> <span class="n">object</span> <span class="k">in</span> <span class="n">objects</span> <span class="p">{</span>
-<span class="lineno"> 8</span>     <span class="k">if</span> <span class="n">let</span> <span class="n">objectWithArea</span> <span class="o">=</span> <span class="n">object</span> <span class="n">as</span><span class="o">?</span> <span class="n">HasArea</span> <span class="p">{</span>
-<span class="lineno"> 9</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;Area is \(objectWithArea.area)&quot;</span><span class="p">)</span>
-<span class="lineno">10</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<span class="lineno">11</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;Something that doesn&#39;t have an area&quot;</span><span class="p">)</span>
-<span class="lineno">12</span>     <span class="p">}</span>
-<span class="lineno">13</span> <span class="p">}</span>
-<span class="lineno">14</span> <span class="c1">// Area is 12.5663708</span>
-<span class="lineno">15</span> <span class="c1">// Area is 243610.0</span>
-<span class="lineno">16</span> <span class="c1">// Something that doesn&#39;t have an area</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre>let objects: AnyObject[] = [
+    Circle(radius: 2.0),
+    Country(area: 243_610),
+    Animal(legs: 4)
+]
+
+for object in objects {
+    if let objectWithArea = object as? HasArea {
+        println("Area is \(objectWithArea.area)")
+    } else {
+        println("Something that doesn't have an area")
+    }
+}
+// Area is 12.5663708
+// Area is 243610.0
+// Something that doesn't have an area<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>このようにあるインスタンスがプロコトルに準拠しているかを確認し、それによって処理を変更しています。objectWithArea のタイプは、HasArea か nil です。したがって、プロトコルが定義している area プロパティにしかアクセスすることはできません。タイプが Circle や Country、Animal ではないからです。</p>
 
@@ -363,77 +426,127 @@
 
 <p>この選択的なプロトコルの要件は、<code>@objc</code> 属性と一緒に使用されます。つまり、これはクラスでしか使えません。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="p">@</span><span class="n">objc</span> <span class="n">protocol</span> <span class="n">CounterDataSource</span> <span class="p">{</span>
-<span class="lineno">2</span>     <span class="k">@optional</span> <span class="n">func</span> <span class="n">incrementForCount</span><span class="p">(</span><span class="nl">count</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span>
-<span class="lineno">3</span>     <span class="k">@optional</span> <span class="n">var</span> <span class="nl">fixedIncrement</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
-<span class="lineno">4</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>@objc protocol CounterDataSource {
+    @optional func incrementForCount(count: Int) -&gt; Int
+    @optional var fixedIncrement: Int { get }
+}<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>このプロトコルは、引数を 1 つ取る incrementForCount 関数とプロパティを実装することを求めていますが、これは任意です。</p>
 
 <p>そして、下記の Counter クラスをみてみます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="p">@</span><span class="n">objc</span> <span class="k">class</span> <span class="n">Counter</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="lineno"> 3</span>     <span class="n">var</span> <span class="nl">dataSource</span><span class="p">:</span> <span class="n">CounterDataSource</span><span class="o">?</span>
-<span class="lineno"> 4</span>     <span class="n">func</span> <span class="n">increment</span><span class="p">()</span> <span class="p">{</span>
-<span class="lineno"> 5</span>         <span class="k">if</span> <span class="n">let</span> <span class="n">amount</span> <span class="o">=</span> <span class="n">dataSource</span><span class="o">?</span><span class="p">.</span><span class="n">incrementForCount</span><span class="o">?</span><span class="p">(</span><span class="n">count</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 6</span>             <span class="n">count</span> <span class="o">+=</span> <span class="n">amount</span>
-<span class="lineno"> 7</span>         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">let</span> <span class="n">amount</span> <span class="o">=</span> <span class="n">dataSource</span><span class="o">?</span><span class="p">.</span><span class="n">fixedIncrement</span><span class="o">?</span> <span class="p">{</span>
-<span class="lineno"> 8</span>             <span class="n">count</span> <span class="o">+=</span> <span class="n">amount</span>
-<span class="lineno"> 9</span>         <span class="p">}</span>
-<span class="lineno">10</span>     <span class="p">}</span>
-<span class="lineno">11</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre>@objc class Counter {
+    var count = 0
+    var dataSource: CounterDataSource?
+    func increment() {
+        if let amount = dataSource?.incrementForCount?(count) {
+            count += amount
+        } else if let amount = dataSource?.fixedIncrement? {
+            count += amount
+        }
+    }
+}<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>このクラスは、プロパティに dataSource という Optional のプロパティを持っています。これが、上記の CounterDataSource プロトコルです。この increment メソッドにて、実際の処理を行っています。この中で、各プロトコルが実装されているかを確認し、ある場合は、それらを使用して、処理をしています。そもそも dataSource プロパティが nil の場合も考えられるので、2 段階に確認をしています。</p>
 
 <p>ここから、実際に選択的な要件がどのように使われるかみていきます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">class</span> <span class="nl">ThreeSource</span><span class="p">:</span> <span class="n">CounterDataSource</span> <span class="p">{</span>
-<span class="lineno">2</span>     <span class="n">let</span> <span class="n">fixedIncrement</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="lineno">3</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>class ThreeSource: CounterDataSource {
+    let fixedIncrement = 3
+}<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>まずは、シンプルなクラスから。この ThreeSource は、先ほどの CounterDataSource のプロパティ要件を実装しています。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">var</span> <span class="n">counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
-<span class="lineno"> 2</span> <span class="n">counter</span><span class="p">.</span><span class="n">dataSource</span> <span class="o">=</span> <span class="n">ThreeSource</span><span class="p">()</span>
-<span class="lineno"> 3</span> <span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">.</span><span class="mf">.4</span> <span class="p">{</span>
-<span class="lineno"> 4</span>     <span class="n">counter</span><span class="p">.</span><span class="n">increment</span><span class="p">()</span>
-<span class="lineno"> 5</span>     <span class="n">println</span><span class="p">(</span><span class="n">counter</span><span class="p">.</span><span class="n">count</span><span class="p">)</span>
-<span class="lineno"> 6</span> <span class="p">}</span>
-<span class="lineno"> 7</span> <span class="c1">// 3</span>
-<span class="lineno"> 8</span> <span class="c1">// 6</span>
-<span class="lineno"> 9</span> <span class="c1">// 9</span>
-<span class="lineno">10</span> <span class="c1">// 12</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre>var counter = Counter()
+counter.dataSource = ThreeSource()
+for _ in 1...4 {
+    counter.increment()
+    println(counter.count)
+}
+// 3
+// 6
+// 9
+// 12<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>この TreeSource クラスは、プロトコルのプロパティ要件しか満たしていないので、increment メソッドの 2 つ目の処理が実行されます。この場合は、3 つずつ count が追加されていきます。</p>
 
 <p>ちょっと複雑な例をみてみます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="nl">TowardsZeroSource</span><span class="p">:</span> <span class="n">CounterDataSource</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="n">func</span> <span class="n">incrementForCount</span><span class="p">(</span><span class="nl">count</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
-<span class="lineno"> 3</span>         <span class="k">if</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
-<span class="lineno"> 4</span>             <span class="k">return</span> <span class="mi">0</span>
-<span class="lineno"> 5</span>         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
-<span class="lineno"> 6</span>             <span class="k">return</span> <span class="mi">1</span>
-<span class="lineno"> 7</span>         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<span class="lineno"> 8</span>             <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
-<span class="lineno"> 9</span>         <span class="p">}</span>
-<span class="lineno">10</span>     <span class="p">}</span>
-<span class="lineno">11</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre>class TowardsZeroSource: CounterDataSource {
+    func incrementForCount(count: Int) -&gt; Int {
+        if count == 0 {
+            return 0
+        } else if count &lt; 0 {
+            return 1
+        } else {
+            return -1
+        }
+    }
+}<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>このクラスは、CounterDataSource プロトコルの incrementForCount 関数を実装しています。count が 0 になるようにする処理です。実際には、</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">counter</span><span class="p">.</span><span class="n">count</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>
-<span class="lineno"> 2</span> <span class="n">counter</span><span class="p">.</span><span class="n">dataSource</span> <span class="o">=</span> <span class="n">TowardsZeroSource</span><span class="p">()</span>
-<span class="lineno"> 3</span> <span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">.</span><span class="mf">.5</span> <span class="p">{</span>
-<span class="lineno"> 4</span>     <span class="n">counter</span><span class="p">.</span><span class="n">increment</span><span class="p">()</span>
-<span class="lineno"> 5</span>     <span class="n">println</span><span class="p">(</span><span class="n">counter</span><span class="p">.</span><span class="n">count</span><span class="p">)</span>
-<span class="lineno"> 6</span> <span class="p">}</span>
-<span class="lineno"> 7</span> <span class="c1">// -3</span>
-<span class="lineno"> 8</span> <span class="c1">// -2</span>
-<span class="lineno"> 9</span> <span class="c1">// -1</span>
-<span class="lineno">10</span> <span class="c1">// 0</span>
-<span class="lineno">11</span> <span class="c1">// 0</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre>counter.count = -4
+counter.dataSource = TowardsZeroSource()
+for _ in 1...5 {
+    counter.increment()
+    println(counter.count)
+}
+// -3
+// -2
+// -1
+// 0
+// 0<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>このようになります。</p>
 

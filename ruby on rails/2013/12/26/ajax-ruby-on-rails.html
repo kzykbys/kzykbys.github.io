@@ -221,24 +221,24 @@
 					<div id="social-buttom">
 	<!-- Social Buttoms -->
 	<ul>
+		<li id="hatena-area" style="margin-right: 30px">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Ajaxによるページ部分更新 [ Ruby on Rails ]" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//ruby%20on%20rails/2013/12/26/ajax-ruby-on-rails.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			</li>
 		<li>
 			<!-- Pocket -->
 			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
 			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
 		</li>		
-		<li>
+		<li  style="margine-left: 10px;!important">
 			<!-- Vertical Twitter -->
 			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		</li>				
-		<li>
-			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//ruby%20on%20rails/2013/12/26/ajax-ruby-on-rails.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
-		</li>				
-		<li style="margine-left: 10px;!important">
-			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Ajaxによるページ部分更新 [ Ruby on Rails ]" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-		</li>		
+		</li>
 	</ul>
 </div>
 
@@ -251,63 +251,97 @@
 
 <p>まずは、DBとの通信のトリガーになる&lt;select&gt;をページに追加します。ユーザーがページの&lt;select&gt;を変更すると、&lt;select&gt;のonchange()が起動します。onchange()からのちほど作成するカスタム関数を呼び出し、その関数からDBとの通信を発動します。そして、ページのコンテンツを変更します。</p>
 
-<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="lineno">1</span> <span class="x"># test.html.erb</span>
-<span class="lineno">2</span> <span class="cp">&lt;%=</span> <span class="n">collection_select</span><span class="p">(</span><span class="ss">:major</span><span class="p">,</span> <span class="ss">:id</span><span class="p">,</span> <span class="vi">@majors</span><span class="p">,</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span>  <span class="p">{</span><span class="ss">:prompt</span> <span class="o">=&gt;</span> <span class="s2">&quot;Please select your major&quot;</span><span class="p">},{</span><span class="ss">:onchange</span> <span class="o">=&gt;</span> <span class="s2">&quot;changeMajor()&quot;</span> <span class="p">})</span> <span class="cp">%&gt;</span><span class="x"></span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre># test.html.erb
+<span class="cp">&lt;%=</span> <span class="n">collection_select</span><span class="p">(</span><span class="ss">:major</span><span class="p">,</span> <span class="ss">:id</span><span class="p">,</span> <span class="vi">@majors</span><span class="p">,</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span>  <span class="p">{</span><span class="ss">:prompt</span> <span class="o">=&gt;</span> <span class="s2">"Please select your major"</span><span class="p">},{</span><span class="ss">:onchange</span> <span class="o">=&gt;</span> <span class="s2">"changeMajor()"</span> <span class="p">})</span> <span class="cp">%&gt;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>これにより、 @majors に格納されている major モデルの id と name がそれぞれ value と&lt;option&gt;&lt;/option&gt;に動的に記述されます。valueはサーバーに送信される値で、&lt;option&gt;&lt;/option&gt;はページに表示される文字列です。ここでは :prompt オプションにより何も表示されていない時には “Please select your major” と表示されるます。onchange() メソッドではこれから自分で作成する changeMajor()メソッドを&lt;select&gt;の&lt;option&gt;が変更されるたびに呼び出されます。また&lt;select&gt;のhtml属性idはmajor_idとなります。</p>
 
-<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="lineno">1</span> <span class="x"># test.html.erb </span>
-<span class="lineno">2</span> <span class="x">&lt;div id=&quot;classList&quot; style=&quot;display: inline;&quot;&gt;</span>
-<span class="lineno">3</span> <span class="x">    </span><span class="cp">&lt;%=</span> <span class="n">render</span> <span class="ss">:partial</span> <span class="o">=&gt;</span> <span class="s1">&#39;classList_body&#39;</span> <span class="cp">%&gt;</span><span class="x"></span>
-<span class="lineno">4</span> <span class="x">&lt;/div&gt;  </span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre># test.html.erb 
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"classList"</span> <span class="na">style=</span><span class="s">"display: inline;"</span><span class="nt">&gt;</span>
+    <span class="cp">&lt;%=</span> <span class="n">render</span> <span class="ss">:partial</span> <span class="o">=&gt;</span> <span class="s1">'classList_body'</span> <span class="cp">%&gt;</span>
+<span class="nt">&lt;/div&gt;</span>  <span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>この箇所がDBとの通信が終わった時に変更される箇所です。のちほど <em>classList_body.html.erb というファイルは作成します。&lt;select&gt;が変更されDBとの通信ごとに</em>classList_body.html.erb が新しくレンダリングされるということですね。</p>
 
 <h3 id="onchange-で呼ばれる-javascript-関数の準備">onchange で呼ばれる Javascript 関数の準備</h3>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno"> 1</span> <span class="c1">// test.html.erb </span>
-<span class="lineno"> 2</span> <span class="c1">// onchange メソッド</span>
-<span class="lineno"> 3</span> <span class="kd">function</span> <span class="nx">changeMajor</span><span class="p">(){</span>
-<span class="lineno"> 4</span>      <span class="kd">var</span> <span class="nx">select</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;major_id&#39;</span><span class="p">);</span>
-<span class="lineno"> 5</span>      <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span>  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;major_id&#39;</span><span class="p">).</span><span class="nx">options</span><span class="p">;</span>
-<span class="lineno"> 6</span>      <span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">item</span><span class="p">(</span><span class="nx">select</span><span class="p">.</span><span class="nx">selectedIndex</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
-<span class="lineno"> 7</span>      <span class="kd">var</span> <span class="nx">universityID</span> <span class="o">=</span> <span class="o">&lt;%=</span> <span class="err">@</span><span class="nx">student</span><span class="p">.</span><span class="nx">universities</span><span class="p">.</span><span class="nx">first</span><span class="p">.</span><span class="nx">id</span> <span class="o">%&gt;</span><span class="p">;</span>
-<span class="lineno"> 8</span>  
-<span class="lineno"> 9</span>      <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-<span class="lineno">10</span>           <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;/students/listEachClass&quot;</span><span class="p">,</span>
-<span class="lineno">11</span>           <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
-<span class="lineno">12</span>           <span class="nx">data</span><span class="o">:</span> <span class="s1">&#39;id=&lt;%= @student.id %&gt;&amp;majorID=&#39;</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s1">&#39;&amp;universityID=&#39;</span> <span class="o">+</span> <span class="nx">universityID</span>
-<span class="lineno">13</span>      <span class="p">})</span>
-<span class="lineno">14</span> <span class="p">}</span> </code></pre></figure>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre><span class="c1">// test.html.erb </span>
+<span class="c1">// onchange メソッド</span>
+<span class="kd">function</span> <span class="nx">changeMajor</span><span class="p">(){</span>
+     <span class="kd">var</span> <span class="nx">select</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'major_id'</span><span class="p">);</span>
+     <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span>  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'major_id'</span><span class="p">).</span><span class="nx">options</span><span class="p">;</span>
+     <span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">item</span><span class="p">(</span><span class="nx">select</span><span class="p">.</span><span class="nx">selectedIndex</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+     <span class="kd">var</span> <span class="nx">universityID</span> <span class="o">=</span> <span class="o">&lt;%=</span> <span class="err">@</span><span class="nx">student</span><span class="p">.</span><span class="nx">universities</span><span class="p">.</span><span class="nx">first</span><span class="p">.</span><span class="nx">id</span> <span class="o">%&gt;</span><span class="p">;</span>
+ 
+     <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+          <span class="na">url</span><span class="p">:</span> <span class="s2">"/students/listEachClass"</span><span class="p">,</span>
+          <span class="na">type</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
+          <span class="na">data</span><span class="p">:</span> <span class="s1">'id=&lt;%= @student.id %&gt;&amp;majorID='</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s1">'&amp;universityID='</span> <span class="o">+</span> <span class="nx">universityID</span>
+     <span class="p">})</span>
+<span class="p">}</span> <span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>これが呼び出されるchangeMajor()メソッドです。ポイントは後半の$.ajaxですね。送信するurlと通信方法の指定、そしてコントローラー側が受け取る値をdataで指定しています。前半のJSはもう少しスマートな方法がありそうですね。。。JSはいつもやっつけになってしまいます。</p>
 
 <h3 id="通信ごとに呼ばれるパーシャルの準備">通信ごとに呼ばれるパーシャルの準備</h3>
 
-<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="lineno">1</span> <span class="x">#_classList_body.html.erb  </span>
-<span class="lineno">2</span> <span class="x">&lt;p&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@universityID</span> <span class="cp">%&gt;</span><span class="x">&lt;/p&gt;</span>
-<span class="lineno">3</span> <span class="x">&lt;p&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@majorID</span> <span class="cp">%&gt;</span><span class="x">&lt;/p&gt; </span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>#_classList_body.html.erb  
+<span class="nt">&lt;p&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@universityID</span> <span class="cp">%&gt;</span><span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@majorID</span> <span class="cp">%&gt;</span><span class="nt">&lt;/p&gt;</span> <span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>今回はとてもシンプルです。この@universityID と@majorID はコントローラーで作成される変数？です。onchagenメソッドで選択されている&lt;select&gt;の値がサーバーに送信され、コントローラーで作成された変数を後ほど作成するJavascriptファイルからこのパーシャルをレンダリングする際に、それらの値を渡すことで、このパーシャルの中で使うことができます。</p>
 
 <h3 id="javascriptファイルの準備">Javascriptファイルの準備</h3>
 
-<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="lineno">1</span> <span class="x"># listEachClass.js.erb</span>
-<span class="lineno">2</span> <span class="x"># 上記のtest.html.erbがあるviewフォルダにこのファイルを作成</span>
-<span class="lineno">3</span> <span class="x">$(&quot;#classList&quot;).html(&quot;</span><span class="cp">&lt;%=</span> <span class="n">escape_javascript</span><span class="p">(</span><span class="n">render</span> <span class="s1">&#39;classList_body&#39;</span><span class="p">,</span> <span class="ss">:majorID</span> <span class="o">=&gt;</span> <span class="vi">@majorID</span><span class="p">,</span> <span class="ss">:universityID</span> <span class="o">=&gt;</span> <span class="vi">@universityID</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="x">&quot;);</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre># listEachClass.js.erb
+# 上記のtest.html.erbがあるviewフォルダにこのファイルを作成
+$("#classList").html("<span class="cp">&lt;%=</span> <span class="n">escape_javascript</span><span class="p">(</span><span class="n">render</span> <span class="s1">'classList_body'</span><span class="p">,</span> <span class="ss">:majorID</span> <span class="o">=&gt;</span> <span class="vi">@majorID</span><span class="p">,</span> <span class="ss">:universityID</span> <span class="o">=&gt;</span> <span class="vi">@universityID</span><span class="p">)</span> <span class="cp">%&gt;</span>");<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>ここでは上記の test.html.erb で指定した id=classList &lt;div&gt;に 2 で作成したパーシャルをレンダリングするということを記述しています。render する際に、コントローラーで作成された変数をパーシャルで使えるように渡しています。</p>
 
 <h3 id="コントローラーの準備">コントローラーの準備</h3>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="k">def</span> <span class="nf">listEachClass</span>
-<span class="lineno">2</span>     <span class="nb">puts</span> <span class="s2">&quot;==== Here is the listEachClass!! ====&quot;</span>
-<span class="lineno">3</span>     <span class="vi">@majorID</span> <span class="o">=</span> <span class="n">params</span><span class="o">[</span><span class="ss">:majorID</span><span class="o">].</span><span class="n">to_i</span>
-<span class="lineno">4</span>     <span class="vi">@universityID</span> <span class="o">=</span> <span class="n">params</span><span class="o">[</span><span class="ss">:universityID</span><span class="o">].</span><span class="n">to_i</span>
-<span class="lineno">5</span>  
-<span class="lineno">6</span>     <span class="nb">puts</span> <span class="vi">@majorID</span>
-<span class="lineno">7</span>     <span class="nb">puts</span> <span class="vi">@universityID</span>
-<span class="lineno">8</span> <span class="k">end</span> </code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="k">def</span> <span class="nf">listEachClass</span>
+    <span class="nb">puts</span> <span class="s2">"==== Here is the listEachClass!! ===="</span>
+    <span class="vi">@majorID</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="ss">:majorID</span><span class="p">].</span><span class="nf">to_i</span>
+    <span class="vi">@universityID</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="ss">:universityID</span><span class="p">].</span><span class="nf">to_i</span>
+ 
+    <span class="nb">puts</span> <span class="vi">@majorID</span>
+    <span class="nb">puts</span> <span class="vi">@universityID</span>
+<span class="k">end</span> <span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>コントローラーはみなさん思い思いの処理をしていただければいいと思います。params[:majorID] やparams[:universityID] と記述することにより、1で作成したchangeMajor()のdataで渡された値を参照することができます。ここでは単に数値にしてそれをログに表示させているだけです。何もしていませんね。</p>
 

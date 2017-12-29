@@ -221,24 +221,24 @@
 					<div id="social-buttom">
 	<!-- Social Buttoms -->
 	<ul>
+		<li id="hatena-area" style="margin-right: 30px">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Introction to DropBox SDK" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//objective-c/2013/08/12/Introduction.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			</li>
 		<li>
 			<!-- Pocket -->
 			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
 			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
 		</li>		
-		<li>
+		<li  style="margine-left: 10px;!important">
 			<!-- Vertical Twitter -->
 			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		</li>				
-		<li>
-			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//objective-c/2013/08/12/Introduction.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
-		</li>				
-		<li style="margine-left: 10px;!important">
-			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Introction to DropBox SDK" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-		</li>		
+		</li>
 	</ul>
 </div>
 
@@ -269,23 +269,35 @@
 
 <p>We add the code to make a session with dropbox:</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">DBSession</span><span class="o">*</span> <span class="n">dbSession</span> <span class="o">=</span> <span class="p">[[</span><span class="n">DBSession</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithAppKey</span><span class="p">:</span><span class="s">@&quot;blabla&quot;</span> <span class="c1">//Appkey</span>
-<span class="lineno">2</span>                                                <span class="nl">appSecret</span><span class="p">:</span><span class="s">@&quot;blabla&quot;</span> <span class="c1">//secretkey</span>
-<span class="lineno">3</span>                                                   <span class="nl">root</span><span class="p">:</span><span class="s">@&quot;sandbox&quot;</span><span class="p">];</span>
-<span class="lineno">4</span> <span class="p">[</span><span class="n">DBSession</span> <span class="nl">setSharedSession</span><span class="p">:</span><span class="n">dbSession</span><span class="p">];</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>DBSession* dbSession = [[DBSession alloc] initWithAppKey:@"blabla" //Appkey
+                                               appSecret:@"blabla" //secretkey
+                                                    root:@"sandbox"];
+[DBSession setSharedSession:dbSession];<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>This code is “/* Creating and setting the shared DBSession should be done before any other Dropbox objects are used, perferrably in the UIApplication delegate. */ ”. </p>
 
 <p>Also, you add this code in your view controller. </p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidAppear:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nv">animated</span>
-<span class="lineno">2</span> <span class="p">{</span>
-<span class="lineno">3</span>   <span class="p">[</span><span class="nb">super</span> <span class="nl">viewDidAppear</span><span class="p">:</span><span class="n">animated</span><span class="p">];</span>
-<span class="lineno">4</span>   <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="p">[[</span><span class="n">DBSession</span> <span class="n">sharedSession</span><span class="p">]</span> <span class="n">isLinked</span><span class="p">])</span>
-<span class="lineno">5</span>   <span class="p">{</span>
-<span class="lineno">6</span>       <span class="p">[[</span><span class="n">DBSession</span> <span class="n">sharedSession</span><span class="p">]</span> <span class="nl">linkFromController</span><span class="p">:</span><span class="nb">self</span><span class="p">];</span>
-<span class="lineno">7</span>   <span class="p">}</span>
-<span class="lineno">8</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre>- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if(![[DBSession sharedSession] isLinked])
+    {
+        [[DBSession sharedSession] linkFromController:self];
+    }
+}<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>There are many people who forget to edit Info.plist file ( I took some time to figure it out too ). In your Info.plist, please add this url scheme :CFBundleURLTypes CFBundleURLSchemes db-YourAPIKEY </p>
 
@@ -303,27 +315,44 @@
 
 <p>So far we’ve only implemented DropBox SDK. I’d like to show some basic function to be able to use it. First, let’s add delegate and prepare for DBRestClient class. In your viewcontroller, add something like this : </p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="cp">#import &lt;UIKit/UIKit.h&gt;</span>
-<span class="lineno">2</span> <span class="cp">#import &lt;DropboxSDK/DropboxSDK.h&gt;</span>
-<span class="lineno">3</span> <span class="k">@interface</span> <span class="nc">KKViewController</span> : <span class="bp">UIViewController</span><span class="o">&lt;</span><span class="n">DBRestClientDelegate</span><span class="o">&gt;</span>
-<span class="lineno">4</span> 
-<span class="lineno">5</span> <span class="k">@property</span> <span class="p">(</span><span class="k">nonatomic</span><span class="p">,</span> <span class="k">readonly</span><span class="p">)</span> <span class="n">DBRestClient</span> <span class="o">*</span><span class="n">restClient</span><span class="p">;</span>
-<span class="lineno">6</span> 
-<span class="lineno">7</span> <span class="k">@end</span> </code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>#import &lt;UIKit/UIKit.h&gt;
+#import &lt;DropboxSDK/DropboxSDK.h&gt;
+@interface KKViewController : UIViewController&lt;DBRestClientDelegate&gt;
+
+@property (nonatomic, readonly) DBRestClient *restClient;
+
+@end <span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>We added “<DBRestClientDelegate>” and the property. 
 After that, write getter to the restClient in your viewcontroller implement file like this : </p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="c1">// Getter</span>
-<span class="lineno"> 2</span> <span class="p">-</span> <span class="p">(</span><span class="n">DBRestClient</span> <span class="o">*</span><span class="p">)</span><span class="nf">restClient</span>
-<span class="lineno"> 3</span> <span class="p">{</span>
-<span class="lineno"> 4</span>  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">_restClient</span><span class="p">)</span>
-<span class="lineno"> 5</span>  <span class="p">{</span>
-<span class="lineno"> 6</span>      <span class="n">restClient</span> <span class="o">=</span> <span class="p">[[</span><span class="n">DBRestClient</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithSession</span><span class="p">:[</span><span class="n">DBSession</span> <span class="n">sharedSession</span><span class="p">]];</span>
-<span class="lineno"> 7</span>      <span class="n">_restClient</span><span class="p">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="nb">self</span><span class="p">;</span>
-<span class="lineno"> 8</span>  <span class="p">}</span>
-<span class="lineno"> 9</span>  <span class="k">return</span> <span class="n">restClient</span><span class="p">;</span>
-<span class="lineno">10</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre>// Getter
+- (DBRestClient *)restClient
+{
+    if (!_restClient)
+    {
+        restClient = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
+        _restClient.delegate = self;
+    }
+    return restClient;
+}<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h3 id="5.-some-features">5. Some Features</h3>
 
@@ -331,28 +360,36 @@ After that, write getter to the restClient in your viewcontroller implement file
 
 <p>Loads metadata for the object at the given root/path and returns the result to the delegate as a dictionary</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">loadMetadata:</span><span class="p">(</span><span class="bp">NSString</span><span class="o">*</span><span class="p">)</span><span class="nv">path</span><span class="p">;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>- (void)loadMetadata:(NSString*)path;<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Uploads a file that will be named filename to the given path on the server. sourcePath is the full path of the file you want to upload. If you are modifying a file, parentRev represents the rev of the file before you modified it as returned from the server. If you are uploading a new file set parentRev to nil.</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">uploadFile:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">filename</span>
-<span class="lineno">2</span>             <span class="nf">toPath:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">path</span>
-<span class="lineno">3</span>    <span class="nf">withParentRev:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">parentRev</span>
-<span class="lineno">4</span>         <span class="nf">fromPath:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">sourcePath</span><span class="p">;</span> </code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>- (void)uploadFile:(NSString *)filename
+            toPath:(NSString *)path
+     withParentRev:(NSString *)parentRev
+          fromPath:(NSString *)sourcePath; <span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Loads the file contents at the given root/path and stores the result into destinationPath</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">loadFile:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">path</span> <span class="nf">intoPath:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">destinationPath</span><span class="p">;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>- (void)loadFile:(NSString *)path intoPath:(NSString *)destinationPath;<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>This function is for deleting your file.</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span>  <span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">deletePath</span><span class="p">:(</span><span class="bp">NSString</span><span class="o">*</span><span class="p">)</span><span class="n">path</span><span class="p">;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> - (void)deletePath:(NSString*)path;<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Delegate : </p>
 
 <p>The delegate provides allows the user to get the result of the calls made on the DBRestClient. Right now, the error parameter of failed calls may be nil and [error localizedDescription] does not contain an error message appropriate to show to the user.</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">restClient:</span><span class="p">(</span><span class="n">DBRestClient</span><span class="o">*</span><span class="p">)</span><span class="nv">client</span> <span class="nf">loadedMetadata:</span><span class="p">(</span><span class="n">DBMetadata</span><span class="o">*</span><span class="p">)</span><span class="nv">metadata</span><span class="p">;</span> </code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>- (void)restClient:(DBRestClient*)client loadedMetadata:(DBMetadata*)metadata; <span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h3 id="6.-end">6. End</h3>
 

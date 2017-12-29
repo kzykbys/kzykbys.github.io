@@ -221,24 +221,24 @@
 					<div id="social-buttom">
 	<!-- Social Buttoms -->
 	<ul>
+		<li id="hatena-area" style="margin-right: 30px">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="UINavigationBar の境界線を隠す" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//objective-c/2014/06/22/hide-hairline-view.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			</li>
 		<li>
 			<!-- Pocket -->
 			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
 			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
 		</li>		
-		<li>
+		<li  style="margine-left: 10px;!important">
 			<!-- Vertical Twitter -->
 			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		</li>				
-		<li>
-			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//objective-c/2014/06/22/hide-hairline-view.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
-		</li>				
-		<li style="margine-left: 10px;!important">
-			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="UINavigationBar の境界線を隠す" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-		</li>		
+		</li>
 	</ul>
 </div>
 
@@ -249,24 +249,39 @@
 
 <p><img src="/images/2014/06/4.png" alt=""></p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="bp">UINavigationBar</span> <span class="o">*</span><span class="n">navigationBar</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="n">navigationController</span><span class="p">.</span><span class="n">navigationBar</span><span class="p">;</span>
-<span class="lineno">2</span> <span class="bp">UIImageView</span> <span class="o">*</span><span class="n">navBarHairlineImageView</span> <span class="o">=</span> <span class="p">[</span><span class="nb">self</span> <span class="nl">findHairlineImageViewUnder</span><span class="p">:</span><span class="n">navigationBar</span><span class="p">];</span>
-<span class="lineno">3</span> <span class="n">navBarHairlineImageView</span><span class="p">.</span><span class="n">hidden</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>UINavigationBar *navigationBar = self.navigationController.navigationBar;
+UIImageView *navBarHairlineImageView = [self findHairlineImageViewUnder:navigationBar];
+navBarHairlineImageView.hidden = YES;<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>大きな流れは、まず該当ビューの <code>UINavigationBar</code> のリファレンスを取得し、そのサブビューの中から高さが 1px のビューを探し出し、それを非表示にします。このコードでは、findHairlineImageViewUnder:(UIView *)view において、この hairline image を探します。このメソッドは、</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="p">-</span> <span class="p">(</span><span class="bp">UIImageView</span> <span class="o">*</span><span class="p">)</span><span class="nf">findHairlineImageViewUnder:</span><span class="p">(</span><span class="bp">UIView</span> <span class="o">*</span><span class="p">)</span><span class="nv">view</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="k">if</span> <span class="p">([</span><span class="n">view</span> <span class="nl">isKindOfClass</span><span class="p">:</span><span class="bp">UIImageView</span><span class="p">.</span><span class="k">class</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">view</span><span class="p">.</span><span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">&lt;=</span> <span class="mf">1.0</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 3</span>         <span class="k">return</span> <span class="p">(</span><span class="bp">UIImageView</span> <span class="o">*</span><span class="p">)</span><span class="n">view</span><span class="p">;</span>
-<span class="lineno"> 4</span>     <span class="p">}</span>
-<span class="lineno"> 5</span>     <span class="k">for</span> <span class="p">(</span><span class="bp">UIView</span> <span class="o">*</span><span class="n">subview</span> <span class="k">in</span> <span class="n">view</span><span class="p">.</span><span class="n">subviews</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 6</span>         <span class="bp">UIImageView</span> <span class="o">*</span><span class="n">imageView</span> <span class="o">=</span> <span class="p">[</span><span class="nb">self</span> <span class="nl">findHairlineImageViewUnder</span><span class="p">:</span><span class="n">subview</span><span class="p">];</span>
-<span class="lineno"> 7</span>         <span class="k">if</span> <span class="p">(</span><span class="n">imageView</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 8</span>             <span class="k">return</span> <span class="n">imageView</span><span class="p">;</span>
-<span class="lineno"> 9</span>         <span class="p">}</span>
-<span class="lineno">10</span>     <span class="p">}</span>
-<span class="lineno">11</span>     <span class="k">return</span> <span class="nb">nil</span><span class="p">;</span>
-<span class="lineno">12</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre>- (UIImageView *)findHairlineImageViewUnder:(UIView *)view {
+    if ([view isKindOfClass:UIImageView.class] &amp;&amp; view.bounds.size.height &lt;= 1.0) {
+        return (UIImageView *)view;
+    }
+    for (UIView *subview in view.subviews) {
+        UIImageView *imageView = [self findHairlineImageViewUnder:subview];
+        if (imageView) {
+            return imageView;
+        }
+    }
+    return nil;
+}<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>こんな感じ。</p>
 

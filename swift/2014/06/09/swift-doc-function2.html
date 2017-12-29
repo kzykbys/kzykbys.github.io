@@ -221,24 +221,24 @@
 					<div id="social-buttom">
 	<!-- Social Buttoms -->
 	<ul>
+		<li id="hatena-area" style="margin-right: 30px">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="The Swift Programming Language ~ Functions" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//swift/2014/06/09/swift-doc-function2.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			</li>
 		<li>
 			<!-- Pocket -->
 			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
 			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
 		</li>		
-		<li>
+		<li  style="margine-left: 10px;!important">
 			<!-- Vertical Twitter -->
 			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		</li>				
-		<li>
-			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//swift/2014/06/09/swift-doc-function2.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
-		</li>				
-		<li style="margine-left: 10px;!important">
-			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="The Swift Programming Language ~ Functions" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-		</li>		
+		</li>
 	</ul>
 </div>
 
@@ -255,17 +255,28 @@
 
 <p>C の printf のように、引数の数が呼び出す際に決まるタイプの関数の定義の仕方。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">func</span> <span class="n">arithmeticMean</span><span class="p">(</span><span class="nl">numbers</span><span class="p">:</span> <span class="n">Double</span><span class="p">...)</span> <span class="o">-&gt;</span> <span class="n">Double</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="n">var</span> <span class="nl">total</span><span class="p">:</span> <span class="n">Double</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="lineno"> 3</span>     <span class="k">for</span> <span class="n">number</span> <span class="k">in</span> <span class="n">numbers</span> <span class="p">{</span>
-<span class="lineno"> 4</span>         <span class="n">total</span> <span class="o">+=</span> <span class="n">number</span>
-<span class="lineno"> 5</span>     <span class="p">}</span>
-<span class="lineno"> 6</span>     <span class="k">return</span> <span class="n">total</span> <span class="o">/</span> <span class="n">Double</span><span class="p">(</span><span class="n">numbers</span><span class="p">.</span><span class="n">count</span><span class="p">)</span>
-<span class="lineno"> 7</span> <span class="p">}</span>
-<span class="lineno"> 8</span> <span class="n">arithmeticMean</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="lineno"> 9</span> <span class="c1">// returns 3.0, which is the arithmetic mean of these five numbers</span>
-<span class="lineno">10</span> <span class="n">arithmeticMean</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">19</span><span class="p">)</span>
-<span class="lineno">11</span> <span class="c1">// returns 10.0, which is the arithmetic mean of these three numbers</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre>func arithmeticMean(numbers: Double...) -&gt; Double {
+    var total: Double = 0
+    for number in numbers {
+        total += number
+    }
+    return total / Double(numbers.count)
+}
+arithmeticMean(1, 2, 3, 4, 5)
+// returns 3.0, which is the arithmetic mean of these five numbers
+arithmeticMean(3, 8, 19)
+// returns 10.0, which is the arithmetic mean of these three numbers<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>引数の型の名前の後ろに ... と打つことで、この引数が可変であるということを定義できます。この可変引数は、関数内で、コンスタント配列として使用することができます。この可変引数を定義する際に、引数リストの一番最後に置きます。それにより、可変引数以外に引数がある場合に、曖昧さを防ぎます。もし、デフォルト値を持つ引数がある場合にも、この可変引数を一番最後に置きます。</p>
 
@@ -273,17 +284,28 @@
 
 <p>関数の引数はデフォルトでコンスタンスです。そんため、関数内でこのコンスタンスを変更することができません。もし受け取った引数を変更しながら処理したい場合には、関数定義時にその引数に var と指定します。これにより、関数内で変数を別に定義する必要がなくなります。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">func</span> <span class="n">alignRight</span><span class="p">(</span><span class="n">var</span> <span class="nl">string</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">count</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">pad</span><span class="p">:</span> <span class="n">Character</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="n">let</span> <span class="n">amountToPad</span> <span class="o">=</span> <span class="n">count</span> <span class="o">-</span> <span class="n">countElements</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
-<span class="lineno"> 3</span>     <span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">..</span><span class="n">amountToPad</span> <span class="p">{</span>
-<span class="lineno"> 4</span>         <span class="n">string</span> <span class="o">=</span> <span class="n">pad</span> <span class="o">+</span> <span class="n">string</span>
-<span class="lineno"> 5</span>     <span class="p">}</span>
-<span class="lineno"> 6</span>     <span class="k">return</span> <span class="n">string</span>
-<span class="lineno"> 7</span> <span class="p">}</span>
-<span class="lineno"> 8</span> <span class="n">let</span> <span class="n">originalString</span> <span class="o">=</span> <span class="s">&quot;hello&quot;</span>
-<span class="lineno"> 9</span> <span class="n">let</span> <span class="n">paddedString</span> <span class="o">=</span> <span class="n">alignRight</span><span class="p">(</span><span class="n">originalString</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s">&quot;-&quot;</span><span class="p">)</span>
-<span class="lineno">10</span> <span class="c1">// paddedString is equal to &quot;-----hello&quot;</span>
-<span class="lineno">11</span> <span class="c1">// originalString is still equal to &quot;hello</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre>func alignRight(var string: String, count: Int, pad: Character) -&gt; String {
+    let amountToPad = count - countElements(string)
+    for _ in 1...amountToPad {
+        string = pad + string
+    }
+    return string
+}
+let originalString = "hello"
+let paddedString = alignRight(originalString, 10, "-")
+// paddedString is equal to "-----hello"
+// originalString is still equal to "hello<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>string が 変数引数です。関数内でこの引数の値を変更したとしても、関数を呼び出した側でその変更が反映されるわけではありません。</p>
 
@@ -291,17 +313,28 @@
 
 <p>関数の処理が終わった後も、その関数の変更を保持したい場合、C の場合にはポインタがありますが、Swift でも inout というキーワードを使用するようです。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">func</span> <span class="nf">swapTwoInts</span><span class="p">(</span><span class="k">inout</span> <span class="nl">a</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="k">inout</span> <span class="nl">b</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="n">let</span> <span class="n">temporaryA</span> <span class="o">=</span> <span class="n">a</span>
-<span class="lineno"> 3</span>     <span class="n">a</span> <span class="o">=</span> <span class="n">b</span>
-<span class="lineno"> 4</span>     <span class="n">b</span> <span class="o">=</span> <span class="n">temporaryA</span>
-<span class="lineno"> 5</span> <span class="p">}</span>
-<span class="lineno"> 6</span> 
-<span class="lineno"> 7</span> <span class="n">var</span> <span class="n">someInt</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="lineno"> 8</span> <span class="n">var</span> <span class="n">anotherInt</span> <span class="o">=</span> <span class="mi">107</span>
-<span class="lineno"> 9</span> <span class="n">swapTwoInts</span><span class="p">(</span><span class="o">&amp;</span><span class="n">someInt</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">anotherInt</span><span class="p">)</span>
-<span class="lineno">10</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;someInt is now \(someInt), and anotherInt is now \(anotherInt)&quot;</span><span class="p">)</span>
-<span class="lineno">11</span> <span class="c1">// prints &quot;someInt is now 107, and anotherInt is now 3</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre>func swapTwoInts(inout a: Int, inout b: Int) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+
+var someInt = 3
+var anotherInt = 107
+swapTwoInts(&amp;someInt, &amp;anotherInt)
+println("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
+// prints "someInt is now 107, and anotherInt is now 3<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>よくある swap 関数です。二つの変数の値を入れ替えます。関数定義時に引数の前に inout をつけ、関数呼び出し時に &amp; をつけるだけです。注意点としては、引数として渡せるのは、変数だけです。コンスタンスやリテラルは渡すことができません。また、inout キーワードがついた引数には、デフォルト値を指定することもできません。また、可変引数(...)も使用できません。</p>
 
@@ -309,56 +342,84 @@
 
 <p>関数も型のように使用することができます。例えば、次のコード。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">func</span> <span class="n">addTwoInts</span><span class="p">(</span><span class="nl">a</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">b</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
-<span class="lineno">2</span>     <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
-<span class="lineno">3</span> <span class="p">}</span>
-<span class="lineno">4</span> <span class="n">func</span> <span class="n">multiplyTwoInts</span><span class="p">(</span><span class="nl">a</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">b</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
-<span class="lineno">5</span>     <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
-<span class="lineno">6</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>func addTwoInts(a: Int, b: Int) -&gt; Int {
+    return a + b
+}
+func multiplyTwoInts(a: Int, b: Int) -&gt; Int {
+    return a * b
+}<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>この 2 つの関数は、２つの Int 引数を取り、1 つの Int を返す Function Type を持つと言うことができます。他の、Int や Double といった型と同じようにこの Function Type を使用することができます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="nl">mathFunction</span><span class="p">:</span> <span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="o">=</span> <span class="n">addTwoInts</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>var mathFunction: (Int, Int) -&gt; Int = addTwoInts<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>そして、この代入された関数を Function Type ((Int, Int) -&gt; Int) を持つ mathFunction 変数を使用して呼び出すことができます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;Result: \(mathFunction(2, 3))&quot;</span><span class="p">)</span>
-<span class="lineno">2</span> <span class="c1">// prints &quot;Result: 5</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>println("Result: \(mathFunction(2, 3))")
+// prints "Result: 5<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>C の関数へのポインタみたいですね。</p>
 
 <p>もちろん Swift の型推論に頼ることもできます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">anotherMathFunction</span> <span class="o">=</span> <span class="n">addTwoInts</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>let anotherMathFunction = addTwoInts<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>この Function Type を関数の引数として使用できます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">func</span> <span class="nf">printMathResult</span><span class="p">(</span><span class="nl">mathFunction</span><span class="p">:</span> <span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">a</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">b</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">2</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;Result: \(mathFunction(a, b))&quot;</span><span class="p">)</span>
-<span class="lineno">3</span> <span class="p">}</span>
-<span class="lineno">4</span> <span class="n">printMathResult</span><span class="p">(</span><span class="n">addTwoInts</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="lineno">5</span> <span class="c1">// prints &quot;Result: 8</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>func printMathResult(mathFunction: (Int, Int) -&gt; Int, a: Int, b: Int) {
+    println("Result: \(mathFunction(a, b))")
+}
+printMathResult(addTwoInts, 3, 5)
+// prints "Result: 8<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>printMathResult 関数は、引数として Function Type と 2 つの Int を受け取ります。</p>
 
 <p>また、返り値として、Function Type を使用することもできます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">func</span> <span class="n">stepForward</span><span class="p">(</span><span class="nl">input</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="k">return</span> <span class="n">input</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="lineno"> 3</span> <span class="p">}</span>
-<span class="lineno"> 4</span> <span class="n">func</span> <span class="n">stepBackward</span><span class="p">(</span><span class="nl">input</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
-<span class="lineno"> 5</span>     <span class="k">return</span> <span class="n">input</span> <span class="o">-</span> <span class="mi">1</span>
-<span class="lineno"> 6</span> <span class="p">}</span>
-<span class="lineno"> 7</span> 
-<span class="lineno"> 8</span> <span class="n">func</span> <span class="n">chooseStepFunction</span><span class="p">(</span><span class="nl">backwards</span><span class="p">:</span> <span class="n">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
-<span class="lineno"> 9</span>     <span class="k">return</span> <span class="n">backwards</span> <span class="o">?</span> <span class="nl">stepBackward</span> <span class="p">:</span> <span class="n">stepForward</span>
-<span class="lineno">10</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre>func stepForward(input: Int) -&gt; Int {
+    return input + 1
+}
+func stepBackward(input: Int) -&gt; Int {
+    return input - 1
+}
+
+func chooseStepFunction(backwards: Bool) -&gt; (Int) -&gt; Int {
+    return backwards ? stepBackward : stepForward
+}<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>この chooseStepFunction 関数は、引数に Bool を取り、返り値として、Function Type（(Int) -&gt; Int）を返します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">currentValue</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="lineno">2</span> <span class="n">let</span> <span class="n">moveNearerToZero</span> <span class="o">=</span> <span class="n">chooseStepFunction</span><span class="p">(</span><span class="n">currentValue</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
-<span class="lineno">3</span> <span class="c1">// moveNearerToZero now refers to the stepBackward() function</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>var currentValue = 3
+let moveNearerToZero = chooseStepFunction(currentValue &gt; 0)
+// moveNearerToZero now refers to the stepBackward() function<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>moveNearerToZero というコンスタンスが、chooseStepFunction の返り値を受け取っています。</p>
 
@@ -366,21 +427,36 @@
 
 <p>今までの関数は全てグローバルでした。関数を他の関数内に定義してローカルな関数を定義することができます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">func</span> <span class="n">chooseStepFunction</span><span class="p">(</span><span class="nl">backwards</span><span class="p">:</span> <span class="n">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="n">func</span> <span class="n">stepForward</span><span class="p">(</span><span class="nl">input</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span> <span class="k">return</span> <span class="n">input</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">}</span>
-<span class="lineno"> 3</span>     <span class="n">func</span> <span class="n">stepBackward</span><span class="p">(</span><span class="nl">input</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span> <span class="k">return</span> <span class="n">input</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">}</span>
-<span class="lineno"> 4</span> 
-<span class="lineno"> 5</span>     <span class="k">return</span> <span class="n">backwards</span> <span class="o">?</span> <span class="nl">stepBackward</span> <span class="p">:</span> <span class="n">stepForward</span>
-<span class="lineno"> 6</span> <span class="p">}</span>
-<span class="lineno"> 7</span> <span class="n">var</span> <span class="n">currentValue</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>
-<span class="lineno"> 8</span> <span class="n">let</span> <span class="n">moveNearerToZero</span> <span class="o">=</span> <span class="n">chooseStepFunction</span><span class="p">(</span><span class="n">currentValue</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
-<span class="lineno"> 9</span> <span class="c1">// moveNearerToZero now refers to the nested stepForward() function</span>
-<span class="lineno">10</span> <span class="k">while</span> <span class="n">currentValue</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span>
-<span class="lineno">11</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;\(currentValue)... &quot;</span><span class="p">)</span>
-<span class="lineno">12</span>     <span class="n">currentValue</span> <span class="o">=</span> <span class="n">moveNearerToZero</span><span class="p">(</span><span class="n">currentValue</span><span class="p">)</span>
-<span class="lineno">13</span> <span class="p">}</span>
-<span class="lineno">14</span> 
-<span class="lineno">15</span> <span class="n">stepForward</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">// err</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td><td class="code"><pre>func chooseStepFunction(backwards: Bool) -&gt; (Int) -&gt; Int {
+    func stepForward(input: Int) -&gt; Int { return input + 1 }
+    func stepBackward(input: Int) -&gt; Int { return input - 1 }
+
+    return backwards ? stepBackward : stepForward
+}
+var currentValue = -4
+let moveNearerToZero = chooseStepFunction(currentValue &gt; 0)
+// moveNearerToZero now refers to the nested stepForward() function
+while currentValue != 0 {
+    println("\(currentValue)... ")
+    currentValue = moveNearerToZero(currentValue)
+}
+
+stepForward(1) // err<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>この chooseStepFunction 関数はこの文脈ではグローバル関数となり、どこからでも呼び出すことができます。しかし、このグローバル関数が内にネストされている stepForward と stepBackward という関数は、chooseStepFunction 関数内からしか呼び出すことができません。</p>
 

@@ -221,24 +221,24 @@
 					<div id="social-buttom">
 	<!-- Social Buttoms -->
 	<ul>
+		<li id="hatena-area" style="margin-right: 30px">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Modernizr4 [ offline web app ]" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//html5/2013/12/22/modernizr4-offline-web-app.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			</li>
 		<li>
 			<!-- Pocket -->
 			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
 			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
 		</li>		
-		<li>
+		<li  style="margine-left: 10px;!important">
 			<!-- Vertical Twitter -->
 			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		</li>				
-		<li>
-			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//html5/2013/12/22/modernizr4-offline-web-app.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
-		</li>				
-		<li style="margine-left: 10px;!important">
-			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Modernizr4 [ offline web app ]" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-		</li>		
+		</li>
 	</ul>
 </div>
 
@@ -247,18 +247,29 @@
 					<div class="post">
 						<p>オフラインウェブアプリは、名前の通りオフラインでも動的なサイトをオフラインで表示することができます。はじめにユーザーはこの機能が有効になったサイトにアクセスし、オフラインに必要なデータをダウンロードします。これは HTML/JS、画像はもちろんビデオも可能です。そして、ユーザーがオフラインでこのサイトを訪れた場合、ダウンロードされたデータを使用し、サイトを表示します。もしユーザーがオフライン中にデータに変更をした場合、のちのオンラインになった時にサーバーに送信されます。</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno">1</span> <span class="c1">// Modernizr によるサポートチェック</span>
-<span class="lineno">2</span> <span class="k">if</span> <span class="p">(</span><span class="nx">Modernizr</span><span class="p">.</span><span class="nx">applicationcache</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">3</span>      <span class="c1">// window.applicationCache is available!</span>
-<span class="lineno">4</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<span class="lineno">5</span>      <span class="c1">// no native support for offline :(</span>
-<span class="lineno">6</span>      <span class="c1">// try a fallback or another third-party solution</span>
-<span class="lineno">7</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="c1">// Modernizr によるサポートチェック</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">Modernizr</span><span class="p">.</span><span class="nx">applicationcache</span><span class="p">)</span> <span class="p">{</span>
+     <span class="c1">// window.applicationCache is available!</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+     <span class="c1">// no native support for offline :(</span>
+     <span class="c1">// try a fallback or another third-party solution</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno">1</span> <span class="c1">// 内部</span>
-<span class="lineno">2</span> <span class="kd">function</span> <span class="nx">supports_offline</span><span class="p">()</span> <span class="p">{</span> 
-<span class="lineno">3</span>      <span class="k">return</span> <span class="o">!!</span><span class="nb">window</span><span class="p">.</span><span class="nx">applicationCache</span><span class="p">;</span>
-<span class="lineno">4</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="c1">// 内部</span>
+<span class="kd">function</span> <span class="nx">supports_offline</span><span class="p">()</span> <span class="p">{</span> 
+     <span class="k">return</span> <span class="o">!!</span><span class="nb">window</span><span class="p">.</span><span class="nx">applicationCache</span><span class="p">;</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 					</div>
 

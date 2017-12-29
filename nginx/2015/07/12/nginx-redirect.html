@@ -221,24 +221,24 @@
 					<div id="social-buttom">
 	<!-- Social Buttoms -->
 	<ul>
+		<li id="hatena-area" style="margin-right: 30px">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Google Analyticsの「重複したホスト名」警告 (Nginxのリダイレクト)" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//nginx/2015/07/12/nginx-redirect.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			</li>
 		<li>
 			<!-- Pocket -->
 			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
 			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
 		</li>		
-		<li>
+		<li  style="margine-left: 10px;!important">
 			<!-- Vertical Twitter -->
 			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		</li>				
-		<li>
-			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//nginx/2015/07/12/nginx-redirect.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
-		</li>				
-		<li style="margine-left: 10px;!important">
-			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Google Analyticsの「重複したホスト名」警告 (Nginxのリダイレクト)" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-		</li>		
+		</li>
 	</ul>
 </div>
 
@@ -259,15 +259,15 @@
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">server</span> <span class="p">{</span>
       <span class="n">listen</span> <span class="mi">80</span><span class="p">;</span>
-      <span class="n">server_name</span> <span class="n">www</span><span class="o">.</span><span class="n">sharecla</span><span class="o">.</span><span class="n">com</span><span class="p">;</span>
-      <span class="k">return</span> <span class="mi">301</span> <span class="ss">http</span><span class="p">:</span><span class="sr">//s</span><span class="n">harecla</span><span class="o">.</span><span class="n">com</span><span class="vg">$request_uri</span><span class="p">;</span>
+      <span class="n">server_name</span> <span class="n">www</span><span class="p">.</span><span class="nf">sharecla</span><span class="p">.</span><span class="nf">com</span><span class="p">;</span>
+      <span class="k">return</span> <span class="mi">301</span> <span class="n">http</span><span class="ss">:/</span><span class="o">/</span><span class="n">sharecla</span><span class="p">.</span><span class="nf">com</span><span class="vg">$request_uri</span><span class="p">;</span>
     <span class="p">}</span>
 
 <span class="n">server</span> <span class="p">{</span>
         <span class="n">listen</span> <span class="mi">80</span><span class="p">;</span>
-        <span class="n">server_name</span> <span class="n">sharecla</span><span class="o">.</span><span class="n">com</span><span class="p">;</span>
-        <span class="o">.</span>
-        <span class="o">.</span>
+        <span class="n">server_name</span> <span class="n">sharecla</span><span class="p">.</span><span class="nf">com</span><span class="p">;</span>
+        <span class="p">.</span>
+        <span class="nf">.</span>
         <span class="o">.</span>
 <span class="p">}</span></code></pre></figure>
 

@@ -221,24 +221,24 @@
 					<div id="social-buttom">
 	<!-- Social Buttoms -->
 	<ul>
+		<li id="hatena-area" style="margin-right: 30px">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="多対多の関係の構築 [ Ruby on Rails]" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//ruby%20on%20rails/2013/12/07/ruby-on-rails.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			</li>
 		<li>
 			<!-- Pocket -->
 			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
 			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
 		</li>		
-		<li>
+		<li  style="margine-left: 10px;!important">
 			<!-- Vertical Twitter -->
 			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		</li>				
-		<li>
-			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//ruby%20on%20rails/2013/12/07/ruby-on-rails.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
-		</li>				
-		<li style="margine-left: 10px;!important">
-			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="多対多の関係の構築 [ Ruby on Rails]" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-		</li>		
+		</li>
 	</ul>
 </div>
 
@@ -251,46 +251,75 @@
 
 <p>この多対多の関係を作成するには、まず、中間モデルを作成し、この中間モデルがそれぞれのレコードで対応するアイテムとカテゴリを保存しておきます。そのため、まず下記のようにその中間モデルを作ります。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="err">$</span> <span class="n">rails</span> <span class="n">g</span> <span class="n">migration</span> <span class="no">CreateCategoryItems</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="err">$</span> <span class="n">rails</span> <span class="n">g</span> <span class="n">migration</span> <span class="no">CreateCategoryItems</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno"> 1</span> <span class="c1"># 生成されたマイグレーションファイル</span>
-<span class="lineno"> 2</span> <span class="k">class</span> <span class="nc">CreateCategoryItems</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span>
-<span class="lineno"> 3</span>   <span class="k">def</span> <span class="nf">change</span>
-<span class="lineno"> 4</span>     <span class="n">create_table</span> <span class="p">:</span> <span class="n">category_items</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
-<span class="lineno"> 5</span>       <span class="n">t</span><span class="o">.</span><span class="n">integer</span> <span class="ss">:item_id</span><span class="p">,</span> <span class="ss">:null</span><span class="o">=&gt;</span> <span class="kp">false</span><span class="p">;</span>
-<span class="lineno"> 6</span>       <span class="n">t</span><span class="o">.</span><span class="n">integer</span> <span class="ss">:category_id</span><span class="p">,</span> <span class="ss">:null</span><span class="o">=&gt;</span> <span class="kp">false</span><span class="p">;</span>
-<span class="lineno"> 7</span>  
-<span class="lineno"> 8</span>       <span class="n">t</span><span class="o">.</span><span class="n">datetime</span> <span class="ss">:create_at</span>
-<span class="lineno"> 9</span>       <span class="n">t</span><span class="o">.</span><span class="n">datetime</span> <span class="ss">:update_at</span>
-<span class="lineno">10</span>     <span class="k">end</span>
-<span class="lineno">11</span>   <span class="k">end</span>
-<span class="lineno">12</span> <span class="k">end</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre><span class="c1"># 生成されたマイグレーションファイル</span>
+<span class="k">class</span> <span class="nc">CreateCategoryItems</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span>
+  <span class="k">def</span> <span class="nf">change</span>
+    <span class="n">create_table</span> <span class="p">:</span> <span class="n">category_items</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">integer</span> <span class="ss">:item_id</span><span class="p">,</span> <span class="ss">:null</span><span class="o">=&gt;</span> <span class="kp">false</span><span class="p">;</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">integer</span> <span class="ss">:category_id</span><span class="p">,</span> <span class="ss">:null</span><span class="o">=&gt;</span> <span class="kp">false</span><span class="p">;</span>
+ 
+      <span class="n">t</span><span class="p">.</span><span class="nf">datetime</span> <span class="ss">:create_at</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">datetime</span> <span class="ss">:update_at</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="c1"># その中間モデルファイルも作成</span>
-<span class="lineno">2</span> <span class="k">class</span> <span class="nc">CategoryItem</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
-<span class="lineno">3</span>   <span class="n">belongs_to</span> <span class="ss">:item</span>
-<span class="lineno">4</span>   <span class="n">belongs_to</span> <span class="ss">:category</span>
-<span class="lineno">5</span> <span class="k">end</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="c1"># その中間モデルファイルも作成</span>
+<span class="k">class</span> <span class="nc">CategoryItem</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="n">belongs_to</span> <span class="ss">:item</span>
+  <span class="n">belongs_to</span> <span class="ss">:category</span>
+<span class="k">end</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h3 id="各モデルの関連付け">各モデルの関連付け</h3>
 
 <p>上記のように中間モデルを作成したら、次は具体的な多対多の関係になる２つのモデルを関連付けていきます。 </p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="c1"># item.rb</span>
-<span class="lineno">2</span> <span class="c1"># Relationship with Category</span>
-<span class="lineno">3</span>   <span class="n">has_many</span> <span class="ss">:category_items</span> 
-<span class="lineno">4</span>   <span class="n">has_many</span> <span class="ss">:categories</span><span class="p">,</span> <span class="ss">:through</span> <span class="o">=&gt;</span> <span class="ss">:category_items</span> </code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="c1"># item.rb</span>
+<span class="c1"># Relationship with Category</span>
+  <span class="n">has_many</span> <span class="ss">:category_items</span> 
+  <span class="n">has_many</span> <span class="ss">:categories</span><span class="p">,</span> <span class="ss">:through</span> <span class="o">=&gt;</span> <span class="ss">:category_items</span> <span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="c1"># major.rb</span>
-<span class="lineno">2</span> <span class="c1"># Relationship with Item</span>
-<span class="lineno">3</span>   <span class="n">has_many</span> <span class="ss">:category_items</span> 
-<span class="lineno">4</span>   <span class="n">has_many</span> <span class="ss">:items</span><span class="p">,</span> <span class="ss">:through</span> <span class="o">=&gt;</span> <span class="ss">:category_items</span> </code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="c1"># major.rb</span>
+<span class="c1"># Relationship with Item</span>
+  <span class="n">has_many</span> <span class="ss">:category_items</span> 
+  <span class="n">has_many</span> <span class="ss">:items</span><span class="p">,</span> <span class="ss">:through</span> <span class="o">=&gt;</span> <span class="ss">:category_items</span> <span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>これだけで多対多のモデル関係ができました。実際に成功したか確認するには、コンソールで、下記のように入力し、エラーがでなければ大丈夫でしょう。マイグレーションを適応するのを忘れずに。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="err">$</span> <span class="n">rails</span> <span class="n">c</span> 
-<span class="lineno">2</span> <span class="err">$</span> <span class="n">i</span> <span class="o">=</span> <span class="no">Item</span><span class="o">.</span><span class="n">first</span>
-<span class="lineno">3</span> <span class="err">$</span> <span class="n">i</span><span class="o">.</span><span class="n">categories</span><span class="o">.</span><span class="n">count</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="err">$</span> <span class="n">rails</span> <span class="n">c</span> 
+<span class="err">$</span> <span class="n">i</span> <span class="o">=</span> <span class="no">Item</span><span class="p">.</span><span class="nf">first</span>
+<span class="err">$</span> <span class="n">i</span><span class="p">.</span><span class="nf">categories</span><span class="p">.</span><span class="nf">count</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 					</div>
 

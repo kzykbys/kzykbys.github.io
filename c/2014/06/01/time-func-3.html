@@ -221,24 +221,24 @@
 					<div id="social-buttom">
 	<!-- Social Buttoms -->
 	<ul>
+		<li id="hatena-area" style="margin-right: 30px">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="strftime()の使い方" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//c/2014/06/01/time-func-3.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			</li>
 		<li>
 			<!-- Pocket -->
 			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
 			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
 		</li>		
-		<li>
+		<li  style="margine-left: 10px;!important">
 			<!-- Vertical Twitter -->
 			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		</li>				
-		<li>
-			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//c/2014/06/01/time-func-3.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
-		</li>				
-		<li style="margine-left: 10px;!important">
-			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="strftime()の使い方" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-		</li>		
+		</li>
 	</ul>
 </div>
 
@@ -247,83 +247,160 @@
 					<div class="post">
 						<p><a href="http://blog.kazuya.co/c/2014/06/01/time-func-2.html">前回</a>、<a href="http://blog.kazuya.co/c/2014/06/01/time-func-1.html">前々回</a> と time.h の関数を見てきました。この記事は、その中でも一番柔軟に使用できる strftime() の使い方です。この strftime とは、string format time のことです。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno"> 1</span> <span class="cp">#include &lt;stdio.h&gt;</span>
-<span class="lineno"> 2</span> <span class="cp">#include &lt;time.h&gt;</span>
-<span class="lineno"> 3</span> 
-<span class="lineno"> 4</span> <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span> <span class="kt">void</span> <span class="p">)</span>
-<span class="lineno"> 5</span> <span class="p">{</span>
-<span class="lineno"> 6</span>     <span class="k">struct</span> <span class="n">tm</span> <span class="o">*</span><span class="n">timeptr</span><span class="p">;</span>
-<span class="lineno"> 7</span>     <span class="kt">time_t</span> <span class="n">timeval</span><span class="p">;</span>
-<span class="lineno"> 8</span>     <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">80</span><span class="p">];</span>
-<span class="lineno"> 9</span>     
-<span class="lineno">10</span>     <span class="n">time</span><span class="p">(</span><span class="o">&amp;</span><span class="n">timeval</span><span class="p">);</span>
-<span class="lineno">11</span>     
-<span class="lineno">12</span>     <span class="n">timeptr</span> <span class="o">=</span> <span class="n">localtime</span><span class="p">(</span><span class="o">&amp;</span><span class="n">timeval</span><span class="p">);</span>
-<span class="lineno">13</span>     
-<span class="lineno">14</span>     <span class="n">strftime</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s">&quot;%c</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">timeptr</span><span class="p">);</span>
-<span class="lineno">15</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;strftime %%c format</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-<span class="lineno">16</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;-------------------------</span><span class="se">\n</span><span class="s"> %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">buffer</span><span class="p">);</span>
-<span class="lineno">17</span>     
-<span class="lineno">18</span>     <span class="n">strftime</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s">&quot;%A, %B %d, %H:%M</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">timeptr</span><span class="p">);</span>
-<span class="lineno">19</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;strftime %%A, %%B %%d, %%H:%%M format</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-<span class="lineno">20</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;--------------------------------</span><span class="se">\n</span><span class="s"> %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">buffer</span><span class="p">);</span>
-<span class="lineno">21</span>     
-<span class="lineno">22</span>     <span class="n">strftime</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s">&quot;%a, %b %d, %H:%M</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">timeptr</span><span class="p">);</span>
-<span class="lineno">23</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;strftime %%a, %%b %%d, %%H:%%M format</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-<span class="lineno">24</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;--------------------------------</span><span class="se">\n</span><span class="s"> %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">buffer</span><span class="p">);</span>
-<span class="lineno">25</span>     
-<span class="lineno">26</span>     
-<span class="lineno">27</span>     <span class="n">strftime</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s">&quot;%a, %b %d, %I:%M %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">timeptr</span><span class="p">);</span>
-<span class="lineno">28</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;strftime %%a, %%b %%d, %%I:%%M %%p format</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-<span class="lineno">29</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;-----------------------------------</span><span class="se">\n</span><span class="s"> %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">buffer</span><span class="p">);</span>
-<span class="lineno">30</span>     
-<span class="lineno">31</span>     <span class="n">strftime</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s">&quot;%a, %b %d, %I:%M %p, %Y</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">timeptr</span><span class="p">);</span>
-<span class="lineno">32</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;strftime %%a, %%b %%d, %%I:%%M %%p, %%Y format</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-<span class="lineno">33</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;---------------------------------------</span><span class="se">\n</span><span class="s"> %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">buffer</span><span class="p">);</span>
-<span class="lineno">34</span>     
-<span class="lineno">35</span>     <span class="n">strftime</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s">&quot;%a, %b %d, %I:%M %p, %y</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">timeptr</span><span class="p">);</span>
-<span class="lineno">36</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;strftime %%a, %%b %%d, %%I:%%M %%p, %%y format</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-<span class="lineno">37</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;---------------------------------------</span><span class="se">\n</span><span class="s"> %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">buffer</span><span class="p">);</span>
-<span class="lineno">38</span>     
-<span class="lineno">39</span>     <span class="n">strftime</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s">&quot;%A, %b %d %I:%M %p %Y</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">timeptr</span><span class="p">);</span>
-<span class="lineno">40</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;strftime %%A, %%b %%d, %%I:%%M %%p, %%Y format</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-<span class="lineno">41</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;---------------------------------------</span><span class="se">\n</span><span class="s"> %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">buffer</span><span class="p">);</span>
-<span class="lineno">42</span>     
-<span class="lineno">43</span>     
-<span class="lineno">44</span>     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="lineno">45</span> <span class="p">}</span>
-<span class="lineno">46</span> 
-<span class="lineno">47</span> <span class="cm">/* Output:</span>
-<span class="lineno">48</span> <span class="cm">    strftime %c format</span>
-<span class="lineno">49</span> <span class="cm">    -------------------------</span>
-<span class="lineno">50</span> <span class="cm">     Sun Jun  1 17:13:31 2014</span>
-<span class="lineno">51</span> 
-<span class="lineno">52</span> <span class="cm">    strftime %A, %B %d, %H:%M format</span>
-<span class="lineno">53</span> <span class="cm">    --------------------------------</span>
-<span class="lineno">54</span> <span class="cm">     Sunday, June 01, 17:13</span>
-<span class="lineno">55</span> 
-<span class="lineno">56</span> <span class="cm">    strftime %a, %b %d, %H:%M format</span>
-<span class="lineno">57</span> <span class="cm">    --------------------------------</span>
-<span class="lineno">58</span> <span class="cm">     Sun, Jun 01, 17:13</span>
-<span class="lineno">59</span> 
-<span class="lineno">60</span> <span class="cm">    strftime %a, %b %d, %I:%M %p format</span>
-<span class="lineno">61</span> <span class="cm">    -----------------------------------</span>
-<span class="lineno">62</span> <span class="cm">     Sun, Jun 01, 05:13 PM</span>
-<span class="lineno">63</span> 
-<span class="lineno">64</span> <span class="cm">    strftime %a, %b %d, %I:%M %p, %Y format</span>
-<span class="lineno">65</span> <span class="cm">    ---------------------------------------</span>
-<span class="lineno">66</span> <span class="cm">     Sun, Jun 01, 05:13 PM, 2014</span>
-<span class="lineno">67</span> 
-<span class="lineno">68</span> <span class="cm">    strftime %a, %b %d, %I:%M %p, %y format</span>
-<span class="lineno">69</span> <span class="cm">    ---------------------------------------</span>
-<span class="lineno">70</span> <span class="cm">     Sun, Jun 01, 05:13 PM, 14</span>
-<span class="lineno">71</span> 
-<span class="lineno">72</span> <span class="cm">    strftime %A, %b %d, %I:%M %p, %Y format</span>
-<span class="lineno">73</span> <span class="cm">    ---------------------------------------</span>
-<span class="lineno">74</span> <span class="cm">     Sunday, Jun 01 05:13 PM 2014</span>
-<span class="lineno">75</span> 
-<span class="lineno">76</span> <span class="cm">    Program ended with exit code: 0</span>
-<span class="lineno">77</span> <span class="cm">*/</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77</pre></td><td class="code"><pre><span class="cp">#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span> <span class="kt">void</span> <span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">struct</span> <span class="n">tm</span> <span class="o">*</span><span class="n">timeptr</span><span class="p">;</span>
+    <span class="kt">time_t</span> <span class="n">timeval</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">80</span><span class="p">];</span>
+    
+    <span class="n">time</span><span class="p">(</span><span class="o">&amp;</span><span class="n">timeval</span><span class="p">);</span>
+    
+    <span class="n">timeptr</span> <span class="o">=</span> <span class="n">localtime</span><span class="p">(</span><span class="o">&amp;</span><span class="n">timeval</span><span class="p">);</span>
+    
+    <span class="n">strftime</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s">"%c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">timeptr</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"strftime %%c format</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"-------------------------</span><span class="se">\n</span><span class="s"> %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">buffer</span><span class="p">);</span>
+    
+    <span class="n">strftime</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s">"%A, %B %d, %H:%M</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">timeptr</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"strftime %%A, %%B %%d, %%H:%%M format</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"--------------------------------</span><span class="se">\n</span><span class="s"> %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">buffer</span><span class="p">);</span>
+    
+    <span class="n">strftime</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s">"%a, %b %d, %H:%M</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">timeptr</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"strftime %%a, %%b %%d, %%H:%%M format</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"--------------------------------</span><span class="se">\n</span><span class="s"> %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">buffer</span><span class="p">);</span>
+    
+    
+    <span class="n">strftime</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s">"%a, %b %d, %I:%M %p</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">timeptr</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"strftime %%a, %%b %%d, %%I:%%M %%p format</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"-----------------------------------</span><span class="se">\n</span><span class="s"> %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">buffer</span><span class="p">);</span>
+    
+    <span class="n">strftime</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s">"%a, %b %d, %I:%M %p, %Y</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">timeptr</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"strftime %%a, %%b %%d, %%I:%%M %%p, %%Y format</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"---------------------------------------</span><span class="se">\n</span><span class="s"> %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">buffer</span><span class="p">);</span>
+    
+    <span class="n">strftime</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s">"%a, %b %d, %I:%M %p, %y</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">timeptr</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"strftime %%a, %%b %%d, %%I:%%M %%p, %%y format</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"---------------------------------------</span><span class="se">\n</span><span class="s"> %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">buffer</span><span class="p">);</span>
+    
+    <span class="n">strftime</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s">"%A, %b %d %I:%M %p %Y</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">timeptr</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"strftime %%A, %%b %%d, %%I:%%M %%p, %%Y format</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"---------------------------------------</span><span class="se">\n</span><span class="s"> %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">buffer</span><span class="p">);</span>
+    
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/* Output:
+    strftime %c format
+    -------------------------
+     Sun Jun  1 17:13:31 2014
+
+    strftime %A, %B %d, %H:%M format
+    --------------------------------
+     Sunday, June 01, 17:13
+
+    strftime %a, %b %d, %H:%M format
+    --------------------------------
+     Sun, Jun 01, 17:13
+
+    strftime %a, %b %d, %I:%M %p format
+    -----------------------------------
+     Sun, Jun 01, 05:13 PM
+
+    strftime %a, %b %d, %I:%M %p, %Y format
+    ---------------------------------------
+     Sun, Jun 01, 05:13 PM, 2014
+
+    strftime %a, %b %d, %I:%M %p, %y format
+    ---------------------------------------
+     Sun, Jun 01, 05:13 PM, 14
+
+    strftime %A, %b %d, %I:%M %p, %Y format
+    ---------------------------------------
+     Sunday, Jun 01 05:13 PM 2014
+
+    Program ended with exit code: 0
+*/</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <ul>
 <li>%c は　asctime() や ctime() と似たようなフォーマットを返します。<br></li>

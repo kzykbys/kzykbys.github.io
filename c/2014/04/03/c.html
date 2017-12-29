@@ -221,24 +221,24 @@
 					<div id="social-buttom">
 	<!-- Social Buttoms -->
 	<ul>
+		<li id="hatena-area" style="margin-right: 30px">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="C言語の関数へのポインタ" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//c/2014/04/03/c.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			</li>
 		<li>
 			<!-- Pocket -->
 			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
 			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
 		</li>		
-		<li>
+		<li  style="margine-left: 10px;!important">
 			<!-- Vertical Twitter -->
 			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		</li>				
-		<li>
-			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//c/2014/04/03/c.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
-		</li>				
-		<li style="margine-left: 10px;!important">
-			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="C言語の関数へのポインタ" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-		</li>		
+		</li>
 	</ul>
 </div>
 
@@ -249,35 +249,53 @@
 
 <p>そもそも関数へのポインタがどのように活用されるのかというと、GUIにおいてユーザーとのインターアクションで生じるイベントをハンドルする場合や、ソート関数にユーザーがソート方式を指定することができる柔軟性を与えるといった場合があります。具体的には、iOS 等のアプリケーションのボタンを想像してもらうと分かりやすいと思いますが、ユーザーがそのボタンを押した時にある処理をしたい場合、このボタンを作成時に関数を指定してくと便利そうです。また、ソート関数においても昇順か降順だけでなく、ユーザーにある程度の自由を与えたほうが拡張性の高いソート関数になります。C の qsort もまさにこのデザインです。この２つの例のように、関数を指定したい時に関数へのポインタが必要になります。qsort の宣言はこのようになっています。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="kt">void</span> <span class="nf">qsort</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">base</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">nmemb</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">size</span><span class="p">,</span>
-<span class="lineno">2</span>             <span class="kt">int</span><span class="p">(</span><span class="o">*</span><span class="n">compar</span><span class="p">)(</span><span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="p">));</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="kt">void</span> <span class="n">qsort</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">base</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">nmemb</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">size</span><span class="p">,</span>
+            <span class="kt">int</span><span class="p">(</span><span class="o">*</span><span class="n">compar</span><span class="p">)(</span><span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="p">));</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>この int(*cmpar)(const void *, const void *) の部分ですね。もう個人的に何を言っているのか分かりません。まずは、関数ポインタの基本形から。 </p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">foo</span><span class="p">)(</span><span class="kt">int</span><span class="p">);</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">foo</span><span class="p">)(</span><span class="kt">int</span><span class="p">);</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>この例は、foo というポインタがあります。これは関数へのポインタで、この関数は int を受け取り、void を返します。宣言は左から順に読みながら、一番内側のカッコを探します。この基本形を頭に入れておいて、 </p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="kt">void</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">foo</span><span class="p">)(</span><span class="kt">int</span> <span class="o">*</span><span class="p">);</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="kt">void</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">foo</span><span class="p">)(</span><span class="kt">int</span> <span class="o">*</span><span class="p">);</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>この例です。アスタリスク(*) がいくつもあって本当に分かりにくい。これは、foo というポインタがまずあります。この関数は int へのポインタを受け取り、void へのポインタを返します。void ポインタは何でも指すことができるポインタです。qsort の引数も void のポインタです。int でも double でも問題なく引数に取ることができます。その代償に、ソートする要素の一つあたりのサイズとソートするデータ全体のデータの総数を渡す必要があります。</p>
 
 <p>最後に関数ポインタをどのように使うか簡単な例です。 </p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno"> 1</span> <span class="cp">#include &lt;stdio.h&gt;</span>
-<span class="lineno"> 2</span> <span class="kt">void</span> <span class="nf">my_int_func</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">){</span>
-<span class="lineno"> 3</span>     <span class="n">printf</span><span class="p">(</span> <span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">x</span> <span class="p">);</span>
-<span class="lineno"> 4</span> <span class="p">}</span>
-<span class="lineno"> 5</span> <span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-<span class="lineno"> 6</span>     <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">foo</span><span class="p">)(</span><span class="kt">int</span><span class="p">);</span>
-<span class="lineno"> 7</span>     <span class="n">foo</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">my_int_func</span><span class="p">;</span>
-<span class="lineno"> 8</span>  
-<span class="lineno"> 9</span>     <span class="cm">/* call my_int_func (note that you do not need to write (*foo)(2) ) */</span>
-<span class="lineno">10</span>     <span class="n">foo</span><span class="p">(</span> <span class="mi">2</span> <span class="p">);</span>
-<span class="lineno">11</span>     <span class="cm">/* but if you want to, you may */</span>
-<span class="lineno">12</span>     <span class="p">(</span><span class="o">*</span><span class="n">foo</span><span class="p">)(</span> <span class="mi">2</span> <span class="p">);</span>
-<span class="lineno">13</span>     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="lineno">14</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre><span class="cp">#include &lt;stdio.h&gt;
+</span><span class="kt">void</span> <span class="n">my_int_func</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">){</span>
+    <span class="n">printf</span><span class="p">(</span> <span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">x</span> <span class="p">);</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
+    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">foo</span><span class="p">)(</span><span class="kt">int</span><span class="p">);</span>
+    <span class="n">foo</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">my_int_func</span><span class="p">;</span>
+ 
+    <span class="cm">/* call my_int_func (note that you do not need to write (*foo)(2) ) */</span>
+    <span class="n">foo</span><span class="p">(</span> <span class="mi">2</span> <span class="p">);</span>
+    <span class="cm">/* but if you want to, you may */</span>
+    <span class="p">(</span><span class="o">*</span><span class="n">foo</span><span class="p">)(</span> <span class="mi">2</span> <span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>ポイントされる関数の記述は通常通りです。関数へのポインタの宣言方法は上記で見たとおりですね。関数へのアドレスを宣言したポインタに代入し、そのアドレスを格納している変数をそのまま関数呼び出しに使用しています。 </p>
 

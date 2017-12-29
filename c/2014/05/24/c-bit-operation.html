@@ -221,24 +221,24 @@
 					<div id="social-buttom">
 	<!-- Social Buttoms -->
 	<ul>
+		<li id="hatena-area" style="margin-right: 30px">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="C言語でのビットレベルの処理" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//c/2014/05/24/c-bit-operation.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			</li>
 		<li>
 			<!-- Pocket -->
 			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
 			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
 		</li>		
-		<li>
+		<li  style="margine-left: 10px;!important">
 			<!-- Vertical Twitter -->
 			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		</li>				
-		<li>
-			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//c/2014/05/24/c-bit-operation.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
-		</li>				
-		<li style="margine-left: 10px;!important">
-			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="C言語でのビットレベルの処理" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-		</li>		
+		</li>
 	</ul>
 </div>
 
@@ -251,78 +251,125 @@
 
 <p>AND はバイナリオペレーション。両者とも 1 の場合に結果も 1 になる。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="lineno">2</span> <span class="p">{</span>
-<span class="lineno">3</span>     <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
-<span class="lineno">4</span>     <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">;</span>
-<span class="lineno">5</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;a &amp; b = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span> <span class="c1">// c = 4</span>
-<span class="lineno">6</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"a &amp; b = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span> <span class="c1">// c = 4
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h3 id="or-(-|-)">OR ( | )</h3>
 
 <p>OR はどちらかが 1 なら 1。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="lineno">2</span> <span class="p">{</span>
-<span class="lineno">3</span>     <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
-<span class="lineno">4</span>     <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">|</span> <span class="n">b</span><span class="p">;</span>
-<span class="lineno">5</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;a | b = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span> <span class="c1">// c = 12</span>
-<span class="lineno">6</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">|</span> <span class="n">b</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"a | b = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span> <span class="c1">// c = 12
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h3 id="xor-(-^-)">XOR ( ^ )</h3>
 
 <p>XOR は同じビットは 0、そうでないなら 1。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="lineno">2</span> <span class="p">{</span>
-<span class="lineno">3</span>     <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
-<span class="lineno">4</span>     <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">^</span> <span class="n">b</span><span class="p">;</span>
-<span class="lineno">5</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;a ^ b = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span> <span class="c1">// c = 8</span>
-<span class="lineno">6</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">^</span> <span class="n">b</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"a ^ b = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span> <span class="c1">// c = 8
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h3 id="not-(-~-)">NOT ( ~ )</h3>
 
 <p>NOT はビットを反転させる。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="lineno">2</span> <span class="p">{</span>
-<span class="lineno">3</span>     <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">65534</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span>
-<span class="lineno">4</span>     <span class="n">b</span> <span class="o">=</span> <span class="o">~</span><span class="n">a</span><span class="p">;</span>
-<span class="lineno">5</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;b = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span><span class="err">　</span><span class="c1">// b = 1</span>
-<span class="lineno">6</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">65534</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="o">~</span><span class="n">a</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"b = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span><span class="err">　</span><span class="c1">// b = 1
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h3 id="xor-での-swap">XOR での swap</h3>
 
 <p>XOR をオペレーターをしようすれば、余分な変数を使用する必要なく変数の値を交換できます。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno"> 1</span> <span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="lineno"> 2</span> <span class="p">{</span>
-<span class="lineno"> 3</span>     <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-<span class="lineno"> 4</span>     <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span><span class="p">;</span>
-<span class="lineno"> 5</span>     
-<span class="lineno"> 6</span>     <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">^</span> <span class="n">b</span><span class="p">;</span>
-<span class="lineno"> 7</span>     <span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">^</span> <span class="n">b</span><span class="p">;</span>
-<span class="lineno"> 8</span>     <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">^</span> <span class="n">b</span><span class="p">;</span>
-<span class="lineno"> 9</span> 
-<span class="lineno">10</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;a = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span> <span class="c1">// a = -10</span>
-<span class="lineno">11</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;b = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span> <span class="c1">// b = 10</span>
-<span class="lineno">12</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre><span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span><span class="p">;</span>
+    
+    <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">^</span> <span class="n">b</span><span class="p">;</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">^</span> <span class="n">b</span><span class="p">;</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">^</span> <span class="n">b</span><span class="p">;</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">"a = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span> <span class="c1">// a = -10
+</span>    <span class="n">printf</span><span class="p">(</span><span class="s">"b = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span> <span class="c1">// b = 10
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h3 id="ビットシフト-(&lt;&lt;,-&gt;&gt;)">ビットシフト (&lt;&lt;, &gt;&gt;)</h3>
 
 <p>ビットシフト操作は基本的に unsigned のデータに使用する。これは、ANSI C が、右シフトの際にゼロをシフトするか、MSBをシフトするかは、コンパイラ次第と規定しているため。unsigned の場合には、いつもゼロがシフトされる。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno"> 1</span> <span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="lineno"> 2</span> <span class="p">{</span>
-<span class="lineno"> 3</span>     <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">32768</span><span class="p">,</span> <span class="n">d</span><span class="p">;</span>
-<span class="lineno"> 4</span> 
-<span class="lineno"> 5</span>     <span class="n">d</span> <span class="o">=</span> <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span><span class="p">;</span>
-<span class="lineno"> 6</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;a &lt;&lt; 3 = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">);</span> <span class="c1">// d = 24</span>
-<span class="lineno"> 7</span>     <span class="n">d</span> <span class="o">=</span> <span class="n">b</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">;</span>
-<span class="lineno"> 8</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;b &gt;&gt; 2 = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">);</span> <span class="c1">// d = 1</span>
-<span class="lineno"> 9</span>     <span class="n">d</span> <span class="o">=</span> <span class="n">c</span> <span class="o">&gt;&gt;</span> <span class="mi">14</span><span class="p">;</span>
-<span class="lineno">10</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;c &gt;&gt; 14 = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">);</span> <span class="c1">// d = 2</span>
-<span class="lineno">11</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre><span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">32768</span><span class="p">,</span> <span class="n">d</span><span class="p">;</span>
+
+    <span class="n">d</span> <span class="o">=</span> <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"a &lt;&lt; 3 = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">d</span><span class="p">);</span> <span class="c1">// d = 24
+</span>    <span class="n">d</span> <span class="o">=</span> <span class="n">b</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"b &gt;&gt; 2 = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">d</span><span class="p">);</span> <span class="c1">// d = 1
+</span>    <span class="n">d</span> <span class="o">=</span> <span class="n">c</span> <span class="o">&gt;&gt;</span> <span class="mi">14</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"c &gt;&gt; 14 = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">d</span><span class="p">);</span> <span class="c1">// d = 2
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 					</div>
 

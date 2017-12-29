@@ -221,24 +221,24 @@
 					<div id="social-buttom">
 	<!-- Social Buttoms -->
 	<ul>
+		<li id="hatena-area" style="margin-right: 30px">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Change Dynamically Text and Color in iOS" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//objective-c/2013/09/23/change-dynamically-text-and-color-in-ios.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			</li>
 		<li>
 			<!-- Pocket -->
 			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
 			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
 		</li>		
-		<li>
+		<li  style="margine-left: 10px;!important">
 			<!-- Vertical Twitter -->
 			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		</li>				
-		<li>
-			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//objective-c/2013/09/23/change-dynamically-text-and-color-in-ios.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
-		</li>				
-		<li style="margine-left: 10px;!important">
-			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Change Dynamically Text and Color in iOS" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-		</li>		
+		</li>
 	</ul>
 </div>
 
@@ -257,62 +257,118 @@
 
 <p>This is easily accomplished. Here is simple code :</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="cp">#import &quot;KKViewController.h&quot;</span>
-<span class="lineno"> 2</span> 
-<span class="lineno"> 3</span> <span class="k">@interface</span> <span class="nc">KKViewController</span> <span class="p">()</span>
-<span class="lineno"> 4</span> 
-<span class="lineno"> 5</span> <span class="k">@property</span> <span class="p">(</span><span class="k">strong</span><span class="p">,</span> <span class="k">nonatomic</span><span class="p">)</span> <span class="kt">IBOutlet</span> <span class="bp">UITextField</span> <span class="o">*</span><span class="n">textfield</span><span class="p">;</span>
-<span class="lineno"> 6</span> <span class="k">@property</span> <span class="p">(</span><span class="k">strong</span><span class="p">,</span> <span class="k">nonatomic</span><span class="p">)</span> <span class="kt">IBOutlet</span> <span class="bp">UILabel</span>     <span class="o">*</span><span class="n">labelCount</span><span class="p">;</span>
-<span class="lineno"> 7</span> 
-<span class="lineno"> 8</span> <span class="k">@end</span>
-<span class="lineno"> 9</span> 
-<span class="lineno">10</span> <span class="k">@implementation</span> <span class="nc">KKViewController</span>
-<span class="lineno">11</span> 
-<span class="lineno">12</span> <span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidLoad</span>
-<span class="lineno">13</span> <span class="p">{</span>
-<span class="lineno">14</span>     <span class="p">[</span><span class="nb">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
-<span class="lineno">15</span>     
-<span class="lineno">16</span>     <span class="c1">// Textfield</span>
-<span class="lineno">17</span>     <span class="nb">self</span><span class="p">.</span><span class="n">textfield</span>                 <span class="o">=</span> <span class="p">[[</span><span class="bp">UITextField</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
-<span class="lineno">18</span>     <span class="nb">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">.</span><span class="n">frame</span>           <span class="o">=</span> <span class="n">CGRectMake</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span>
-<span class="lineno">19</span>     <span class="nb">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">.</span><span class="n">borderStyle</span>     <span class="o">=</span> <span class="n">UITextBorderStyleRoundedRect</span><span class="p">;</span>
-<span class="lineno">20</span>     <span class="nb">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">.</span><span class="n">placeholder</span>     <span class="o">=</span> <span class="s">@&quot;Type message for this people.&quot;</span><span class="p">;</span>
-<span class="lineno">21</span>     <span class="nb">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">.</span><span class="n">clearButtonMode</span> <span class="o">=</span> <span class="n">UITextFieldViewModeWhileEditing</span><span class="p">;</span>
-<span class="lineno">22</span>     <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">textfield</span> <span class="nl">addTarget</span><span class="p">:</span><span class="nb">self</span>
-<span class="lineno">23</span>                        <span class="nl">action</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nl">textAttributesBasedOnTyping</span><span class="p">:)</span>
-<span class="lineno">24</span>              <span class="nl">forControlEvents</span><span class="p">:</span><span class="n">UIControlEventEditingChanged</span><span class="p">];</span>
-<span class="lineno">25</span>     
-<span class="lineno">26</span>     <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">addSubview</span><span class="p">:</span><span class="nb">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">];</span>
-<span class="lineno">27</span>     
-<span class="lineno">28</span>     <span class="c1">// Count Text</span>
-<span class="lineno">29</span>     <span class="nb">self</span><span class="p">.</span><span class="n">labelCount</span>           <span class="o">=</span> <span class="p">[[</span><span class="bp">UILabel</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
-<span class="lineno">30</span>     <span class="nb">self</span><span class="p">.</span><span class="n">labelCount</span><span class="p">.</span><span class="n">frame</span>     <span class="o">=</span> <span class="n">CGRectMake</span><span class="p">(</span><span class="mi">140</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">);</span>
-<span class="lineno">31</span>     <span class="nb">self</span><span class="p">.</span><span class="n">labelCount</span><span class="p">.</span><span class="n">text</span>      <span class="o">=</span> <span class="p">[</span><span class="bp">NSString</span> <span class="nl">stringWithFormat</span><span class="p">:</span><span class="s">@&quot;%i&quot;</span><span class="p">,</span><span class="mi">140</span> <span class="o">-</span> <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">.</span><span class="n">text</span> <span class="n">length</span><span class="p">]];</span>
-<span class="lineno">32</span>     <span class="nb">self</span><span class="p">.</span><span class="n">labelCount</span><span class="p">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIColor</span> <span class="nl">colorWithRed</span><span class="p">:</span><span class="mf">0.4</span> <span class="nl">green</span><span class="p">:</span><span class="mf">0.4</span> <span class="nl">blue</span><span class="p">:</span><span class="mf">0.4</span> <span class="nl">alpha</span><span class="p">:</span><span class="mf">0.8</span><span class="p">];</span>
-<span class="lineno">33</span>     
-<span class="lineno">34</span>     <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">addSubview</span><span class="p">:</span><span class="nb">self</span><span class="p">.</span><span class="n">labelCount</span><span class="p">];</span>
-<span class="lineno">35</span>     
-<span class="lineno">36</span> <span class="p">}</span>
-<span class="lineno">37</span> 
-<span class="lineno">38</span> <span class="p">-(</span><span class="kt">void</span><span class="p">)</span><span class="nf">textAttributesBasedOnTyping:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nv">sender</span>
-<span class="lineno">39</span> <span class="p">{</span>
-<span class="lineno">40</span>     <span class="k">if</span><span class="p">([</span><span class="n">sender</span> <span class="nl">isKindOfClass</span><span class="p">:[</span><span class="bp">UITextField</span> <span class="k">class</span><span class="p">]])</span>
-<span class="lineno">41</span>     <span class="p">{</span>
-<span class="lineno">42</span>         <span class="nb">self</span><span class="p">.</span><span class="n">labelCount</span><span class="p">.</span><span class="n">text</span>     <span class="o">=</span> <span class="p">[</span><span class="bp">NSString</span> <span class="nl">stringWithFormat</span><span class="p">:</span><span class="s">@&quot;%i&quot;</span><span class="p">,</span><span class="mi">140</span> <span class="o">-</span> <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">.</span><span class="n">text</span> <span class="n">length</span><span class="p">]];</span>
-<span class="lineno">43</span>         
-<span class="lineno">44</span>         <span class="c1">// Change color by the count of text length</span>
-<span class="lineno">45</span>         <span class="k">if</span><span class="p">([</span><span class="nb">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">.</span><span class="n">text</span> <span class="n">length</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">140</span><span class="p">)</span>
-<span class="lineno">46</span>         <span class="p">{</span>
-<span class="lineno">47</span>             <span class="nb">self</span><span class="p">.</span><span class="n">labelCount</span><span class="p">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIColor</span> <span class="nl">colorWithRed</span><span class="p">:</span><span class="mf">0.4</span> <span class="nl">green</span><span class="p">:</span><span class="mf">0.4</span> <span class="nl">blue</span><span class="p">:</span><span class="mf">0.4</span> <span class="nl">alpha</span><span class="p">:</span><span class="mf">0.8</span><span class="p">];</span> <span class="c1">// Gray</span>
-<span class="lineno">48</span>         <span class="p">}</span>
-<span class="lineno">49</span>         <span class="k">else</span>
-<span class="lineno">50</span>         <span class="p">{</span>
-<span class="lineno">51</span>             <span class="nb">self</span><span class="p">.</span><span class="n">labelCount</span><span class="p">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIColor</span> <span class="nl">colorWithRed</span><span class="p">:</span><span class="mi">1</span> <span class="nl">green</span><span class="p">:</span><span class="mi">0</span> <span class="nl">blue</span><span class="p">:</span><span class="mi">0</span> <span class="nl">alpha</span><span class="p">:</span><span class="mf">0.8</span><span class="p">];</span>  <span class="c1">// Red</span>
-<span class="lineno">52</span>         <span class="p">}</span>
-<span class="lineno">53</span>     <span class="p">}</span>
-<span class="lineno">54</span> <span class="p">}</span>
-<span class="lineno">55</span> 
-<span class="lineno">56</span> <span class="k">@end</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56</pre></td><td class="code"><pre>#import "KKViewController.h"
+
+@interface KKViewController ()
+
+@property (strong, nonatomic) IBOutlet UITextField *textfield;
+@property (strong, nonatomic) IBOutlet UILabel     *labelCount;
+
+@end
+
+@implementation KKViewController
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    // Textfield
+    self.textfield                 = [[UITextField alloc] init];
+    self.textfield.frame           = CGRectMake(10, 100, 300, 30);
+    self.textfield.borderStyle     = UITextBorderStyleRoundedRect;
+    self.textfield.placeholder     = @"Type message for this people.";
+    self.textfield.clearButtonMode = UITextFieldViewModeWhileEditing;
+    [self.textfield addTarget:self
+                       action:@selector(textAttributesBasedOnTyping:)
+             forControlEvents:UIControlEventEditingChanged];
+    
+    [self.view addSubview:self.textfield];
+    
+    // Count Text
+    self.labelCount           = [[UILabel alloc] init];
+    self.labelCount.frame     = CGRectMake(140, 50, 40, 40);
+    self.labelCount.text      = [NSString stringWithFormat:@"%i",140 - [self.textfield.text length]];
+    self.labelCount.textColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.8];
+    
+    [self.view addSubview:self.labelCount];
+    
+}
+
+-(void)textAttributesBasedOnTyping:(id)sender
+{
+    if([sender isKindOfClass:[UITextField class]])
+    {
+        self.labelCount.text     = [NSString stringWithFormat:@"%i",140 - [self.textfield.text length]];
+        
+        // Change color by the count of text length
+        if([self.textfield.text length] &lt;= 140)
+        {
+            self.labelCount.textColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.8]; // Gray
+        }
+        else
+        {
+            self.labelCount.textColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:0.8];  // Red
+        }
+    }
+}
+
+@end<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>The point is adding Target ( - (void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;) and using &quot;UIControlEventEditingChanged&quot; in my textAttributesBasedOnTyping function. By this code, we can change dynamically the text ( number in this case ) and the color at the same time. It is so convenient. Furthermore, we can add some more effect like the twitter&#39;s tweet button in above photos. If we type over 140 characters, we won&#39;t be allowed  to tweet it by disable the button. It is helpful to validate something in client side. </p>
 

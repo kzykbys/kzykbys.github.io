@@ -221,24 +221,24 @@
 					<div id="social-buttom">
 	<!-- Social Buttoms -->
 	<ul>
+		<li id="hatena-area" style="margin-right: 30px">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="typedef を使用して複雑な宣言を簡単にする" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//c/2014/06/07/c-typede-return-func-pointer.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			</li>
 		<li>
 			<!-- Pocket -->
 			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
 			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
 		</li>		
-		<li>
+		<li  style="margine-left: 10px;!important">
 			<!-- Vertical Twitter -->
 			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		</li>				
-		<li>
-			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//c/2014/06/07/c-typede-return-func-pointer.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
-		</li>				
-		<li style="margine-left: 10px;!important">
-			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="typedef を使用して複雑な宣言を簡単にする" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-		</li>		
+		</li>
 	</ul>
 </div>
 
@@ -249,43 +249,69 @@
 
 <p>まずは、このコード。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno"> 1</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="nf">RSHash</span>  <span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">key</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">);</span>
-<span class="lineno"> 2</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="nf">DEKHash</span> <span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">key</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">);</span>
-<span class="lineno"> 3</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="nf">DJBHash</span> <span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">key</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">);</span>
-<span class="lineno"> 4</span> 
-<span class="lineno"> 5</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">hashList</span><span class="p">[</span><span class="mi">4</span><span class="p">])(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="o">=</span>
-<span class="lineno"> 6</span>  <span class="p">{</span><span class="n">RSHash</span><span class="p">,</span> <span class="n">DEKHash</span><span class="p">,</span> <span class="n">DJBHash</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">};</span>
-<span class="lineno"> 7</span> 
-<span class="lineno"> 8</span> <span class="kt">unsigned</span> <span class="nf">int</span> <span class="p">(</span><span class="o">**</span><span class="n">mover</span><span class="p">)(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">key</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">);</span>
-<span class="lineno"> 9</span> 
-<span class="lineno">10</span> <span class="n">mover</span> <span class="o">=</span> <span class="n">hashList</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">RSHash</span>  <span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">key</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">);</span>
+<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">DEKHash</span> <span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">key</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">);</span>
+<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">DJBHash</span> <span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">key</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">);</span>
+
+<span class="kt">unsigned</span> <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">hashList</span><span class="p">[</span><span class="mi">4</span><span class="p">])(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="o">=</span>
+    <span class="p">{</span><span class="n">RSHash</span><span class="p">,</span> <span class="n">DEKHash</span><span class="p">,</span> <span class="n">DJBHash</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">};</span>
+
+<span class="kt">unsigned</span> <span class="kt">int</span> <span class="p">(</span><span class="o">**</span><span class="n">mover</span><span class="p">)(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">key</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">);</span>
+
+<span class="n">mover</span> <span class="o">=</span> <span class="n">hashList</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>最初の 3 行は関数の宣言です。 3 つのハッシュ関数があります。2 つ目の hashList は、この関数へのポインタの配列です。関係ないですが、最後の mover は、この配列へのポインタです。</p>
 
 <p>そして、こんな感じに関数へのポインタを返す関数を書きたいとします。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="kt">unsigned</span> <span class="nf">int</span> <span class="p">(</span><span class="o">*</span><span class="n">hash</span><span class="p">)(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
-<span class="lineno">2</span> 
-<span class="lineno">3</span> <span class="n">hash</span> <span class="o">=</span> <span class="n">selectHash</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">hashList</span><span class="p">);</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="kt">unsigned</span> <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">hash</span><span class="p">)(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+
+<span class="n">hash</span> <span class="o">=</span> <span class="n">selectHash</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">hashList</span><span class="p">);</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>普通に書くとこんな感じになります。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="kt">unsigned</span> <span class="nf">int</span> <span class="p">(</span><span class="o">*</span><span class="n">selectHash</span><span class="p">(</span>
-<span class="lineno">2</span>       <span class="kt">int</span> <span class="n">n</span><span class="p">,</span>
-<span class="lineno">3</span>       <span class="kt">unsigned</span> <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">hashList</span><span class="p">[])(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">)))</span>
-<span class="lineno">4</span> <span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span>
-<span class="lineno">5</span> <span class="p">{</span>
-<span class="lineno">6</span>   <span class="k">return</span> <span class="n">hashList</span><span class="p">[</span><span class="n">rand</span><span class="p">()</span> <span class="o">%</span> <span class="n">n</span><span class="p">];</span>
-<span class="lineno">7</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="kt">unsigned</span> <span class="nf">int</span> <span class="p">(</span><span class="o">*</span><span class="n">selectHash</span><span class="p">(</span>
+        <span class="kt">int</span> <span class="n">n</span><span class="p">,</span>
+        <span class="kt">unsigned</span> <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">hashList</span><span class="p">[])(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">)))</span>
+<span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">hashList</span><span class="p">[</span><span class="n">rand</span><span class="p">()</span> <span class="o">%</span> <span class="n">n</span><span class="p">];</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>ちょっときついので、これを typedef を使用して書くとだいぶ楽になる。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="n">typdef</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="nf">HASHFNCT</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
-<span class="lineno">2</span> 
-<span class="lineno">3</span> <span class="n">HASHFNCT</span> <span class="o">*</span><span class="nf">selectHash</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">HASHFNCT</span> <span class="o">*</span><span class="n">hashList</span><span class="p">[])</span>
-<span class="lineno">4</span> <span class="p">{</span>
-<span class="lineno">5</span>   <span class="k">return</span> <span class="n">hashList</span><span class="p">[</span><span class="n">rand</span><span class="p">()</span> <span class="o">%</span> <span class="n">n</span><span class="p">];</span>
-<span class="lineno">6</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="n">typdef</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">HASHFNCT</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+
+<span class="n">HASHFNCT</span> <span class="o">*</span><span class="nf">selectHash</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">HASHFNCT</span> <span class="o">*</span><span class="n">hashList</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">hashList</span><span class="p">[</span><span class="n">rand</span><span class="p">()</span> <span class="o">%</span> <span class="n">n</span><span class="p">];</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 					</div>
 

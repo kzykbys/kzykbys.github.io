@@ -221,24 +221,24 @@
 					<div id="social-buttom">
 	<!-- Social Buttoms -->
 	<ul>
+		<li id="hatena-area" style="margin-right: 30px">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Ruby on Rails チュートリアル 8 章 （２）| ログイン・ログアウト" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//ruby%20on%20rails/2013/12/03/ruby-on-rails-8_3.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			</li>
 		<li>
 			<!-- Pocket -->
 			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
 			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
 		</li>		
-		<li>
+		<li  style="margine-left: 10px;!important">
 			<!-- Vertical Twitter -->
 			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		</li>				
-		<li>
-			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//ruby%20on%20rails/2013/12/03/ruby-on-rails-8_3.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
-		</li>				
-		<li style="margine-left: 10px;!important">
-			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Ruby on Rails チュートリアル 8 章 （２）| ログイン・ログアウト" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-		</li>		
+		</li>
 	</ul>
 </div>
 
@@ -266,25 +266,44 @@
 
 <p>上記までの流れにそえば、とりあえず Student モデルにトークンを保存するカラムは作成されているはずです。ここからは、具体的にトークンを生成をしていきます。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno"> 1</span> <span class="c1"># student.rb</span>
-<span class="lineno"> 2</span> <span class="c1"># Generate token for Session</span>
-<span class="lineno"> 3</span> 
-<span class="lineno"> 4</span> <span class="n">before_create</span> <span class="ss">:create_remember_token</span>
-<span class="lineno"> 5</span> 
-<span class="lineno"> 6</span> <span class="c1"># Sessions funk</span>
-<span class="lineno"> 7</span> <span class="k">def</span> <span class="nc">Student</span><span class="o">.</span><span class="nf">new_remember_token</span>
-<span class="lineno"> 8</span>  <span class="no">SecureRandom</span><span class="o">.</span><span class="n">urlsafe_base64</span>
-<span class="lineno"> 9</span> <span class="k">end</span>
-<span class="lineno">10</span> 
-<span class="lineno">11</span> <span class="k">def</span> <span class="nc">Student</span><span class="o">.</span><span class="nf">encrypt</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
-<span class="lineno">12</span>  <span class="no">Digest</span><span class="o">::</span><span class="no">SHA1</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">to_s</span><span class="p">)</span>
-<span class="lineno">13</span> <span class="k">end</span>
-<span class="lineno">14</span> 
-<span class="lineno">15</span> <span class="kp">private</span>
-<span class="lineno">16</span> 
-<span class="lineno">17</span> <span class="k">def</span> <span class="nf">create_remember_token</span>
-<span class="lineno">18</span>  <span class="nb">self</span><span class="o">.</span><span class="n">remember_token</span> <span class="o">=</span> <span class="no">Student</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="no">Student</span><span class="o">.</span><span class="n">new_remember_token</span><span class="p">)</span>
-<span class="lineno">19</span> <span class="k">end</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></td><td class="code"><pre><span class="c1"># student.rb</span>
+<span class="c1"># Generate token for Session</span>
+
+<span class="n">before_create</span> <span class="ss">:create_remember_token</span>
+
+<span class="c1"># Sessions funk</span>
+<span class="k">def</span> <span class="nc">Student</span><span class="o">.</span><span class="nf">new_remember_token</span>
+    <span class="no">SecureRandom</span><span class="p">.</span><span class="nf">urlsafe_base64</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nc">Student</span><span class="o">.</span><span class="nf">encrypt</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+    <span class="no">Digest</span><span class="o">::</span><span class="no">SHA1</span><span class="p">.</span><span class="nf">hexdigest</span><span class="p">(</span><span class="n">token</span><span class="p">.</span><span class="nf">to_s</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="kp">private</span>
+
+<span class="k">def</span> <span class="nf">create_remember_token</span>
+    <span class="nb">self</span><span class="p">.</span><span class="nf">remember_token</span> <span class="o">=</span> <span class="no">Student</span><span class="p">.</span><span class="nf">encrypt</span><span class="p">(</span><span class="no">Student</span><span class="p">.</span><span class="nf">new_remember_token</span><span class="p">)</span>
+<span class="k">end</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>モデルの中で、トークンを生成する関数、暗号化する関数、そして、プライベートのそれらの結果を該当の Student モデルに保存しています。self というキーワードを指定し、ローカル変数ではなく、DBにしっかりと保存されるようにする。これらは、before_create により Student を保存する前に実行されます。</p>
 
@@ -296,30 +315,48 @@
 
 <p>ここから、先ほどの sign_in 関数の実装です。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="c1"># sessions_helper.rb</span>
-<span class="lineno">2</span> <span class="k">module</span> <span class="nn">SessionsHelper</span>
-<span class="lineno">3</span>   <span class="k">def</span> <span class="nf">sign_in</span><span class="p">(</span><span class="n">student</span><span class="p">)</span>
-<span class="lineno">4</span>     <span class="n">remember_token</span> <span class="o">=</span> <span class="no">Student</span><span class="o">.</span><span class="n">new_remember_token</span>
-<span class="lineno">5</span>     <span class="n">cookies</span><span class="o">.</span><span class="n">permanent</span><span class="o">[</span><span class="ss">:remember_token</span><span class="o">]</span> <span class="o">=</span> <span class="n">remember_token</span>
-<span class="lineno">6</span>     <span class="n">student</span><span class="o">.</span><span class="n">update_attribute</span><span class="p">(</span><span class="ss">:remember_token</span><span class="p">,</span> <span class="no">Student</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">remember_token</span><span class="p">))</span>
-<span class="lineno">7</span>     <span class="nb">self</span><span class="o">.</span><span class="n">current_studen</span> <span class="o">=</span> <span class="n">student</span>
-<span class="lineno">8</span>   <span class="k">end</span>
-<span class="lineno">9</span> <span class="k">end</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="c1"># sessions_helper.rb</span>
+<span class="k">module</span> <span class="nn">SessionsHelper</span>
+  <span class="k">def</span> <span class="nf">sign_in</span><span class="p">(</span><span class="n">student</span><span class="p">)</span>
+    <span class="n">remember_token</span> <span class="o">=</span> <span class="no">Student</span><span class="p">.</span><span class="nf">new_remember_token</span>
+    <span class="n">cookies</span><span class="p">.</span><span class="nf">permanent</span><span class="p">[</span><span class="ss">:remember_token</span><span class="p">]</span> <span class="o">=</span> <span class="n">remember_token</span>
+    <span class="n">student</span><span class="p">.</span><span class="nf">update_attribute</span><span class="p">(</span><span class="ss">:remember_token</span><span class="p">,</span> <span class="no">Student</span><span class="p">.</span><span class="nf">encrypt</span><span class="p">(</span><span class="n">remember_token</span><span class="p">))</span>
+    <span class="nb">self</span><span class="p">.</span><span class="nf">current_studen</span> <span class="o">=</span> <span class="n">student</span>
+  <span class="k">end</span>
+<span class="k">end</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>この関数はログインに成功するたびに呼ばれることを思い出してください。まず、新しいトークンを生成。暗号化れていないこのトークンを cookie に保存。Student モデルのように暗号化したトークンを DB へ保存。update_attribute 関数により、validation 等を迂回して DB への変更することができる。最後の current_sutdent はこれから実装します。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="c1"># sessions_helper.rb</span>
-<span class="lineno">2</span> <span class="k">def</span> <span class="nf">current_student</span><span class="o">=</span><span class="p">(</span><span class="n">student</span><span class="p">)</span>
-<span class="lineno">3</span>   <span class="vi">@current_student</span> <span class="o">=</span> <span class="n">student</span>
-<span class="lineno">4</span> <span class="k">end</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="c1"># sessions_helper.rb</span>
+<span class="k">def</span> <span class="nf">current_student</span><span class="o">=</span><span class="p">(</span><span class="n">student</span><span class="p">)</span>
+  <span class="vi">@current_student</span> <span class="o">=</span> <span class="n">student</span>
+<span class="k">end</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>この current_studen= “関数&quot;は少し特殊です。普通のプログラミング言語では = は関数名に使いませんが、Ruby は使用することができます。これを実装することにより、sign_in関数の代入するように書くことにより、この関数が実行されます。ここでは @current_student というインスタンス変数を設定し、後に使用できるようにしています。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="c1"># sessions_helper.rb</span>
-<span class="lineno">2</span> <span class="k">def</span> <span class="nf">current_student</span>
-<span class="lineno">3</span>   <span class="n">remember_token</span> <span class="o">=</span> <span class="no">Student</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">cookies</span><span class="o">[</span><span class="ss">:remember_token</span><span class="o">]</span><span class="p">)</span>
-<span class="lineno">4</span>   <span class="vi">@current_student</span> <span class="o">||=</span> <span class="no">Student</span><span class="o">.</span><span class="n">find_by</span><span class="p">(</span><span class="ss">remember_token</span><span class="p">:</span> <span class="n">remember_token</span><span class="p">)</span>
-<span class="lineno">5</span> <span class="k">end</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="c1"># sessions_helper.rb</span>
+<span class="k">def</span> <span class="nf">current_student</span>
+  <span class="n">remember_token</span> <span class="o">=</span> <span class="no">Student</span><span class="p">.</span><span class="nf">encrypt</span><span class="p">(</span><span class="n">cookies</span><span class="p">[</span><span class="ss">:remember_token</span><span class="p">])</span>
+  <span class="vi">@current_student</span> <span class="o">||=</span> <span class="no">Student</span><span class="p">.</span><span class="nf">find_by</span><span class="p">(</span><span class="ss">remember_token: </span><span class="n">remember_token</span><span class="p">)</span>
+<span class="k">end</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>そして、current_studentのゲッターを作成します。attr_accessor でゲッター・セッターを作成すると、セッション情報がその都度新しくなりページを遷移するたびにログアウトしてしまいます。そのため、上記のように、cookie をブラウザから取得し、DBのトークンは暗号化されているので、取得したトークンを暗号化し、 Student モデルを DB から引っ張ってきています。||= は他の言語でもよく使われる += と似ていて、この場合</p>
 
@@ -333,19 +370,29 @@
 
 <p>また、ユーザーがログインしているか否かを判断する関数を定義します。current_user が nil でない時に（ログインしている）、true を 返します。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="c1"># sessions_helper.rb</span>
-<span class="lineno">2</span> <span class="k">def</span> <span class="nf">signed_in?</span>
-<span class="lineno">3</span>   <span class="o">!</span><span class="n">current_user</span><span class="o">.</span><span class="n">nil?</span>
-<span class="lineno">4</span> <span class="k">end</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="c1"># sessions_helper.rb</span>
+<span class="k">def</span> <span class="nf">signed_in?</span>
+  <span class="o">!</span><span class="n">current_user</span><span class="p">.</span><span class="nf">nil?</span>
+<span class="k">end</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>後は、ビューで、以下のようにユーザーがログインしているか否か判断し、表示するコンテンツを変更すればそれぽくなります。</p>
 
-<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="lineno">1</span> <span class="x"># Each View</span>
-<span class="lineno">2</span> <span class="cp">&lt;%</span> <span class="k">if</span> <span class="n">signed_in?</span> <span class="cp">%&gt;</span><span class="x"></span>
-<span class="lineno">3</span> <span class="x"># サインインしているユーザー用のリンク</span>
-<span class="lineno">4</span> <span class="cp">&lt;%</span> <span class="k">else</span> <span class="cp">%&gt;</span><span class="x"></span>
-<span class="lineno">5</span> <span class="x">#サインインしていないユーザー用のリンク</span>
-<span class="lineno">6</span> <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span><span class="x"></span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre># Each View
+<span class="cp">&lt;%</span> <span class="k">if</span> <span class="n">signed_in?</span> <span class="cp">%&gt;</span>
+# サインインしているユーザー用のリンク
+<span class="cp">&lt;%</span> <span class="k">else</span> <span class="cp">%&gt;</span>
+#サインインしていないユーザー用のリンク
+<span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>あとは、ログアウト機能で終了！</p>
 

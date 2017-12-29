@@ -221,24 +221,24 @@
 					<div id="social-buttom">
 	<!-- Social Buttoms -->
 	<ul>
+		<li id="hatena-area" style="margin-right: 30px">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Active Admin管理者画面でoptionタグを動的に変更する" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//ruby%20on%20rails/2015/02/25/active-admin-select.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			</li>
 		<li>
 			<!-- Pocket -->
 			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
 			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
 		</li>		
-		<li>
+		<li  style="margine-left: 10px;!important">
 			<!-- Vertical Twitter -->
 			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		</li>				
-		<li>
-			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//ruby%20on%20rails/2015/02/25/active-admin-select.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
-		</li>				
-		<li style="margine-left: 10px;!important">
-			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Active Admin管理者画面でoptionタグを動的に変更する" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-		</li>		
+		</li>
 	</ul>
 </div>
 
@@ -251,21 +251,36 @@
 
 <p>今回はAjax等を使わず、jsで手軽さを重視して作成しました。管理者画面のような場合はこれで十分な場合も多いのではないでしょうか。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno"> 1</span> <span class="n">f</span><span class="o">.</span><span class="n">input</span> <span class="ss">:prefecture</span><span class="p">,</span> <span class="ss">:input_html</span> <span class="o">=&gt;</span> <span class="p">{</span>
-<span class="lineno"> 2</span>         <span class="ss">:onchange</span> <span class="o">=&gt;</span> <span class="s2">&quot;</span>
-<span class="lineno"> 3</span> <span class="s2">          var prefecture_id = $(this).val();</span>
-<span class="lineno"> 4</span> <span class="s2">          $(&#39;#search_info_city_id&#39;).val(0).find(&#39;option&#39;).each(function(){</span>
-<span class="lineno"> 5</span> <span class="s2">            var $option = $(this);</span>
-<span class="lineno"> 6</span> <span class="s2">            var isThisPrefecure = ($option.attr(&#39;data-prefecture&#39;) == prefecture_id);</span>
-<span class="lineno"> 7</span> <span class="s2">            if (!isThisPrefecure) {</span>
-<span class="lineno"> 8</span> <span class="s2">              $option.remove();</span>
-<span class="lineno"> 9</span> <span class="s2">            }</span>
-<span class="lineno">10</span> <span class="s2">          });</span>
-<span class="lineno">11</span> <span class="s2">        &quot;</span>
-<span class="lineno">12</span>       <span class="p">}</span>
-<span class="lineno">13</span> <span class="n">f</span><span class="o">.</span><span class="n">input</span> <span class="ss">:city</span><span class="p">,</span> <span class="ss">collection</span><span class="p">:</span> <span class="no">City</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">c</span><span class="o">|</span>
-<span class="lineno">14</span>  <span class="o">[</span><span class="n">c</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;data-prefecture&quot;</span> <span class="o">=&gt;</span> <span class="n">c</span><span class="o">.</span><span class="n">prefecture_id</span><span class="p">}</span><span class="o">]</span>
-<span class="lineno">15</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td><td class="code"><pre><span class="n">f</span><span class="p">.</span><span class="nf">input</span> <span class="ss">:prefecture</span><span class="p">,</span> <span class="ss">:input_html</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="ss">:onchange</span> <span class="o">=&gt;</span> <span class="s2">"
+          var prefecture_id = $(this).val();
+          $('#search_info_city_id').val(0).find('option').each(function(){
+            var $option = $(this);
+            var isThisPrefecure = ($option.attr('data-prefecture') == prefecture_id);
+            if (!isThisPrefecure) {
+              $option.remove();
+            }
+          });
+        "</span>
+      <span class="p">}</span>
+<span class="n">f</span><span class="p">.</span><span class="nf">input</span> <span class="ss">:city</span><span class="p">,</span> <span class="ss">collection: </span><span class="no">City</span><span class="p">.</span><span class="nf">all</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">c</span><span class="o">|</span>
+    <span class="p">[</span><span class="n">c</span><span class="p">.</span><span class="nf">name</span><span class="p">,</span> <span class="n">c</span><span class="p">.</span><span class="nf">id</span><span class="p">,</span> <span class="p">{</span><span class="s2">"data-prefecture"</span> <span class="o">=&gt;</span> <span class="n">c</span><span class="p">.</span><span class="nf">prefecture_id</span><span class="p">}]</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
     
 
 <p>Active Adminの各モデルのコードにこうやって書いてしまうのはあまり行儀よくないかもですが、とりあえずたくさんある日本全国の市町村から１つの市町村を選択するのは本当に心が折れていたので、だいぶ楽になりました。間違った都道府県を選択してしまうと、ページをリロードしなくてはいけない等問題ありでユーザー用のページにはしっかりと設計しないといけませんが。      </p>

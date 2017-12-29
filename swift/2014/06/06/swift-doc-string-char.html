@@ -221,24 +221,24 @@
 					<div id="social-buttom">
 	<!-- Social Buttoms -->
 	<ul>
+		<li id="hatena-area" style="margin-right: 30px">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="The Swift Programming Language ~ Strings and Characters" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//swift/2014/06/06/swift-doc-string-char.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			</li>
 		<li>
 			<!-- Pocket -->
 			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
 			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
 		</li>		
-		<li>
+		<li  style="margine-left: 10px;!important">
 			<!-- Vertical Twitter -->
 			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		</li>				
-		<li>
-			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//swift/2014/06/06/swift-doc-string-char.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
-		</li>				
-		<li style="margine-left: 10px;!important">
-			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="The Swift Programming Language ~ Strings and Characters" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-		</li>		
+		</li>
 	</ul>
 </div>
 
@@ -259,15 +259,19 @@
 
 <p>String は順序のある Character type の集まり。だた一つの Character を作成するには、下記のように明示的に Character を書く。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="nl">yenSign</span><span class="p">:</span> <span class="n">Character</span> <span class="o">=</span> <span class="s">&quot;¥&quot;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>let yenSign: Character = "¥"<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h4 id="3.-文字列の長さ">3. 文字列の長さ</h4>
 
 <p>文字列の長さを得るには、countElemetns というグローバル関数を使う。Swift では、英語でない言語や、絵文字をサポートしているので、文字によって、一つ一つの文字が異なるメモリ容量を持っています。そのため、文字列の長さを得るには、C のように始まりと終わりのポインタの差を返すといった単純なものではなく、文字列の各文字を全てチェックする必要があります。長い文字列を処理する際には、注意。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">unusualMenagerie</span> <span class="o">=</span> <span class="s">&quot;Koala 🐨, Snail 🐌, Penguin 🐧, Dromedary 🐪&quot;</span>
-<span class="lineno">2</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;unusualMenagerie has \(countElements(unusualMenagerie)) characters&quot;</span><span class="p">)</span>
-<span class="lineno">3</span> <span class="c1">// unusualMenagerie has 40 characters</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>let unusualMenagerie = "Koala 🐨, Snail 🐌, Penguin 🐧, Dromedary 🐪"
+println("unusualMenagerie has \(countElements(unusualMenagerie)) characters")
+// unusualMenagerie has 40 characters<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Objective-C の NSString の length プロパティと countElements が返す値は異なることがあります。NSString の length は 16bits コードに基づいているためです。Swift で NSString の length にアクセスする場合には、utf16count というものが使われます。</p>
 
@@ -275,28 +279,50 @@
 
 <p>hasPrefix と hasSuffix という文字列比較のメソッドがある。コードを見た方がわかりやすいと思います。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">let</span> <span class="n">fullName</span> <span class="o">=</span> <span class="p">[</span>
-<span class="lineno"> 2</span>         <span class="s">&quot;Kobayashi Kazuya&quot;</span><span class="p">,</span>
-<span class="lineno"> 3</span>         <span class="s">&quot;Kobayashi Taro&quot;</span><span class="p">,</span>
-<span class="lineno"> 4</span>         <span class="s">&quot;Suzuki Kazuya&quot;</span><span class="p">,</span>
-<span class="lineno"> 5</span>         <span class="s">&quot;Suzuki Taro&quot;</span>
-<span class="lineno"> 6</span> <span class="p">]</span>
-<span class="lineno"> 7</span>         
-<span class="lineno"> 8</span> <span class="n">var</span> <span class="n">numKobayashi</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="lineno"> 9</span> <span class="k">for</span> <span class="n">name</span> <span class="k">in</span> <span class="n">fullName</span> <span class="p">{</span>
-<span class="lineno">10</span>  <span class="k">if</span> <span class="n">name</span><span class="p">.</span><span class="n">hasPrefix</span><span class="p">(</span><span class="s">&quot;Kobayashi&quot;</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">11</span>      <span class="o">++</span><span class="n">numKobayashi</span>
-<span class="lineno">12</span>  <span class="p">}</span>
-<span class="lineno">13</span> <span class="p">}</span>
-<span class="lineno">14</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;\(numKobayashi) Kobayashi here!&quot;</span><span class="p">)</span> <span class="c1">// 2</span>
-<span class="lineno">15</span>         
-<span class="lineno">16</span> <span class="n">var</span> <span class="n">numKazuya</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="lineno">17</span> <span class="k">for</span> <span class="n">name</span> <span class="k">in</span> <span class="n">fullName</span> <span class="p">{</span>
-<span class="lineno">18</span>  <span class="k">if</span> <span class="n">name</span><span class="p">.</span><span class="n">hasSuffix</span><span class="p">(</span><span class="s">&quot;Kazuya&quot;</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">19</span>      <span class="o">++</span><span class="n">numKazuya</span>
-<span class="lineno">20</span>  <span class="p">}</span>
-<span class="lineno">21</span> <span class="p">}</span>
-<span class="lineno">22</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;\(numKazuya) Kazuya here!&quot;</span><span class="p">)</span> <span class="c1">// 2</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></td><td class="code"><pre>let fullName = [
+        "Kobayashi Kazuya",
+        "Kobayashi Taro",
+        "Suzuki Kazuya",
+        "Suzuki Taro"
+]
+        
+var numKobayashi = 0
+for name in fullName {
+    if name.hasPrefix("Kobayashi") {
+        ++numKobayashi
+    }
+}
+println("\(numKobayashi) Kobayashi here!") // 2
+        
+var numKazuya = 0
+for name in fullName {
+    if name.hasSuffix("Kazuya") {
+        ++numKazuya
+    }
+}
+println("\(numKazuya) Kazuya here!") // 2<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 					</div>
 

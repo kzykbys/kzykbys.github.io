@@ -221,24 +221,24 @@
 					<div id="social-buttom">
 	<!-- Social Buttoms -->
 	<ul>
+		<li id="hatena-area" style="margin-right: 30px">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Heroku で css が適応されない問題" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//ruby%20on%20rails/2013/11/26/heroku-css.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			</li>
 		<li>
 			<!-- Pocket -->
 			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
 			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
 		</li>		
-		<li>
+		<li  style="margine-left: 10px;!important">
 			<!-- Vertical Twitter -->
 			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		</li>				
-		<li>
-			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//ruby%20on%20rails/2013/11/26/heroku-css.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
-		</li>				
-		<li style="margine-left: 10px;!important">
-			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Heroku で css が適応されない問題" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-		</li>		
+		</li>
 	</ul>
 </div>
 
@@ -251,15 +251,21 @@
 
 <p>ローカルで Rails を書き、Heroku にデプロイすると css が適応されないという問題に出くわしました。調べに調べ、Heroku に関する設定等はチェックしたはずが、なかなか解決できなかったのですが、下記のコマンドを実行するとローカルと同じ環境を再現することに成功しました。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="c1"># もし Heroku のデプロイに失敗したときは、次のコマンドを試してみて下さい。</span>
-<span class="lineno">2</span> <span class="err">$</span> <span class="n">rake</span> <span class="ss">assets</span><span class="p">:</span><span class="n">precompile</span>
-<span class="lineno">3</span> <span class="err">$</span> <span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
-<span class="lineno">4</span> <span class="err">$</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;Add precompiled assets for Heroku&quot;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="c1"># もし Heroku のデプロイに失敗したときは、次のコマンドを試してみて下さい。</span>
+<span class="err">$</span> <span class="n">rake</span> <span class="n">assets</span><span class="ss">:precompile</span>
+<span class="err">$</span> <span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+<span class="err">$</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">"Add precompiled assets for Heroku"</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Herokuにデプロイする時に出る、このメッセージが関係あるのかな。ちょっと分からないです。 </p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="o">-----&gt;</span> <span class="no">Writing</span> <span class="n">config</span><span class="o">/</span><span class="n">database</span><span class="o">.</span><span class="n">yml</span> <span class="n">to</span> <span class="n">read</span> <span class="n">from</span> <span class="no">DATABASE_URL</span>
-<span class="lineno">2</span>              <span class="no">Detected</span> <span class="n">manifest</span> <span class="n">file</span><span class="p">,</span> <span class="n">assuming</span> <span class="n">assets</span> <span class="n">were</span> <span class="n">compiled</span> <span class="n">locally</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="o">-----&gt;</span> <span class="no">Writing</span> <span class="n">config</span><span class="o">/</span><span class="n">database</span><span class="p">.</span><span class="nf">yml</span> <span class="n">to</span> <span class="n">read</span> <span class="n">from</span> <span class="no">DATABASE_URL</span>
+             <span class="no">Detected</span> <span class="n">manifest</span> <span class="n">file</span><span class="p">,</span> <span class="n">assuming</span> <span class="n">assets</span> <span class="n">were</span> <span class="n">compiled</span> <span class="n">locally</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h3 id="参考">参考</h3>
 

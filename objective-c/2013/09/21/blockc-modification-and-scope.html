@@ -221,24 +221,24 @@
 					<div id="social-buttom">
 	<!-- Social Buttoms -->
 	<ul>
+		<li id="hatena-area" style="margin-right: 30px">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Block'c  Modification and Scope" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//objective-c/2013/09/21/blockc-modification-and-scope.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			</li>
 		<li>
 			<!-- Pocket -->
 			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
 			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
 		</li>		
-		<li>
+		<li  style="margine-left: 10px;!important">
 			<!-- Vertical Twitter -->
 			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		</li>				
-		<li>
-			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//objective-c/2013/09/21/blockc-modification-and-scope.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
-		</li>				
-		<li style="margine-left: 10px;!important">
-			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Block'c  Modification and Scope" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-		</li>		
+		</li>
 	</ul>
 </div>
 
@@ -251,16 +251,26 @@
 
 <p>To modify variable, we should use &quot;__block&quot; when we declare the variable. Otherwise, our compiler display error if we try to modify variable. </p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span>  <span class="k">__block</span> <span class="bp">NSString</span> <span class="o">*</span><span class="n">blala</span>    <span class="o">=</span> <span class="s">@&quot;Use __block!!&quot;</span><span class="p">;</span>
-<span class="lineno"> 2</span>  <span class="bp">NSString</span>         <span class="o">*</span><span class="n">foolish</span>  <span class="o">=</span> <span class="s">@&quot;Error will couse&quot;</span><span class="p">;</span>
-<span class="lineno"> 3</span>         
-<span class="lineno"> 4</span>  <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">testBlocks</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span>   <span class="o">=</span>
-<span class="lineno"> 5</span>         <span class="o">^</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
-<span class="lineno"> 6</span>             
-<span class="lineno"> 7</span>             <span class="n">blala</span>   <span class="o">=</span> <span class="s">@&quot;It&#39;s OK.&quot;</span><span class="p">;</span>
-<span class="lineno"> 8</span>             <span class="n">foolish</span> <span class="o">=</span> <span class="s">@&quot;It&#39;s not allowed&quot;</span><span class="p">;</span> <span class="c1">// Error</span>
-<span class="lineno"> 9</span>             
-<span class="lineno">10</span>         <span class="p">};</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre> __block NSString *blala    = @"Use __block!!";
+ NSString         *foolish  = @"Error will couse";
+        
+ void (^testBlocks)(void)   =
+        ^(void){
+            
+            blala   = @"It's OK.";
+            foolish = @"It's not allowed"; // Error
+            
+        };<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>This code doesn&#39;t work because we are trying to modify foolish variable. If we comment the variable out, the code works. So, we should add __block at the declaration of this variable to change the value in Blocks.</p>
 
@@ -268,35 +278,59 @@
 
 <p>The scope of Blocks is more confusing. Let&#39;s take a look a simple example.</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span>  <span class="bp">NSString</span> <span class="o">*</span><span class="n">blala</span> <span class="o">=</span> <span class="s">@&quot;BLOCKS!!&quot;</span><span class="p">;</span>
-<span class="lineno"> 2</span>         
-<span class="lineno"> 3</span>  <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">output</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span>
-<span class="lineno"> 4</span>         <span class="o">^</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
-<span class="lineno"> 5</span>             
-<span class="lineno"> 6</span>             <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Blala : %@&quot;</span><span class="p">,</span><span class="n">blala</span><span class="p">);</span>
-<span class="lineno"> 7</span>             
-<span class="lineno"> 8</span>         <span class="p">};</span>
-<span class="lineno"> 9</span>         
-<span class="lineno">10</span>         <span class="n">blala</span> <span class="o">=</span> <span class="s">@&quot;Calm down.&quot;</span><span class="p">;</span>
-<span class="lineno">11</span>         
-<span class="lineno">12</span>         <span class="n">output</span><span class="p">();</span> <span class="c1">// Output : BLOCKS!</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre> NSString *blala = @"BLOCKS!!";
+        
+ void (^output)(void) =
+        ^(void){
+            
+            NSLog(@"Blala : %@",blala);
+            
+        };
+        
+        blala = @"Calm down.";
+        
+        output(); // Output : BLOCKS!<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>If we think blocks is a like function, we expect the out put which is &quot;Calm down.&quot;. But actually this code will show &quot;BLOCKS!!&quot;. The scope that blocks access is determined at the time blocks is called. Therefore,  in this case ( 1. @&quot;BLOCKS!!&quot; 2. Blocks 3. @&quot;Calm down&quot;), this output is &quot;BLOCKS!!&quot;</p>
 
 <p>I expected that calling this block to show &quot;Calm down&quot;. To do so, we should use &quot;__block&quot; again like before.</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">__block</span> <span class="bp">NSString</span> <span class="o">*</span><span class="n">blala</span> <span class="o">=</span> <span class="s">@&quot;BLOCKS!!&quot;</span><span class="p">;</span>
-<span class="lineno"> 2</span>         
-<span class="lineno"> 3</span> <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">output</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span>
-<span class="lineno"> 4</span>         <span class="o">^</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
-<span class="lineno"> 5</span>             
-<span class="lineno"> 6</span>             <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Blala : %@&quot;</span><span class="p">,</span><span class="n">blala</span><span class="p">);</span>
-<span class="lineno"> 7</span>             
-<span class="lineno"> 8</span>         <span class="p">};</span>
-<span class="lineno"> 9</span>         
-<span class="lineno">10</span> <span class="n">blala</span> <span class="o">=</span> <span class="s">@&quot;Calm down.&quot;</span><span class="p">;</span>
-<span class="lineno">11</span>         
-<span class="lineno">12</span> <span class="n">output</span><span class="p">();</span> <span class="c1">// Output : Calm down</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre>__block NSString *blala = @"BLOCKS!!";
+        
+void (^output)(void) =
+        ^(void){
+            
+            NSLog(@"Blala : %@",blala);
+            
+        };
+        
+blala = @"Calm down.";
+        
+output(); // Output : Calm down<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Just by adding __block, we changed the output. </p>
 

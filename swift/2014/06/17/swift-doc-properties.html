@@ -221,24 +221,24 @@
 					<div id="social-buttom">
 	<!-- Social Buttoms -->
 	<ul>
+		<li id="hatena-area" style="margin-right: 30px">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="The Swift Programming Language ~ Properties [Stored Properties & Computed Properties]" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//swift/2014/06/17/swift-doc-properties.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			</li>
 		<li>
 			<!-- Pocket -->
 			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
 			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
 		</li>		
-		<li>
+		<li  style="margine-left: 10px;!important">
 			<!-- Vertical Twitter -->
 			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		</li>				
-		<li>
-			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//swift/2014/06/17/swift-doc-properties.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
-		</li>				
-		<li style="margine-left: 10px;!important">
-			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="The Swift Programming Language ~ Properties [Stored Properties & Computed Properties]" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-		</li>		
+		</li>
 	</ul>
 </div>
 
@@ -257,44 +257,69 @@
 
 <p>Stored Properties は一番シンプルなプロパティです。クラスと構造体のインスタンスの中に保存されます。変数とコンスタント、両方とも使用可能です。デフォルト値を設定することもできますし、初期化の際に値を設定・修正することもできます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">FixedLengthRange</span> <span class="p">{</span>
-<span class="lineno">2</span>     <span class="n">var</span> <span class="nl">firstValue</span><span class="p">:</span> <span class="n">Int</span>
-<span class="lineno">3</span>     <span class="n">let</span> <span class="nl">length</span><span class="p">:</span> <span class="n">Int</span>
-<span class="lineno">4</span> <span class="p">}</span>
-<span class="lineno">5</span> <span class="n">var</span> <span class="n">rangeOfThreeItems</span> <span class="o">=</span> <span class="n">FixedLengthRange</span><span class="p">(</span><span class="nl">firstValue</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">length</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
-<span class="lineno">6</span> <span class="c1">// the range represents integer values 0, 1, and 2</span>
-<span class="lineno">7</span> <span class="n">rangeOfThreeItems</span><span class="p">.</span><span class="n">firstValue</span> <span class="o">=</span> <span class="mi">6</span>
-<span class="lineno">8</span> <span class="c1">// the range now represents integer values 6, 7, and 8</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre>struct FixedLengthRange {
+    var firstValue: Int
+    let length: Int
+}
+var rangeOfThreeItems = FixedLengthRange(firstValue: 0, length: 3)
+// the range represents integer values 0, 1, and 2
+rangeOfThreeItems.firstValue = 6
+// the range now represents integer values 6, 7, and 8<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>上記の構造体は、変数のプロパティとコンスタントのプロパティを持っています。length コンスタントプロパティは、初期化後、修正することができません。</p>
 
 <p>この構造体は、変数として宣言されているので、変数プロパティを変更することができます。この例では、firstValue を変更しています。しかし、構造体がコンスタントの場合には、変更することができません。たとえ、その構造体のプロパティが firstValue のように変数として定義されていてもです。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">rangeOfFourItems</span> <span class="o">=</span> <span class="n">FixedLengthRange</span><span class="p">(</span><span class="nl">firstValue</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">length</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span>
-<span class="lineno">2</span> <span class="c1">// this range represents integer values 0, 1, 2, and 3</span>
-<span class="lineno">3</span> <span class="n">rangeOfFourItems</span><span class="p">.</span><span class="n">firstValue</span> <span class="o">=</span> <span class="mi">6</span>
-<span class="lineno">4</span> <span class="c1">// this will report an error, even thought firstValue is a variable property</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>let rangeOfFourItems = FixedLengthRange(firstValue: 0, length: 4)
+// this range represents integer values 0, 1, 2, and 3
+rangeOfFourItems.firstValue = 6
+// this will report an error, even thought firstValue is a variable property<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>この挙動は、<a href="http://blog.kazuya.co/swift/2014/06/16/swift-doc-class-structur.html">以前</a> みたように、構造体はバリュー、クラスはリファレンスという違いから生まれるものです。構造体は、バリューなので、一度コンスタントとして宣言されると変更することができません。クラスの場合には、クラスインスタンスの変数・コンスタントは、リファレンスを持っているだけなので、参照先の値を変更することができます。もちろん、参照先のプロパティは、コンスタントではなく、変数である必要があります。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">class</span> <span class="n">FixedLengthRange</span> <span class="p">{</span>
-<span class="lineno">2</span>     <span class="n">var</span> <span class="nl">firstValue</span><span class="p">:</span> <span class="n">Int</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="lineno">3</span>     <span class="n">let</span> <span class="nl">length</span><span class="p">:</span> <span class="n">Int</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="lineno">4</span> <span class="p">}</span>
-<span class="lineno">5</span> 
-<span class="lineno">6</span> <span class="n">let</span> <span class="n">rangeOfFourItems</span> <span class="o">=</span> <span class="n">FixedLengthRange</span><span class="p">()</span>
-<span class="lineno">7</span> <span class="n">rangeOfFourItems</span><span class="p">.</span><span class="n">firstValue</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1">// can change even rangeOfFourItems is constant</span>
-<span class="lineno">8</span> <span class="n">rangeOfFourItems</span><span class="p">.</span><span class="n">length</span> <span class="o">=</span> <span class="mi">10</span>     <span class="c1">// cannot change because length is constant</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre>class FixedLengthRange {
+    var firstValue: Int = 0
+    let length: Int = 0
+}
+
+let rangeOfFourItems = FixedLengthRange()
+rangeOfFourItems.firstValue = 10 // can change even rangeOfFourItems is constant
+rangeOfFourItems.length = 10     // cannot change because length is constant<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h4 id="2.-lazy-stored-properties">2. Lazy Stored Properties</h4>
 
 <p>Lazy stored propeties というものがあります。これは、プロパティが初期値が使用される時まで作成されないというものです。初期値が外的要因に左右される場合や、初期化するのに時間がかかり実際に使用される時まで実行されることが望ましくない場合に便利です。Lazy stored peropeties を使用するには、<code>@lazy</code> キーワードをプロパティの前に使用します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">class</span> <span class="n">DataManager</span> <span class="p">{</span>
-<span class="lineno">2</span>     <span class="p">@</span><span class="n">lazy</span> <span class="n">var</span> <span class="n">importer</span> <span class="o">=</span> <span class="n">DataImporter</span><span class="p">()</span>
-<span class="lineno">3</span>     <span class="n">var</span> <span class="n">data</span> <span class="o">=</span> <span class="n">String</span><span class="p">[]()</span>
-<span class="lineno">4</span>     <span class="c1">// the DataManager class would provide data management functionality here</span>
-<span class="lineno">5</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>class DataManager {
+    @lazy var importer = DataImporter()
+    var data = String[]()
+    // the DataManager class would provide data management functionality here
+}<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>この DataManager クラスは、DataImporter クラスの importer プロパティを持ちます。DataImporter クラスは、データをインプットファイル等からロードし、コンテンツを処理して、クラスを初期化することが想定されます。つまり、DataImporter のインスタンスを作成するのに時間がかかります。そのため、DataManager を作成すると同時に、DataImporter クラスのプロパティを初期化することはあまり得策ではありません。そこで、実際にこのプロパティを使用する時まで、このプロパティを初期化するのを遅らせたい場合に、<code>@lazy</code> を使用します。</p>
 
@@ -302,36 +327,63 @@
 
 <p>Stored Properties の他に、Computed Properties というものがあります。これは、クラスと構造体、さらに Enumeration でも使用できます。このプロパティは実際に値を保存しているのではなく、他のプロパティ等の値を計算して、その値を返すというプロパティです。Computed Properties はその都度計算されるので、変数として宣言されなければなりません。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">struct</span> <span class="n">Point</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="n">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
-<span class="lineno"> 3</span> <span class="p">}</span>
-<span class="lineno"> 4</span> <span class="k">struct</span> <span class="n">Size</span> <span class="p">{</span>
-<span class="lineno"> 5</span>     <span class="n">var</span> <span class="n">width</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mf">0.0</span>
-<span class="lineno"> 6</span> <span class="p">}</span>
-<span class="lineno"> 7</span> <span class="k">struct</span> <span class="n">Rect</span> <span class="p">{</span>
-<span class="lineno"> 8</span>     <span class="n">var</span> <span class="n">origin</span> <span class="o">=</span> <span class="n">Point</span><span class="p">()</span>
-<span class="lineno"> 9</span>     <span class="n">var</span> <span class="n">size</span> <span class="o">=</span> <span class="n">Size</span><span class="p">()</span>
-<span class="lineno">10</span>     <span class="n">var</span> <span class="nl">center</span><span class="p">:</span> <span class="n">Point</span> <span class="p">{</span>
-<span class="lineno">11</span>      <span class="n">get</span> <span class="p">{</span>
-<span class="lineno">12</span>          <span class="n">let</span> <span class="n">centerX</span> <span class="o">=</span> <span class="n">origin</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-<span class="lineno">13</span>          <span class="n">let</span> <span class="n">centerY</span> <span class="o">=</span> <span class="n">origin</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-<span class="lineno">14</span>          <span class="k">return</span> <span class="n">Point</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="n">centerX</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="n">centerY</span><span class="p">)</span>
-<span class="lineno">15</span>      <span class="p">}</span>
-<span class="lineno">16</span>      <span class="n">set</span><span class="p">(</span><span class="n">newCenter</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">17</span>          <span class="n">origin</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">newCenter</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-<span class="lineno">18</span>          <span class="n">origin</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">newCenter</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-<span class="lineno">19</span>      <span class="p">}</span>
-<span class="lineno">20</span>     <span class="p">}</span>
-<span class="lineno">21</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></td><td class="code"><pre>struct Point {
+    var x = 0.0, y = 0.0
+}
+struct Size {
+    var width = 0.0, height = 0.0
+}
+struct Rect {
+    var origin = Point()
+    var size = Size()
+    var center: Point {
+        get {
+            let centerX = origin.x + (size.width / 2)
+            let centerY = origin.y + (size.height / 2)
+            return Point(x: centerX, y: centerY)
+        }
+        set(newCenter) {
+            origin.x = newCenter.x - (size.width / 2)
+            origin.y = newCenter.y - (size.height / 2)
+        }
+    }
+}<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>3 つの構造体があります。この Rect 構造体の center プロパティが、Computed Properties です。この center は、origin プロパティと size プロパティの値を使用して、値を返してます。こういうプロパティを Computed Properties と呼ぶようです。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">square</span> <span class="o">=</span> <span class="n">Rect</span><span class="p">(</span><span class="nl">origin</span><span class="p">:</span> <span class="n">Point</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">),</span>
-<span class="lineno">2</span>     <span class="nl">size</span><span class="p">:</span> <span class="n">Size</span><span class="p">(</span><span class="nl">width</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">))</span>
-<span class="lineno">3</span> <span class="n">let</span> <span class="n">initialSquareCenter</span> <span class="o">=</span> <span class="n">square</span><span class="p">.</span><span class="n">center</span>
-<span class="lineno">4</span> <span class="n">square</span><span class="p">.</span><span class="n">center</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="mf">15.0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mf">15.0</span><span class="p">)</span>
-<span class="lineno">5</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;square.origin is now at (\(square.origin.x), \(square.origin.y))&quot;</span><span class="p">)</span>
-<span class="lineno">6</span> <span class="c1">// prints &quot;square.origin is now at (10.0, 10.0)</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>var square = Rect(origin: Point(x: 0.0, y: 0.0),
+    size: Size(width: 10.0, height: 10.0))
+let initialSquareCenter = square.center
+square.center = Point(x: 15.0, y: 15.0)
+println("square.origin is now at (\(square.origin.x), \(square.origin.y))")
+// prints "square.origin is now at (10.0, 10.0)<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>このように使用します。</p>
 
@@ -339,22 +391,35 @@
 
 <p>上記のコードの Computed Properties のセッターをもう少し簡単に書くことができます。新しい値への名前を設定しなかった場合、Swift は自動的に newValue という名前を用意してくれ、それを使用することができます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">set</span> <span class="p">{</span>
-<span class="lineno">2</span>         <span class="n">origin</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">newValue</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-<span class="lineno">3</span>         <span class="n">origin</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">newValue</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-<span class="lineno">4</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre>set {
+        origin.x = newValue.x - (size.width / 2)
+        origin.y = newValue.y - (size.height / 2)
+}<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Computed Properties において、ゲッターはもちろん必要ですが、セッターは必ず実装しなければならないというわけではありません。つまり、read-only の Computed Properties を作成できます。<code>get</code> キーワードを削除し、下記の volume プロパティのように実装すれば OK です。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">struct</span> <span class="n">Cuboid</span> <span class="p">{</span>
-<span class="lineno">2</span>     <span class="n">var</span> <span class="n">width</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">depth</span> <span class="o">=</span> <span class="mf">0.0</span>
-<span class="lineno">3</span>     <span class="n">var</span> <span class="nl">volume</span><span class="p">:</span> <span class="n">Double</span> <span class="p">{</span>
-<span class="lineno">4</span>     <span class="k">return</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span> <span class="o">*</span> <span class="n">depth</span>
-<span class="lineno">5</span>     <span class="p">}</span>
-<span class="lineno">6</span> <span class="p">}</span>
-<span class="lineno">7</span> <span class="n">let</span> <span class="n">fourByFiveByTwo</span> <span class="o">=</span> <span class="n">Cuboid</span><span class="p">(</span><span class="nl">width</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span> <span class="nl">depth</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">)</span>
-<span class="lineno">8</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)&quot;</span><span class="p">)</span>
-<span class="lineno">9</span> <span class="c1">// prints &quot;the volume of fourByFiveByTwo is 40.0</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre>struct Cuboid {
+    var width = 0.0, height = 0.0, depth = 0.0
+    var volume: Double {
+    return width * height * depth
+    }
+}
+let fourByFiveByTwo = Cuboid(width: 4.0, height: 5.0, depth: 2.0)
+println("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
+// prints "the volume of fourByFiveByTwo is 40.0<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 					</div>
 

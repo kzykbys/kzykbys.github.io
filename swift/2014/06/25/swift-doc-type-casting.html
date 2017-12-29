@@ -221,24 +221,24 @@
 					<div id="social-buttom">
 	<!-- Social Buttoms -->
 	<ul>
+		<li id="hatena-area" style="margin-right: 30px">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="The Swift Programming Language ~ Type Casting" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//swift/2014/06/25/swift-doc-type-casting.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			</li>
 		<li>
 			<!-- Pocket -->
 			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
 			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
 		</li>		
-		<li>
+		<li  style="margine-left: 10px;!important">
 			<!-- Vertical Twitter -->
 			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		</li>				
-		<li>
-			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//swift/2014/06/25/swift-doc-type-casting.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
-		</li>				
-		<li style="margine-left: 10px;!important">
-			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="The Swift Programming Language ~ Type Casting" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-		</li>		
+		</li>
 	</ul>
 </div>
 
@@ -257,39 +257,69 @@
 
 <p>まずは、この Type Casting をデモンストレイトするためにクラスを用意します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">class</span> <span class="n">MediaItem</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="n">var</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span>
-<span class="lineno"> 3</span>     <span class="n">init</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 4</span>         <span class="nb">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-<span class="lineno"> 5</span>     <span class="p">}</span>
-<span class="lineno"> 6</span> <span class="p">}</span>
-<span class="lineno"> 7</span> 
-<span class="lineno"> 8</span> <span class="k">class</span> <span class="nl">Movie</span><span class="p">:</span> <span class="n">MediaItem</span> <span class="p">{</span>
-<span class="lineno"> 9</span>     <span class="n">var</span> <span class="nl">director</span><span class="p">:</span> <span class="n">String</span>
-<span class="lineno">10</span>     <span class="n">init</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">director</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">11</span>         <span class="nb">self</span><span class="p">.</span><span class="n">director</span> <span class="o">=</span> <span class="n">director</span>
-<span class="lineno">12</span>         <span class="nb">super</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">name</span><span class="p">)</span>
-<span class="lineno">13</span>     <span class="p">}</span>
-<span class="lineno">14</span> <span class="p">}</span>
-<span class="lineno">15</span>  
-<span class="lineno">16</span> <span class="k">class</span> <span class="nl">Song</span><span class="p">:</span> <span class="n">MediaItem</span> <span class="p">{</span>
-<span class="lineno">17</span>     <span class="n">var</span> <span class="nl">artist</span><span class="p">:</span> <span class="n">String</span>
-<span class="lineno">18</span>     <span class="n">init</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">artist</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">19</span>         <span class="nb">self</span><span class="p">.</span><span class="n">artist</span> <span class="o">=</span> <span class="n">artist</span>
-<span class="lineno">20</span>         <span class="nb">super</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">name</span><span class="p">)</span>
-<span class="lineno">21</span>     <span class="p">}</span>
-<span class="lineno">22</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></td><td class="code"><pre>class MediaItem {
+    var name: String
+    init(name: String) {
+        self.name = name
+    }
+}
+
+class Movie: MediaItem {
+    var director: String
+    init(name: String, director: String) {
+        self.director = director
+        super.init(name: name)
+    }
+}
+ 
+class Song: MediaItem {
+    var artist: String
+    init(name: String, artist: String) {
+        self.artist = artist
+        super.init(name: name)
+    }
+}<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>そして、初期化。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="n">library</span> <span class="o">=</span> <span class="p">[</span>
-<span class="lineno">2</span>     <span class="n">Movie</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Casablanca&quot;</span><span class="p">,</span> <span class="nl">director</span><span class="p">:</span> <span class="s">&quot;Michael Curtiz&quot;</span><span class="p">),</span>
-<span class="lineno">3</span>     <span class="n">Song</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Blue Suede Shoes&quot;</span><span class="p">,</span> <span class="nl">artist</span><span class="p">:</span> <span class="s">&quot;Elvis Presley&quot;</span><span class="p">),</span>
-<span class="lineno">4</span>     <span class="n">Movie</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Citizen Kane&quot;</span><span class="p">,</span> <span class="nl">director</span><span class="p">:</span> <span class="s">&quot;Orson Welles&quot;</span><span class="p">),</span>
-<span class="lineno">5</span>     <span class="n">Song</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;The One And Only&quot;</span><span class="p">,</span> <span class="nl">artist</span><span class="p">:</span> <span class="s">&quot;Chesney Hawkes&quot;</span><span class="p">),</span>
-<span class="lineno">6</span>     <span class="n">Song</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Never Gonna Give You Up&quot;</span><span class="p">,</span> <span class="nl">artist</span><span class="p">:</span> <span class="s">&quot;Rick Astley&quot;</span><span class="p">)</span>
-<span class="lineno">7</span> <span class="p">]</span>
-<span class="lineno">8</span> <span class="c1">// the type of &quot;library&quot; is inferred to be MediaItem[]&quot;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre>let library = [
+    Movie(name: "Casablanca", director: "Michael Curtiz"),
+    Song(name: "Blue Suede Shoes", artist: "Elvis Presley"),
+    Movie(name: "Citizen Kane", director: "Orson Welles"),
+    Song(name: "The One And Only", artist: "Chesney Hawkes"),
+    Song(name: "Never Gonna Give You Up", artist: "Rick Astley")
+]
+// the type of "library" is inferred to be MediaItem[]"<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>この library 配列は、Movie を Song のインスタンスを持っています。これらのインスタンスのスーパークラスは、どちらも MediaItem なので、Swift はこの共通のタイプ（クラス）を推論してくれます。つまり、library 配列は、<code>MediaItem[]</code> という型になります。</p>
 
@@ -297,19 +327,32 @@
 
 <p>あるタイプが（クラス）が、あるサブクラスであるかを確認するには、<code>is</code> オペレータを使います。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="n">var</span> <span class="n">movieCount</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="lineno"> 2</span> <span class="n">var</span> <span class="n">songCount</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="lineno"> 3</span>  
-<span class="lineno"> 4</span> <span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">library</span> <span class="p">{</span>
-<span class="lineno"> 5</span>     <span class="k">if</span> <span class="n">item</span> <span class="n">is</span> <span class="n">Movie</span> <span class="p">{</span>
-<span class="lineno"> 6</span>         <span class="o">++</span><span class="n">movieCount</span>
-<span class="lineno"> 7</span>     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">item</span> <span class="n">is</span> <span class="n">Song</span> <span class="p">{</span>
-<span class="lineno"> 8</span>         <span class="o">++</span><span class="n">songCount</span>
-<span class="lineno"> 9</span>     <span class="p">}</span>
-<span class="lineno">10</span> <span class="p">}</span>
-<span class="lineno">11</span>  
-<span class="lineno">12</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;Media library contains \(movieCount) movies and \(songCount) songs&quot;</span><span class="p">)</span>
-<span class="lineno">13</span> <span class="c1">// prints &quot;Media library contains 2 movies and 3 songs&quot;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre>var movieCount = 0
+var songCount = 0
+ 
+for item in library {
+    if item is Movie {
+        ++movieCount
+    } else if item is Song {
+        ++songCount
+    }
+}
+ 
+println("Media library contains \(movieCount) movies and \(songCount) songs")
+// prints "Media library contains 2 movies and 3 songs"<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>このコードは、library 配列が保持する要素が Movie インスタンスか Song インスタンスかを確認して、それぞれ数を数えています。読みやすいと思います。</p>
 
@@ -317,19 +360,32 @@
 
 <p>あるコンスタンス・変数が、あるサブクラスであることが推定される場合には、<code>as</code> オペレータを使いキャストします。もちろん、キャスティングは失敗することがあります。そのため <code>as?</code> という Optional にも対応しています。<code>as</code> を使い間違ったキャストをするとランタイムエラーになります。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">library</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="k">if</span> <span class="n">let</span> <span class="n">movie</span> <span class="o">=</span> <span class="n">item</span> <span class="n">as</span><span class="o">?</span> <span class="n">Movie</span> <span class="p">{</span>
-<span class="lineno"> 3</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;Movie: &#39;\(movie.name)&#39;, dir. \(movie.director)&quot;</span><span class="p">)</span>
-<span class="lineno"> 4</span>     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">let</span> <span class="n">song</span> <span class="o">=</span> <span class="n">item</span> <span class="n">as</span><span class="o">?</span> <span class="n">Song</span> <span class="p">{</span>
-<span class="lineno"> 5</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;Song: &#39;\(song.name)&#39;, by \(song.artist)&quot;</span><span class="p">)</span>
-<span class="lineno"> 6</span>     <span class="p">}</span>
-<span class="lineno"> 7</span> <span class="p">}</span>
-<span class="lineno"> 8</span>  
-<span class="lineno"> 9</span> <span class="c1">// Movie: &#39;Casablanca&#39;, dir. Michael Curtiz</span>
-<span class="lineno">10</span> <span class="c1">// Song: &#39;Blue Suede Shoes&#39;, by Elvis Presley</span>
-<span class="lineno">11</span> <span class="c1">// Movie: &#39;Citizen Kane&#39;, dir. Orson Welles</span>
-<span class="lineno">12</span> <span class="c1">// Song: &#39;The One And Only&#39;, by Chesney Hawkes</span>
-<span class="lineno">13</span> <span class="c1">// Song: &#39;Never Gonna Give You Up&#39;, by Rick Astley</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre>for item in library {
+    if let movie = item as? Movie {
+        println("Movie: '\(movie.name)', dir. \(movie.director)")
+    } else if let song = item as? Song {
+        println("Song: '\(song.name)', by \(song.artist)")
+    }
+}
+ 
+// Movie: 'Casablanca', dir. Michael Curtiz
+// Song: 'Blue Suede Shoes', by Elvis Presley
+// Movie: 'Citizen Kane', dir. Orson Welles
+// Song: 'The One And Only', by Chesney Hawkes
+// Song: 'Never Gonna Give You Up', by Rick Astley<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>この例は、各サブクラス特有のプロパティにアクセスしているので、キャスティング必須です。<code>as?</code> を使い条件分岐し、それぞれ対応しています。</p>
 
@@ -339,75 +395,132 @@
 
 <p>まずは、<code>AnyObject</code> からみていきます。<code>AnyObject</code> はどんなクラスタイプでも表すことができます。Cocoa API を扱っているときに、<code>AnyObject[]</code> を受け取ることがよくあります。Objective-C の id のようなものですかね。AnyObject がどんなタイプのインスタンスを持っているかわかっている時には、この AnyObject をキャストして使用できます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">let</span> <span class="nl">someObjects</span><span class="p">:</span> <span class="n">AnyObject</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span>
-<span class="lineno">2</span>     <span class="n">Movie</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;2001: A Space Odyssey&quot;</span><span class="p">,</span> <span class="nl">director</span><span class="p">:</span> <span class="s">&quot;Stanley Kubrick&quot;</span><span class="p">),</span>
-<span class="lineno">3</span>     <span class="n">Movie</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Moon&quot;</span><span class="p">,</span> <span class="nl">director</span><span class="p">:</span> <span class="s">&quot;Duncan Jones&quot;</span><span class="p">),</span>
-<span class="lineno">4</span>     <span class="n">Movie</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Alien&quot;</span><span class="p">,</span> <span class="nl">director</span><span class="p">:</span> <span class="s">&quot;Ridley Scott&quot;</span><span class="p">)</span>
-<span class="lineno">5</span> <span class="p">]</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>let someObjects: AnyObject[] = [
+    Movie(name: "2001: A Space Odyssey", director: "Stanley Kubrick"),
+    Movie(name: "Moon", director: "Duncan Jones"),
+    Movie(name: "Alien", director: "Ridley Scott")
+]<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>このように <code>AnyObject[]</code> に Movie のインスタンスを格納しています。この場合には、問題なくキャスト(<code>as</code>)して使用します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">for</span> <span class="n">object</span> <span class="k">in</span> <span class="n">someObjects</span> <span class="p">{</span>
-<span class="lineno">2</span>     <span class="n">let</span> <span class="n">movie</span> <span class="o">=</span> <span class="n">object</span> <span class="n">as</span> <span class="n">Movie</span>
-<span class="lineno">3</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;Movie: &#39;\(movie.name)&#39;, dir. \(movie.director)&quot;</span><span class="p">)</span>
-<span class="lineno">4</span> <span class="p">}</span>
-<span class="lineno">5</span> <span class="c1">// Movie: &#39;2001: A Space Odyssey&#39;, dir. Stanley Kubrick</span>
-<span class="lineno">6</span> <span class="c1">// Movie: &#39;Moon&#39;, dir. Duncan Jones</span>
-<span class="lineno">7</span> <span class="c1">// Movie: &#39;Alien&#39;, dir. Ridley Scott</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>for object in someObjects {
+    let movie = object as Movie
+    println("Movie: '\(movie.name)', dir. \(movie.director)")
+}
+// Movie: '2001: A Space Odyssey', dir. Stanley Kubrick
+// Movie: 'Moon', dir. Duncan Jones
+// Movie: 'Alien', dir. Ridley Scott<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>このようにより簡潔に書くこともできます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="k">for</span> <span class="n">movie</span> <span class="k">in</span> <span class="n">someObjects</span> <span class="n">as</span> <span class="n">Movie</span><span class="p">[]</span> <span class="p">{</span>
-<span class="lineno">2</span>     <span class="n">println</span><span class="p">(</span><span class="s">&quot;Movie: &#39;\(movie.name)&#39;, dir. \(movie.director)&quot;</span><span class="p">)</span>
-<span class="lineno">3</span> <span class="p">}</span>
-<span class="lineno">4</span> <span class="c1">// Movie: &#39;2001: A Space Odyssey&#39;, dir. Stanley Kubrick</span>
-<span class="lineno">5</span> <span class="c1">// Movie: &#39;Moon&#39;, dir. Duncan Jones</span>
-<span class="lineno">6</span> <span class="c1">// Movie: &#39;Alien&#39;, dir. Ridley Scott</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>for movie in someObjects as Movie[] {
+    println("Movie: '\(movie.name)', dir. \(movie.director)")
+}
+// Movie: '2001: A Space Odyssey', dir. Stanley Kubrick
+// Movie: 'Moon', dir. Duncan Jones
+// Movie: 'Alien', dir. Ridley Scott<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>次に <code>Any</code> をみていきます。<code>Any</code> は、どんなタイプのインスタンスも表すことができます。しかし、関数はできません。<code>AnyObject</code> は、どんなクラスタイプでしたが、<code>Any</code> は、文字通り関数以外何に対しても使えます。下記の例では、Int や Double, tuple 等を配列の中に保存しています。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno">1</span> <span class="n">var</span> <span class="n">things</span> <span class="o">=</span> <span class="n">Any</span><span class="p">[]()</span>
-<span class="lineno">2</span>  
-<span class="lineno">3</span> <span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="lineno">4</span> <span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
-<span class="lineno">5</span> <span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<span class="lineno">6</span> <span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mf">3.14159</span><span class="p">)</span>
-<span class="lineno">7</span> <span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">)</span>
-<span class="lineno">8</span> <span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">((</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">))</span>
-<span class="lineno">9</span> <span class="n">things</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">Movie</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;Ghostbusters&quot;</span><span class="p">,</span> <span class="nl">director</span><span class="p">:</span> <span class="s">&quot;Ivan Reitman&quot;</span><span class="p">))</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre>var things = Any[]()
+ 
+things.append(0)
+things.append(0.0)
+things.append(42)
+things.append(3.14159)
+things.append("hello")
+things.append((3.0, 5.0))
+things.append(Movie(name: "Ghostbusters", director: "Ivan Reitman"))<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>上記のようにこの things 変数は、どんなタイプでも格納しています。これを処理するために switch 文を使ってそれぞれ対応できます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="lineno"> 1</span> <span class="k">for</span> <span class="n">thing</span> <span class="k">in</span> <span class="n">things</span> <span class="p">{</span>
-<span class="lineno"> 2</span>     <span class="k">switch</span> <span class="n">thing</span> <span class="p">{</span>
-<span class="lineno"> 3</span>     <span class="k">case</span> <span class="mi">0</span> <span class="n">as</span> <span class="nl">Int</span><span class="p">:</span>
-<span class="lineno"> 4</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;zero as an Int&quot;</span><span class="p">)</span>
-<span class="lineno"> 5</span>     <span class="k">case</span> <span class="mi">0</span> <span class="n">as</span> <span class="nl">Double</span><span class="p">:</span>
-<span class="lineno"> 6</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;zero as a Double&quot;</span><span class="p">)</span>
-<span class="lineno"> 7</span>     <span class="k">case</span> <span class="n">let</span> <span class="n">someInt</span> <span class="n">as</span> <span class="nl">Int</span><span class="p">:</span>
-<span class="lineno"> 8</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;an integer value of \(someInt)&quot;</span><span class="p">)</span>
-<span class="lineno"> 9</span>     <span class="k">case</span> <span class="n">let</span> <span class="n">someDouble</span> <span class="n">as</span> <span class="n">Double</span> <span class="n">where</span> <span class="n">someDouble</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">:</span>
-<span class="lineno">10</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;a positive double value of \(someDouble)&quot;</span><span class="p">)</span>
-<span class="lineno">11</span>     <span class="k">case</span> <span class="n">is</span> <span class="nl">Double</span><span class="p">:</span>
-<span class="lineno">12</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;some other double value that I don&#39;t want to print&quot;</span><span class="p">)</span>
-<span class="lineno">13</span>     <span class="k">case</span> <span class="n">let</span> <span class="n">someString</span> <span class="n">as</span> <span class="nl">String</span><span class="p">:</span>
-<span class="lineno">14</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;a string value of </span><span class="se">\&quot;</span><span class="s">\(someString)</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">)</span>
-<span class="lineno">15</span>     <span class="k">case</span> <span class="n">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="n">as</span> <span class="p">(</span><span class="n">Double</span><span class="p">,</span> <span class="n">Double</span><span class="p">)</span><span class="o">:</span>
-<span class="lineno">16</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;an (x, y) point at \(x), \(y)&quot;</span><span class="p">)</span>
-<span class="lineno">17</span>     <span class="k">case</span> <span class="n">let</span> <span class="n">movie</span> <span class="n">as</span> <span class="nl">Movie</span><span class="p">:</span>
-<span class="lineno">18</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;a movie called &#39;\(movie.name)&#39;, dir. \(movie.director)&quot;</span><span class="p">)</span>
-<span class="lineno">19</span>     <span class="k">default</span><span class="o">:</span>
-<span class="lineno">20</span>         <span class="n">println</span><span class="p">(</span><span class="s">&quot;something else&quot;</span><span class="p">)</span>
-<span class="lineno">21</span>     <span class="p">}</span>
-<span class="lineno">22</span> <span class="p">}</span>
-<span class="lineno">23</span>  
-<span class="lineno">24</span> <span class="c1">// zero as an Int</span>
-<span class="lineno">25</span> <span class="c1">// zero as a Double</span>
-<span class="lineno">26</span> <span class="c1">// an integer value of 42</span>
-<span class="lineno">27</span> <span class="c1">// a positive double value of 3.14159</span>
-<span class="lineno">28</span> <span class="c1">// a string value of &quot;hello&quot;</span>
-<span class="lineno">29</span> <span class="c1">// an (x, y) point at 3.0, 5.0</span>
-<span class="lineno">30</span> <span class="c1">// a movie called &#39;Ghostbusters&#39;, dir. Ivan Reitman</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre></td><td class="code"><pre>for thing in things {
+    switch thing {
+    case 0 as Int:
+        println("zero as an Int")
+    case 0 as Double:
+        println("zero as a Double")
+    case let someInt as Int:
+        println("an integer value of \(someInt)")
+    case let someDouble as Double where someDouble &gt; 0:
+        println("a positive double value of \(someDouble)")
+    case is Double:
+        println("some other double value that I don't want to print")
+    case let someString as String:
+        println("a string value of \"\(someString)\"")
+    case let (x, y) as (Double, Double):
+        println("an (x, y) point at \(x), \(y)")
+    case let movie as Movie:
+        println("a movie called '\(movie.name)', dir. \(movie.director)")
+    default:
+        println("something else")
+    }
+}
+ 
+// zero as an Int
+// zero as a Double
+// an integer value of 42
+// a positive double value of 3.14159
+// a string value of "hello"
+// an (x, y) point at 3.0, 5.0
+// a movie called 'Ghostbusters', dir. Ivan Reitman<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>この switch 文では、<code>as</code>（forced version of the type cast operator）を使っていますが、switch 文のコンテキストではいつも安全です。</p>
 

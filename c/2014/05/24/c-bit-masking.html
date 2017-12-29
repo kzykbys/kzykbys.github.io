@@ -221,24 +221,24 @@
 					<div id="social-buttom">
 	<!-- Social Buttoms -->
 	<ul>
+		<li id="hatena-area" style="margin-right: 30px">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="C言語でのビットマスキング公式" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//c/2014/05/24/c-bit-masking.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			</li>
 		<li>
 			<!-- Pocket -->
 			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
 			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
 		</li>		
-		<li>
+		<li  style="margine-left: 10px;!important">
 			<!-- Vertical Twitter -->
 			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		</li>				
-		<li>
-			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//c/2014/05/24/c-bit-masking.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
-		</li>				
-		<li style="margine-left: 10px;!important">
-			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="C言語でのビットマスキング公式" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-		</li>		
+		</li>
 	</ul>
 </div>
 
@@ -251,14 +251,22 @@
 
 <p>ある一定のビットをセットするには、</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="lineno">2</span> <span class="p">{</span>
-<span class="lineno">3</span>     <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
-<span class="lineno">4</span>     <span class="kt">int</span> <span class="n">numbits</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">startbit</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-<span class="lineno">5</span> 
-<span class="lineno">6</span>     <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">|</span> <span class="p">(</span><span class="o">~</span><span class="p">((</span><span class="kt">unsigned</span> <span class="kt">short</span><span class="p">)</span> <span class="o">~</span><span class="mi">0</span> <span class="o">&lt;&lt;</span> <span class="n">numbits</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">startbit</span><span class="p">);</span>
-<span class="lineno">7</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;c = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span> <span class="c1">// 60</span>
-<span class="lineno">8</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">numbits</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">startbit</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+    <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">|</span> <span class="p">(</span><span class="o">~</span><span class="p">((</span><span class="kt">unsigned</span> <span class="kt">short</span><span class="p">)</span> <span class="o">~</span><span class="mi">0</span> <span class="o">&lt;&lt;</span> <span class="n">numbits</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">startbit</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"c = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span> <span class="c1">// 60
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>とします。32 (000 0000 0010 0000) の右から2番目(ゼロから数える)のビットから3つのビットをセットすると、60(000 0000 0011 1100)になります。関係のないビットはそのまま変更されません。</p>
 
@@ -266,14 +274,22 @@
 
 <p>ある一定のビットをクリアするには、</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno">1</span> <span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="lineno">2</span> <span class="p">{</span>
-<span class="lineno">3</span>     <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">31</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
-<span class="lineno">4</span>     <span class="kt">int</span> <span class="n">numbits</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">startbit</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="lineno">5</span> 
-<span class="lineno">6</span>     <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">&amp;</span> <span class="o">~</span><span class="p">(</span><span class="o">~</span><span class="p">((</span><span class="kt">unsigned</span> <span class="kt">short</span><span class="p">)</span> <span class="o">~</span><span class="mi">0</span> <span class="o">&lt;&lt;</span> <span class="n">numbits</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">startbit</span><span class="p">);</span>
-<span class="lineno">7</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;c = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span> <span class="c1">// 17</span>
-<span class="lineno">8</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">31</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">numbits</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">startbit</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">&amp;</span> <span class="o">~</span><span class="p">(</span><span class="o">~</span><span class="p">((</span><span class="kt">unsigned</span> <span class="kt">short</span><span class="p">)</span> <span class="o">~</span><span class="mi">0</span> <span class="o">&lt;&lt;</span> <span class="n">numbits</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">startbit</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"c = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span> <span class="c1">// 17
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>とします。31(0000 0000 0001 1111)の右から1番目(ゼロから数える)のビットから2つのビットをクリアすると、17(0000 0000 0001 0001)になります。今回も、関係のないビットは変更されません。</p>
 
@@ -281,18 +297,30 @@
 
 <p>ある一定の範囲のビットをオーバーライドは、下記のとおりです。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno"> 1</span> <span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="lineno"> 2</span> <span class="p">{</span>
-<span class="lineno"> 3</span>     <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">word</span> <span class="o">=</span> <span class="mi">127</span><span class="p">;</span> <span class="err">　</span><span class="c1">// 1111111</span>
-<span class="lineno"> 4</span>     <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">pattern</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">// 1001</span>
-<span class="lineno"> 5</span>     
-<span class="lineno"> 6</span>     <span class="kt">int</span> <span class="n">numbits</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">startbit</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-<span class="lineno"> 7</span>     
-<span class="lineno"> 8</span>     <span class="n">word</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="p">(</span><span class="o">~</span><span class="p">((</span><span class="kt">unsigned</span> <span class="kt">short</span><span class="p">)</span> <span class="o">~</span><span class="mi">0</span> <span class="o">&lt;&lt;</span> <span class="n">numbits</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">startbit</span><span class="p">);</span>
-<span class="lineno"> 9</span>     <span class="n">word</span> <span class="o">|=</span> <span class="n">pattern</span> <span class="o">&lt;&lt;</span> <span class="n">startbit</span><span class="p">;</span>
-<span class="lineno">10</span> 
-<span class="lineno">11</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;word = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">word</span><span class="p">);</span> <span class="c1">// 103</span>
-<span class="lineno">12</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre><span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">word</span> <span class="o">=</span> <span class="mi">127</span><span class="p">;</span> <span class="err">　</span><span class="c1">// 1111111
+</span>    <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">pattern</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">// 1001
+</span>    
+    <span class="kt">int</span> <span class="n">numbits</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">startbit</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    
+    <span class="n">word</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="p">(</span><span class="o">~</span><span class="p">((</span><span class="kt">unsigned</span> <span class="kt">short</span><span class="p">)</span> <span class="o">~</span><span class="mi">0</span> <span class="o">&lt;&lt;</span> <span class="n">numbits</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">startbit</span><span class="p">);</span>
+    <span class="n">word</span> <span class="o">|=</span> <span class="n">pattern</span> <span class="o">&lt;&lt;</span> <span class="n">startbit</span><span class="p">;</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">"word = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">word</span><span class="p">);</span> <span class="c1">// 103
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>127(1111111) の2番目のビットから9(1001)で上書きしています。</p>
 

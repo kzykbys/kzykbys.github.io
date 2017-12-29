@@ -221,24 +221,24 @@
 					<div id="social-buttom">
 	<!-- Social Buttoms -->
 	<ul>
+		<li id="hatena-area" style="margin-right: 30px">
+			<!-- Hatena -->
+			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Modernizr1 [ video ]" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		</li>		
+		<li>
+			<!-- FB -->
+			<div class="fb-like" data-href="http://blog.kazuya.co//html5/2013/12/22/modernizr1-video.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			</li>
 		<li>
 			<!-- Pocket -->
 			<a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
 			<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
 		</li>		
-		<li>
+		<li  style="margine-left: 10px;!important">
 			<!-- Vertical Twitter -->
 			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical" data-hashtags="TipEdge">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		</li>				
-		<li>
-			<!-- FB -->
-			<div class="fb-like" data-href="http://blog.kazuya.co//html5/2013/12/22/modernizr1-video.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
-		</li>				
-		<li style="margine-left: 10px;!important">
-			<!-- Hatena -->
-			<a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="Modernizr1 [ video ]" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加" "><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-		</li>		
+		</li>
 	</ul>
 </div>
 
@@ -247,16 +247,26 @@
 					<div class="post">
 						<p>Modernizr で video タグのサポートチェックの方法。 </p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno"> 1</span> <span class="k">if</span> <span class="p">(</span><span class="nx">Modernizr</span><span class="p">.</span><span class="nx">video</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//*0</span>
-<span class="lineno"> 2</span>      <span class="c1">// let&#39;s play some video! but what kind?</span>
-<span class="lineno"> 3</span>      <span class="k">if</span> <span class="p">(</span><span class="nx">Modernizr</span><span class="p">.</span><span class="nx">video</span><span class="p">.</span><span class="nx">webm</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// *1</span>
-<span class="lineno"> 4</span>      <span class="c1">// try WebM</span>
-<span class="lineno"> 5</span>      <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">Modernizr</span><span class="p">.</span><span class="nx">video</span><span class="p">.</span><span class="nx">ogg</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// *2</span>
-<span class="lineno"> 6</span>      <span class="c1">// try Ogg Theora + Vorbis in an Ogg container</span>
-<span class="lineno"> 7</span>      <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">Modernizr</span><span class="p">.</span><span class="nx">video</span><span class="p">.</span><span class="nx">h264</span><span class="p">){</span> <span class="c1">// *3</span>
-<span class="lineno"> 8</span>      <span class="c1">// try H.264 video + AAC audio in an MP4 container</span>
-<span class="lineno"> 9</span>      <span class="p">}</span>
-<span class="lineno">10</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="k">if</span> <span class="p">(</span><span class="nx">Modernizr</span><span class="p">.</span><span class="nx">video</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//*0</span>
+     <span class="c1">// let's play some video! but what kind?</span>
+     <span class="k">if</span> <span class="p">(</span><span class="nx">Modernizr</span><span class="p">.</span><span class="nx">video</span><span class="p">.</span><span class="nx">webm</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// *1</span>
+     <span class="c1">// try WebM</span>
+     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">Modernizr</span><span class="p">.</span><span class="nx">video</span><span class="p">.</span><span class="nx">ogg</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// *2</span>
+     <span class="c1">// try Ogg Theora + Vorbis in an Ogg container</span>
+     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">Modernizr</span><span class="p">.</span><span class="nx">video</span><span class="p">.</span><span class="nx">h264</span><span class="p">){</span> <span class="c1">// *3</span>
+     <span class="c1">// try H.264 video + AAC audio in an MP4 container</span>
+     <span class="p">}</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>0 . check for HTML5 video support</p>
 
@@ -267,26 +277,44 @@ major browsers, including Chrome, Firefox, and Opera.</p>
 
 <p>3 . Safari, iPhone etc </p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno">1</span> <span class="c1">// 1</span>
-<span class="lineno">2</span> <span class="kd">function</span> <span class="nx">supports_webm_video</span><span class="p">()</span> <span class="p">{</span>
-<span class="lineno">3</span>      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">supports_video</span><span class="p">())</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="p">}</span>
-<span class="lineno">4</span>      <span class="kd">var</span> <span class="nx">v</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;video&quot;</span><span class="p">);</span>
-<span class="lineno">5</span>      <span class="k">return</span> <span class="nx">v</span><span class="p">.</span><span class="nx">canPlayType</span><span class="p">(</span><span class="err">&#39;</span><span class="nx">video</span><span class="o">/</span><span class="nx">webm</span><span class="p">;</span> <span class="nx">codecs</span><span class="o">=</span><span class="s2">&quot;vp8, vorbis&quot;</span><span class="err">’</span><span class="p">);</span>
-<span class="lineno">6</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="c1">// 1</span>
+<span class="kd">function</span> <span class="nx">supports_webm_video</span><span class="p">()</span> <span class="p">{</span>
+     <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">supports_video</span><span class="p">())</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="p">}</span>
+     <span class="kd">var</span> <span class="nx">v</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"video"</span><span class="p">);</span>
+     <span class="k">return</span> <span class="nx">v</span><span class="p">.</span><span class="nx">canPlayType</span><span class="p">(</span><span class="err">'</span><span class="nx">video</span><span class="o">/</span><span class="nx">webm</span><span class="p">;</span> <span class="nx">codecs</span><span class="o">=</span><span class="s2">"vp8, vorbis"</span><span class="err">’</span><span class="p">);</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno">1</span> <span class="c1">// 2</span>
-<span class="lineno">2</span> <span class="kd">function</span> <span class="nx">supports_ogg_theora_video</span><span class="p">()</span> <span class="p">{</span>
-<span class="lineno">3</span>  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">supports_video</span><span class="p">())</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="p">}</span>
-<span class="lineno">4</span>  <span class="kd">var</span> <span class="nx">v</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;video&quot;</span><span class="p">);</span>
-<span class="lineno">5</span>  <span class="k">return</span> <span class="nx">v</span><span class="p">.</span><span class="nx">canPlayType</span><span class="p">(</span><span class="s1">&#39;video/ogg; codecs=&quot;theora, vorbis&quot;&#39;</span><span class="p">);</span>
-<span class="lineno">6</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="c1">// 2</span>
+<span class="kd">function</span> <span class="nx">supports_ogg_theora_video</span><span class="p">()</span> <span class="p">{</span>
+ <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">supports_video</span><span class="p">())</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="p">}</span>
+ <span class="kd">var</span> <span class="nx">v</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"video"</span><span class="p">);</span>
+ <span class="k">return</span> <span class="nx">v</span><span class="p">.</span><span class="nx">canPlayType</span><span class="p">(</span><span class="s1">'video/ogg; codecs="theora, vorbis"'</span><span class="p">);</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno">1</span> <span class="c1">// 3</span>
-<span class="lineno">2</span> <span class="kd">function</span> <span class="nx">supports_h264_baseline_video</span><span class="p">()</span> <span class="p">{</span>
-<span class="lineno">3</span>      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">supports_video</span><span class="p">())</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="p">}</span>
-<span class="lineno">4</span>      <span class="kd">var</span> <span class="nx">v</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;video&quot;</span><span class="p">);</span>
-<span class="lineno">5</span>      <span class="k">return</span> <span class="nx">v</span><span class="p">.</span><span class="nx">canPlayType</span><span class="p">(</span><span class="s1">&#39;video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;&#39;</span><span class="p">);</span>
-<span class="lineno">6</span> <span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="c1">// 3</span>
+<span class="kd">function</span> <span class="nx">supports_h264_baseline_video</span><span class="p">()</span> <span class="p">{</span>
+     <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">supports_video</span><span class="p">())</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="p">}</span>
+     <span class="kd">var</span> <span class="nx">v</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"video"</span><span class="p">);</span>
+     <span class="k">return</span> <span class="nx">v</span><span class="p">.</span><span class="nx">canPlayType</span><span class="p">(</span><span class="s1">'video/mp4; codecs="avc1.42E01E, mp4a.40.2"'</span><span class="p">);</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>各関数が、各ブラウザが対応しているビデオフォーマットに対応しているかチェックしている。return文の canPlayType() 関数は、true か false を返すのではなく、下記のように String を返す。</p>
 
