@@ -39,7 +39,7 @@ header {
 h1, h2, h3, h4, h5, h6 {
 	margin-bottom: 24px;
 	font-family: 'Josefin Sans', "ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro";
-
+	color: #222222;
 }
 
 h1 {
@@ -49,7 +49,7 @@ h1 {
 
 h2 {
 	font-size: 36px;
-	line-height: 1.3333:
+	line-height: 1.3333;
 }
 
 h3 {
@@ -80,7 +80,12 @@ hgroup h2, h4, h5, h6 {
 	font-family: 'Gruppo', cursive;
 }
 
-p { margin: 1em 0; }
+p { 
+	margin: 1.7em 0em 1.7em 0em;
+    font-size: 17px;
+    line-height: 1.7em;
+    color: #222222;
+}
 
 img {
 	vertical-align: middle;
@@ -156,8 +161,7 @@ pre {
 
 .side_content {
 	margin-top: 6px;
-	margin-bottom: 6px;
-	margin-left: 12px;
+	margin-bottom: 6px;	
 }
 
 .footer {
@@ -338,6 +342,11 @@ pre {
 /* Posts
 /*
 /*****************************************************************************/
+
+
+#post_title {
+	line-height: 1.5em;
+}
 
 /* standard */
 .post h3 {
