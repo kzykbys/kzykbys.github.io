@@ -245,47 +245,49 @@
 
 					<div class="post">
 						<blockquote>
-<blockquote>
-<p><span class="deprecate">This article might be too old.</span>  </p>
-</blockquote>
+  <blockquote>
+    <p><span class="deprecate">This article might be too old.</span></p>
+  </blockquote>
 </blockquote>
 
 <p><a href="http://blog.kazuya.co/objective-c/2014/05/25/facebook-sdk-preparation.html">前回</a> で SDK を使用して、実際にコーディングする準備ができました。今回は、実際にログイン機能の作成をしてみます。Facebook ログインを実装するには、Facebook が用意してくれたログインボタンを使用する方法と、API を呼びカスタム UI を使用する方法があるのですが、今回はその前者を使います。</p>
 
 <p>一番の基本となる FBLoginView というクラスは、ユーザーがログインしているか等のステータスを管理し、それに合わせてボタンにログイン/ログアウトといった情報を自動で表示してくれます。</p>
 
-<p><img src="/images/2014/05/3.png" alt=""></p>
+<p><img src="/images/2014/05/3.png" alt="" /></p>
 
 <h3 id="ui-コントロールの追加">UI コントロールの追加</h3>
 
 <p>この記事では、主に Interface Builder を使用しての view の追加を見ていきます。もちろんプログラムによる方法もあります。詳しくは<a href="https://developers.facebook.com/docs/facebook-login/ios/v2.0">公式ドキュメント</a>で。</p>
 
-<p>まずは、 &quot;View&quot; オブジェクトをレイアウト上に設置します。これがログイン、ログアウトのボタンになります。Identity inspector にて、クラスプロパティを FBLoginView に変更します。</p>
+<p>まずは、 “View” オブジェクトをレイアウト上に設置します。これがログイン、ログアウトのボタンになります。Identity inspector にて、クラスプロパティを FBLoginView に変更します。</p>
 
 <p>そして、AppDelegate クラスに以下のコードを追加。これにより、FBLoginViewクラスがviewが表示される前にロードされるようになります。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
 6
 7
-8</pre></td><td class="code"><pre>- (BOOL)application:(UIApplication *)application
-didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    // Override point for customization after application launch.
-    [FBLoginView class];
-    ...
-    return YES;
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+8</pre></td><td class="code"><pre><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">application</span><span class="p">:(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span>
+<span class="nf">didFinishLaunchingWithOptions</span><span class="p">:(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span>
+<span class="p">{</span>
+    <span class="c1">// Override point for customization after application launch.
+</span>    <span class="p">[</span><span class="n">FBLoginView</span> <span class="nf">class</span><span class="p">];</span>
+    <span class="p">...</span>
+    <span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <h3 id="facebook-からレスポンスの処理">Facebook からレスポンスの処理</h3>
 
 <p>このメソッドを AppDelegate クラスに追加。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -296,19 +298,21 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 9
 10
 11
-12</pre></td><td class="code"><pre>- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-        annotation:(id)annotation {
+12</pre></td><td class="code"><pre><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">application</span><span class="p">:(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span>
+            <span class="nf">openURL</span><span class="p">:(</span><span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">url</span>
+  <span class="nf">sourceApplication</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">sourceApplication</span>
+        <span class="nf">annotation</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span><span class="nv">annotation</span> <span class="p">{</span>
 
-        // Call FBAppCall's handleOpenURL:sourceApplication to handle Facebook app responses
-        BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
+        <span class="c1">// Call FBAppCall's handleOpenURL:sourceApplication to handle Facebook app responses
+</span>        <span class="n">BOOL</span> <span class="n">wasHandled</span> <span class="o">=</span> <span class="p">[</span><span class="n">FBAppCall</span> <span class="nf">handleOpenURL</span><span class="p">:</span><span class="n">url</span> <span class="nf">sourceApplication</span><span class="p">:</span><span class="n">sourceApplication</span><span class="p">];</span>
 
-        // You can add your app-specific url handling code here if needed
-
-        return wasHandled;
-    }<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+        <span class="c1">// You can add your app-specific url handling code here if needed
+</span>
+        <span class="k">return</span> <span class="n">wasHandled</span><span class="p">;</span>
+    <span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <h3 id="パーミッションの取得">パーミッションの取得</h3>
 
@@ -316,15 +320,18 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 
 <p>先ほど view を設置したレイアウトに対応した viewController のヘッダーファイルに</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>@property (weak, nonatomic) IBOutlet FBLoginView *loginView;<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="k">@property</span> <span class="p">(</span><span class="n">weak</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">IBOutlet</span> <span class="n">FBLoginView</span> <span class="o">*</span><span class="n">loginView</span><span class="p">;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>と宣言し、Interface Builder と接続します。</p>
 
 <p>そして、viewDidLoad メソッドにて、</p>
-
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>self.loginView.readPermissions = @[@"public_profile", @"email", @"user_friends”];<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">self</span><span class="p">.</span><span class="n">loginView</span><span class="p">.</span><span class="n">readPermissions</span> <span class="o">=</span> <span class="p">@[</span><span class="s">@"public_profile"</span><span class="p">,</span> <span class="s">@"email"</span><span class="p">,</span> <span class="s">@"user_friends”];</span><span class="err">
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>とすることで、public_profile, email, user_friends のパーミッションを取ります。</p>
 
@@ -334,56 +341,68 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 
 <p>そのために、先ほどの viewController で、delegate を実装することを宣言します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>@interface LoginUIViewController : UIViewController &lt;FBLoginViewDelegate<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="k">@interface</span> <span class="nc">LoginUIViewController</span> <span class="p">:</span> <span class="nc">UIViewController</span> <span class="o">&lt;</span><span class="n">FBLoginViewDelegate</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>そして、viewDidLoad においても、delegate プロパティを設定。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre>self.loginView.readPermissions = @[@"public_profile", @"email", @"user_friends"];
-self.loginView.delegate = self;<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="n">self</span><span class="p">.</span><span class="n">loginView</span><span class="p">.</span><span class="n">readPermissions</span> <span class="o">=</span> <span class="p">@[</span><span class="s">@"public_profile"</span><span class="p">,</span> <span class="s">@"email"</span><span class="p">,</span> <span class="s">@"user_friends"</span><span class="p">];</span>
+<span class="n">self</span><span class="p">.</span><span class="n">loginView</span><span class="p">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>ここから Facebook の情報を活用した本格的なコーディングです。</p>
 
 <p>この delegate メソッドは、FBLoginView がユーザーのFacebookの情報を受信した時に呼ばれます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
-5</pre></td><td class="code"><pre>// This method will be called when the user information has been fetched
-- (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
-                            user:(id&lt;FBGraphUser&gt;)user {
-    NSLog(@"%@", user.name);
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+5</pre></td><td class="code"><pre><span class="c1">// This method will be called when the user information has been fetched
+</span><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">loginViewFetchedUserInfo</span><span class="p">:(</span><span class="n">FBLoginView</span> <span class="o">*</span><span class="p">)</span><span class="nv">loginView</span>
+                            <span class="nf">user</span><span class="p">:(</span><span class="n">id</span><span class="o">&lt;</span><span class="n">FBGraphUser</span><span class="o">&gt;</span><span class="p">)</span><span class="nv">user</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@"</span><span class="p">,</span> <span class="n">user</span><span class="p">.</span><span class="n">name</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>これは、ログインが成功した時に呼ばれます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
-4</pre></td><td class="code"><pre>// Logged-out user experience
-- (void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView {
-    NSLog(@"You're not logged in!");
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+4</pre></td><td class="code"><pre><span class="c1">// Logged-out user experience
+</span><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">loginViewShowingLoggedOutUser</span><span class="p">:(</span><span class="n">FBLoginView</span> <span class="o">*</span><span class="p">)</span><span class="nv">loginView</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"You're not logged in!"</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>これは、ログアウトした時。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
-4</pre></td><td class="code"><pre>// Logged-out user experience
-- (void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView {
-    NSLog(@"You're not logged in!");
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+4
+5</pre></td><td class="code"><pre>
+<span class="c1">// Logged-out user experience
+</span><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">loginViewShowingLoggedOutUser</span><span class="p">:(</span><span class="n">FBLoginView</span> <span class="o">*</span><span class="p">)</span><span class="nv">loginView</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"You're not logged in!"</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>そして、最後に loginView:handleError: delegate メソッドを実装することにより、エラー処理をします。詳しいエラーの情報は <a href="https://developers.facebook.com/docs/graph-api/using-graph-api/v2.0#errors">https://developers.facebook.com/docs/graph-api/using-graph-api/v2.0#errors</a> にあります。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -424,49 +443,51 @@ self.loginView.delegate = self;<span class="w">
 39
 40
 41
-42</pre></td><td class="code"><pre>// Handle possible errors that can occur during login
-- (void)loginView:(FBLoginView *)loginView handleError:(NSError *)error {
-    NSString *alertMessage, *alertTitle;
+42</pre></td><td class="code"><pre><span class="c1">// Handle possible errors that can occur during login
+</span><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">loginView</span><span class="p">:(</span><span class="n">FBLoginView</span> <span class="o">*</span><span class="p">)</span><span class="nv">loginView</span> <span class="nf">handleError</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">*</span><span class="p">)</span><span class="nv">error</span> <span class="p">{</span>
+    <span class="n">NSString</span> <span class="o">*</span><span class="n">alertMessage</span><span class="p">,</span> <span class="o">*</span><span class="n">alertTitle</span><span class="p">;</span>
 
-    // If the user should perform an action outside of you app to recover,
-    // the SDK will provide a message for the user, you just need to surface it.
-    // This conveniently handles cases like Facebook password change or unverified Facebook accounts.
-    if ([FBErrorUtility shouldNotifyUserForError:error]) {
-        alertTitle = @"Facebook error";
-        alertMessage = [FBErrorUtility userMessageForError:error];
+    <span class="c1">// If the user should perform an action outside of you app to recover,
+</span>    <span class="c1">// the SDK will provide a message for the user, you just need to surface it.
+</span>    <span class="c1">// This conveniently handles cases like Facebook password change or unverified Facebook accounts.
+</span>    <span class="k">if</span> <span class="p">([</span><span class="n">FBErrorUtility</span> <span class="nf">shouldNotifyUserForError</span><span class="p">:</span><span class="n">error</span><span class="p">])</span> <span class="p">{</span>
+        <span class="n">alertTitle</span> <span class="o">=</span> <span class="s">@"Facebook error"</span><span class="p">;</span>
+        <span class="n">alertMessage</span> <span class="o">=</span> <span class="p">[</span><span class="n">FBErrorUtility</span> <span class="nf">userMessageForError</span><span class="p">:</span><span class="n">error</span><span class="p">];</span>
 
-        // This code will handle session closures that happen outside of the app
-        // You can take a look at our error handling guide to know more about it
-        // https://developers.facebook.com/docs/ios/errors
-    } else if ([FBErrorUtility errorCategoryForError:error] == FBErrorCategoryAuthenticationReopenSession) {
-        alertTitle = @"Session Error";
-        alertMessage = @"Your current session is no longer valid. Please log in again.";
+        <span class="c1">// This code will handle session closures that happen outside of the app
+</span>        <span class="c1">// You can take a look at our error handling guide to know more about it
+</span>        <span class="c1">// https://developers.facebook.com/docs/ios/errors
+</span>    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">([</span><span class="n">FBErrorUtility</span> <span class="nf">errorCategoryForError</span><span class="p">:</span><span class="n">error</span><span class="p">]</span> <span class="o">==</span> <span class="n">FBErrorCategoryAuthenticationReopenSession</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">alertTitle</span> <span class="o">=</span> <span class="s">@"Session Error"</span><span class="p">;</span>
+        <span class="n">alertMessage</span> <span class="o">=</span> <span class="s">@"Your current session is no longer valid. Please log in again."</span><span class="p">;</span>
 
-        // If the user has cancelled a login, we will do nothing.
-        // You can also choose to show the user a message if cancelling login will result in
-        // the user not being able to complete a task they had initiated in your app
-        // (like accessing FB-stored information or posting to Facebook)
-    } else if ([FBErrorUtility errorCategoryForError:error] == FBErrorCategoryUserCancelled) {
-        NSLog(@"user cancelled login");
+        <span class="c1">// If the user has cancelled a login, we will do nothing.
+</span>        <span class="c1">// You can also choose to show the user a message if cancelling login will result in
+</span>        <span class="c1">// the user not being able to complete a task they had initiated in your app
+</span>        <span class="c1">// (like accessing FB-stored information or posting to Facebook)
+</span>    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">([</span><span class="n">FBErrorUtility</span> <span class="nf">errorCategoryForError</span><span class="p">:</span><span class="n">error</span><span class="p">]</span> <span class="o">==</span> <span class="n">FBErrorCategoryUserCancelled</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"user cancelled login"</span><span class="p">);</span>
 
-        // For simplicity, this sample handles other errors with a generic message
-        // You can checkout our error handling guide for more detailed information
-        // https://developers.facebook.com/docs/ios/errors
-    } else {
-        alertTitle  = @"Something went wrong";
-        alertMessage = @"Please try again later.";
-        NSLog(@"Unexpected error:%@", error);
-    }
+        <span class="c1">// For simplicity, this sample handles other errors with a generic message
+</span>        <span class="c1">// You can checkout our error handling guide for more detailed information
+</span>        <span class="c1">// https://developers.facebook.com/docs/ios/errors
+</span>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">alertTitle</span>  <span class="o">=</span> <span class="s">@"Something went wrong"</span><span class="p">;</span>
+        <span class="n">alertMessage</span> <span class="o">=</span> <span class="s">@"Please try again later."</span><span class="p">;</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Unexpected error:%@"</span><span class="p">,</span> <span class="n">error</span><span class="p">);</span>
+    <span class="p">}</span>
 
-    if (alertMessage) {
-        [[[UIAlertView alloc] initWithTitle:alertTitle
-                                    message:alertMessage
-                                   delegate:nil
-                          cancelButtonTitle:@"OK"
-                          otherButtonTitles:nil] show];
-    }
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+    <span class="k">if</span> <span class="p">(</span><span class="n">alertMessage</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[[[</span><span class="n">UIAlertView</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithTitle</span><span class="p">:</span><span class="n">alertTitle</span>
+                                    <span class="nf">message</span><span class="p">:</span><span class="n">alertMessage</span>
+                                   <span class="nf">delegate</span><span class="p">:</span><span class="nb">nil</span>
+                          <span class="nf">cancelButtonTitle</span><span class="p">:</span><span class="s">@"OK"</span>
+                          <span class="nf">otherButtonTitles</span><span class="p">:</span><span class="nb">nil</span><span class="p">]</span> <span class="nf">show</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 					</div>
 

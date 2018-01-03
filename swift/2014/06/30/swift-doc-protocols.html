@@ -244,7 +244,7 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。  </p>
+						<p>iBooks にある “The Swift Programming Language” の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。</p>
 
 <p>今回は、基本的な Protocols の宣言に関して。</p>
 
@@ -252,61 +252,69 @@
 
 <p>プロトコルは、クラス・構造体・Enumeration が実装すべきメソッド・プロパティ等の必要要件を定義します。このプロトコルは、実際には、実装を提供しません。ただ宣言するだけです。実際に実装するのは、このプロトコルに従うクラス・構造体・Enumeration です。</p>
 
-<h4 id="1.-protocol-sytax">1. Protocol Sytax</h4>
+<h4 id="1-protocol-sytax">1. Protocol Sytax</h4>
 
 <p>クラス等と同じようにプロトコルを定義できます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre>protocol SomeProtocol {
-    // protocol definition goes here
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+3</pre></td><td class="code"><pre><span class="n">protocol</span> <span class="n">SomeProtocol</span> <span class="p">{</span>
+    <span class="c1">// protocol definition goes here
+</span><span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>そして、タイプ（クラス・構造体・Enumeration）は、コロンで区切り、プロトコルに準拠していることを準拠(adopt)していることを宣言します。複数ある場合は、カンマで区切ります。クラスにプロトコルを採用したく、そのクラスがスーパークラスを持っている場合は、コロンの後にスーパークラスを書き、その後にカンマで区切りプロトコルを宣言します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
 6
-7</pre></td><td class="code"><pre>struct SomeStructure: FirstProtocol, AnotherProtocol {
-    // structure definition goes here
-}
+7</pre></td><td class="code"><pre><span class="k">struct</span> <span class="n">SomeStructure</span><span class="o">:</span> <span class="n">FirstProtocol</span><span class="p">,</span> <span class="n">AnotherProtocol</span> <span class="p">{</span>
+    <span class="c1">// structure definition goes here
+</span><span class="p">}</span>
 
-class SomeClass: SomeSuperclass, FirstProtocol, AnotherProtocol {
-    // class definition goes here
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">class</span> <span class="n">SomeClass</span><span class="o">:</span> <span class="n">SomeSuperclass</span><span class="p">,</span> <span class="n">FirstProtocol</span><span class="p">,</span> <span class="n">AnotherProtocol</span> <span class="p">{</span>
+    <span class="c1">// class definition goes here
+</span><span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<h4 id="2.-プロパティの要求">2. プロパティの要求</h4>
+<h4 id="2-プロパティの要求">2. プロパティの要求</h4>
 
 <p>プロトコルは、あるタイプに対して、インスタンスプロパティ・タイププロパティをある名前で持たせることを求めることができます。プロトコルは、Computed プロパティか Stored プロパティであるかは指定しません。プロトコルは、ただ名前とタイプのみを求めます。また、読み込み専用か、読み込み書き込み可能かを指定します。</p>
 
 <p>プロパティの要件は、変数として宣言すれば基本的に問題ありません。下記のように読み込み専用か読み込み書き込み可能かを指定します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
-4</pre></td><td class="code"><pre>protocol SomeProtocol {
-    var mustBeSettable: Int { get set }
-    var doesNotNeedToBeSettable: Int { get }
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+4</pre></td><td class="code"><pre><span class="n">protocol</span> <span class="n">SomeProtocol</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">mustBeSettable</span><span class="o">:</span> <span class="n">Int</span> <span class="p">{</span> <span class="n">get</span> <span class="n">set</span> <span class="p">}</span>
+    <span class="n">var</span> <span class="n">doesNotNeedToBeSettable</span><span class="o">:</span> <span class="n">Int</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>また、タイププロパティをプロトコルの中で定義する場合は、<code>class</code> キーワードを使用します。これは構造体・Enumeration においては、通常 <code>static</code> を使用しないといけないですが、<code>class</code> で統一して問題ありません。</p>
+<p>また、タイププロパティをプロトコルの中で定義する場合は、<code class="highlighter-rouge">class</code> キーワードを使用します。これは構造体・Enumeration においては、通常 <code class="highlighter-rouge">static</code> を使用しないといけないですが、<code class="highlighter-rouge">class</code> で統一して問題ありません。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre>protocol AnotherProtocol {
-    class var someTypeProperty: Int { get set }
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+3</pre></td><td class="code"><pre><span class="n">protocol</span> <span class="n">AnotherProtocol</span> <span class="p">{</span>
+    <span class="n">class</span> <span class="n">var</span> <span class="n">someTypeProperty</span><span class="o">:</span> <span class="n">Int</span> <span class="p">{</span> <span class="n">get</span> <span class="n">set</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>簡単な例を見てみます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -314,20 +322,22 @@ class SomeClass: SomeSuperclass, FirstProtocol, AnotherProtocol {
 6
 7
 8
-9</pre></td><td class="code"><pre>protocol FullyNamed {
-    var fullName: String { get }
-}
+9</pre></td><td class="code"><pre><span class="n">protocol</span> <span class="n">FullyNamed</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">fullName</span><span class="o">:</span> <span class="n">String</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
+<span class="p">}</span>
 
-struct Person: FullyNamed {
-    var fullName: String
-}
-let john = Person(fullName: "John Appleseed")
-// john.fullName is "John Appleseed"<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="k">struct</span> <span class="n">Person</span><span class="o">:</span> <span class="n">FullyNamed</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">fullName</span><span class="o">:</span> <span class="n">String</span>
+<span class="p">}</span>
+<span class="n">let</span> <span class="n">john</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="n">fullName</span><span class="o">:</span> <span class="s">"John Appleseed"</span><span class="p">)</span>
+<span class="c1">// john.fullName is "John Appleseed"
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>これはフルネームを持つべきだというプロトコルです。Person 構造体は、これを Stored プロパティとして定義しています。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -339,50 +349,56 @@ let john = Person(fullName: "John Appleseed")
 10
 11
 12
-13</pre></td><td class="code"><pre>class Starship: FullyNamed {
-    var prefix: String?
-    var name: String
-    init(name: String, prefix: String? = nil) {
-        self.name = name
-        self.prefix = prefix
-    }
-    var fullName: String {
-    return (prefix ? prefix! + " " : "") + name
-    }
-}
-var ncc1701 = Starship(name: "Enterprise", prefix: "USS")
-// ncc1701.fullName is "USS Enterprise"<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+13</pre></td><td class="code"><pre><span class="n">class</span> <span class="n">Starship</span><span class="o">:</span> <span class="n">FullyNamed</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">prefix</span><span class="o">:</span> <span class="n">String</span><span class="p">?</span>
+    <span class="n">var</span> <span class="n">name</span><span class="p">:</span> <span class="n">String</span>
+    <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">prefix</span><span class="o">:</span> <span class="n">String</span><span class="p">?</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">)</span> <span class="err">{</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">prefix</span> <span class="o">=</span> <span class="n">prefix</span>
+    <span class="err">}</span>
+    <span class="n">var</span> <span class="n">fullName</span><span class="p">:</span> <span class="n">String</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">prefix</span> <span class="p">?</span> <span class="n">prefix</span><span class="o">!</span> <span class="o">+</span> <span class="s">" "</span> <span class="p">:</span> <span class="s">""</span><span class="p">)</span> <span class="o">+</span> <span class="n">name</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">var</span> <span class="n">ncc1701</span> <span class="o">=</span> <span class="n">Starship</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">"Enterprise"</span><span class="p">,</span> <span class="n">prefix</span><span class="o">:</span> <span class="s">"USS"</span><span class="p">)</span>
+<span class="c1">// ncc1701.fullName is "USS Enterprise"
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>この Starship クラスは、フルネームを Computed プロパティとして定義しています。</p>
 
 <p>これらのプロトコルが要求しているプロパティを実装していない場合、Swift はコンパイルエラーを吐きます。</p>
 
-<h4 id="3.-メソッドの要求">3. メソッドの要求</h4>
+<h4 id="3-メソッドの要求">3. メソッドの要求</h4>
 
 <p>次にプロトコルがタイプメソッド・インスタンスメソッドを要求する場合をみていきます。プロトコル内では、通常のメソッドのように宣言されます。しかし、{} を持ちません。また、引数のデフォルト値を持つことはできません。可変引数のメソッドは可能です。</p>
 
-<p>タイプメソッドの場合は、タイププロパティの時と同じように <code>class</code> キーワードを先に記述します。</p>
+<p>タイプメソッドの場合は、タイププロパティの時と同じように <code class="highlighter-rouge">class</code> キーワードを先に記述します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre>protocol SomeProtocol {
-    class func someTypeMethod()
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+3</pre></td><td class="code"><pre><span class="n">protocol</span> <span class="n">SomeProtocol</span> <span class="p">{</span>
+    <span class="n">class</span> <span class="n">func</span> <span class="n">someTypeMethod</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>1 つ例をみてみます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre>protocol RandomNumberGenerator {
-    func random() -&gt; Double
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+3</pre></td><td class="code"><pre><span class="n">protocol</span> <span class="n">RandomNumberGenerator</span> <span class="p">{</span>
+    <span class="n">func</span> <span class="n">random</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Double</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>インスタンスメソッドのため、<code>class</code> はありません。</p>
+<p>インスタンスメソッドのため、<code class="highlighter-rouge">class</code> はありません。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -396,37 +412,41 @@ var ncc1701 = Starship(name: "Enterprise", prefix: "USS")
 12
 13
 14
-15</pre></td><td class="code"><pre>class LinearCongruentialGenerator: RandomNumberGenerator {
-    var lastRandom = 42.0
-    let m = 139968.0
-    let a = 3877.0
-    let c = 29573.0
-    func random() -&gt; Double {
-        lastRandom = ((lastRandom * a + c) % m)
-        return lastRandom / m
-    }
-}
-let generator = LinearCongruentialGenerator()
-println("Here's a random number: \(generator.random())")
-// prints "Here's a random number: 0.37464991998171"
-println("And another one: \(generator.random())")
-// prints "And another one: 0.729023776863283"<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+15</pre></td><td class="code"><pre><span class="n">class</span> <span class="n">LinearCongruentialGenerator</span><span class="o">:</span> <span class="n">RandomNumberGenerator</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">lastRandom</span> <span class="o">=</span> <span class="mi">42</span><span class="p">.</span><span class="mi">0</span>
+    <span class="n">let</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">139968</span><span class="p">.</span><span class="mi">0</span>
+    <span class="n">let</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">3877</span><span class="p">.</span><span class="mi">0</span>
+    <span class="n">let</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">29573</span><span class="p">.</span><span class="mi">0</span>
+    <span class="n">func</span> <span class="n">random</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Double</span> <span class="p">{</span>
+        <span class="n">lastRandom</span> <span class="o">=</span> <span class="p">((</span><span class="n">lastRandom</span> <span class="o">*</span> <span class="n">a</span> <span class="o">+</span> <span class="n">c</span><span class="p">)</span> <span class="o">%</span> <span class="n">m</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">lastRandom</span> <span class="o">/</span> <span class="n">m</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">let</span> <span class="n">generator</span> <span class="o">=</span> <span class="n">LinearCongruentialGenerator</span><span class="p">()</span>
+<span class="n">println</span><span class="p">(</span><span class="s">"Here's a random number: \(generator.random())"</span><span class="p">)</span>
+<span class="c1">// prints "Here's a random number: 0.37464991998171"
+</span><span class="n">println</span><span class="p">(</span><span class="s">"And another one: \(generator.random())"</span><span class="p">)</span>
+<span class="c1">// prints "And another one: 0.729023776863283"
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
-<h4 id="4.-mutating-メソッドの要求">4. Mutating メソッドの要求</h4>
+<h4 id="4-mutating-メソッドの要求">4. Mutating メソッドの要求</h4>
 
-<p>メソッドがそのインスタンスを変更する場合もあります。構造体・Enumeratio のインスタンスメソッドの場合、<code>mutating</code> キーワードを使用します。クラスの場合は、必要がありませんが、プロトコルは構造体や Enumeration でも使用されるので、プロトコル側では <code>mutating</code> を書いておくことで、全てのケースに対応できます。</p>
+<p>メソッドがそのインスタンスを変更する場合もあります。構造体・Enumeratio のインスタンスメソッドの場合、<code class="highlighter-rouge">mutating</code> キーワードを使用します。クラスの場合は、必要がありませんが、プロトコルは構造体や Enumeration でも使用されるので、プロトコル側では <code class="highlighter-rouge">mutating</code> を書いておくことで、全てのケースに対応できます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre>protocol Togglable {
-    mutating func toggle()
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+3</pre></td><td class="code"><pre><span class="n">protocol</span> <span class="n">Togglable</span> <span class="p">{</span>
+    <span class="n">mutating</span> <span class="n">func</span> <span class="n">toggle</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>toggle とはあるステートを変更することです。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -439,23 +459,25 @@ println("And another one: \(generator.random())")
 11
 12
 13
-14</pre></td><td class="code"><pre>enum OnOffSwitch: Togglable {
-    case Off, On
-    mutating func toggle() {
-        switch self {
-        case Off:
-            self = On
-        case On:
-            self = Off
-        }
-    }
-}
-var lightSwitch = OnOffSwitch.Off
-lightSwitch.toggle()
-// lightSwitch is now equal to .On<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+14</pre></td><td class="code"><pre><span class="k">enum</span> <span class="n">OnOffSwitch</span><span class="o">:</span> <span class="n">Togglable</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">Off</span><span class="p">,</span> <span class="n">On</span>
+    <span class="n">mutating</span> <span class="n">func</span> <span class="n">toggle</span><span class="p">()</span> <span class="err">{</span>
+        <span class="k">switch</span> <span class="n">self</span> <span class="err">{</span>
+        <span class="k">case</span> <span class="n">Off</span><span class="p">:</span>
+            <span class="n">self</span> <span class="o">=</span> <span class="n">On</span>
+        <span class="k">case</span> <span class="n">On</span><span class="p">:</span>
+            <span class="n">self</span> <span class="o">=</span> <span class="n">Off</span>
+        <span class="err">}</span>
+    <span class="err">}</span>
+<span class="err">}</span>
+<span class="n">var</span> <span class="n">lightSwitch</span> <span class="o">=</span> <span class="n">OnOffSwitch</span><span class="p">.</span><span class="n">Off</span>
+<span class="n">lightSwitch</span><span class="p">.</span><span class="n">toggle</span><span class="p">()</span>
+<span class="c1">// lightSwitch is now equal to .On
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>プロトコル側で <code>mutatign</code> と指定されているので、Enumeration の中で Mutating メソッドとして実装されています。</p>
+<p>プロトコル側で <code class="highlighter-rouge">mutatign</code> と指定されているので、Enumeration の中で Mutating メソッドとして実装されています。</p>
 
 					</div>
 

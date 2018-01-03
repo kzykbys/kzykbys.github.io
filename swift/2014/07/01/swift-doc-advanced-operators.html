@@ -244,7 +244,7 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。  </p>
+						<p>iBooks にある “The Swift Programming Language” の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。</p>
 
 <p>今回は、Advanced Operators に関して。</p>
 
@@ -252,13 +252,13 @@
 
 <p>今まで見てきたような基本的なオペレーター以外に、Swift ではビット操作等のオペレーターも C 同様にサポートしています。また、既存のオペレーターをオーバーライドすることも可能です。さらに、独自のオペレーターを作成することもできます。</p>
 
-<h4 id="1.-ビット操作オペレーター">1. ビット操作オペレーター</h4>
+<h4 id="1-ビット操作オペレーター">1. ビット操作オペレーター</h4>
 
 <p>C と同じように Swift でも、ビット操作をすることができます。基本的にシンタックスも同じようです。</p>
 
 <p>以前、C のビット操作に関する記事を書いたので、詳しくは <a href="http://blog.kazuya.co/c/2014/05/24/c-bit-operation.html">こちら</a> と <a href="http://blog.kazuya.co/c/2014/05/24/c-bit-masking.html">こちら</a> へ。iBooks のマニュアルには、sign integer や　unsign integer のビットレベルでの表し方等、基本的なことも細かく解説されていました。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -284,61 +284,65 @@
 24
 25
 26
-27</pre></td><td class="code"><pre>// NOT
-let initialBits: UInt8 = 0b00001111
-let invertedBits = ~initialBits  // equals 11110000
+27</pre></td><td class="code"><pre><span class="c1">// NOT
+</span><span class="n">let</span> <span class="n">initialBits</span><span class="o">:</span> <span class="n">UInt8</span> <span class="o">=</span> <span class="mi">0</span><span class="n">b00001111</span>
+<span class="n">let</span> <span class="n">invertedBits</span> <span class="o">=</span> <span class="o">~</span><span class="n">initialBits</span>  <span class="c1">// equals 11110000
 // AND
-let firstSixBits: UInt8 = 0b11111100
-let lastSixBits: UInt8  = 0b00111111
-let middleFourBits = firstSixBits &amp; lastSixBits  // equals 00111100
+</span><span class="n">let</span> <span class="n">firstSixBits</span><span class="o">:</span> <span class="n">UInt8</span> <span class="o">=</span> <span class="mi">0</span><span class="n">b11111100</span>
+<span class="n">let</span> <span class="n">lastSixBits</span><span class="o">:</span> <span class="n">UInt8</span>  <span class="o">=</span> <span class="mi">0</span><span class="n">b00111111</span>
+<span class="n">let</span> <span class="n">middleFourBits</span> <span class="o">=</span> <span class="n">firstSixBits</span> <span class="o">&amp;</span> <span class="n">lastSixBits</span>  <span class="c1">// equals 00111100
 // OR
-let someBits: UInt8 = 0b10110010
-let moreBits: UInt8 = 0b01011110
-let combinedbits = someBits | moreBits  // equals 11111110
+</span><span class="n">let</span> <span class="n">someBits</span><span class="o">:</span> <span class="n">UInt8</span> <span class="o">=</span> <span class="mi">0</span><span class="n">b10110010</span>
+<span class="n">let</span> <span class="n">moreBits</span><span class="o">:</span> <span class="n">UInt8</span> <span class="o">=</span> <span class="mi">0</span><span class="n">b01011110</span>
+<span class="n">let</span> <span class="n">combinedbits</span> <span class="o">=</span> <span class="n">someBits</span> <span class="o">|</span> <span class="n">moreBits</span>  <span class="c1">// equals 11111110
 // XOR
-let firstBits: UInt8 = 0b00010100
-let otherBits: UInt8 = 0b00000101
-let outputBits = firstBits ^ otherBits  // equals 00010001
+</span><span class="n">let</span> <span class="n">firstBits</span><span class="o">:</span> <span class="n">UInt8</span> <span class="o">=</span> <span class="mi">0</span><span class="n">b00010100</span>
+<span class="n">let</span> <span class="n">otherBits</span><span class="o">:</span> <span class="n">UInt8</span> <span class="o">=</span> <span class="mi">0</span><span class="n">b00000101</span>
+<span class="n">let</span> <span class="n">outputBits</span> <span class="o">=</span> <span class="n">firstBits</span> <span class="o">^</span> <span class="n">otherBits</span>  <span class="c1">// equals 00010001
 // Left and Right Shift
-let shiftBits: UInt8 = 4   // 00000100 in binary
-shiftBits &lt;&lt; 1             // 00001000
-shiftBits &lt;&lt; 2             // 00010000
-shiftBits &lt;&lt; 5             // 10000000
-shiftBits &lt;&lt; 6             // 00000000
-shiftBits &gt;&gt; 2             // 00000001
+</span><span class="n">let</span> <span class="n">shiftBits</span><span class="o">:</span> <span class="n">UInt8</span> <span class="o">=</span> <span class="mi">4</span>   <span class="c1">// 00000100 in binary
+</span><span class="n">shiftBits</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span>             <span class="c1">// 00001000
+</span><span class="n">shiftBits</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span>             <span class="c1">// 00010000
+</span><span class="n">shiftBits</span> <span class="o">&lt;&lt;</span> <span class="mi">5</span>             <span class="c1">// 10000000
+</span><span class="n">shiftBits</span> <span class="o">&lt;&lt;</span> <span class="mi">6</span>             <span class="c1">// 00000000
+</span><span class="n">shiftBits</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span>             <span class="c1">// 00000001
 // Shift Operator with Hex Color Code
-let pink: UInt32 = 0xCC6699
-let redComponent = (pink &amp; 0xFF0000) &gt;&gt; 16    // redComponent is 0xCC, or 204
-let greenComponent = (pink &amp; 0x00FF00) &gt;&gt; 8   // greenComponent is 0x66, or 102
-let blueComponent = pink &amp; 0x0000FF           // blueComponent is 0x99, or 153<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+</span><span class="n">let</span> <span class="n">pink</span><span class="o">:</span> <span class="n">UInt32</span> <span class="o">=</span> <span class="mh">0xCC6699</span>
+<span class="n">let</span> <span class="n">redComponent</span> <span class="o">=</span> <span class="p">(</span><span class="n">pink</span> <span class="o">&amp;</span> <span class="mh">0xFF0000</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span>    <span class="c1">// redComponent is 0xCC, or 204
+</span><span class="n">let</span> <span class="n">greenComponent</span> <span class="o">=</span> <span class="p">(</span><span class="n">pink</span> <span class="o">&amp;</span> <span class="mh">0x00FF00</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span>   <span class="c1">// greenComponent is 0x66, or 102
+</span><span class="n">let</span> <span class="n">blueComponent</span> <span class="o">=</span> <span class="n">pink</span> <span class="o">&amp;</span> <span class="mh">0x0000FF</span>           <span class="c1">// blueComponent is 0x99, or 153
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
-<h4 id="2.-オーバーフローオペレーター">2. オーバーフローオペレーター</h4>
+<h4 id="2-オーバーフローオペレーター">2. オーバーフローオペレーター</h4>
 
 <p>Swift では、オーバーフロー・アンダーフローともに発生した場合には、エラーを吐きます。意図しない間違った値を使用してしまうことを防いでくれます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
-4</pre></td><td class="code"><pre>var potentialOverflow = Int16.max
-// potentialOverflow equals 32767, which is the largest value an Int16 can hold
-potentialOverflow += 1
-// this causes an error<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+4</pre></td><td class="code"><pre><span class="n">var</span> <span class="n">potentialOverflow</span> <span class="o">=</span> <span class="n">Int16</span><span class="p">.</span><span class="n">max</span>
+<span class="c1">// potentialOverflow equals 32767, which is the largest value an Int16 can hold
+</span><span class="n">potentialOverflow</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="c1">// this causes an error
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>エラーを起こすのではなく、通常のようにオーバーフロー・アンダーフローさせたい場合には、その値を丸めてくれるようにすることもできます。その際には、オペレーターの前に <code>&amp;</code> をつけます。</p>
+<p>エラーを起こすのではなく、通常のようにオーバーフロー・アンダーフローさせたい場合には、その値を丸めてくれるようにすることもできます。その際には、オペレーターの前に <code class="highlighter-rouge">&amp;</code> をつけます。</p>
 
 <ul>
-<li>・オーバーフロー足し算 ： <code>&amp;+</code></li>
-<li>・オーバーフロー引き算 ： <code>&amp;-</code></li>
-<li>・オーバーフロー掛け算 ： <code>&amp;*</code></li>
-<li>・オーバーフロー割り算 ： <code>&amp;/</code></li>
-<li>・オーバーフロー　余り ： <code>&amp;%</code></li>
+  <li>・オーバーフロー足し算 ： <code class="highlighter-rouge">&amp;+</code></li>
+  <li>・オーバーフロー引き算 ： <code class="highlighter-rouge">&amp;-</code></li>
+  <li>・オーバーフロー掛け算 ： <code class="highlighter-rouge">&amp;*</code></li>
+  <li>・オーバーフロー割り算 ： <code class="highlighter-rouge">&amp;/</code></li>
+  <li>・オーバーフロー　余り ： <code class="highlighter-rouge">&amp;%</code></li>
 </ul>
 
 <p>例を見てみます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -346,33 +350,37 @@ potentialOverflow += 1
 6
 7
 8
-9</pre></td><td class="code"><pre>var willOverflow = UInt8.max
-// willOverflow equals 255, which is the largest value a UInt8 can hold
-willOverflow = willOverflow &amp;+ 1
-// willOverflow is now equal to 0
-
-var willUnderflow = UInt8.min
-// willUnderflow equals 0, which is the smallest value a UInt8 can hold
-willUnderflow = willUnderflow &amp;- 1
-// willUnderflow is now equal to 255<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+9</pre></td><td class="code"><pre><span class="n">var</span> <span class="n">willOverflow</span> <span class="o">=</span> <span class="n">UInt8</span><span class="p">.</span><span class="n">max</span>
+<span class="c1">// willOverflow equals 255, which is the largest value a UInt8 can hold
+</span><span class="n">willOverflow</span> <span class="o">=</span> <span class="n">willOverflow</span> <span class="o">&amp;+</span> <span class="mi">1</span>
+<span class="c1">// willOverflow is now equal to 0
+</span>
+<span class="n">var</span> <span class="n">willUnderflow</span> <span class="o">=</span> <span class="n">UInt8</span><span class="p">.</span><span class="n">min</span>
+<span class="c1">// willUnderflow equals 0, which is the smallest value a UInt8 can hold
+</span><span class="n">willUnderflow</span> <span class="o">=</span> <span class="n">willUnderflow</span> <span class="o">&amp;-</span> <span class="mi">1</span>
+<span class="c1">// willUnderflow is now equal to 255
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>また、0 で割った場合と 0 で余りを求めた場合に、エラーを吐くのではなく、0 を返すという効果もあります。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre>let x = 1
-let y = x &amp;/ 0
-// y is equal to 0<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+3</pre></td><td class="code"><pre><span class="n">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">let</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&amp;/</span> <span class="mi">0</span>
+<span class="c1">// y is equal to 0
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
-<h4 id="3.-オペレーター関数">3. オペレーター関数</h4>
+<h4 id="3-オペレーター関数">3. オペレーター関数</h4>
 
 <p>クラスと構造体は、すでに存在しているオペレーターに独自の実装を追加することができます。これをオーバーライドと言います。</p>
 
 <p>下記の例では、Vector2D という独自の構造体に対して、新しい + オペレーターをオーバーライドしています。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -382,24 +390,26 @@ let y = x &amp;/ 0
 8
 9
 10
-11</pre></td><td class="code"><pre>struct Vector2D {
-    var x = 0.0, y = 0.0
-}
-@infix func + (left: Vector2D, right: Vector2D) -&gt; Vector2D {
-    return Vector2D(x: left.x + right.x, y: left.y + right.y)
-}
+11</pre></td><td class="code"><pre><span class="k">struct</span> <span class="n">Vector2D</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
+<span class="p">}</span>
+<span class="err">@infix</span> <span class="n">func</span> <span class="o">+</span> <span class="p">(</span><span class="n">left</span><span class="o">:</span> <span class="n">Vector2D</span><span class="p">,</span> <span class="n">right</span><span class="o">:</span> <span class="n">Vector2D</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Vector2D</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="n">left</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">right</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="n">left</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">right</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+<span class="p">}</span>
 
-let vector = Vector2D(x: 3.0, y: 1.0)
-let anotherVector = Vector2D(x: 2.0, y: 4.0)
-let combinedVector = vector + anotherVector
-// combinedVector is a Vector2D instance with values of (5.0, 5.0)<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">let</span> <span class="n">vector</span> <span class="o">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="mi">3</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">let</span> <span class="n">anotherVector</span> <span class="o">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mi">4</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">let</span> <span class="n">combinedVector</span> <span class="o">=</span> <span class="n">vector</span> <span class="o">+</span> <span class="n">anotherVector</span>
+<span class="c1">// combinedVector is a Vector2D instance with values of (5.0, 5.0)
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>この <code>@infix</code> 属性は、binary operator (オペランドが 2 つあるオペレーター) に対して使用します。このオペレーター関数は、グローバル関数なので、2 つのインスタンスに上記のように使用できます。</p>
+<p>この <code class="highlighter-rouge">@infix</code> 属性は、binary operator (オペランドが 2 つあるオペレーター) に対して使用します。このオペレーター関数は、グローバル関数なので、2 つのインスタンスに上記のように使用できます。</p>
 
-<p>また、unary operator も定義できます。この際には、<code>@postfix</code> と <code>@prefix</code> 属性を使用します。</p>
+<p>また、unary operator も定義できます。この際には、<code class="highlighter-rouge">@postfix</code> と <code class="highlighter-rouge">@prefix</code> 属性を使用します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -407,41 +417,45 @@ let combinedVector = vector + anotherVector
 6
 7
 8
-9</pre></td><td class="code"><pre>@prefix func - (vector: Vector2D) -&gt; Vector2D {
-    return Vector2D(x: -vector.x, y: -vector.y)
-}
+9</pre></td><td class="code"><pre><span class="err">@prefix</span> <span class="n">func</span> <span class="o">-</span> <span class="p">(</span><span class="n">vector</span><span class="o">:</span> <span class="n">Vector2D</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Vector2D</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="o">-</span><span class="n">vector</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="o">-</span><span class="n">vector</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+<span class="p">}</span>
 
-let positive = Vector2D(x: 3.0, y: 4.0)
-let negative = -positive
-// negative is a Vector2D instance with values of (-3.0, -4.0)
-let alsoPositive = -negative
-// alsoPositive is a Vector2D instance with values of (3.0, 4.0)<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">let</span> <span class="n">positive</span> <span class="o">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="mi">3</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mi">4</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">let</span> <span class="n">negative</span> <span class="o">=</span> <span class="o">-</span><span class="n">positive</span>
+<span class="c1">// negative is a Vector2D instance with values of (-3.0, -4.0)
+</span><span class="n">let</span> <span class="n">alsoPositive</span> <span class="o">=</span> <span class="o">-</span><span class="n">negative</span>
+<span class="c1">// alsoPositive is a Vector2D instance with values of (3.0, 4.0)
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>また、Compound assignment operators (+= とか /= とか) もオーバーライドできます。その際には、<code>@assignment</code> を使用します。また、この Compound assignment operators のオペレーター関数を書く際には、左の引数に <code>inout</code> キーワードを使用しなければなりません。この引数は変更され、この変更は関数呼び出し後も持続なければならないからです。</p>
+<p>また、Compound assignment operators (+= とか /= とか) もオーバーライドできます。その際には、<code class="highlighter-rouge">@assignment</code> を使用します。また、この Compound assignment operators のオペレーター関数を書く際には、左の引数に <code class="highlighter-rouge">inout</code> キーワードを使用しなければなりません。この引数は変更され、この変更は関数呼び出し後も持続なければならないからです。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
 6
 7
-8</pre></td><td class="code"><pre>@assignment func += (inout left: Vector2D, right: Vector2D) {
-    left = left + right
-}
+8</pre></td><td class="code"><pre><span class="err">@assignment</span> <span class="n">func</span> <span class="o">+=</span> <span class="p">(</span><span class="n">inout</span> <span class="n">left</span><span class="o">:</span> <span class="n">Vector2D</span><span class="p">,</span> <span class="n">right</span><span class="o">:</span> <span class="n">Vector2D</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">left</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="n">right</span>
+<span class="p">}</span>
 
-var original = Vector2D(x: 1.0, y: 2.0)
-let vectorToAdd = Vector2D(x: 3.0, y: 4.0)
-original += vectorToAdd
-// original now has values of (4.0, 6.0)<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">var</span> <span class="n">original</span> <span class="o">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">let</span> <span class="n">vectorToAdd</span> <span class="o">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="mi">3</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mi">4</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">original</span> <span class="o">+=</span> <span class="n">vectorToAdd</span>
+<span class="c1">// original now has values of (4.0, 6.0)
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>先ほど、Vector2D のために + をオーバーライドしているので、上記のように簡潔に書くことができます。</p>
 
-<p><code>@assignment</code> と <code>@postfix</code> か <code>@prefix</code> を組み合わせることもできます。</p>
+<p><code class="highlighter-rouge">@assignment</code> と <code class="highlighter-rouge">@postfix</code> か <code class="highlighter-rouge">@prefix</code> を組み合わせることもできます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -449,22 +463,24 @@ original += vectorToAdd
 6
 7
 8
-9</pre></td><td class="code"><pre>@prefix @assignment func ++ (inout vector: Vector2D) -&gt; Vector2D {
-    vector += Vector2D(x: 1.0, y: 1.0)
-    return vector
-}
+9</pre></td><td class="code"><pre><span class="err">@prefix</span> <span class="err">@assignment</span> <span class="n">func</span> <span class="o">++</span> <span class="p">(</span><span class="n">inout</span> <span class="n">vector</span><span class="o">:</span> <span class="n">Vector2D</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Vector2D</span> <span class="p">{</span>
+    <span class="n">vector</span> <span class="o">+=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">vector</span>
+<span class="p">}</span>
 
-var toIncrement = Vector2D(x: 3.0, y: 4.0)
-let afterIncrement = ++toIncrement
-// toIncrement now has values of (4.0, 5.0)
-// afterIncrement also has values of (4.0, 5.0)<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">var</span> <span class="n">toIncrement</span> <span class="o">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="mi">3</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mi">4</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">let</span> <span class="n">afterIncrement</span> <span class="o">=</span> <span class="o">++</span><span class="n">toIncrement</span>
+<span class="c1">// toIncrement now has values of (4.0, 5.0)
+// afterIncrement also has values of (4.0, 5.0)
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>いくつかオペレーターをオーバーライドする例をみてきましたが、= はオーバーライドすることができません。また、ternary condicional operator (ex. (a ? b : c)) は、オーバーライドできません。</p>
 
 <p>独自のクラス・構造体は、比較オペレーターをデフォルトでは持ちません。Swift 側から推測することはできません。先ほどと同じように実装することで、比較オペレーターを使用することができるようになります。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -476,31 +492,42 @@ let afterIncrement = ++toIncrement
 10
 11
 12
-13</pre></td><td class="code"><pre>@infix func == (left: Vector2D, right: Vector2D) -&gt; Bool {
-    return (left.x == right.x) &amp;&amp; (left.y == right.y)
-}
-@infix func != (left: Vector2D, right: Vector2D) -&gt; Bool {
-    return !(left == right)
-}
+13</pre></td><td class="code"><pre><span class="err">@infix</span> <span class="n">func</span> <span class="o">==</span> <span class="p">(</span><span class="n">left</span><span class="o">:</span> <span class="n">Vector2D</span><span class="p">,</span> <span class="n">right</span><span class="o">:</span> <span class="n">Vector2D</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">left</span><span class="p">.</span><span class="n">x</span> <span class="o">==</span> <span class="n">right</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">left</span><span class="p">.</span><span class="n">y</span> <span class="o">==</span> <span class="n">right</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="err">@infix</span> <span class="n">func</span> <span class="o">!=</span> <span class="p">(</span><span class="n">left</span><span class="o">:</span> <span class="n">Vector2D</span><span class="p">,</span> <span class="n">right</span><span class="o">:</span> <span class="n">Vector2D</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">!</span><span class="p">(</span><span class="n">left</span> <span class="o">==</span> <span class="n">right</span><span class="p">)</span>
+<span class="p">}</span>
 
-let twoThree = Vector2D(x: 2.0, y: 3.0)
-let anotherTwoThree = Vector2D(x: 2.0, y: 3.0)
-if twoThree == anotherTwoThree {
-    println("These two vectors are equivalent.")
-}
-// prints "These two vectors are equivalent."<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">let</span> <span class="n">twoThree</span> <span class="o">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mi">3</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">let</span> <span class="n">anotherTwoThree</span> <span class="o">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mi">3</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">twoThree</span> <span class="o">==</span> <span class="n">anotherTwoThree</span> <span class="p">{</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">"These two vectors are equivalent."</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// prints "These two vectors are equivalent."
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
-<h4 id="4.-カスタムオペレーター">4. カスタムオペレーター</h4>
+<h4 id="4-カスタムオペレーター">4. カスタムオペレーター</h4>
 
-<p>Swift では、カスタムオペレーターを定義することができます。これには、/ = - + * % &lt; &gt; ! &amp; | ^ . ~ を使用することができます。<code>operator</code> キーワードを使用し、グローバルに宣言されます。</p>
+<table>
+  <tbody>
+    <tr>
+      <td>Swift では、カスタムオペレーターを定義することができます。これには、/ = - + * % &lt; &gt; ! &amp;</td>
+      <td>^ . ~ を使用することができます。<code class="highlighter-rouge">operator</code> キーワードを使用し、グローバルに宣言されます。</td>
+    </tr>
+  </tbody>
+</table>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>operator prefix +++ {}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">operator</span> <span class="n">prefix</span> <span class="o">+++</span> <span class="p">{}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>そして、宣言した後は、実際に実装をしていきます。先ほどと同じ Vector2D に対して、この独自のオペレーターを追加する例をみていきます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -508,37 +535,41 @@ if twoThree == anotherTwoThree {
 6
 7
 8
-9</pre></td><td class="code"><pre>@prefix @assignment func +++ (inout vector: Vector2D) -&gt; Vector2D {
-    vector += vector
-    return vector
-}
+9</pre></td><td class="code"><pre><span class="err">@prefix</span> <span class="err">@assignment</span> <span class="n">func</span> <span class="o">+++</span> <span class="p">(</span><span class="n">inout</span> <span class="n">vector</span><span class="o">:</span> <span class="n">Vector2D</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Vector2D</span> <span class="p">{</span>
+    <span class="n">vector</span> <span class="o">+=</span> <span class="n">vector</span>
+    <span class="k">return</span> <span class="n">vector</span>
+<span class="p">}</span>
 
-var toBeDoubled = Vector2D(x: 1.0, y: 4.0)
-let afterDoubling = +++toBeDoubled
-// toBeDoubled now has values of (2.0, 8.0)
-// afterDoubling also has values of (2.0, 8.0)<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">var</span> <span class="n">toBeDoubled</span> <span class="o">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mi">4</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">let</span> <span class="n">afterDoubling</span> <span class="o">=</span> <span class="o">+++</span><span class="n">toBeDoubled</span>
+<span class="c1">// toBeDoubled now has values of (2.0, 8.0)
+// afterDoubling also has values of (2.0, 8.0)
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>独自の infix オペレーターは独自の precedence と associativity を指定できます。precedence とは、オペレーター同士の優先順です。associativity とは、同じ優先順位を持ったオペレーターがどのようにくっつくか（右から or 左から or 同じ優先順位のオペレーターを一緒になれない）を決める要因です。</p>
 
-<p>associativity は、<code>left</code>、<code>right</code>、<code>none</code> を指定でき、デフォルトは、<code>none</code> です。precedence は数字で優先順位を定義します。デフォルトは、100 です。</p>
+<p>associativity は、<code class="highlighter-rouge">left</code>、<code class="highlighter-rouge">right</code>、<code class="highlighter-rouge">none</code> を指定でき、デフォルトは、<code class="highlighter-rouge">none</code> です。precedence は数字で優先順位を定義します。デフォルトは、100 です。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
 6
 7
-8</pre></td><td class="code"><pre>operator infix +- { associativity left precedence 140 }
-func +- (left: Vector2D, right: Vector2D) -&gt; Vector2D {
-    return Vector2D(x: left.x + right.x, y: left.y - right.y)
-}
-let firstVector = Vector2D(x: 1.0, y: 2.0)
-let secondVector = Vector2D(x: 3.0, y: 4.0)
-let plusMinusVector = firstVector +- secondVector
-// plusMinusVector is a Vector2D instance with values of (4.0, -2.0)<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+8</pre></td><td class="code"><pre><span class="n">operator</span> <span class="n">infix</span> <span class="o">+-</span> <span class="p">{</span> <span class="n">associativity</span> <span class="n">left</span> <span class="n">precedence</span> <span class="mi">140</span> <span class="p">}</span>
+<span class="n">func</span> <span class="o">+-</span> <span class="p">(</span><span class="n">left</span><span class="o">:</span> <span class="n">Vector2D</span><span class="p">,</span> <span class="n">right</span><span class="o">:</span> <span class="n">Vector2D</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Vector2D</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="n">left</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">right</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="n">left</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">right</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">let</span> <span class="n">firstVector</span> <span class="o">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">let</span> <span class="n">secondVector</span> <span class="o">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="mi">3</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mi">4</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">let</span> <span class="n">plusMinusVector</span> <span class="o">=</span> <span class="n">firstVector</span> <span class="o">+-</span> <span class="n">secondVector</span>
+<span class="c1">// plusMinusVector is a Vector2D instance with values of (4.0, -2.0)
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 					</div>
 

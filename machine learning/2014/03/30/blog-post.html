@@ -244,7 +244,7 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>ナイーブベイジアンフィルタとは、Naive Bayes というアルゴリズムを使用して、カテゴリやスパムメールの振り分けを行うとてもシンプルなフィルタです。強い独立性を仮定して処理するので、&quot;ナイーブ&quot;と言われます。*1 事前にコンピューターに手動で学習させておく（訓練フェーズ）ので、Supervied Leaning と呼ばれる機械学習の手法の一つ。</p>
+						<p>ナイーブベイジアンフィルタとは、Naive Bayes というアルゴリズムを使用して、カテゴリやスパムメールの振り分けを行うとてもシンプルなフィルタです。強い独立性を仮定して処理するので、”ナイーブ”と言われます。*1 事前にコンピューターに手動で学習させておく（訓練フェーズ）ので、Supervied Leaning と呼ばれる機械学習の手法の一つ。</p>
 
 <h3 id="ナイーブベイズフィルタ">ナイーブベイズフィルタ</h3>
 
@@ -254,46 +254,81 @@
 
 <p>1 .  カテゴリに各単語が分類された回数</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
 6
 7
-8</pre></td><td class="code"><pre> {
-     "Python": {
-          "Python": 2,
-          "パイソン": 1},
-      "Ruby": {
-          "Ruby": 1,
-          "ルビー": 1}
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+8</pre></td><td class="code"><pre> <span class="p">{</span>
+     <span class="s">"Python"</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s">"Python"</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="s">"パイソン"</span><span class="o">:</span> <span class="mi">1</span><span class="p">},</span>
+      <span class="s">"Ruby"</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s">"Ruby"</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="s">"ルビー"</span><span class="o">:</span> <span class="mi">1</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>2 . カテゴリの登場回数</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> {'Python': 1, 'Ruby': 1}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> <span class="p">{</span><span class="err">'</span><span class="n">Python</span><span class="err">'</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="err">'</span><span class="n">Ruby</span><span class="err">'</span><span class="o">:</span> <span class="mi">1</span><span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>3 . ユニークな単語の集合</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> {"Python", "パイソン", "Ruby", "ルビー"}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> <span class="p">{</span><span class="s">"Python"</span><span class="p">,</span> <span class="s">"パイソン"</span><span class="p">,</span> <span class="s">"Ruby"</span><span class="p">,</span> <span class="s">"ルビー"</span><span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>確率の乗法定理により、ある文章(doc)が与えられた時に、あるカテゴリ(cat)に属する確率は、</p>
 
 <blockquote>
-<blockquote>
-<p><strong>P(cat|doc) = P(doc|cat)P(cat) / P(doc)</strong> </p>
+  <blockquote>
+    <table>
+      <tbody>
+        <tr>
+          <td>**P(cat</td>
+          <td>doc) = P(doc</td>
+          <td>cat)P(cat) / P(doc)**</td>
+        </tr>
+      </tbody>
+    </table>
+  </blockquote>
 </blockquote>
-</blockquote>
 
-<p><strong>P(doc)</strong> | 文章が生起する確率 = どのカテゴリでも同じ ∴ 分子のみ比較</p>
+<table>
+  <tbody>
+    <tr>
+      <td><strong>P(doc)</strong></td>
+      <td>文章が生起する確率 = どのカテゴリでも同じ ∴ 分子のみ比較</td>
+    </tr>
+  </tbody>
+</table>
 
-<p><strong>P(cat)</strong> | カテゴリが生起する確率 = 訓練フェーズのおいてカテゴリが与えられた回数 / 訓練フェーズの総文章数</p>
+<table>
+  <tbody>
+    <tr>
+      <td><strong>P(cat)</strong></td>
+      <td>カテゴリが生起する確率 = 訓練フェーズのおいてカテゴリが与えられた回数 / 訓練フェーズの総文章数</td>
+    </tr>
+  </tbody>
+</table>
 
-<p><strong>P(doc l cat)</strong> | あるカテゴリが与えられた時の文章の生起確率 *2</p>
+<table>
+  <tbody>
+    <tr>
+      <td><strong>P(doc l cat)</strong></td>
+      <td>あるカテゴリが与えられた時の文章の生起確率 *2</td>
+    </tr>
+  </tbody>
+</table>
 
 					</div>
 

@@ -246,8 +246,10 @@
 					<div class="post">
 						<p>大量のモデルからワイルドカードを使って特定のモデルを検索したいことがあると思います。以下、その方法のメモです。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="vi">@mathList</span> <span class="o">=</span> <span class="no">Course</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="ss">:all</span><span class="p">,</span> <span class="ss">:conditions</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name like ?"</span><span class="p">,</span> <span class="s2">"MATH%"</span><span class="p">])</span> <span class="o">%&gt;</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="vi">@mathList</span> <span class="o">=</span> <span class="no">Course</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="ss">:all</span><span class="p">,</span> <span class="ss">:conditions</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name like ?"</span><span class="p">,</span> <span class="s2">"MATH%"</span><span class="p">])</span> <span class="o">%&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>上記のように like を使います。この例では、ある大学の授業から授業名に MATH が入っているモデルを抽出しています。最後の % もポイントですね。</p>
 

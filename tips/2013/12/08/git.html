@@ -250,80 +250,110 @@
 
 <p>gitをアウトプットをカラーリング</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">git</span> <span class="n">config</span> <span class="err">—</span><span class="n">global</span> <span class="n">color</span><span class="p">.</span><span class="nf">ui</span> <span class="kp">true</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">git</span> <span class="n">config</span> <span class="err">—</span><span class="n">global</span> <span class="n">color</span><span class="p">.</span><span class="nf">ui</span> <span class="kp">true</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>ログにどこが変更されたか表示する</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2</pre></td><td class="code"><pre><span class="n">git</span> <span class="n">log</span> <span class="o">-</span><span class="nb">p</span>
-<span class="n">git</span> <span class="n">log</span> <span class="o">--</span><span class="n">stat</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">git</span> <span class="n">log</span> <span class="o">--</span><span class="n">stat</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>修正したが、ステージングエリアにあげていないファイルの差分チェック</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">git</span> <span class="n">diff</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">git</span> <span class="n">diff</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>修正したが、ステージングエリアにあげていないファイルを元に戻す</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">git</span> <span class="n">checkout</span> <span class="err">—</span> <span class="n">fileName</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">git</span> <span class="n">checkout</span> <span class="err">—</span> <span class="n">fileName</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>修正し、ステージングエリアにあげたものファイルの差分チェック</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">git</span> <span class="n">diff</span> <span class="err">—</span><span class="n">cached</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">git</span> <span class="n">diff</span> <span class="err">—</span><span class="n">cached</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>スペルミス等のコミットとしてあげるほどでもない場合、ステージングエリアに修正ファイルをあげた後にこのコマンドを実行すると、同じコミットとして処理してくれる。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">git</span> <span class="n">commit</span> <span class="err">—</span><span class="n">amend</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">git</span> <span class="n">commit</span> <span class="err">—</span><span class="n">amend</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>HEADは直前のコミット。直前のコミットをなかったことにしてくれる。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">hard</span> <span class="no">HEAD</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">hard</span> <span class="no">HEAD</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>そのコミットIDまで戻る。コミットIDは git status で確認</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">hard</span> <span class="no">CommitID</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">hard</span> <span class="no">CommitID</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>ブランチの削除</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">d</span> <span class="p">(</span><span class="n">branch</span> <span class="nb">name</span><span class="p">)</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">d</span> <span class="p">(</span><span class="n">branch</span> <span class="nb">name</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>たくさんコミットをしていく中で、あるコミットだけに目印のようなものを付けたい時に活用する。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">git</span> <span class="n">tag</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">git</span> <span class="n">tag</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>coというエイリアスを作成</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">git</span> <span class="n">config</span> <span class="err">—</span><span class="n">global</span> <span class="k">alias</span><span class="p">.</span><span class="nf">co</span> <span class="n">checkout</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">git</span> <span class="n">config</span> <span class="err">—</span><span class="n">global</span> <span class="k">alias</span><span class="p">.</span><span class="nf">co</span> <span class="n">checkout</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>エイリアス等の設定一覧を表示</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">git</span> <span class="n">config</span> <span class="o">-</span><span class="n">l</span> <span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">git</span> <span class="n">config</span> <span class="o">-</span><span class="n">l</span> 
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>共有リポジトリを作成する時の初期オプション。またリポジトリ名は .git と付けるのが通例。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">git</span> <span class="n">init</span> <span class="err">—</span><span class="n">bare</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">git</span> <span class="n">init</span> <span class="err">—</span><span class="n">bare</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>originという名前で共有リポジトリを設定する</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="p">(</span><span class="n">repos</span> <span class="n">location</span><span class="p">)</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="p">(</span><span class="n">repos</span> <span class="n">location</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>誰かが作った共有レポジトリを他者がその他者のローカルに複製する</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">git</span> <span class="nb">clone</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">git</span> <span class="nb">clone</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 					</div>
 

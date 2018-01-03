@@ -248,9 +248,9 @@
 
 <h4 id="タイトルに画像">タイトルに画像</h4>
 
-<p>Navigation Bar のタイトル(真ん中)に文字列を表示する以外にも、画像等を置くことができます。そのためには、Navigation Bar Item の <code>titleView</code> プロパティを使用します。この <code>titleView</code> プロパティには、UIView のサブクラスならなんでも設定可能。今回は画像を設定します。</p>
+<p>Navigation Bar のタイトル(真ん中)に文字列を表示する以外にも、画像等を置くことができます。そのためには、Navigation Bar Item の <code class="highlighter-rouge">titleView</code> プロパティを使用します。この <code class="highlighter-rouge">titleView</code> プロパティには、UIView のサブクラスならなんでも設定可能。今回は画像を設定します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -261,161 +261,170 @@
 9
 10
 11
-12</pre></td><td class="code"><pre>- (void)viewDidLoad{
-    [super viewDidLoad];
+12</pre></td><td class="code"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">viewDidLoad</span><span class="p">{</span>
+	<span class="p">[</span><span class="n">super</span> <span class="nf">viewDidLoad</span><span class="p">];</span>
 
-    /* Create an Image View to replace the Title View */
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 100.0f, 40.0f)];
-    imageView.contentMode = UIViewContentModeScaleAspectFit;
+	<span class="cm">/* Create an Image View to replace the Title View */</span>
+	<span class="n">UIImageView</span> <span class="o">*</span><span class="n">imageView</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UIImageView</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithFrame</span><span class="p">:</span><span class="n">CGRectMake</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">,</span> <span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">,</span> <span class="mi">40</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">)];</span>
+	<span class="n">imageView</span><span class="p">.</span><span class="n">contentMode</span> <span class="o">=</span> <span class="n">UIViewContentModeScaleAspectFit</span><span class="p">;</span>
 
-    /* Load an image. Be careful, this image will be cached */
-    UIImage *image = [UIImage imageNamed:@"Logo"]; /* Set the image of the Image View */
-    [imageView setImage:image]; /* Set the Title View */
-    self.navigationItem.titleView = imageView;
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+	<span class="cm">/* Load an image. Be careful, this image will be cached */</span>
+	<span class="n">UIImage</span> <span class="o">*</span><span class="n">image</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIImage</span> <span class="nf">imageNamed</span><span class="p">:</span><span class="s">@"Logo"</span><span class="p">];</span> <span class="cm">/* Set the image of the Image View */</span>
+	<span class="p">[</span><span class="n">imageView</span> <span class="nf">setImage</span><span class="p">:</span><span class="n">image</span><span class="p">];</span> <span class="cm">/* Set the Title View */</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">navigationItem</span><span class="p">.</span><span class="n">titleView</span> <span class="o">=</span> <span class="n">imageView</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>Apple は、この <code>titleView</code> の高さが 128 points 以上にならないよう勧めているようです。もし、高さ 128 pixels の画像を設定した場合、Retina ディスプレイでは、64 points になります。300 pixels では、150 points になってしまいます。これらを調整するために、ビューの contentMode を <code>UIViewContentModeScaleAspectFit</code> に設定することで、調整してくれます。</p>
+<p>Apple は、この <code class="highlighter-rouge">titleView</code> の高さが 128 points 以上にならないよう勧めているようです。もし、高さ 128 pixels の画像を設定した場合、Retina ディスプレイでは、64 points になります。300 pixels では、150 points になってしまいます。これらを調整するために、ビューの contentMode を <code class="highlighter-rouge">UIViewContentModeScaleAspectFit</code> に設定することで、調整してくれます。</p>
 
-<p><img src="/images/2014/07/1.png" alt=""></p>
+<p><img src="/images/2014/07/1.png" alt="" /></p>
 
 <h4 id="navigation-bar-にデフォルトのボタンの追加">Navigation Bar にデフォルトのボタンの追加</h4>
 
-<p>Apple が提供してくれている SystemItem は以外に種類が豊富です。これらは、<code>initWithBarButtonSystemItem:target:action:</code> の Initializer を使用し、最初の引数に <code>UIBarButtonSystemItem</code> Enumeration の値を指定します。その一覧。</p>
+<p>Apple が提供してくれている SystemItem は以外に種類が豊富です。これらは、<code class="highlighter-rouge">initWithBarButtonSystemItem:target:action:</code> の Initializer を使用し、最初の引数に <code class="highlighter-rouge">UIBarButtonSystemItem</code> Enumeration の値を指定します。その一覧。</p>
 
-<table><thead>
-<tr>
-<th>Value</th>
-<th style="text-align: center">Image</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>UIBarButtonSystemItemDone</td>
-<td style="text-align: center"><img src="/images/2014/07/2.png" alt=""></td>
-</tr>
-<tr>
-<td>UIBarButtonSystemItemCancel</td>
-<td style="text-align: center"><img src="/images/2014/07/3.png" alt=""></td>
-</tr>
-<tr>
-<td>UIBarButtonSystemItemEdit</td>
-<td style="text-align: center"><img src="/images/2014/07/4.png" alt=""></td>
-</tr>
-<tr>
-<td>UIBarButtonSystemItemSave</td>
-<td style="text-align: center"><img src="/images/2014/07/5.png" alt=""></td>
-</tr>
-<tr>
-<td>UIBarButtonSystemItemAdd</td>
-<td style="text-align: center"><img src="/images/2014/07/6.png" alt=""></td>
-</tr>
-<tr>
-<td>UIBarButtonSystemItemCompose</td>
-<td style="text-align: center"><img src="/images/2014/07/7.png" alt=""></td>
-</tr>
-<tr>
-<td>UIBarButtonSystemItemReply</td>
-<td style="text-align: center"><img src="/images/2014/07/8.png" alt=""></td>
-</tr>
-<tr>
-<td>UIBarButtonSystemItemAction</td>
-<td style="text-align: center"><img src="/images/2014/07/9.png" alt=""></td>
-</tr>
-<tr>
-<td>UIBarButtonSystemItemOrganize</td>
-<td style="text-align: center"><img src="/images/2014/07/10.png" alt=""></td>
-</tr>
-<tr>
-<td>UIBarButtonSystemItemBookmarks</td>
-<td style="text-align: center"><img src="/images/2014/07/11.png" alt=""></td>
-</tr>
-<tr>
-<td>UIBarButtonSystemItemSearch</td>
-<td style="text-align: center"><img src="/images/2014/07/12.png" alt=""></td>
-</tr>
-<tr>
-<td>UIBarButtonSystemItemRefresh</td>
-<td style="text-align: center"><img src="/images/2014/07/13.png" alt=""></td>
-</tr>
-<tr>
-<td>UIBarButtonSystemItemStop</td>
-<td style="text-align: center"><img src="/images/2014/07/14.png" alt=""></td>
-</tr>
-<tr>
-<td>UIBarButtonSystemItemCamera</td>
-<td style="text-align: center"><img src="/images/2014/07/15.png" alt=""></td>
-</tr>
-<tr>
-<td>UIBarButtonSystemItemTrash</td>
-<td style="text-align: center"><img src="/images/2014/07/16.png" alt=""></td>
-</tr>
-<tr>
-<td>UIBarButtonSystemItemPlay</td>
-<td style="text-align: center"><img src="/images/2014/07/17.png" alt=""></td>
-</tr>
-<tr>
-<td>UIBarButtonSystemItemPause</td>
-<td style="text-align: center"><img src="/images/2014/07/18.png" alt=""></td>
-</tr>
-<tr>
-<td>UIBarButtonSystemItemRewind</td>
-<td style="text-align: center"><img src="/images/2014/07/19.png" alt=""></td>
-</tr>
-<tr>
-<td>UIBarButtonSystemItemFastForward</td>
-<td style="text-align: center"><img src="/images/2014/07/20.png" alt=""></td>
-</tr>
-<tr>
-<td>UIBarButtonSystemItemUndo</td>
-<td style="text-align: center"><img src="/images/2014/07/21.png" alt=""></td>
-</tr>
-<tr>
-<td>UIBarButtonSystemItemRedo</td>
-<td style="text-align: center"><img src="/images/2014/07/22.png" alt=""></td>
-</tr>
-</tbody></table>
+<table>
+  <thead>
+    <tr>
+      <th>Value</th>
+      <th style="text-align: center">Image</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>UIBarButtonSystemItemDone</td>
+      <td style="text-align: center"><img src="/images/2014/07/2.png" alt="" /></td>
+    </tr>
+    <tr>
+      <td>UIBarButtonSystemItemCancel</td>
+      <td style="text-align: center"><img src="/images/2014/07/3.png" alt="" /></td>
+    </tr>
+    <tr>
+      <td>UIBarButtonSystemItemEdit</td>
+      <td style="text-align: center"><img src="/images/2014/07/4.png" alt="" /></td>
+    </tr>
+    <tr>
+      <td>UIBarButtonSystemItemSave</td>
+      <td style="text-align: center"><img src="/images/2014/07/5.png" alt="" /></td>
+    </tr>
+    <tr>
+      <td>UIBarButtonSystemItemAdd</td>
+      <td style="text-align: center"><img src="/images/2014/07/6.png" alt="" /></td>
+    </tr>
+    <tr>
+      <td>UIBarButtonSystemItemCompose</td>
+      <td style="text-align: center"><img src="/images/2014/07/7.png" alt="" /></td>
+    </tr>
+    <tr>
+      <td>UIBarButtonSystemItemReply</td>
+      <td style="text-align: center"><img src="/images/2014/07/8.png" alt="" /></td>
+    </tr>
+    <tr>
+      <td>UIBarButtonSystemItemAction</td>
+      <td style="text-align: center"><img src="/images/2014/07/9.png" alt="" /></td>
+    </tr>
+    <tr>
+      <td>UIBarButtonSystemItemOrganize</td>
+      <td style="text-align: center"><img src="/images/2014/07/10.png" alt="" /></td>
+    </tr>
+    <tr>
+      <td>UIBarButtonSystemItemBookmarks</td>
+      <td style="text-align: center"><img src="/images/2014/07/11.png" alt="" /></td>
+    </tr>
+    <tr>
+      <td>UIBarButtonSystemItemSearch</td>
+      <td style="text-align: center"><img src="/images/2014/07/12.png" alt="" /></td>
+    </tr>
+    <tr>
+      <td>UIBarButtonSystemItemRefresh</td>
+      <td style="text-align: center"><img src="/images/2014/07/13.png" alt="" /></td>
+    </tr>
+    <tr>
+      <td>UIBarButtonSystemItemStop</td>
+      <td style="text-align: center"><img src="/images/2014/07/14.png" alt="" /></td>
+    </tr>
+    <tr>
+      <td>UIBarButtonSystemItemCamera</td>
+      <td style="text-align: center"><img src="/images/2014/07/15.png" alt="" /></td>
+    </tr>
+    <tr>
+      <td>UIBarButtonSystemItemTrash</td>
+      <td style="text-align: center"><img src="/images/2014/07/16.png" alt="" /></td>
+    </tr>
+    <tr>
+      <td>UIBarButtonSystemItemPlay</td>
+      <td style="text-align: center"><img src="/images/2014/07/17.png" alt="" /></td>
+    </tr>
+    <tr>
+      <td>UIBarButtonSystemItemPause</td>
+      <td style="text-align: center"><img src="/images/2014/07/18.png" alt="" /></td>
+    </tr>
+    <tr>
+      <td>UIBarButtonSystemItemRewind</td>
+      <td style="text-align: center"><img src="/images/2014/07/19.png" alt="" /></td>
+    </tr>
+    <tr>
+      <td>UIBarButtonSystemItemFastForward</td>
+      <td style="text-align: center"><img src="/images/2014/07/20.png" alt="" /></td>
+    </tr>
+    <tr>
+      <td>UIBarButtonSystemItemUndo</td>
+      <td style="text-align: center"><img src="/images/2014/07/21.png" alt="" /></td>
+    </tr>
+    <tr>
+      <td>UIBarButtonSystemItemRedo</td>
+      <td style="text-align: center"><img src="/images/2014/07/22.png" alt="" /></td>
+    </tr>
+  </tbody>
+</table>
 
 <p>これらの値をこんな感じに。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
-4</pre></td><td class="code"><pre>self.navigationItem.leftBarButtonItem =
-    [[UIBarButtonItem alloc]
-        initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self
-        action:@selector(performAdd:)];<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+4</pre></td><td class="code"><pre><span class="n">self</span><span class="p">.</span><span class="n">navigationItem</span><span class="p">.</span><span class="n">leftBarButtonItem</span> <span class="o">=</span>
+	<span class="p">[[</span><span class="n">UIBarButtonItem</span> <span class="nf">alloc</span><span class="p">]</span>
+		<span class="nf">initWithBarButtonSystemItem</span><span class="p">:</span><span class="n">UIBarButtonSystemItemDone</span> <span class="nf">target</span><span class="p">:</span><span class="n">self</span>
+		<span class="nf">action</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nf">performAdd</span><span class="p">:)];</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>UIBarButtonSystemItem Enumeration には他にも、UIBarButtonSystemItemFlexibleSpace と UIBarButtonSystemItemFixedSpace とアイテム間の幅を調整するものがあります。また、UIBarButtonSystemItemPageCurl という toolbar の中で使用するものがあります。</p>
 
 <h4 id="navigation-bar-にカスタムボタンの追加">Navigation Bar にカスタムボタンの追加</h4>
 
-<p>上記のシステムのボタンを使い以外にも、自分のビューを追加することができます。<code>initWithCustomView:</code> Initializer によって実装します。</p>
+<p>上記のシステムのボタンを使い以外にも、自分のビューを追加することができます。<code class="highlighter-rouge">initWithCustomView:</code> Initializer によって実装します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
 6
 7
-8</pre></td><td class="code"><pre>self.title = @"Button Demo";
+8</pre></td><td class="code"><pre><span class="n">self</span><span class="p">.</span><span class="n">title</span> <span class="o">=</span> <span class="s">@"Button Demo"</span><span class="p">;</span>
 
-UISwitch *simpleSwitch = [[UISwitch alloc] init];
-simpleSwitch.on = YES;
-[simpleSwitch addTarget:self
-                 action:@selector(switchIsChanged:) forControlEvents:UIControlEventValueChanged];
-self.navigationItem.rightBarButtonItem =
-[[UIBarButtonItem alloc] initWithCustomView:simpleSwitch];<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">UISwitch</span> <span class="o">*</span><span class="n">simpleSwitch</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UISwitch</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">init</span><span class="p">];</span>
+<span class="n">simpleSwitch</span><span class="p">.</span><span class="n">on</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span>
+<span class="p">[</span><span class="n">simpleSwitch</span> <span class="nf">addTarget</span><span class="p">:</span><span class="n">self</span>
+                 <span class="nf">action</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nf">switchIsChanged</span><span class="p">:)</span> <span class="nf">forControlEvents</span><span class="p">:</span><span class="n">UIControlEventValueChanged</span><span class="p">];</span>
+<span class="n">self</span><span class="p">.</span><span class="n">navigationItem</span><span class="p">.</span><span class="n">rightBarButtonItem</span> <span class="o">=</span>
+<span class="p">[[</span><span class="n">UIBarButtonItem</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithCustomView</span><span class="p">:</span><span class="n">simpleSwitch</span><span class="p">];</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>このように UISwitch も追加できます。画像等を追加したり、自由自在にカスタマイズすることができます。</p>
 
-<p><img src="/images/2014/07/23.png" alt=""></p>
+<p><img src="/images/2014/07/23.png" alt="" /></p>
 
 <h4 id="参考">参考</h4>
 
-<p><a href="http://www.amazon.co.jp/gp/product/B00FW79LHE/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=B00FW79LHE&linkCode=as2&tag=komchax-22">iOS 7 Programming Cookbook</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=komchax-22&l=as2&o=9&a=B00FW79LHE" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></p>
+<p><a href="http://www.amazon.co.jp/gp/product/B00FW79LHE/ref=as_li_qf_sp_asin_tl?ie=UTF8&amp;camp=247&amp;creative=1211&amp;creativeASIN=B00FW79LHE&amp;linkCode=as2&amp;tag=komchax-22">iOS 7 Programming Cookbook</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=komchax-22&amp;l=as2&amp;o=9&amp;a=B00FW79LHE" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></p>
 
 					</div>
 

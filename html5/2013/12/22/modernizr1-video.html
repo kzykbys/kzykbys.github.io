@@ -244,9 +244,9 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>Modernizr で video タグのサポートチェックの方法。 </p>
+						<p>Modernizr で video タグのサポートチェックの方法。</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -264,8 +264,10 @@
      <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">Modernizr</span><span class="p">.</span><span class="nx">video</span><span class="p">.</span><span class="nx">h264</span><span class="p">){</span> <span class="c1">// *3</span>
      <span class="c1">// try H.264 video + AAC audio in an MP4 container</span>
      <span class="p">}</span>
-<span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>0 . check for HTML5 video support</p>
 
@@ -274,9 +276,9 @@ major browsers, including Chrome, Firefox, and Opera.</p>
 
 <p>2 . Mozilla Firefox and other open source browsers</p>
 
-<p>3 . Safari, iPhone etc </p>
+<p>3 . Safari, iPhone etc</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -286,10 +288,12 @@ major browsers, including Chrome, Firefox, and Opera.</p>
      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">supports_video</span><span class="p">())</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="p">}</span>
      <span class="kd">var</span> <span class="nx">v</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"video"</span><span class="p">);</span>
      <span class="k">return</span> <span class="nx">v</span><span class="p">.</span><span class="nx">canPlayType</span><span class="p">(</span><span class="err">'</span><span class="nx">video</span><span class="o">/</span><span class="nx">webm</span><span class="p">;</span> <span class="nx">codecs</span><span class="o">=</span><span class="s2">"vp8, vorbis"</span><span class="err">’</span><span class="p">);</span>
-<span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -299,10 +303,12 @@ major browsers, including Chrome, Firefox, and Opera.</p>
  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">supports_video</span><span class="p">())</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="p">}</span>
  <span class="kd">var</span> <span class="nx">v</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"video"</span><span class="p">);</span>
  <span class="k">return</span> <span class="nx">v</span><span class="p">.</span><span class="nx">canPlayType</span><span class="p">(</span><span class="s1">'video/ogg; codecs="theora, vorbis"'</span><span class="p">);</span>
-<span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -312,14 +318,16 @@ major browsers, including Chrome, Firefox, and Opera.</p>
      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">supports_video</span><span class="p">())</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="p">}</span>
      <span class="kd">var</span> <span class="nx">v</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"video"</span><span class="p">);</span>
      <span class="k">return</span> <span class="nx">v</span><span class="p">.</span><span class="nx">canPlayType</span><span class="p">(</span><span class="s1">'video/mp4; codecs="avc1.42E01E, mp4a.40.2"'</span><span class="p">);</span>
-<span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>各関数が、各ブラウザが対応しているビデオフォーマットに対応しているかチェックしている。return文の canPlayType() 関数は、true か false を返すのではなく、下記のように String を返す。</p>
 
-<p>&quot;probably&quot; if the browser is fairly confident it can play this format<br />
-&quot;maybe”    if the browser thinks it might be able to play this format<br />
-&quot;&quot;               (an empty string) if the browser is certain it can’t play this format<br /></p>
+<p>“probably” if the browser is fairly confident it can play this format<br />
+“maybe”    if the browser thinks it might be able to play this format<br />
+“”               (an empty string) if the browser is certain it can’t play this format<br /></p>
 
 					</div>
 

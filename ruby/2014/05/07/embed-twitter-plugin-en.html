@@ -245,28 +245,27 @@
 
 					<div class="post">
 						<blockquote>
-<blockquote>
-<p><span class="deprecate">This article might be too old.</span>  </p>
-</blockquote>
+  <blockquote>
+    <p><span class="deprecate">This article might be too old.</span></p>
+  </blockquote>
 </blockquote>
 
-<p>I made new Liquid tag that enables embedding tweets on Jekyll. This Liquid allows you to easily read tweets on articles. It&#39;s almost like Jekyll&#39;s official gist tag.</p>
+<p>I made new Liquid tag that enables embedding tweets on Jekyll. This Liquid allows you to easily read tweets on articles. It’s almost like Jekyll’s official gist tag.</p>
 
 <blockquote>
-<blockquote>
-<p>{\% tweet 464180168303456256 \%}</p>
-</blockquote>
+  <blockquote>
+    <p>{\% tweet 464180168303456256 \%}</p>
+  </blockquote>
 </blockquote>
 
 <p>After removing the back slash, you can put this simple tag on your markdown. It will get JSON data from twitter. After that, we will use html data on the response. The result should look like this.</p>
 
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">(๑•̀ㅂ•́)و✧ .o0O ( [ Test tweet ]「テストつぶやき」)</p>&mdash; Kazuya Kobayashi (@kzy_kbys) <a href="https://twitter.com/kzy_kbys/status/464180168303456256?ref_src=twsrc%5Etfw">May 7, 2014</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>Here is the code:</p>
 
-<p>Here is the code: </p>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -378,8 +377,10 @@
   <span class="k">end</span>
 <span class="k">end</span>
 
-<span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_tag</span><span class="p">(</span><span class="s1">'tweet'</span><span class="p">,</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">TweetTag</span><span class="p">)</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_tag</span><span class="p">(</span><span class="s1">'tweet'</span><span class="p">,</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">TweetTag</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>Actually, we can just put the generated code on twitter website and it is so easy to use. Now, I have no idea why I made this.</p>
 

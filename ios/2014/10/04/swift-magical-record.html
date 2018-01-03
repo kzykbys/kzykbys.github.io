@@ -246,28 +246,30 @@
 					<div class="post">
 						<p>Swiftを使っているプロジェクトでMagicalRecordを使用する際のメモ。Swiftを使うと言っていますが、MagicalRecordで永続化するモデルは、Objective-Cとして作成しています。</p>
 
-<h4 id="bridging-header.hの作成">Bridging-Header.hの作成</h4>
+<h4 id="bridging-headerhの作成">Bridging-Header.hの作成</h4>
 
-<p>まずは、Xcodeのプロジェクトに <code>[プロジェクト名]-Bridging-Header.h</code> というファイルを作成します。</p>
+<p>まずは、Xcodeのプロジェクトに <code class="highlighter-rouge">[プロジェクト名]-Bridging-Header.h</code> というファイルを作成します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
 6
 7
-8</pre></td><td class="code"><pre>#ifndef Meemo_Meemo_Bridging_Header_h
+8</pre></td><td class="code"><pre><span class="cp">#ifndef Meemo_Meemo_Bridging_Header_h
 #define Meemo_Meemo_Bridging_Header_h
-
-#import "CoreData+MagicalRecord.h" // 追加!
+</span>
+<span class="cp">#import "CoreData+MagicalRecord.h" // 追加!
 #import "KKMemo.h"     // これはのちのち追加
 #import "KKCategory.h" // これはのちのち追加
+</span>
+<span class="cp">#endif
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
-#endif<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
-
-<p>とりあえず、最初は <code>CoreData+MagicalRecord.h</code> をインポートします。</p>
+<p>とりあえず、最初は <code class="highlighter-rouge">CoreData+MagicalRecord.h</code> をインポートします。</p>
 
 <h4 id="xcdatamodeld-ファイルの作成">xcdatamodeld ファイルの作成</h4>
 
@@ -283,32 +285,38 @@
 
 <p>最後にBridging-Header.hにもモデルクラスのファイルをインポートしておく。</p>
 
-<h4 id="appdelegate.swift">AppDelegate.swift</h4>
+<h4 id="appdelegateswift">AppDelegate.swift</h4>
 
 <p>AppDelegate.swift の didFinishLaunchingWithOptions に</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre>// Magical Record Initialization
-MagicalRecord.setupCoreDataStackWithAutoMigratingSqliteStoreNamed("Meemo.sqlite”)<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="c1">// Magical Record Initialization
+</span><span class="n">MagicalRecord</span><span class="p">.</span><span class="n">setupCoreDataStackWithAutoMigratingSqliteStoreNamed</span><span class="p">(</span><span class="s">"Meemo.sqlite”)</span><span class="err">
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>このコードを追加する。</p>
 
-<h4 id="保存・読み込み方法">保存・読み込み方法</h4>
+<h4 id="保存読み込み方法">保存・読み込み方法</h4>
 
 <p>保存の際には、</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre>var photoMemo = KKMemo.MR_createEntity() as KKMemo
-photoMemo.name = “sample”
-photoMemo.managedObjectContext.MR_saveToPersistentStoreAndWait()<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+3</pre></td><td class="code"><pre><span class="n">var</span> <span class="n">photoMemo</span> <span class="o">=</span> <span class="n">KKMemo</span><span class="p">.</span><span class="n">MR_createEntity</span><span class="p">()</span> <span class="n">as</span> <span class="n">KKMemo</span>
+<span class="n">photoMemo</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="err">“</span><span class="n">sample</span><span class="err">”</span>
+<span class="n">photoMemo</span><span class="p">.</span><span class="n">managedObjectContext</span><span class="p">.</span><span class="n">MR_saveToPersistentStoreAndWait</span><span class="p">()</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>実際にデータを呼ぶ出すときには、</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>memosObjects = KKMemo.MR_findAll()<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">memosObjects</span> <span class="o">=</span> <span class="n">KKMemo</span><span class="p">.</span><span class="n">MR_findAll</span><span class="p">()</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <h4 id="参考">参考</h4>
 

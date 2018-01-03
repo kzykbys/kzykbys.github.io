@@ -246,33 +246,37 @@
 					<div class="post">
 						<p>古いブラウザはHTML5に対応していない可能性が高いです。特にIE8以前は問題が深刻で、ブラウザが認識しないHTMLタグを発見すると、空の要素としてDOMに挿入します。この認識しないHTMLタグの子要素としてマークアップしたものが、認識しないHTMLタグの兄弟要素として挿入されてしまいます。例として、</p>
 
-<p><img src="http://3.bp.blogspot.com/-Ze-0rUi2cs4/UrZ5HG71TlI/AAAAAAAAAMY/VVENyQ6j5y0/s1600/Screen+Shot+2013-12-18+at+1.56.19+PM.png" alt=""></p>
+<p><img src="http://3.bp.blogspot.com/-Ze-0rUi2cs4/UrZ5HG71TlI/AAAAAAAAAMY/VVENyQ6j5y0/s1600/Screen+Shot+2013-12-18+at+1.56.19+PM.png" alt="" /></p>
 
-<p>というものを期待していても、article は HTML5 から導入された要素なので、古い IE は認識せず、下記のように解釈します。 </p>
+<p>というものを期待していても、article は HTML5 から導入された要素なので、古い IE は認識せず、下記のように解釈します。</p>
 
-<p><img src="http://4.bp.blogspot.com/-WPIBp4sJYXs/UrZ5NKkp3UI/AAAAAAAAAMg/3pkGPn7DPu4/s1600/Screen+Shot+2013-12-18+at+1.57.40+PM.png" alt=""></p>
+<p><img src="http://4.bp.blogspot.com/-WPIBp4sJYXs/UrZ5NKkp3UI/AAAAAAAAAMg/3pkGPn7DPu4/s1600/Screen+Shot+2013-12-18+at+1.57.40+PM.png" alt="" /></p>
 
 <p>これではCSSを適応させたりする際に問題が発生します。その解決方法として、ダミーの要素を作成します。</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4</pre></td><td class="code"><pre><span class="c">&lt;!--</span><span class="p">[</span><span class="k">if</span> <span class="nx">lt</span> <span class="nx">IE</span> <span class="mi">9</span><span class="p">]</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
 <span class="kd">var</span> <span class="nx">e</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"abbr,article,aside,audio,canvas,datalist,details,"</span> <span class="o">+</span> <span class="s2">"figure,footer,header,hgroup,mark,menu,meter,nav,output,"</span> <span class="o">+</span> <span class="s2">"progress,section,time,video"</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="s1">','</span><span class="p">);</span>
 <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="nx">e</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
-<span class="p">}</span> <span class="o">&lt;</span><span class="sr">/script&gt; &lt;!</span><span class="se">[</span><span class="sr">endif</span><span class="se">]</span><span class="sr">—&gt;</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="p">}</span> <span class="o">&lt;</span><span class="sr">/script&gt; &lt;!</span><span class="se">[</span><span class="sr">endif</span><span class="se">]</span><span class="sr">—</span><span class="err">&gt;
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3</pre></td><td class="code"><pre><span class="c">&lt;!--[if lt IE 9]&gt;
 &lt;script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"&gt;&lt;/script&gt; 
-&lt;![endif]—&gt;</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+&lt;![endif]—&gt;
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>このために Remy Sharp さんという方がライブラリを作成してくれています。オープンソースのMITライセンスなのでどなたでも使用でき、古いブラウザに対応しなければならに時に重宝しそうです。</p>
 
-<p><a href="http://remysharp.com/2009/01/07/html5-enabling-script/">http://remysharp.com/2009/01/07/html5-enabling-script/</a></p>
+<p>http://remysharp.com/2009/01/07/html5-enabling-script/</p>
 
 					</div>
 

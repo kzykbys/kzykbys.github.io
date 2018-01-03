@@ -248,7 +248,7 @@
 
 <p>まずは、このコード。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -262,44 +262,50 @@
 <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">DJBHash</span> <span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">key</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">);</span>
 
 <span class="kt">unsigned</span> <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">hashList</span><span class="p">[</span><span class="mi">4</span><span class="p">])(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="o">=</span>
-    <span class="p">{</span><span class="n">RSHash</span><span class="p">,</span> <span class="n">DEKHash</span><span class="p">,</span> <span class="n">DJBHash</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">};</span>
+	<span class="p">{</span><span class="n">RSHash</span><span class="p">,</span> <span class="n">DEKHash</span><span class="p">,</span> <span class="n">DJBHash</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">};</span>
 
 <span class="kt">unsigned</span> <span class="kt">int</span> <span class="p">(</span><span class="o">**</span><span class="n">mover</span><span class="p">)(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">key</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">);</span>
 
-<span class="n">mover</span> <span class="o">=</span> <span class="n">hashList</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">mover</span> <span class="o">=</span> <span class="n">hashList</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>最初の 3 行は関数の宣言です。 3 つのハッシュ関数があります。2 つ目の hashList は、この関数へのポインタの配列です。関係ないですが、最後の mover は、この配列へのポインタです。</p>
 
 <p>そして、こんな感じに関数へのポインタを返す関数を書きたいとします。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3</pre></td><td class="code"><pre><span class="kt">unsigned</span> <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">hash</span><span class="p">)(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
 
-<span class="n">hash</span> <span class="o">=</span> <span class="n">selectHash</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">hashList</span><span class="p">);</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">hash</span> <span class="o">=</span> <span class="n">selectHash</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">hashList</span><span class="p">);</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>普通に書くとこんな感じになります。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
 6
 7</pre></td><td class="code"><pre><span class="kt">unsigned</span> <span class="nf">int</span> <span class="p">(</span><span class="o">*</span><span class="n">selectHash</span><span class="p">(</span>
-        <span class="kt">int</span> <span class="n">n</span><span class="p">,</span>
-        <span class="kt">unsigned</span> <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">hashList</span><span class="p">[])(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">)))</span>
+		<span class="kt">int</span> <span class="n">n</span><span class="p">,</span>
+		<span class="kt">unsigned</span> <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">hashList</span><span class="p">[])(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">)))</span>
 <span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="k">return</span> <span class="n">hashList</span><span class="p">[</span><span class="n">rand</span><span class="p">()</span> <span class="o">%</span> <span class="n">n</span><span class="p">];</span>
-<span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+	<span class="k">return</span> <span class="n">hashList</span><span class="p">[</span><span class="n">rand</span><span class="p">()</span> <span class="o">%</span> <span class="n">n</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>ちょっときついので、これを typedef を使用して書くとだいぶ楽になる。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -308,9 +314,11 @@
 
 <span class="n">HASHFNCT</span> <span class="o">*</span><span class="nf">selectHash</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">HASHFNCT</span> <span class="o">*</span><span class="n">hashList</span><span class="p">[])</span>
 <span class="p">{</span>
-    <span class="k">return</span> <span class="n">hashList</span><span class="p">[</span><span class="n">rand</span><span class="p">()</span> <span class="o">%</span> <span class="n">n</span><span class="p">];</span>
-<span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+	<span class="k">return</span> <span class="n">hashList</span><span class="p">[</span><span class="n">rand</span><span class="p">()</span> <span class="o">%</span> <span class="n">n</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 					</div>
 

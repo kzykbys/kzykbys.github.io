@@ -244,7 +244,7 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。  </p>
+						<p>iBooks にある “The Swift Programming Language” の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。</p>
 
 <p>今回は、Trailing Closure に関して。</p>
 
@@ -252,7 +252,7 @@
 
 <p>Trailing Closure は、Closure を関数の最後の引数として渡し、さらにその Closure が長くなるような場合に役に立ちます。Trailing Closure は、関数の () の書きます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -266,37 +266,41 @@
 12
 13
 14
-15</pre></td><td class="code"><pre>func someFunctionThatTakesAClosure(closure: () -&gt; ()) {
-    // function body goes here
-}
+15</pre></td><td class="code"><pre><span class="n">func</span> <span class="nf">someFunctionThatTakesAClosure</span><span class="p">(</span><span class="n">closure</span><span class="o">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="p">())</span> <span class="p">{</span>
+    <span class="c1">// function body goes here
+</span><span class="p">}</span>
  
-// here's how you call this function without using a trailing closure:
+<span class="c1">// here's how you call this function without using a trailing closure:
+</span> 
+<span class="n">someFunctionThatTakesAClosure</span><span class="p">({</span>
+    <span class="c1">// closure's body goes here
+</span>    <span class="p">})</span>
  
-someFunctionThatTakesAClosure({
-    // closure's body goes here
-    })
- 
-// here's how you call this function with a trailing closure instead:
- 
-someFunctionThatTakesAClosure() {
-    // trailing closure's body goes here
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="c1">// here's how you call this function with a trailing closure instead:
+</span> 
+<span class="n">someFunctionThatTakesAClosure</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// trailing closure's body goes here
+</span><span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>このコードは、Trailing Closure を使用したシンタックスと使用していないシンタックスを比較しています。最初に、Closure を受け取る関数があります。そして、Closure を関数呼び出し時に () の中に書く例と、() の後に書く Trailing Closure の例です。</p>
 
 <p><a href="http://blog.kazuya.co/swift/2014/06/10/swift-doc-closures.html">以前</a> の Sort 関数の場合にはこのように書きます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>reversed = sort(names) { $0 &gt; $1 }<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">reversed</span> <span class="o">=</span> <span class="n">sort</span><span class="p">(</span><span class="n">names</span><span class="p">)</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="o">&gt;</span> <span class="err">$</span><span class="mi">1</span> <span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>この例では、あまり役に立ちませんが、Closure が長くなった時にちょっと便利です。</p>
 
-<h4 id="7.-配列の-map-関数の-trailing-closure-の例">7. 配列の map 関数の Trailing Closure の例</h4>
+<h4 id="7-配列の-map-関数の-trailing-closure-の例">7. 配列の map 関数の Trailing Closure の例</h4>
 
 <p>配列の map 関数は、引数の Closure を配列の各要素に対して実行します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -312,61 +316,65 @@ someFunctionThatTakesAClosure() {
 14
 15
 16
-17</pre></td><td class="code"><pre>let digitNames = [
-    0: "Zero", 1: "One", 2: "Two",   3: "Three", 4: "Four",
-    5: "Five", 6: "Six", 7: "Seven", 8: "Eight", 9: "Nine"
-]
-let numbers = [16, 58, 510]
+17</pre></td><td class="code"><pre><span class="n">let</span> <span class="n">digitNames</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mi">0</span><span class="o">:</span> <span class="s">"Zero"</span><span class="p">,</span> <span class="mi">1</span><span class="o">:</span> <span class="s">"One"</span><span class="p">,</span> <span class="mi">2</span><span class="o">:</span> <span class="s">"Two"</span><span class="p">,</span>   <span class="mi">3</span><span class="o">:</span> <span class="s">"Three"</span><span class="p">,</span> <span class="mi">4</span><span class="o">:</span> <span class="s">"Four"</span><span class="p">,</span>
+    <span class="mi">5</span><span class="o">:</span> <span class="s">"Five"</span><span class="p">,</span> <span class="mi">6</span><span class="o">:</span> <span class="s">"Six"</span><span class="p">,</span> <span class="mi">7</span><span class="o">:</span> <span class="s">"Seven"</span><span class="p">,</span> <span class="mi">8</span><span class="o">:</span> <span class="s">"Eight"</span><span class="p">,</span> <span class="mi">9</span><span class="o">:</span> <span class="s">"Nine"</span>
+<span class="p">]</span>
+<span class="n">let</span> <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">510</span><span class="p">]</span>
 
-let strings = numbers.map {
-    (var number) -&gt; String in
-    var output = ""
-    while number &gt; 0 {
-        output = digitNames[number % 10]! + output
-        number /= 10
-    }
-    return output
-}
-// strings is inferred to be of type String[]
-// its value is ["OneSix", "FiveEight", "FiveOneZero"]<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">let</span> <span class="n">strings</span> <span class="o">=</span> <span class="n">numbers</span><span class="p">.</span><span class="n">map</span> <span class="p">{</span>
+    <span class="p">(</span><span class="n">var</span> <span class="n">number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="k">in</span>
+    <span class="n">var</span> <span class="n">output</span> <span class="o">=</span> <span class="s">""</span>
+    <span class="k">while</span> <span class="n">number</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">digitNames</span><span class="p">[</span><span class="n">number</span> <span class="o">%</span> <span class="mi">10</span><span class="p">]</span><span class="o">!</span> <span class="o">+</span> <span class="n">output</span>
+        <span class="n">number</span> <span class="o">/=</span> <span class="mi">10</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">output</span>
+<span class="p">}</span>
+<span class="c1">// strings is inferred to be of type String[]
+// its value is ["OneSix", "FiveEight", "FiveOneZero"]
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>もし、Closure が関数のただ 1 つの引数として与えられ、Trailing Closure を使用する場合には、通常、関数名の後につける () を省略することができます。この map 関数はまさにこの例です。map 関数の後、直接 closure が始まっています。</p>
 
 <p>また、ここで digitNames[number % 10]! と、Dictionary の要素を呼ぶ際に、! が付いています。これは、Dictionary の subscripts は、Optionals を返すためです。そして、forced unwrap しています。</p>
 
-<h4 id="8.-capturing-values">8. Capturing Values</h4>
+<h4 id="8-capturing-values">8. Capturing Values</h4>
 
 <p>Closure は、変数とコンスタントをその文脈においてキャプチャできます。たとえ元の値を定義した範囲が既に存在しなくとも、Closure の本体で、そのキャプチャした値を変更できます。</p>
 
 <p>一番イメージしやすいのは、ネストされた関数です。ネストされた関数は、ネストしている関数の引数、その本体で定義されている変数とコンスタントをキャプチャできます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
 6
 7
-8</pre></td><td class="code"><pre>func makeIncrementor(forIncrement amount: Int) -&gt; () -&gt; Int {
-    var runningTotal = 0
-    func incrementor() -&gt; Int {
-        runningTotal += amount
-        return runningTotal
-    }
-    return incrementor
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+8</pre></td><td class="code"><pre><span class="n">func</span> <span class="n">makeIncrementor</span><span class="p">(</span><span class="n">forIncrement</span> <span class="n">amount</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">runningTotal</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">func</span> <span class="n">incrementor</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
+        <span class="n">runningTotal</span> <span class="o">+=</span> <span class="n">amount</span>
+        <span class="k">return</span> <span class="n">runningTotal</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">incrementor</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>この例では、makeIncrementor 関数が incrementor 関数をネストしています。そして、incrementor 関数は、makeIncrementor の引数である amount と、runningTotal をキャプチャし、runningTotal の値を変更しています。</p>
 
 <p>Swift は、キャプチャする際に、どのようにキャプチャするかを自動的に判定してくれます。この例において、amount は、incrementor 関数の中で変更されません。そのため、amount は、この amount の値のコピーを incrementor 関数 で保存しています。それに対して、runningTotal は、incrementor 関数の中で変更されています。そのため、もしこの runningTotal のコピーしても、変更が incrementor 関数が終了した際に、反映されません。そのため、この runningTotal は、参照として渡されます。私たちプログラマーは、これらのことを気にすることなく、ただキャプチャして使用して問題ありません。</p>
 
-<h4 id="9.-closure-は参照">9. Closure は参照</h4>
+<h4 id="9-closure-は参照">9. Closure は参照</h4>
 
 <p>関数と Closure は、参照型です。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -379,30 +387,34 @@ let strings = numbers.map {
 11
 12
 13
-14</pre></td><td class="code"><pre>let incrementByTen = makeIncrementor(forIncrement: 10)
+14</pre></td><td class="code"><pre><span class="n">let</span> <span class="n">incrementByTen</span> <span class="o">=</span> <span class="n">makeIncrementor</span><span class="p">(</span><span class="n">forIncrement</span><span class="o">:</span> <span class="mi">10</span><span class="p">)</span>
 
-incrementByTen()
-// returns a value of 10
-incrementByTen()
-// returns a value of 20
-incrementByTen()
-// returns a value of 30
-
-let incrementBySeven = makeIncrementor(forIncrement: 7)
-incrementBySeven()
-// returns a value of 7
-incrementByTen()
-// returns a value of 40<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">incrementByTen</span><span class="p">()</span>
+<span class="c1">// returns a value of 10
+</span><span class="n">incrementByTen</span><span class="p">()</span>
+<span class="c1">// returns a value of 20
+</span><span class="n">incrementByTen</span><span class="p">()</span>
+<span class="c1">// returns a value of 30
+</span>
+<span class="n">let</span> <span class="n">incrementBySeven</span> <span class="o">=</span> <span class="n">makeIncrementor</span><span class="p">(</span><span class="n">forIncrement</span><span class="o">:</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">incrementBySeven</span><span class="p">()</span>
+<span class="c1">// returns a value of 7
+</span><span class="n">incrementByTen</span><span class="p">()</span>
+<span class="c1">// returns a value of 40
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>この例では、incrementByTen と incrementBySeven はともにコンスタントです。しかし、両者とも runningTotal を変更することができています。これは、関数と Closure が、参照型だからです。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre>let alsoIncrementByTen = incrementByTen
-alsoIncrementByTen()
-// returns a value of 50<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+3</pre></td><td class="code"><pre><span class="n">let</span> <span class="n">alsoIncrementByTen</span> <span class="o">=</span> <span class="n">incrementByTen</span>
+<span class="n">alsoIncrementByTen</span><span class="p">()</span>
+<span class="c1">// returns a value of 50
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>また、Closure が参照ということは、違うコンスタントや変数に Closure を代入した際に、これらの変数やコンスタントは同じ Closure を指していることを意味します。上記の例では、alsoIncrementByTen コンスタントは、incrementByTen が指している Closure と同じ Closure を指しています。</p>
 

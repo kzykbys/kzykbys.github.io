@@ -248,7 +248,7 @@
 
 <p>下記のコードで見れるように、gmtime() を使用した方が便利なことが多いです。基本的な time.h にある関数の使い方は、<a href="http://blog.kazuya.co/c/2014/06/01/time-func-1.html">http://blog.kazuya.co/c/2014/06/01/time-func-1.html</a> にて記事にしました。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -299,11 +299,13 @@
 <span class="p">}</span>
 
 <span class="cm">/* Output:
-    1 billion for loops took 2 seconds.
-    1 billion for loops took 2.000000 seconds.
-    Program ended with exit code: 0
-*/</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+	1 billion for loops took 2 seconds.
+	1 billion for loops took 2.000000 seconds.
+	Program ended with exit code: 0
+*/</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>difftime() は、秒数を直接返すので、長い時間を測るときには使いにくいです。それに対して、gmtime() は struct tm * を返すので柔軟に値を参照することができます。</p>
 

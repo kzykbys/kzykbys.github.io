@@ -244,69 +244,81 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。  </p>
+						<p>iBooks にある “The Swift Programming Language” の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。</p>
 
 <p>前回に続き、The Basics 章。今回は、Tuples, Optionals, Assertions に関して。</p>
 
 <h3 id="the-basics">The Basics</h3>
 
-<h4 id="10.-tuples">10. Tuples</h4>
+<h4 id="10-tuples">10. Tuples</h4>
 
 <p>Tuples は、複数の値を 1 つにまとめるためのもの。これにより、関数から複数の値を返してもらうことができる。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>let http404Err = (404, "Not Found")<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">let</span> <span class="n">http404Err</span> <span class="o">=</span> <span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="s">"Not Found"</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>これは、(Int, String) 型の tuple と言うこともできる。どんな組み合わせでも作成することができる。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre>let (statusCode, statusMsg) = http404Err
-println("The status code is \(statusCode)") // 404
-println("The status msg is \(statusMsg)")  // Not Found<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+3</pre></td><td class="code"><pre><span class="n">let</span> <span class="p">(</span><span class="n">statusCode</span><span class="p">,</span> <span class="n">statusMsg</span><span class="p">)</span> <span class="o">=</span> <span class="n">http404Err</span>
+<span class="n">println</span><span class="p">(</span><span class="s">"The status code is \(statusCode)"</span><span class="p">)</span> <span class="c1">// 404
+</span><span class="n">println</span><span class="p">(</span><span class="s">"The status msg is \(statusMsg)"</span><span class="p">)</span>  <span class="c1">// Not Found
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>このように、各値へアクセスできる。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre>let (justCode, _) = http404Err
-println("The status code is \(statusCode)")  // 404<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="n">let</span> <span class="p">(</span><span class="n">justCode</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">http404Err</span>
+<span class="n">println</span><span class="p">(</span><span class="s">"The status code is \(statusCode)"</span><span class="p">)</span>  <span class="c1">// 404
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>興味がない値に関しては、_ を使用することで名前をつける必要がない。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre>println("The status code \(http404Err.0)") // 404
-println("The status code \(http404Err.1)") // Not Found<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="n">println</span><span class="p">(</span><span class="s">"The status code \(http404Err.0)"</span><span class="p">)</span> <span class="c1">// 404
+</span><span class="n">println</span><span class="p">(</span><span class="s">"The status code \(http404Err.1)"</span><span class="p">)</span> <span class="c1">// Not Found
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>配列の index のように、数字でアクセスすることもできる。0 スタート。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre>let http404Err = (statusCode: 404, statusMsg: "Not Found")
-println("The status code \(http404Err.statusCode)") // 404
-println("The status code \(http404Err.statusMsg)") // Not Found<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+3</pre></td><td class="code"><pre><span class="n">let</span> <span class="n">http404Err</span> <span class="o">=</span> <span class="p">(</span><span class="n">statusCode</span><span class="o">:</span> <span class="mi">404</span><span class="p">,</span> <span class="n">statusMsg</span><span class="o">:</span> <span class="s">"Not Found"</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="s">"The status code \(http404Err.statusCode)"</span><span class="p">)</span> <span class="c1">// 404
+</span><span class="n">println</span><span class="p">(</span><span class="s">"The status code \(http404Err.statusMsg)"</span><span class="p">)</span> <span class="c1">// Not Found
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>宣言時に各値に名前をつけることもできる</p>
 
 <p>tuples は基本的に、関数からの返り値等の一時的な値のグループ分に使う。データがずっと保持される場合には構造体やクラスを使用。</p>
 
-<h4 id="11.-optionals">11. Optionals</h4>
+<h4 id="11-optionals">11. Optionals</h4>
 
 <p>Swift には、Optionals という概念がある。名詞ぽい。これはある変数がある型の値を持つか、それとも全く持たないか、ということを明示的に示すもの。Optionals は型に ? を付けて宣言する。例えば、Int? といった感じ。Objective-C で nil にメッセージを送ってよくランタイムエラーを起こしてたので、堅牢に書くためのものだと思います。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre>// let possibleNum = "234"
-let possibleNum = "234dsdfa"
-let convertedNum = possibleNum.toInt()<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+3</pre></td><td class="code"><pre><span class="c1">// let possibleNum = "234"
+</span><span class="n">let</span> <span class="n">possibleNum</span> <span class="o">=</span> <span class="s">"234dsdfa"</span>
+<span class="n">let</span> <span class="n">convertedNum</span> <span class="o">=</span> <span class="n">possibleNum</span><span class="p">.</span><span class="n">toInt</span><span class="p">()</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>この例では、convertedNum  は、Int? と推論されている。toInt() メソッドは、String を Int に変換することができれば、Int を返し、そうでなければ、nil を返す。つまり、Optionals です。Optionals は if statement で値を持っているか確認することができる。ただの Int は、上記でみたように、if のような条件分岐で使用することができないが、Optionals (Int?) は使用可能。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -315,93 +327,103 @@ let convertedNum = possibleNum.toInt()<span class="w">
 7
 8
 9
-10</pre></td><td class="code"><pre>if convertedNum {
-    /* we can access either ways, the ! means forced unwrapping */
-    println("\(possibleNum) has an integer value of \(convertedNum!)") // ok
-    println("\(possibleNum) has an integer value of \(convertedNum)")  // ok?
-} else { // optional is nil
-    println("\(possibleNum) could not be converted to an integer \(convertedNum)") // print nil
-    // println("\(possibleNum) could not be converted to an integer \(convertedNum!)")
-    // run time error,
-    // because it is trying to "forced" unwraping even it doesnt have anything
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+10</pre></td><td class="code"><pre><span class="k">if</span> <span class="n">convertedNum</span> <span class="p">{</span>
+    <span class="cm">/* we can access either ways, the ! means forced unwrapping */</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">"\(possibleNum) has an integer value of \(convertedNum!)"</span><span class="p">)</span> <span class="c1">// ok
+</span>    <span class="n">println</span><span class="p">(</span><span class="s">"\(possibleNum) has an integer value of \(convertedNum)"</span><span class="p">)</span>  <span class="c1">// ok?
+</span><span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="c1">// optional is nil
+</span>    <span class="n">println</span><span class="p">(</span><span class="s">"\(possibleNum) could not be converted to an integer \(convertedNum)"</span><span class="p">)</span> <span class="c1">// print nil
+</span>    <span class="c1">// println("\(possibleNum) could not be converted to an integer \(convertedNum!)")
+</span>    <span class="c1">// run time error,
+</span>    <span class="c1">// because it is trying to "forced" unwraping even it doesnt have anything
+</span><span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>Optionals の値にアクセスする際には、! を optional の最後に付けて unwrap する。これは、forced unwrap と呼ばれる、無理やり剥きとる。なので、nil に対して使用するとエラーになる。上のコードで if-true ケースにおいて ! を使っても、使わなくても値にアクセスできる。ドキュメントには、! を使用するように書いてあるけど、なんでだろう。とにかく、! を使用する際には、run-time error になる可能性があるので、しっかりと if で確認。</p>
 
-<h4 id="12.-optional-binding">12. Optional Binding</h4>
+<h4 id="12-optional-binding">12. Optional Binding</h4>
 
 <p>Optional Binding は、Optional が値を持っているか確認し、もし持っているなら、その値を一時的な変数かコンスタントに保存して利用するというもの。if か while で使われる。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
 6
-7</pre></td><td class="code"><pre>let possibleNum  = "234"
+7</pre></td><td class="code"><pre><span class="n">let</span> <span class="n">possibleNum</span>  <span class="o">=</span> <span class="s">"234"</span>
 
-if let actualValue = possibleNum.toInt() {
-    println("\(possibleNum) has an integer value of \(actualValue)")
-} else {
-    println("\(possibleNum) could not be converted to an integer")
-}      <span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="k">if</span> <span class="n">let</span> <span class="n">actualValue</span> <span class="o">=</span> <span class="n">possibleNum</span><span class="p">.</span><span class="n">toInt</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">"\(possibleNum) has an integer value of \(actualValue)"</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">"\(possibleNum) could not be converted to an integer"</span><span class="p">)</span>
+<span class="p">}</span>      
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>もし、possibleNum.toInt() が値を返せば actualValue に保存し、if-true が実行される。actualValue のスコープは、最初の if-true ブロックまで。この Optional Binding を使用すれば、forced unwrap を使用する必要がない。</p>
 
-<h4 id="13.-nil-について">13. nil について</h4>
+<h4 id="13-nil-について">13. nil について</h4>
 
 <p>Objective-C の nil と Swift の nil は異なるもの。前者は、存在しないオブジェクトへのポインターですが、Swift では、ポインターではなく、ある型の値が欠落しているしてるということを表す。Optionals でないデータに nil をセットすることはできないので、ある変数/コンスタントが nil になることがある場合には、Optionals として宣言する必要がある。Optionals には、値が存在しない場合には、nil を明示的に代入してもよいし、特に指定しなければ、nil がセットされる。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
-5</pre></td><td class="code"><pre>var NotOptional: Int  = 30
-NotOptional           = nil // error, because NotOptional is not optional
-var YesOptional: Int? = 30
-YesOptional           = nil // no problem, indicating explicitly the lack of value
-var AutoOptional: Int?      // AutoOptional is set to nil<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+5</pre></td><td class="code"><pre><span class="n">var</span> <span class="n">NotOptional</span><span class="o">:</span> <span class="n">Int</span>  <span class="o">=</span> <span class="mi">30</span>
+<span class="n">NotOptional</span>           <span class="o">=</span> <span class="nb">nil</span> <span class="c1">// error, because NotOptional is not optional
+</span><span class="n">var</span> <span class="n">YesOptional</span><span class="o">:</span> <span class="n">Int</span><span class="p">?</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">YesOptional</span>           <span class="o">=</span> <span class="nb">nil</span> <span class="c1">// no problem, indicating explicitly the lack of value
+</span><span class="n">var</span> <span class="n">AutoOptional</span><span class="p">:</span> <span class="n">Int</span><span class="p">?</span>      <span class="c1">// AutoOptional is set to nil
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
-<h4 id="14.-implicitly-unwrapped-optionals">14. Implicitly unwrapped optionals</h4>
+<h4 id="14-implicitly-unwrapped-optionals">14. Implicitly unwrapped optionals</h4>
 
 <p>Optionals に対して、一度値がセットされた後は、常に値を持つと仮定することができる場合には、Implicitly unwrapped optionals というものが使える。これは、Optionals に対しても、自動的に unwrap (値にアクセス) する権限を与えるという風に考えることができる。つまり、値にアクセスする際に、! を付与する必要がない。Implicitly unwrapped optionals を使用するには、? の代わりに ! を宣言時にタイプする。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
 6
-7</pre></td><td class="code"><pre>let possibleStr: String? = "A optional String"
-println(possibleStr!); // this is good
-println(possibleStr);  // this works too...
-
-let assumedStr: String! = "An implicitly unwrapped optional String"
-println(assumedStr);  // no !
-println(assumedStr!); // don’t have to put ! anyway, works tho<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+7</pre></td><td class="code"><pre><span class="n">let</span> <span class="n">possibleStr</span><span class="o">:</span> <span class="n">String</span><span class="p">?</span> <span class="o">=</span> <span class="s">"A optional String"</span>
+<span class="n">println</span><span class="p">(</span><span class="n">possibleStr</span><span class="o">!</span><span class="p">)</span><span class="err">;</span> <span class="c1">// this is good
+</span><span class="n">println</span><span class="p">(</span><span class="n">possibleStr</span><span class="p">)</span><span class="err">;</span>  <span class="c1">// this works too...
+</span>
+<span class="n">let</span> <span class="n">assumedStr</span><span class="p">:</span> <span class="n">String</span><span class="o">!</span> <span class="o">=</span> <span class="s">"An implicitly unwrapped optional String"</span>
+<span class="n">println</span><span class="p">(</span><span class="n">assumedStr</span><span class="p">);</span>  <span class="c1">// no !
+</span><span class="n">println</span><span class="p">(</span><span class="n">assumedStr</span><span class="o">!</span><span class="p">);</span> <span class="c1">// don’t have to put ! anyway, works tho
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>二つ目の宣言が、Implicitly unwrapped optionals です。やっぱり疑問なのが、Optional の値に、! を付けないでアクセスしても普通に動くという点です。とりあえず、Optinal にアクセスする際には、if 文で値があるかチェックして、! で値にアクセスする。値があるか不明だが、ある時点で一度値がセットされた後は、ずっと値があると仮定できる時には 宣言時に ! を付けて、Implicitly unwrapped optionals を使用して、アクセスする際には、! を付けないでただアクセスする、ということかな。Implicitly unwrapped optionals に対しても、if を値をチェックしたり、Optional Binding も変わらず使用可。</p>
 
-<h4 id="15.-assertions">15. Assertions</h4>
+<h4 id="15-assertions">15. Assertions</h4>
 
 <p>Assertions は、値がある条件を満たしているかをチェックするもの。もし、その条件を満たしていなかったら、プログラムは終了する。デバック時に役に立つ。assert() 関数を使用する。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
-6</pre></td><td class="code"><pre>let age = -1;
-assert(age &gt; 0, "Age should be positive value")
+6</pre></td><td class="code"><pre><span class="n">let</span> <span class="n">age</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">assert</span><span class="p">(</span><span class="n">age</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s">"Age should be positive value"</span><span class="p">)</span>
 
-/* console output:
+<span class="cm">/* console output:
    assertion failed: Age should be positive value: file /Users/kobayashikazuya/Swift/MyFirstSwiftProject/MyFirstSwiftProject/ViewController.swift, line 17
-*/<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+*/</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>第一引数に条件、二つ目にエラー時に表示される内容を渡しておく。</p>
 

@@ -252,7 +252,7 @@
 <p>ハッシュにおいてシンボルを使用する際の２つの記法
 後者は Ruby1.9 からサポート。どちらもよく使われているので、両方見分けがつけるように。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -262,12 +262,14 @@
 <span class="o">&gt;&gt;</span> <span class="n">h2</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">name: </span><span class="s2">"Michael Hartl"</span><span class="p">,</span> <span class="ss">email: </span><span class="s2">"michael@example.com"</span> <span class="p">}</span>
 <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:name</span><span class="o">=&gt;</span><span class="s2">"Michael Hartl"</span><span class="p">,</span> <span class="ss">:email</span><span class="o">=&gt;</span><span class="s2">"michael@example.com"</span><span class="p">}</span>
 <span class="o">&gt;&gt;</span> <span class="n">h1</span> <span class="o">==</span> <span class="n">h2</span>
-<span class="o">=&gt;</span> <span class="kp">true</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="o">=&gt;</span> <span class="kp">true</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>ハッシュのネストの例</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -277,12 +279,14 @@
 <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:name</span><span class="o">=&gt;</span><span class="s2">"Michael Hartl"</span><span class="p">,</span> <span class="ss">:email</span><span class="o">=&gt;</span><span class="s2">"mhartl@example.com"</span><span class="p">}</span>
 <span class="o">&gt;&gt;</span> <span class="n">params</span><span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:user</span><span class="o">=&gt;</span><span class="p">{</span><span class="ss">:name</span><span class="o">=&gt;</span><span class="s2">"Michael Hartl"</span><span class="p">,</span><span class="ss">:email</span><span class="o">=&gt;</span><span class="s2">"mhartl@example.com"</span><span class="p">}}</span>
 <span class="o">&gt;&gt;</span> <span class="n">params</span><span class="p">[</span><span class="ss">:user</span><span class="p">][</span><span class="ss">:email</span><span class="p">]</span>
-<span class="o">=&gt;</span> <span class="s2">"mhartl@example.com”</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="o">=&gt;</span> <span class="s2">"mhartl@example.com”
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>ハッシュのコンストラクタは、配列等のコンストラクタと違い、デフォルト値を渡す。キーが存在しない場合に使用される。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -294,14 +298,16 @@
 <span class="o">&gt;&gt;</span> <span class="n">h</span> <span class="o">=</span> <span class="no">Hash</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># キーが存在しない場合のデフォルト値をnilから0に変更する</span>
 <span class="o">=&gt;</span> <span class="p">{}</span>
 <span class="o">&gt;&gt;</span> <span class="n">h</span><span class="p">[</span><span class="ss">:foo</span><span class="p">]</span>
-<span class="o">=&gt;</span> <span class="mi">0</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="o">=&gt;</span> <span class="mi">0</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <h3 id="関数">関数</h3>
 
 <p>関数の呼び出し方が少しとっつきにくいかった。丸括弧や波括弧を省略するケースがある。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -311,8 +317,10 @@
 <span class="n">stylesheet_link_tag</span> <span class="s2">"application"</span><span class="p">,</span> <span class="ss">media: </span><span class="s2">"all"</span><span class="p">,</span><span class="s2">"data-turbolinks-track"</span> <span class="o">=&gt;</span> <span class="kp">true</span>
 <span class="c1"># 最後の引数がハッシュの場合、波括弧は省略可能。</span>
 <span class="n">stylesheet_link_tag</span> <span class="s2">"application"</span><span class="p">,</span> <span class="p">{</span> <span class="ss">media: </span><span class="s2">"all"</span><span class="p">,</span> <span class="s2">"data-turbolinks-track"</span> <span class="o">=&gt;</span> <span class="kp">true</span> <span class="p">}</span>
-<span class="n">stylesheet_link_tag</span> <span class="s2">"application"</span><span class="p">,</span> <span class="ss">media: </span><span class="s2">"all"</span><span class="p">,</span><span class="s2">"data-turbolinks-track"</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">stylesheet_link_tag</span> <span class="s2">"application"</span><span class="p">,</span> <span class="ss">media: </span><span class="s2">"all"</span><span class="p">,</span><span class="s2">"data-turbolinks-track"</span> <span class="o">=&gt;</span> <span class="kp">true</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>ハッシュの後者のキーが旧式のハッシュロケットになっているのは、シンボルの中ではハイフンを使うことができないため。</p>
 
@@ -320,7 +328,7 @@
 
 <p>Rubyの基本クラスを拡張することができる。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -336,12 +344,14 @@
 <span class="o">&gt;&gt;</span> <span class="k">end</span>
 <span class="o">=&gt;</span> <span class="kp">nil</span>
 <span class="o">&gt;&gt;</span> <span class="s2">"deified"</span><span class="p">.</span><span class="nf">palindrome?</span>
-<span class="o">=&gt;</span> <span class="kp">true</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="o">=&gt;</span> <span class="kp">true</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>アクセッサメソッド</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -353,8 +363,10 @@
     <span class="vi">@name</span>  <span class="o">=</span> <span class="n">attributes</span><span class="p">[</span><span class="ss">:name</span><span class="p">]</span>
     <span class="vi">@email</span> <span class="o">=</span> <span class="n">attributes</span><span class="p">[</span><span class="ss">:email</span><span class="p">]</span>
   <span class="k">end</span>
-<span class="k">end</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>最初の行の attr_accessor :name, :email は、
 アトリビュートアクセサをそれぞれ作成。インスタンス変数のゲッターとセッターメソッド作成する。インスタンス変数は常に @ 記号で始まり、未定義の状態では値が nil になります。</p>

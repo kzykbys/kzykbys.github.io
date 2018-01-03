@@ -245,12 +245,12 @@
 
 					<div class="post">
 						<blockquote>
-<blockquote>
-<p><span class="deprecate">This article might be too old.</span>  </p>
-</blockquote>
+  <blockquote>
+    <p><span class="deprecate">This article might be too old.</span></p>
+  </blockquote>
 </blockquote>
 
-<p>iOS にて Facebook から情報を取ってきたり、ログイン機能を使用するための準備編。公式ページの &quot;<a href="https://developers.facebook.com/docs/ios/getting-started">Getting Started</a>&quot; と同じ内容です。</p>
+<p>iOS にて Facebook から情報を取ってきたり、ログイン機能を使用するための準備編。公式ページの “<a href="https://developers.facebook.com/docs/ios/getting-started">Getting Started</a>” と同じ内容です。</p>
 
 <h3 id="sdk-のダウンロード">SDK のダウンロード</h3>
 
@@ -260,15 +260,15 @@
 
 <p>Facebook SDK を使用するには、Facebook 上で作成するアプリの登録をしなければなりません。登録し、Facebook App ID を入手します。</p>
 
-<p>まずは、<a href="https://developers.facebook.com/apps/">App Dashbord</a> にて 右上の &quot;Create New App&quot; をクリックして、アプリを作成。</p>
+<p>まずは、<a href="https://developers.facebook.com/apps/">App Dashbord</a> にて 右上の “Create New App” をクリックして、アプリを作成。</p>
 
-<p>アプリを作成したら、そのアプリのページに飛ぶので、左側にある &quot;Setting&quot; タブをクリック。そのページにて、&quot;Add Platform&quot; をクリックして iOS を選択します。そして、Bundle identifier を設定します。この値は、Xcode 上で確認可。</p>
+<p>アプリを作成したら、そのアプリのページに飛ぶので、左側にある “Setting” タブをクリック。そのページにて、”Add Platform” をクリックして iOS を選択します。そして、Bundle identifier を設定します。この値は、Xcode 上で確認可。</p>
 
 <h3 id="sdk-をプロジェクトに追加">SDK をプロジェクトに追加</h3>
 
 <p>ダウンロード先を変更していなければ、~/Documents/FacebookSDK の中にある FacebookSDK.framework を Xcode プロジェクトの Frameworks グループにドラッグして追加。必要であればコピーもしておく。</p>
 
-<h3 id=".plist-ファイルの設定">.plist ファイルの設定</h3>
+<h3 id="plist-ファイルの設定">.plist ファイルの設定</h3>
 
 <p>Xcode プロジェクトの Supporting Files グループの下にある、.plist ファイルに App ID 等を設定します。3つ新しい行を追加します。</p>
 
@@ -280,7 +280,7 @@
 
 <p>見難いですが、最終的な plist ファイルはこんな感じです。</p>
 
-<p><img src="/images/2014/05/2.png" alt=""></p>
+<p><img src="/images/2014/05/2.png" alt="" /></p>
 
 <p>これでやっとコーディング開始です。</p>
 

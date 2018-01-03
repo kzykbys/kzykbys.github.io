@@ -244,7 +244,7 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。  </p>
+						<p>iBooks にある “The Swift Programming Language” の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。</p>
 
 <p>今回は、Methods に関して。</p>
 
@@ -253,11 +253,11 @@
 <p>メソッドは、クラス・構造体・Enumeration に関連付けされた関数です。Swift
  では、構造体も Enumeration もメソッドを持つことができます。また、Objective-C のクラスメソッドと似たものとして、タイプメソッドもあります。</p>
 
-<h4 id="1.-instance-methods">1. Instance Methods</h4>
+<h4 id="1-instance-methods">1. Instance Methods</h4>
 
 <p>メソッドの定義の方法は分かり易いと思います。クラス等のタイプ宣言時にそのまま関数を定義したように書きます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -266,32 +266,36 @@
 7
 8
 9
-10</pre></td><td class="code"><pre>class Counter {
-    var count: Int = 0
-    func incrementBy(amount: Int, numberOfTimes: Int) {
-        count += amount * numberOfTimes
-    }
-}
+10</pre></td><td class="code"><pre><span class="n">class</span> <span class="n">Counter</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">count</span><span class="o">:</span> <span class="n">Int</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">func</span> <span class="n">incrementBy</span><span class="p">(</span><span class="n">amount</span><span class="o">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">numberOfTimes</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="n">amount</span> <span class="o">*</span> <span class="n">numberOfTimes</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-let counter = Counter()
-counter.incrementBy(5, numberOfTimes: 3)
-// counter value is now 15<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">let</span> <span class="n">counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="n">counter</span><span class="p">.</span><span class="n">incrementBy</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">numberOfTimes</span><span class="o">:</span> <span class="mi">3</span><span class="p">)</span>
+<span class="c1">// counter value is now 15
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>メソッドの注意点として、まず、メソッド名は、最初の引数に関して、前置詞を付け、その引数に対して説明的にすると読みやすいです。この例では、<code>incrementBy</code> です。メソッド定義時には、1 つ目の引数の名前をメソッドの中で使用するために指定していますが、メソッドを呼ぶ際には必要ありません。しかし、2 つ目の引数では external name をタイプしなければなりません。</p>
+<p>メソッドの注意点として、まず、メソッド名は、最初の引数に関して、前置詞を付け、その引数に対して説明的にすると読みやすいです。この例では、<code class="highlighter-rouge">incrementBy</code> です。メソッド定義時には、1 つ目の引数の名前をメソッドの中で使用するために指定していますが、メソッドを呼ぶ際には必要ありません。しかし、2 つ目の引数では external name をタイプしなければなりません。</p>
 
 <p>これは関数をこのように定義した時と同じ挙動です。Objective-C に慣れていれば、コードを書く際には、分かりやすいと思います。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre>func incrementBy(amount: Int, #numberOfTimes: Int) {
-    count += amount * numberOfTimes
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+3</pre></td><td class="code"><pre><span class="n">func</span> <span class="nf">incrementBy</span><span class="p">(</span><span class="n">amount</span><span class="o">:</span> <span class="n">Int</span><span class="p">,</span> <span class="err">#</span><span class="n">numberOfTimes</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="n">amount</span> <span class="o">*</span> <span class="n">numberOfTimes</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>また、このように 1 つ目の引数に external name を付けたり、2 つ目の external name を省略することもできます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -299,20 +303,22 @@ counter.incrementBy(5, numberOfTimes: 3)
 6
 7
 8
-9</pre></td><td class="code"><pre>class Counter {
-    var count: Int = 0
-    func incrementBy(a amount: Int, _ numberOfTimes: Int) {
-        count += amount * numberOfTimes
-    }
-}
+9</pre></td><td class="code"><pre><span class="n">class</span> <span class="n">Counter</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">count</span><span class="o">:</span> <span class="n">Int</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">func</span> <span class="n">incrementBy</span><span class="p">(</span><span class="n">a</span> <span class="n">amount</span><span class="o">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">_</span> <span class="n">numberOfTimes</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="n">amount</span> <span class="o">*</span> <span class="n">numberOfTimes</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-let counter = Counter()
-counter.incrementBy(a: 5, 3)<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">let</span> <span class="n">counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="n">counter</span><span class="p">.</span><span class="n">incrementBy</span><span class="p">(</span><span class="n">a</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>メソッドの引数の名前とプロパティの名前が同じ場合には、<code>self</code> キーワードを使用します。そうでない場合にも、<code>self</code> を使用できますが、必要はありません。</p>
+<p>メソッドの引数の名前とプロパティの名前が同じ場合には、<code class="highlighter-rouge">self</code> キーワードを使用します。そうでない場合にも、<code class="highlighter-rouge">self</code> を使用できますが、必要はありません。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -322,24 +328,26 @@ counter.incrementBy(a: 5, 3)<span class="w">
 8
 9
 10
-11</pre></td><td class="code"><pre>struct Point {
-    var x = 0.0, y = 0.0
-    func isToTheRightOfX(x: Double) -&gt; Bool {
-        return self.x &gt; x
-    }
-}
-let somePoint = Point(x: 4.0, y: 5.0)
-if somePoint.isToTheRightOfX(1.0) {
-    println("This point is to the right of the line where x == 1.0")
-}
-// prints "This point is to the right of the line where x == 1.0<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+11</pre></td><td class="code"><pre><span class="k">struct</span> <span class="n">Point</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
+    <span class="n">func</span> <span class="n">isToTheRightOfX</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="n">Double</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">x</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">let</span> <span class="n">somePoint</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="mi">4</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mi">5</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">somePoint</span><span class="p">.</span><span class="n">isToTheRightOfX</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">"This point is to the right of the line where x == 1.0"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// prints "This point is to the right of the line where x == 1.0
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
-<h4 id="2.-構造体と-enumeration-の-instance-methods">2. 構造体と Enumeration の Instance Methods</h4>
+<h4 id="2-構造体と-enumeration-の-instance-methods">2. 構造体と Enumeration の Instance Methods</h4>
 
-<p>構造体と Enumeration の Instance Methods は、プロパティの値をデフォルトでは、変更することができません。もし、プロパティの値をクラスのように変更したい場合には、<code>mutating</code> キーワードを <code>func</code> キーワードの前にタイプします。これにより、構造体と Enumeration においても、プロパティを変更することができるようになります。</p>
+<p>構造体と Enumeration の Instance Methods は、プロパティの値をデフォルトでは、変更することができません。もし、プロパティの値をクラスのように変更したい場合には、<code class="highlighter-rouge">mutating</code> キーワードを <code class="highlighter-rouge">func</code> キーワードの前にタイプします。これにより、構造体と Enumeration においても、プロパティを変更することができるようになります。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -350,38 +358,42 @@ if somePoint.isToTheRightOfX(1.0) {
 9
 10
 11
-12</pre></td><td class="code"><pre>struct Point {
-    var x = 0.0, y = 0.0
-    mutating func moveByX(deltaX: Double, y deltaY: Double) {
-        x += deltaX
-        y += deltaY
-    }
-}
+12</pre></td><td class="code"><pre><span class="k">struct</span> <span class="n">Point</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
+    <span class="n">mutating</span> <span class="n">func</span> <span class="n">moveByX</span><span class="p">(</span><span class="n">deltaX</span><span class="o">:</span> <span class="n">Double</span><span class="p">,</span> <span class="n">y</span> <span class="n">deltaY</span><span class="o">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">x</span> <span class="o">+=</span> <span class="n">deltaX</span>
+        <span class="n">y</span> <span class="o">+=</span> <span class="n">deltaY</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-var somePoint = Point(x: 1.0, y: 1.0)
-somePoint.moveByX(2.0, y: 3.0)
-println("The point is now at (\(somePoint.x), \(somePoint.y))")
-// prints "The point is now at (3.0, 4.0)<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">var</span> <span class="n">somePoint</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">somePoint</span><span class="p">.</span><span class="n">moveByX</span><span class="p">(</span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="mi">3</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="s">"The point is now at (\(somePoint.x), \(somePoint.y))"</span><span class="p">)</span>
+<span class="c1">// prints "The point is now at (3.0, 4.0)
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>mutating メソッドは、<code>self</code> に全く新しいインスタンスを代入することもできます。</p>
+<p>mutating メソッドは、<code class="highlighter-rouge">self</code> に全く新しいインスタンスを代入することもできます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
-6</pre></td><td class="code"><pre>struct Point {
-    var x = 0.0, y = 0.0
-    mutating func moveByX(deltaX: Double, y deltaY: Double) {
-        self = Point(x: x + deltaX, y: y + deltaY)
-    }
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+6</pre></td><td class="code"><pre><span class="k">struct</span> <span class="n">Point</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
+    <span class="n">mutating</span> <span class="n">func</span> <span class="n">moveByX</span><span class="p">(</span><span class="n">deltaX</span><span class="o">:</span> <span class="n">Double</span><span class="p">,</span> <span class="n">y</span> <span class="n">deltaY</span><span class="o">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">self</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">deltaX</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="n">y</span> <span class="o">+</span> <span class="n">deltaY</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>これは上記でみた例と全く同じ結果を生みます。Enumeration ではこんな感じ。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -398,31 +410,33 @@ println("The point is now at (\(somePoint.x), \(somePoint.y))")
 15
 16
 17
-18</pre></td><td class="code"><pre>enum TriStateSwitch {
-    case Off, Low, High
-    mutating func next() {
-        switch self {
-        case Off:
-            self = Low
-        case Low:
-            self = High
-        case High:
-            self = Off
-        }
-    }
-}
-var ovenLight = TriStateSwitch.Low
-ovenLight.next()
-// ovenLight is now equal to .High
-ovenLight.next()
-// ovenLight is now equal to .Off<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+18</pre></td><td class="code"><pre><span class="k">enum</span> <span class="n">TriStateSwitch</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">Off</span><span class="p">,</span> <span class="n">Low</span><span class="p">,</span> <span class="n">High</span>
+    <span class="n">mutating</span> <span class="n">func</span> <span class="n">next</span><span class="p">()</span> <span class="err">{</span>
+        <span class="k">switch</span> <span class="n">self</span> <span class="err">{</span>
+        <span class="k">case</span> <span class="n">Off</span><span class="p">:</span>
+            <span class="n">self</span> <span class="o">=</span> <span class="n">Low</span>
+        <span class="k">case</span> <span class="n">Low</span><span class="p">:</span>
+            <span class="n">self</span> <span class="o">=</span> <span class="n">High</span>
+        <span class="k">case</span> <span class="n">High</span><span class="p">:</span>
+            <span class="n">self</span> <span class="o">=</span> <span class="n">Off</span>
+        <span class="err">}</span>
+    <span class="err">}</span>
+<span class="err">}</span>
+<span class="n">var</span> <span class="n">ovenLight</span> <span class="o">=</span> <span class="n">TriStateSwitch</span><span class="p">.</span><span class="n">Low</span>
+<span class="n">ovenLight</span><span class="p">.</span><span class="n">next</span><span class="p">()</span>
+<span class="c1">// ovenLight is now equal to .High
+</span><span class="n">ovenLight</span><span class="p">.</span><span class="n">next</span><span class="p">()</span>
+<span class="c1">// ovenLight is now equal to .Off
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
-<h4 id="3.-type-methods">3. Type Methods</h4>
+<h4 id="3-type-methods">3. Type Methods</h4>
 
-<p>タイプメソッドは、Objective-C においてクラスメソッドと同じようなものです。インスタンスに、メソッドコールをするのではなく、タイプ自体 (クラス、構造体、Enumeration) に呼び出しを行います。クラスに対して、タイプメソッドを作成するには、<code>class</code> キーワードを、構造体・Enumeration に対して、タイプメソッドを作成するには、<code>static</code> キーワードを func の前に置きます。</p>
+<p>タイプメソッドは、Objective-C においてクラスメソッドと同じようなものです。インスタンスに、メソッドコールをするのではなく、タイプ自体 (クラス、構造体、Enumeration) に呼び出しを行います。クラスに対して、タイプメソッドを作成するには、<code class="highlighter-rouge">class</code> キーワードを、構造体・Enumeration に対して、タイプメソッドを作成するには、<code class="highlighter-rouge">static</code> キーワードを func の前に置きます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -434,37 +448,41 @@ ovenLight.next()
 10
 11
 12
-13</pre></td><td class="code"><pre>class SomeClass {
-    class func someTypeMethod() {
-        println("Hi")
-    }
-}
-SomeClass.someTypeMethod()
+13</pre></td><td class="code"><pre><span class="n">class</span> <span class="n">SomeClass</span> <span class="p">{</span>
+    <span class="n">class</span> <span class="n">func</span> <span class="n">someTypeMethod</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">println</span><span class="p">(</span><span class="s">"Hi"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">SomeClass</span><span class="p">.</span><span class="n">someTypeMethod</span><span class="p">()</span>
 
-struct SomeStruct {
-    static func someTypeMethod() {
-        println("Hi")
-    }
-}
-SomeStruct.someTypeMethod()<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="k">struct</span> <span class="n">SomeStruct</span> <span class="p">{</span>
+    <span class="k">static</span> <span class="n">func</span> <span class="n">someTypeMethod</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">println</span><span class="p">(</span><span class="s">"Hi"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">SomeStruct</span><span class="p">.</span><span class="n">someTypeMethod</span><span class="p">()</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>タイプメソッドの中では、そのタイプが持っている他のタイプメソッドやタイププロパティをタイプ名なしで呼び出すことができます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
-6</pre></td><td class="code"><pre>struct LevelTracker {
-    static var highestUnlockedLevel = 1
-    static func unlockLevel(level: Int) {
-        if level &gt; highestUnlockedLevel { highestUnlockedLevel = level }
-    }
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+6</pre></td><td class="code"><pre><span class="k">struct</span> <span class="n">LevelTracker</span> <span class="p">{</span>
+    <span class="k">static</span> <span class="n">var</span> <span class="n">highestUnlockedLevel</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">static</span> <span class="n">func</span> <span class="n">unlockLevel</span><span class="p">(</span><span class="n">level</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">level</span> <span class="o">&gt;</span> <span class="n">highestUnlockedLevel</span> <span class="p">{</span> <span class="n">highestUnlockedLevel</span> <span class="o">=</span> <span class="n">level</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>本来、<code>LevelTracker.highestUnlockedLevel</code> と書きタイププロパティを参照しますが、このタイプメソッドの中では、<code>LevelTracker</code> というタイプ名を省略することができます。</p>
+<p>本来、<code class="highlighter-rouge">LevelTracker.highestUnlockedLevel</code> と書きタイププロパティを参照しますが、このタイプメソッドの中では、<code class="highlighter-rouge">LevelTracker</code> というタイプ名を省略することができます。</p>
 
 					</div>
 

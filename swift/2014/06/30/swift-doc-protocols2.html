@@ -244,7 +244,7 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。  </p>
+						<p>iBooks にある “The Swift Programming Language” の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。</p>
 
 <p>今回は、プロトコルをより実践的に使用していく方法。</p>
 
@@ -252,11 +252,11 @@
 
 <h3 id="protocols">Protocols</h3>
 
-<h4 id="5.-タイプとしてのプロトコル">5. タイプとしてのプロトコル</h4>
+<h4 id="5-タイプとしてのプロトコル">5. タイプとしてのプロトコル</h4>
 
 <p>例をみてみます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -266,22 +266,24 @@
 8
 9
 10
-11</pre></td><td class="code"><pre>class Dice {
-    let sides: Int
-    let generator: RandomNumberGenerator
-    init(sides: Int, generator: RandomNumberGenerator) {
-        self.sides = sides
-        self.generator = generator
-    }
-    func roll() -&gt; Int {
-        return Int(generator.random() * Double(sides)) + 1
-    }
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+11</pre></td><td class="code"><pre><span class="n">class</span> <span class="n">Dice</span> <span class="p">{</span>
+    <span class="n">let</span> <span class="n">sides</span><span class="o">:</span> <span class="n">Int</span>
+    <span class="n">let</span> <span class="n">generator</span><span class="o">:</span> <span class="n">RandomNumberGenerator</span>
+    <span class="n">init</span><span class="p">(</span><span class="n">sides</span><span class="o">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">generator</span><span class="o">:</span> <span class="n">RandomNumberGenerator</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">sides</span> <span class="o">=</span> <span class="n">sides</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">generator</span> <span class="o">=</span> <span class="n">generator</span>
+    <span class="p">}</span>
+    <span class="n">func</span> <span class="n">roll</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">Int</span><span class="p">(</span><span class="n">generator</span><span class="p">.</span><span class="n">random</span><span class="p">()</span> <span class="o">*</span> <span class="n">Double</span><span class="p">(</span><span class="n">sides</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>この Dice クラスは generator というプロパティを持っています。このプロパティは、<a href="http://blog.kazuya.co/swift/2014/06/30/swift-doc-protocols.html">以前</a> みた RandomNumberGenerator プロトコルです。この generator プロパティには、RandomNumberGenerator プロトコルに準拠してる限りどんなタイプでも設定することができます。また、Initializer の引数のタイプとしてもこのプロトコルは使われています。generator が RandomNumberGenerator プロトコルに準拠していることが保証されているので、安心して random メソッドを使用することができます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -289,24 +291,26 @@
 6
 7
 8
-9</pre></td><td class="code"><pre>var d6 = Dice(sides: 6, generator: LinearCongruentialGenerator())
-for _ in 1...5 {
-    println("Random dice roll is \(d6.roll())")
-}
-// Random dice roll is 3
+9</pre></td><td class="code"><pre><span class="n">var</span> <span class="n">d6</span> <span class="o">=</span> <span class="n">Dice</span><span class="p">(</span><span class="n">sides</span><span class="o">:</span> <span class="mi">6</span><span class="p">,</span> <span class="n">generator</span><span class="o">:</span> <span class="n">LinearCongruentialGenerator</span><span class="p">())</span>
+<span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mi">1</span><span class="p">...</span><span class="mi">5</span> <span class="p">{</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">"Random dice roll is \(d6.roll())"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Random dice roll is 3
 // Random dice roll is 5
 // Random dice roll is 4
 // Random dice roll is 5
-// Random dice roll is 4<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+// Random dice roll is 4
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>このように実際に使用されます。</p>
 
-<h4 id="6.-delegation">6. Delegation</h4>
+<h4 id="6-delegation">6. Delegation</h4>
 
 <p>Delegation とはデザインパターンの 1 つで、クラス・構造体のある責任(機能)を他のタイプのインスタンスに転嫁することです。この Delegation は、転嫁される責任をまとめたプロトコルによって実装されます。例をみていきます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -314,22 +318,24 @@ for _ in 1...5 {
 6
 7
 8
-9</pre></td><td class="code"><pre>protocol DiceGame {
-    var dice: Dice { get }
-    func play()
-}
-protocol DiceGameDelegate {
-    func gameDidStart(game: DiceGame)
-    func game(game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int)
-    func gameDidEnd(game: DiceGame)
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+9</pre></td><td class="code"><pre><span class="n">protocol</span> <span class="n">DiceGame</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">dice</span><span class="o">:</span> <span class="n">Dice</span> <span class="p">{</span> <span class="n">get</span> <span class="p">}</span>
+    <span class="n">func</span> <span class="n">play</span><span class="p">()</span>
+<span class="p">}</span>
+<span class="n">protocol</span> <span class="n">DiceGameDelegate</span> <span class="p">{</span>
+    <span class="n">func</span> <span class="n">gameDidStart</span><span class="p">(</span><span class="n">game</span><span class="o">:</span> <span class="n">DiceGame</span><span class="p">)</span>
+    <span class="n">func</span> <span class="n">game</span><span class="p">(</span><span class="n">game</span><span class="o">:</span> <span class="n">DiceGame</span><span class="p">,</span> <span class="n">didStartNewTurnWithDiceRoll</span> <span class="n">diceRoll</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span>
+    <span class="n">func</span> <span class="n">gameDidEnd</span><span class="p">(</span><span class="n">game</span><span class="o">:</span> <span class="n">DiceGame</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>DiceGame プロトコルは、サイコロを持つどんなゲームにでも採用されることができます。DiceGameDelegate プロトコルは、そのゲームの状況を観察するどんなタイプにでも採用されることができます。</p>
 
 <p>このプロトコルを使い Snakes and Ladders というゲームの実装をしてみます。ゲームの内容は、iBooks の Control Flow にあります。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -358,47 +364,49 @@ protocol DiceGameDelegate {
 27
 28
 29
-30</pre></td><td class="code"><pre>class SnakesAndLadders: DiceGame {
-    let finalSquare = 25
-    let dice = Dice(sides: 6, generator: LinearCongruentialGenerator())
-    var square = 0
-    var board: Int[]
-    init() {
-        board = Int[](count: finalSquare + 1, repeatedValue: 0)
-        board[03] = +08; board[06] = +11; board[09] = +09; board[10] = +02
-        board[14] = -10; board[19] = -11; board[22] = -02; board[24] = -08
-    }
-    var delegate: DiceGameDelegate?
-    func play() {
-        square = 0
-        delegate?.gameDidStart(self)
-        gameLoop: while square != finalSquare {
-            let diceRoll = dice.roll()
-            delegate?.game(self, didStartNewTurnWithDiceRoll: diceRoll)
-            switch square + diceRoll {
-            case finalSquare:
-                break gameLoop
-            case let newSquare where newSquare &gt; finalSquare:
-                continue gameLoop
-            default:
-                square += diceRoll
-                square += board[square]
-            }
-        }
-        delegate?.gameDidEnd(self)
-    }
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+30</pre></td><td class="code"><pre><span class="n">class</span> <span class="n">SnakesAndLadders</span><span class="o">:</span> <span class="n">DiceGame</span> <span class="p">{</span>
+    <span class="n">let</span> <span class="n">finalSquare</span> <span class="o">=</span> <span class="mi">25</span>
+    <span class="n">let</span> <span class="n">dice</span> <span class="o">=</span> <span class="n">Dice</span><span class="p">(</span><span class="n">sides</span><span class="o">:</span> <span class="mi">6</span><span class="p">,</span> <span class="n">generator</span><span class="o">:</span> <span class="n">LinearCongruentialGenerator</span><span class="p">())</span>
+    <span class="n">var</span> <span class="n">square</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">var</span> <span class="n">board</span><span class="o">:</span> <span class="n">Int</span><span class="p">[]</span>
+    <span class="n">init</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">board</span> <span class="o">=</span> <span class="n">Int</span><span class="p">[](</span><span class="n">count</span><span class="o">:</span> <span class="n">finalSquare</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">repeatedValue</span><span class="o">:</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">board</span><span class="p">[</span><span class="mo">03</span><span class="p">]</span> <span class="o">=</span> <span class="o">+</span><span class="mi">08</span><span class="p">;</span> <span class="n">board</span><span class="p">[</span><span class="mo">06</span><span class="p">]</span> <span class="o">=</span> <span class="o">+</span><span class="mi">11</span><span class="p">;</span> <span class="n">board</span><span class="p">[</span><span class="mi">09</span><span class="p">]</span> <span class="o">=</span> <span class="o">+</span><span class="mi">09</span><span class="p">;</span> <span class="n">board</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="o">+</span><span class="mo">02</span>
+        <span class="n">board</span><span class="p">[</span><span class="mi">14</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span><span class="p">;</span> <span class="n">board</span><span class="p">[</span><span class="mi">19</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">11</span><span class="p">;</span> <span class="n">board</span><span class="p">[</span><span class="mi">22</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mo">02</span><span class="p">;</span> <span class="n">board</span><span class="p">[</span><span class="mi">24</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">08</span>
+    <span class="p">}</span>
+    <span class="n">var</span> <span class="n">delegate</span><span class="o">:</span> <span class="n">DiceGameDelegate</span><span class="p">?</span>
+    <span class="n">func</span> <span class="n">play</span><span class="p">()</span> <span class="err">{</span>
+        <span class="n">square</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">delegate</span><span class="p">?.</span><span class="n">gameDidStart</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
+        <span class="nl">gameLoop:</span> <span class="k">while</span> <span class="n">square</span> <span class="o">!=</span> <span class="n">finalSquare</span> <span class="err">{</span>
+            <span class="n">let</span> <span class="n">diceRoll</span> <span class="o">=</span> <span class="n">dice</span><span class="p">.</span><span class="n">roll</span><span class="p">()</span>
+            <span class="n">delegate</span><span class="p">?.</span><span class="n">game</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">didStartNewTurnWithDiceRoll</span><span class="p">:</span> <span class="n">diceRoll</span><span class="p">)</span>
+            <span class="k">switch</span> <span class="n">square</span> <span class="o">+</span> <span class="n">diceRoll</span> <span class="err">{</span>
+            <span class="k">case</span> <span class="n">finalSquare</span><span class="p">:</span>
+                <span class="k">break</span> <span class="n">gameLoop</span>
+            <span class="k">case</span> <span class="n">let</span> <span class="n">newSquare</span> <span class="n">where</span> <span class="n">newSquare</span> <span class="o">&gt;</span> <span class="n">finalSquare</span><span class="p">:</span>
+                <span class="k">continue</span> <span class="n">gameLoop</span>
+            <span class="nl">default:</span>
+                <span class="n">square</span> <span class="o">+=</span> <span class="n">diceRoll</span>
+                <span class="n">square</span> <span class="o">+=</span> <span class="n">board</span><span class="p">[</span><span class="nf">square</span><span class="p">]</span>
+            <span class="err">}</span>
+        <span class="err">}</span>
+        <span class="n">delegate</span><span class="p">?.</span><span class="n">gameDidEnd</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
+    <span class="err">}</span>
+<span class="err">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>ここで定義したクラス SnakesAndLadders が DiceGame プロトコルに準拠しています。play メソッドと dice プロパティを持っています。このクラスがゲームの本体です。</p>
 
 <p>そして、Delegation というデザインパターンとして重要なのが、プロパティとして delegate を持っていることです。11 行目ですね。これは Optional として宣言されているため、初期値は nil です。ゲーム状況を観察する処理は必ずしもゲームを実行するのに必要ではないので、処理が Optional で、delegate されています。このデザインパターンにより、ゲーム本体とそれを補助する処理を分離させ、責任を綺麗に分離させることができます。</p>
 
-<p>ここでは、delegate が Optional のため、これを使用する際には、Optional Chaining (<code>?</code>) を使っています。</p>
+<p>ここでは、delegate が Optional のため、これを使用する際には、Optional Chaining (<code class="highlighter-rouge">?</code>) を使っています。</p>
 
 <p>肝心の転嫁された処理は、例えばこのように実装することができるでしょう。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -414,30 +422,32 @@ protocol DiceGameDelegate {
 14
 15
 16
-17</pre></td><td class="code"><pre>class DiceGameTracker: DiceGameDelegate {
-    var numberOfTurns = 0
-    func gameDidStart(game: DiceGame) {
-        numberOfTurns = 0
-        if game is SnakesAndLadders {
-            println("Started a new game of Snakes and Ladders")
-        }
-        println("The game is using a \(game.dice.sides)-sided dice")
-    }
-    func game(game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int) {
-        ++numberOfTurns
-        println("Rolled a \(diceRoll)")
-    }
-    func gameDidEnd(game: DiceGame) {
-        println("The game lasted for \(numberOfTurns) turns")
-    }
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+17</pre></td><td class="code"><pre><span class="n">class</span> <span class="n">DiceGameTracker</span><span class="o">:</span> <span class="n">DiceGameDelegate</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">numberOfTurns</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">func</span> <span class="n">gameDidStart</span><span class="p">(</span><span class="n">game</span><span class="o">:</span> <span class="n">DiceGame</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">numberOfTurns</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">game</span> <span class="n">is</span> <span class="n">SnakesAndLadders</span> <span class="p">{</span>
+            <span class="n">println</span><span class="p">(</span><span class="s">"Started a new game of Snakes and Ladders"</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="n">println</span><span class="p">(</span><span class="s">"The game is using a \(game.dice.sides)-sided dice"</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="n">func</span> <span class="n">game</span><span class="p">(</span><span class="n">game</span><span class="o">:</span> <span class="n">DiceGame</span><span class="p">,</span> <span class="n">didStartNewTurnWithDiceRoll</span> <span class="n">diceRoll</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="o">++</span><span class="n">numberOfTurns</span>
+        <span class="n">println</span><span class="p">(</span><span class="s">"Rolled a \(diceRoll)"</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="n">func</span> <span class="n">gameDidEnd</span><span class="p">(</span><span class="n">game</span><span class="o">:</span> <span class="n">DiceGame</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">println</span><span class="p">(</span><span class="s">"The game lasted for \(numberOfTurns) turns"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>状況を print しているだけのシンプルなクラスです。DiceGameDelegate プロトコルに準拠し、そのためのメソッドを実装しています。</p>
 
-<p>gameDidStart の引数の game は、SnakesAndLadders タイプではなく、DiceGame タイプです。そのため、DiceGame プロトコルで実装されているメソッド・プロパティにしかアクセスすることができません。しかし、適切なクラスにキャストすることはできます。この例では、game は SnakesAndLadders (DiceGame に準拠している) のインスタンスであることを確認しています。(<code>game is SnakesAndLadders</code> の部分)</p>
+<p>gameDidStart の引数の game は、SnakesAndLadders タイプではなく、DiceGame タイプです。そのため、DiceGame プロトコルで実装されているメソッド・プロパティにしかアクセスすることができません。しかし、適切なクラスにキャストすることはできます。この例では、game は SnakesAndLadders (DiceGame に準拠している) のインスタンスであることを確認しています。(<code class="highlighter-rouge">game is SnakesAndLadders</code> の部分)</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -447,35 +457,39 @@ protocol DiceGameDelegate {
 8
 9
 10
-11</pre></td><td class="code"><pre>let tracker = DiceGameTracker()
-let game = SnakesAndLadders()
-game.delegate = tracker
-game.play()
-// Started a new game of Snakes and Ladders
+11</pre></td><td class="code"><pre><span class="n">let</span> <span class="n">tracker</span> <span class="o">=</span> <span class="n">DiceGameTracker</span><span class="p">()</span>
+<span class="n">let</span> <span class="n">game</span> <span class="o">=</span> <span class="n">SnakesAndLadders</span><span class="p">()</span>
+<span class="n">game</span><span class="p">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="n">tracker</span>
+<span class="n">game</span><span class="p">.</span><span class="n">play</span><span class="p">()</span>
+<span class="c1">// Started a new game of Snakes and Ladders
 // The game is using a 6-sided dice
 // Rolled a 3
 // Rolled a 5
 // Rolled a 4
 // Rolled a 5
-// The game lasted for 4 turns<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+// The game lasted for 4 turns
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>ゲームのルールが分からなくとも Delegate というデザインパターンがプロトコルを通して実装されたことが分かると思います。</p>
 
-<h4 id="7.-extension-による-プロトコル準拠">7. Extension による プロトコル準拠</h4>
+<h4 id="7-extension-による-プロトコル準拠">7. Extension による プロトコル準拠</h4>
 
 <p>たとえ、もとのソースコードに対するアクセス権がなくとも、Extension により既存タイプをあるプロトコルに準拠させることができます。例をみていきます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre>protocol TextRepresentable {
-    func asText() -&gt; String
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+3</pre></td><td class="code"><pre><span class="n">protocol</span> <span class="n">TextRepresentable</span> <span class="p">{</span>
+    <span class="n">func</span> <span class="n">asText</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>これはどんなタイプに対しても文字列として表現させるためメソッドを実装するプオロトコルです。これを先ほどの Dice クラス と SnakesAndLadders クラスに対し、Extension によって、この TextRepresentable プロトコルに準拠させるにはこのようにします。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -485,61 +499,69 @@ game.play()
 8
 9
 10
-11</pre></td><td class="code"><pre>extension Dice: TextRepresentable {
-    func asText() -&gt; String {
-        return "A \(sides)-sided dice"
-    }
-}
+11</pre></td><td class="code"><pre><span class="n">extension</span> <span class="n">Dice</span><span class="o">:</span> <span class="n">TextRepresentable</span> <span class="p">{</span>
+    <span class="n">func</span> <span class="n">asText</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"A \(sides)-sided dice"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-extension SnakesAndLadders: TextRepresentable {
-    func asText() -&gt; String {
-        return "A game of Snakes and Ladders with \(finalSquare) squares"
-    }
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">extension</span> <span class="n">SnakesAndLadders</span><span class="o">:</span> <span class="n">TextRepresentable</span> <span class="p">{</span>
+    <span class="n">func</span> <span class="n">asText</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"A game of Snakes and Ladders with \(finalSquare) squares"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>プロトコルの名前は、タイプの名前の後にコロンを書き、宣言されます。そして、下記のように使用できます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
-6</pre></td><td class="code"><pre>let d12 = Dice(sides: 12, generator: LinearCongruentialGenerator())
-println(d12.asText())
-// prints "A 12-sided dice"
-
-println(game.asText())
-// prints "A game of Snakes and Ladders with 25 squares"<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+6</pre></td><td class="code"><pre><span class="n">let</span> <span class="n">d12</span> <span class="o">=</span> <span class="n">Dice</span><span class="p">(</span><span class="n">sides</span><span class="o">:</span> <span class="mi">12</span><span class="p">,</span> <span class="n">generator</span><span class="o">:</span> <span class="n">LinearCongruentialGenerator</span><span class="p">())</span>
+<span class="n">println</span><span class="p">(</span><span class="n">d12</span><span class="p">.</span><span class="n">asText</span><span class="p">())</span>
+<span class="c1">// prints "A 12-sided dice"
+</span>
+<span class="n">println</span><span class="p">(</span><span class="n">game</span><span class="p">.</span><span class="n">asText</span><span class="p">())</span>
+<span class="c1">// prints "A game of Snakes and Ladders with 25 squares"
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>すでにあるタイプがプロトコルの全ての要件を満たしても、プロトコルに準拠されていることが明示されていない場合には、空の Extension にて正式に準拠させることができます。あるタイプは、全ての要件を満たしているとしても、自動的にはプロトコルには準拠されないので、明示的に宣言する必要があります。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
 6
-7</pre></td><td class="code"><pre>struct Hamster {
-    var name: String
-    func asText() -&gt; String {
-        return "A hamster named \(name)"
-    }
-}
-extension Hamster: TextRepresentable {}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+7</pre></td><td class="code"><pre><span class="k">struct</span> <span class="n">Hamster</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span>
+    <span class="n">func</span> <span class="n">asText</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"A hamster named \(name)"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">extension</span> <span class="n">Hamster</span><span class="o">:</span> <span class="n">TextRepresentable</span> <span class="p">{}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>これにより、Hamster のインスタンスは、どこでも TextRepresentable タイプとして使用することができます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
-4</pre></td><td class="code"><pre>let simonTheHamster = Hamster(name: "Simon")
-let somethingTextRepresentable: TextRepresentable = simonTheHamster
-println(somethingTextRepresentable.asText())
-// prints "A hamster named Simon"<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+4</pre></td><td class="code"><pre><span class="n">let</span> <span class="n">simonTheHamster</span> <span class="o">=</span> <span class="n">Hamster</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">"Simon"</span><span class="p">)</span>
+<span class="n">let</span> <span class="n">somethingTextRepresentable</span><span class="o">:</span> <span class="n">TextRepresentable</span> <span class="o">=</span> <span class="n">simonTheHamster</span>
+<span class="n">println</span><span class="p">(</span><span class="n">somethingTextRepresentable</span><span class="p">.</span><span class="n">asText</span><span class="p">())</span>
+<span class="c1">// prints "A hamster named Simon"
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 					</div>
 

@@ -244,7 +244,7 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。  </p>
+						<p>iBooks にある “The Swift Programming Language” の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。</p>
 
 <p>今回は、Closure に関して。</p>
 
@@ -253,83 +253,94 @@
 <p>Closure は自己完結する機能のブロックです。 Closure は、C や Objective-C のブロック、他の言語ではラムダと似ているもの。グローバル関数とネストされた関数は、Closure の特殊なケースと考えることができます。</p>
 
 <ul>
-<li>・グーバル関数は、名前を持ち、なんの値もキャプチャしない Closure。</li>
-<li>・ネストされた関数は、名前を持ち、ネストしている関数の値をキャプチャしている Closure。</li>
-<li>・Closure  は、名前のない、文脈によって値をキャプチャしている、簡潔に書かれたもの。</li>
+  <li>・グーバル関数は、名前を持ち、なんの値もキャプチャしない Closure。</li>
+  <li>・ネストされた関数は、名前を持ち、ネストしている関数の値をキャプチャしている Closure。</li>
+  <li>・Closure  は、名前のない、文脈によって値をキャプチャしている、簡潔に書かれたもの。</li>
 </ul>
 
 <p>Sort 関数は、引数に他の関数を取る関数です。この Sort 関数を例に、Closure についての説明をしていきます。</p>
 
-<h4 id="1.-closure-とは">1. Closure とは</h4>
+<h4 id="1-closure-とは">1. Closure とは</h4>
 
 <p><a href="http://blog.kazuya.co/swift/2014/06/09/swift-doc-function2.html">以前</a> の記事のネストされた関数も、大きな関数の中の一定のコードを整理するいい方法でしたが、より簡潔に書きたい場合があると思います。そのような場合に、Closure が使えます。</p>
 
 <p>Sort 関数は、引数に配列と、Closure を取ります。この Closure は同じ型の引数を 2 つ取ります。そして、どちらの値が新しく返す配列の順番の中で先に来るかを Bool 型で返します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
 6
 7
-8</pre></td><td class="code"><pre>let names = ["Chris", "Alex", "Ewa", "Barry", "Daniella"]
+8</pre></td><td class="code"><pre><span class="n">let</span> <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Chris"</span><span class="p">,</span> <span class="s">"Alex"</span><span class="p">,</span> <span class="s">"Ewa"</span><span class="p">,</span> <span class="s">"Barry"</span><span class="p">,</span> <span class="s">"Daniella"</span><span class="p">]</span>
 
-func backwards(s1: String, s2: String) -&gt; Bool {
-    return s1 &gt; s2
-}
+<span class="n">func</span> <span class="n">backwards</span><span class="p">(</span><span class="n">s1</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">s2</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span>
+<span class="p">}</span>
 
-var reversed = sort(names, backwards)
-// reversed is equal to ["Ewa", "Daniella", "Chris", "Barry", "Alex"]<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">var</span> <span class="n">reversed</span> <span class="o">=</span> <span class="n">sort</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">backwards</span><span class="p">)</span>
+<span class="c1">// reversed is equal to ["Ewa", "Daniella", "Chris", "Barry", "Alex"]
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>この例では、Sort 関数の引数に関数を受け取っています。関数は、Closure の特殊なケースなので、関数を引数にすることができます。Closure を使用することで、この Sort 関数を実行するのにより効率的に、書くことができます。それを順にみていきます。</p>
 
-<h4 id="2.-基本的な-closure">2. 基本的な Closure</h4>
+<h4 id="2-基本的な-closure">2. 基本的な Closure</h4>
 
 <p>まずは、コードです。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre>reversed = sort(names, { (s1: String, s2: String) -&gt; Bool in
-    return s1 &gt; s2
-    })<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+3</pre></td><td class="code"><pre><span class="n">reversed</span> <span class="o">=</span> <span class="n">sort</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="p">{</span> <span class="p">(</span><span class="n">s1</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">s2</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="k">in</span>
+    <span class="k">return</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span>
+    <span class="p">})</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>このコードは、先ほどの Sort 関数と全く同じ機能を持ちます。まず、{} 内の () にて、Closure の引数を指定します。そして、-&gt; の後に返り値。in キーワードは、Closure の本体が始まるという意味です。ここでは、引数を比べて、その Bool を返すだけというシンプルなものです。これが基本的な Closure のシンタックスです。</p>
 
-<h4 id="3.-closure-の型推論">3. Closure の型推論</h4>
+<h4 id="3-closure-の型推論">3. Closure の型推論</h4>
 
 <p>この Sort Closure は、Sort 関数への引数として渡されています。したがって、Swift は、この引数の型を推論することがき、上記のコードをより簡潔に書くことができます。つまり、この Sort Closure の引数の型、返り値を省略し、下記のように書くことができます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>reversed = sort(names, { s1, s2 in return s1 &gt; s2 } )<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">reversed</span> <span class="o">=</span> <span class="n">sort</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="p">{</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span> <span class="k">in</span> <span class="k">return</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span> <span class="p">}</span> <span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>Closure を関数の引数として渡す際には、いつでも Swift の型推論に頼ることができます。なので、めったに 2 のようなコードを書く必要はありません。</p>
 
-<h4 id="4.-closure-内での-return-文の省略">4. Closure 内での return 文の省略</h4>
+<h4 id="4-closure-内での-return-文の省略">4. Closure 内での return 文の省略</h4>
 
 <p>Sort Closrure のような 1 文で完結するような Closure では、return 文さえも省略することができます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>reversed = sort(names, { s1, s2 in s1 &gt; s2 } )<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">reversed</span> <span class="o">=</span> <span class="n">sort</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="p">{</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span> <span class="k">in</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span> <span class="p">}</span> <span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>この Closure は、本体に s1&gt; s2 という 1 文しかなく、Bool を返すということは明らかです。したがって、return 文を省略できます。</p>
 
-<h4 id="5.-引数名の省略">5. 引数名の省略</h4>
+<h4 id="5-引数名の省略">5. 引数名の省略</h4>
 
-<p>このような inline closure に、Swift は自動的に引数の名前を用意してくれます。それらは、$0, $1, $2... と参照することができます。つまり、これを使えば、引数名さえも省くことができます。</p>
+<p>このような inline closure に、Swift は自動的に引数の名前を用意してくれます。それらは、$0, $1, $2… と参照することができます。つまり、これを使えば、引数名さえも省くことができます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>reversed = sort(names, { $0 &gt; $1 } )<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
-        
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">reversed</span> <span class="o">=</span> <span class="n">sort</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="o">&gt;</span> <span class="err">$</span><span class="mi">1</span> <span class="p">}</span> <span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<h4 id="6.-operator-functions">6. Operator Functions</h4>
+<h4 id="6-operator-functions">6. Operator Functions</h4>
 
 <p>Swift の String 型は、&gt; オペレーターを 2 つの引数を取り、Bool を返す関数として実装しています。これを Operator Function というようです。これを利用すれば、Sort 関数をこのように書くことがきます。Operator Function は、別に解説されたページがあるようです。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>reversed = sort(names, &gt;)<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">reversed</span> <span class="o">=</span> <span class="n">sort</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="o">&gt;</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>最初の完全に定義された関数を引数にとっていた形と比べると、信じられないほど簡潔になりました。</p>
 

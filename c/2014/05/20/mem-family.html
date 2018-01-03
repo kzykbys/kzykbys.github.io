@@ -246,52 +246,62 @@
 					<div class="post">
 						<p>最近、C を書いてます。その中で勉強したことのメモ。</p>
 
-<h3 id="memcpy()">memcpy()</h3>
+<h3 id="memcpy">memcpy()</h3>
 
 <p>文字列、つまり、char の配列をコピーするには、strcpy() を使うのはよく知られていますが、それ以外に配列をコピーする際に便利な memcpy() がある。この関数も string.h の中に宣言されています。この memcpy() は、strcpyと3つ目の引数を取ること以外はほとんど同じです。3つ目の引数に、コピーするバイト数を渡す必要があります。例えば、int型の配列をコピーする際には、</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4</pre></td><td class="code"><pre><span class="kt">int</span> <span class="n">a1</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span> <span class="p">,</span> <span class="mi">11</span><span class="p">};</span>
 <span class="kt">int</span> <span class="n">a2</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span> 
 
-<span class="n">memcpy</span><span class="p">(</span><span class="n">a2</span><span class="p">,</span> <span class="n">a1</span><span class="p">,</span> <span class="mi">10</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">memcpy</span><span class="p">(</span><span class="n">a2</span><span class="p">,</span> <span class="n">a1</span><span class="p">,</span> <span class="mi">10</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>のようにします。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">memcpy</span><span class="p">(</span><span class="n">a2</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a1</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="mi">5</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">memcpy</span><span class="p">(</span><span class="n">a2</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a1</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="mi">5</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>コピーされる配列(a1)の要素のアドレスを渡し、そこからコピーを開始はこんな感じ。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">memcpy</span><span class="p">(</span><span class="n">folks1</span><span class="p">,</span> <span class="n">folks2</span><span class="p">,</span> <span class="mi">3</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">person</span><span class="p">));</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">memcpy</span><span class="p">(</span><span class="n">folks1</span><span class="p">,</span> <span class="n">folks2</span><span class="p">,</span> <span class="mi">3</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">person</span><span class="p">));</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>構造体を使用する場合も同じ。</p>
 
-<h3 id="memcmp()">memcmp()</h3>
+<h3 id="memcmp">memcmp()</h3>
 
 <p>これも文字列の比較で使われる strcmp の他のデータ型にも対応した関数。これも使い方はほとんど同じ。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4</pre></td><td class="code"><pre><span class="kt">int</span> <span class="n">a1</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">};</span>
 <span class="kt">int</span> <span class="n">a2</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">};</span>
 
-<span class="n">memcmp</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="mi">5</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">memcmp</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="mi">5</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>この例では、ネガティブな結果を返します。(7 - 8) 文字列比較の場合には、ASCIIコードにより比較されていましたが、文字列でない int型の比較の場合には、バイトの整数値での比較結果を返します。</p>
 
-<h3 id="memset()">memset()</h3>
+<h3 id="memset">memset()</h3>
 
 <p>mem ファミリーに memset という関数もあります。これは、初期化する際に使われることが多いです。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">memset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">records</span><span class="p">[</span><span class="mi">100</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">recode</span><span class="p">));</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">memset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">records</span><span class="p">[</span><span class="mi">100</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">recode</span><span class="p">));</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>records という構造体の101個の要素を持っている配列があると仮定して、最後の要素をゼロアウトし、センティネルとして使用したい時には、これでOK。</p>
 

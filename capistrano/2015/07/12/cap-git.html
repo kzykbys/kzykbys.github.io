@@ -245,17 +245,17 @@
 
 					<div class="post">
 						<p>Rails + Nginx + Unicorn という構成でデプロイ作業を自動化しようと思い、ようやく Capistrano を導入しました。
-しかし、Capistranoで、<code>$cap production deploy</code> コマンドを実行し、特にエラーが発生せずに実行完了するにもかかわらず、<code>current</code> に最新のコミットが反映されないという現象でハマったのでメモ。</p>
+しかし、Capistranoで、<code class="highlighter-rouge">$cap production deploy</code> コマンドを実行し、特にエラーが発生せずに実行完了するにもかかわらず、<code class="highlighter-rouge">current</code> に最新のコミットが反映されないという現象でハマったのでメモ。</p>
 
 <h4 id="不要なgit系のファイルの削除">不要なGit系のファイルの削除</h4>
 
 <p>結論から言うと、不要なGit系のファイルを削除することにより、最新のコミットが反映されるようになった。</p>
 
-<p>Capistranoを導入以前は、<code>/home/user_name/apps/each_app</code> のように <code>each_app</code> ディレクトリに Rails アプリのファイルを置いていた。
-このディレクトリは Git の管理下にあったのですが、そこでこのディレクトリ配下にある、<code>.git</code> や Capistrano が作成する <code>repo</code> ディレクトリを削除するとこの現象は解決。
-(以前は <code>each_app</code> の中から <code>$git pull</code> とかしていた...)</p>
+<p>Capistranoを導入以前は、<code class="highlighter-rouge">/home/user_name/apps/each_app</code> のように <code class="highlighter-rouge">each_app</code> ディレクトリに Rails アプリのファイルを置いていた。
+このディレクトリは Git の管理下にあったのですが、そこでこのディレクトリ配下にある、<code class="highlighter-rouge">.git</code> や Capistrano が作成する <code class="highlighter-rouge">repo</code> ディレクトリを削除するとこの現象は解決。
+(以前は <code class="highlighter-rouge">each_app</code> の中から <code class="highlighter-rouge">$git pull</code> とかしていた…)</p>
 
-<p>Capistranoを導入して、Nginxのrootを <code>/home/user_name/apps/each_app/current</code> に変更して、わちゃわちゃしていたら無駄にハマってしまった。もっと Git の仕組みとかもしっかりと抑えたい。</p>
+<p>Capistranoを導入して、Nginxのrootを <code class="highlighter-rouge">/home/user_name/apps/each_app/current</code> に変更して、わちゃわちゃしていたら無駄にハマってしまった。もっと Git の仕組みとかもしっかりと抑えたい。</p>
 
 <h4 id="参考">参考</h4>
 

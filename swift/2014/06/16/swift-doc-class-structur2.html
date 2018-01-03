@@ -244,36 +244,38 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。  </p>
+						<p>iBooks にある “The Swift Programming Language” の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。</p>
 
 <p>今回は、Class と Structure に関して。</p>
 
-<h3 id="classes,-structures">Classes, Structures</h3>
+<h3 id="classes-structures">Classes, Structures</h3>
 
 <p><a href="http://blog.kazuya.co/swift/2014/06/16/swift-doc-class-structur.html">前回</a> の続きとして、Array と Dictionary のコピー・代入される際の挙動に関して。特に配列の挙動はちょっと特殊です。</p>
 
-<h4 id="4.-dictionaryの代入とコピー">4. Dictionaryの代入とコピー</h4>
+<h4 id="4-dictionaryの代入とコピー">4. Dictionaryの代入とコピー</h4>
 
 <p>Dictionary が変数やコンスタントに代入された時、また関数やメソッドの引数として渡された時には、キー/値はコピーして渡されます。キーや値がリファレンスタイプの時は、そのリファレンスがコピーされます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
-6</pre></td><td class="code"><pre>var ages = ["Peter": 23, "Wei": 35, "Anish": 65, "Katya": 19]
-var copiedAges = ages
+6</pre></td><td class="code"><pre><span class="n">var</span> <span class="n">ages</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Peter"</span><span class="o">:</span> <span class="mi">23</span><span class="p">,</span> <span class="s">"Wei"</span><span class="o">:</span> <span class="mi">35</span><span class="p">,</span> <span class="s">"Anish"</span><span class="o">:</span> <span class="mi">65</span><span class="p">,</span> <span class="s">"Katya"</span><span class="o">:</span> <span class="mi">19</span><span class="p">]</span>
+<span class="n">var</span> <span class="n">copiedAges</span> <span class="o">=</span> <span class="n">ages</span>
 
-copiedAges["Peter"] = 24
-println(ages["Peter"])
-// prints "23"<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">copiedAges</span><span class="p">[</span><span class="s">"Peter"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">24</span>
+<span class="n">println</span><span class="p">(</span><span class="n">ages</span><span class="p">[</span><span class="s">"Peter"</span><span class="p">])</span>
+<span class="c1">// prints "23"
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
-<h4 id="5.-配列の代入とコピー">5. 配列の代入とコピー</h4>
+<h4 id="5-配列の代入とコピー">5. 配列の代入とコピー</h4>
 
-<p>配列の代入とコピーはちょっと複雑です。配列が、変数やコンスタントに代入されるか、関数やメソッドの引数として渡された場合、&quot;この時点&quot;では配列はリファレンスとして渡されます。つまり、同じメモリ領域をシェアしています。配列の要素の値を変更したら、他のリファレンスしている変数等から確認することができます。下記の例では、a[0]を変更すると、b や c からも変更を確認することができます。</p>
+<p>配列の代入とコピーはちょっと複雑です。配列が、変数やコンスタントに代入されるか、関数やメソッドの引数として渡された場合、”この時点”では配列はリファレンスとして渡されます。つまり、同じメモリ領域をシェアしています。配列の要素の値を変更したら、他のリファレンスしている変数等から確認することができます。下記の例では、a[0]を変更すると、b や c からも変更を確認することができます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -283,89 +285,101 @@ println(ages["Peter"])
 8
 9
 10
-11</pre></td><td class="code"><pre>var a = [1, 2, 3]
-var b = a
-var c = a
+11</pre></td><td class="code"><pre><span class="n">var</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">var</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">var</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span>
 
-a[0] = 42
-println(a[0])
-// 42
-println(b[0])
-// 42
-println(c[0])
-// 42<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="n">println</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1">// 42
+</span><span class="n">println</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1">// 42
+</span><span class="n">println</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1">// 42
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>しかし、配列の長さを変える(要素の削除、追加)を伴う時には、配列がコピーされます。この実際に配列の長さを変更した際に、コピーされます。下記の例では、a 配列の長さを append() で変えています。そのため、b と c はこの時点で 古い a (a -&gt; (1, 2, 3)) のコピーを参照しています。したがって、a の値を変更しても b と c からは変更を確認することができません。ちなみに、この b と c は同じ配列のリファレンスを持っています。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
 6
 7
-8</pre></td><td class="code"><pre>a.append(4)
-a[0] = 777
-println(a[0])
-// 777
-println(b[0])
-// 42
-println(c[0])
-// 42<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+8</pre></td><td class="code"><pre><span class="n">a</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">777</span>
+<span class="n">println</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1">// 777
+</span><span class="n">println</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1">// 42
+</span><span class="n">println</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1">// 42
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>上記でみたように、いくつかの変数が同じ配列へのリファレンスを持っていると、ひとつの変数から配列に変更を与えると、他のリファレンスから参照した場合にも、その変更が適応されていまいます。関数等に配列を渡す際に、その変数が持つリファレンスがプログラムの中で唯一の参照元であるということを確認する方法があります。それが、unshare メソッドです。このメソッドは、変数にのみ使用できます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>b.unshare()<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">b</span><span class="p">.</span><span class="n">unshare</span><span class="p">()</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>現在、b と c は同じリファレンスを持っています。そのため、b を変更すると c からその配列を参照した際に、b 側で行った変更が、c 側からも確認できます。これが好ましくない場合に、この unshare メソッドを使用します。この操作により、b へ新しいこの配列がコピーされ、b で b が持つ配列を変更しても、c へは影響を与えません。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
 6
-7</pre></td><td class="code"><pre>b[0] = -105
-println(a[0])
-// 777
-println(b[0])
-// -105
-println(c[0])
-// 42<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+7</pre></td><td class="code"><pre><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">105</span>
+<span class="n">println</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1">// 777
+</span><span class="n">println</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1">// -105
+</span><span class="n">println</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1">// 42
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>ある 2 つの配列を参照してる変数に対して、同じ配列を参照しているかをチェックするには、===/!== オペレーターを使用します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
-6</pre></td><td class="code"><pre>if b === c {
-    println("b and c still share the same array elements.")
-} else {
-    println("b and c now refer to two independent sets of array elements.")
-}
-// prints "b and c now refer to two independent sets of array elements."<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+6</pre></td><td class="code"><pre><span class="k">if</span> <span class="n">b</span> <span class="o">===</span> <span class="n">c</span> <span class="p">{</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">"b and c still share the same array elements."</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">"b and c now refer to two independent sets of array elements."</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// prints "b and c now refer to two independent sets of array elements."
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>配列が代入された時点で(長さを変えた時点ではなく)、配列のコピーを実行して欲しい場合には、copy メソッドを使用します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
-6</pre></td><td class="code"><pre>var names = ["Mohsen", "Hilary", "Justyn", "Amy", "Rich", "Graham", "Vic"]
-var copiedNames = names.copy()
+6</pre></td><td class="code"><pre><span class="n">var</span> <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Mohsen"</span><span class="p">,</span> <span class="s">"Hilary"</span><span class="p">,</span> <span class="s">"Justyn"</span><span class="p">,</span> <span class="s">"Amy"</span><span class="p">,</span> <span class="s">"Rich"</span><span class="p">,</span> <span class="s">"Graham"</span><span class="p">,</span> <span class="s">"Vic"</span><span class="p">]</span>
+<span class="n">var</span> <span class="n">copiedNames</span> <span class="o">=</span> <span class="n">names</span><span class="p">.</span><span class="n">copy</span><span class="p">()</span>
 
-copiedNames[0] = "Mo"
-println(names[0])
-// prints "Mohsen"<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">copiedNames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">"Mo"</span>
+<span class="n">println</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1">// prints "Mohsen"
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>先ほどの unshare メソッドは、その変数が唯一の参照元の場合には、コピーを作成しません。しかし、この copy メソッドは、常に新しいコピーを作成します。そのため、もし単にリファレンスがプログラムの中で唯一のものあることを確認した場合には、unshare メソッドを使用した方が効率的です。</p>
 

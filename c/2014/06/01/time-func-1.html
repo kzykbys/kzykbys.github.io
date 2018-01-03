@@ -246,33 +246,37 @@
 					<div class="post">
 						<p>時間に関する C の関数に関して。time.h は、時間に関連した関数が宣言されています。これらは、非常に重要です。ファイルは作成された日時を持っていますし、DB は、変更されたり、作成された際に時間を保持します。OS もユーザーのリクエストがいつ成されたかを確認します。今回は基本的な time.h の関数の使用方法の記事です。</p>
 
-<h3 id="time()">time()</h3>
+<h3 id="time">time()</h3>
 
 <p>time() 関数は、その関数のリターン値を直接使われることはあまりありませんが、他の time.h に関連された関数で使用されます。time() が返す値は、 ANSI C で強制的に定められているわけではありませんが、1970年1月からの経過した秒数を返します。time() のプロトタイプは、このように定義されています。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="kt">time_t</span> <span class="n">time</span><span class="p">(</span><span class="kt">time_t</span> <span class="o">*</span><span class="n">timeval</span><span class="p">);</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="kt">time_t</span> <span class="n">time</span><span class="p">(</span><span class="kt">time_t</span> <span class="o">*</span><span class="n">timeval</span><span class="p">);</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>time_t は、システム間の違いを吸収するためにありますが、long 型と考えて良いです。この後すぐに見る localtime()、gmttime()、asctime() 全てが、この time_t * を使用し、現在の時刻を違う形式で返します。</p>
 
-<h3 id="time.h-の関数">time.h の関数</h3>
+<h3 id="timeh-の関数">time.h の関数</h3>
 
 <p>いくつか time.h から抜粋して基本的な関数を見てみます。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4</pre></td><td class="code"><pre><span class="k">struct</span> <span class="n">tm</span> <span class="o">*</span><span class="n">localtime</span><span class="p">(</span><span class="k">const</span> <span class="kt">time_t</span> <span class="o">*</span><span class="p">);</span>
 <span class="k">struct</span> <span class="n">tm</span> <span class="o">*</span><span class="n">gmtime</span><span class="p">(</span><span class="k">const</span> <span class="kt">time_t</span> <span class="o">*</span><span class="p">);</span>
 <span class="kt">char</span> <span class="o">*</span><span class="n">asctime</span><span class="p">(</span><span class="k">const</span> <span class="k">struct</span> <span class="n">tm</span> <span class="o">*</span><span class="p">);</span>
-<span class="kt">char</span> <span class="o">*</span><span class="n">ctime</span><span class="p">(</span><span class="k">const</span> <span class="kt">time_t</span> <span class="o">*</span><span class="p">);</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="kt">char</span> <span class="o">*</span><span class="n">ctime</span><span class="p">(</span><span class="k">const</span> <span class="kt">time_t</span> <span class="o">*</span><span class="p">);</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>最初の2つの関数は、struct tm のポインターを返します。この2つの関数の内部には static struct tm が存在しています。そのため、これらの関数が値を返してきても、そのスペースは維持されています。同様に、asctime() も内部に static char * が存在します。下のコードで見られるように、私達は、メモリをこの struct tm と char * へ malloc() する必要がないことからも確認することができます。最後の ctime() は、asctime() と同じように char * を返しますが、より簡単に使用することができます。asctime() は、struct tm * を必要とします。struct tm *は、localtime() か、gmtime() を呼び作成するため、最低でも 2 つのステートメントが必要になってしまいます。それに対して、ctime() は time_t * のみ必要とするので、time() を呼び出した後、すぐに実行できます。</p>
 
 <p>これらの使用例はこんな感じです。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -336,20 +340,22 @@
 <span class="p">}</span>
 
 <span class="cm">/* Output:
-    Local time: 16 hours 35 minutes
-    GMT time: 23 hours 35 minutes
-    GMT ASCII time from asctime: Sun Jun  1 23:35:26 2014
-    Local ASCII time from asctime: Sun Jun  1 16:35:26 2014
-    Local ASCII time from ctime: Sun Jun  1 16:35:26 2014
-    Program ended with exit code: 0
-*/</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+	Local time: 16 hours 35 minutes
+	GMT time: 23 hours 35 minutes
+	GMT ASCII time from asctime: Sun Jun  1 23:35:26 2014
+	Local ASCII time from asctime: Sun Jun  1 16:35:26 2014
+	Local ASCII time from ctime: Sun Jun  1 16:35:26 2014
+	Program ended with exit code: 0
+*/</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <h3 id="tm-構造体">tm 構造体</h3>
 
 <p>tm 構造体は、time.h にて、このように定義されています。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -362,19 +368,21 @@
 11
 12
 13</pre></td><td class="code"><pre><span class="k">struct</span> <span class="n">tm</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">tm_sec</span><span class="p">;</span>       <span class="cm">/* seconds after the minute [0-60] */</span>
-    <span class="kt">int</span> <span class="n">tm_min</span><span class="p">;</span>       <span class="cm">/* minutes after the hour [0-59] */</span>
-    <span class="kt">int</span> <span class="n">tm_hour</span><span class="p">;</span>  <span class="cm">/* hours since midnight [0-23] */</span>
-    <span class="kt">int</span> <span class="n">tm_mday</span><span class="p">;</span>  <span class="cm">/* day of the month [1-31] */</span>
-    <span class="kt">int</span> <span class="n">tm_mon</span><span class="p">;</span>       <span class="cm">/* months since January [0-11] */</span>
-    <span class="kt">int</span> <span class="n">tm_year</span><span class="p">;</span>  <span class="cm">/* years since 1900 */</span>
-    <span class="kt">int</span> <span class="n">tm_wday</span><span class="p">;</span>  <span class="cm">/* days since Sunday [0-6] */</span>
-    <span class="kt">int</span> <span class="n">tm_yday</span><span class="p">;</span>  <span class="cm">/* days since January 1 [0-365] */</span>
-    <span class="kt">int</span> <span class="n">tm_isdst</span><span class="p">;</span> <span class="cm">/* Daylight Savings Time flag */</span>
-    <span class="kt">long</span>    <span class="n">tm_gmtoff</span><span class="p">;</span>    <span class="cm">/* offset from CUT in seconds */</span>
-    <span class="kt">char</span>    <span class="o">*</span><span class="n">tm_zone</span><span class="p">;</span>  <span class="cm">/* timezone abbreviation */</span>
-<span class="p">};</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+	<span class="kt">int</span>	<span class="n">tm_sec</span><span class="p">;</span>		<span class="cm">/* seconds after the minute [0-60] */</span>
+	<span class="kt">int</span>	<span class="n">tm_min</span><span class="p">;</span>		<span class="cm">/* minutes after the hour [0-59] */</span>
+	<span class="kt">int</span>	<span class="n">tm_hour</span><span class="p">;</span>	<span class="cm">/* hours since midnight [0-23] */</span>
+	<span class="kt">int</span>	<span class="n">tm_mday</span><span class="p">;</span>	<span class="cm">/* day of the month [1-31] */</span>
+	<span class="kt">int</span>	<span class="n">tm_mon</span><span class="p">;</span>		<span class="cm">/* months since January [0-11] */</span>
+	<span class="kt">int</span>	<span class="n">tm_year</span><span class="p">;</span>	<span class="cm">/* years since 1900 */</span>
+	<span class="kt">int</span>	<span class="n">tm_wday</span><span class="p">;</span>	<span class="cm">/* days since Sunday [0-6] */</span>
+	<span class="kt">int</span>	<span class="n">tm_yday</span><span class="p">;</span>	<span class="cm">/* days since January 1 [0-365] */</span>
+	<span class="kt">int</span>	<span class="n">tm_isdst</span><span class="p">;</span>	<span class="cm">/* Daylight Savings Time flag */</span>
+	<span class="kt">long</span>	<span class="n">tm_gmtoff</span><span class="p">;</span>	<span class="cm">/* offset from CUT in seconds */</span>
+	<span class="kt">char</span>	<span class="o">*</span><span class="n">tm_zone</span><span class="p">;</span>	<span class="cm">/* timezone abbreviation */</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>localtime() や gmtime() を使用してこれらの値を全て出力するのは面倒なので、ただ時刻を表示したい場合には、ctime() を使用するのが簡単です。</p>
 

@@ -244,38 +244,40 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。  </p>
+						<p>iBooks にある “The Swift Programming Language” の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。</p>
 
 <p>今回は、Subscripts に関して。</p>
 
 <h3 id="subscripts">Subscripts</h3>
 
-<p>Subscripts は、配列や Dictionary といったデータ構造に対して、そのデータにアクセスするための記述方法です。Dictionary であれば、dict[&quot;Kazuya&quot;] のようなものです。実際に、Swift の Dictionary はこの方法で実装されているようです。Swift では、この Subscripts をクラス・構造体・Enumeration に対して定義することもできます。</p>
+<p>Subscripts は、配列や Dictionary といったデータ構造に対して、そのデータにアクセスするための記述方法です。Dictionary であれば、dict[“Kazuya”] のようなものです。実際に、Swift の Dictionary はこの方法で実装されているようです。Swift では、この Subscripts をクラス・構造体・Enumeration に対して定義することもできます。</p>
 
-<h4 id="1.-subscripts-syntax">1. Subscripts Syntax</h4>
+<h4 id="1-subscripts-syntax">1. Subscripts Syntax</h4>
 
-<p>あるタイプに新しく Subscripts を定義するには、<code>subscript</code> キーワードを使用します。そして、インスタンスメソッドのように、引数と返り値を指定します。読み込み専用か読み書き可能の Subscripts を定義することができます。</p>
+<p>あるタイプに新しく Subscripts を定義するには、<code class="highlighter-rouge">subscript</code> キーワードを使用します。そして、インスタンスメソッドのように、引数と返り値を指定します。読み込み専用か読み書き可能の Subscripts を定義することができます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
 6
 7
-8</pre></td><td class="code"><pre>subscript(index: Int) -&gt; Int {
-    get {
-        // return an appropriate subscript value here
-    }
-    set(newValue) {
-        // perform a suitable setting action here
-    }
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+8</pre></td><td class="code"><pre><span class="n">subscript</span><span class="p">(</span><span class="n">index</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
+    <span class="n">get</span> <span class="p">{</span>
+        <span class="c1">// return an appropriate subscript value here
+</span>    <span class="p">}</span>
+    <span class="n">set</span><span class="p">(</span><span class="n">newValue</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// perform a suitable setting action here
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>読み込み専用の Subscripts を定義する場合には、<code>get</code> を省略できます。このコードは、Subscripts の引数として Int を取り、それと構造体のプロパティの掛け算の結果を返す読み込み専用の Subscripts です。</p>
+<p>読み込み専用の Subscripts を定義する場合には、<code class="highlighter-rouge">get</code> を省略できます。このコードは、Subscripts の引数として Int を取り、それと構造体のプロパティの掛け算の結果を返す読み込み専用の Subscripts です。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -283,22 +285,24 @@
 6
 7
 8
-9</pre></td><td class="code"><pre>struct TimesTable {
-    let multiplier: Int
-    subscript(index: Int) -&gt; Int {
-        return multiplier * index
-    }
-}
-let threeTimesTable = TimesTable(multiplier: 3)
-println("six times three is \(threeTimesTable[6])")
-// prints "six times three is 18<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+9</pre></td><td class="code"><pre><span class="k">struct</span> <span class="n">TimesTable</span> <span class="p">{</span>
+    <span class="n">let</span> <span class="n">multiplier</span><span class="o">:</span> <span class="n">Int</span>
+    <span class="n">subscript</span><span class="p">(</span><span class="n">index</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">multiplier</span> <span class="o">*</span> <span class="n">index</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">let</span> <span class="n">threeTimesTable</span> <span class="o">=</span> <span class="n">TimesTable</span><span class="p">(</span><span class="n">multiplier</span><span class="o">:</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="s">"six times three is \(threeTimesTable[6])"</span><span class="p">)</span>
+<span class="c1">// prints "six times three is 18
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
-<h4 id="2.-more-subscripts">2. More Subscripts</h4>
+<h4 id="2-more-subscripts">2. More Subscripts</h4>
 
-<p>Subscripts は、いくつでも引数を取ることができます。また、これらの引数はどんなデータ型でも大丈夫です。また、どんなデータ型でも返り値になれます。さらに、可変引数の Subscripts も定義できます。しかし、<code>in-out</code> 引数は使えませんし、引数にデフォルト値を持たせることもできません。</p>
+<p>Subscripts は、いくつでも引数を取ることができます。また、これらの引数はどんなデータ型でも大丈夫です。また、どんなデータ型でも返り値になれます。さらに、可変引数の Subscripts も定義できます。しかし、<code class="highlighter-rouge">in-out</code> 引数は使えませんし、引数にデフォルト値を持たせることもできません。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -326,36 +330,38 @@ println("six times three is \(threeTimesTable[6])")
 26
 27
 28
-29</pre></td><td class="code"><pre>struct Matrix {
-    let rows: Int, columns: Int
-    var grid: Double[]
-    init(rows: Int, columns: Int) {
-        self.rows = rows
-        self.columns = columns
-        grid = Array(count: rows * columns, repeatedValue: 0.0)
-    }
-    func indexIsValidForRow(row: Int, column: Int) -&gt; Bool {
-        return row &gt;= 0 &amp;&amp; row &lt; rows &amp;&amp; column &gt;= 0 &amp;&amp; column &lt; columns
-    }
-    subscript(row: Int, column: Int) -&gt; Double {
-        get {
-            assert(indexIsValidForRow(row, column: column), "Index out of range")
-            return grid[(row * columns) + column]
-        }
-        set {
-            assert(indexIsValidForRow(row, column: column), "Index out of range")
-            grid[(row * columns) + column] = newValue
-        }
-    }
-}
+29</pre></td><td class="code"><pre><span class="k">struct</span> <span class="n">Matrix</span> <span class="p">{</span>
+    <span class="n">let</span> <span class="n">rows</span><span class="o">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">columns</span><span class="o">:</span> <span class="n">Int</span>
+    <span class="n">var</span> <span class="n">grid</span><span class="o">:</span> <span class="n">Double</span><span class="p">[]</span>
+    <span class="n">init</span><span class="p">(</span><span class="n">rows</span><span class="o">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">columns</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">columns</span>
+        <span class="n">grid</span> <span class="o">=</span> <span class="n">Array</span><span class="p">(</span><span class="n">count</span><span class="o">:</span> <span class="n">rows</span> <span class="o">*</span> <span class="n">columns</span><span class="p">,</span> <span class="n">repeatedValue</span><span class="o">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="n">func</span> <span class="n">indexIsValidForRow</span><span class="p">(</span><span class="n">row</span><span class="o">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">column</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">row</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="n">rows</span> <span class="o">&amp;&amp;</span> <span class="n">column</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">column</span> <span class="o">&lt;</span> <span class="n">columns</span>
+    <span class="p">}</span>
+    <span class="n">subscript</span><span class="p">(</span><span class="n">row</span><span class="o">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">column</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Double</span> <span class="p">{</span>
+        <span class="n">get</span> <span class="p">{</span>
+            <span class="n">assert</span><span class="p">(</span><span class="n">indexIsValidForRow</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">column</span><span class="o">:</span> <span class="n">column</span><span class="p">),</span> <span class="s">"Index out of range"</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">grid</span><span class="p">[(</span><span class="n">row</span> <span class="o">*</span> <span class="n">columns</span><span class="p">)</span> <span class="o">+</span> <span class="nf">column</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="n">set</span> <span class="p">{</span>
+            <span class="n">assert</span><span class="p">(</span><span class="n">indexIsValidForRow</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">column</span><span class="o">:</span> <span class="n">column</span><span class="p">),</span> <span class="s">"Index out of range"</span><span class="p">)</span>
+            <span class="n">grid</span><span class="p">[(</span><span class="n">row</span> <span class="o">*</span> <span class="n">columns</span><span class="p">)</span> <span class="o">+</span> <span class="nf">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">newValue</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-// Usage
-var matrix = Matrix(rows: 2, columns: 2)
-matrix[0, 1] = 1.5
-matrix[1, 0] = 3.2
-let someValue = matrix[2, 2]
-// this triggers an assert, because [2, 2] is outside of the matrix bounds<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="c1">// Usage
+</span><span class="n">var</span> <span class="n">matrix</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">(</span><span class="n">rows</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">columns</span><span class="o">:</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">.</span><span class="mi">5</span>
+<span class="n">matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span><span class="p">.</span><span class="mi">2</span>
+<span class="n">let</span> <span class="n">someValue</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="c1">// this triggers an assert, because [2, 2] is outside of the matrix bounds
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>この Matrix 構造体の例では、引数を 2 つ取る Subscripts を使い、Matrix の要素のゲッターセッターを実装しています。</p>
 

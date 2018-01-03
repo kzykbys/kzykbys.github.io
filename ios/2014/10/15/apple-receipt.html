@@ -246,7 +246,7 @@
 					<div class="post">
 						<p>iOSアプリにおいて、In-App Purchaseの定期購読のサービスを提供している際に、その購読者の情報を取得できるRubyのスクリプトをざくっと作成しました。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -346,12 +346,14 @@
   <span class="c1"># Let's add receipt</span>
   <span class="n">lastline</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="n">num</span><span class="si">}</span><span class="se">\t</span><span class="si">#{</span><span class="n">originalDate</span><span class="si">}</span><span class="se">\t</span><span class="si">#{</span><span class="n">lastPurchasedDate</span><span class="si">}</span><span class="se">\t</span><span class="si">#{</span><span class="n">expiresDate</span><span class="si">}</span><span class="se">\t</span><span class="si">#{</span><span class="n">stillPurchage</span><span class="si">}</span><span class="se">\t</span><span class="si">#{</span><span class="n">isSand</span><span class="si">}</span><span class="s2">"</span>
   <span class="nb">puts</span> <span class="n">lastline</span> 
-<span class="k">end</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>ただ、ちょっと取得している情報が違うかもしれません。何かあったらご指摘お願いします。</p>
 
-<p>csvファイルにて、レシートのハッシュキーがあるという前提です。あとは、<code>ruby apple-script.rb &gt;&gt; results.tsv</code>のように、tsvでアウトプットすれば、エクセル等にそのままコピペできます。上記のコードの中で指定されているパスワードはiTunes Connectの中で取得できます。</p>
+<p>csvファイルにて、レシートのハッシュキーがあるという前提です。あとは、<code class="highlighter-rouge">ruby apple-script.rb &gt;&gt; results.tsv</code>のように、tsvでアウトプットすれば、エクセル等にそのままコピペできます。上記のコードの中で指定されているパスワードはiTunes Connectの中で取得できます。</p>
 
 					</div>
 

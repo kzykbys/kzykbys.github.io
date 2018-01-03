@@ -244,37 +244,41 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>RailsのRESTfulなインターフェイスにおいて、showアクションは、例えば <code>/lessons/1</code> のように <code>/models/:id</code> となっています。基本はこれで良いと思いますが、単調な数字の id ではなく、各モデルが持っているユニークなユーザー名（文字列）等を使いたい場合の処理。</p>
+						<p>RailsのRESTfulなインターフェイスにおいて、showアクションは、例えば <code class="highlighter-rouge">/lessons/1</code> のように <code class="highlighter-rouge">/models/:id</code> となっています。基本はこれで良いと思いますが、単調な数字の id ではなく、各モデルが持っているユニークなユーザー名（文字列）等を使いたい場合の処理。</p>
 
 <h4 id="to_param-メソッド">to_param メソッド</h4>
 
 <p>to_params メソッドを使用するだけです。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4</pre></td><td class="code"><pre><span class="c1"># In your model class, </span>
 <span class="k">def</span> <span class="nf">to_param</span>
   <span class="n">uniq_user_name</span> <span class="c1"># string</span>
-<span class="k">end</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>この <code>to_param</code> メソッドによりActiveRecordが使用するID（アイデンティファー）を定義します。デフォルトは、idです。これをモデルの他のアトリビュートにすることにより、ActiveRecordが使用するIDを変更することができます。</p>
+<p>この <code class="highlighter-rouge">to_param</code> メソッドによりActiveRecordが使用するID（アイデンティファー）を定義します。デフォルトは、idです。これをモデルの他のアトリビュートにすることにより、ActiveRecordが使用するIDを変更することができます。</p>
 
 <p>この処理により、</p>
 
-<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-erb highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3</pre></td><td class="code"><pre><span class="cp">&lt;%=</span> <span class="n">link_to</span><span class="p">(</span><span class="vi">@lesson</span><span class="p">)</span> <span class="k">do</span> <span class="cp">%&gt;</span>
 　　html-code-here
-<span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>で生成されるURLは、<code>/lessons/id</code> ではなく、<code>/lessons/uniq_user_name</code> となります。</p>
+<p>で生成されるURLは、<code class="highlighter-rouge">/lessons/id</code> ではなく、<code class="highlighter-rouge">/lessons/uniq_user_name</code> となります。</p>
 
 <p>また、showアクションでは、</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -284,8 +288,10 @@
   <span class="c1"># Uniq string identifer is put on the parameters,</span>
   <span class="c1"># id usually has just integer.</span>
   <span class="vi">@lesson</span> <span class="o">=</span> <span class="no">Lesson</span><span class="p">.</span><span class="nf">find_by</span><span class="p">(</span><span class="ss">:uniq_user_name</span> <span class="o">=&gt;</span> <span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">])</span>
-<span class="k">end</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>のようにパラメータに変化があります。</p>
 

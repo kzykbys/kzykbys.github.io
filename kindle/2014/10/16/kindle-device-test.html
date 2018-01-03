@@ -251,28 +251,26 @@
 <p>まずは、Fire Tablet用のライブラリ等をインストール。Android SDK Manager でだいたい完了する</p>
 
 <p>1. まずは、Android SDKマネージャーを起動。EclipseのWindowメニュー等から起動できます。<br /></p>
-
 <p>2. SDKマネージャーのメニューのツールを開き、Manage Add-on Sitesを選択。User Defined Sitesをクリックし、Newを選択。<br /></p>
-
 <p>3. Add Add-on Site URLの中に、`http://kindle-sdk.s3.amazonaws.com/addon.xml`を入力。<br /></p>
-
 <p>4. 下記のパッケージの最新版が入っているかSDKマネージャーで確認  <br /></p>
-
-<p>Tools:<br />
-- Android SDK Tools (install the latest version)<br />
-- Android SDK Platform-tools (install the latest version)<br />
-- Android API versions later than 4.4.2 API 19:<br /><br />
-Android 4.4.2 API 19:<br />
-- SDK Platform<br /><br />
-Android 4.2.2 API 17:<br />
-- SDK Platform<br /><br />
-Android 4.0.3 API 15:<br />
-- SDK Platform<br /><br />
-Android 2.3.3 API 10:<br />
-- SDK Platform<br /><br />
-Extras:<br />
-- Kindle Fire Device USB Driver (OS Xでは必要なし)<br />
-- Android Support Library<br /></p>
+<p>Tools:<br /></p>
+<ul>
+  <li>Android SDK Tools (install the latest version)<br /></li>
+  <li>Android SDK Platform-tools (install the latest version)<br /></li>
+  <li>Android API versions later than 4.4.2 API 19:<br /><br />
+Android 4.4.2 API 19:<br /></li>
+  <li>SDK Platform<br /><br />
+Android 4.2.2 API 17:<br /></li>
+  <li>SDK Platform<br /><br />
+Android 4.0.3 API 15:<br /></li>
+  <li>SDK Platform<br /><br />
+Android 2.3.3 API 10:<br /></li>
+  <li>SDK Platform<br /><br />
+Extras:<br /></li>
+  <li>Kindle Fire Device USB Driver (OS Xでは必要なし)<br /></li>
+  <li>Android Support Library<br /></li>
+</ul>
 
 <p>これらの必要なものをインストールしてEclipseを再起動。</p>
 
@@ -283,26 +281,23 @@ Extras:<br />
 <p>まずは、Android Debug Bridge (ADB)を有効にする必要があります。</p>
 
 <p>1. Kindle端末の設定画面へ行く。Kindleの世代によって違いますが、設定の中にADBの有効・無効を設定するボタンがあるので、有効にします。</p>
-
 <p>2. USBでMacとつなげる</p>
-
 <p>3. ターミナルを開き、Android SDK tools ディレクトリに行く。</p>
-
 <p>4. 下記のコマンドを実行</p>
-
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>./android update adb<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
-
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="p">.</span><span class="o">/</span><span class="n">android</span> <span class="n">update</span> <span class="n">adb</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 <p>5. ターミナルで、Android SDK platform-toolsディレクトリに行く。</p>
-
 <p>6. 下記のコマンドを実行</p>
-
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre>./adb kill-server
-./adb start-server
-./adb devices<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+3</pre></td><td class="code"><pre><span class="p">.</span><span class="o">/</span><span class="n">adb</span> <span class="n">kill</span><span class="o">-</span><span class="n">server</span>
+<span class="p">.</span><span class="o">/</span><span class="n">adb</span> <span class="n">start</span><span class="o">-</span><span class="n">server</span>
+<span class="p">.</span><span class="o">/</span><span class="n">adb</span> <span class="n">devices</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>最後のコマンドでKindle端末のシリアルナンバーが表示され、それがMacとつなげているKindleと同じはずです。</p>
 
@@ -311,21 +306,13 @@ Extras:<br />
 <p>後は実行するだけです。</p>
 
 <p>1. Eclipse上でプロジェクトのルートディレクトリで右クリックをします。</p>
-
-<p>2. Run as -> Run Configurationsとクリック。</p>
-
+<p>2. Run as -&gt; Run Configurationsとクリック。</p>
 <p>3. Android Applicationを右クリック。</p>
-
 <p>4. 新しい設定を追加するためNewをクリック。</p>
-
 <p>5. Nameフィールドにこの設定の名前を入力。</p>
-
 <p>6. AndroidタブのProjectフィールドの隣にあるBrowseをクリック。</p>
-
 <p>7. このプロジェクトを選択し、OK</p>
-
 <p>8. Targetタブにて、Always prompt to pick deviceを選択。</p>
-
 <p>9. Run!</p>
 
 <p>ここでポップアップが表示され、シミュレータや接続されている端末が選べますが、私の場合は、Kindle端末がなかなか表示されませんでした。結局、ケーブルを抜き差しすると再度差した時に表示されました。これは毎度再現されています。自分だけの問題なのかもしれませんが。</p>

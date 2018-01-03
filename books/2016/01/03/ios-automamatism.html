@@ -253,19 +253,18 @@
 <p>目次です。</p>
 
 <ul>
-<li>1章 パターンとは何か</li>
-<li>2章 アプリ設計のパターン</li>
-<li>3章 モデルのパターン</li>
-<li>4章 メモリ管理のパターン</li>
-<li>5章 ビューコントローラのパターン</li>
-<li>6章 テーブルのパターン</li>
-<li>7章 通知のパターン</li>
-<li>8章 ネットワークのパターン</li>
-<li>9章 iPadへの対応</li>
+  <li>1章 パターンとは何か</li>
+  <li>2章 アプリ設計のパターン</li>
+  <li>3章 モデルのパターン</li>
+  <li>4章 メモリ管理のパターン</li>
+  <li>5章 ビューコントローラのパターン</li>
+  <li>6章 テーブルのパターン</li>
+  <li>7章 通知のパターン</li>
+  <li>8章 ネットワークのパターン</li>
+  <li>9章 iPadへの対応</li>
 </ul>
 
 <p><br /></p>
-
 <h4 id="1章-パターンとは何か">1章 パターンとは何か</h4>
 
 <p>この本はひたすらパターンという言葉がでてきて、それを中心に解説が進みます。パターンとは再利用可能な小さなソースコードと著者は定義し、それをコピペをしながらアプリを半自動的に作ってしまおうという考えのようです。確かに、よくあるパターンはこの去年1年iOSを開発していて多かったので、その引き出しを増やすという意味でも読んでみました。</p>
@@ -275,17 +274,29 @@
 <p>アプリ設計のパターンは、ソースコードではないですが、以下の３つのフェーズに分け開発をスタートするというパターンが良いと著者は主張しています。</p>
 
 <ul>
-<li>機能設計</li>
-<li>ユーザーインターフェース設計</li>
-<li>クラス設計</li>
+  <li>機能設計</li>
+  <li>ユーザーインターフェース設計</li>
+  <li>クラス設計</li>
 </ul>
 
 <p>この最後のクラス設計に関して、</p>
 
 <ul>
-<li>1. モデルは、他の例やから独立</li>
-<li>2. ビューはモデルに依存しており、コントローラから独立</li>
-<li>3. コントローラは、モデルとビューに依存</li>
+  <li>
+    <ol>
+      <li>モデルは、他の例やから独立</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>ビューはモデルに依存しており、コントローラから独立</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>コントローラは、モデルとビューに依存</li>
+    </ol>
+  </li>
 </ul>
 
 <p>ここでいう依存とは、あるクラスのヘッダファイルをインポートしていれば、それはそのクラスに依存している</p>
@@ -305,17 +316,15 @@
 <p>この本でいう通知には3種類</p>
 
 <ol>
-<li>デリゲートによる通知(1対1)</li>
-<li>キー値関しによる通知(1対多)</li>
-<li>NSNotificationによる通知(多対多)</li>
+  <li>デリゲートによる通知(1対1)</li>
+  <li>キー値関しによる通知(1対多)</li>
+  <li>NSNotificationによる通知(多対多)</li>
 </ol>
 
 <p><br /></p>
-
 <h4 id="参考">参考</h4>
-
-<p><br />
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?t=komchax-22&o=9&p=8&l=as1&asins=4861007348&ref=tf_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe></p>
+<p><br /></p>
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?t=komchax-22&amp;o=9&amp;p=8&amp;l=as1&amp;asins=4861007348&amp;ref=tf_til&amp;fc1=000000&amp;IS2=1&amp;lt1=_blank&amp;m=amazon&amp;lc1=0000FF&amp;bc1=000000&amp;bg1=FFFFFF&amp;f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
 
 					</div>
 

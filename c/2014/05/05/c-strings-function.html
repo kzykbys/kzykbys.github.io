@@ -246,11 +246,11 @@
 					<div class="post">
 						<p>C言語における文字列に関連した関数のまとめ。strcmp(), strcat(), strlen(), strcpy() 等の一般的なもの以外をまとめてみました。</p>
 
-<h3 id="strchr()-/-strrchr()">strchr() / strrchr()</h3>
+<h3 id="strchr--strrchr">strchr() / strrchr()</h3>
 
 <p>この2つの関数は文字列から特定の文字を探し出します。strchr は前(左)から、strrchr は後ろ（右）から検索。もし検索している文字が文字列の中にない場合は、NULLを返します。発見した場合には、その文字へのポインタを返します。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -276,7 +276,7 @@
 24
 25
 26
-27</pre></td><td class="code"><pre> <span class="kt">char</span> <span class="n">s1</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"I am the one, the only one."</span><span class="p">;</span>
+27</pre></td><td class="code"><pre>	<span class="kt">char</span> <span class="n">s1</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"I am the one, the only one."</span><span class="p">;</span>
     <span class="kt">char</span> <span class="o">*</span><span class="n">ptr1</span><span class="p">,</span> <span class="o">*</span><span class="n">ptr2</span><span class="p">;</span>
     
     <span class="n">ptr1</span> <span class="o">=</span> <span class="n">strchr</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="sc">'o'</span><span class="p">);</span>
@@ -302,14 +302,16 @@
      Address of current 'o' is 0x7fff5fbff857
      Program ended with exit code: 0
      
-     =====*/</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+     =====*/</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<h3 id="strstr()">strstr()</h3>
+<h3 id="strstr">strstr()</h3>
 
 <p>strstr() は文字列の中から他の文字列を探し出します。例えば、cat が concatenate に含まれているのかを判断します。 strchr() / strrchr() と同じように、発見した場合にはそのアドレスを返し、そうでない場合には、NULL を返します。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -355,14 +357,16 @@
      Address of a in d = 0x0    // NULL. No cat in foobar
      Program ended with exit code: 0
      
-     =====*/</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+     =====*/</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<h3 id="strspn()-/-strcpn()">strspn() / strcpn()</h3>
+<h3 id="strspn--strcpn">strspn() / strcpn()</h3>
 
 <p>この2つの関数は、ある文字セットがある文字列に含まれているかを判断します。例えば、ある文字列が全て数字であるかを判断する際に、役に立ちます。そして、いくつの文字を文字列の中からチェックしたかを返します。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -386,7 +390,7 @@
 22
 23
 24
-25</pre></td><td class="code"><pre>     <span class="kt">char</span> <span class="n">sentence</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"Hello, I am Kazuya!"</span><span class="p">;</span>
+25</pre></td><td class="code"><pre>  	<span class="kt">char</span> <span class="n">sentence</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"Hello, I am Kazuya!"</span><span class="p">;</span>
     <span class="kt">char</span> <span class="n">nonsense</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"~*%#"</span><span class="p">;</span>
     <span class="kt">char</span> <span class="n">letters</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"ABCDEFGHIJKLMNOPQRSTUVWXYZ\
                       abcdefghijklmnopqrstuvwxyz"</span><span class="p">;</span>
@@ -410,16 +414,18 @@
      19 chars skipped over untill a nonsense character was found.
      Program ended with exit code: 0
      
-     =====*/</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+     =====*/</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>strspn()は与えられた文字セットの要素が、文字列にあるかぎり、文字列の中の次の文字をチェックします。もし、文字セットに含まれていない文字に出くわしたら、そこで何個の文字をスキップしたのかを返します。strscpn()はその逆です。文字セットに含まれていないものをスキップします。</p>
 
-<h3 id="strpbrk()">strpbrk()</h3>
+<h3 id="strpbrk">strpbrk()</h3>
 
 <p>この関数は、strcspn()と似ています。文字セットに含まれている文字を発見するまで、文字列を検索します。strcspn()と違うのは、いくつの文字をスキップしたのかを返すのではなく、その発見した文字へのポインタを返します。この関数は、区切り文字の位置を見つけたりする際に使われます。strchr()は、一度の検索にある文字１つを検索しますが、strpbrk()は、文字セットの中の全ての文字を検索することができます。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -460,7 +466,7 @@
 39
 40
 41
-42</pre></td><td class="code"><pre>     <span class="kt">int</span> <span class="n">num_sentences</span><span class="p">;</span>
+42</pre></td><td class="code"><pre> 	<span class="kt">int</span> <span class="n">num_sentences</span><span class="p">;</span>
     <span class="kt">int</span> <span class="n">count_sentences</span><span class="p">();</span>
     
     <span class="n">num_sentences</span> <span class="o">=</span> <span class="n">count_sentences</span><span class="p">();</span>
@@ -501,16 +507,18 @@
     
     <span class="k">return</span> <span class="n">num_sentences</span><span class="p">;</span>
     
-<span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>上記のプログラムは、ある文章の中にいくつの文があるかを計算するプログラムです。文は !?. のいずれかで終わると仮定します。. があった場合には、小数点の点の可能性があるので、. の後に数字があるかチェック。また、! と ? で文が終わるケースには、いくつかの !? が続くことも考慮します。</p>
 
-<h3 id="strtok()">strtok()</h3>
+<h3 id="strtok">strtok()</h3>
 
-<p>strtok()関数は便利な関数です。ユーザーのインプットがカンマ区切りで入力されているような場合に、よく使われます。tokとはトークンのことです。私達が求めているものをトークンと呼ぶようです。下のコードの例では、出力する数字です。strtok()はターゲットの文字列とdelimitersを指定し、delimitersで区切られたトークンを取得します。トークンを見つけることができない（文字列がdelimitersか’\0\&#39;しか含まない）場合には、NULLを返します。</p>
+<p>strtok()関数は便利な関数です。ユーザーのインプットがカンマ区切りで入力されているような場合に、よく使われます。tokとはトークンのことです。私達が求めているものをトークンと呼ぶようです。下のコードの例では、出力する数字です。strtok()はターゲットの文字列とdelimitersを指定し、delimitersで区切られたトークンを取得します。トークンを見つけることができない（文字列がdelimitersか’\0'しか含まない）場合には、NULLを返します。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -528,7 +536,7 @@
 16
 17
 18
-19</pre></td><td class="code"><pre> <span class="kt">char</span> <span class="n">s</span><span class="p">[]</span> <span class="o">=</span> <span class="s">",,,,10  , 35, 40"</span><span class="p">;</span>
+19</pre></td><td class="code"><pre>	<span class="kt">char</span> <span class="n">s</span><span class="p">[]</span> <span class="o">=</span> <span class="s">",,,,10  , 35, 40"</span><span class="p">;</span>
     <span class="kt">char</span> <span class="o">*</span><span class="n">ptr1</span> <span class="o">=</span> <span class="n">strtok</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s">",</span><span class="se">\040\t</span><span class="s">"</span><span class="p">);</span>
     <span class="kt">char</span> <span class="o">*</span><span class="n">ptr2</span> <span class="o">=</span> <span class="n">strtok</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="s">",</span><span class="se">\040\t</span><span class="s">"</span><span class="p">);</span>
     <span class="kt">char</span> <span class="o">*</span><span class="n">ptr3</span> <span class="o">=</span> <span class="n">strtok</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="s">",</span><span class="se">\040\t</span><span class="s">"</span><span class="p">);</span>
@@ -546,10 +554,12 @@
      <span class="n">ptr3</span><span class="o">:</span> <span class="mi">40</span>
      <span class="n">ptr4</span><span class="o">:</span> <span class="p">(</span><span class="n">null</span><span class="p">)</span>
      
-     <span class="o">*=====/</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+     <span class="o">*=====/</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>strtoke() がはじめに呼ばれた際には、先立つ delimiters をスキップし、token の一番後ろにある delimiters を &#39;\0&#39; にオーバーライトします。そして、token の最初の文字へのポインタを返します。ターゲットとなる文字列を修正してしまうという面で危険な処理ですが、きれいな token を返してくれるということで大変役に立ちます。同じ文字列を続けて処理する際には、ターゲット文字列の指定は NULL です。strtoke() の中で static 変数が使われ処理されています。</p>
+<p>strtoke() がはじめに呼ばれた際には、先立つ delimiters をスキップし、token の一番後ろにある delimiters を ‘\0’ にオーバーライトします。そして、token の最初の文字へのポインタを返します。ターゲットとなる文字列を修正してしまうという面で危険な処理ですが、きれいな token を返してくれるということで大変役に立ちます。同じ文字列を続けて処理する際には、ターゲット文字列の指定は NULL です。strtoke() の中で static 変数が使われ処理されています。</p>
 
 					</div>
 

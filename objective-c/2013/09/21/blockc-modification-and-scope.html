@@ -244,13 +244,13 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>I often encounter Blocks when I write Objective-C. It&#39;s always kind confusing for me. The syntax is awkward and I honestly cannot still understand why using Block is useful. I have read really a helpful book about this topic and I found the different concept of scope in Blocks. I&#39;d like to write down it here. I believe I will be confused about it again.</p>
+						<p>I often encounter Blocks when I write Objective-C. It’s always kind confusing for me. The syntax is awkward and I honestly cannot still understand why using Block is useful. I have read really a helpful book about this topic and I found the different concept of scope in Blocks. I’d like to write down it here. I believe I will be confused about it again.</p>
 
-<h3 id="1.-modify-variable-in-blocks">1. Modify Variable in Blocks</h3>
+<h3 id="1-modify-variable-in-blocks">1. Modify Variable in Blocks</h3>
 
-<p>To modify variable, we should use &quot;__block&quot; when we declare the variable. Otherwise, our compiler display error if we try to modify variable. </p>
+<p>To modify variable, we should use “__block” when we declare the variable. Otherwise, our compiler display error if we try to modify variable.</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -259,54 +259,27 @@
 7
 8
 9
-10</pre></td><td class="code"><pre> __block NSString *blala    = @"Use __block!!";
- NSString         *foolish  = @"Error will couse";
+10</pre></td><td class="code"><pre> <span class="n">__block</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">blala</span>    <span class="o">=</span> <span class="s">@"Use __block!!"</span><span class="p">;</span>
+ <span class="n">NSString</span>         <span class="o">*</span><span class="n">foolish</span>  <span class="o">=</span> <span class="s">@"Error will couse"</span><span class="p">;</span>
         
- void (^testBlocks)(void)   =
-        ^(void){
+ <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">testBlocks</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span>   <span class="o">=</span>
+        <span class="o">^</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
             
-            blala   = @"It's OK.";
-            foolish = @"It's not allowed"; // Error
-            
-        };<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+            <span class="n">blala</span>   <span class="o">=</span> <span class="s">@"It's OK."</span><span class="p">;</span>
+            <span class="n">foolish</span> <span class="o">=</span> <span class="s">@"It's not allowed"</span><span class="p">;</span> <span class="c1">// Error
+</span>            
+        <span class="p">};</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>This code doesn&#39;t work because we are trying to modify foolish variable. If we comment the variable out, the code works. So, we should add __block at the declaration of this variable to change the value in Blocks.</p>
+<p>This code doesn’t work because we are trying to modify foolish variable. If we comment the variable out, the code works. So, we should add __block at the declaration of this variable to change the value in Blocks.</p>
 
-<h3 id="2.-scope-of-blocks">2. Scope of Blocks</h3>
+<h3 id="2-scope-of-blocks">2. Scope of Blocks</h3>
 
-<p>The scope of Blocks is more confusing. Let&#39;s take a look a simple example.</p>
+<p>The scope of Blocks is more confusing. Let’s take a look a simple example.</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12</pre></td><td class="code"><pre> NSString *blala = @"BLOCKS!!";
-        
- void (^output)(void) =
-        ^(void){
-            
-            NSLog(@"Blala : %@",blala);
-            
-        };
-        
-        blala = @"Calm down.";
-        
-        output(); // Output : BLOCKS!<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
-
-<p>If we think blocks is a like function, we expect the out put which is &quot;Calm down.&quot;. But actually this code will show &quot;BLOCKS!!&quot;. The scope that blocks access is determined at the time blocks is called. Therefore,  in this case ( 1. @&quot;BLOCKS!!&quot; 2. Blocks 3. @&quot;Calm down&quot;), this output is &quot;BLOCKS!!&quot;</p>
-
-<p>I expected that calling this block to show &quot;Calm down&quot;. To do so, we should use &quot;__block&quot; again like before.</p>
-
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -317,21 +290,54 @@
 9
 10
 11
-12</pre></td><td class="code"><pre>__block NSString *blala = @"BLOCKS!!";
+12</pre></td><td class="code"><pre> <span class="n">NSString</span> <span class="o">*</span><span class="n">blala</span> <span class="o">=</span> <span class="s">@"BLOCKS!!"</span><span class="p">;</span>
         
-void (^output)(void) =
-        ^(void){
+ <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">output</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span>
+        <span class="o">^</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
             
-            NSLog(@"Blala : %@",blala);
+            <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Blala : %@"</span><span class="p">,</span><span class="n">blala</span><span class="p">);</span>
             
-        };
+        <span class="p">};</span>
         
-blala = @"Calm down.";
+        <span class="n">blala</span> <span class="o">=</span> <span class="s">@"Calm down."</span><span class="p">;</span>
         
-output(); // Output : Calm down<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+        <span class="n">output</span><span class="p">();</span> <span class="c1">// Output : BLOCKS!
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>Just by adding __block, we changed the output. </p>
+<p>If we think blocks is a like function, we expect the out put which is “Calm down.”. But actually this code will show “BLOCKS!!”. The scope that blocks access is determined at the time blocks is called. Therefore,  in this case ( 1. @”BLOCKS!!” 2. Blocks 3. @”Calm down”), this output is “BLOCKS!!”</p>
+
+<p>I expected that calling this block to show “Calm down”. To do so, we should use “__block” again like before.</p>
+
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre><span class="n">__block</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">blala</span> <span class="o">=</span> <span class="s">@"BLOCKS!!"</span><span class="p">;</span>
+        
+<span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">output</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span>
+        <span class="o">^</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+            
+            <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Blala : %@"</span><span class="p">,</span><span class="n">blala</span><span class="p">);</span>
+            
+        <span class="p">};</span>
+        
+<span class="n">blala</span> <span class="o">=</span> <span class="s">@"Calm down."</span><span class="p">;</span>
+        
+<span class="n">output</span><span class="p">();</span> <span class="c1">// Output : Calm down
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>Just by adding __block, we changed the output.</p>
 
 <p>I hope it was help to understand how block scope is determined and how to change a variable in blocks.</p>
 

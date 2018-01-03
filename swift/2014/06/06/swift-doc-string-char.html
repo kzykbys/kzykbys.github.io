@@ -244,41 +244,45 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。  </p>
+						<p>iBooks にある “The Swift Programming Language” の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。</p>
 
 <p>今回は、String と Character に関して。</p>
 
 <h3 id="strings-and-characters">Strings and Characters</h3>
 
-<h4 id="1.-string-は-value-(値)">1. String は value (値)</h4>
+<h4 id="1-string-は-value-値">1. String は value (値)</h4>
 
 <p>Swing は Cocoa の NSString と違い、String は全て値であり、コピーして関数に渡され、新しく代入された際にも、常に新しいコピーが作られる。Cocoa では、常に * を使用するように、基本的に、reference が渡されていた。渡された文字列が、called func の中でいじられないということを保証することができる。</p>
 
-<h4 id="2.-character-type">2. Character type</h4>
+<h4 id="2-character-type">2. Character type</h4>
 
 <p>String は順序のある Character type の集まり。だた一つの Character を作成するには、下記のように明示的に Character を書く。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>let yenSign: Character = "¥"<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">let</span> <span class="n">yenSign</span><span class="o">:</span> <span class="n">Character</span> <span class="o">=</span> <span class="s">"¥"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<h4 id="3.-文字列の長さ">3. 文字列の長さ</h4>
+<h4 id="3-文字列の長さ">3. 文字列の長さ</h4>
 
 <p>文字列の長さを得るには、countElemetns というグローバル関数を使う。Swift では、英語でない言語や、絵文字をサポートしているので、文字によって、一つ一つの文字が異なるメモリ容量を持っています。そのため、文字列の長さを得るには、C のように始まりと終わりのポインタの差を返すといった単純なものではなく、文字列の各文字を全てチェックする必要があります。長い文字列を処理する際には、注意。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre>let unusualMenagerie = "Koala 🐨, Snail 🐌, Penguin 🐧, Dromedary 🐪"
-println("unusualMenagerie has \(countElements(unusualMenagerie)) characters")
-// unusualMenagerie has 40 characters<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+3</pre></td><td class="code"><pre><span class="n">let</span> <span class="n">unusualMenagerie</span> <span class="o">=</span> <span class="s">"Koala 🐨, Snail 🐌, Penguin 🐧, Dromedary 🐪"</span>
+<span class="n">println</span><span class="p">(</span><span class="s">"unusualMenagerie has \(countElements(unusualMenagerie)) characters"</span><span class="p">)</span>
+<span class="c1">// unusualMenagerie has 40 characters
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>Objective-C の NSString の length プロパティと countElements が返す値は異なることがあります。NSString の length は 16bits コードに基づいているためです。Swift で NSString の length にアクセスする場合には、utf16count というものが使われます。</p>
 
-<h4 id="4.-文字列比較-(hasprefix-/-hassuffix)">4. 文字列比較 (hasPrefix / hasSuffix)</h4>
+<h4 id="4-文字列比較-hasprefix--hassuffix">4. 文字列比較 (hasPrefix / hasSuffix)</h4>
 
 <p>hasPrefix と hasSuffix という文字列比較のメソッドがある。コードを見た方がわかりやすいと思います。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -299,29 +303,31 @@ println("unusualMenagerie has \(countElements(unusualMenagerie)) characters")
 19
 20
 21
-22</pre></td><td class="code"><pre>let fullName = [
-        "Kobayashi Kazuya",
-        "Kobayashi Taro",
-        "Suzuki Kazuya",
-        "Suzuki Taro"
-]
+22</pre></td><td class="code"><pre><span class="n">let</span> <span class="n">fullName</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s">"Kobayashi Kazuya"</span><span class="p">,</span>
+        <span class="s">"Kobayashi Taro"</span><span class="p">,</span>
+        <span class="s">"Suzuki Kazuya"</span><span class="p">,</span>
+        <span class="s">"Suzuki Taro"</span>
+<span class="p">]</span>
         
-var numKobayashi = 0
-for name in fullName {
-    if name.hasPrefix("Kobayashi") {
-        ++numKobayashi
-    }
-}
-println("\(numKobayashi) Kobayashi here!") // 2
-        
-var numKazuya = 0
-for name in fullName {
-    if name.hasSuffix("Kazuya") {
-        ++numKazuya
-    }
-}
-println("\(numKazuya) Kazuya here!") // 2<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">var</span> <span class="n">numKobayashi</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">name</span> <span class="k">in</span> <span class="n">fullName</span> <span class="p">{</span>
+	<span class="k">if</span> <span class="n">name</span><span class="p">.</span><span class="n">hasPrefix</span><span class="p">(</span><span class="s">"Kobayashi"</span><span class="p">)</span> <span class="p">{</span>
+		<span class="o">++</span><span class="n">numKobayashi</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+<span class="n">println</span><span class="p">(</span><span class="s">"\(numKobayashi) Kobayashi here!"</span><span class="p">)</span> <span class="c1">// 2
+</span>        
+<span class="n">var</span> <span class="n">numKazuya</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">name</span> <span class="k">in</span> <span class="n">fullName</span> <span class="p">{</span>
+	<span class="k">if</span> <span class="n">name</span><span class="p">.</span><span class="n">hasSuffix</span><span class="p">(</span><span class="s">"Kazuya"</span><span class="p">)</span> <span class="p">{</span>
+		<span class="o">++</span><span class="n">numKazuya</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+<span class="n">println</span><span class="p">(</span><span class="s">"\(numKazuya) Kazuya here!"</span><span class="p">)</span> <span class="c1">// 2
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 					</div>
 

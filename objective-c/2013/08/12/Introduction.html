@@ -245,94 +245,100 @@
 
 					<div class="post">
 						<blockquote>
-<blockquote>
-<p><span class="deprecate">This article might be too old.</span>  </p>
-</blockquote>
+  <blockquote>
+    <p><span class="deprecate">This article might be too old.</span></p>
+  </blockquote>
 </blockquote>
 
 <p>There are many applications that can communicate with DropBox. DropBox is the most famous storage service mainly because of how easy people can use it. I’m pretty sure that you’ve heard about it and that most of you are also using it. So, it is natural to think of making applications interact with it. I’d like to introduce how to implement DropBox service in your iOS application.</p>
 
-<h3 id="1.-introduction">1. Introduction</h3>
+<h3 id="1-introduction">1. Introduction</h3>
 
-<p>Let’s get started. First of all, you should install the SDK from dropbox. ( The latest one is 1.3.5 ) <a href="https://www.dropbox.com/developers/core/sdks/ios">https://www.dropbox.com/developers/core/sdks/ios</a> After that, you should register your application at DropBox developer website. <a href="https://www.dropbox.com/developers/apps">https://www.dropbox.com/developers/apps</a> In my case, I want to make an app that makes csv files, gets them and display them. So, it goes like this :</p>
+<p>Let’s get started. First of all, you should install the SDK from dropbox. ( The latest one is 1.3.5 ) [https://www.dropbox.com/developers/core/sdks/ios] (https://www.dropbox.com/developers/core/sdks/ios) After that, you should register your application at DropBox developer website. [https://www.dropbox.com/developers/apps] (https://www.dropbox.com/developers/apps) In my case, I want to make an app that makes csv files, gets them and display them. So, it goes like this :</p>
 
-<p><img src="/images/2013/08/a.png" alt=""></p>
+<p><img src="/images/2013/08/a.png" alt="" /></p>
 
-<p>You can get “App key” and “App secret”. We’ll use them when we write code. </p>
+<p>You can get “App key” and “App secret”. We’ll use them when we write code.</p>
 
-<h3 id="2.-setting-your-app">2. Setting your app</h3>
+<h3 id="2-setting-your-app">2. Setting your app</h3>
 
 <p>After you get DropBox SDK, you should integrate it into your app. In Xcode, you add “DropboxSDK.framework”. This can be accomplished by control-click on Project Navigator and “add files to blabla”. Also, DropBox uses “Security.framework” and “QuartzCore.framework” so please add the frameworks from project summary screen. After that, you can finally write your code. It’s fun!!</p>
 
-<h3 id="3.-implement-dropbox-sdk">3. Implement DropBox SDK</h3>
+<h3 id="3-implement-dropbox-sdk">3. Implement DropBox SDK</h3>
 
 <p>We add the code to make a session with dropbox:</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
-4</pre></td><td class="code"><pre>DBSession* dbSession = [[DBSession alloc] initWithAppKey:@"blabla" //Appkey
-                                               appSecret:@"blabla" //secretkey
-                                                    root:@"sandbox"];
-[DBSession setSharedSession:dbSession];<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+4</pre></td><td class="code"><pre><span class="n">DBSession</span><span class="o">*</span> <span class="n">dbSession</span> <span class="o">=</span> <span class="p">[[</span><span class="n">DBSession</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithAppKey</span><span class="p">:</span><span class="s">@"blabla"</span> <span class="c1">//Appkey
+</span>                                               <span class="nl">appSecret:</span><span class="s">@"blabla"</span> <span class="c1">//secretkey
+</span>											        <span class="nl">root:</span><span class="s">@"sandbox"</span><span class="p">];</span>
+<span class="p">[</span><span class="n">DBSession</span> <span class="nf">setSharedSession</span><span class="p">:</span><span class="n">dbSession</span><span class="p">];</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>This code is “/* Creating and setting the shared DBSession should be done before any other Dropbox objects are used, perferrably in the UIApplication delegate. */ ”. </p>
+<p>This code is “/* Creating and setting the shared DBSession should be done before any other Dropbox objects are used, perferrably in the UIApplication delegate. */ ”.</p>
 
-<p>Also, you add this code in your view controller. </p>
+<p>Also, you add this code in your view controller.</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
 6
 7
-8</pre></td><td class="code"><pre>- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    if(![[DBSession sharedSession] isLinked])
-    {
-        [[DBSession sharedSession] linkFromController:self];
-    }
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+8</pre></td><td class="code"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidAppear</span><span class="p">:(</span><span class="n">BOOL</span><span class="p">)</span><span class="nv">animated</span>
+<span class="p">{</span>
+	<span class="p">[</span><span class="n">super</span> <span class="nf">viewDidAppear</span><span class="p">:</span><span class="n">animated</span><span class="p">];</span>
+	<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="p">[[</span><span class="n">DBSession</span> <span class="nf">sharedSession</span><span class="p">]</span> <span class="nf">isLinked</span><span class="p">])</span>
+	<span class="p">{</span>
+		<span class="p">[[</span><span class="n">DBSession</span> <span class="nf">sharedSession</span><span class="p">]</span> <span class="nf">linkFromController</span><span class="p">:</span><span class="n">self</span><span class="p">];</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>There are many people who forget to edit Info.plist file ( I took some time to figure it out too ). In your Info.plist, please add this url scheme :CFBundleURLTypes CFBundleURLSchemes db-YourAPIKEY </p>
+<p>There are many people who forget to edit Info.plist file ( I took some time to figure it out too ). In your Info.plist, please add this url scheme :CFBundleURLTypes CFBundleURLSchemes db-YourAPIKEY</p>
 
-<p>One way of adding this code is to control-click the Info.plist file,“Open as...” and “Source Code”. If you forget this step, this kind of error message will appear:</p>
+<p>One way of adding this code is to control-click the Info.plist file,“Open as…” and “Source Code”. If you forget this step, this kind of error message will appear:</p>
 
 <blockquote>
-<p>[ERROR] DropboxSDK: unable to link; app isn&#39;t registered for correct URL scheme</p>
+  <p>[ERROR] DropboxSDK: unable to link; app isn’t registered for correct URL scheme</p>
 </blockquote>
 
 <p>At this time, you can see the login screen to dropbox when you launch your app. If you did it on viewDidLoad function, xcode will warn you about the window hierarchy and you’ll fail to show login screen.</p>
 
-<p><img src="/images/2013/08/b.png" alt=""></p>
+<p><img src="/images/2013/08/b.png" alt="" /></p>
 
-<h3 id="4.-how-to-use-dropbox-sdk">4. How to use DropBox SDK</h3>
+<h3 id="4-how-to-use-dropbox-sdk">4. How to use DropBox SDK</h3>
 
-<p>So far we’ve only implemented DropBox SDK. I’d like to show some basic function to be able to use it. First, let’s add delegate and prepare for DBRestClient class. In your viewcontroller, add something like this : </p>
+<p>So far we’ve only implemented DropBox SDK. I’d like to show some basic function to be able to use it. First, let’s add delegate and prepare for DBRestClient class. In your viewcontroller, add something like this :</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
 6
-7</pre></td><td class="code"><pre>#import &lt;UIKit/UIKit.h&gt;
+7</pre></td><td class="code"><pre><span class="cp">#import &lt;UIKit/UIKit.h&gt;
 #import &lt;DropboxSDK/DropboxSDK.h&gt;
-@interface KKViewController : UIViewController&lt;DBRestClientDelegate&gt;
+</span><span class="k">@interface</span> <span class="nc">KKViewController</span> <span class="p">:</span> <span class="nc">UIViewController</span><span class="o">&lt;</span><span class="n">DBRestClientDelegate</span><span class="o">&gt;</span>
 
-@property (nonatomic, readonly) DBRestClient *restClient;
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">)</span> <span class="n">DBRestClient</span> <span class="o">*</span><span class="n">restClient</span><span class="p">;</span>
 
-@end <span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="k">@end</span> 
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>We added “<DBRestClientDelegate>” and the property. 
-After that, write getter to the restClient in your viewcontroller implement file like this : </p>
+After that, write getter to the restClient in your viewcontroller implement file like this :</DBRestClientDelegate></p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -341,56 +347,67 @@ After that, write getter to the restClient in your viewcontroller implement file
 7
 8
 9
-10</pre></td><td class="code"><pre>// Getter
-- (DBRestClient *)restClient
-{
-    if (!_restClient)
-    {
-        restClient = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
-        _restClient.delegate = self;
-    }
-    return restClient;
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+10</pre></td><td class="code"><pre><span class="c1">// Getter
+</span><span class="k">-</span> <span class="p">(</span><span class="n">DBRestClient</span> <span class="o">*</span><span class="p">)</span><span class="n">restClient</span>
+<span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">_restClient</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">restClient</span> <span class="o">=</span> <span class="p">[[</span><span class="n">DBRestClient</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithSession</span><span class="p">:[</span><span class="n">DBSession</span> <span class="nf">sharedSession</span><span class="p">]];</span>
+		<span class="n">_restClient</span><span class="p">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="n">restClient</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<h3 id="5.-some-features">5. Some Features</h3>
+<h3 id="5-some-features">5. Some Features</h3>
 
 <p>Functions :</p>
 
 <p>Loads metadata for the object at the given root/path and returns the result to the delegate as a dictionary</p>
-
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>- (void)loadMetadata:(NSString*)path;<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">loadMetadata</span><span class="p">:(</span><span class="n">NSString</span><span class="o">*</span><span class="p">)</span><span class="nv">path</span><span class="p">;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>Uploads a file that will be named filename to the given path on the server. sourcePath is the full path of the file you want to upload. If you are modifying a file, parentRev represents the rev of the file before you modified it as returned from the server. If you are uploading a new file set parentRev to nil.</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
-4</pre></td><td class="code"><pre>- (void)uploadFile:(NSString *)filename
-            toPath:(NSString *)path
-     withParentRev:(NSString *)parentRev
-          fromPath:(NSString *)sourcePath; <span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+4</pre></td><td class="code"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">uploadFile</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">filename</span>
+            <span class="nf">toPath</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">path</span>
+	 <span class="nf">withParentRev</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">parentRev</span>
+	      <span class="nf">fromPath</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">sourcePath</span><span class="p">;</span> 
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>Loads the file contents at the given root/path and stores the result into destinationPath</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>- (void)loadFile:(NSString *)path intoPath:(NSString *)destinationPath;<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">loadFile</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">path</span> <span class="nf">intoPath</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">destinationPath</span><span class="p">;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>This function is for deleting your file.</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> - (void)deletePath:(NSString*)path;<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> <span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">deletePath</span><span class="p">:(</span><span class="n">NSString</span><span class="o">*</span><span class="p">)</span><span class="nv">path</span><span class="p">;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>Delegate : </p>
+<p>Delegate :</p>
 
 <p>The delegate provides allows the user to get the result of the calls made on the DBRestClient. Right now, the error parameter of failed calls may be nil and [error localizedDescription] does not contain an error message appropriate to show to the user.</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>- (void)restClient:(DBRestClient*)client loadedMetadata:(DBMetadata*)metadata; <span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">restClient</span><span class="p">:(</span><span class="n">DBRestClient</span><span class="o">*</span><span class="p">)</span><span class="nv">client</span> <span class="nf">loadedMetadata</span><span class="p">:(</span><span class="n">DBMetadata</span><span class="o">*</span><span class="p">)</span><span class="nv">metadata</span><span class="p">;</span> 
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<h3 id="6.-end">6. End</h3>
+<h3 id="6-end">6. End</h3>
 
 <p>If you have any corrections or new ideas related to this post, please feel free to share your thoughts. Also, I made a simple application that can communicate with dropbox and show the csv file in collection view. If you’ll check this out, that would be great. <a href="https://github.com/kzykbys/DropBoxAPIwithCollectionView">https://github.com/kzykbys/DropBoxAPIwithCollectionView </a> Thank you.</p>
 

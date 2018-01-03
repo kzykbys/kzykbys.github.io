@@ -244,7 +244,7 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。  </p>
+						<p>iBooks にある “The Swift Programming Language” の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。</p>
 
 <p>今回は、<a href="http://blog.kazuya.co/swift/2014/06/20/swift-doc-initialization.html">前回</a> の続きのクラスの Initialization に関して。</p>
 
@@ -252,7 +252,7 @@
 
 <p>継承することができるクラスと、継承することができない構造体・Enumeration では、初期化を定義する際に違いでてきます。前回までに、初期化の一般的なことと、構造体・Enumeration の初期化をみたので、この記事では、クラスの初期化に関してみていきます。最後に、プロパティをクロージャや関数を使用して初期化する方法も軽く触れます。</p>
 
-<h4 id="5.-クラスの継承と-initializer">5. クラスの継承と Initializer</h4>
+<h4 id="5-クラスの継承と-initializer">5. クラスの継承と Initializer</h4>
 
 <p>次にクラスの継承と Initializer をみていきます。クラスのすべての Stored プロパティは（スーパークラスのプロパティも含めて）、初期化時に初期値が与えられなければなりません。クラスの Initializer は Designed Initializer と Convenience initializers に分けることができます。</p>
 
@@ -263,53 +263,85 @@
 <p>これらの関係を単純化するため、以下のルールを覚えておくと分かりやすいです。</p>
 
 <ul>
-<li>・Designated initializers は、スーパークラスの Designated initializers を呼ぶ</li>
-<li>・Convenience initializers は、同じクラス内にある他の Initializer を呼ぶ</li>
-<li>・Convenience initializers は、最終的に Designated initializers を呼ぶ</li>
+  <li>・Designated initializers は、スーパークラスの Designated initializers を呼ぶ</li>
+  <li>・Convenience initializers は、同じクラス内にある他の Initializer を呼ぶ</li>
+  <li>・Convenience initializers は、最終的に Designated initializers を呼ぶ</li>
 </ul>
 
 <p>つまり、</p>
 
 <ul>
-<li>・Designated initializers は delegate up (スーパークラスのinit)</li>
-<li>・Convenience initializers は delagate across (同じクラスのinit)</li>
+  <li>・Designated initializers は delegate up (スーパークラスのinit)</li>
+  <li>・Convenience initializers は delagate across (同じクラスのinit)</li>
 </ul>
 
 <p>と覚えておくとよいです。</p>
 
 <p>このルールの関係性を維持し、それぞれの Initializer が仕事をすれば複雑なクラス間の初期化も対応することができます。下の画像を見てもらうと分かりますが、どの Initializer が呼ばれても漏れなく初回化できる流れが掴めると思います。</p>
 
-<p><img src="/images/2014/06/3.png" alt=""></p>
+<p><img src="/images/2014/06/3.png" alt="" /></p>
 
-<h4 id="6.-クラスの二段階初期化">6. クラスの二段階初期化</h4>
+<h4 id="6-クラスの二段階初期化">6. クラスの二段階初期化</h4>
 
 <p>Swift におけるクラスの初期化は大きく二段階に分けて行われます。最初のフェーズでは、全ての Stored プロパティ に初期値が設定されます。そして、次のフェーズでは、クラスはこれらの Stored プロパティを独自に設定しなおす機会が与えられます。</p>
 
 <p>フェーズ 1</p>
 
 <ol>
-<li>1. designated or convenience initializer が呼ばれる。</li>
-<li>2. 新しいインスタンスへのメモリが割り当てられる。まだ、初期化はされていない。</li>
-<li>3. designated initializer が全ての Stored プロパティ に値が設定されるか確認。この時に、Stored プロパティのためのメモリが初期化される。</li>
-<li>4. この designated initializer は、スーパークラスの initializer へ、その Stored プロパティに対して、初期化するために処理を渡す。</li>
-<li>5. これが必要なくなるまで最後まで上に行く。</li>
-<li>6. 最後までこの流れが続き、最後のクラスの全ての Stored プロパティが値を持ったら、このインスタンスは完全に初期化されフェーズ 1 の終了。</li>
+  <li>
+    <ol>
+      <li>designated or convenience initializer が呼ばれる。</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>新しいインスタンスへのメモリが割り当てられる。まだ、初期化はされていない。</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>designated initializer が全ての Stored プロパティ に値が設定されるか確認。この時に、Stored プロパティのためのメモリが初期化される。</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>この designated initializer は、スーパークラスの initializer へ、その Stored プロパティに対して、初期化するために処理を渡す。</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>これが必要なくなるまで最後まで上に行く。</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>最後までこの流れが続き、最後のクラスの全ての Stored プロパティが値を持ったら、このインスタンスは完全に初期化されフェーズ 1 の終了。</li>
+    </ol>
+  </li>
 </ol>
 
 <p>フェーズ 2</p>
 
 <ol>
-<li>1. フェーズ 1 での最後のクラスから処理が戻ってきて、各 designated initializer は、独自の処理を実行できる。Initializer は、<code>self</code> を使うことができ、そのプロパティを修正でき、そのクラスのインスタンスメソッドを呼ぶことができる。</li>
-<li>2. 最後に、convenience initializer が独自の処理を実行できる。（<code>self</code> を使用可能）<br></li>
+  <li>
+    <ol>
+      <li>フェーズ 1 での最後のクラスから処理が戻ってきて、各 designated initializer は、独自の処理を実行できる。Initializer は、<code class="highlighter-rouge">self</code> を使うことができ、そのプロパティを修正でき、そのクラスのインスタンスメソッドを呼ぶことができる。</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>最後に、convenience initializer が独自の処理を実行できる。（<code class="highlighter-rouge">self</code> を使用可能）</li>
+    </ol>
+  </li>
 </ol>
 
 <p>これが、二段階初期化の流れです。</p>
 
-<h4 id="7.-初期化処理の継承">7. 初期化処理の継承</h4>
+<h4 id="7-初期化処理の継承">7. 初期化処理の継承</h4>
 
 <p>Swift は、サブクラスはデフォルトでスーパークラスの Initializer を継承しません。これは、単純なスーパークラスの Initializer が 複雑な処理を必要とするサブクラスから継承されて、そのサブクラスが新しいインスタンスを作成する際、まだ初期化されていな値を使用してしまうといったエラーを防ぐためです。</p>
 
-<p>サブクラスにおいて、スーパークラスを同じ Initializer を使用したい場合には、オーバーライドします。もし、オーバーライドする Initializer が、designed initializer であれば、この実装をオーバーライドして、スーパークラスの Initializer をこのオーバーライドされたものから呼ぶことができます。convenience initializer をオーバーライドする際には、必ずそのサブクラスから designated initializer を呼ぶ必要があります。オーバーライドする時に、<code>override</code> キーワードを使用する必要はありません。</p>
+<p>サブクラスにおいて、スーパークラスを同じ Initializer を使用したい場合には、オーバーライドします。もし、オーバーライドする Initializer が、designed initializer であれば、この実装をオーバーライドして、スーパークラスの Initializer をこのオーバーライドされたものから呼ぶことができます。convenience initializer をオーバーライドする際には、必ずそのサブクラスから designated initializer を呼ぶ必要があります。オーバーライドする時に、<code class="highlighter-rouge">override</code> キーワードを使用する必要はありません。</p>
 
 <p>このように、デフォルトでは Initializer は継承されませんが、ある条件を満たすと継承されます。実質は、多く場合自動的に継承されることが多いようです。</p>
 
@@ -321,11 +353,11 @@
 
 <p>もしサブクラスがスーパークラスの全ての designated initizliser を実装した場合 (Rule 1 の場合の継承も含む)、スーパークラスの全ての convenience initializer は継承されます。</p>
 
-<h4 id="8.-designated-and-convenience-initializers-のシンタックス">8. Designated and Convenience Initializers のシンタックス</h4>
+<h4 id="8-designated-and-convenience-initializers-のシンタックス">8. Designated and Convenience Initializers のシンタックス</h4>
 
-<p>Designated initializer Convenience Initializer は、init の前に、<code>convenience</code> キーワードを使用します。</p>
+<p>Designated initializer Convenience Initializer は、init の前に、<code class="highlighter-rouge">convenience</code> キーワードを使用します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -338,25 +370,27 @@
 11
 12
 13
-14</pre></td><td class="code"><pre>class Food {
-    var name: String
-    init(name: String) {
-        self.name = name
-    }
-    convenience init() {
-        self.init(name: "[Unnamed]")
-    }
-}
+14</pre></td><td class="code"><pre><span class="n">class</span> <span class="n">Food</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span>
+    <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="p">}</span>
+    <span class="n">convenience</span> <span class="n">init</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">"[Unnamed]"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-let namedMeat = Food(name: "Bacon")
-// namedMeat's name is "Bacon"
-let mysteryMeat = Food()
-// mysteryMeat's name is "[Unnamed]"<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">let</span> <span class="n">namedMeat</span> <span class="o">=</span> <span class="n">Food</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">"Bacon"</span><span class="p">)</span>
+<span class="c1">// namedMeat's name is "Bacon"
+</span><span class="n">let</span> <span class="n">mysteryMeat</span> <span class="o">=</span> <span class="n">Food</span><span class="p">()</span>
+<span class="c1">// mysteryMeat's name is "[Unnamed]"
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>この Food クラスは、1 つの Designated initializer と、1 つの Convenience Initializer を持ちます。わかりやすいと思います。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -365,70 +399,78 @@ let mysteryMeat = Food()
 7
 8
 9
-10</pre></td><td class="code"><pre>class RecipeIngredient: Food {
-    var quantity: Int
-    init(name: String, quantity: Int) {
-        self.quantity = quantity
-        super.init(name: name)
-    }
-    convenience init(name: String) {
-        self.init(name: name, quantity: 1)
-    }
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+10</pre></td><td class="code"><pre><span class="n">class</span> <span class="n">RecipeIngredient</span><span class="o">:</span> <span class="n">Food</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">quantity</span><span class="o">:</span> <span class="n">Int</span>
+    <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">quantity</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">quantity</span> <span class="o">=</span> <span class="n">quantity</span>
+        <span class="n">super</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">name</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="n">convenience</span> <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">name</span><span class="p">,</span> <span class="n">quantity</span><span class="o">:</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>この RecipeIngredient は Food クラスを継承し、1 つの Designated initializer と、1 つの Convenience Initializer を持っています。さらに、RecipeIngredient は Food の Convenience Initializer である、init() を継承しています。これは、7 でみた Rule 2 によるものです。RecipeIngredient は、Convenience Initializer として、init(name: String) を実装しています。これは、Food クラスの Designated initializer と同じシグニチャです。これにより、Food クラスの Designated initializer の全ての実装していることになるので、Food の Convenience Initializer を継承します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre>let oneMysteryItem = RecipeIngredient()
-let oneBacon = RecipeIngredient(name: "Bacon")
-let sixEggs = RecipeIngredient(name: "Eggs", quantity: 6)<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+3</pre></td><td class="code"><pre><span class="n">let</span> <span class="n">oneMysteryItem</span> <span class="o">=</span> <span class="n">RecipeIngredient</span><span class="p">()</span>
+<span class="n">let</span> <span class="n">oneBacon</span> <span class="o">=</span> <span class="n">RecipeIngredient</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">"Bacon"</span><span class="p">)</span>
+<span class="n">let</span> <span class="n">sixEggs</span> <span class="o">=</span> <span class="n">RecipeIngredient</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">"Eggs"</span><span class="p">,</span> <span class="n">quantity</span><span class="o">:</span> <span class="mi">6</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>このように 3 つの Initializer を使用できます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
 6
 7
-8</pre></td><td class="code"><pre>class ShoppingListItem: RecipeIngredient {
-    var purchased = false
-    var description: String {
-    var output = "\(quantity) x \(name.lowercaseString)"
-        output += purchased ? " ✔" : " ✘"
-        return output
-    }
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+8</pre></td><td class="code"><pre><span class="n">class</span> <span class="n">ShoppingListItem</span><span class="o">:</span> <span class="n">RecipeIngredient</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">purchased</span> <span class="o">=</span> <span class="nb">false</span>
+    <span class="n">var</span> <span class="n">description</span><span class="o">:</span> <span class="n">String</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">output</span> <span class="o">=</span> <span class="s">"\(quantity) x \(name.lowercaseString)"</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="n">purchased</span> <span class="p">?</span> <span class="s">" ✔"</span> <span class="p">:</span> <span class="s">" ✘"</span>
+        <span class="k">return</span> <span class="n">output</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>最後に、ShoppingListItem クラス。このクラスは、1 つの新しいプロパティを持ちます。これは初期化され際には、常に false です。そのため、このクラスに対して、特に Initializer は必要がありません。その結果、Rule 1 により、全ての Initializer を継承します。</p>
 
-<h4 id="9.-クロージャー・関数でのデフォルトプロパティ値の設定">9. クロージャー・関数でのデフォルトプロパティ値の設定</h4>
+<h4 id="9-クロージャー関数でのデフォルトプロパティ値の設定">9. クロージャー・関数でのデフォルトプロパティ値の設定</h4>
 
 <p>Stored プロパティがデフォルト値を持ち、その値を決める際にちょっとした処理が必要な場合には、クロージャーかグローバルな関数を使用できます。このインスタンスが初期化される際に、これらの処理が呼ばれます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
 6
-7</pre></td><td class="code"><pre>class SomeClass {
-    let someProperty: SomeType = {
-        // create a default value for someProperty inside this closure
-        // someValue must be of the same type as SomeType
-        return someValue
-        }()
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+7</pre></td><td class="code"><pre><span class="n">class</span> <span class="n">SomeClass</span> <span class="p">{</span>
+    <span class="n">let</span> <span class="n">someProperty</span><span class="o">:</span> <span class="n">SomeType</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="c1">// create a default value for someProperty inside this closure
+</span>        <span class="c1">// someValue must be of the same type as SomeType
+</span>        <span class="k">return</span> <span class="n">someValue</span>
+        <span class="p">}()</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>これがその基本形です。注意点として、最後に <code>()</code> があります。これのより、このクロージャーをすぐに呼び出すということを明示しています。これがないと、このプロパティにクロージャーを設定するという意味になってしまいます。また、このクロージャーの中では、他のインスンスプロパティにまだアクセスできません。まだ初期化が終わっていないからです。<code>self</code> も使えません。</p>
+<p>これがその基本形です。注意点として、最後に <code class="highlighter-rouge">()</code> があります。これのより、このクロージャーをすぐに呼び出すということを明示しています。これがないと、このプロパティにクロージャーを設定するという意味になってしまいます。また、このクロージャーの中では、他のインスンスプロパティにまだアクセスできません。まだ初期化が終わっていないからです。<code class="highlighter-rouge">self</code> も使えません。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -450,32 +492,34 @@ let sixEggs = RecipeIngredient(name: "Eggs", quantity: 6)<span class="w">
 20
 21
 22
-23</pre></td><td class="code"><pre>struct Checkerboard {
-    let boardColors: Bool[] = {
-        var temporaryBoard  = Bool[]()
-        var isBlack = false
-        for i in 1...10 {
-            for j in 1...10 {
-                temporaryBoard.append(isBlack)
-                isBlack = !isBlack
-            }
-            isBlack = !isBlack
-        }
-        return temporaryBoard
-        }()
-    func squareIsBlackAtRow(row: Int, column: Int) -&gt; Bool {
-        return boardColors[(row * 10) + column]
-    }
-}
+23</pre></td><td class="code"><pre><span class="k">struct</span> <span class="n">Checkerboard</span> <span class="p">{</span>
+    <span class="n">let</span> <span class="n">boardColors</span><span class="o">:</span> <span class="n">Bool</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">var</span> <span class="n">temporaryBoard</span>  <span class="o">=</span> <span class="n">Bool</span><span class="p">[]()</span>
+        <span class="n">var</span> <span class="n">isBlack</span> <span class="o">=</span> <span class="nb">false</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span><span class="p">...</span><span class="mi">10</span> <span class="p">{</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="mi">1</span><span class="p">...</span><span class="mi">10</span> <span class="p">{</span>
+                <span class="n">temporaryBoard</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">isBlack</span><span class="p">)</span>
+                <span class="n">isBlack</span> <span class="o">=</span> <span class="o">!</span><span class="n">isBlack</span>
+            <span class="p">}</span>
+            <span class="n">isBlack</span> <span class="o">=</span> <span class="o">!</span><span class="n">isBlack</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">temporaryBoard</span>
+        <span class="p">}()</span>
+    <span class="n">func</span> <span class="n">squareIsBlackAtRow</span><span class="p">(</span><span class="n">row</span><span class="o">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">column</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">boardColors</span><span class="p">[(</span><span class="n">row</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="nf">column</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-let board = Checkerboard()
-println(board.squareIsBlackAtRow(0, column: 1))
-// prints "true"
-println(board.squareIsBlackAtRow(9, column: 9))
-// prints "false"<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">let</span> <span class="n">board</span> <span class="o">=</span> <span class="n">Checkerboard</span><span class="p">()</span>
+<span class="n">println</span><span class="p">(</span><span class="n">board</span><span class="p">.</span><span class="n">squareIsBlackAtRow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">:</span> <span class="mi">1</span><span class="p">))</span>
+<span class="c1">// prints "true"
+</span><span class="n">println</span><span class="p">(</span><span class="n">board</span><span class="p">.</span><span class="n">squareIsBlackAtRow</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">column</span><span class="o">:</span> <span class="mi">9</span><span class="p">))</span>
+<span class="c1">// prints "false"
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>この例では、<code>boardColors</code> を設定するためにクロージャーを使用しています。チェスのボードの白黒のマス目を設定するためです。</p>
+<p>この例では、<code class="highlighter-rouge">boardColors</code> を設定するためにクロージャーを使用しています。チェスのボードの白黒のマス目を設定するためです。</p>
 
 					</div>
 

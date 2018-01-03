@@ -248,51 +248,64 @@
 
 <h4 id="アドオンの追加">アドオンの追加</h4>
 
-<p>まずは、バックアップオプションを使用するためにアドオンを該当アプリに追加します。    </p>
+<p>まずは、バックアップオプションを使用するためにアドオンを該当アプリに追加します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>$ heroku addons:add pgbackups<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="err">$</span> <span class="n">heroku</span> <span class="n">addons</span><span class="o">:</span><span class="n">add</span> <span class="n">pgbackups</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <h4 id="バックアップ一覧表示">バックアップ一覧表示</h4>
 
 <p>バックアップの一覧を確認します。バックアップIDは、各バックアップを識別するためのIDです。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>$ heroku pgbackups<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="err">$</span> <span class="n">heroku</span> <span class="n">pgbackups</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <h4 id="エクポートurlの作成">エクポートURLの作成</h4>
 
-<p>このコマンドを実行するとこのバックアップをダウンロードできるURLが生成されます。   </p>
+<p>このコマンドを実行するとこのバックアップをダウンロードできるURLが生成されます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>$ heroku pgbackups:url バックアップID --app アプリID<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="err">$</span> <span class="n">heroku</span> <span class="n">pgbackups</span><span class="o">:</span><span class="n">url</span> <span class="err">バックアップ</span><span class="n">ID</span> <span class="o">--</span><span class="n">app</span> <span class="err">アプリ</span><span class="n">ID</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <h4 id="バックアップのダウンロード">バックアップのダウンロード</h4>
 
 <p>バックアップファイルは .dump ファイルと呼ばれるようです。これをローカルにダウンロードするには下記のコマンドを実行します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>$ curl -o backup.dump '生成したURL'<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
-    
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="err">$</span> <span class="n">curl</span> <span class="o">-</span><span class="n">o</span> <span class="n">backup</span><span class="p">.</span><span class="n">dump</span> <span class="err">'生成した</span><span class="n">URL</span><span class="err">'</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>この場合は、<code>backup.dump</code> という名前で保存しています。クォーテーションマークは必須です。</p>
+<p>この場合は、<code class="highlighter-rouge">backup.dump</code> という名前で保存しています。クォーテーションマークは必須です。</p>
 
 <h4 id="ローカルに反映">ローカルに反映</h4>
 
 <p>遂にローカルへ反映です。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>$ pg_restore --verbose --clean --no-acl --no-owner -h localhost -U ユーザー名 -d データベース名 バックアップファイル名<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="err">$</span> <span class="n">pg_restore</span> <span class="o">--</span><span class="n">verbose</span> <span class="o">--</span><span class="n">clean</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">acl</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">owner</span> <span class="o">-</span><span class="n">h</span> <span class="n">localhost</span> <span class="o">-</span><span class="n">U</span> <span class="err">ユーザー名</span> <span class="o">-</span><span class="n">d</span> <span class="err">データベース名</span> <span class="err">バックアップファイル名</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>ユーザー名とデータベース名は下記のコマンドで確認できます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>$ psql -l <span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="err">$</span> <span class="n">psql</span> <span class="o">-</span><span class="n">l</span> 
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>ちなみに、SQL を実行するには、</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>$ psql データベース名<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="err">$</span> <span class="n">psql</span> <span class="err">データベース名</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 					</div>
 

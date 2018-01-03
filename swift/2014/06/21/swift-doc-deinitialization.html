@@ -244,26 +244,28 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。  </p>
+						<p>iBooks にある “The Swift Programming Language” の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。</p>
 
 <p>今回は、Deinitialization に関して。</p>
 
 <h3 id="deinitialization">Deinitialization</h3>
 
-<p>Deinitializer は、クラスのインスタンスが解放される際に呼ばれます。定義するには、Initializer のように <code>deinit</code> キーワードを使用します。クラスのみ Deinitializer を必要とします。</p>
+<p>Deinitializer は、クラスのインスタンスが解放される際に呼ばれます。定義するには、Initializer のように <code class="highlighter-rouge">deinit</code> キーワードを使用します。クラスのみ Deinitializer を必要とします。</p>
 
-<h4 id="1.-deinitialization">1. Deinitialization</h4>
+<h4 id="1-deinitialization">1. Deinitialization</h4>
 
 <p>Swift は、メモリ管理を ARC により自ら行ってくれるので、基本的に独自に Deinitializer を作成する必要はありません。しかし、ファイルを開いたりと独自のリソースを使用している場合には、必要になることがあります。</p>
 
 <p>Deinitializer は、各クラスにつき 1 つだけ定義できます。Deinitializer は引数を取らず、かっこを省いて書かれます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre>deinit {
-    // perform the deinitialization
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+3</pre></td><td class="code"><pre><span class="n">deinit</span> <span class="p">{</span>
+    <span class="c1">// perform the deinitialization
+</span><span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>Deinitializer は自動的に呼ばれ、私たちから呼ぶことはできません。スーパークラスの Deinitializer は継承されます。Deinitializer は、全てのプロパティにアクセスすることができます。</p>
 

@@ -244,11 +244,11 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>I think we often encounter the situation we want to change the text color based on the length of the message in iOS programming. The famous example is twitter. When we type tweet and the tweet is over 140, the counter become red. like there : </p>
+						<p>I think we often encounter the situation we want to change the text color based on the length of the message in iOS programming. The famous example is twitter. When we type tweet and the tweet is over 140, the counter become red. like there :</p>
 
-<p><img src="http://4.bp.blogspot.com/-pA1aMN-nje0/Uj-eApF_EzI/AAAAAAAAAJU/jsnVbwCPn5A/s1600/1.png" alt=""></p>
+<p><img src="http://4.bp.blogspot.com/-pA1aMN-nje0/Uj-eApF_EzI/AAAAAAAAAJU/jsnVbwCPn5A/s1600/1.png" alt="" /></p>
 
-<p><img src="http://2.bp.blogspot.com/-me3klHRsxqo/Uj-eBkurg3I/AAAAAAAAAJc/Xh0S3itJxLc/s1600/2.png" alt=""></p>
+<p><img src="http://2.bp.blogspot.com/-me3klHRsxqo/Uj-eBkurg3I/AAAAAAAAAJc/Xh0S3itJxLc/s1600/2.png" alt="" /></p>
 
 <p>This twitter editing modal view automatically show the count and change the color based on the user typing.</p>
 
@@ -256,7 +256,7 @@
 
 <p>This is easily accomplished. Here is simple code :</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -311,67 +311,69 @@
 53
 54
 55
-56</pre></td><td class="code"><pre>#import "KKViewController.h"
+56</pre></td><td class="code"><pre><span class="cp">#import "KKViewController.h"
+</span>
+<span class="k">@interface</span> <span class="nc">KKViewController</span> <span class="p">()</span>
 
-@interface KKViewController ()
+<span class="k">@property</span> <span class="p">(</span><span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">IBOutlet</span> <span class="n">UITextField</span> <span class="o">*</span><span class="n">textfield</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">IBOutlet</span> <span class="n">UILabel</span>     <span class="o">*</span><span class="n">labelCount</span><span class="p">;</span>
 
-@property (strong, nonatomic) IBOutlet UITextField *textfield;
-@property (strong, nonatomic) IBOutlet UILabel     *labelCount;
+<span class="k">@end</span>
 
-@end
+<span class="k">@implementation</span> <span class="nc">KKViewController</span>
 
-@implementation KKViewController
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">viewDidLoad</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nf">viewDidLoad</span><span class="p">];</span>
     
-    // Textfield
-    self.textfield                 = [[UITextField alloc] init];
-    self.textfield.frame           = CGRectMake(10, 100, 300, 30);
-    self.textfield.borderStyle     = UITextBorderStyleRoundedRect;
-    self.textfield.placeholder     = @"Type message for this people.";
-    self.textfield.clearButtonMode = UITextFieldViewModeWhileEditing;
-    [self.textfield addTarget:self
-                       action:@selector(textAttributesBasedOnTyping:)
-             forControlEvents:UIControlEventEditingChanged];
+    <span class="c1">// Textfield
+</span>    <span class="n">self</span><span class="p">.</span><span class="n">textfield</span>                 <span class="o">=</span> <span class="p">[[</span><span class="n">UITextField</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">init</span><span class="p">];</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">.</span><span class="n">frame</span>           <span class="o">=</span> <span class="n">CGRectMake</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">.</span><span class="n">borderStyle</span>     <span class="o">=</span> <span class="n">UITextBorderStyleRoundedRect</span><span class="p">;</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">.</span><span class="n">placeholder</span>     <span class="o">=</span> <span class="s">@"Type message for this people."</span><span class="p">;</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">.</span><span class="n">clearButtonMode</span> <span class="o">=</span> <span class="n">UITextFieldViewModeWhileEditing</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">textfield</span> <span class="nf">addTarget</span><span class="p">:</span><span class="n">self</span>
+                       <span class="nf">action</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nf">textAttributesBasedOnTyping</span><span class="p">:)</span>
+             <span class="nf">forControlEvents</span><span class="p">:</span><span class="n">UIControlEventEditingChanged</span><span class="p">];</span>
     
-    [self.view addSubview:self.textfield];
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="nf">addSubview</span><span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">];</span>
     
-    // Count Text
-    self.labelCount           = [[UILabel alloc] init];
-    self.labelCount.frame     = CGRectMake(140, 50, 40, 40);
-    self.labelCount.text      = [NSString stringWithFormat:@"%i",140 - [self.textfield.text length]];
-    self.labelCount.textColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.8];
+    <span class="c1">// Count Text
+</span>    <span class="n">self</span><span class="p">.</span><span class="n">labelCount</span>           <span class="o">=</span> <span class="p">[[</span><span class="n">UILabel</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">init</span><span class="p">];</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">labelCount</span><span class="p">.</span><span class="n">frame</span>     <span class="o">=</span> <span class="n">CGRectMake</span><span class="p">(</span><span class="mi">140</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">);</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">labelCount</span><span class="p">.</span><span class="n">text</span>      <span class="o">=</span> <span class="p">[</span><span class="n">NSString</span> <span class="nf">stringWithFormat</span><span class="p">:</span><span class="s">@"%i"</span><span class="p">,</span><span class="mi">140</span> <span class="o">-</span> <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">.</span><span class="n">text</span> <span class="nf">length</span><span class="p">]];</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">labelCount</span><span class="p">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIColor</span> <span class="nf">colorWithRed</span><span class="p">:</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span> <span class="nf">green</span><span class="p">:</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span> <span class="nf">blue</span><span class="p">:</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span> <span class="nf">alpha</span><span class="p">:</span><span class="mi">0</span><span class="p">.</span><span class="mi">8</span><span class="p">];</span>
     
-    [self.view addSubview:self.labelCount];
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="nf">addSubview</span><span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="n">labelCount</span><span class="p">];</span>
     
-}
+<span class="p">}</span>
 
--(void)textAttributesBasedOnTyping:(id)sender
-{
-    if([sender isKindOfClass:[UITextField class]])
-    {
-        self.labelCount.text     = [NSString stringWithFormat:@"%i",140 - [self.textfield.text length]];
+<span class="o">-</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">textAttributesBasedOnTyping</span><span class="o">:</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="n">sender</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">([</span><span class="n">sender</span> <span class="nf">isKindOfClass</span><span class="p">:[</span><span class="n">UITextField</span> <span class="nf">class</span><span class="p">]])</span>
+    <span class="p">{</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">labelCount</span><span class="p">.</span><span class="n">text</span>     <span class="o">=</span> <span class="p">[</span><span class="n">NSString</span> <span class="nf">stringWithFormat</span><span class="p">:</span><span class="s">@"%i"</span><span class="p">,</span><span class="mi">140</span> <span class="o">-</span> <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">.</span><span class="n">text</span> <span class="nf">length</span><span class="p">]];</span>
         
-        // Change color by the count of text length
-        if([self.textfield.text length] &lt;= 140)
-        {
-            self.labelCount.textColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:0.8]; // Gray
-        }
-        else
-        {
-            self.labelCount.textColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:0.8];  // Red
-        }
-    }
-}
+        <span class="c1">// Change color by the count of text length
+</span>        <span class="k">if</span><span class="p">([</span><span class="n">self</span><span class="p">.</span><span class="n">textfield</span><span class="p">.</span><span class="n">text</span> <span class="nf">length</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">140</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">labelCount</span><span class="p">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIColor</span> <span class="nf">colorWithRed</span><span class="p">:</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span> <span class="nf">green</span><span class="p">:</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span> <span class="nf">blue</span><span class="p">:</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span> <span class="nf">alpha</span><span class="p">:</span><span class="mi">0</span><span class="p">.</span><span class="mi">8</span><span class="p">];</span> <span class="c1">// Gray
+</span>        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">labelCount</span><span class="p">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIColor</span> <span class="nf">colorWithRed</span><span class="p">:</span><span class="mi">1</span> <span class="nf">green</span><span class="p">:</span><span class="mi">0</span> <span class="nf">blue</span><span class="p">:</span><span class="mi">0</span> <span class="nf">alpha</span><span class="p">:</span><span class="mi">0</span><span class="p">.</span><span class="mi">8</span><span class="p">];</span>  <span class="c1">// Red
+</span>        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-@end<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="k">@end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>The point is adding Target ( - (void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;) and using &quot;UIControlEventEditingChanged&quot; in my textAttributesBasedOnTyping function. By this code, we can change dynamically the text ( number in this case ) and the color at the same time. It is so convenient. Furthermore, we can add some more effect like the twitter&#39;s tweet button in above photos. If we type over 140 characters, we won&#39;t be allowed  to tweet it by disable the button. It is helpful to validate something in client side. </p>
+<p>The point is adding Target ( - (void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;) and using “UIControlEventEditingChanged” in my textAttributesBasedOnTyping function. By this code, we can change dynamically the text ( number in this case ) and the color at the same time. It is so convenient. Furthermore, we can add some more effect like the twitter’s tweet button in above photos. If we type over 140 characters, we won’t be allowed  to tweet it by disable the button. It is helpful to validate something in client side.</p>
 
-<p>If you have better solution, feel free to tell me. </p>
+<p>If you have better solution, feel free to tell me.</p>
 
 					</div>
 

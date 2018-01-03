@@ -244,15 +244,15 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>&quot;<a href="http://www.amazon.com/gp/product/0131774298">Expert C Programming</a>&quot; で紹介されていたC言語の落とし穴を3つのカテゴリに分けて紹介したいと思います。C言語とは直接関係はありませんが、アメリカの宇宙計画は、少なくとも2度プログラムのバグにより失敗してしまったそうです。<a href="http://en.wikipedia.org/wiki/Project_Mercury">Mercury</a> というプロジェクトでは、プログラムが . を , の代わりに使用したことにより、大きな事故が起きそうになりました。この事件は幸いにも、発射前にエラーが確認されたため大きな損失はありませんでした。原因は、Fortran の欠陥です。また、<a href="http://en.wikipedia.org/wiki/Mariner_1">Mariner 1</a> では、アルゴリズムの間違った仕様書を渡されたプログラマが、その通りに実装したために起こりました。実際に$12 million のロケットが破壊されてしまったそうです。こんなロケットを打ち上げるプロジェクトに関われるなんてことはそうそうないと思いますが、普段のプロジェクトでも注意してコーディングしたいですね。</p>
+						<p>“<a href="http://www.amazon.com/gp/product/0131774298">Expert C Programming</a>” で紹介されていたC言語の落とし穴を3つのカテゴリに分けて紹介したいと思います。C言語とは直接関係はありませんが、アメリカの宇宙計画は、少なくとも2度プログラムのバグにより失敗してしまったそうです。<a href="http://en.wikipedia.org/wiki/Project_Mercury">Mercury</a> というプロジェクトでは、プログラムが . を , の代わりに使用したことにより、大きな事故が起きそうになりました。この事件は幸いにも、発射前にエラーが確認されたため大きな損失はありませんでした。原因は、Fortran の欠陥です。また、<a href="http://en.wikipedia.org/wiki/Mariner_1">Mariner 1</a> では、アルゴリズムの間違った仕様書を渡されたプログラマが、その通りに実装したために起こりました。実際に$12 million のロケットが破壊されてしまったそうです。こんなロケットを打ち上げるプロジェクトに関われるなんてことはそうそうないと思いますが、普段のプロジェクトでも注意してコーディングしたいですね。</p>
 
-<h3 id="sins-of-commission-(-言語がすべきでないにもかかわらず、してしまっている問題-)">Sins of Commission ( 言語がすべきでないにもかかわらず、してしまっている問題 )</h3>
+<h3 id="sins-of-commission--言語がすべきでないにもかかわらずしてしまっている問題-">Sins of Commission ( 言語がすべきでないにもかかわらず、してしまっている問題 )</h3>
 
 <p><strong>Default fall through</strong></p>
 
 <p>switch 文の default fall through は意図して使われることは 3% 程度の割合でしかありません。下記のコードのように、意図して fall through を行っている場合以外は、各 case に break が必要です。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -264,12 +264,14 @@
               <span class="c1">// Fall through 
 </span>     <span class="k">case</span> <span class="mi">1</span><span class="p">:</span> <span class="n">process_operand</span> <span class="p">(</span> <span class="n">operator</span><span class="o">-&gt;</span><span class="n">operator_1</span> <span class="p">)</span>
      <span class="k">break</span><span class="p">;</span>
-<span class="p">}</span> <span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="p">}</span> 
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p><strong>Default fall through</strong></p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -307,12 +309,14 @@
           <span class="nl">default:</span>
                <span class="n">processing</span><span class="p">();</span>                              
      <span class="p">}</span>
-<span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>if 文を抜けようとして使用した break が switch 文を抜け出してしまい必要な初期化が行われない例。このバグにより、1990年1月15日の午後、９時間以上にわたってアメリカのAT&amp;Tの大部分のネットワークが使用不可能になった。AT&amp;Tの114年の歴史の中で一番最初の悲惨な事件を起こしてしまいました。</p>
 
-<h3 id="sins-of-mission-(-見当違いな実装、言語に適切でない問題-)">Sins of Mission ( 見当違いな実装、言語に適切でない問題 )</h3>
+<h3 id="sins-of-mission--見当違いな実装言語に適切でない問題-">Sins of Mission ( 見当違いな実装、言語に適切でない問題 )</h3>
 
 <p><strong>Operator’s wrong precedence</strong></p>
 
@@ -321,23 +325,27 @@
 <p>いくつかの例をあげると、</p>
 
 <ul>
-<li><p>. が * よりも 高い優先度*</p>
+  <li>
+    <p>. が * よりも 高い優先度*</p>
 
-<p>プログラム = <em>p.f <br />
- プログラマーの期待している結果 =  (</em>p).f<br />
- 実際の処理 = *(p.f)<br /></p></li>
-<li><p>[] が * よりも高い優先度*</p>
+    <p>プログラム = <em>p.f <br />
+   プログラマーの期待している結果 =  (</em>p).f<br />
+   実際の処理 = *(p.f)<br /></p>
+  </li>
+  <li>
+    <p>[] が * よりも高い優先度*</p>
 
-<p>プログラム = int <em>ap[]<br />
-プログラマーの期待している結果 =  int(</em>ap)[]<br />
-実際の処理 = int *(ap[])<br /></p></li>
+    <p>プログラム = int <em>ap[]<br />
+  プログラマーの期待している結果 =  int(</em>ap)[]<br />
+  実際の処理 = int *(ap[])<br /></p>
+  </li>
 </ul>
 
 <p>常にかっこを付けて、式の優先度を明示しておくことが大事にです。</p>
 
-<h3 id="sin-of-omission-(-言語はすべきにもかかわらず、していない問題-)">Sin of Omission ( 言語はすべきにもかかわらず、していない問題 )</h3>
+<h3 id="sin-of-omission--言語はすべきにもかかわらずしていない問題-">Sin of Omission ( 言語はすべきにもかかわらず、していない問題 )</h3>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -349,19 +357,23 @@
      <span class="p">.</span>
      <span class="p">.</span>
      <span class="k">return</span> <span class="n">buffer</span>
-<span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>このコードは、上手く機能しません。C言語では、Automatic 変数 は、スタック上でメモリが割り当てられます。そして、この関数が終了すると、そのスタックは再利用され、オバーライドされます。そのため、ポインタを返したとしても、期待した結果は得られません。いくつかの解決策として、 </p>
+<p>このコードは、上手く機能しません。C言語では、Automatic 変数 は、スタック上でメモリが割り当てられます。そして、この関数が終了すると、そのスタックは再利用され、オバーライドされます。そのため、ポインタを返したとしても、期待した結果は得られません。いくつかの解決策として、</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2</pre></td><td class="code"><pre><span class="c1">// string literal のポインタを返す方法
-</span><span class="n">cahr</span> <span class="o">*</span><span class="nf">func</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="s">"Only works for simple strings"</span><span class="p">;</span> <span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+</span><span class="n">cahr</span> <span class="o">*</span><span class="nf">func</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="s">"Only works for simple strings"</span><span class="p">;</span> <span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>もちろんこれは動的に文字列を返したいときには役に立ちません。 </p>
+<p>もちろんこれは動的に文字列を返したいときには役に立ちません。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -371,12 +383,14 @@
      <span class="n">my_global_array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">.</span> <span class="p">.</span> <span class="p">.</span> 
       
      <span class="k">return</span> <span class="n">my_global_array</span><span class="p">;</span>
-<span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>これも簡潔で簡単ですが、誰もがこのグローバル変数を変更してしまいます。 </p>
+<p>これも簡潔で簡単ですが、誰もがこのグローバル変数を変更してしまいます。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -390,12 +404,14 @@
      <span class="p">.</span>
      <span class="p">.</span>     
      <span class="k">return</span> <span class="n">buffer</span><span class="p">;</span>
-<span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>static 配列を使用すれば、誰もが上書きしてしまう問題は回避することができます。プログラムがポインタを与えた関数だけ、この staic 配列を変更できます。しかし、他の関数がが上書きする前に、コピーする等の手間がかかります。 </p>
+<p>static 配列を使用すれば、誰もが上書きしてしまう問題は回避することができます。プログラムがポインタを与えた関数だけ、この staic 配列を変更できます。しかし、他の関数がが上書きする前に、コピーする等の手間がかかります。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -409,12 +425,14 @@
      <span class="p">.</span>
      <span class="p">.</span>     
      <span class="k">return</span> <span class="n">s</span><span class="p">;</span>
-<span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>static 配列を使用した時と同じように利点があり、かつ、この関数が何度呼び出されても、前の呼び出しの結果を上書きすることがありません。しかし、プログラムがメモリ管理をしなければなりません。プログラムが複雑になればなるほど、free を呼び出すことを頻繁に忘れてしまうでしょう。 </p>
+<p>static 配列を使用した時と同じように利点があり、かつ、この関数が何度呼び出されても、前の呼び出しの結果を上書きすることがありません。しかし、プログラムがメモリ管理をしなければなりません。プログラムが複雑になればなるほど、free を呼び出すことを頻繁に忘れてしまうでしょう。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -432,14 +450,16 @@
 <span class="n">buffer</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
 <span class="n">func</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
      <span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
-<span class="n">free</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">free</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>この方法なら、メモリ管理をなるべく一つの場所に実行できます。呼び出し元の近くにメモリ管理の処理を書いておけば忘れた等の最低限のミスは防ぐことができます。 </p>
+<p>この方法なら、メモリ管理をなるべく一つの場所に実行できます。呼び出し元の近くにメモリ管理の処理を書いておけば忘れた等の最低限のミスは防ぐことができます。</p>
 
-<hr>
+<hr />
 
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=komchax-22&o=9&p=8&l=as1&m=amazon&f=ifr&ref=tf_til&asins=4756116396" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&amp;bc1=000000&amp;IS2=1&amp;bg1=FFFFFF&amp;fc1=000000&amp;lc1=0000FF&amp;t=komchax-22&amp;o=9&amp;p=8&amp;l=as1&amp;m=amazon&amp;f=ifr&amp;ref=tf_til&amp;asins=4756116396" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
 
 					</div>
 

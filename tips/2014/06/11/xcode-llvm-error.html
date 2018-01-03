@@ -246,12 +246,14 @@
 					<div class="post">
 						<p>自分だけかもしれないけど、Xcode 6 のベータ版にしてから頻繁に出てくる。Apple LLVM 6.0 Error。</p>
 
-<p>fatal error: file *<strong><em>/custom.h has been modified since the precompiled header *</em></strong>/*.pcm was built</p>
+<p>fatal error: file <strong>**/custom.h has been modified since the precompiled header **</strong>/*.pcm was built</p>
 
 <p>こんな感じに、.pcm ファイルがビルドされた後に自分のファイルが修正されたとか、よく分からないことを言われて困り果てた。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>rm -rf ~/Library/Developer/Xcode/DerivedData/ModuleCache/*<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="o">~/</span><span class="n">Library</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">Xcode</span><span class="o">/</span><span class="n">DerivedData</span><span class="o">/</span><span class="n">ModuleCache</span><span class="o">/*</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>クリーンしても、再起動しても解決しなかったが、この ModuleCache ディレクトリの中身を削除するとすぐに治った。Orgnizer から削除する方法もあったが、なぜ自分のケースでは解決せず、上記のコマンドをターミナルで打つと解決。</p>
 

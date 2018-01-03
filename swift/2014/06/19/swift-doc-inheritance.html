@@ -244,17 +244,17 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。  </p>
+						<p>iBooks にある “The Swift Programming Language” の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。</p>
 
 <p>今回は、Inheritance に関して。</p>
 
 <h3 id="inheritance">Inheritance</h3>
 
-<h4 id="1.-ベースクラス">1. ベースクラス</h4>
+<h4 id="1-ベースクラス">1. ベースクラス</h4>
 
 <p>クラスは、他のクラスを継承することができます。継承により、メソッド、プロパティ、またサブスクリプト等の特性を継承したクラスを作成できます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -264,26 +264,28 @@
 8
 9
 10
-11</pre></td><td class="code"><pre>class Vehicle {
-    var numberOfWheels: Int
-    var maxPassengers: Int
-    func description() -&gt; String {
-        return "\(numberOfWheels) wheels; up to \(maxPassengers) passengers"
-    }
-    init() {
-        numberOfWheels = 0
-        maxPassengers = 1
-    }
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+11</pre></td><td class="code"><pre><span class="n">class</span> <span class="n">Vehicle</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">numberOfWheels</span><span class="o">:</span> <span class="n">Int</span>
+    <span class="n">var</span> <span class="n">maxPassengers</span><span class="o">:</span> <span class="n">Int</span>
+    <span class="n">func</span> <span class="n">description</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"\(numberOfWheels) wheels; up to \(maxPassengers) passengers"</span>
+    <span class="p">}</span>
+    <span class="n">init</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">numberOfWheels</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">maxPassengers</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>Swift では、NSObject のようなすべてのクラスのベースとなるクラスはありません。つまり、継承をせずにクラスを作成したクラスは、自動的にそのコンテキストにおいてベースクラスになります。上記の Vehicle クラスはこの記事の中でこれから紹介する例の全てのクラスのベースクラスになります。</p>
 
-<h4 id="2.-サブクラス">2. サブクラス</h4>
+<h4 id="2-サブクラス">2. サブクラス</h4>
 
 <p>クラスを継承するには、サブクラス宣言時にクラス名の名前の後に : で区切り、継承されるクラス名を書きます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -295,30 +297,32 @@
 10
 11
 12
-13</pre></td><td class="code"><pre>class Bicycle: Vehicle {
-    init() {
-        super.init()
-        numberOfWheels = 2
-    }
-}
+13</pre></td><td class="code"><pre><span class="n">class</span> <span class="n">Bicycle</span><span class="o">:</span> <span class="n">Vehicle</span> <span class="p">{</span>
+    <span class="n">init</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">super</span><span class="p">.</span><span class="n">init</span><span class="p">()</span>
+        <span class="n">numberOfWheels</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-class Tandem: Bicycle {
-    init() {
-        super.init()
-        maxPassengers = 2
-    }
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">class</span> <span class="n">Tandem</span><span class="o">:</span> <span class="n">Bicycle</span> <span class="p">{</span>
+    <span class="n">init</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">super</span><span class="p">.</span><span class="n">init</span><span class="p">()</span>
+        <span class="n">maxPassengers</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>Objective-C と違い、initializer はデフォルトで継承されません。</p>
 
-<h4 id="3.-オーバーライド">3. オーバーライド</h4>
+<h4 id="3-オーバーライド">3. オーバーライド</h4>
 
-<p>サブクラスは、継承されたインスタンスメソッド、クラスメソッド、インスタンスプロパティ、サブスクリプトを独自に実装し直すことができます。そのためには、<code>override</code> キーワードを使用します。もし、<code>override</code> を使用せずに、オーバーライドを試みるとコンパイラエラーになります。</p>
+<p>サブクラスは、継承されたインスタンスメソッド、クラスメソッド、インスタンスプロパティ、サブスクリプトを独自に実装し直すことができます。そのためには、<code class="highlighter-rouge">override</code> キーワードを使用します。もし、<code class="highlighter-rouge">override</code> を使用せずに、オーバーライドを試みるとコンパイラエラーになります。</p>
 
-<p>また、スーパークラスのメソッドやプロパティ、サブスクリプトをオーバーライドする際に、スーパークラスの実装をその中で使いたい場合があると思います。この時には、<code>super</code> キーワードを使用してアクセスできます。この Car サブクラスの例では、description メソッドをオーバーライドしています。また、この サブクラスの例では、description の中では、スーパークラスの サブクラスの例では、description メソッドを使用しています。</p>
+<p>また、スーパークラスのメソッドやプロパティ、サブスクリプトをオーバーライドする際に、スーパークラスの実装をその中で使いたい場合があると思います。この時には、<code class="highlighter-rouge">super</code> キーワードを使用してアクセスできます。この Car サブクラスの例では、description メソッドをオーバーライドしています。また、この サブクラスの例では、description の中では、スーパークラスの サブクラスの例では、description メソッドを使用しています。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -329,25 +333,27 @@ class Tandem: Bicycle {
 9
 10
 11
-12</pre></td><td class="code"><pre>class Car: Vehicle {
-    var speed: Double = 0.0
-    init() {
-        super.init()
-        maxPassengers = 5
-        numberOfWheels = 4
-    }
-    override func description() -&gt; String {
-        return super.description() + "; "
-            + "traveling at \(speed) mph"
-    }
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+12</pre></td><td class="code"><pre><span class="n">class</span> <span class="n">Car</span><span class="o">:</span> <span class="n">Vehicle</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">speed</span><span class="o">:</span> <span class="n">Double</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
+    <span class="n">init</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">super</span><span class="p">.</span><span class="n">init</span><span class="p">()</span>
+        <span class="n">maxPassengers</span> <span class="o">=</span> <span class="mi">5</span>
+        <span class="n">numberOfWheels</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="p">}</span>
+    <span class="n">override</span> <span class="n">func</span> <span class="n">description</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">super</span><span class="p">.</span><span class="n">description</span><span class="p">()</span> <span class="o">+</span> <span class="s">"; "</span>
+            <span class="o">+</span> <span class="s">"traveling at \(speed) mph"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>プロパティをオーバーライドをすることもできます。サブクラス内で、独自のセッター・ゲッターを作成できます。また、<a href="http://blog.kazuya.co/swift/2014/06/17/swift-doc-properties2.html">プロパティオブザーバー</a> を追加することもできます。</p>
 
 <p>まずは、独自のゲッター・セッターをみていきます。継承されたプロパティが Stored property でも、Computed property でも、ゲッター・セッターを作成できます。ゲッター・セッターを実装することにより、スーパークラスの read-only のプロパティを read-write プロパティに変更することができます。しかし、read-write プロパティを read-only プロパティに変更することはできません。プロパティをオーバーライドする際に、セッターを実装する時にはゲッターも実装しなければなりません。もし、ゲッターを修正する必要がない場合には、ただスーパークラスのプロパティを返します。下記の SpeedLimitedCar はこのセッターだけ変更したい場合の例です。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -356,21 +362,23 @@ class Tandem: Bicycle {
 7
 8
 9
-10</pre></td><td class="code"><pre>class SpeedLimitedCar: Car {
-    override var speed: Double  {
-    get {
-        return super.speed
-    }
-    set {
-        super.speed = min(newValue, 40.0)
-    }
-    }
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+10</pre></td><td class="code"><pre><span class="n">class</span> <span class="n">SpeedLimitedCar</span><span class="o">:</span> <span class="n">Car</span> <span class="p">{</span>
+    <span class="n">override</span> <span class="n">var</span> <span class="n">speed</span><span class="o">:</span> <span class="n">Double</span>  <span class="p">{</span>
+    <span class="n">get</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">super</span><span class="p">.</span><span class="n">speed</span>
+    <span class="p">}</span>
+    <span class="n">set</span> <span class="p">{</span>
+        <span class="n">super</span><span class="p">.</span><span class="n">speed</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">newValue</span><span class="p">,</span> <span class="mi">40</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>次に、プロパティオブザーバーのオーバーライドをみていきます。継承されたコンスタント Stored プロパティ、継承された read-only Computed プロパティには、プロパティオブザーバーを追加することはできません。なぜならば、これらの値に対して新しく値を設定することは許されていません。したがって、<code>willSet</code> や <code>didSet</code> を実装することはありません。また、セッターのオーバーライドとプロパティオブザーバーは、同時に作成できません。プロパティの値の変化を監視し、さらにセッターをオーバーライドしている場合には、この監視する機能をそのオーバーライドしたセッターのコードの中に書いてください。</p>
+<p>次に、プロパティオブザーバーのオーバーライドをみていきます。継承されたコンスタント Stored プロパティ、継承された read-only Computed プロパティには、プロパティオブザーバーを追加することはできません。なぜならば、これらの値に対して新しく値を設定することは許されていません。したがって、<code class="highlighter-rouge">willSet</code> や <code class="highlighter-rouge">didSet</code> を実装することはありません。また、セッターのオーバーライドとプロパティオブザーバーは、同時に作成できません。プロパティの値の変化を監視し、さらにセッターをオーバーライドしている場合には、この監視する機能をそのオーバーライドしたセッターのコードの中に書いてください。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -380,27 +388,28 @@ class Tandem: Bicycle {
 8
 9
 10
-11</pre></td><td class="code"><pre>class AutomaticCar: Car {
-    var gear = 1
-    override var speed: Double {
-    didSet {
-        gear = Int(speed / 10.0) + 1
-    }
-    }
-    override func description() -&gt; String {
-        return super.description() + " in gear \(gear)"
-    }
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
-    
+11</pre></td><td class="code"><pre><span class="n">class</span> <span class="n">AutomaticCar</span><span class="o">:</span> <span class="n">Car</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">gear</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">override</span> <span class="n">var</span> <span class="n">speed</span><span class="o">:</span> <span class="n">Double</span> <span class="p">{</span>
+    <span class="n">didSet</span> <span class="p">{</span>
+        <span class="n">gear</span> <span class="o">=</span> <span class="n">Int</span><span class="p">(</span><span class="n">speed</span> <span class="o">/</span> <span class="mi">10</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">override</span> <span class="n">func</span> <span class="n">description</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">super</span><span class="p">.</span><span class="n">description</span><span class="p">()</span> <span class="o">+</span> <span class="s">" in gear \(gear)"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>この AutomaticCar の例では、プロパティオブザーバーを追加しています。スーパークラスの speed プロパティが変更された場合に、AutomaticCar のプロパティである gear を変更しています。</p>
 
-<h4 id="4.-オーバーライドの防止">4. オーバーライドの防止</h4>
+<h4 id="4-オーバーライドの防止">4. オーバーライドの防止</h4>
 
-<p>他の言語と同じように、メソッド・プロパティ・サブスクリプトがオーバーライドされることを禁止することができます。<code>@final</code> キーワードを使用します。例えば、<code>@final var</code> 、 <code>@final func</code> 、 <code>@final class func</code> 、<code>@final subsript</code> と使います。このように <code>@final</code> されたものをサブクラスの中でオーバーライドしようとすると、コンパイルエラーになります。</p>
+<p>他の言語と同じように、メソッド・プロパティ・サブスクリプトがオーバーライドされることを禁止することができます。<code class="highlighter-rouge">@final</code> キーワードを使用します。例えば、<code class="highlighter-rouge">@final var</code> 、 <code class="highlighter-rouge">@final func</code> 、 <code class="highlighter-rouge">@final class func</code> 、<code class="highlighter-rouge">@final subsript</code> と使います。このように <code class="highlighter-rouge">@final</code> されたものをサブクラスの中でオーバーライドしようとすると、コンパイルエラーになります。</p>
 
-<p>また、クラス自体を継承されることが不適切な場合には、<code>class</code> キーワードの前に <code>@fianl</code> を使用します。これにより、このクラスからサブクラスを作成することができなくなります。</p>
+<p>また、クラス自体を継承されることが不適切な場合には、<code class="highlighter-rouge">class</code> キーワードの前に <code class="highlighter-rouge">@fianl</code> を使用します。これにより、このクラスからサブクラスを作成することができなくなります。</p>
 
 					</div>
 

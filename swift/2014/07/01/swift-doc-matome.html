@@ -244,7 +244,7 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>今まで地道に、<a href="https://itunes.apple.com/us/book/the-swift-programming-language/id881256329?mt=11">&quot;The Swift Programming Language&quot;</a> の勉強記録の記事を書いてきました。Language Guide というチャプターを読み終わり、言語の基本的なことが分かる章は全て網羅したので、目次代わりに残しておきます。</p>
+						<p>今まで地道に、<a href="https://itunes.apple.com/us/book/the-swift-programming-language/id881256329?mt=11">“The Swift Programming Language”</a> の勉強記録の記事を書いてきました。Language Guide というチャプターを読み終わり、言語の基本的なことが分かる章は全て網羅したので、目次代わりに残しておきます。</p>
 
 <h3 id="language-guide">Language Guide</h3>
 
@@ -255,389 +255,941 @@ h4 {
 }
 </style>
 
-<h4 id="1.-基本事項">1. 基本事項</h4>
+<h4 id="1-基本事項">1. 基本事項</h4>
 
 <ul>
-<li><a href="http://blog.kazuya.co/swift/2014/06/05/swift-doc-the-basics.html">Basic Concept</a>
-
-<ul>
-<li>1. 型セーフ</li>
-<li>2. 予約語の変数/コンスタントとしての利用</li>
-<li>3. 変数/コンスタントの展開</li>
-<li>4. コメントのネスト</li>
-<li>5. セミコロン</li>
-<li>6. 浮動小数点数のデフォルトは Double</li>
-<li>7. 数字リテラル</li>
-<li>8. 型変換</li>
-<li>9. Int は、条件として使えない</li>
-</ul></li>
-<li><a href="http://blog.kazuya.co/swift/2014/06/05/swift-doc-the-basics2.html">Tuples, Optionals, Assertions</a>
-
-<ul>
-<li>10. Tuples</li>
-<li>11. Optionals</li>
-<li>12. Optional Binding</li>
-<li>13. nil について</li>
-<li>14. Implicitly unwrapped optionals</li>
-<li>15. Assertions</li>
-</ul></li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/05/swift-doc-the-basics.html">Basic Concept</a>
+    <ul>
+      <li>
+        <ol>
+          <li>型セーフ</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>予約語の変数/コンスタントとしての利用</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>変数/コンスタントの展開</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>コメントのネスト</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>セミコロン</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>浮動小数点数のデフォルトは Double</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>数字リテラル</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>型変換</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Int は、条件として使えない</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/05/swift-doc-the-basics2.html">Tuples, Optionals, Assertions</a>
+    <ul>
+      <li>
+        <ol>
+          <li>Tuples</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Optionals</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Optional Binding</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>nil について</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Implicitly unwrapped optionals</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Assertions</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
 </ul>
 
-<h4 id="2.-基本オペレーター">2. 基本オペレーター</h4>
+<h4 id="2-基本オペレーター">2. 基本オペレーター</h4>
 
 <ul>
-<li><a href="http://blog.kazuya.co/swift/2014/06/06/swift-doc-basic-ope.html">Basic Operators</a>
-
-<ul>
-<li>1. 代入オペレーター(=)の返り値</li>
-<li>2. Remainder</li>
-<li>3. === と !==</li>
-<li>4. 範囲オペレーター</li>
-</ul></li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/06/swift-doc-basic-ope.html">Basic Operators</a>
+    <ul>
+      <li>
+        <ol>
+          <li>代入オペレーター(=)の返り値</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Remainder</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>=== と !==</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>範囲オペレーター</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
 </ul>
 
-<h4 id="3.-文字列と文字">3. 文字列と文字</h4>
+<h4 id="3-文字列と文字">3. 文字列と文字</h4>
 
 <ul>
-<li><a href="http://blog.kazuya.co/swift/2014/06/06/swift-doc-string-char.html">Strings and Characters</a>
-
-<ul>
-<li>1. String は value (値)</li>
-<li>2. Character type</li>
-<li>3. 文字列の長さ</li>
-<li>4. 文字列比較 (hasPrefix / hasSuffix)</li>
-</ul></li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/06/swift-doc-string-char.html">Strings and Characters</a>
+    <ul>
+      <li>
+        <ol>
+          <li>String は value (値)</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Character type</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>文字列の長さ</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>文字列比較 (hasPrefix / hasSuffix)</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
 </ul>
 
-<h4 id="4.-コレクションタイプ">4. コレクションタイプ</h4>
+<h4 id="4-コレクションタイプ">4. コレクションタイプ</h4>
 
 <ul>
-<li><a href="http://blog.kazuya.co/swift/2014/06/07/swift-doc-collection.html">Array</a>
-
-<ul>
-<li>1. Swing Array</li>
-<li>2. Array 型 のシンタックス</li>
-<li>3. Array の要素数</li>
-<li>4. Array が空かのチェック</li>
-<li>5. 要素の追加</li>
-<li>6. 要素の削除</li>
-<li>7. 要素の範囲選択</li>
-<li>8. index と一緒に iteration</li>
-<li>9. Array の init, reset, default value</li>
-<li>10. Array の結合</li>
-</ul></li>
-<li><a href="http://blog.kazuya.co/swift/2014/06/07/swift-doc-collection2.html">Dictionary</a>
-
-<ul>
-<li>11. Swing Dictionary</li>
-<li>12. Dictionary の宣言</li>
-<li>13. Dictionary の要素数</li>
-<li>14. Dictionary の修正/追加</li>
-<li>15. Dictionary 要素の削除</li>
-<li>16. Dictionary の iteration</li>
-<li>17. Dicitionary の init, reset</li>
-<li>18. Collection の Mutability</li>
-</ul></li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/07/swift-doc-collection.html">Array</a>
+    <ul>
+      <li>
+        <ol>
+          <li>Swing Array</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Array 型 のシンタックス</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Array の要素数</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Array が空かのチェック</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>要素の追加</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>要素の削除</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>要素の範囲選択</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>index と一緒に iteration</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Array の init, reset, default value</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Array の結合</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/07/swift-doc-collection2.html">Dictionary</a>
+    <ul>
+      <li>
+        <ol>
+          <li>Swing Dictionary</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Dictionary の宣言</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Dictionary の要素数</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Dictionary の修正/追加</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Dictionary 要素の削除</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Dictionary の iteration</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Dicitionary の init, reset</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Collection の Mutability</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
 </ul>
 
-<h4 id="5.-条件分岐">5. 条件分岐</h4>
+<h4 id="5-条件分岐">5. 条件分岐</h4>
 
 <ul>
-<li><a href="http://blog.kazuya.co/swift/2014/06/08/swift-doc-controll-flow.html">Control Flow</a>
-
-<ul>
-<li>1. for-in での _ (underscore)</li>
-<li>2. switch 文</li>
-<li>3. Labeled statement</li>
-</ul></li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/08/swift-doc-controll-flow.html">Control Flow</a>
+    <ul>
+      <li>
+        <ol>
+          <li>for-in での _ (underscore)</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>switch 文</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Labeled statement</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
 </ul>
 
-<h4 id="6.-関数">6. 関数</h4>
+<h4 id="6-関数">6. 関数</h4>
 
 <ul>
-<li><a href="http://blog.kazuya.co/swift/2014/06/09/swift-doc-function.html">Return Value, External Parameter Name, Default Value</a>
-
-<ul>
-<li>1. 複数の返り値</li>
-<li>2. External Parameter Name</li>
-<li>3. External Parameter Name の省略した書き方</li>
-<li>4. 引数のデフォルト値</li>
-<li>5. External Parameter Name とデフォルト値<br></li>
-</ul></li>
-<li><a href="http://blog.kazuya.co/swift/2014/06/09/swift-doc-function2.html">Variadic Function, Parameters, inout, Function Type, Nested Function</a>
-
-<ul>
-<li>6. 可変引数(variadic)の関数の定義の仕方</li>
-<li>7. 変数引数とコンスタンス引数</li>
-<li>8. inout</li>
-<li>9. Function Type</li>
-<li>10. 関数のネスト</li>
-</ul></li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/09/swift-doc-function.html">Return Value, External Parameter Name, Default Value</a>
+    <ul>
+      <li>
+        <ol>
+          <li>複数の返り値</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>External Parameter Name</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>External Parameter Name の省略した書き方</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>引数のデフォルト値</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>External Parameter Name とデフォルト値</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/09/swift-doc-function2.html">Variadic Function, Parameters, inout, Function Type, Nested Function</a>
+    <ul>
+      <li>
+        <ol>
+          <li>可変引数(variadic)の関数の定義の仕方</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>変数引数とコンスタンス引数</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>inout</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Function Type</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>関数のネスト</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
 </ul>
 
-<h4 id="7.-クロージャ">7. クロージャ</h4>
+<h4 id="7-クロージャ">7. クロージャ</h4>
 
 <ul>
-<li><a href="http://blog.kazuya.co/swift/2014/06/10/swift-doc-closures.html">Closures</a>
-
-<ul>
-<li>1. Closure とは</li>
-<li>2. 基本的な Closure</li>
-<li>3. Closure の型推論</li>
-<li>4. Closure 内での return 文の省略</li>
-<li>5. 引数名の省略</li>
-<li>6. Operator Functions</li>
-</ul></li>
-<li><a href="http://blog.kazuya.co/swift/2014/06/10/swift-doc-closures2.html">Trailing Closures</a>
-
-<ul>
-<li>7. 配列の map 関数の Trailing Closure の例</li>
-<li>8. Capturing Values</li>
-<li>9. Closure は参照<br></li>
-</ul></li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/10/swift-doc-closures.html">Closures</a>
+    <ul>
+      <li>
+        <ol>
+          <li>Closure とは</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>基本的な Closure</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Closure の型推論</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Closure 内での return 文の省略</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>引数名の省略</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Operator Functions</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/10/swift-doc-closures2.html">Trailing Closures</a>
+    <ul>
+      <li>
+        <ol>
+          <li>配列の map 関数の Trailing Closure の例</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Capturing Values</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Closure は参照</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
 </ul>
 
-<h4 id="8.-enumerations">8. Enumerations</h4>
+<h4 id="8-enumerations">8. Enumerations</h4>
 
 <ul>
-<li><a href="http://blog.kazuya.co/swift/2014/06/16/swift-doc-enumerations.html">Enumerations</a>
-
-<ul>
-<li>1. Enumeration Syntax</li>
-<li>2. Enumeration と Switch 文</li>
-<li>3. 関連ある値 (Associated Values)</li>
-<li>4. Raw Values<br></li>
-</ul></li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/16/swift-doc-enumerations.html">Enumerations</a>
+    <ul>
+      <li>
+        <ol>
+          <li>Enumeration Syntax</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Enumeration と Switch 文</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>関連ある値 (Associated Values)</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Raw Values</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
 </ul>
 
-<h4 id="9.-クラスと構造体">9. クラスと構造体</h4>
+<h4 id="9-クラスと構造体">9. クラスと構造体</h4>
 
 <ul>
-<li><a href="http://blog.kazuya.co/swift/2014/06/16/swift-doc-class-structur.html">General Concept</a>
-
-<ul>
-<li>1. クラスと構造体の比較</li>
-<li>2. 基本シンタックス</li>
-<li>3. リファレンスとコピー<br></li>
-</ul></li>
-<li><a href="http://blog.kazuya.co/swift/2014/06/16/swift-doc-class-structur2.html">Array/Dictionary</a>
-
-<ul>
-<li>4. Dictionaryの代入とコピー</li>
-<li>5. 配列の代入とコピー</li>
-</ul></li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/16/swift-doc-class-structur.html">General Concept</a>
+    <ul>
+      <li>
+        <ol>
+          <li>クラスと構造体の比較</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>基本シンタックス</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>リファレンスとコピー</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/16/swift-doc-class-structur2.html">Array/Dictionary</a>
+    <ul>
+      <li>
+        <ol>
+          <li>Dictionaryの代入とコピー</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>配列の代入とコピー</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
 </ul>
 
-<h4 id="10.-プロパティ">10. プロパティ</h4>
+<h4 id="10-プロパティ">10. プロパティ</h4>
 
 <ul>
-<li><a href="http://blog.kazuya.co/swift/2014/06/17/swift-doc-properties.html">Stored Properties &amp; Computed Properties</a>
-
-<ul>
-<li>1. Stored Properties</li>
-<li>2. Lazy Stored Properties</li>
-<li>3. Computed Properties</li>
-<li>4. Computed Properties のセッター/ゲッター</li>
-</ul></li>
-<li><a href="http://blog.kazuya.co/swift/2014/06/17/swift-doc-properties2.html">Observers &amp; Type Properties</a>
-
-<ul>
-<li>5. Property Observers</li>
-<li>6. Type Properties</li>
-</ul></li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/17/swift-doc-properties.html">Stored Properties &amp; Computed Properties</a>
+    <ul>
+      <li>
+        <ol>
+          <li>Stored Properties</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Lazy Stored Properties</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Computed Properties</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Computed Properties のセッター/ゲッター</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/17/swift-doc-properties2.html">Observers &amp; Type Properties</a>
+    <ul>
+      <li>
+        <ol>
+          <li>Property Observers</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Type Properties</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
 </ul>
 
-<h4 id="11.-メソッド">11. メソッド</h4>
+<h4 id="11-メソッド">11. メソッド</h4>
 
 <ul>
-<li><a href="http://blog.kazuya.co/swift/2014/06/17/swift-doc-method.html">Methods</a>
-
-<ul>
-<li>1. Instance Methods</li>
-<li>2. 構造体と Enumeration の Instance Methods</li>
-<li>3. Type Methods</li>
-</ul></li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/17/swift-doc-method.html">Methods</a>
+    <ul>
+      <li>
+        <ol>
+          <li>Instance Methods</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>構造体と Enumeration の Instance Methods</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Type Methods</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
 </ul>
 
-<h4 id="12.-サブスクリプト">12. サブスクリプト</h4>
+<h4 id="12-サブスクリプト">12. サブスクリプト</h4>
 
 <ul>
-<li><a href="http://blog.kazuya.co/swift/2014/06/18/swift-doc-subscripts.html">Subscripts</a>
-
-<ul>
-<li>1. Subscripts Syntax</li>
-<li>2. More Subscripts</li>
-</ul></li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/18/swift-doc-subscripts.html">Subscripts</a>
+    <ul>
+      <li>
+        <ol>
+          <li>Subscripts Syntax</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>More Subscripts</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
 </ul>
 
-<h4 id="13.-継承">13. 継承</h4>
+<h4 id="13-継承">13. 継承</h4>
 
 <ul>
-<li><a href="http://blog.kazuya.co/swift/2014/06/19/swift-doc-inheritance.html">Inheritance</a>
-
-<ul>
-<li>1. ベースクラス</li>
-<li>2. サブクラス</li>
-<li>3. オーバーライド</li>
-<li>4. オーバーライドの防止</li>
-</ul></li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/19/swift-doc-inheritance.html">Inheritance</a>
+    <ul>
+      <li>
+        <ol>
+          <li>ベースクラス</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>サブクラス</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>オーバーライド</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>オーバーライドの防止</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
 </ul>
 
-<h4 id="14.-初期化">14. 初期化</h4>
+<h4 id="14-初期化">14. 初期化</h4>
 
 <ul>
-<li><a href="http://blog.kazuya.co/swift/2014/06/20/swift-doc-initialization.html">Initialization</a>
-
-<ul>
-<li>1. 初期値の設定</li>
-<li>2. カスタム Initializer</li>
-<li>3. Default Initializers</li>
-<li>4. 構造体・Enumeration の Initializer delegation<br></li>
-</ul></li>
-<li><a href="http://blog.kazuya.co/swift/2014/06/20/swift-doc-initialization2.html">Initialization of Class</a>
-
-<ul>
-<li>5. クラスの継承と Initializer</li>
-<li>6. クラスの二段階初期化</li>
-<li>7. 初期化処理の継承</li>
-<li>8. Designated and Convenience Initializers のシンタックス</li>
-<li>9. クロージャー・関数でのデフォルトプロパティ値の設定</li>
-</ul></li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/20/swift-doc-initialization.html">Initialization</a>
+    <ul>
+      <li>
+        <ol>
+          <li>初期値の設定</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>カスタム Initializer</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Default Initializers</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>構造体・Enumeration の Initializer delegation</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/20/swift-doc-initialization2.html">Initialization of Class</a>
+    <ul>
+      <li>
+        <ol>
+          <li>クラスの継承と Initializer</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>クラスの二段階初期化</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>初期化処理の継承</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Designated and Convenience Initializers のシンタックス</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>クロージャー・関数でのデフォルトプロパティ値の設定</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
 </ul>
 
-<h4 id="15.-deinitialization">15. Deinitialization</h4>
+<h4 id="15-deinitialization">15. Deinitialization</h4>
 
 <ul>
-<li><a href="http://blog.kazuya.co/swift/2014/06/21/swift-doc-deinitialization.html">Deinitialization</a>
-
-<ul>
-<li>1. Deinitialization</li>
-</ul></li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/21/swift-doc-deinitialization.html">Deinitialization</a>
+    <ul>
+      <li>
+        <ol>
+          <li>Deinitialization</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
 </ul>
 
-<h4 id="16.-automatic-reference-counting">16. Automatic Reference Counting</h4>
+<h4 id="16-automatic-reference-counting">16. Automatic Reference Counting</h4>
 
 <ul>
-<li><a href="http://blog.kazuya.co/swift/2014/06/23/swift-doc-arc.html">Automatic Reference Counting</a>
-
-<ul>
-<li>1. ARC 概要</li>
-<li>2. Strong Reference Cycles</li>
-</ul></li>
-<li><a href="http://blog.kazuya.co/swift/2014/06/23/swift-doc-arc2.html">Strong Reference Cycles</a>
-
-<ul>
-<li>3. Strong Reference Cycles の解消 - Weak 参照</li>
-<li>4. Strong Reference Cycles の解消 - Unowned 参照</li>
-<li>5. Strong Reference Cycles の解消 - Unowned 参照 と Implicitly Unwrapped Optional</li>
-<li>6. Strong Reference Cycles の解消 - Closures</li>
-</ul></li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/23/swift-doc-arc.html">Automatic Reference Counting</a>
+    <ul>
+      <li>
+        <ol>
+          <li>ARC 概要</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Strong Reference Cycles</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/23/swift-doc-arc2.html">Strong Reference Cycles</a>
+    <ul>
+      <li>
+        <ol>
+          <li>Strong Reference Cycles の解消 - Weak 参照</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Strong Reference Cycles の解消 - Unowned 参照</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Strong Reference Cycles の解消 - Unowned 参照 と Implicitly Unwrapped Optional</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Strong Reference Cycles の解消 - Closures</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
 </ul>
 
-<h4 id="17.-optional-chaining">17. Optional Chaining</h4>
+<h4 id="17-optional-chaining">17. Optional Chaining</h4>
 
 <ul>
-<li><a href="http://blog.kazuya.co/swift/2014/06/25/swift-doc-optional-chaining.html">Optional Chaining</a>
-
-<ul>
-<li>1. Optional Chaining と Forced Unwrapping (!)</li>
-<li>2. 複雑なモデルクラスの Optional Chaining</li>
-</ul></li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/25/swift-doc-optional-chaining.html">Optional Chaining</a>
+    <ul>
+      <li>
+        <ol>
+          <li>Optional Chaining と Forced Unwrapping (!)</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>複雑なモデルクラスの Optional Chaining</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
 </ul>
 
-<h4 id="18.-タイプキャスト">18. タイプキャスト</h4>
+<h4 id="18-タイプキャスト">18. タイプキャスト</h4>
 
 <ul>
-<li><a href="http://blog.kazuya.co/swift/2014/06/25/swift-doc-type-casting.html">Type Casting</a>
-
-<ul>
-<li>1. 準備編</li>
-<li>2. タイプチェック</li>
-<li>3. Downcasting</li>
-<li>4. Any と AnyObject</li>
-</ul></li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/25/swift-doc-type-casting.html">Type Casting</a>
+    <ul>
+      <li>
+        <ol>
+          <li>準備編</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>タイプチェック</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Downcasting</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Any と AnyObject</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
 </ul>
 
-<h4 id="19.-ネストタイプ">19. ネストタイプ</h4>
+<h4 id="19-ネストタイプ">19. ネストタイプ</h4>
 
 <ul>
-<li><a href="http://blog.kazuya.co/swift/2014/06/26/swift-doc-nested-types.html">Nested Types</a>
-
-<ul>
-<li>1. Nested Types の例</li>
-</ul></li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/26/swift-doc-nested-types.html">Nested Types</a>
+    <ul>
+      <li>
+        <ol>
+          <li>Nested Types の例</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
 </ul>
 
-<h4 id="20.-拡張">20. 拡張</h4>
+<h4 id="20-拡張">20. 拡張</h4>
 
 <ul>
-<li><a href="http://blog.kazuya.co/swift/2014/06/28/swift-doc-extensions.html">Extensions</a>
-
-<ul>
-<li>1. Extensions Syntax</li>
-<li>2. Computed プロパティ</li>
-<li>3. Initializer</li>
-<li>4. メソッド</li>
-<li>5. Subscripts</li>
-<li>6. Nested Types</li>
-</ul></li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/28/swift-doc-extensions.html">Extensions</a>
+    <ul>
+      <li>
+        <ol>
+          <li>Extensions Syntax</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Computed プロパティ</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Initializer</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>メソッド</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Subscripts</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Nested Types</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
 </ul>
 
-<h4 id="21.-プロトコル">21. プロトコル</h4>
+<h4 id="21-プロトコル">21. プロトコル</h4>
 
 <ul>
-<li><a href="http://blog.kazuya.co/swift/2014/06/30/swift-doc-protocols.html">基本編</a>
-
-<ul>
-<li>1. Protocol Sytax</li>
-<li>2. プロパティの要求</li>
-<li>3. メソッドの要求</li>
-<li>4. Mutating メソッドの要求</li>
-</ul></li>
-<li><a href="http://blog.kazuya.co/swift/2014/06/30/swift-doc-protocols2.html">Delegation, Extension</a>
-
-<ul>
-<li>5. タイプとしてのプロトコル</li>
-<li>6. Delegation</li>
-<li>7. Extension による プロトコル準拠</li>
-</ul></li>
-<li><a href="http://blog.kazuya.co/swift/2014/06/30/swift-doc-protocols3.html">Collection, Inheritance, Composition, Casting, Optional</a>
-
-<ul>
-<li>8. Collection とプロトコル</li>
-<li>9. プロトコルの継承</li>
-<li>10. プロトコル結合 (Composition)</li>
-<li>11. プロトコルに準拠しているか確認</li>
-<li>12. 選択的プロトコル要件</li>
-</ul></li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/30/swift-doc-protocols.html">基本編</a>
+    <ul>
+      <li>
+        <ol>
+          <li>Protocol Sytax</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>プロパティの要求</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>メソッドの要求</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Mutating メソッドの要求</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/30/swift-doc-protocols2.html">Delegation, Extension</a>
+    <ul>
+      <li>
+        <ol>
+          <li>タイプとしてのプロトコル</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Delegation</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Extension による プロトコル準拠</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li><a href="http://blog.kazuya.co/swift/2014/06/30/swift-doc-protocols3.html">Collection, Inheritance, Composition, Casting, Optional</a>
+    <ul>
+      <li>
+        <ol>
+          <li>Collection とプロトコル</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>プロトコルの継承</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>プロトコル結合 (Composition)</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>プロトコルに準拠しているか確認</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>選択的プロトコル要件</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
 </ul>
 
-<h4 id="22.-generics">22. Generics</h4>
+<h4 id="22-generics">22. Generics</h4>
 
 <ul>
-<li><a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-generics.html">Generics</a>
-
-<ul>
-<li>1. Generics が解決する問題</li>
-<li>2. Generic 関数</li>
-<li>3. Generic タイプ</li>
-<li>4. タイプ制限</li>
-<li>5. Associated タイプ</li>
-<li>6. where ブロック<br></li>
-</ul></li>
+  <li><a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-generics.html">Generics</a>
+    <ul>
+      <li>
+        <ol>
+          <li>Generics が解決する問題</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Generic 関数</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Generic タイプ</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>タイプ制限</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>Associated タイプ</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>where ブロック</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
 </ul>
 
-<h4 id="23.-発展オペレーター">23. 発展オペレーター</h4>
+<h4 id="23-発展オペレーター">23. 発展オペレーター</h4>
 
 <ul>
-<li><a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-advanced-operators.html">Advanced Operators</a>
-
-<ul>
-<li>1. ビット操作オペレーター</li>
-<li>2. オーバーフローオペレーター</li>
-<li>3. オペレーター関数</li>
-<li>4. カスタムオペレーター</li>
-</ul></li>
+  <li><a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-advanced-operators.html">Advanced Operators</a>
+    <ul>
+      <li>
+        <ol>
+          <li>ビット操作オペレーター</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>オーバーフローオペレーター</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>オペレーター関数</li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>カスタムオペレーター</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
 </ul>
 
 					</div>

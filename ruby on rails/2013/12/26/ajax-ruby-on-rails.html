@@ -244,33 +244,37 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>Ajax を使ってウェブサイトの一部分のみを更新する方法です。Ajaxを使うことにより、ページ遷移をなしで、DBと通信しながらページコンテンツの一部を変更することができます。今回は、&lt;select&gt;の&lt;option&gt;が変更されるたびにページの一部を変更するという機能を実装してみます。実装方法は違うかもしれませんが、<a href="http://www.assist.org/web-assist/welcome.html">http://www.assist.org/web-assist/welcome.html</a> と同じような処理です。 </p>
+						<p>Ajax を使ってウェブサイトの一部分のみを更新する方法です。Ajaxを使うことにより、ページ遷移をなしで、DBと通信しながらページコンテンツの一部を変更することができます。今回は、&lt;select&gt;の&lt;option&gt;が変更されるたびにページの一部を変更するという機能を実装してみます。実装方法は違うかもしれませんが、http://www.assist.org/web-assist/welcome.html と同じような処理です。</p>
 
 <h3 id="htmlページの準備">htmlページの準備</h3>
 
 <p>まずは、DBとの通信のトリガーになる&lt;select&gt;をページに追加します。ユーザーがページの&lt;select&gt;を変更すると、&lt;select&gt;のonchange()が起動します。onchange()からのちほど作成するカスタム関数を呼び出し、その関数からDBとの通信を発動します。そして、ページのコンテンツを変更します。</p>
 
-<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-erb highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2</pre></td><td class="code"><pre># test.html.erb
-<span class="cp">&lt;%=</span> <span class="n">collection_select</span><span class="p">(</span><span class="ss">:major</span><span class="p">,</span> <span class="ss">:id</span><span class="p">,</span> <span class="vi">@majors</span><span class="p">,</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span>  <span class="p">{</span><span class="ss">:prompt</span> <span class="o">=&gt;</span> <span class="s2">"Please select your major"</span><span class="p">},{</span><span class="ss">:onchange</span> <span class="o">=&gt;</span> <span class="s2">"changeMajor()"</span> <span class="p">})</span> <span class="cp">%&gt;</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="cp">&lt;%=</span> <span class="n">collection_select</span><span class="p">(</span><span class="ss">:major</span><span class="p">,</span> <span class="ss">:id</span><span class="p">,</span> <span class="vi">@majors</span><span class="p">,</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span>  <span class="p">{</span><span class="ss">:prompt</span> <span class="o">=&gt;</span> <span class="s2">"Please select your major"</span><span class="p">},{</span><span class="ss">:onchange</span> <span class="o">=&gt;</span> <span class="s2">"changeMajor()"</span> <span class="p">})</span> <span class="cp">%&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>これにより、 @majors に格納されている major モデルの id と name がそれぞれ value と&lt;option&gt;&lt;/option&gt;に動的に記述されます。valueはサーバーに送信される値で、&lt;option&gt;&lt;/option&gt;はページに表示される文字列です。ここでは :prompt オプションにより何も表示されていない時には “Please select your major” と表示されるます。onchange() メソッドではこれから自分で作成する changeMajor()メソッドを&lt;select&gt;の&lt;option&gt;が変更されるたびに呼び出されます。また&lt;select&gt;のhtml属性idはmajor_idとなります。</p>
 
-<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-erb highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4</pre></td><td class="code"><pre># test.html.erb 
 <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"classList"</span> <span class="na">style=</span><span class="s">"display: inline;"</span><span class="nt">&gt;</span>
     <span class="cp">&lt;%=</span> <span class="n">render</span> <span class="ss">:partial</span> <span class="o">=&gt;</span> <span class="s1">'classList_body'</span> <span class="cp">%&gt;</span>
-<span class="nt">&lt;/div&gt;</span>  <span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="nt">&lt;/div&gt;</span>  
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>この箇所がDBとの通信が終わった時に変更される箇所です。のちほど <em>classList_body.html.erb というファイルは作成します。&lt;select&gt;が変更されDBとの通信ごとに</em>classList_body.html.erb が新しくレンダリングされるということですね。</p>
+<p>この箇所がDBとの通信が終わった時に変更される箇所です。のちほど _classList_body.html.erb というファイルは作成します。&lt;select&gt;が変更されDBとの通信ごとに_classList_body.html.erb が新しくレンダリングされるということですね。</p>
 
 <h3 id="onchange-で呼ばれる-javascript-関数の準備">onchange で呼ばれる Javascript 関数の準備</h3>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -296,36 +300,42 @@
           <span class="na">type</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
           <span class="na">data</span><span class="p">:</span> <span class="s1">'id=&lt;%= @student.id %&gt;&amp;majorID='</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s1">'&amp;universityID='</span> <span class="o">+</span> <span class="nx">universityID</span>
      <span class="p">})</span>
-<span class="p">}</span> <span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="p">}</span> 
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>これが呼び出されるchangeMajor()メソッドです。ポイントは後半の$.ajaxですね。送信するurlと通信方法の指定、そしてコントローラー側が受け取る値をdataで指定しています。前半のJSはもう少しスマートな方法がありそうですね。。。JSはいつもやっつけになってしまいます。</p>
 
 <h3 id="通信ごとに呼ばれるパーシャルの準備">通信ごとに呼ばれるパーシャルの準備</h3>
 
-<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-erb highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3</pre></td><td class="code"><pre>#_classList_body.html.erb  
 <span class="nt">&lt;p&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@universityID</span> <span class="cp">%&gt;</span><span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@majorID</span> <span class="cp">%&gt;</span><span class="nt">&lt;/p&gt;</span> <span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="nt">&lt;p&gt;</span><span class="cp">&lt;%=</span> <span class="vi">@majorID</span> <span class="cp">%&gt;</span><span class="nt">&lt;/p&gt;</span> 
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>今回はとてもシンプルです。この@universityID と@majorID はコントローラーで作成される変数？です。onchagenメソッドで選択されている&lt;select&gt;の値がサーバーに送信され、コントローラーで作成された変数を後ほど作成するJavascriptファイルからこのパーシャルをレンダリングする際に、それらの値を渡すことで、このパーシャルの中で使うことができます。</p>
 
 <h3 id="javascriptファイルの準備">Javascriptファイルの準備</h3>
 
-<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-erb highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3</pre></td><td class="code"><pre># listEachClass.js.erb
 # 上記のtest.html.erbがあるviewフォルダにこのファイルを作成
-$("#classList").html("<span class="cp">&lt;%=</span> <span class="n">escape_javascript</span><span class="p">(</span><span class="n">render</span> <span class="s1">'classList_body'</span><span class="p">,</span> <span class="ss">:majorID</span> <span class="o">=&gt;</span> <span class="vi">@majorID</span><span class="p">,</span> <span class="ss">:universityID</span> <span class="o">=&gt;</span> <span class="vi">@universityID</span><span class="p">)</span> <span class="cp">%&gt;</span>");<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+$("#classList").html("<span class="cp">&lt;%=</span> <span class="n">escape_javascript</span><span class="p">(</span><span class="n">render</span> <span class="s1">'classList_body'</span><span class="p">,</span> <span class="ss">:majorID</span> <span class="o">=&gt;</span> <span class="vi">@majorID</span><span class="p">,</span> <span class="ss">:universityID</span> <span class="o">=&gt;</span> <span class="vi">@universityID</span><span class="p">)</span> <span class="cp">%&gt;</span>");
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>ここでは上記の test.html.erb で指定した id=classList &lt;div&gt;に 2 で作成したパーシャルをレンダリングするということを記述しています。render する際に、コントローラーで作成された変数をパーシャルで使えるように渡しています。</p>
 
 <h3 id="コントローラーの準備">コントローラーの準備</h3>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -339,8 +349,10 @@ $("#classList").html("<span class="cp">&lt;%=</span> <span class="n">escape_java
  
     <span class="nb">puts</span> <span class="vi">@majorID</span>
     <span class="nb">puts</span> <span class="vi">@universityID</span>
-<span class="k">end</span> <span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="k">end</span> 
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>コントローラーはみなさん思い思いの処理をしていただければいいと思います。params[:majorID] やparams[:universityID] と記述することにより、1で作成したchangeMajor()のdataで渡された値を参照することができます。ここでは単に数値にしてそれをログに表示させているだけです。何もしていませんね。</p>
 

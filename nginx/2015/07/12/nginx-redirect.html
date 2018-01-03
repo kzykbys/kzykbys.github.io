@@ -247,16 +247,28 @@
 						<p>Google Aanalytics にて重複したホスト名があるとかで、警告があった。
 データの解析にどうも影響がありそう。</p>
 
-<p><img src="/images/2015/07/1.png" alt=""></p>
+<p><img src="/images/2015/07/1.png" alt="" /></p>
 
 <h4 id="ngixのリダイレクト設定">Ngixのリダイレクト設定</h4>
 
 <p>解決策としては１つのドメインに対して、301リダイレクトをかけるというもの。
 今回は、www 付きのドメインを www が付いていないドメインにリダイレクトをかけてみます。</p>
 
-<p>軽くググると <code>rewrite</code> ディレクティブを使う方法が紹介されていますが、参考URLにあるように <code>return</code> ディレクティブを使った方が正規表現の評価をスキップできて良いようです。</p>
+<p>軽くググると <code class="highlighter-rouge">rewrite</code> ディレクティブを使う方法が紹介されていますが、参考URLにあるように <code class="highlighter-rouge">return</code> ディレクティブを使った方が正規表現の評価をスキップできて良いようです。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">server</span> <span class="p">{</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre><span class="n">server</span> <span class="p">{</span>
       <span class="n">listen</span> <span class="mi">80</span><span class="p">;</span>
       <span class="n">server_name</span> <span class="n">www</span><span class="p">.</span><span class="nf">sharecla</span><span class="p">.</span><span class="nf">com</span><span class="p">;</span>
       <span class="k">return</span> <span class="mi">301</span> <span class="n">http</span><span class="ss">:/</span><span class="o">/</span><span class="n">sharecla</span><span class="p">.</span><span class="nf">com</span><span class="vg">$request_uri</span><span class="p">;</span>
@@ -268,13 +280,16 @@
         <span class="p">.</span>
         <span class="nf">.</span>
         <span class="o">.</span>
-<span class="p">}</span></code></pre></figure>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <h4 id="google-analytics">Google Analytics</h4>
 
 <p>上記のリダイレクト処理を追加して、Google Analyticsの警告通知から検証?リンクを押すと、再度、重複したホスト名があるか検証してくれるぽい。自分のケースでは2~3日待って、下の画像みたいに解決済になった。</p>
 
-<p><img src="/images/2015/07/2.png" alt=""></p>
+<p><img src="/images/2015/07/2.png" alt="" /></p>
 
 <h4 id="参考">参考</h4>
 

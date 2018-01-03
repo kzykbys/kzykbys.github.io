@@ -244,7 +244,7 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。  </p>
+						<p>iBooks にある “The Swift Programming Language” の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。</p>
 
 <p>今回は、Initialization に関して。</p>
 
@@ -254,13 +254,13 @@
 
 <p>この初期化を実装するために、Initizliser を定義します。これは特定にタイプに対して、そのインスタンスが作成される際に呼ばれる特殊なメソッドです。Objective-C と違い、Swift の Initializer は返り値を持ちません。</p>
 
-<h4 id="1.-初期値の設定">1. 初期値の設定</h4>
+<h4 id="1-初期値の設定">1. 初期値の設定</h4>
 
 <p>クラスと構造体の Stored プロパティはインスタンスが作成される際に初期値を必ず持たなければなりません。Stored プロパティ は、不確定な状態にしておくことはできません。この初期値は、Initializer の中で設定できますし、プロパティにデフォルト値を持たせることでも実装できます。</p>
 
-<p>Initializer は <code>init</code> キーワードを使用し、引数を持たないインスタンスメソッドのように記述します。</p>
+<p>Initializer は <code class="highlighter-rouge">init</code> キーワードを使用し、引数を持たないインスタンスメソッドのように記述します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -268,33 +268,37 @@
 6
 7
 8
-9</pre></td><td class="code"><pre>struct Fahrenheit {
-    var temperature: Double
-    init() {
-        temperature = 32.0
-    }
-}
-var f = Fahrenheit()
-println("The default temperature is \(f.temperature)° Fahrenheit")
-// prints "The default temperature is 32.0° Fahrenheit<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+9</pre></td><td class="code"><pre><span class="k">struct</span> <span class="n">Fahrenheit</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">temperature</span><span class="o">:</span> <span class="n">Double</span>
+    <span class="n">init</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">temperature</span> <span class="o">=</span> <span class="mi">32</span><span class="p">.</span><span class="mi">0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">var</span> <span class="n">f</span> <span class="o">=</span> <span class="n">Fahrenheit</span><span class="p">()</span>
+<span class="n">println</span><span class="p">(</span><span class="s">"The default temperature is \(f.temperature)° Fahrenheit"</span><span class="p">)</span>
+<span class="c1">// prints "The default temperature is 32.0° Fahrenheit
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>しかし、いつも同じ初期値を取る場合には、Initializer を使用するより、プロパティにデフォルト値を持たせる方が得策です。こちらの方が、Swift の型推論を使用し記述が簡単ですし、デフォルト Initializer や Initializer を継承させる場合に便利です。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre>struct Fahrenheit {
-    var temperature = 32.0
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+3</pre></td><td class="code"><pre><span class="k">struct</span> <span class="n">Fahrenheit</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">temperature</span> <span class="o">=</span> <span class="mi">32</span><span class="p">.</span><span class="mi">0</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<h4 id="2.-カスタム-initializer">2. カスタム Initializer</h4>
+<h4 id="2-カスタム-initializer">2. カスタム Initializer</h4>
 
 <p>Initializer に引数や Optional property types を持たせたり、 コンスタントプロパティを修正したりと、独自の Initializer を実装することができます。</p>
 
 <p>まずは、Initializer に引数を持たせる例です。関数やメソッドと同じように使用できます。下記の例では、2 つの Initializer を定義し、どちらも引数を取っています。また、External な引数の名前も持っています。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -306,24 +310,26 @@ println("The default temperature is \(f.temperature)° Fahrenheit")
 10
 11
 12
-13</pre></td><td class="code"><pre>struct Celsius {
-    var temperatureInCelsius: Double = 0.0
-    init(fromFahrenheit fahrenheit: Double) {
-        temperatureInCelsius = (fahrenheit - 32.0) / 1.8
-    }
-    init(fromKelvin kelvin: Double) {
-        temperatureInCelsius = kelvin - 273.15
-    }
-}
-let boilingPointOfWater = Celsius(fromFahrenheit: 212.0)
-// boilingPointOfWater.temperatureInCelsius is 100.0
-let freezingPointOfWater = Celsius(fromKelvin: 273.15)
-// freezingPointOfWater.temperatureInCelsius is 0.0<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+13</pre></td><td class="code"><pre><span class="k">struct</span> <span class="n">Celsius</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">temperatureInCelsius</span><span class="o">:</span> <span class="n">Double</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
+    <span class="n">init</span><span class="p">(</span><span class="n">fromFahrenheit</span> <span class="n">fahrenheit</span><span class="o">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">temperatureInCelsius</span> <span class="o">=</span> <span class="p">(</span><span class="n">fahrenheit</span> <span class="o">-</span> <span class="mi">32</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1</span><span class="p">.</span><span class="mi">8</span>
+    <span class="p">}</span>
+    <span class="n">init</span><span class="p">(</span><span class="n">fromKelvin</span> <span class="n">kelvin</span><span class="o">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">temperatureInCelsius</span> <span class="o">=</span> <span class="n">kelvin</span> <span class="o">-</span> <span class="mi">273</span><span class="p">.</span><span class="mi">15</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">let</span> <span class="n">boilingPointOfWater</span> <span class="o">=</span> <span class="n">Celsius</span><span class="p">(</span><span class="n">fromFahrenheit</span><span class="o">:</span> <span class="mi">212</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1">// boilingPointOfWater.temperatureInCelsius is 100.0
+</span><span class="n">let</span> <span class="n">freezingPointOfWater</span> <span class="o">=</span> <span class="n">Celsius</span><span class="p">(</span><span class="n">fromKelvin</span><span class="o">:</span> <span class="mi">273</span><span class="p">.</span><span class="mi">15</span><span class="p">)</span>
+<span class="c1">// freezingPointOfWater.temperatureInCelsius is 0.0
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>このように Initializer は引数の外的な名前と Initializer の中で使う内的な名前を両方持つことができます。これはメソッドも関数と同じです。しかし、全ての Initializer は <code>init</code> と同じ名前を持つので、どの Initializer が呼ばれるかを決定するのに引数や引数の型は重要な意味を持ちます。そのため、Swift は全ての Initializer に対して、外的な名前を作成します。これは、内的な名前と同じです。つまり、<code>#</code> を引数の前に記述した場合と同じです。もし、外的な名前を用意したくない場合には、<code>_</code> を使用します。</p>
+<p>このように Initializer は引数の外的な名前と Initializer の中で使う内的な名前を両方持つことができます。これはメソッドも関数と同じです。しかし、全ての Initializer は <code class="highlighter-rouge">init</code> と同じ名前を持つので、どの Initializer が呼ばれるかを決定するのに引数や引数の型は重要な意味を持ちます。そのため、Swift は全ての Initializer に対して、外的な名前を作成します。これは、内的な名前と同じです。つまり、<code class="highlighter-rouge">#</code> を引数の前に記述した場合と同じです。もし、外的な名前を用意したくない場合には、<code class="highlighter-rouge">_</code> を使用します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -331,24 +337,26 @@ let freezingPointOfWater = Celsius(fromKelvin: 273.15)
 6
 7
 8
-9</pre></td><td class="code"><pre>struct Color {
-    let red = 0.0, green = 0.0, blue = 0.0
-    init(red: Double, green: Double, blue: Double) {
-        self.red   = red
-        self.green = green
-        self.blue  = blue
-    }
-}
-let magenta = Color(red: 1.0, green: 0.0, blue: 1.0)<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+9</pre></td><td class="code"><pre><span class="k">struct</span> <span class="n">Color</span> <span class="p">{</span>
+    <span class="n">let</span> <span class="n">red</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">green</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">blue</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
+    <span class="n">init</span><span class="p">(</span><span class="n">red</span><span class="o">:</span> <span class="n">Double</span><span class="p">,</span> <span class="n">green</span><span class="o">:</span> <span class="n">Double</span><span class="p">,</span> <span class="n">blue</span><span class="o">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">red</span>   <span class="o">=</span> <span class="n">red</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">green</span> <span class="o">=</span> <span class="n">green</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">blue</span>  <span class="o">=</span> <span class="n">blue</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">let</span> <span class="n">magenta</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">red</span><span class="o">:</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">green</span><span class="o">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">blue</span><span class="o">:</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>このように Initializer を呼ぶ出す際に、全ての引数に対して外的な引数名を指定しなければなりません。</p>
 
-<p>Stored プロパティが Optional な場合は、自動的に <code>nil</code> が代入されるため、Initializer で処理を記述する必要はありません。</p>
+<p>Stored プロパティが Optional な場合は、自動的に <code class="highlighter-rouge">nil</code> が代入されるため、Initializer で処理を記述する必要はありません。</p>
 
 <p>また、コンスタントのプロパティは、初期化の際であれば修正することができます。クラスの場合には、そのプロパティを持っている該当クラスでのみ変更可能です。サブクラスの Initializer の中では変更ができません。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -361,61 +369,67 @@ let magenta = Color(red: 1.0, green: 0.0, blue: 1.0)<span class="w">
 11
 12
 13
-14</pre></td><td class="code"><pre>class SurveyQuestion {
-    let text: String
-    var response: String?
-    init(text: String) {
-        self.text = text
-    }
-    func ask() {
-        println(text)
-    }
-}
-let beetsQuestion = SurveyQuestion(text: "How about beets?")
-beetsQuestion.ask()
-// prints "How about beets?"
-beetsQuestion.response = "I also like beets. (But not with cheese.)<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+14</pre></td><td class="code"><pre><span class="n">class</span> <span class="n">SurveyQuestion</span> <span class="p">{</span>
+    <span class="n">let</span> <span class="n">text</span><span class="o">:</span> <span class="n">String</span>
+    <span class="n">var</span> <span class="n">response</span><span class="o">:</span> <span class="n">String</span><span class="p">?</span>
+    <span class="n">init</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
+    <span class="p">}</span>
+    <span class="n">func</span> <span class="n">ask</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">println</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">let</span> <span class="n">beetsQuestion</span> <span class="o">=</span> <span class="n">SurveyQuestion</span><span class="p">(</span><span class="n">text</span><span class="o">:</span> <span class="s">"How about beets?"</span><span class="p">)</span>
+<span class="n">beetsQuestion</span><span class="p">.</span><span class="n">ask</span><span class="p">()</span>
+<span class="c1">// prints "How about beets?"
+</span><span class="n">beetsQuestion</span><span class="p">.</span><span class="n">response</span> <span class="o">=</span> <span class="s">"I also like beets. (But not with cheese.)</span><span class="err">
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>このようにコンスタントで宣言されている text プロパティに対しても、初期化時なら値を変更できます。</p>
 
-<h4 id="3.-default-initializers">3. Default Initializers</h4>
+<h4 id="3-default-initializers">3. Default Initializers</h4>
 
 <p>Swift は、デフォルトの Initializer を作成することがあります。構造体かベースクラスにおいて、全てのプロパティに対してデフォルト値が設定され、Initializer が提供されていない場合に作成されます。このデフォルト Initializer はこのプロパティのデフォルト値を使用したインスタンスを作成してくれます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
-6</pre></td><td class="code"><pre>class ShoppingListItem {
-    var name: String?
-    var quantity = 1
-    var purchased = false
-}
-var item = ShoppingListItem() // default initializer<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+6</pre></td><td class="code"><pre><span class="n">class</span> <span class="n">ShoppingListItem</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">?</span>
+    <span class="n">var</span> <span class="n">quantity</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">var</span> <span class="n">purchased</span> <span class="o">=</span> <span class="nb">false</span>
+<span class="err">}</span>
+<span class="n">var</span> <span class="n">item</span> <span class="o">=</span> <span class="n">ShoppingListItem</span><span class="p">()</span> <span class="c1">// default initializer
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>同じ デフォルトで作成される Initializer に構造体の Initializer があります。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
-4</pre></td><td class="code"><pre>struct Size {
-    var width = 0.0, height = 0.0
-}
-let twoByTwo = Size(width: 2.0, height: 2.0) // default memberwise initializer<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+4</pre></td><td class="code"><pre><span class="k">struct</span> <span class="n">Size</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
+<span class="p">}</span>
+<span class="n">let</span> <span class="n">twoByTwo</span> <span class="o">=</span> <span class="n">Size</span><span class="p">(</span><span class="n">width</span><span class="o">:</span> <span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">height</span><span class="o">:</span> <span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span> <span class="c1">// default memberwise initializer
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>上記の Size 構造体のようにプロパティの全てにデフォルト値が設定され、Initializer が定義されていない場合には、このように memberwise initializer が作成されます。各プロパティ名が外的な引数の名前になります。</p>
 
-<h4 id="4.-構造体・enumeration-の-initializer-delegation">4. 構造体・Enumeration の Initializer delegation</h4>
+<h4 id="4-構造体enumeration-の-initializer-delegation">4. 構造体・Enumeration の Initializer delegation</h4>
 
 <p>Initializer は他の Initializer を使うことができます。この delegation により、複数の Initializer が同じコードを持つことを防ぐことができます。タイプでも継承をサポートしているクラスとサポートしていない構造体・Enumeration ではこの Initializer の動作に違いがあります。ここでは、構造体と Enumeration に関してみていきます。</p>
 
-<p>構造体・Enumeration のようなバリュータイプでは、同じタイプの中にある Initializer を <code>self.init</code> で呼び出し、独自の Initializer を作成できます。ここで注意しておきたいのが、独自の Initializer を定義した場合、3 でみた Default Initializer は使うことができなくなります。この制約により、インスタンスを作成する際に大事なセットアップが必要な場合、他の誰かが Default Initializer を利用して、大事なセットアップを回避してまうことを防ぐことがきます。Default Initializer と Memberwise Initializer で初期化させたい場合には、Extension という仕組みがあります。Extension に関しては、まだ勉強できていないので次回以降に記事にしたいと思います。</p>
+<p>構造体・Enumeration のようなバリュータイプでは、同じタイプの中にある Initializer を <code class="highlighter-rouge">self.init</code> で呼び出し、独自の Initializer を作成できます。ここで注意しておきたいのが、独自の Initializer を定義した場合、3 でみた Default Initializer は使うことができなくなります。この制約により、インスタンスを作成する際に大事なセットアップが必要な場合、他の誰かが Default Initializer を利用して、大事なセットアップを回避してまうことを防ぐことがきます。Default Initializer と Memberwise Initializer で初期化させたい場合には、Extension という仕組みがあります。Extension に関しては、まだ勉強できていないので次回以降に記事にしたいと思います。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -434,29 +448,31 @@ let twoByTwo = Size(width: 2.0, height: 2.0) // default memberwise initializer<s
 17
 18
 19
-20</pre></td><td class="code"><pre>struct Size {
-    var width = 0.0, height = 0.0
-}
-struct Point {
-    var x = 0.0, y = 0.0
-}
-struct Rect {
-    var origin = Point()
-    var size = Size()
-    init() {}
-    init(origin: Point, size: Size) {
-        self.origin = origin
-        self.size = size
-    }
-    init(center: Point, size: Size) {
-        let originX = center.x - (size.width / 2)
-        let originY = center.y - (size.height / 2)
-        self.init(origin: Point(x: originX, y: originY), size: size)
-    }
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+20</pre></td><td class="code"><pre><span class="k">struct</span> <span class="n">Size</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
+<span class="p">}</span>
+<span class="k">struct</span> <span class="n">Point</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
+<span class="p">}</span>
+<span class="k">struct</span> <span class="n">Rect</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">origin</span> <span class="o">=</span> <span class="n">Point</span><span class="p">()</span>
+    <span class="n">var</span> <span class="n">size</span> <span class="o">=</span> <span class="n">Size</span><span class="p">()</span>
+    <span class="n">init</span><span class="p">()</span> <span class="p">{}</span>
+    <span class="n">init</span><span class="p">(</span><span class="n">origin</span><span class="o">:</span> <span class="n">Point</span><span class="p">,</span> <span class="n">size</span><span class="o">:</span> <span class="n">Size</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">origin</span> <span class="o">=</span> <span class="n">origin</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">size</span>
+    <span class="p">}</span>
+    <span class="n">init</span><span class="p">(</span><span class="n">center</span><span class="o">:</span> <span class="n">Point</span><span class="p">,</span> <span class="n">size</span><span class="o">:</span> <span class="n">Size</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">let</span> <span class="n">originX</span> <span class="o">=</span> <span class="n">center</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">let</span> <span class="n">originY</span> <span class="o">=</span> <span class="n">center</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">origin</span><span class="o">:</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="n">originX</span><span class="p">,</span> <span class="n">y</span><span class="o">:</span> <span class="n">originY</span><span class="p">),</span> <span class="n">size</span><span class="o">:</span> <span class="n">size</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>上記の Rect の Initializer の 1 つ、<code>init(center:size:)</code> が独自の Initializer で処理の一部を <code>init(oriting:size:)</code> に Delegate しています。</p>
+<p>上記の Rect の Initializer の 1 つ、<code class="highlighter-rouge">init(center:size:)</code> が独自の Initializer で処理の一部を <code class="highlighter-rouge">init(oriting:size:)</code> に Delegate しています。</p>
 
 					</div>
 

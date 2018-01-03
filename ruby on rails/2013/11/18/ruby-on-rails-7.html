@@ -253,36 +253,42 @@
 
 <p>実際に動的なページを作っていくということは、アプリケーションをRESTアーキテクチャの習慣に従うということ。これを実現するための簡単な方法として、config/routes.rb に以下の行を追加。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3</pre></td><td class="code"><pre><span class="c1"># config/routes.rb</span>
 <span class="n">resources</span> <span class="ss">:users</span>
-<span class="c1"># get "users/new”</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="c1"># get "users/new”</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>この resouse :users という行だけで、RESTful なすべてのアクションが利用できるようになる。そのため、get “users/new” という行は削除することができる。</p>
 
-<p><img src="http://3.bp.blogspot.com/-rwI_hASZkzM/Uop26v4jiBI/AAAAAAAAAKM/eF8NrNdEsgg/s1600/Screen+Shot+2013-11-18+at+10.24.51+AM.png" alt=""></p>
+<p><img src="http://3.bp.blogspot.com/-rwI_hASZkzM/Uop26v4jiBI/AAAAAAAAAKM/eF8NrNdEsgg/s1600/Screen+Shot+2013-11-18+at+10.24.51+AM.png" alt="" /></p>
 
 <h3 id="show">SHOW</h3>
 
 <p>まずは、 view を作成する（app/views/users/show.html.erb）。new.html.erb は自動で生成されたが、今回は自分で作成しなければならない。</p>
 
-<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-erb highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2</pre></td><td class="code"><pre># app/views/users/show.html.erb
-<span class="cp">&lt;%=</span> <span class="vi">@user</span><span class="p">.</span><span class="nf">name</span> <span class="cp">%&gt;</span>, <span class="cp">&lt;%=</span> <span class="vi">@user</span><span class="p">.</span><span class="nf">email</span> <span class="cp">%&gt;</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="cp">&lt;%=</span> <span class="vi">@user</span><span class="p">.</span><span class="nf">name</span> <span class="cp">%&gt;</span>, <span class="cp">&lt;%=</span> <span class="vi">@user</span><span class="p">.</span><span class="nf">email</span> <span class="cp">%&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>＠user はインスタンス変数。これをコントローラー内で定義する。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4</pre></td><td class="code"><pre><span class="c1"># app/controllers/users_controller.rb</span>
 <span class="k">def</span> <span class="nf">show</span>
   <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">])</span>
-<span class="k">end</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>params[:id] はリクエストの値。users/1 であれば、params[:id] はUser.find(1) に置き換わる。</p>
 
@@ -290,7 +296,7 @@
 
 <p>まずは view を form_for メソッドを使って実装。もしエラーがある場合は、 shared/error_messages を表示させている。このエラーがあるかどうかは、shared/_error_messagedにて条件分岐をする。慣習的に、複数の controller に渡る view は sharedディレクトリに格納。</p>
 
-<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-erb highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -336,10 +342,12 @@
     <span class="cp">&lt;%=</span> <span class="n">f</span><span class="p">.</span><span class="nf">submit</span> <span class="s2">"Create my account"</span><span class="p">,</span> <span class="ss">class: </span><span class="s2">"btn btn-large btn-primary"</span> <span class="cp">%&gt;</span>
   <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
 <span class="err">&lt;/</span><span class="na">div</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/div&gt;</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="nt">&lt;/div&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-erb highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -363,23 +371,27 @@
 <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>form_for メソッドでは user インスタンス変数を使用しているので、それを controller で定義。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4</pre></td><td class="code"><pre><span class="c1"># app/controllers/users_controller.rb</span>
 <span class="k">def</span> <span class="nf">new</span>
   <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span>
-<span class="k">end</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>上記で作成したフォームは submit された時に、/users に対してPOST する。RESTアーキテクチャでは、この操作は create アクションにあたる（上の画像）。よって、 controller で以下のように create アクションを作成。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -403,8 +415,10 @@
 <span class="kp">private</span>
 <span class="k">def</span> <span class="nf">user_params</span>
   <span class="n">params</span><span class="p">.</span><span class="nf">require</span><span class="p">(</span><span class="ss">:user</span><span class="p">).</span><span class="nf">permit</span><span class="p">(</span><span class="ss">:name</span><span class="p">,</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">:password</span><span class="p">,</span> <span class="ss">:password_confirmation</span><span class="p">)</span>
-<span class="k">end</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>private 関数は、セキュリティ上、全てのパラメータを無条件で受付ないため。もし、ユーザーの作成、保存が成功したらそのユーザーページにリダイレクト。</p>
 

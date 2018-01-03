@@ -250,62 +250,117 @@
 
 <p>まず、CentOSのイメージがない場合は追加</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Vagrantの用意</span>
-<span class="err">$</span> <span class="n">vagrant</span> <span class="n">box</span> <span class="n">add</span> <span class="n">opscode</span><span class="o">-</span><span class="n">centos</span><span class="o">-</span><span class="mi">6</span><span class="o">.</span><span class="mi">5</span> <span class="n">http</span><span class="ss">:/</span><span class="o">/</span><span class="n">opscode</span><span class="o">-</span><span class="n">vm</span><span class="o">-</span><span class="n">bento</span><span class="p">.</span><span class="nf">s3</span><span class="p">.</span><span class="nf">amazonaws</span><span class="p">.</span><span class="nf">com</span><span class="o">/</span><span class="n">vagrant</span><span class="o">/</span><span class="n">virtualbox</span><span class="o">/</span><span class="n">opscode_centos</span><span class="o">-</span><span class="mi">6</span><span class="o">.</span><span class="mi">5</span><span class="n">_chef</span><span class="o">-</span><span class="n">provisionerless</span><span class="p">.</span><span class="nf">box</span></code></pre></figure>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="c1"># Vagrantの用意</span>
+<span class="err">$</span> <span class="n">vagrant</span> <span class="n">box</span> <span class="n">add</span> <span class="n">opscode</span><span class="o">-</span><span class="n">centos</span><span class="o">-</span><span class="mi">6</span><span class="o">.</span><span class="mi">5</span> <span class="n">http</span><span class="ss">:/</span><span class="o">/</span><span class="n">opscode</span><span class="o">-</span><span class="n">vm</span><span class="o">-</span><span class="n">bento</span><span class="p">.</span><span class="nf">s3</span><span class="p">.</span><span class="nf">amazonaws</span><span class="p">.</span><span class="nf">com</span><span class="o">/</span><span class="n">vagrant</span><span class="o">/</span><span class="n">virtualbox</span><span class="o">/</span><span class="n">opscode_centos</span><span class="o">-</span><span class="mi">6</span><span class="o">.</span><span class="mi">5</span><span class="n">_chef</span><span class="o">-</span><span class="n">provisionerless</span><span class="p">.</span><span class="nf">box</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>作業ディレクトリの作成</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># ホストOSの適当なディレクトリに移動して</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="c1"># ホストOSの適当なディレクトリに移動して</span>
 <span class="err">$</span> <span class="n">mkdir</span> <span class="n">nginx</span><span class="o">-</span><span class="n">exmaple</span>
-<span class="err">$</span> <span class="n">cd</span> <span class="n">nginx</span><span class="o">-</span><span class="n">exmaple</span></code></pre></figure>
+<span class="err">$</span> <span class="n">cd</span> <span class="n">nginx</span><span class="o">-</span><span class="n">exmaple</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>Vagrantの起動</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Vagrantの初期化</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="c1"># Vagrantの初期化</span>
 <span class="err">$</span> <span class="n">vagrant</span> <span class="n">init</span> <span class="n">opscode</span><span class="o">-</span><span class="n">centos</span><span class="o">-</span><span class="mi">6</span><span class="o">.</span><span class="mi">5</span>
-<span class="err">$</span> <span class="n">vagrant</span> <span class="n">up</span></code></pre></figure>
+<span class="err">$</span> <span class="n">vagrant</span> <span class="n">up</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>SSHで入れるように~/.ssh/confingに追記</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># SSHの設定</span>
-<span class="err">$</span>  <span class="n">vagrant</span> <span class="n">ssh</span><span class="o">-</span><span class="n">config</span> <span class="o">--</span><span class="n">host</span> <span class="n">nginx</span><span class="o">-</span><span class="n">example</span> <span class="o">&gt;&gt;</span> <span class="o">~</span><span class="sr">/.ssh/</span><span class="n">config</span></code></pre></figure>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="c1"># SSHの設定</span>
+<span class="err">$</span>  <span class="n">vagrant</span> <span class="n">ssh</span><span class="o">-</span><span class="n">config</span> <span class="o">--</span><span class="n">host</span> <span class="n">nginx</span><span class="o">-</span><span class="n">example</span> <span class="o">&gt;&gt;</span> <span class="o">~</span><span class="sr">/.ssh/</span><span class="n">config</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>ブラウザからアクセスできるようにVagrantfileに設定追加</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Vagrantのネットワーク設定</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="c1"># Vagrantのネットワーク設定</span>
 
 <span class="c1"># Vagrantfile</span>
 <span class="n">config</span><span class="p">.</span><span class="nf">vm</span><span class="p">.</span><span class="nf">box</span> <span class="o">=</span> <span class="s2">"opscode-centos-6.5"</span>
-<span class="n">config</span><span class="p">.</span><span class="nf">vm</span><span class="p">.</span><span class="nf">network</span> <span class="ss">:private_network</span><span class="p">,</span> <span class="n">ip</span><span class="ss">:"192.168.50.10"</span> <span class="c1"># ← 追記</span></code></pre></figure>
+<span class="n">config</span><span class="p">.</span><span class="nf">vm</span><span class="p">.</span><span class="nf">network</span> <span class="ss">:private_network</span><span class="p">,</span> <span class="n">ip</span><span class="ss">:"192.168.50.10"</span> <span class="c1"># ← 追記</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>Vagrantのリロード</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Vagrantfileを更新したのでリロード</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="c1"># Vagrantfileを更新したのでリロード</span>
 <span class="err">$</span> <span class="n">vagrant</span> <span class="n">halt</span>
-<span class="err">$</span> <span class="n">vagrant</span> <span class="n">up</span></code></pre></figure>
+<span class="err">$</span> <span class="n">vagrant</span> <span class="n">up</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <h4 id="knife-soloでchef環境の準備">Knife SoloでChef環境の準備</h4>
 
 <p>knife-soloは、ほかのgemのインストール有無によりオプションが変化する。
 クックブックの依存関係を管理するBerkshelfというツールも関係するのでインストールしておく。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># ホストOSだけでOK</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="c1"># ホストOSだけでOK</span>
 <span class="err">$</span> <span class="n">gem</span> <span class="n">install</span> <span class="n">knife</span><span class="o">-</span><span class="n">solo</span>
-<span class="err">$</span> <span class="n">gem</span> <span class="n">install</span> <span class="n">berkshelf</span></code></pre></figure>
+<span class="err">$</span> <span class="n">gem</span> <span class="n">install</span> <span class="n">berkshelf</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>キッチンの作成</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># キッチン(Chefレポジトリの作成)</span>
-<span class="err">$</span> <span class="n">knife</span> <span class="n">solo</span> <span class="n">init</span> <span class="o">.</span></code></pre></figure>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="c1"># キッチン(Chefレポジトリの作成)</span>
+<span class="err">$</span> <span class="n">knife</span> <span class="n">solo</span> <span class="n">init</span> <span class="o">.</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># ゲストOSにChefの準備</span>
-<span class="err">$</span> <span class="n">knife</span> <span class="n">solo</span> <span class="n">prepare</span> <span class="n">nginx</span><span class="o">-</span><span class="n">example</span></code></pre></figure>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="c1"># ゲストOSにChefの準備</span>
+<span class="err">$</span> <span class="n">knife</span> <span class="n">solo</span> <span class="n">prepare</span> <span class="n">nginx</span><span class="o">-</span><span class="n">example</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <h4 id="レシピの作成">レシピの作成</h4>
 
 <p>nginx用のクックブックとレシピの作成</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="n">knife</span> <span class="n">cookbook</span> <span class="n">create</span> <span class="n">nginx</span> <span class="o">-</span><span class="n">o</span> <span class="n">site</span><span class="o">-</span><span class="n">cookbooks</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre><span class="err">$</span> <span class="n">knife</span> <span class="n">cookbook</span> <span class="n">create</span> <span class="n">nginx</span> <span class="o">-</span><span class="n">o</span> <span class="n">site</span><span class="o">-</span><span class="n">cookbooks</span>
 
 <span class="c1"># site-cookbooks/nginx/recipes</span>
 <span class="n">include_recipe</span> <span class="s2">"yum-epel"</span>
@@ -317,18 +372,34 @@
 <span class="n">service</span> <span class="s2">"nginx"</span> <span class="k">do</span>
   <span class="n">action</span> <span class="p">[</span> <span class="ss">:enable</span><span class="p">,</span> <span class="ss">:start</span> <span class="p">]</span>
   <span class="n">supports</span> <span class="ss">:status</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">:restart</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">:reload</span> <span class="o">=&gt;</span> <span class="kp">true</span>
-<span class="k">end</span></code></pre></figure>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>第三者のクックブックを使用するため、Berksfileの編集</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Berksfile</span>
-<span class="n">cookbook</span> <span class="s1">'yum-epel'</span> <span class="c1"># ← 追記</span></code></pre></figure>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="c1"># Berksfile</span>
+<span class="n">cookbook</span> <span class="s1">'yum-epel'</span> <span class="c1"># ← 追記</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <h4 id="nodeオブジェクトの編集">Nodeオブジェクトの編集</h4>
 
 <p>レシピを反映させるためにNodeオブジェクトに上記のレシピを追記する</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># nodes/nginx-example.json</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="c1"># nodes/nginx-example.json</span>
 <span class="p">{</span>
   <span class="s2">"run_list"</span><span class="p">:</span> <span class="p">[</span>
     <span class="s2">"recipe[yum-epel]"</span><span class="p">,</span> <span class="c1"># ← 追記</span>
@@ -337,17 +408,23 @@
   <span class="s2">"automatic"</span><span class="p">:</span> <span class="p">{</span>
     <span class="s2">"ipaddress"</span><span class="p">:</span> <span class="s2">"nginx-example"</span>
   <span class="p">}</span>
-<span class="p">}</span></code></pre></figure>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <h4 id="chefの実行">Chefの実行</h4>
 
 <p>ノードにレシピの反映</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="n">knife</span> <span class="n">solo</span> <span class="n">cook</span> <span class="n">nginx</span><span class="o">-</span><span class="n">example</span></code></pre></figure>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="err">$</span> <span class="n">knife</span> <span class="n">solo</span> <span class="n">cook</span> <span class="n">nginx</span><span class="o">-</span><span class="n">example</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>ブラウザでVagrantfileで指定した <code>192.168.50.10</code> と入力して、下記のように Nginx の初期画面がでていれば成功。</p>
+<p>ブラウザでVagrantfileで指定した <code class="highlighter-rouge">192.168.50.10</code> と入力して、下記のように Nginx の初期画面がでていれば成功。</p>
 
-<p><img src="/images/2015/08/1.png" alt=""></p>
+<p><img src="/images/2015/08/1.png" alt="" /></p>
 
 <h4 id="参考">参考</h4>
 

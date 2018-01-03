@@ -244,43 +244,43 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。  </p>
+						<p>iBooks にある “The Swift Programming Language” の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。</p>
 
 <p>今回は、Class と Structure に関して。</p>
 
-<h3 id="classes,-structures">Classes, Structures</h3>
+<h3 id="classes-structures">Classes, Structures</h3>
 
 <p>Swift では クラスを作成するのに、インターフェースファイルと実装ファイルを別々にする必要はありません。また、クラスと構造体が似ているので、これから説明することは、クラスでも構造体にでも当てはまります。そのため、クラスのインスタンスは通常、オブジェクトと呼ばれますが、ドキュメントでもより一般的なワードであるインスタンスをオブジェクトの代わりに使用しています。</p>
 
-<h4 id="1.-クラスと構造体の比較">1. クラスと構造体の比較</h4>
+<h4 id="1-クラスと構造体の比較">1. クラスと構造体の比較</h4>
 
 <p>クラスと構造体の似ている側面として、</p>
 
 <ul>
-<li>・プロパティを持てる</li>
-<li>・メソッドを持てる</li>
-<li>・クラス・構造体の値にアクセスするのに subscripts syntax を使える</li>
-<li>・初期状態を定義するのにイニシャライザーを定義できる</li>
-<li>・デフォルトの実装の機能を拡張できる</li>
-<li>・プロトコルに従うことができる</li>
+  <li>・プロパティを持てる</li>
+  <li>・メソッドを持てる</li>
+  <li>・クラス・構造体の値にアクセスするのに subscripts syntax を使える</li>
+  <li>・初期状態を定義するのにイニシャライザーを定義できる</li>
+  <li>・デフォルトの実装の機能を拡張できる</li>
+  <li>・プロトコルに従うことができる</li>
 </ul>
 
 <p>これらの共通点に加えて、クラスができることとして、</p>
 
 <ul>
-<li>・継承ができる</li>
-<li>・チェック、解釈するために、クラスの型をキャストできる</li>
-<li>・割り当てられたリソースを解放できる (Deinitializers)</li>
-<li>・リファレンスカウンターが１つ以上持てる</li>
+  <li>・継承ができる</li>
+  <li>・チェック、解釈するために、クラスの型をキャストできる</li>
+  <li>・割り当てられたリソースを解放できる (Deinitializers)</li>
+  <li>・リファレンスカウンターが１つ以上持てる</li>
 </ul>
 
 <p>クラス特有の特徴の最後に関連して、構造体が渡される場合には、いつもコピーされ、リファレンスカウンターは使われない。</p>
 
-<h4 id="2.-基本シンタックス">2. 基本シンタックス</h4>
+<h4 id="2-基本シンタックス">2. 基本シンタックス</h4>
 
 <p>クラスと構造体の定義、インスタンス化、プロパティへのアクセスは C や Objective-C とよく似ています。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -297,41 +297,45 @@
 15
 16
 17
-18</pre></td><td class="code"><pre>// Define
-struct Resolution {
-    var width = 0
-    var height = 0
-}
-class VideoMode {
-    var resolution = Resolution()
-    var interlaced = false
-    var frameRate = 0.0
-    var name: String?
-}
-// Make instances
-let someResolution = Resolution()
-let someVideoMode = VideoMode()
-// Access properties
-someVideoMode.resolution.width = 1280
-println("The width of someVideoMode is now \(someVideoMode.resolution.width)")
-// prints "The width of someVideoMode is now 1280<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+18</pre></td><td class="code"><pre><span class="c1">// Define
+</span><span class="k">struct</span> <span class="n">Resolution</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">var</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="p">}</span>
+<span class="n">class</span> <span class="n">VideoMode</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">resolution</span> <span class="o">=</span> <span class="n">Resolution</span><span class="p">()</span>
+    <span class="n">var</span> <span class="n">interlaced</span> <span class="o">=</span> <span class="nb">false</span>
+    <span class="n">var</span> <span class="n">frameRate</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
+    <span class="n">var</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">?</span>
+<span class="err">}</span>
+<span class="c1">// Make instances
+</span><span class="n">let</span> <span class="n">someResolution</span> <span class="o">=</span> <span class="n">Resolution</span><span class="p">()</span>
+<span class="n">let</span> <span class="n">someVideoMode</span> <span class="o">=</span> <span class="n">VideoMode</span><span class="p">()</span>
+<span class="c1">// Access properties
+</span><span class="n">someVideoMode</span><span class="p">.</span><span class="n">resolution</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">1280</span>
+<span class="n">println</span><span class="p">(</span><span class="s">"The width of someVideoMode is now \(someVideoMode.resolution.width)"</span><span class="p">)</span>
+<span class="c1">// prints "The width of someVideoMode is now 1280
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>構造体は、常にプロパティの値を指定できるイニシャライザを使用できます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>let vga = Resolution(width: 640, height: 480)<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">let</span> <span class="n">vga</span> <span class="o">=</span> <span class="n">Resolution</span><span class="p">(</span><span class="n">width</span><span class="o">:</span> <span class="mi">640</span><span class="p">,</span> <span class="n">height</span><span class="o">:</span> <span class="mi">480</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<h4 id="3.-リファレンスとコピー">3. リファレンスとコピー</h4>
+<h4 id="3-リファレンスとコピー">3. リファレンスとコピー</h4>
 
 <p>この記事の概要でも軽く触れた通り、クラスはリファレンスタイプであり、構造体はバリュータイプです。つまり、クラスが渡される時には、リファレンスが渡され、構造体が渡される時には、新しいコピーを作成します。また、Enumeration もバリュータイプで渡される時には、コピーされます。</p>
 
 <p>C とは違い、構造体もメソッドを持つことができるので、構造体とクラスを選ぶ際にちょっと悩みます。その一般的なガイドラインとして、下記のような場合には、構造体を選びます。</p>
 
 <ul>
-<li>・構造体の主な目的は、シンプルなデータを encapsulate すること</li>
-<li>・構造体のプロパティがリファレンスでなく、コピーされて使用されるのが合理的であること</li>
-<li>・他のタイプから何も継承する必要がないこと</li>
+  <li>・構造体の主な目的は、シンプルなデータを encapsulate すること</li>
+  <li>・構造体のプロパティがリファレンスでなく、コピーされて使用されるのが合理的であること</li>
+  <li>・他のタイプから何も継承する必要がないこと</li>
 </ul>
 
 <p>これ以外である場合には、クラスを使用すべき。実践では、ほとんどの独自にコードをバンドルする際には、クラスが使われる。</p>

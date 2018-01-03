@@ -251,42 +251,45 @@
 
 <h3 id="アセットディレクトリ">アセットディレクトリ</h3>
 
-<table><thead>
-<tr>
-<th>file</th>
-<th>desc</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>app/assets</td>
-<td>現在のアプリケーション固有のアセット</td>
-</tr>
-<tr>
-<td>lib/assets</td>
-<td>あなたの開発チームによって作成されたライブラリ用のアセット</td>
-</tr>
-<tr>
-<td>vendor/assets</td>
-<td>サードパーティのアセット</td>
-</tr>
-</tbody></table>
+<table>
+  <thead>
+    <tr>
+      <th>file</th>
+      <th>desc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>app/assets</td>
+      <td>現在のアプリケーション固有のアセット</td>
+    </tr>
+    <tr>
+      <td>lib/assets</td>
+      <td>あなたの開発チームによって作成されたライブラリ用のアセット</td>
+    </tr>
+    <tr>
+      <td>vendor/assets</td>
+      <td>サードパーティのアセット</td>
+    </tr>
+  </tbody>
+</table>
 
 <h3 id="マニフェストファイル">マニフェストファイル</h3>
 
 <p>適切にアセットディレクトリにファイルを配置すれば、マニフェストファイルによって一つにファイルのように扱うことができる。 実際にまとめるのは Sprokects gem の役割。app/assets/stylesheets/application.css はマニフェストファイルの例。</p>
 
 <blockquote>
-<blockquote>
-<p>*= require_tree .</p>
-</blockquote>
+  <blockquote>
+    <p>*= require_tree .</p>
+  </blockquote>
 </blockquote>
 
 <p>はapp/assets/stylesheetsのサブディレクトリを含む全ての CSS をインクルードする。ドットも必須。</p>
 
 <blockquote>
-<blockquote>
-<p>*= require_self</p>
-</blockquote>
+  <blockquote>
+    <p>*= require_self</p>
+  </blockquote>
 </blockquote>
 
 <p>application.css自身の CSS 記述もインクルードする。</p>
@@ -302,15 +305,19 @@
 
 <p>config/environments/production.rb を以下のように変更</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2</pre></td><td class="code"><pre><span class="c1"># Do not fallback to assets pipeline if a precompiled asset is missed.</span>
-<span class="c1"># config.assets.compile = false</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="c1"># config.assets.compile = false</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2</pre></td><td class="code"><pre><span class="c1"># Generate digests for assets URLs.</span>
-<span class="c1"># config.assets.digest = true</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="c1"># config.assets.digest = true</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 					</div>
 

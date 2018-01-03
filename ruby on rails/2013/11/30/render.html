@@ -246,14 +246,16 @@
 					<div class="post">
 						<p>なかなか最初は RoR でパラメータの引き渡しが慣れないですね。メモとしてちょっとずつ足していこうと思います。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4</pre></td><td class="code"><pre><span class="c1"># 引き渡し</span>
 <span class="n">render</span> <span class="s1">'orientations/thanks'</span><span class="p">,</span> <span class="ss">val: </span><span class="vi">@student</span>
 <span class="c1"># 受け取り</span>
-<span class="o">&lt;</span><span class="sx">% @student.klasses.each </span><span class="k">do</span> <span class="o">|</span><span class="n">klass</span><span class="o">|</span> <span class="sx">%&gt; # 例えばこんな感じ</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="o">&lt;</span><span class="sx">% @student.klasses.each </span><span class="k">do</span> <span class="o">|</span><span class="n">klass</span><span class="o">|</span> <span class="sx">%&gt; # 例えばこんな感じ
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 					</div>
 

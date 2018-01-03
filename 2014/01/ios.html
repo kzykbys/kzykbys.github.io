@@ -246,41 +246,45 @@
 					<div class="post">
 						<p>UserDefault のキーや デバイス情報、データの参照先の URL等、iOS開発をしていると何度も使用する定数があると思います。それらを一つのファイルにまとめ、プロジェクトのどこからでも参照することができるようにします。</p>
 
-<p>まずは、定数をまとめるヘッダーファイルの作成です。下記の画像のように &quot; C and C++ &quot; という項目から &quot; Header File &quot; を選びます。</p>
+<p>まずは、定数をまとめるヘッダーファイルの作成です。下記の画像のように “ C and C++ “ という項目から “ Header File “ を選びます。</p>
 
-<p><img src="http://1.bp.blogspot.com/-eoIwTVURDq0/UsW9v6AaF5I/AAAAAAAAANk/vwvW4IKspuw/s1600/Screen+Shot+2014-01-02+at+11.26.49+AM.png" alt=""></p>
+<p><img src="http://1.bp.blogspot.com/-eoIwTVURDq0/UsW9v6AaF5I/AAAAAAAAANk/vwvW4IKspuw/s1600/Screen+Shot+2014-01-02+at+11.26.49+AM.png" alt="" /></p>
 
 <p>作成したファイルに定数を書き出します。例えばこのような感じですね。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
 6
 7
-8</pre></td><td class="code"><pre>// constantVariable.h
-#ifndef Menu_constantVariable_h
+8</pre></td><td class="code"><pre><span class="c1">// constantVariable.h
+</span><span class="cp">#ifndef Menu_constantVariable_h
 #define Menu_constantVariable_h
- 
-// URL
-#define kDataSource @"blabla"
- 
-#endif<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+</span> 
+<span class="c1">// URL
+</span><span class="cp">#define kDataSource @"blabla"
+</span> 
+<span class="cp">#endif
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>そして、次にこの定数がまとめられたヘッダーファイルをインクルードするという設定です。各々、これらの定数が必要なファイルでインクルードしてもよいのですが、少し面倒です。&quot; Supporting Files &quot; の中にある、*-Prefix.pch というファイルでインクルードしておくと、自動的に全てのファイルでインクルードされているので、いつでもどこでも定義した定数を使用することができ便利です。</p>
+<p>そして、次にこの定数がまとめられたヘッダーファイルをインクルードするという設定です。各々、これらの定数が必要なファイルでインクルードしてもよいのですが、少し面倒です。” Supporting Files “ の中にある、*-Prefix.pch というファイルでインクルードしておくと、自動的に全てのファイルでインクルードされているので、いつでもどこでも定義した定数を使用することができ便利です。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
-5</pre></td><td class="code"><pre>#ifdef __OBJC__
-    #import &lt;UIKit/UIKit.h&gt;
-    #import &lt;Foundation/Foundation.t&gt;
-    #import "constantVariable.h"
-#endif<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+5</pre></td><td class="code"><pre><span class="cp">#ifdef __OBJC__
+</span>    <span class="cp">#import &lt;UIKit/UIKit.h&gt;
+</span>    <span class="cp">#import &lt;Foundation/Foundation.t&gt;
+</span>    <span class="cp">#import "constantVariable.h"
+#endif
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 					</div>
 

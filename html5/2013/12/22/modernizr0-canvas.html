@@ -246,7 +246,7 @@
 					<div class="post">
 						<p>Modernizr は MIT ライセンスのオープンソースライブラリ。HTML5/CSS3のサポートがあるかどうかを簡単に判断することができる。</p>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -254,10 +254,12 @@
 <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;title&gt;</span>Dive Into HTML5<span class="nt">&lt;/title&gt;</span>
 <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"modernizr.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;/head&gt;</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="nt">&lt;/head&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -269,14 +271,16 @@
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 <span class="c1">// no native canvas support available :(</span>
  
-<span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>nomodernizr_init() という関数が、Modernizr というグローバルオブジェクトを作成するので、上記のようにサポートされているか確認する。</p>
 
 <p>内部では、</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -286,8 +290,10 @@
  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">supports_canvas</span><span class="p">())</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="p">}</span>
  <span class="kd">var</span> <span class="nx">dummy_canvas</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'canvas'</span><span class="p">);</span> <span class="kd">var</span> <span class="nx">context</span> <span class="o">=</span> <span class="nx">dummy_canvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s1">'2d'</span><span class="p">);</span>
  <span class="k">return</span> <span class="k">typeof</span> <span class="nx">context</span><span class="p">.</span><span class="nx">fillText</span> <span class="o">==</span> <span class="err">'</span><span class="kd">function</span><span class="err">’</span><span class="p">;</span>
-<span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>このようにダミーの canvas をエレメントを作成し、メソッドがあるか確認している。</p>
 

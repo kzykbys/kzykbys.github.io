@@ -245,28 +245,27 @@
 
 					<div class="post">
 						<blockquote>
-<blockquote>
-<p><span class="deprecate">This article might be too old.</span>  </p>
-</blockquote>
+  <blockquote>
+    <p><span class="deprecate">This article might be too old.</span></p>
+  </blockquote>
 </blockquote>
 
 <p>今回は Jekyll で使用できるように、新しい Liquid タグを作成しました。ブログの記事等でよく見る、Twitter のつぶやきを記事内に埋め込むタグです。使い方は、公式の Jekyll がサポートしている Gist を埋め込むタグとほとんど同じです。</p>
 
 <blockquote>
-<blockquote>
-<p>{\% tweet 464180168303456256 \%}</p>
-</blockquote>
+  <blockquote>
+    <p>{\% tweet 464180168303456256 \%}</p>
+  </blockquote>
 </blockquote>
 
 <p>のバックスラッシュを除き、ツイートIDを引数に取ると Twitter からツイート情報を JSON で受け取り、その html のデータを返します。こんな感じになります。</p>
 
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">(๑•̀ㅂ•́)و✧ .o0O ( [ Test tweet ]「テストつぶやき」)</p>&mdash; Kazuya Kobayashi (@kzy_kbys) <a href="https://twitter.com/kzy_kbys/status/464180168303456256?ref_src=twsrc%5Etfw">May 7, 2014</a></blockquote>
-
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <p>コードはこんな感じです。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -378,8 +377,10 @@
   <span class="k">end</span>
 <span class="k">end</span>
 
-<span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_tag</span><span class="p">(</span><span class="s1">'tweet'</span><span class="p">,</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">TweetTag</span><span class="p">)</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_tag</span><span class="p">(</span><span class="s1">'tweet'</span><span class="p">,</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">TweetTag</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>正直、Twitter が生成してくれるコードを埋め込んだ方が早いですねｗ</p>
 

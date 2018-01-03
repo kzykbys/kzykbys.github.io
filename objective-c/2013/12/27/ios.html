@@ -246,40 +246,41 @@
 					<div class="post">
 						<p>また iOS のアプリの制作を個人的に始めた。すごい好きなデザインをするデザイナーさんと一緒に作るから楽しみだなー。久しぶりすぎて、最初なにから始めたらいいのか、さえも分からなくなっててすごいショックだけどちょくちょく頑張っていきます。</p>
 
-<p>今日は、ページ遷移について調べたのでそのメモ。&quot;ほとんど&quot; コードによるページ遷移の方法。</p>
+<p>今日は、ページ遷移について調べたのでそのメモ。”ほとんど” コードによるページ遷移の方法。</p>
 
 <h3 id="遷移元の-viewcontroller-の準備">遷移元の ViewController の準備</h3>
 
 <p>適当なボタン等にアクションを設定して以下の様なコードを書く。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
 6
 7
-8</pre></td><td class="code"><pre>- (IBAction)showMenu:(id)sender
-{
-    NSLog(@"Here! Long time no see!!");
-    KKMenuListViewController *menulistView =
-        [self.storyboard instantiateViewControllerWithIdentifier:@"menuID"];
-    menulistView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self presentViewController:menulistView animated:YES completion:nil];
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+8</pre></td><td class="code"><pre><span class="k">-</span> <span class="p">(</span><span class="n">IBAction</span><span class="p">)</span><span class="nf">showMenu</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span><span class="nv">sender</span>
+<span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Here! Long time no see!!"</span><span class="p">);</span>
+    <span class="n">KKMenuListViewController</span> <span class="o">*</span><span class="n">menulistView</span> <span class="o">=</span>
+        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">storyboard</span> <span class="nf">instantiateViewControllerWithIdentifier</span><span class="p">:</span><span class="s">@"menuID"</span><span class="p">];</span>
+    <span class="n">menulistView</span><span class="p">.</span><span class="n">modalTransitionStyle</span> <span class="o">=</span> <span class="n">UIModalTransitionStyleCrossDissolve</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">self</span> <span class="nf">presentViewController</span><span class="p">:</span><span class="n">menulistView</span> <span class="nf">animated</span><span class="p">:</span><span class="nb">YES</span> <span class="nf">completion</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>1 . presentModalViewController:animated の代わりに presentViewController:animated:completion というメソッドを使わないと警告でます。新しいメソッドの最後の引数、completionにはコールバックを指定し、モーダルビューが表示完了後に呼び出される。</p>
 
 <p>2 . UIModalTransitionStyleCrossDissolve というのはモーダルビューがどのように表示されるかの設定です。他にも、</p>
-
 <blockquote>
-<blockquote>
-<p>UIModalTransitionStyleCoverVertical<br />
+  <blockquote>
+    <p>UIModalTransitionStyleCoverVertical<br />
 UIModalTransitionStyleFlipHorizontal<br />
 UIModalTransitionStyleCrossDissolve<br />
 UIModalTransitionStylePartialCurl<br /></p>
-</blockquote>
+  </blockquote>
 </blockquote>
 
 <p>があるみたいです。このモーダルのトランジション時のアニメーションを自分で作成できるようになりたい。今年中に一度勉強しよう。</p>
@@ -290,7 +291,7 @@ UIModalTransitionStylePartialCurl<br /></p>
 
 <p>こちらはただ遷移させるだけなら簡単です。適当に ViewController のファイルを作成し、Storyboard で ViewController のアイテムをドロップし、作成した遷移先となる ViewController を関連付けます。そして、上記の 3 と同じ値を指定。</p>
 
-<p><img src="http://3.bp.blogspot.com/-mdaMvsgyTEM/Ur0gYd7Lq0I/AAAAAAAAAMw/VsOzMRMQUso/s1600/Screen+Shot+2013-12-26+at+10.35.50+PM.png" alt=""></p>
+<p><img src="http://3.bp.blogspot.com/-mdaMvsgyTEM/Ur0gYd7Lq0I/AAAAAAAAAMw/VsOzMRMQUso/s1600/Screen+Shot+2013-12-26+at+10.35.50+PM.png" alt="" /></p>
 
 <p>ここらへんもコードで済ませたいんですけど、どうしたらいいのかなー。</p>
 

@@ -244,7 +244,7 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。  </p>
+						<p>iBooks にある “The Swift Programming Language” の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。</p>
 
 <p>今回は、Automatic Reference Counting の続きに関して。</p>
 
@@ -252,17 +252,17 @@
 
 <p><a href="http://blog.kazuya.co/swift/2014/06/23/swift-doc-arc.html">前回</a> までで、ARC の基本とその問題点に関してみてきました。この記事では、プログラマーが気を配らないといけない箇所をみていきます。</p>
 
-<h4 id="3.-strong-reference-cycles-の解消---weak-参照">3. Strong Reference Cycles の解消 - Weak 参照</h4>
+<h4 id="3-strong-reference-cycles-の解消---weak-参照">3. Strong Reference Cycles の解消 - Weak 参照</h4>
 
-<p>Swift には 2 でみた問題を解決するために、2 つの方法があります。それが、<code>weak</code> 参照と <code>unowned</code> 参照です。</p>
+<p>Swift には 2 でみた問題を解決するために、2 つの方法があります。それが、<code class="highlighter-rouge">weak</code> 参照と <code class="highlighter-rouge">unowned</code> 参照です。</p>
 
-<p><code>weak</code> 参照は、<code>strong</code> 参照ではないので、<code>weak</code> 参照があっても ARC はメモリを解放します。この <code>weak</code> 参照は、その参照が、nil になり得る場合に使用されます。もし、常に nil にならず値を持つような場合には、のちにみる <code>unowned</code> を使用します。先ほどの Apartment の例では、<code>weak</code> が適切です。Apartment クラスはいつでも tenant が nil になる可能性があるからです。<code>weak</code> 参照は値が変わる可能性があるので、Optional 変数として宣言されます。</p>
+<p><code class="highlighter-rouge">weak</code> 参照は、<code class="highlighter-rouge">strong</code> 参照ではないので、<code class="highlighter-rouge">weak</code> 参照があっても ARC はメモリを解放します。この <code class="highlighter-rouge">weak</code> 参照は、その参照が、nil になり得る場合に使用されます。もし、常に nil にならず値を持つような場合には、のちにみる <code class="highlighter-rouge">unowned</code> を使用します。先ほどの Apartment の例では、<code class="highlighter-rouge">weak</code> が適切です。Apartment クラスはいつでも tenant が nil になる可能性があるからです。<code class="highlighter-rouge">weak</code> 参照は値が変わる可能性があるので、Optional 変数として宣言されます。</p>
 
-<p>ARC は、メモリが解放し、その解放したインスタンスに対して <code>weak</code> 参照がある場合、この <code>weak</code> 参照に nil を設定します。私たちは、普通の Optional のように値があるかをチェックできます。</p>
+<p>ARC は、メモリが解放し、その解放したインスタンスに対して <code class="highlighter-rouge">weak</code> 参照がある場合、この <code class="highlighter-rouge">weak</code> 参照に nil を設定します。私たちは、普通の Optional のように値があるかをチェックできます。</p>
 
-<p>先ほどの Person-Apartmen の例を <code>weak</code> を使い書き直します。</p>
+<p>先ほどの Person-Apartmen の例を <code class="highlighter-rouge">weak</code> を使い書き直します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -274,71 +274,79 @@
 10
 11
 12
-13</pre></td><td class="code"><pre>class Person {
-    let name: String
-    init(name: String) { self.name = name }
-    var apartment: Apartment?
-    deinit { println("\(name) is being deinitialized") }
-}
+13</pre></td><td class="code"><pre><span class="n">class</span> <span class="n">Person</span> <span class="p">{</span>
+    <span class="n">let</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span>
+    <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span> <span class="n">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span> <span class="p">}</span>
+    <span class="n">var</span> <span class="n">apartment</span><span class="o">:</span> <span class="n">Apartment</span><span class="p">?</span>
+    <span class="n">deinit</span> <span class="err">{</span> <span class="n">println</span><span class="p">(</span><span class="s">"\(name) is being deinitialized"</span><span class="p">)</span> <span class="err">}</span>
+<span class="err">}</span>
  
-class Apartment {
-    let number: Int
-    init(number: Int) { self.number = number }
-    weak var tenant: Person?
-    deinit { println("Apartment #\(number) is being deinitialized") }
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">class</span> <span class="n">Apartment</span> <span class="err">{</span>
+    <span class="n">let</span> <span class="n">number</span><span class="p">:</span> <span class="n">Int</span>
+    <span class="n">init</span><span class="p">(</span><span class="n">number</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span> <span class="n">self</span><span class="p">.</span><span class="n">number</span> <span class="o">=</span> <span class="n">number</span> <span class="p">}</span>
+    <span class="n">weak</span> <span class="n">var</span> <span class="n">tenant</span><span class="o">:</span> <span class="n">Person</span><span class="p">?</span>
+    <span class="n">deinit</span> <span class="err">{</span> <span class="n">println</span><span class="p">(</span><span class="s">"Apartment #\(number) is being deinitialized"</span><span class="p">)</span> <span class="err">}</span>
+<span class="err">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>Apartment の tenant プロパティが <code>weak</code> として宣言されています。</p>
+<p>Apartment の tenant プロパティが <code class="highlighter-rouge">weak</code> として宣言されています。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
 6
 7
-8</pre></td><td class="code"><pre>var john: Person?
-var number73: Apartment?
+8</pre></td><td class="code"><pre><span class="n">var</span> <span class="n">john</span><span class="o">:</span> <span class="n">Person</span><span class="p">?</span>
+<span class="n">var</span> <span class="n">number73</span><span class="p">:</span> <span class="n">Apartment</span><span class="p">?</span>
  
-john = Person(name: "John Appleseed")
-number73 = Apartment(number: 73)
+<span class="n">john</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="s">"John Appleseed"</span><span class="p">)</span>
+<span class="n">number73</span> <span class="o">=</span> <span class="n">Apartment</span><span class="p">(</span><span class="n">number</span><span class="o">:</span> <span class="mi">73</span><span class="p">)</span>
  
-john!.apartment = number73
-number73!.tenant = john<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">john</span><span class="o">!</span><span class="p">.</span><span class="n">apartment</span> <span class="o">=</span> <span class="n">number73</span>
+<span class="n">number73</span><span class="o">!</span><span class="p">.</span><span class="n">tenant</span> <span class="o">=</span> <span class="n">john</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>そして、Person のインスタンスを解放してみます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre>john = nil
-// prints "John Appleseed is being deinitialized"<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="n">john</span> <span class="o">=</span> <span class="nb">nil</span>
+<span class="c1">// prints "John Appleseed is being deinitialized"
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>この Person に対する <code>strong</code> 参照は、この <code>john = nil</code> で 0 になります。そのため、Person インスタンス は解放されました。このイメージを見ていただければわかりやすいと思います。Person Instance に向かっている矢印は、<code>weak</code> 参照だけです。</p>
+<p>この Person に対する <code class="highlighter-rouge">strong</code> 参照は、この <code class="highlighter-rouge">john = nil</code> で 0 になります。そのため、Person インスタンス は解放されました。このイメージを見ていただければわかりやすいと思います。Person Instance に向かっている矢印は、<code class="highlighter-rouge">weak</code> 参照だけです。</p>
 
-<p><img src="/images/2014/06/7.png" alt=""></p>
+<p><img src="/images/2014/06/7.png" alt="" /></p>
 
 <p>そして、Apartment のインスタンスも解放します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre>number73 = nil
-// prints "Apartment #73 is being deinitialized"<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="n">number73</span> <span class="o">=</span> <span class="nb">nil</span>
+<span class="c1">// prints "Apartment #73 is being deinitialized"
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>この Apartment インスタンスは <code>number73</code> と Person インスタンスのプロパティである <code>apartment</code> から <code>strong</code> 参照がありました。この <code>number73 = nil</code> により、<code>number73</code> からの <code>strong</code> 参照は消え、上記の <code>john = nil</code> により、Person インスタンスからの <code>strong</code> 参照もなくなっているので、メモリが解放されています。</p>
+<p>この Apartment インスタンスは <code class="highlighter-rouge">number73</code> と Person インスタンスのプロパティである <code class="highlighter-rouge">apartment</code> から <code class="highlighter-rouge">strong</code> 参照がありました。この <code class="highlighter-rouge">number73 = nil</code> により、<code class="highlighter-rouge">number73</code> からの <code class="highlighter-rouge">strong</code> 参照は消え、上記の <code class="highlighter-rouge">john = nil</code> により、Person インスタンスからの <code class="highlighter-rouge">strong</code> 参照もなくなっているので、メモリが解放されています。</p>
 
-<p><img src="/images/2014/06/8.png" alt=""></p>
+<p><img src="/images/2014/06/8.png" alt="" /></p>
 
-<h4 id="4.-strong-reference-cycles-の解消---unowned-参照">4. Strong Reference Cycles の解消 - Unowned 参照</h4>
+<h4 id="4-strong-reference-cycles-の解消---unowned-参照">4. Strong Reference Cycles の解消 - Unowned 参照</h4>
 
-<p><code>unowned</code> 参照も、<code>strong</code> 参照ではないので、<code>unowned</code> 参照があっても ARC はメモリを解放します。この <code>unowned</code> 参照は、その参照が、常に nil にならず値を持つような場合に使用します。そのため、<code>unowned</code> は、Optional としては宣言されません。</p>
+<p><code class="highlighter-rouge">unowned</code> 参照も、<code class="highlighter-rouge">strong</code> 参照ではないので、<code class="highlighter-rouge">unowned</code> 参照があっても ARC はメモリを解放します。この <code class="highlighter-rouge">unowned</code> 参照は、その参照が、常に nil にならず値を持つような場合に使用します。そのため、<code class="highlighter-rouge">unowned</code> は、Optional としては宣言されません。</p>
 
-<p>先ほどの Apartment の例では、<code>weak</code> が適切です。Apartment クラスはいつでも tenant が nil になる可能性があるからです。<code>weak</code> 参照は値が変わる可能性があるので、Optional 変数として宣言されます。</p>
+<p>先ほどの Apartment の例では、<code class="highlighter-rouge">weak</code> が適切です。Apartment クラスはいつでも tenant が nil になる可能性があるからです。<code class="highlighter-rouge">weak</code> 参照は値が変わる可能性があるので、Optional 変数として宣言されます。</p>
 
-<p>次は、先ほどとは少し違う例を見ます。Customer と CreditCard というクラスを見ていきます。Customer はクレジットカードを常に持っているかは分かりません。しかし、CreditCard クラスのインスタンスは常に顧客情報である Customer のインスタンスを持っています。つまり、CreditCard の Customer インスタンスを持つ プロパティは <code>unowned</code> として宣言されます。</p>
+<p>次は、先ほどとは少し違う例を見ます。Customer と CreditCard というクラスを見ていきます。Customer はクレジットカードを常に持っているかは分かりません。しかし、CreditCard クラスのインスタンスは常に顧客情報である Customer のインスタンスを持っています。つまり、CreditCard の Customer インスタンスを持つ プロパティは <code class="highlighter-rouge">unowned</code> として宣言されます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -355,61 +363,67 @@ number73!.tenant = john<span class="w">
 15
 16
 17
-18</pre></td><td class="code"><pre>class Customer {
-    let name: String
-    var card: CreditCard?
-    init(name: String) {
-        self.name = name
-    }
-    deinit { println("\(name) is being deinitialized") }
-}
+18</pre></td><td class="code"><pre><span class="n">class</span> <span class="n">Customer</span> <span class="p">{</span>
+    <span class="n">let</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span>
+    <span class="n">var</span> <span class="n">card</span><span class="o">:</span> <span class="n">CreditCard</span><span class="p">?</span>
+    <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="p">}</span>
+    <span class="n">deinit</span> <span class="p">{</span> <span class="n">println</span><span class="p">(</span><span class="s">"\(name) is being deinitialized"</span><span class="p">)</span> <span class="p">}</span>
+<span class="p">}</span>
  
-class CreditCard {
-    let number: Int
-    unowned let customer: Customer
-    init(number: Int, customer: Customer) {
-        self.number = number
-        self.customer = customer
-    }
-    deinit { println("Card #\(number) is being deinitialized") }
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">class</span> <span class="n">CreditCard</span> <span class="p">{</span>
+    <span class="n">let</span> <span class="n">number</span><span class="o">:</span> <span class="n">Int</span>
+    <span class="n">unowned</span> <span class="n">let</span> <span class="n">customer</span><span class="o">:</span> <span class="n">Customer</span>
+    <span class="n">init</span><span class="p">(</span><span class="n">number</span><span class="o">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">customer</span><span class="o">:</span> <span class="n">Customer</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">number</span> <span class="o">=</span> <span class="n">number</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">customer</span> <span class="o">=</span> <span class="n">customer</span>
+    <span class="p">}</span>
+    <span class="n">deinit</span> <span class="p">{</span> <span class="n">println</span><span class="p">(</span><span class="s">"Card #\(number) is being deinitialized"</span><span class="p">)</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>そして、それぞれ初期化していきます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre>var john: Customer?
-john = Customer(name: "John Appleseed")
-john!.card = CreditCard(number: 1234_5678_9012_3456, customer: john!)<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+3</pre></td><td class="code"><pre><span class="n">var</span> <span class="n">john</span><span class="o">:</span> <span class="n">Customer</span><span class="p">?</span>
+<span class="n">john</span> <span class="o">=</span> <span class="n">Customer</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="s">"John Appleseed"</span><span class="p">)</span>
+<span class="n">john</span><span class="o">!</span><span class="p">.</span><span class="n">card</span> <span class="o">=</span> <span class="n">CreditCard</span><span class="p">(</span><span class="n">number</span><span class="o">:</span> <span class="mi">1234</span><span class="n">_5678_9012_3456</span><span class="p">,</span> <span class="n">customer</span><span class="o">:</span> <span class="n">john</span><span class="o">!</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>この段階でこのようなイメージです。</p>
 
-<p><img src="/images/2014/06/9.png" alt=""></p>
+<p><img src="/images/2014/06/9.png" alt="" /></p>
 
 <p>そして、解放します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre>john = nil
-// prints "John Appleseed is being deinitialized"
-// prints "Card #1234567890123456 is being deinitialized"<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+3</pre></td><td class="code"><pre><span class="n">john</span> <span class="o">=</span> <span class="nb">nil</span>
+<span class="c1">// prints "John Appleseed is being deinitialized"
+// prints "Card #1234567890123456 is being deinitialized"
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>それぞれの <code>strong</code> 参照がなくなるので、両方のインスタンスが解放されます。</p>
+<p>それぞれの <code class="highlighter-rouge">strong</code> 参照がなくなるので、両方のインスタンスが解放されます。</p>
 
-<h4 id="5.-strong-reference-cycles-の解消---unowned-参照-と-implicitly-unwrapped-optional">5. Strong Reference Cycles の解消 - Unowned 参照 と Implicitly Unwrapped Optional</h4>
+<h4 id="5-strong-reference-cycles-の解消---unowned-参照-と-implicitly-unwrapped-optional">5. Strong Reference Cycles の解消 - Unowned 参照 と Implicitly Unwrapped Optional</h4>
 
 <p>今までの例では 2 つよくある Strong Reference Cycles のケースを見てきました。</p>
 
-<p>1 つ目は、Person-Apartment のケース。このケースの特徴は、2 つのプロパティ両方とも nil になることが許されてたということです。そのため、<code>weak</code> 参照が使われました。</p>
+<p>1 つ目は、Person-Apartment のケース。このケースの特徴は、2 つのプロパティ両方とも nil になることが許されてたということです。そのため、<code class="highlighter-rouge">weak</code> 参照が使われました。</p>
 
-<p>2 つ目は、Customer-CreditCard の例です。この例では、1 つのプロパティは nil になりえませんでした。そのため、<code>unowned</code> を使用しました。</p>
+<p>2 つ目は、Customer-CreditCard の例です。この例では、1 つのプロパティは nil になりえませんでした。そのため、<code class="highlighter-rouge">unowned</code> を使用しました。</p>
 
-<p>そして、このセクションでみるのが、2 つのプロパティどちらものが常に値を持つことが期待されている場合です。ここでは、Country と City というクラスを使って考えていきます。国も街も常に値を持ちます。つまり、nil になりません。この例では、<code>unowned</code> 参照をプロパティに設定し、もう 1 つのクラスのプロパティには、Implicitly Unwrapped Optional (<code>!</code>)を設定すると、どちらのプロパティも直接アクセスすることができ、Reference Cycles を防ぐこともできます。</p>
+<p>そして、このセクションでみるのが、2 つのプロパティどちらものが常に値を持つことが期待されている場合です。ここでは、Country と City というクラスを使って考えていきます。国も街も常に値を持ちます。つまり、nil になりません。この例では、<code class="highlighter-rouge">unowned</code> 参照をプロパティに設定し、もう 1 つのクラスのプロパティには、Implicitly Unwrapped Optional (<code class="highlighter-rouge">!</code>)を設定すると、どちらのプロパティも直接アクセスすることができ、Reference Cycles を防ぐこともできます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -425,54 +439,60 @@ john!.card = CreditCard(number: 1234_5678_9012_3456, customer: john!)<span class
 14
 15
 16
-17</pre></td><td class="code"><pre>class Country {
-    let name: String
-    let capitalCity: City!
-    init(name: String, capitalName: String) {
-        self.name = name
-        self.capitalCity = City(name: capitalName, country: self)
-    }
-}
+17</pre></td><td class="code"><pre><span class="n">class</span> <span class="n">Country</span> <span class="p">{</span>
+    <span class="n">let</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span>
+    <span class="n">let</span> <span class="n">capitalCity</span><span class="o">:</span> <span class="n">City</span><span class="o">!</span>
+    <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">capitalName</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">capitalCity</span> <span class="o">=</span> <span class="n">City</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">capitalName</span><span class="p">,</span> <span class="n">country</span><span class="o">:</span> <span class="n">self</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
  
-class City {
-    let name: String
-    unowned let country: Country
-    init(name: String, country: Country) {
-        self.name = name
-        self.country = country
-    }
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">class</span> <span class="n">City</span> <span class="p">{</span>
+    <span class="n">let</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span>
+    <span class="n">unowned</span> <span class="n">let</span> <span class="n">country</span><span class="o">:</span> <span class="n">Country</span>
+    <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">country</span><span class="o">:</span> <span class="n">Country</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">country</span> <span class="o">=</span> <span class="n">country</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>この 2 つのクラスを初期化するには、Country の Initializer を使用します。通常、Initializer の中から、self は渡せません。<a href="http://blog.kazuya.co/swift/2014/06/20/swift-doc-initialization2.html">以前</a> みたようにクラスの二段階初期化によるためです。しかし、Country の capitalCity プロパティを an implicitly unwrapped optional property として宣言します。これにより、nil がデフォルト値が設定されます。そして、Country クラスの name プロパティが設定され、初期化されたとみなされた後、self を使用して、City の Initializer に自身を渡すことができます。</p>
 
-<p>この an implicitly unwrapped optional property と <code>unowned</code> の組み合わせで、Strong Reference Cycles を発生させることなく、1 つステートメントで 2 つのインスタンスを作成できます。また、capitalCity は、unwrap (<code>!</code>) することなく、直接アクセスすることができます。</p>
+<p>この an implicitly unwrapped optional property と <code class="highlighter-rouge">unowned</code> の組み合わせで、Strong Reference Cycles を発生させることなく、1 つステートメントで 2 つのインスタンスを作成できます。また、capitalCity は、unwrap (<code class="highlighter-rouge">!</code>) することなく、直接アクセスすることができます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre>var country = Country(name: "Canada", capitalName: "Ottawa")
-println("\(country.name)'s capital city is called \(country.capitalCity.name)")
-// prints "Canada's capital city is called Ottawa"<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+3</pre></td><td class="code"><pre><span class="n">var</span> <span class="n">country</span> <span class="o">=</span> <span class="n">Country</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">"Canada"</span><span class="p">,</span> <span class="n">capitalName</span><span class="o">:</span> <span class="s">"Ottawa"</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="s">"\(country.name)'s capital city is called \(country.capitalCity.name)"</span><span class="p">)</span>
+<span class="c1">// prints "Canada's capital city is called Ottawa"
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
-<h4 id="6.-strong-reference-cycles-の解消---closures">6. Strong Reference Cycles の解消 - Closures</h4>
+<h4 id="6-strong-reference-cycles-の解消---closures">6. Strong Reference Cycles の解消 - Closures</h4>
 
-<p>クラスとクロージャの Strong Reference Cycles は、キャプチャリストというものを宣言して解決します。このキャプチャリストは、いつクロージャの本体の中で、参照をキャプチャするのかを定義します。このキャプチャする参照を <code>weak</code> や <code>unowned</code> として宣言します。</p>
+<p>クラスとクロージャの Strong Reference Cycles は、キャプチャリストというものを宣言して解決します。このキャプチャリストは、いつクロージャの本体の中で、参照をキャプチャするのかを定義します。このキャプチャする参照を <code class="highlighter-rouge">weak</code> や <code class="highlighter-rouge">unowned</code> として宣言します。</p>
 
-<p>キャプチャリストの各要素は、クラスへの参照と <code>weak</code> か <code>unowned</code> キーワードの組み合わせにより定義されます。この組み合わせは、<code>[]</code> の中に描かれます。複数ある場合には、カンマで区切られます。</p>
+<p>キャプチャリストの各要素は、クラスへの参照と <code class="highlighter-rouge">weak</code> か <code class="highlighter-rouge">unowned</code> キーワードの組み合わせにより定義されます。この組み合わせは、<code class="highlighter-rouge">[]</code> の中に描かれます。複数ある場合には、カンマで区切られます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
-4</pre></td><td class="code"><pre>@lazy var someClosure: (Int, String) -&gt; String = {
-    [unowned self] (index: Int, stringToProcess: String) -&gt; String in
-    // closure body goes here
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+4</pre></td><td class="code"><pre><span class="err">@lazy</span> <span class="n">var</span> <span class="n">someClosure</span><span class="o">:</span> <span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">unowned</span> <span class="nf">self</span><span class="p">]</span> <span class="p">(</span><span class="n">index</span><span class="o">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">stringToProcess</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="k">in</span>
+    <span class="c1">// closure body goes here
+</span><span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>クラスとクロージャが常に一緒に解放されるべき場合には、このキャプチャは <code>unowned</code> として宣言されます。それに対して、プログラムの中で参照が nil になる場合には、<code>weak</code> として宣言されます。</p>
+<p>クラスとクロージャが常に一緒に解放されるべき場合には、このキャプチャは <code class="highlighter-rouge">unowned</code> として宣言されます。それに対して、プログラムの中で参照が nil になる場合には、<code class="highlighter-rouge">weak</code> として宣言されます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -495,51 +515,57 @@ println("\(country.name)'s capital city is called \(country.capitalCity.name)")
 21
 22
 23
-24</pre></td><td class="code"><pre>class HTMLElement {
+24</pre></td><td class="code"><pre><span class="n">class</span> <span class="n">HTMLElement</span> <span class="p">{</span>
     
-    let name: String
-    let text: String?
+    <span class="n">let</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span>
+    <span class="n">let</span> <span class="n">text</span><span class="o">:</span> <span class="n">String</span><span class="p">?</span>
     
-    @lazy var asHTML: () -&gt; String = {
-        [unowned self] in
-        if let text = self.text {
-            return "&lt;\(self.name)&gt;\(text)&lt;/\(self.name)&gt;"
-        } else {
-            return "&lt;\(self.name) /&gt;"
-        }
-    }
+    <span class="err">@lazy</span> <span class="n">var</span> <span class="n">asHTML</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">unowned</span> <span class="nf">self</span><span class="p">]</span> <span class="k">in</span>
+        <span class="k">if</span> <span class="n">let</span> <span class="n">text</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">text</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="s">"&lt;\(self.name)&gt;\(text)&lt;/\(self.name)&gt;"</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="s">"&lt;\(self.name) /&gt;"</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
     
-    init(name: String, text: String? = nil) {
-        self.name = name
-        self.text = text
-    }
+    <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">text</span><span class="o">:</span> <span class="n">String</span><span class="p">?</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">)</span> <span class="err">{</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
+    <span class="err">}</span>
     
-    deinit {
-        println("\(name) is being deinitialized")
-    }
+    <span class="n">deinit</span> <span class="err">{</span>
+        <span class="n">println</span><span class="p">(</span><span class="s">"\(name) is being deinitialized"</span><span class="p">)</span>
+    <span class="err">}</span>
     
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="err">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>例えばこのように使われます。HTMLElement クラスは、あるクロージャへの参照を持っています。この場合には、<code>unowned</code> として宣言されています。</p>
+<p>例えばこのように使われます。HTMLElement クラスは、あるクロージャへの参照を持っています。この場合には、<code class="highlighter-rouge">unowned</code> として宣言されています。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre>var paragraph: HTMLElement? = HTMLElement(name: "p", text: "hello, world")
-println(paragraph!.asHTML())
-// prints "&lt;p&gt;hello, world&lt;/p&gt;"<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+3</pre></td><td class="code"><pre><span class="n">var</span> <span class="n">paragraph</span><span class="o">:</span> <span class="n">HTMLElement</span><span class="p">?</span> <span class="o">=</span> <span class="n">HTMLElement</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="s">"p"</span><span class="p">,</span> <span class="n">text</span><span class="o">:</span> <span class="s">"hello, world"</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="n">paragraph</span><span class="o">!</span><span class="p">.</span><span class="n">asHTML</span><span class="p">())</span>
+<span class="c1">// prints "&lt;p&gt;hello, world&lt;/p&gt;"
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>イメージとしてこんな感じ。</p>
 
-<p><img src="/images/2014/06/10.png" alt=""></p>
+<p><img src="/images/2014/06/10.png" alt="" /></p>
 
 <p>解放すると、</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre>paragraph = nil
-// prints "p is being deinitialized"<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="n">paragraph</span> <span class="o">=</span> <span class="nb">nil</span>
+<span class="c1">// prints "p is being deinitialized"
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 					</div>
 

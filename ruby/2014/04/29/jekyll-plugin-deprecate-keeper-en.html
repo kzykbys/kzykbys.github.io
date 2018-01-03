@@ -244,25 +244,32 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>I&#39;ve working on making my personal blog through Jekyll, recently. There I made a simple plugin which can guarantee a blog post&#39;s validity for certain terms. </p>
+						<p>I’ve working on making my personal blog through Jekyll, recently. There I made a simple plugin which can guarantee a blog post’s validity for certain terms.</p>
 
 <h3 id="how-to-use-it">How to use it</h3>
 
-<p>It&#39;s super easy to use, code below:</p>
+<p>It’s super easy to use, code below:</p>
 
 <blockquote>
-<blockquote>
-<p>{{ page.date | render_deprecate: 6 }}</p>
-</blockquote>
+  <blockquote>
+    <table>
+      <tbody>
+        <tr>
+          <td>{{ page.date</td>
+          <td>render_deprecate: 6 }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </blockquote>
 </blockquote>
 
-<p>For example, you can put this code on the uppermost of your post. This code will say &quot;This article might be too old&quot; after 6 months. Jekyll is a static blog engine. Hence, the time of the post passing 6 months is determined by the time you build the blog.</p>
+<p>For example, you can put this code on the uppermost of your post. This code will say “This article might be too old” after 6 months. Jekyll is a static blog engine. Hence, the time of the post passing 6 months is determined by the time you build the blog.</p>
 
 <h3 id="code">Code</h3>
 
-<p>Here is the code: </p>
+<p>Here is the code:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -286,30 +293,32 @@
 22
 23
 24</pre></td><td class="code"><pre><span class="k">module</span> <span class="nn">Jekyll</span>
-    <span class="k">module</span> <span class="nn">RenderDeprecate</span>
+	<span class="k">module</span> <span class="nn">RenderDeprecate</span>
  
-    <span class="k">def</span> <span class="nf">render_deprecate</span><span class="p">(</span><span class="n">pageTime</span><span class="p">,</span> <span class="n">numOfMonth</span><span class="p">)</span>
+  	<span class="k">def</span> <span class="nf">render_deprecate</span><span class="p">(</span><span class="n">pageTime</span><span class="p">,</span> <span class="n">numOfMonth</span><span class="p">)</span>
     
-        <span class="k">if</span> <span class="n">pageTime</span> <span class="o">==</span> <span class="kp">nil</span>
-            <span class="k">return</span>
-        <span class="k">end</span>
-     
-        <span class="n">currentMonths</span> <span class="o">=</span> <span class="p">(</span><span class="no">Time</span><span class="p">.</span><span class="nf">now</span><span class="p">.</span><span class="nf">year</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="no">Time</span><span class="p">.</span><span class="nf">now</span><span class="p">.</span><span class="nf">mon</span><span class="p">)</span>
-        <span class="n">articleMonths</span> <span class="o">=</span> <span class="p">(</span><span class="n">pageTime</span><span class="p">.</span><span class="nf">year</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">pageTime</span><span class="p">.</span><span class="nf">mon</span><span class="p">)</span>   
-        <span class="n">diffMonth</span>     <span class="o">=</span> <span class="n">currentMonths</span> <span class="o">-</span> <span class="n">articleMonths</span>
-        
-        <span class="k">if</span> <span class="n">diffMonth</span> <span class="o">&gt;=</span> <span class="n">numOfMonth</span>
-            <span class="s2">"&lt;span class=</span><span class="se">\"</span><span class="s2">deprecate</span><span class="se">\"</span><span class="s2">&gt;This article might be too old.&lt;/span&gt;"</span>
-        <span class="k">else</span>
-            <span class="s2">""</span>
-        <span class="k">end</span>
+	   	<span class="k">if</span> <span class="n">pageTime</span> <span class="o">==</span> <span class="kp">nil</span>
+		    <span class="k">return</span>
+	   	<span class="k">end</span>
+	 
+	   	<span class="n">currentMonths</span> <span class="o">=</span> <span class="p">(</span><span class="no">Time</span><span class="p">.</span><span class="nf">now</span><span class="p">.</span><span class="nf">year</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="no">Time</span><span class="p">.</span><span class="nf">now</span><span class="p">.</span><span class="nf">mon</span><span class="p">)</span>
+	   	<span class="n">articleMonths</span> <span class="o">=</span> <span class="p">(</span><span class="n">pageTime</span><span class="p">.</span><span class="nf">year</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">pageTime</span><span class="p">.</span><span class="nf">mon</span><span class="p">)</span>   
+	   	<span class="n">diffMonth</span>     <span class="o">=</span> <span class="n">currentMonths</span> <span class="o">-</span> <span class="n">articleMonths</span>
+	    
+	   	<span class="k">if</span> <span class="n">diffMonth</span> <span class="o">&gt;=</span> <span class="n">numOfMonth</span>
+		    <span class="s2">"&lt;span class=</span><span class="se">\"</span><span class="s2">deprecate</span><span class="se">\"</span><span class="s2">&gt;This article might be too old.&lt;/span&gt;"</span>
+	   	<span class="k">else</span>
+		    <span class="s2">""</span>
+	   	<span class="k">end</span>
  
-    <span class="k">end</span>
+  	<span class="k">end</span>
    
  <span class="k">end</span>
 <span class="k">end</span>
-<span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_filter</span><span class="p">(</span><span class="no">Jekyll</span><span class="o">::</span><span class="no">RenderDeprecate</span><span class="p">)</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_filter</span><span class="p">(</span><span class="no">Jekyll</span><span class="o">::</span><span class="no">RenderDeprecate</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 					</div>
 

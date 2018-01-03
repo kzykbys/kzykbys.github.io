@@ -246,19 +246,23 @@
 					<div class="post">
 						<p>Jekyll のバージョンを 2.0.3 に上げた際に、突然ビルドするできることができなくなってしまいました。その解決方法に関して記事です。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">jekyll</span> <span class="mi">2</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">3</span> <span class="o">|</span> <span class="no">Error</span><span class="p">:</span>  <span class="n">undefined</span> <span class="nb">method</span> <span class="sb">`deep_merge' for #&lt;Hash:0x007fd2644089c0&gt;</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">jekyll</span> <span class="mi">2</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">3</span> <span class="o">|</span> <span class="no">Error</span><span class="p">:</span>  <span class="n">undefined</span> <span class="nb">method</span> <span class="sb">`deep_merge' for #&lt;Hash:0x007fd2644089c0&gt;
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>のようにエラーが出てビルドすることができなくなってしまいました。--trace すると、</p>
+<p>のようにエラーが出てビルドすることができなくなってしまいました。–trace すると、</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">monthly_archive_plugin</span><span class="p">.</span><span class="nf">rb</span><span class="p">:</span><span class="mi">121</span><span class="ss">:in</span> <span class="sb">`to_liquid': undefined method `</span><span class="n">deep_merge</span><span class="err">'</span> <span class="k">for</span> <span class="c1">#&lt;Hash:0x007f9303cf8490&gt; (NoMethodError)</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">monthly_archive_plugin</span><span class="p">.</span><span class="nf">rb</span><span class="p">:</span><span class="mi">121</span><span class="ss">:in</span> <span class="sb">`to_liquid': undefined method `</span><span class="n">deep_merge</span><span class="err">'</span> <span class="k">for</span> <span class="c1">#&lt;Hash:0x007f9303cf8490&gt; (NoMethodError)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>自作のアーカイブを作成するプラグインの中にある deep_merge というメソッドが原因のようです。v2 以降(?)では、動かなくなってしまったので、deep_merge を単に、merge と変更すれば動くようになります。</p>
 
 <p>例えば、</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -268,12 +272,14 @@
                         <span class="s1">'content'</span> <span class="o">=&gt;</span> <span class="nb">self</span><span class="p">.</span><span class="nf">content</span><span class="p">,</span>
                         <span class="s1">'year'</span>    <span class="o">=&gt;</span> <span class="vi">@year</span>
                        <span class="p">})</span>
-<span class="k">end</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>といったコードを、</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -283,8 +289,10 @@
                    <span class="s1">'content'</span> <span class="o">=&gt;</span> <span class="nb">self</span><span class="p">.</span><span class="nf">content</span><span class="p">,</span>
                    <span class="s1">'year'</span>    <span class="o">=&gt;</span> <span class="vi">@year</span>
                   <span class="p">})</span>
-<span class="k">end</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>こんな感じです。</p>
 

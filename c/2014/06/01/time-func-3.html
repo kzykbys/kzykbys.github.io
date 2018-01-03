@@ -246,7 +246,7 @@
 					<div class="post">
 						<p><a href="http://blog.kazuya.co/c/2014/06/01/time-func-2.html">前回</a>、<a href="http://blog.kazuya.co/c/2014/06/01/time-func-1.html">前々回</a> と time.h の関数を見てきました。この記事は、その中でも一番柔軟に使用できる strftime() の使い方です。この strftime とは、string format time のことです。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -369,46 +369,48 @@
 <span class="p">}</span>
 
 <span class="cm">/* Output:
-    strftime %c format
-    -------------------------
-     Sun Jun  1 17:13:31 2014
+	strftime %c format
+	-------------------------
+	 Sun Jun  1 17:13:31 2014
 
-    strftime %A, %B %d, %H:%M format
-    --------------------------------
-     Sunday, June 01, 17:13
+	strftime %A, %B %d, %H:%M format
+	--------------------------------
+	 Sunday, June 01, 17:13
 
-    strftime %a, %b %d, %H:%M format
-    --------------------------------
-     Sun, Jun 01, 17:13
+	strftime %a, %b %d, %H:%M format
+	--------------------------------
+	 Sun, Jun 01, 17:13
 
-    strftime %a, %b %d, %I:%M %p format
-    -----------------------------------
-     Sun, Jun 01, 05:13 PM
+	strftime %a, %b %d, %I:%M %p format
+	-----------------------------------
+	 Sun, Jun 01, 05:13 PM
 
-    strftime %a, %b %d, %I:%M %p, %Y format
-    ---------------------------------------
-     Sun, Jun 01, 05:13 PM, 2014
+	strftime %a, %b %d, %I:%M %p, %Y format
+	---------------------------------------
+	 Sun, Jun 01, 05:13 PM, 2014
 
-    strftime %a, %b %d, %I:%M %p, %y format
-    ---------------------------------------
-     Sun, Jun 01, 05:13 PM, 14
+	strftime %a, %b %d, %I:%M %p, %y format
+	---------------------------------------
+	 Sun, Jun 01, 05:13 PM, 14
 
-    strftime %A, %b %d, %I:%M %p, %Y format
-    ---------------------------------------
-     Sunday, Jun 01 05:13 PM 2014
+	strftime %A, %b %d, %I:%M %p, %Y format
+	---------------------------------------
+	 Sunday, Jun 01 05:13 PM 2014
 
-    Program ended with exit code: 0
-*/</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+	Program ended with exit code: 0
+*/</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <ul>
-<li>%c は　asctime() や ctime() と似たようなフォーマットを返します。<br></li>
-<li>%A と %a は曜日の指定です。[full spelled-out か 3文字]<br></li>
-<li>%B と %b は月の名前の指定。[full spelled-out か 3文字]<br></li>
-<li>%d は日付。<br></li>
-<li>%Y と %y は年。[4桁か下2桁]<br></li>
-<li>%H と %I は、24時間表示（%H）か 12時間表示（%I）<br></li>
-<li>%p は、PM/AM。<br></li>
+  <li>%c は　asctime() や ctime() と似たようなフォーマットを返します。</li>
+  <li>%A と %a は曜日の指定です。[full spelled-out か 3文字]</li>
+  <li>%B と %b は月の名前の指定。[full spelled-out か 3文字]</li>
+  <li>%d は日付。</li>
+  <li>%Y と %y は年。[4桁か下2桁]</li>
+  <li>%H と %I は、24時間表示（%H）か 12時間表示（%I）</li>
+  <li>%p は、PM/AM。</li>
 </ul>
 
 					</div>

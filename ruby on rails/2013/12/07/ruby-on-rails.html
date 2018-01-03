@@ -250,10 +250,12 @@
 
 <p>この多対多の関係を作成するには、まず、中間モデルを作成し、この中間モデルがそれぞれのレコードで対応するアイテムとカテゴリを保存しておきます。そのため、まず下記のようにその中間モデルを作ります。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="err">$</span> <span class="n">rails</span> <span class="n">g</span> <span class="n">migration</span> <span class="no">CreateCategoryItems</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="err">$</span> <span class="n">rails</span> <span class="n">g</span> <span class="n">migration</span> <span class="no">CreateCategoryItems</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -275,10 +277,12 @@
       <span class="n">t</span><span class="p">.</span><span class="nf">datetime</span> <span class="ss">:update_at</span>
     <span class="k">end</span>
   <span class="k">end</span>
-<span class="k">end</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -286,39 +290,47 @@
 <span class="k">class</span> <span class="nc">CategoryItem</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
   <span class="n">belongs_to</span> <span class="ss">:item</span>
   <span class="n">belongs_to</span> <span class="ss">:category</span>
-<span class="k">end</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <h3 id="各モデルの関連付け">各モデルの関連付け</h3>
 
-<p>上記のように中間モデルを作成したら、次は具体的な多対多の関係になる２つのモデルを関連付けていきます。 </p>
+<p>上記のように中間モデルを作成したら、次は具体的な多対多の関係になる２つのモデルを関連付けていきます。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4</pre></td><td class="code"><pre><span class="c1"># item.rb</span>
 <span class="c1"># Relationship with Category</span>
   <span class="n">has_many</span> <span class="ss">:category_items</span> 
-  <span class="n">has_many</span> <span class="ss">:categories</span><span class="p">,</span> <span class="ss">:through</span> <span class="o">=&gt;</span> <span class="ss">:category_items</span> <span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+  <span class="n">has_many</span> <span class="ss">:categories</span><span class="p">,</span> <span class="ss">:through</span> <span class="o">=&gt;</span> <span class="ss">:category_items</span> 
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4</pre></td><td class="code"><pre><span class="c1"># major.rb</span>
 <span class="c1"># Relationship with Item</span>
   <span class="n">has_many</span> <span class="ss">:category_items</span> 
-  <span class="n">has_many</span> <span class="ss">:items</span><span class="p">,</span> <span class="ss">:through</span> <span class="o">=&gt;</span> <span class="ss">:category_items</span> <span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+  <span class="n">has_many</span> <span class="ss">:items</span><span class="p">,</span> <span class="ss">:through</span> <span class="o">=&gt;</span> <span class="ss">:category_items</span> 
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>これだけで多対多のモデル関係ができました。実際に成功したか確認するには、コンソールで、下記のように入力し、エラーがでなければ大丈夫でしょう。マイグレーションを適応するのを忘れずに。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3</pre></td><td class="code"><pre><span class="err">$</span> <span class="n">rails</span> <span class="n">c</span> 
 <span class="err">$</span> <span class="n">i</span> <span class="o">=</span> <span class="no">Item</span><span class="p">.</span><span class="nf">first</span>
-<span class="err">$</span> <span class="n">i</span><span class="p">.</span><span class="nf">categories</span><span class="p">.</span><span class="nf">count</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="err">$</span> <span class="n">i</span><span class="p">.</span><span class="nf">categories</span><span class="p">.</span><span class="nf">count</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 					</div>
 

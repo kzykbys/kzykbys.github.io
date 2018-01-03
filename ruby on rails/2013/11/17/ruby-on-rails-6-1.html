@@ -252,75 +252,85 @@
 <p>モデルを作成するときのモデル名は単数形。対して、コントローラーは複数形。この generate コマンドの結果として、マイグレーションファイルが作成される。このファイル名の先頭には生成されたときのタイムスタンプも入っている。開発者同士のコンフリクトを防ぐため。</p>
 
 <blockquote>
-<blockquote>
-<p>$ rails generate model User name:string email:string</p>
-</blockquote>
+  <blockquote>
+    <p>$ rails generate model User name:string email:string</p>
+  </blockquote>
 </blockquote>
 
 <p>マイグレーションを実行するには、</p>
 
 <blockquote>
-<blockquote>
-<p>$ bundle exec rake db:migrate</p>
-</blockquote>
+  <blockquote>
+    <p>$ bundle exec rake db:migrate</p>
+  </blockquote>
 </blockquote>
 
 <p>ほとんどのマイグレーションは可逆。db:rollback というRakeタスクで変更を取り消せる。これを 「マイグレーションの取り消し (migrate down)」と呼ぶ。</p>
 
 <blockquote>
-<blockquote>
-<p>$ bundle exec rake db:rollback # migrate down</p>
-</blockquote>
+  <blockquote>
+    <p>$ bundle exec rake db:rollback # migrate down</p>
+  </blockquote>
 </blockquote>
 
 <p>コンソールをサンドボックスで呼び出すと、そのセッションのデータベースへの変更は終了時にロールバックされる。</p>
 
 <blockquote>
-<blockquote>
-<p>$ rails console —sandbox</p>
-</blockquote>
+  <blockquote>
+    <p>$ rails console —sandbox</p>
+  </blockquote>
 </blockquote>
 
 <p>以下のコマンドは、単に開発データベースのデータモデルdb/development.sqlite3がテストデータベースdb/test.sqlite3に反映されるようにするもの。マイグレーション後でたまにRakeタスクが実行できなくなることがあり、多くの人がこれに戸惑います。さらに、テストデータベースはたまに壊れることがあるので、その場合はリセットが必要です。もしテストスイートが理由もなく壊れるようなことがあれば、rake test:prepareを実行して、この問題が解決するか確認。</p>
 
-<h3 id="バリデーション-(-app/models/user.rb-)">バリデーション ( app/models/user.rb )</h3>
+<h3 id="バリデーション--appmodelsuserrb-">バリデーション ( app/models/user.rb )</h3>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2</pre></td><td class="code"><pre><span class="c1"># プレゼンス確認</span>
-<span class="n">validates</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">presence: </span><span class="kp">true</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">validates</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">presence: </span><span class="kp">true</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>presence: true はハッシュ。メソッドの最後の引数のハッシュは波括弧が要らない。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2</pre></td><td class="code"><pre><span class="c1"># 長さのチェック </span>
-<span class="n">validates</span> <span class="ss">:name</span><span class="p">,</span>  <span class="ss">presence: </span><span class="kp">true</span><span class="p">,</span> <span class="ss">length: </span><span class="p">{</span> <span class="ss">maximum: </span><span class="mi">50</span> <span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">validates</span> <span class="ss">:name</span><span class="p">,</span>  <span class="ss">presence: </span><span class="kp">true</span><span class="p">,</span> <span class="ss">length: </span><span class="p">{</span> <span class="ss">maximum: </span><span class="mi">50</span> <span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3</pre></td><td class="code"><pre><span class="c1"># メールアドレスのチェック </span>
 <span class="no">VALID_EMAIL_REGEX</span> <span class="o">=</span> <span class="sr">/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i</span>
-<span class="n">validates</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">presence: </span><span class="kp">true</span><span class="p">,</span> <span class="ss">format: </span><span class="p">{</span> <span class="ss">with: </span><span class="no">VALID_EMAIL_REGEX</span> <span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">validates</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">presence: </span><span class="kp">true</span><span class="p">,</span> <span class="ss">format: </span><span class="p">{</span> <span class="ss">with: </span><span class="no">VALID_EMAIL_REGEX</span> <span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>素晴らしい正規表現エディタ <a href="http://www.rubular.com/">http://www.rubular.com/</a></p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2</pre></td><td class="code"><pre><span class="c1"># 一意性のチェック </span>
-<span class="ss">uniqueness: </span><span class="p">{</span> <span class="ss">case_sensitive: </span><span class="kp">false</span> <span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="ss">uniqueness: </span><span class="p">{</span> <span class="ss">case_sensitive: </span><span class="kp">false</span> <span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>上記のようなチェックだけでは、アプリケーションのトラフィックが多いとき等に、いくつかのリクエスとがなされ、ほぼ同時にDBに登録されることにより、DB上に同一のレコードが残る可能性がある。これを防ぐには、一意性を保証したいDBのカラムにインデックスを作成し、そのインデックスが一意であることを要求することで解決することができる。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2</pre></td><td class="code"><pre><span class="c1"># この例では email column にインデックスを追加</span>
-<span class="err">$</span> <span class="n">rails</span> <span class="n">generate</span> <span class="n">migration</span> <span class="n">add_index_to_users_email</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="err">$</span> <span class="n">rails</span> <span class="n">generate</span> <span class="n">migration</span> <span class="n">add_index_to_users_email</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>これにより前回のように自動でマイグレーションが作成される。しかし、この場合は自ら未定義のメソッドを定義する必要がある。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -328,17 +338,21 @@
   <span class="k">def</span> <span class="nf">change</span>
     <span class="n">add_index</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">unique: </span><span class="kp">true</span>
   <span class="k">end</span>
-<span class="k">end</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>そしてDBにマイグレーションの適応をする。</p>
 
 <p>さらにメールアドレスの一意性を保証するために、すべてのアドレスを小文字に変換する。これはDBが常に小文字大文字を区別しているとは限らないから。このためにコールバックという、Active Recordオブジェクトが持続している間のどこかの時点で、Active Recordオブジェクトに呼び出してもらうメソッドを使う。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2</pre></td><td class="code"><pre><span class="c1"># app/models/user.rb</span>
-<span class="n">before_save</span> <span class="p">{</span> <span class="nb">self</span><span class="p">.</span><span class="nf">email</span> <span class="o">=</span> <span class="n">email</span><span class="p">.</span><span class="nf">downcase</span> <span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">before_save</span> <span class="p">{</span> <span class="nb">self</span><span class="p">.</span><span class="nf">email</span> <span class="o">=</span> <span class="n">email</span><span class="p">.</span><span class="nf">downcase</span> <span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 					</div>
 

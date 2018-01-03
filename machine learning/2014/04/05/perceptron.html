@@ -248,7 +248,7 @@
 
 <h3 id="perceptron-の基本コンセプト">Perceptron の基本コンセプト</h3>
 
-<p><img src="http://3.bp.blogspot.com/-CLFNoOju93E/Uz-L9I4xe6I/AAAAAAAAARY/nZ6f5ZJHUfI/s1600/300px-Perceptron.svg.png" alt=""></p>
+<p><img src="http://3.bp.blogspot.com/-CLFNoOju93E/Uz-L9I4xe6I/AAAAAAAAARY/nZ6f5ZJHUfI/s1600/300px-Perceptron.svg.png" alt="" /></p>
 
 <p>まずは、このアルゴリズムを理解することに必要な基本的な用語等の整理をしてみます。上記の画像のように、Xセットの要素の x1…xN とインプットを取ります。そして、それらに対応した w1…wN とドット積 (dot product) により、バイナリ(+1 か -1)のアウトプットを出します。Perceptron は、Supervised なので、インプットに対応した正しいアウトプットは事前に分かっています。全てのSuperised 関連の学習がそうであるように、インプットにより学習し、未知のアウトプットを予測します。その y を求めるためには、正しい W(w1…N) を求めます。つまり、Perceptron は訓練フェーズを通じて、W を求めることが肝になります。f(x) は numpy.sign(x) 関数を使用します。この関数は、x が 0 より小さいと -1 を返し、x が 0 であれば 0、x が 0 より大きいと +1 を返します。</p>
 
@@ -256,7 +256,7 @@
 
 <p>簡単に表に表示できるように、二次元の[-1, 1] × [-1, 1] の範囲に インプットを限定して実装します。コードは、<a href="http://datasciencelab.wordpress.com/2014/01/10/machine-learning-classics-the-perceptron/">このサイト</a>のプログラムを少しシンプルにしたものです。</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-python highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -296,12 +296,14 @@
             <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">])</span>
             <span class="n">s</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">V</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
             <span class="n">X</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
-        <span class="k">return</span> <span class="n">X</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+        <span class="k">return</span> <span class="n">X</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>まずは、ランダムにインプットを作成します。求めるべきファンクションは np.sign(self.V.T.dot(x)) ですね。よって s には、+1 か -1 が返されます。N はサンプルのサイズです。この例では、あまり考慮に入れていませんが、bias を別に定義することがあります。x0 に固定の 1 を保存してるため、w0 を bias として置き換え、bias を簡単に考慮することができます。</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-python highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -371,35 +373,40 @@
             <span class="n">w</span> <span class="o">+=</span> <span class="n">s</span><span class="o">*</span><span class="n">x</span>
  
         <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">w</span>
-        <span class="k">return</span> <span class="n">it</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+        <span class="k">return</span> <span class="n">it</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>この部分がこのアルゴリズムの肝になります。pla 関数がその本体です。まずは、調整する W をゼロに初期化します。インプットデータセットが全て正しく分類されるまで while 文で回します。classification_error 関数でエラーがあるか確認し、ループの条件を確認。もしエラーがありループが継続される場合には、choose_miscl_point 関数で間違って分類されている点をランダムに選び、W を更新します。この繰り返しで、正しく分類されるように W 調整し、終了です。実行するには、</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-python highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4</pre></td><td class="code"><pre><span class="c"># Execute percetron algorithm</span>
 <span class="n">p</span> <span class="o">=</span> <span class="n">Perceptron</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">p</span><span class="o">.</span><span class="n">pla</span><span class="p">()</span>
-<span class="n">p</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">generate_points</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="n">p</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">p</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">generate_points</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="n">p</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>とすれば OK です。</p>
 
-<p><img src="http://2.bp.blogspot.com/-DorLWvft0LU/Uz-NGJR_pPI/AAAAAAAAARk/tzeMyhEFHVc/s1600/Screen+Shot+2014-04-04+at+9.18.40+PM.png" alt=""></p>
+<p><img src="http://2.bp.blogspot.com/-DorLWvft0LU/Uz-NGJR_pPI/AAAAAAAAARk/tzeMyhEFHVc/s1600/Screen+Shot+2014-04-04+at+9.18.40+PM.png" alt="" /></p>
 
 <p>上記のような結果が得られると思います。実際に結果は、ランダムに生成しているポイントによるので、実行する度に画像とは大きく見栄えが変わります。黒い線はターゲットとなる関数です。理想とする結果です。これを推定した結果が、緑色の線です。トレーニングデータの量を増やすことにより、より精度の高い結果が得られます。黒い理想の線は、全ての点を正確に分類しています。しかし、学習の結果得た緑の線は、大きな点（インプット）は正確に分離していますが、全ての点を綺麗に分類しているわけではありません。これが学習のエラーです。おもしろいですね。リンク先のコードを自分で何度も実行し、コードを変えたりするとたくさん発見があり勉強になりますよ。</p>
 
-<hr>
+<hr />
 
 <p>参考</p>
 
 <iframe frameborder="0" marginheight="0" marginwidth="0" scrolling="no" src="http://rcm-fe.amazon-adsystem.com/e/cm?t=komchax-22&amp;o=9&amp;p=8&amp;l=as1&amp;asins=0262018020&amp;ref=tf_til&amp;fc1=000000&amp;IS2=1&amp;lt1=_blank&amp;m=amazon&amp;lc1=0000FF&amp;bc1=000000&amp;bg1=FFFFFF&amp;f=ifr" style="height: 240px; width: 120px;"></iframe>
 
-<p><a href="http://en.wikipedia.org/wiki/Perceptron">http://en.wikipedia.org/wiki/Perceptron</a><br />
-<a href="http://datasciencelab.wordpress.com/2014/01/10/machine-learning-classics-the-perceptron/">http://datasciencelab.wordpress.com/2014/01/10/machine-learning-classics-the-perceptron/</a><br />
-<a href="http://glowingpython.blogspot.com/2011/10/perceptron.html">http://glowingpython.blogspot.com/2011/10/perceptron.html</a></p>
+<p>http://en.wikipedia.org/wiki/Perceptron<br />
+http://datasciencelab.wordpress.com/2014/01/10/machine-learning-classics-the-perceptron/<br />
+http://glowingpython.blogspot.com/2011/10/perceptron.html</p>
+
 
 					</div>
 

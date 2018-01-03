@@ -245,14 +245,14 @@
 
 					<div class="post">
 						<blockquote>
-<blockquote>
-<p><span class="deprecate">This article might be too old.</span>  </p>
-</blockquote>
+  <blockquote>
+    <p><span class="deprecate">This article might be too old.</span></p>
+  </blockquote>
 </blockquote>
 
-<p>Jekyll で作成したサイトを Github Pages に公開してみました。Github Pages は Heroku のように簡単にデプロイすることができ、何の問題もありませんでした。カスタムドメインの設定も比較的スムーズに設定が完了し、本当に素晴らしかったです。いつもドメインを設定するのが億劫なタイプなので、備忘録として残しておきます。今回は、サブドメインとして blog.*** という設定をします。  </p>
+<p>Jekyll で作成したサイトを Github Pages に公開してみました。Github Pages は Heroku のように簡単にデプロイすることができ、何の問題もありませんでした。カスタムドメインの設定も比較的スムーズに設定が完了し、本当に素晴らしかったです。いつもドメインを設定するのが億劫なタイプなので、備忘録として残しておきます。今回は、サブドメインとして blog.*** という設定をします。</p>
 
-<h3 id="お名前.com-の設定">お名前.com の設定</h3>
+<h3 id="お名前com-の設定">お名前.com の設定</h3>
 
 <p>まずは、お名前.com での設定を追加します。<strong>ドメイン設定ー＞DNS関連機能の設定ー＞ドメイン選択</strong> と進み、CNAME の設定。</p>
 
@@ -261,7 +261,7 @@
 <p>ホスト名は、
 サブドメイン名です。www や blog です。www.example.com や blog.example.com のようなURLになります。</p>
 
-<p>バリューは、<br>
+<p>バリューは、		
 username.github.io です。username は、github のユーザー名です。</p>
 
 <h3 id="github-側の設定">Github 側の設定</h3>
@@ -269,20 +269,20 @@ username.github.io です。username は、github のユーザー名です。</p
 <p>Github Pages のルートディレクトリに CNAME というファイル名を作成します。そして、その中に blog.kazuya.co と独自ドメインをそのまま書き込み、デプロイすれば完了です。</p>
 
 <blockquote>
-<blockquote>
-<p>$ dig blog.kazuya.co +nostats +nocomments +nocmd</p>
-</blockquote>
+  <blockquote>
+    <p>$ dig blog.kazuya.co +nostats +nocomments +nocmd</p>
+  </blockquote>
 </blockquote>
 
 <p>とコマンドを叩き、</p>
 
-<p><img src="/images/2014/05/1.png" alt=""></p>
+<p><img src="/images/2014/05/1.png" alt="" /></p>
 
-<p>こんなのが出れば設定完了のはず。お名前.com の設定はすぐに完了しましたが、実際に Github Pages で変更が確認されるまで少し時間がかかりました。 </p>
+<p>こんなのが出れば設定完了のはず。お名前.com の設定はすぐに完了しましたが、実際に Github Pages で変更が確認されるまで少し時間がかかりました。</p>
 
 <h3 id="参考">参考</h3>
 
-<p><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages#subdomains">https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages#subdomains</a><br>
+<p><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages#subdomains">https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages#subdomains</a><br />
 <a href="http://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14114226029">http://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14114226029</a></p>
 
 					</div>

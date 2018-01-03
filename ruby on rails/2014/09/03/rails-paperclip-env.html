@@ -244,13 +244,13 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>Paperclipを使用していて、開発環境では画像の保存先を <code>:rails_root/public/</code> のようにして、テスト環境やプロダクション環境では S3 等の個別の設定をしたいといった場合がある思います。今回はその方法に関して。</p>
+						<p>Paperclipを使用していて、開発環境では画像の保存先を <code class="highlighter-rouge">:rails_root/public/</code> のようにして、テスト環境やプロダクション環境では S3 等の個別の設定をしたいといった場合がある思います。今回はその方法に関して。</p>
 
 <h4 id="新規モジュールの作成">新規モジュールの作成</h4>
 
-<p>まずは、個別に設定するために、<code>app/models/shared/attachment_helper.rb</code> に以下のようなファイルを作成します。</p>
+<p>まずは、個別に設定するために、<code class="highlighter-rouge">app/models/shared/attachment_helper.rb</code> に以下のようなファイルを作成します。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -326,12 +326,14 @@
       <span class="k">end</span>
     <span class="k">end</span>
   <span class="k">end</span>
-<span class="k">end</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p><code>Rails.env</code> の値によって Paperclip の設定を変更しています。そして、モデルの中では、モジュールをインクルードし、上記の <code>has_attachment</code> を使用します。</p>
+<p><code class="highlighter-rouge">Rails.env</code> の値によって Paperclip の設定を変更しています。そして、モデルの中では、モジュールをインクルードし、上記の <code class="highlighter-rouge">has_attachment</code> を使用します。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -359,14 +361,16 @@
   <span class="k">def</span> <span class="nf">to_param</span>
     <span class="n">lesson_identifer</span>
   <span class="k">end</span>
-<span class="k">end</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>これで完了。</p>
 
 <h4 id="参考">参考</h4>
 
-<p><a href="http://stackoverflow.com/questions/2562249/how-can-i-set-paperclips-storage-mechanism-based-on-the-current-rails-environme">How can I set paperclip&#39;s storage mechanism based on the current Rails environment?</a></p>
+<p><a href="http://stackoverflow.com/questions/2562249/how-can-i-set-paperclips-storage-mechanism-based-on-the-current-rails-environme">How can I set paperclip’s storage mechanism based on the current Rails environment?</a></p>
 
 					</div>
 

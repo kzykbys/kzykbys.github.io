@@ -246,28 +246,33 @@
 					<div class="post">
 						<p>細かいですが、ちょっと個人的にメモしておきたい違い。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3</pre></td><td class="code"><pre><span class="kt">char</span> <span class="o">*</span><span class="n">s</span> <span class="o">=</span> <span class="s">"abcdef"</span><span class="p">;</span>
 <span class="n">strcpy</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s">"ghijkl"</span><span class="p">);</span>
-<span class="n">printf</span><span class="p">(</span><span class="s">"%s"</span><span class="p">,</span><span class="n">s</span><span class="p">);</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">printf</span><span class="p">(</span><span class="s">"%s"</span><span class="p">,</span><span class="n">s</span><span class="p">);</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>このコードは動きません。理由は、&quot;abcdef&quot; が string literal で read-only のため。s ポインターはこの string literal を指しているので、strcpy() に渡しても、エラーになります。つまり、s は、</p>
+<p>このコードは動きません。理由は、”abcdef” が string literal で read-only のため。s ポインターはこの string literal を指しているので、strcpy() に渡しても、エラーになります。つまり、s は、</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">s</span> <span class="o">=</span> <span class="s">"abcdef"</span><span class="p">;</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
-
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">s</span> <span class="o">=</span> <span class="s">"abcdef"</span><span class="p">;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 <p>と同じ。</p>
 
 <p>それに対して、</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3</pre></td><td class="code"><pre><span class="kt">char</span> <span class="n">s</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"abcdef"</span><span class="p">;</span>
 <span class="n">strcpy</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s">"ghijkl"</span><span class="p">);</span>
-<span class="n">printf</span><span class="p">(</span><span class="s">"%s"</span><span class="p">,</span><span class="n">s</span><span class="p">);</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">printf</span><span class="p">(</span><span class="s">"%s"</span><span class="p">,</span><span class="n">s</span><span class="p">);</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>は期待した通りの結果を返します。こちらの s は、char の配列を定義してます。そして、これはスタックにロードされるので、変更可能。</p>
 

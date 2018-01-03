@@ -244,7 +244,7 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。  </p>
+						<p>iBooks にある “The Swift Programming Language” の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。</p>
 
 <p>今回は、Automatic Reference Counting に関して。</p>
 
@@ -252,15 +252,15 @@
 
 <p>Swift はメモリ管理をする際に、ARC を使用します。基本的にメモリ管理は Swift に委ねて問題ありません。</p>
 
-<h4 id="1.-arc-概要">1. ARC 概要</h4>
+<h4 id="1-arc-概要">1. ARC 概要</h4>
 
 <p>メモリ管理は、 リファレンスタイプであるクラスで特に問題になります。クラスのインスタンスが作成されるたびに、ARC は新しくメモリを割り当てます。そして、必要がなくなった際に、解放され再利用されます。もし、解放された後、そのインスタンスを使用とすれば、アプリはほとんどの場合クラッシュします。</p>
 
-<p>このため、インスタンスが必要がなくなったタイミングを判定する必要があります。ARC は、いくつのプロパティ・コンスタント・変数がそのインスタンスのリファレンスを持っているかを数えています。少なくとも 1 つからでも参照されている場合、そのインスタンスは解放されることはありません。このプロパティ・コンスタント・変数がインスタンスを参照していることを <code>strong reference</code> といいます。</p>
+<p>このため、インスタンスが必要がなくなったタイミングを判定する必要があります。ARC は、いくつのプロパティ・コンスタント・変数がそのインスタンスのリファレンスを持っているかを数えています。少なくとも 1 つからでも参照されている場合、そのインスタンスは解放されることはありません。このプロパティ・コンスタント・変数がインスタンスを参照していることを <code class="highlighter-rouge">strong reference</code> といいます。</p>
 
 <p>基本的な ARC の動作を例と一緒にみていきます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -269,70 +269,82 @@
 7
 8
 9
-10</pre></td><td class="code"><pre>class Person {
-    let name: String
-    init(name: String) {
-        self.name = name
-        println("\(name) is being initialized")
-    }
-    deinit {
-        println("\(name) is being deinitialized")
-    }
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+10</pre></td><td class="code"><pre><span class="n">class</span> <span class="n">Person</span> <span class="p">{</span>
+    <span class="n">let</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span>
+    <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="n">println</span><span class="p">(</span><span class="s">"\(name) is being initialized"</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="n">deinit</span> <span class="p">{</span>
+        <span class="n">println</span><span class="p">(</span><span class="s">"\(name) is being deinitialized"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>とてもシンプルなクラスです。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre>var reference1: Person?
-var reference2: Person?
-var reference3: Person?<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+3</pre></td><td class="code"><pre><span class="n">var</span> <span class="n">reference1</span><span class="o">:</span> <span class="n">Person</span><span class="p">?</span>
+<span class="n">var</span> <span class="n">reference2</span><span class="p">:</span> <span class="n">Person</span><span class="p">?</span>
+<span class="n">var</span> <span class="n">reference3</span><span class="p">:</span> <span class="n">Person</span><span class="p">?</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>3 つの Optional な変数を定義します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre>reference1 = Person(name: "John Appleseed")
-// prints "John Appleseed is being initialized<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="n">reference1</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">"John Appleseed"</span><span class="p">)</span>
+<span class="c1">// prints "John Appleseed is being initialized
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>新しいインスタンスが作成されました。<code>init</code> により、初期化されたことがアウトプットされます。この段階で、<code>reference1</code> から Person クラスのインスタンスに対しての <code>strong reference</code> があると言うことができます。少なくとも 1 つの <code>strong reference</code> があれば、メモリが解放されることはないので、このインスタンスはメモリ上にまだ存在します。</p>
+<p>新しいインスタンスが作成されました。<code class="highlighter-rouge">init</code> により、初期化されたことがアウトプットされます。この段階で、<code class="highlighter-rouge">reference1</code> から Person クラスのインスタンスに対しての <code class="highlighter-rouge">strong reference</code> があると言うことができます。少なくとも 1 つの <code class="highlighter-rouge">strong reference</code> があれば、メモリが解放されることはないので、このインスタンスはメモリ上にまだ存在します。</p>
 
 <p>そして、</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre>reference2 = reference1
-reference3 = reference1<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="n">reference2</span> <span class="o">=</span> <span class="n">reference1</span>
+<span class="n">reference3</span> <span class="o">=</span> <span class="n">reference1</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>この代入により、3 つの <code>strong reference</code> がこの 1 つのインスタンスに作られました。</p>
+<p>この代入により、3 つの <code class="highlighter-rouge">strong reference</code> がこの 1 つのインスタンスに作られました。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre>reference1 = nil
-reference2 = nil<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="n">reference1</span> <span class="o">=</span> <span class="nb">nil</span>
+<span class="n">reference2</span> <span class="o">=</span> <span class="nb">nil</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>上記のコードで、2 つの <code>strong reference</code> がなくなりました。最初にアサインされた <code>reference1</code> が削除されても、まだ <code>reference3</code> からの <code>strong reference</code> が残っているので、このインスタンスへのメモリは解放されません。</p>
+<p>上記のコードで、2 つの <code class="highlighter-rouge">strong reference</code> がなくなりました。最初にアサインされた <code class="highlighter-rouge">reference1</code> が削除されても、まだ <code class="highlighter-rouge">reference3</code> からの <code class="highlighter-rouge">strong reference</code> が残っているので、このインスタンスへのメモリは解放されません。</p>
 
 <p>ここで、</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre>reference3 = nil
-// prints "John Appleseed is being deinitialized<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="n">reference3</span> <span class="o">=</span> <span class="nb">nil</span>
+<span class="c1">// prints "John Appleseed is being deinitialized
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>この段階で、全ての <code>strong reference</code> がなくなりましたので、ARC はメモリを解放します。その前に、<code>deinit</code> が呼ばれるので、その旨がアウトプットされます。</p>
+<p>この段階で、全ての <code class="highlighter-rouge">strong reference</code> がなくなりましたので、ARC はメモリを解放します。その前に、<code class="highlighter-rouge">deinit</code> が呼ばれるので、その旨がアウトプットされます。</p>
 
-<h4 id="2.-strong-reference-cycles">2. Strong Reference Cycles</h4>
+<h4 id="2-strong-reference-cycles">2. Strong Reference Cycles</h4>
 
-<p>ARC の問題は、プログラマーがメモリ管理に対して気を配らなければならない場合があることです。それが、Strong Reference Cycles という問題です。これは、インスタンスへの参照(<code>strong reference</code>)が決して 0 にならない状況が考えられるためです。このインスタンスへの参照の数が 0 にならない場合、このインスタンスへのメモリは解放されません。</p>
+<p>ARC の問題は、プログラマーがメモリ管理に対して気を配らなければならない場合があることです。それが、Strong Reference Cycles という問題です。これは、インスタンスへの参照(<code class="highlighter-rouge">strong reference</code>)が決して 0 にならない状況が考えられるためです。このインスタンスへの参照の数が 0 にならない場合、このインスタンスへのメモリは解放されません。</p>
 
-<p>この問題を解決するために、参照を <code>strong</code> として定義するのではなく、<code>weak</code> や <code>unowed</code> と定義することができます。</p>
+<p>この問題を解決するために、参照を <code class="highlighter-rouge">strong</code> として定義するのではなく、<code class="highlighter-rouge">weak</code> や <code class="highlighter-rouge">unowed</code> と定義することができます。</p>
 
-<p>まずは、具体的に <code>weak</code> や <code>unowed</code> を使用する前に、どのような状況でこの Strong Reference Cycles が起こるのか紹介します。</p>
+<p>まずは、具体的に <code class="highlighter-rouge">weak</code> や <code class="highlighter-rouge">unowed</code> を使用する前に、どのような状況でこの Strong Reference Cycles が起こるのか紹介します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -344,58 +356,68 @@ reference2 = nil<span class="w">
 10
 11
 12
-13</pre></td><td class="code"><pre>class Person {
-    let name: String
-    init(name: String) { self.name = name }
-    var apartment: Apartment?
-    deinit { println("\(name) is being deinitialized") }
-}
+13</pre></td><td class="code"><pre><span class="n">class</span> <span class="n">Person</span> <span class="p">{</span>
+    <span class="n">let</span> <span class="n">name</span><span class="o">:</span> <span class="n">String</span>
+    <span class="n">init</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span> <span class="n">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span> <span class="p">}</span>
+    <span class="n">var</span> <span class="n">apartment</span><span class="o">:</span> <span class="n">Apartment</span><span class="p">?</span>
+    <span class="n">deinit</span> <span class="err">{</span> <span class="n">println</span><span class="p">(</span><span class="s">"\(name) is being deinitialized"</span><span class="p">)</span> <span class="err">}</span>
+<span class="err">}</span>
  
-class Apartment {
-    let number: Int
-    init(number: Int) { self.number = number }
-    var tenant: Person?
-    deinit { println("Apartment #\(number) is being deinitialized") }
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">class</span> <span class="n">Apartment</span> <span class="err">{</span>
+    <span class="n">let</span> <span class="n">number</span><span class="p">:</span> <span class="n">Int</span>
+    <span class="n">init</span><span class="p">(</span><span class="n">number</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span> <span class="n">self</span><span class="p">.</span><span class="n">number</span> <span class="o">=</span> <span class="n">number</span> <span class="p">}</span>
+    <span class="n">var</span> <span class="n">tenant</span><span class="o">:</span> <span class="n">Person</span><span class="p">?</span>
+    <span class="n">deinit</span> <span class="err">{</span> <span class="n">println</span><span class="p">(</span><span class="s">"Apartment #\(number) is being deinitialized"</span><span class="p">)</span> <span class="err">}</span>
+<span class="err">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>先ほどの Person クラスのプロパティの 1 つに Apartment へのインスタンスがあります。また、その Apartment にも Person への参照があります。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre>var john: Person?
-var number73: Apartment?<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="n">var</span> <span class="n">john</span><span class="o">:</span> <span class="n">Person</span><span class="p">?</span>
+<span class="n">var</span> <span class="n">number73</span><span class="p">:</span> <span class="n">Apartment</span><span class="p">?</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>これらの参照を保持する変数を定義します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre>john = Person(name: "John Appleseed")
-number73 = Apartment(number: 73)<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="n">john</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">"John Appleseed"</span><span class="p">)</span>
+<span class="n">number73</span> <span class="o">=</span> <span class="n">Apartment</span><span class="p">(</span><span class="n">number</span><span class="o">:</span> <span class="mi">73</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>メモリ割り当て、初期化。そして、ついに Person に Apartment を、また、Apartment に Person を関連付けます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre>john!.apartment = number73
-number73!.tenant = john<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="n">john</span><span class="o">!</span><span class="p">.</span><span class="n">apartment</span> <span class="o">=</span> <span class="n">number73</span>
+<span class="n">number73</span><span class="o">!</span><span class="p">.</span><span class="n">tenant</span> <span class="o">=</span> <span class="n">john</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p><code>!</code> は、参照を持っている変数からインスタンス自身にアクセスします。C でいう <code>-&gt;</code> でしょうか。</p>
+<p><code class="highlighter-rouge">!</code> は、参照を持っている変数からインスタンス自身にアクセスします。C でいう <code class="highlighter-rouge">-&gt;</code> でしょうか。</p>
 
 <p>イメージで見ると現在は、こんな感じです。</p>
 
-<p><img src="/images/2014/06/5.png" alt=""></p>
+<p><img src="/images/2014/06/5.png" alt="" /></p>
 
-<p>そして、2 つの変数が持っている <code>strong reference</code> をなくします。</p>
+<p>そして、2 つの変数が持っている <code class="highlighter-rouge">strong reference</code> をなくします。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre>john = nil
-number73 = nil<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="n">john</span> <span class="o">=</span> <span class="nb">nil</span>
+<span class="n">number73</span> <span class="o">=</span> <span class="nb">nil</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>この際に、<code>deinit</code> に定義されている println は呼ばれません。つまり、メモリ解放は行われていません。まだ 下記のイメージのように Person のインスタンスと Apartment のインスタンスに対する <code>strong reference</code> が存在するからです。この 2 つ変数に nil をセットしたので、基本的にこのインスタンスにアクセスする方法はなく、メモリリークしています。</p>
+<p>この際に、<code class="highlighter-rouge">deinit</code> に定義されている println は呼ばれません。つまり、メモリ解放は行われていません。まだ 下記のイメージのように Person のインスタンスと Apartment のインスタンスに対する <code class="highlighter-rouge">strong reference</code> が存在するからです。この 2 つ変数に nil をセットしたので、基本的にこのインスタンスにアクセスする方法はなく、メモリリークしています。</p>
 
-<p><img src="/images/2014/06/6.png" alt=""></p>
+<p><img src="/images/2014/06/6.png" alt="" /></p>
 
 					</div>
 

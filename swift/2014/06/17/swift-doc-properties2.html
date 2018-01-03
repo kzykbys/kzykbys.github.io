@@ -244,7 +244,7 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。  </p>
+						<p>iBooks にある “The Swift Programming Language” の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。</p>
 
 <p>今回は、<a href="http://blog.kazuya.co/swift/2014/06/17/swift-doc-properties.html">前回</a> の続きの Properties に関して。</p>
 
@@ -252,15 +252,15 @@
 
 <p>プロパティは、クラス、構造体、Enumeration に関連した値です。Swift では、下記で説明するようにいくつかの種類のプロパティがあります。この記事は、Property Observers と Type Properties に関して。</p>
 
-<h4 id="5.-property-observers">5. Property Observers</h4>
+<h4 id="5-property-observers">5. Property Observers</h4>
 
 <p>Property Observers はプロパティの値が変更される際に、ある処理をしたい場合に使用します。どの Stored Properties にも Property Observers を追加することができます。また、継承したプロパティなら、Stored Properties にも Computed Properties にも追加できます。</p>
 
-<p>Property Observers には、2 つのタイプがあります。1 つ目は、<code>willSet</code>。プロパティの値が変更される前に呼ばれるもの。そして、2 つ目が、<code>didSet</code>。プロパティが変更された後に呼ばれるものです。<code>willSet</code>は、新しいこれからセットされる値をコンスタント引数として受け取り、それを処理の中で使用できます。また、<code>didSet</code>は、新しい値がセットされる前の古い値をコンスタントとして使用できます。</p>
+<p>Property Observers には、2 つのタイプがあります。1 つ目は、<code class="highlighter-rouge">willSet</code>。プロパティの値が変更される前に呼ばれるもの。そして、2 つ目が、<code class="highlighter-rouge">didSet</code>。プロパティが変更された後に呼ばれるものです。<code class="highlighter-rouge">willSet</code>は、新しいこれからセットされる値をコンスタント引数として受け取り、それを処理の中で使用できます。また、<code class="highlighter-rouge">didSet</code>は、新しい値がセットされる前の古い値をコンスタントとして使用できます。</p>
 
 <p>この Property Observers は、プロパティが初期化される際には呼ばれません。あくまで、プロパティが変更される際に、呼ばれるものです。しかし、新しい値と古い値が同じ値でも、これらの Observers は呼ばれます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -281,39 +281,41 @@
 19
 20
 21
-22</pre></td><td class="code"><pre>class StepCounter {
-    var totalSteps: Int = 0 {
-        willSet(newTotalSteps) {
-            println("About to set totalSteps to \(newTotalSteps)")
-        }
-        didSet {
-            if totalSteps &gt; oldValue  {
-                println("Added \(totalSteps - oldValue) steps")
-            }
-        }
-    }
-}
-let stepCounter = StepCounter()
-stepCounter.totalSteps = 200
-// About to set totalSteps to 200
+22</pre></td><td class="code"><pre><span class="n">class</span> <span class="n">StepCounter</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">totalSteps</span><span class="o">:</span> <span class="n">Int</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="n">willSet</span><span class="p">(</span><span class="n">newTotalSteps</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">println</span><span class="p">(</span><span class="s">"About to set totalSteps to \(newTotalSteps)"</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="n">didSet</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="n">totalSteps</span> <span class="o">&gt;</span> <span class="n">oldValue</span>  <span class="p">{</span>
+                <span class="n">println</span><span class="p">(</span><span class="s">"Added \(totalSteps - oldValue) steps"</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">let</span> <span class="n">stepCounter</span> <span class="o">=</span> <span class="n">StepCounter</span><span class="p">()</span>
+<span class="n">stepCounter</span><span class="p">.</span><span class="n">totalSteps</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="c1">// About to set totalSteps to 200
 // Added 200 steps
-stepCounter.totalSteps = 360
-// About to set totalSteps to 360
+</span><span class="n">stepCounter</span><span class="p">.</span><span class="n">totalSteps</span> <span class="o">=</span> <span class="mi">360</span>
+<span class="c1">// About to set totalSteps to 360
 // Added 160 steps
-stepCounter.totalSteps = 896
-// About to set totalSteps to 896
-// Added 536 steps<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+</span><span class="n">stepCounter</span><span class="p">.</span><span class="n">totalSteps</span> <span class="o">=</span> <span class="mi">896</span>
+<span class="c1">// About to set totalSteps to 896
+// Added 536 steps
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>上記の <code>willSet</code> と <code>didSet</code> の実装方法は多少違いがあります。<code>willSet</code> は、新しい値である引数の名前を自分で指定しています。この例では、<code>newTotalSteps</code> です。そして、この <code>newTotalSteps</code> を println() の中で使用しています。もし、この名前を自分で指定しなかった場合、<code>newValue</code> という名前を処理の中で使用できます。<code>didSet</code> は引数の名前を指定していません。自動的に割り当てられる <code>oldValue</code> という引数名を使用して処理をしています。もちろん、<code>willSet</code> と同じように自分で引数の名前を指定することもできます。</p>
+<p>上記の <code class="highlighter-rouge">willSet</code> と <code class="highlighter-rouge">didSet</code> の実装方法は多少違いがあります。<code class="highlighter-rouge">willSet</code> は、新しい値である引数の名前を自分で指定しています。この例では、<code class="highlighter-rouge">newTotalSteps</code> です。そして、この <code class="highlighter-rouge">newTotalSteps</code> を println() の中で使用しています。もし、この名前を自分で指定しなかった場合、<code class="highlighter-rouge">newValue</code> という名前を処理の中で使用できます。<code class="highlighter-rouge">didSet</code> は引数の名前を指定していません。自動的に割り当てられる <code class="highlighter-rouge">oldValue</code> という引数名を使用して処理をしています。もちろん、<code class="highlighter-rouge">willSet</code> と同じように自分で引数の名前を指定することもできます。</p>
 
-<h4 id="6.-type-properties">6. Type Properties</h4>
+<h4 id="6-type-properties">6. Type Properties</h4>
 
 <p>今まで見てきたプロパティは、インスタンスに属するプロパティでした。それに加えて、タイプ(クラス、構造体、Enumeration)に属する Type Properties というものを作成することもできます。これは、各タイプのすべてのインスタンスにおいて共通の値を定義するのに向いています。構造体と Enumeration に対しては、stored と comuted Type Properties  を使用できます。クラスに対しては、computed Type Properties のみ使用できます。構造体と Enumeration にて使用できる Stored Type Properties は、変数でもコンスタントでも可能です。また、stored Type Properties には、常にデフォルト値を設定しなければなりません。</p>
 
-<p>Type Propertiesを宣言する方法は、、構造体と Enumeration の Type Properties には、<code>static</code> キーワードを使用します。クラスの Type Properties には、<code>class</code> キーワードを使用します。</p>
+<p>Type Propertiesを宣言する方法は、、構造体と Enumeration の Type Properties には、<code class="highlighter-rouge">static</code> キーワードを使用します。クラスの Type Properties には、<code class="highlighter-rouge">class</code> キーワードを使用します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -329,47 +331,51 @@ stepCounter.totalSteps = 896
 14
 15
 16
-17</pre></td><td class="code"><pre>struct SomeStructure {
-    static var storedTypeProperty = "Some value."
-    static var computedTypeProperty: Int {
-    // return an Int value here
-    }
-}
-enum SomeEnumeration {
-    static var storedTypeProperty = "Some value."
-    static var computedTypeProperty: Int {
-    // return an Int value here
-    }
-}
-class SomeClass {
-    class var computedTypeProperty: Int {
-    // return an Int value here
-    }
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+17</pre></td><td class="code"><pre><span class="k">struct</span> <span class="n">SomeStructure</span> <span class="p">{</span>
+    <span class="k">static</span> <span class="n">var</span> <span class="n">storedTypeProperty</span> <span class="o">=</span> <span class="s">"Some value."</span>
+    <span class="k">static</span> <span class="n">var</span> <span class="n">computedTypeProperty</span><span class="o">:</span> <span class="n">Int</span> <span class="p">{</span>
+    <span class="c1">// return an Int value here
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">enum</span> <span class="n">SomeEnumeration</span> <span class="p">{</span>
+    <span class="k">static</span> <span class="n">var</span> <span class="n">storedTypeProperty</span> <span class="o">=</span> <span class="s">"Some value."</span>
+    <span class="k">static</span> <span class="n">var</span> <span class="n">computedTypeProperty</span><span class="o">:</span> <span class="n">Int</span> <span class="p">{</span>
+    <span class="c1">// return an Int value here
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">class</span> <span class="n">SomeClass</span> <span class="p">{</span>
+    <span class="n">class</span> <span class="n">var</span> <span class="n">computedTypeProperty</span><span class="o">:</span> <span class="n">Int</span> <span class="p">{</span>
+    <span class="c1">// return an Int value here
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>この例では、Computed Properties においてゲッターしか設定していませんが、Computed Properties と同じようにゲッターセッター両方使用できます。</p>
 
-<p>Enumeration には、Stored Properties を使用できないので、<code>static</code> を除き、Stored Properties (インスタンスプロパティ) を作成しようとするとエラーになります。Computed Properties は使用できるので、<code>static</code> を除き、Computed Properties として使用しても問題ありません。</p>
+<p>Enumeration には、Stored Properties を使用できないので、<code class="highlighter-rouge">static</code> を除き、Stored Properties (インスタンスプロパティ) を作成しようとするとエラーになります。Computed Properties は使用できるので、<code class="highlighter-rouge">static</code> を除き、Computed Properties として使用しても問題ありません。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
 6
-7</pre></td><td class="code"><pre>enum SomeEnumTest {
-    var storedTypeProperty = "Some value." // err : No Stored Properties for enum
-    var computedTypeProperty: Int { // OK : YES Computed Properties for enum
-        return 42
-    }
-    Case Test
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+7</pre></td><td class="code"><pre><span class="k">enum</span> <span class="n">SomeEnumTest</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">storedTypeProperty</span> <span class="o">=</span> <span class="s">"Some value."</span> <span class="c1">// err : No Stored Properties for enum
+</span>    <span class="n">var</span> <span class="n">computedTypeProperty</span><span class="o">:</span> <span class="n">Int</span> <span class="p">{</span> <span class="c1">// OK : YES Computed Properties for enum
+</span>        <span class="k">return</span> <span class="mi">42</span>
+    <span class="p">}</span>
+    <span class="n">Case</span> <span class="n">Test</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>このように使用します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -381,20 +387,22 @@ class SomeClass {
 10
 11
 12
-13</pre></td><td class="code"><pre>println(SomeClass.computedTypeProperty)
-// prints "42"
- 
-println(SomeStructure.storedTypeProperty)
-// prints "Some value."
-
-SomeStructure.storedTypeProperty = "Another value."
-println(SomeStructure.storedTypeProperty)
-// prints "Another value."
-
-var some = SomeEnumTest.Test
-println("Hi, \(some.computedTypeProperty)")
-// prints "Hi, 42" ( add static before var storedTypeProperty to test )<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+13</pre></td><td class="code"><pre><span class="n">println</span><span class="p">(</span><span class="n">SomeClass</span><span class="p">.</span><span class="n">computedTypeProperty</span><span class="p">)</span>
+<span class="c1">// prints "42"
+</span> 
+<span class="n">println</span><span class="p">(</span><span class="n">SomeStructure</span><span class="p">.</span><span class="n">storedTypeProperty</span><span class="p">)</span>
+<span class="c1">// prints "Some value."
+</span>
+<span class="n">SomeStructure</span><span class="p">.</span><span class="n">storedTypeProperty</span> <span class="o">=</span> <span class="s">"Another value."</span>
+<span class="n">println</span><span class="p">(</span><span class="n">SomeStructure</span><span class="p">.</span><span class="n">storedTypeProperty</span><span class="p">)</span>
+<span class="c1">// prints "Another value."
+</span>
+<span class="n">var</span> <span class="n">some</span> <span class="o">=</span> <span class="n">SomeEnumTest</span><span class="p">.</span><span class="n">Test</span>
+<span class="n">println</span><span class="p">(</span><span class="s">"Hi, \(some.computedTypeProperty)"</span><span class="p">)</span>
+<span class="c1">// prints "Hi, 42" ( add static before var storedTypeProperty to test )
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 					</div>
 

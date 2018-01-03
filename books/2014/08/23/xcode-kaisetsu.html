@@ -252,54 +252,57 @@
 
 <p>個人的に今後使っていきたいショートカット</p>
 
-<table><thead>
-<tr>
-<th>Short Cut Command</th>
-<th>Action</th>
-<th>備考</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Command + Return</td>
-<td>標準エディター</td>
-<td></td>
-</tr>
-<tr>
-<td>Command + Option + Return</td>
-<td>アシスタントエディター</td>
-<td></td>
-</tr>
-<tr>
-<td>Control + 6</td>
-<td>ドキュメントタイプ</td>
-<td>標準エディターで</td>
-</tr>
-<tr>
-<td>Command + Shift + Y</td>
-<td>デバックエリアの表示/非表示</td>
-<td></td>
-</tr>
-<tr>
-<td>Control + I</td>
-<td>インデントによるコード整形</td>
-<td></td>
-</tr>
-<tr>
-<td>Command + L</td>
-<td>指定した行数へジャンプ</td>
-<td></td>
-</tr>
-<tr>
-<td>Control + D</td>
-<td>カーソルの右側にある文字の削除</td>
-<td></td>
-</tr>
-<tr>
-<td>Command + Control + E</td>
-<td>スコープ内の変数名編集</td>
-<td>Evernoteと競合</td>
-</tr>
-</tbody></table>
+<table>
+  <thead>
+    <tr>
+      <th>Short Cut Command</th>
+      <th>Action</th>
+      <th>備考</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Command + Return</td>
+      <td>標準エディター</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Command + Option + Return</td>
+      <td>アシスタントエディター</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Control + 6</td>
+      <td>ドキュメントタイプ</td>
+      <td>標準エディターで</td>
+    </tr>
+    <tr>
+      <td>Command + Shift + Y</td>
+      <td>デバックエリアの表示/非表示</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Control + I</td>
+      <td>インデントによるコード整形</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Command + L</td>
+      <td>指定した行数へジャンプ</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Control + D</td>
+      <td>カーソルの右側にある文字の削除</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Command + Control + E</td>
+      <td>スコープ内の変数名編集</td>
+      <td>Evernoteと競合</td>
+    </tr>
+  </tbody>
+</table>
 
 <h4 id="その他">その他</h4>
 
@@ -307,21 +310,25 @@
 
 <p>クラスの宣言時に説明文を///を使用してコメントを書いておくと、Objective-Cのクラスのように補完時にその説明を見ることができる。長い文章の時には、/*! ~~~~ */とする。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre>/// KKTask is a model class which has information about task, including group information
-@interface KKTask : NSObject<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="c1">/// KKTask is a model class which has information about task, including group information
+</span><span class="k">@interface</span> <span class="nc">KKTask</span> <span class="p">:</span> <span class="nc">NSObject</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
-4</pre></td><td class="code"><pre>/*!
+4</pre></td><td class="code"><pre><span class="cm">/*!
     KKTask is a model class which has information about task, including group information
-*/
-@interface KKTask : NSObject<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+*/</span>
+<span class="k">@interface</span> <span class="nc">KKTask</span> <span class="p">:</span> <span class="nc">NSObject</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>他にも 16章の Xcode サーバーのことや、デバック時のブレイクポイントに条件式を追加したりカスタマイズすることができるという内容は全く知らなかった。デバック画面の lldb で <code>po self.tableview</code> とかインタラクティブにデバックできるという機能もちょっと勉強したい。</p>
+<p>他にも 16章の Xcode サーバーのことや、デバック時のブレイクポイントに条件式を追加したりカスタマイズすることができるという内容は全く知らなかった。デバック画面の lldb で <code class="highlighter-rouge">po self.tableview</code> とかインタラクティブにデバックできるという機能もちょっと勉強したい。</p>
 
 <h4 id="xcode-6-について">Xcode 6 について</h4>
 
@@ -329,12 +336,12 @@
 
 <p>Xcode 6 に関しては、WWDC 2014 のビデオが英語の勉強にもなっておもしろいです。</p>
 
-<p><a href="https://developer.apple.com/videos/wwdc/2014/">What&#39;s New in Xcode 6</a></p>
+<p><a href="https://developer.apple.com/videos/wwdc/2014/">What’s New in Xcode 6</a></p>
 
 <h4 id="参考">参考</h4>
 
-<p><br />
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?t=komchax-22&o=9&p=8&l=as1&asins=4798041114&ref=qf_sp_asin_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe></p>
+<p><br /></p>
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?t=komchax-22&amp;o=9&amp;p=8&amp;l=as1&amp;asins=4798041114&amp;ref=qf_sp_asin_til&amp;fc1=000000&amp;IS2=1&amp;lt1=_blank&amp;m=amazon&amp;lc1=0000FF&amp;bc1=000000&amp;bg1=FFFFFF&amp;f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
 
 					</div>
 

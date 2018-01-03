@@ -250,7 +250,7 @@
 
 <p>まずは、可変引数関数が引数の数を引数として受け取る例です。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -318,12 +318,14 @@
 <span class="p">}</span>
 
 <span class="cm">/* Output:
-    Sum of three 60.000000
-    Sum of two   30.000000
-    Sum of zero  0.000000
-    Program ended with exit code: 0
-*/</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+	Sum of three 60.000000
+	Sum of two   30.000000
+	Sum of zero  0.000000
+	Program ended with exit code: 0
+*/</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>sumargs() が可変引数関数です。最初の引数 n で、いくつの引数を受け取るのか指定しています。関数のプロトタイプでは、… が可変の引数を受け取るということを宣言しています。この名前のない引数(…)は、最後の名前のある引数(n)の後に宣言しなければなりません。つまり、少なくともひとつは名前のある引数がなければいけません。va_start()、va_arg()、va_end() の関数は、stdarg.h にあります。</p>
 
@@ -333,7 +335,7 @@
 
 <p>次に、可変変数にセンチネル値を設定する方法があります。これは明示的にいくつの引数をしていする代わりに、可変変数の最後にこれが引数の終わりだよと印を付ける方法です。</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -401,14 +403,16 @@
 <span class="p">}</span>
 
 <span class="cm">/* Output:
-    The character e is in Hello
-    The character l is in Hello
-    The character i is not in Hello
-    The character k is not in Hello
-    The character o is in Hello
-    Program ended with exit code: 0
-*/</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+	The character e is in Hello
+	The character l is in Hello
+	The character i is not in Hello
+	The character k is not in Hello
+	The character o is in Hello
+	Program ended with exit code: 0
+*/</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>基本は、引数の数を指定する場合と同じです。while 文の条件において、可変引数がセンティネルであるかを判定しています。</p>
 

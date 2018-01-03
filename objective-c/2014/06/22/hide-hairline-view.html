@@ -244,20 +244,22 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>通常、<code>UINavigationBar</code> とコンテンツの境界線に 1px の線があります。コンテンツとナビゲーションが一体に見えるデザインを採用したい際に、これを削除する方法。</p>
+						<p>通常、<code class="highlighter-rouge">UINavigationBar</code> とコンテンツの境界線に 1px の線があります。コンテンツとナビゲーションが一体に見えるデザインを採用したい際に、これを削除する方法。</p>
 
-<p><img src="/images/2014/06/4.png" alt=""></p>
+<p><img src="/images/2014/06/4.png" alt="" /></p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre>UINavigationBar *navigationBar = self.navigationController.navigationBar;
-UIImageView *navBarHairlineImageView = [self findHairlineImageViewUnder:navigationBar];
-navBarHairlineImageView.hidden = YES;<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+3</pre></td><td class="code"><pre><span class="n">UINavigationBar</span> <span class="o">*</span><span class="n">navigationBar</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">navigationController</span><span class="p">.</span><span class="n">navigationBar</span><span class="p">;</span>
+<span class="n">UIImageView</span> <span class="o">*</span><span class="n">navBarHairlineImageView</span> <span class="o">=</span> <span class="p">[</span><span class="n">self</span> <span class="nf">findHairlineImageViewUnder</span><span class="p">:</span><span class="n">navigationBar</span><span class="p">];</span>
+<span class="n">navBarHairlineImageView</span><span class="p">.</span><span class="n">hidden</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>大きな流れは、まず該当ビューの <code>UINavigationBar</code> のリファレンスを取得し、そのサブビューの中から高さが 1px のビューを探し出し、それを非表示にします。このコードでは、findHairlineImageViewUnder:(UIView *)view において、この hairline image を探します。このメソッドは、</p>
+<p>大きな流れは、まず該当ビューの <code class="highlighter-rouge">UINavigationBar</code> のリファレンスを取得し、そのサブビューの中から高さが 1px のビューを探し出し、それを非表示にします。このコードでは、findHairlineImageViewUnder:(UIView *)view において、この hairline image を探します。このメソッドは、</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -268,26 +270,27 @@ navBarHairlineImageView.hidden = YES;<span class="w">
 9
 10
 11
-12</pre></td><td class="code"><pre>- (UIImageView *)findHairlineImageViewUnder:(UIView *)view {
-    if ([view isKindOfClass:UIImageView.class] &amp;&amp; view.bounds.size.height &lt;= 1.0) {
-        return (UIImageView *)view;
-    }
-    for (UIView *subview in view.subviews) {
-        UIImageView *imageView = [self findHairlineImageViewUnder:subview];
-        if (imageView) {
-            return imageView;
-        }
-    }
-    return nil;
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+12</pre></td><td class="code"><pre><span class="k">-</span> <span class="p">(</span><span class="n">UIImageView</span> <span class="o">*</span><span class="p">)</span><span class="nf">findHairlineImageViewUnder</span><span class="p">:(</span><span class="n">UIView</span> <span class="o">*</span><span class="p">)</span><span class="nv">view</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">([</span><span class="n">view</span> <span class="nf">isKindOfClass</span><span class="p">:</span><span class="n">UIImageView</span><span class="p">.</span><span class="n">class</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">view</span><span class="p">.</span><span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">UIImageView</span> <span class="o">*</span><span class="p">)</span><span class="n">view</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">UIView</span> <span class="o">*</span><span class="n">subview</span> <span class="k">in</span> <span class="n">view</span><span class="p">.</span><span class="n">subviews</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">UIImageView</span> <span class="o">*</span><span class="n">imageView</span> <span class="o">=</span> <span class="p">[</span><span class="n">self</span> <span class="nf">findHairlineImageViewUnder</span><span class="p">:</span><span class="n">subview</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">imageView</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">imageView</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">nil</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>こんな感じ。</p>
 
 <p>もっといい方法がありそう。</p>
 
 <h4 id="参考">参考</h4>
-
 <p><a href="http://stackoverflow.com/questions/19226965/how-to-hide-ios7-uinavigationbar-1px-bottom-line">How to hide iOS7 UINavigationBar 1px bottom line</a></p>
 
 					</div>

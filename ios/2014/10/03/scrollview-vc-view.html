@@ -250,7 +250,7 @@
 
 <p>まずは、UIScrollViewを持つViewController。ここでハマりました。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -298,64 +298,66 @@
 46
 47
 48
-49</pre></td><td class="code"><pre>class MeemoListViewController: UIViewController {
+49</pre></td><td class="code"><pre><span class="n">class</span> <span class="n">MeemoListViewController</span><span class="o">:</span> <span class="n">UIViewController</span> <span class="p">{</span>
 
-    @IBOutlet weak var scrollView: UIScrollView!
+    <span class="err">@IBOutlet</span> <span class="n">weak</span> <span class="n">var</span> <span class="n">scrollView</span><span class="o">:</span> <span class="n">UIScrollView</span><span class="o">!</span>
     
-    var controllers : NSMutableArray! // 必須
+    <span class="n">var</span> <span class="n">controllers</span> <span class="o">:</span> <span class="n">NSMutableArray</span><span class="o">!</span> <span class="c1">// 必須
+</span>    
+    <span class="n">override</span> <span class="n">func</span> <span class="n">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">super</span><span class="p">.</span><span class="n">viewDidLoad</span><span class="p">()</span>
+        
+        <span class="c1">// Set up scroll view
+</span>        <span class="n">buildScrollView</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="n">func</span> <span class="n">buildScrollView</span><span class="p">()</span> <span class="p">{</span>
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Set up scroll view
-        buildScrollView()
-    }
+	    <span class="n">self</span><span class="p">.</span><span class="n">controllers</span> <span class="o">=</span> <span class="n">NSMutableArray</span><span class="p">(</span><span class="n">capacity</span><span class="o">:</span> <span class="mi">0</span><span class="p">)</span>
+	    
+	    <span class="n">let</span> <span class="n">size</span> <span class="o">=</span> <span class="n">CGSizeMake</span><span class="p">(</span><span class="n">UIScreen</span><span class="p">.</span><span class="n">mainScreen</span><span class="p">().</span><span class="n">applicationFrame</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="n">UIScreen</span><span class="p">.</span><span class="n">mainScreen</span><span class="p">().</span><span class="n">applicationFrame</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span><span class="p">)</span>
+	            <span class="n">self</span><span class="p">.</span><span class="n">scrollView</span><span class="p">.</span><span class="n">setTranslatesAutoresizingMaskIntoConstraints</span><span class="p">(</span><span class="nb">false</span><span class="p">)</span>
+	    
+	    <span class="c1">// Add Setting Page
+</span>	    <span class="n">let</span> <span class="n">storyBordStt</span> <span class="o">=</span> <span class="n">UIStoryboard</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">"SettingViewController"</span><span class="p">,</span> <span class="n">bundle</span><span class="o">:</span> <span class="nb">nil</span><span class="p">)</span>
+	    <span class="n">var</span> <span class="n">settingController</span> <span class="o">:</span> <span class="n">SettingViewController</span> <span class="o">=</span> <span class="n">storyBordStt</span><span class="p">.</span><span class="n">instantiateInitialViewController</span><span class="p">()</span> <span class="n">as</span> <span class="n">SettingViewController</span>
+	    <span class="n">var</span> <span class="n">settingView</span> <span class="o">=</span> <span class="n">settingController</span><span class="p">.</span><span class="n">view</span>
+	    <span class="n">self</span><span class="p">.</span><span class="n">scrollView</span><span class="p">.</span><span class="n">addSubview</span><span class="p">(</span><span class="n">settingView</span><span class="p">)</span>
+	    <span class="n">self</span><span class="p">.</span><span class="n">controllers</span><span class="p">.</span><span class="n">addObject</span><span class="p">(</span><span class="n">settingController</span><span class="p">)</span> <span class="c1">// 保持!
+</span>	    
+	    <span class="c1">// Add Main Page
+</span>	    <span class="n">let</span> <span class="n">stroBoardMain</span> <span class="o">=</span> <span class="n">UIStoryboard</span><span class="p">(</span><span class="n">name</span><span class="o">:</span> <span class="s">"MemoListViewController"</span><span class="p">,</span> <span class="n">bundle</span><span class="o">:</span> <span class="nb">nil</span><span class="p">)</span>
+	    <span class="n">var</span> <span class="n">mainController</span> <span class="o">:</span> <span class="n">MemoListViewController</span> <span class="o">=</span> <span class="n">stroBoardMain</span><span class="p">.</span><span class="n">instantiateInitialViewController</span><span class="p">()</span> <span class="n">as</span> <span class="n">MemoListViewController</span>
+	    <span class="n">var</span> <span class="n">mainView</span> <span class="o">=</span> <span class="n">mainController</span><span class="p">.</span><span class="n">view</span>
+	    <span class="n">self</span><span class="p">.</span><span class="n">scrollView</span><span class="p">.</span><span class="n">addSubview</span><span class="p">(</span><span class="n">mainView</span><span class="p">)</span>
+	    <span class="n">self</span><span class="p">.</span><span class="n">controllers</span><span class="p">.</span><span class="n">addObject</span><span class="p">(</span><span class="n">mainController</span><span class="p">)</span> <span class="c1">// 保持!
+</span>
+	    <span class="n">var</span> <span class="n">currentLoc</span> <span class="o">:</span> <span class="n">CGFloat</span> <span class="o">=</span> <span class="mi">0</span>
+	    <span class="n">var</span> <span class="n">subviews</span> <span class="o">:</span> <span class="n">Array</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">scrollView</span><span class="p">.</span><span class="n">subviews</span> <span class="n">as</span> <span class="n">Array</span><span class="o">&lt;</span><span class="n">UIView</span><span class="o">&gt;</span>
+	    
+	    <span class="k">for</span> <span class="p">(</span><span class="n">viewBox</span> <span class="o">:</span> <span class="n">UIView</span><span class="p">)</span> <span class="k">in</span> <span class="n">subviews</span> <span class="p">{</span>
+	        <span class="k">if</span> <span class="n">viewBox</span><span class="p">.</span><span class="n">tag</span> <span class="o">==</span> <span class="mi">100</span> <span class="p">{</span>
+	            <span class="n">var</span> <span class="n">frame</span> <span class="o">:</span> <span class="n">CGRect</span> <span class="o">=</span> <span class="n">viewBox</span><span class="p">.</span><span class="n">frame</span>
+	            <span class="n">frame</span><span class="p">.</span><span class="n">origin</span> <span class="o">=</span> <span class="n">CGPointMake</span><span class="p">(</span><span class="n">currentLoc</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+	            <span class="n">viewBox</span><span class="p">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">frame</span><span class="p">;</span>
+	            <span class="n">currentLoc</span> <span class="o">+=</span> <span class="p">(</span><span class="n">UIScreen</span><span class="p">.</span><span class="n">mainScreen</span><span class="p">().</span><span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span><span class="p">)</span>
+	        <span class="p">}</span>
+	    <span class="p">}</span>
+	        
+	    <span class="n">self</span><span class="p">.</span><span class="n">scrollView</span><span class="p">.</span><span class="n">contentSize</span> <span class="o">=</span> <span class="n">CGSizeMake</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">UIScreen</span><span class="p">.</span><span class="n">mainScreen</span><span class="p">().</span><span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="n">UIScreen</span><span class="p">.</span><span class="n">mainScreen</span><span class="p">().</span><span class="n">applicationFrame</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-    func buildScrollView() {
-    
-        self.controllers = NSMutableArray(capacity: 0)
-        
-        let size = CGSizeMake(UIScreen.mainScreen().applicationFrame.size.width, UIScreen.mainScreen().applicationFrame.size.height)
-                self.scrollView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        
-        // Add Setting Page
-        let storyBordStt = UIStoryboard(name: "SettingViewController", bundle: nil)
-        var settingController : SettingViewController = storyBordStt.instantiateInitialViewController() as SettingViewController
-        var settingView = settingController.view
-        self.scrollView.addSubview(settingView)
-        self.controllers.addObject(settingController) // 保持!
-        
-        // Add Main Page
-        let stroBoardMain = UIStoryboard(name: "MemoListViewController", bundle: nil)
-        var mainController : MemoListViewController = stroBoardMain.instantiateInitialViewController() as MemoListViewController
-        var mainView = mainController.view
-        self.scrollView.addSubview(mainView)
-        self.controllers.addObject(mainController) // 保持!
-
-        var currentLoc : CGFloat = 0
-        var subviews : Array = self.scrollView.subviews as Array&lt;UIView&gt;
-        
-        for (viewBox : UIView) in subviews {
-            if viewBox.tag == 100 {
-                var frame : CGRect = viewBox.frame
-                frame.origin = CGPointMake(currentLoc, 0);
-                viewBox.frame = frame;
-                currentLoc += (UIScreen.mainScreen().bounds.size.width)
-            }
-        }
-            
-        self.scrollView.contentSize = CGSizeMake(2 * UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().applicationFrame.size.height)
-    }
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
-
-<p><code>buildScrollView()</code>の中で、分割されたStoryBoardからそれぞれViewControllerを生成し、そのViewをScrollViewに追加しています。このUIScrollViewを持っているメインのViewControllerのポイントは、インスタンス変数として<code>controllers</code>という配列を用意し、その中にUIScrollViewの中で使用するViewControllerを保持していることです。これがないと、UIScrollViewの中のViewControllerが恐らく解放され、不安定な挙動になります。エラーメッセージも頼りにならず、かなりハマってしまいました。</p>
+<p><code class="highlighter-rouge">buildScrollView()</code>の中で、分割されたStoryBoardからそれぞれViewControllerを生成し、そのViewをScrollViewに追加しています。このUIScrollViewを持っているメインのViewControllerのポイントは、インスタンス変数として<code class="highlighter-rouge">controllers</code>という配列を用意し、その中にUIScrollViewの中で使用するViewControllerを保持していることです。これがないと、UIScrollViewの中のViewControllerが恐らく解放され、不安定な挙動になります。エラーメッセージも頼りにならず、かなりハマってしまいました。</p>
 
 <p>今回は、配列のインスタンス変数を用意しましたが、参考URLの2つ目の記事のように、それぞれのViewControllerのインスタンス変数を作成してもよいと思います。</p>
 
 <h4 id="参考">参考</h4>
 
-<p><a href="http://stackoverflow.com/questions/1990658/how-do-i-put-viewcontrollers-into-a-uiscrollview">How do I put viewController&#39;s into a UIScrollView</a><br />
+<p><a href="http://stackoverflow.com/questions/1990658/how-do-i-put-viewcontrollers-into-a-uiscrollview">How do I put viewController’s into a UIScrollView</a><br />
 <a href="https://medium.com/swift-programming/ios-swipe-view-with-swift-44fa83a2e078">iOS Swift: Swipe View</a></p>
 
 					</div>

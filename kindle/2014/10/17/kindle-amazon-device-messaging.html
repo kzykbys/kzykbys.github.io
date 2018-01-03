@@ -254,10 +254,12 @@
 
 <p><a href="https://developer.amazon.com/appsandservices">Amazon Apps &amp; Games Developer Portal</a> の Apps &amp; Services &gt; My Apps にて、アプリを既に登録している場合は、そのアプリを選択し、登録していない場合は登録してください。このアプリを選択して、Device Messagingを選択して、Security profile を作成します。</p>
 
-<p>このSecurity Profileを作成したら、View Security Profileをクリックし、Kindle/Android Settingsタブを表示します。ここでやってAPIキーを作成できます。必要な情報は、<code>パッケージ名</code>、<code>signature(後述）</code>、<code>APIキーへの名前</code>。APIキーの名前は、任意です。パッケージ名もAndroidのマニフェストファイル等に書いてあるでしょう。<code>signature</code>は、少し操作が必要です。私が実際に試した方法は、APKファイルを用意し、ターミナルで下記のコマンドを実行しました。</p>
+<p>このSecurity Profileを作成したら、View Security Profileをクリックし、Kindle/Android Settingsタブを表示します。ここでやってAPIキーを作成できます。必要な情報は、<code class="highlighter-rouge">パッケージ名</code>、<code class="highlighter-rouge">signature(後述）</code>、<code class="highlighter-rouge">APIキーへの名前</code>。APIキーの名前は、任意です。パッケージ名もAndroidのマニフェストファイル等に書いてあるでしょう。<code class="highlighter-rouge">signature</code>は、少し操作が必要です。私が実際に試した方法は、APKファイルを用意し、ターミナルで下記のコマンドを実行しました。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>$ unzip -p {your-app.apk} META-INF/CERT.RSA | keytool -printcert | grep MD5<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="err">$</span> <span class="n">unzip</span> <span class="o">-</span><span class="n">p</span> <span class="p">{</span><span class="n">your</span><span class="o">-</span><span class="n">app</span><span class="p">.</span><span class="n">apk</span><span class="p">}</span> <span class="n">META</span><span class="o">-</span><span class="n">INF</span><span class="o">/</span><span class="n">CERT</span><span class="p">.</span><span class="n">RSA</span> <span class="o">|</span> <span class="n">keytool</span> <span class="o">-</span><span class="n">printcert</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">MD5</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>これで、MD5: 2E:0B:46:F8:D0:4A:06:AC:18:7A:2E:B0:42:95:58:FE のようなアウトプットがあるはずです。この 2EからFEまでをコピペすればAPIキーを作成されます。</p>
 
@@ -267,15 +269,15 @@
 
 <p>ここからはEclipseにて既にAndroidのプロジェクトがあるという前提で話を進めていきます。ここでは、ADMを使用するのに必要なファイルをプロジェクトに追加します。</p>
 
-<p>まずは、Eclipseでプロジェクトのルートディレクトリを右クリック等して、<code>Properties</code>を選択します。<code>Java Built Path</code>の中の、<code>Libraries</code>タブを選択。<code>Add External JARs…</code> を選択して、SDKの <code>Android/DeviceMessaging/lib</code>の中の <code>amazon-device-messaging.jar</code>を選択。SDKは、<a href="https://developer.amazon.com/public/resources/development-tools/sdk">ここ</a>でダウンロードできます。下記の参考リンクにあるSDKへのリンクが異なるので注意です。</p>
+<p>まずは、Eclipseでプロジェクトのルートディレクトリを右クリック等して、<code class="highlighter-rouge">Properties</code>を選択します。<code class="highlighter-rouge">Java Built Path</code>の中の、<code class="highlighter-rouge">Libraries</code>タブを選択。<code class="highlighter-rouge">Add External JARs…</code> を選択して、SDKの <code class="highlighter-rouge">Android/DeviceMessaging/lib</code>の中の <code class="highlighter-rouge">amazon-device-messaging.jar</code>を選択。SDKは、<a href="https://developer.amazon.com/public/resources/development-tools/sdk">ここ</a>でダウンロードできます。下記の参考リンクにあるSDKへのリンクが異なるので注意です。</p>
 
-<p>これで完了です。一応、Package ExploreのReferenced Libraries の中に、amazon-device-message-****.jar というのが発見できることを確認してください。</p>
+<p>これで完了です。一応、Package ExploreのReferenced Libraries の中に、amazon-device-message-<em>**</em>.jar というのが発見できることを確認してください。</p>
 
 <h4 id="integrating-your-app-with-amazon-device-messaging">Integrating Your App with Amazon Device Messaging</h4>
 
-<p>次に、マニフェストファイルの設定、assetへ<code>api_key.txt</code>の追加、ReceiverとHandler(broadcast receiver)の実装です。</p>
+<p>次に、マニフェストファイルの設定、assetへ<code class="highlighter-rouge">api_key.txt</code>の追加、ReceiverとHandler(broadcast receiver)の実装です。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -336,75 +338,77 @@
 59
 60
 61
-62</pre></td><td class="code"><pre>&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
-   xmlns:amazon="http://schemas.amazon.com/apk/res/android"
-   package="[YOUR PACKAGE NAME]"
-   android:versionCode="1"
-   android:versionName="1.0" &gt;
+62</pre></td><td class="code"><pre><span class="o">&lt;</span><span class="n">manifest</span> <span class="n">xmlns</span><span class="o">:</span><span class="n">android</span><span class="o">=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+   <span class="n">xmlns</span><span class="o">:</span><span class="n">amazon</span><span class="o">=</span><span class="s">"http://schemas.amazon.com/apk/res/android"</span>
+   <span class="n">package</span><span class="o">=</span><span class="s">"[YOUR PACKAGE NAME]"</span>
+   <span class="n">android</span><span class="o">:</span><span class="n">versionCode</span><span class="o">=</span><span class="s">"1"</span>
+   <span class="n">android</span><span class="o">:</span><span class="n">versionName</span><span class="o">=</span><span class="s">"1.0"</span> <span class="o">&gt;</span>
  
-   &lt;!-- Because the Fire &lt;span id="XinhaEditingPostion"&gt;&lt;/span&gt;devices that support ADM are based on Android API level 15,
-      your minSdkVersion must be NO GREATER THAN 15 (&lt;=15). You may have a lower SDK version,
-      if that is appropriate for your app. --&gt;
-   &lt;uses-sdk
-      android:minSdkVersion="15"
-      android:targetSdkVersion="15" /&gt;
+   <span class="o">&lt;!--</span> <span class="n">Because</span> <span class="n">the</span> <span class="n">Fire</span> <span class="o">&lt;</span><span class="n">span</span> <span class="n">id</span><span class="o">=</span><span class="s">"XinhaEditingPostion"</span><span class="o">&gt;&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="n">devices</span> <span class="n">that</span> <span class="n">support</span> <span class="n">ADM</span> <span class="n">are</span> <span class="n">based</span> <span class="n">on</span> <span class="n">Android</span> <span class="n">API</span> <span class="n">level</span> <span class="mi">15</span><span class="p">,</span>
+      <span class="n">your</span> <span class="n">minSdkVersion</span> <span class="n">must</span> <span class="n">be</span> <span class="nb">NO</span> <span class="n">GREATER</span> <span class="n">THAN</span> <span class="mi">15</span> <span class="p">(</span><span class="o">&lt;=</span><span class="mi">15</span><span class="p">).</span> <span class="n">You</span> <span class="n">may</span> <span class="n">have</span> <span class="n">a</span> <span class="n">lower</span> <span class="n">SDK</span> <span class="n">version</span><span class="p">,</span>
+      <span class="k">if</span> <span class="n">that</span> <span class="n">is</span> <span class="n">appropriate</span> <span class="k">for</span> <span class="n">your</span> <span class="n">app</span><span class="p">.</span> <span class="o">--&gt;</span>
+   <span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">sdk</span>
+      <span class="n">android</span><span class="o">:</span><span class="n">minSdkVersion</span><span class="o">=</span><span class="s">"15"</span>
+      <span class="n">android</span><span class="o">:</span><span class="n">targetSdkVersion</span><span class="o">=</span><span class="s">"15"</span> <span class="o">/&gt;</span>
  
-   &lt;!-- This permission ensures that no other application can intercept your ADM messages.
-      "[YOUR PACKAGE NAME]" is your package name as defined in your &lt;manifest&gt; tag. --&gt;
-   &lt;permission
-      android:name="[YOUR PACKAGE NAME].permission.RECEIVE_ADM_MESSAGE"
-      android:protectionLevel="signature" /&gt;
-   &lt;uses-permission android:name="[YOUR PACKAGE NAME].permission.RECEIVE_ADM_MESSAGE" /&gt;
+   <span class="o">&lt;!--</span> <span class="n">This</span> <span class="n">permission</span> <span class="n">ensures</span> <span class="n">that</span> <span class="n">no</span> <span class="n">other</span> <span class="n">application</span> <span class="n">can</span> <span class="n">intercept</span> <span class="n">your</span> <span class="n">ADM</span> <span class="n">messages</span><span class="p">.</span>
+      <span class="s">"[YOUR PACKAGE NAME]"</span> <span class="n">is</span> <span class="n">your</span> <span class="n">package</span> <span class="n">name</span> <span class="n">as</span> <span class="n">defined</span> <span class="k">in</span> <span class="n">your</span> <span class="o">&lt;</span><span class="n">manifest</span><span class="o">&gt;</span> <span class="n">tag</span><span class="p">.</span> <span class="o">--&gt;</span>
+   <span class="o">&lt;</span><span class="n">permission</span>
+      <span class="n">android</span><span class="o">:</span><span class="n">name</span><span class="o">=</span><span class="s">"[YOUR PACKAGE NAME].permission.RECEIVE_ADM_MESSAGE"</span>
+      <span class="n">android</span><span class="o">:</span><span class="n">protectionLevel</span><span class="o">=</span><span class="s">"signature"</span> <span class="o">/&gt;</span>
+   <span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="n">android</span><span class="o">:</span><span class="n">name</span><span class="o">=</span><span class="s">"[YOUR PACKAGE NAME].permission.RECEIVE_ADM_MESSAGE"</span> <span class="o">/&gt;</span>
  
-   &lt;!-- This permission allows your app access to receive push notifications from ADM. --&gt;
-   &lt;uses-permission android:name="com.amazon.device.messaging.permission.RECEIVE" /&gt;
+   <span class="o">&lt;!--</span> <span class="n">This</span> <span class="n">permission</span> <span class="n">allows</span> <span class="n">your</span> <span class="n">app</span> <span class="n">access</span> <span class="n">to</span> <span class="n">receive</span> <span class="n">push</span> <span class="n">notifications</span> <span class="n">from</span> <span class="n">ADM</span><span class="p">.</span> <span class="o">--&gt;</span>
+   <span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="n">android</span><span class="o">:</span><span class="n">name</span><span class="o">=</span><span class="s">"com.amazon.device.messaging.permission.RECEIVE"</span> <span class="o">/&gt;</span>
  
-   &lt;!-- ADM uses WAKE_LOCK to keep the processor from sleeping when a message is received. --&gt;
-   &lt;uses-permission android:name="android.permission.WAKE_LOCK" /&gt;
+   <span class="o">&lt;!--</span> <span class="n">ADM</span> <span class="n">uses</span> <span class="n">WAKE_LOCK</span> <span class="n">to</span> <span class="n">keep</span> <span class="n">the</span> <span class="n">processor</span> <span class="n">from</span> <span class="n">sleeping</span> <span class="n">when</span> <span class="n">a</span> <span class="n">message</span> <span class="n">is</span> <span class="n">received</span><span class="p">.</span> <span class="o">--&gt;</span>
+   <span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="n">android</span><span class="o">:</span><span class="n">name</span><span class="o">=</span><span class="s">"android.permission.WAKE_LOCK"</span> <span class="o">/&gt;</span>
  
-   &lt;application
-      android:icon="@drawable/ic_launcher"
-      android:label="@string/app_name"
-      android:theme="@style/AppTheme" &gt;
+   <span class="o">&lt;</span><span class="n">application</span>
+      <span class="n">android</span><span class="o">:</span><span class="n">icon</span><span class="o">=</span><span class="s">"@drawable/ic_launcher"</span>
+      <span class="n">android</span><span class="o">:</span><span class="n">label</span><span class="o">=</span><span class="s">"@string/app_name"</span>
+      <span class="n">android</span><span class="o">:</span><span class="n">theme</span><span class="o">=</span><span class="s">"@style/AppTheme"</span> <span class="o">&gt;</span>
  
-      &lt;!-- You must explicitly enable ADM and declare whether your app cannot work without
-         ADM (android:required="true") or can work without ADM (android:required="false").
-         If you specify android:required="false", your app must degrade gracefully if ADM
-         is unavailable. --&gt;
-      &lt;amazon:enable-feature
-         android:name="com.amazon.device.messaging"
-         android:required="true"/&gt;
+      <span class="o">&lt;!--</span> <span class="n">You</span> <span class="n">must</span> <span class="n">explicitly</span> <span class="n">enable</span> <span class="n">ADM</span> <span class="n">and</span> <span class="n">declare</span> <span class="n">whether</span> <span class="n">your</span> <span class="n">app</span> <span class="n">cannot</span> <span class="n">work</span> <span class="n">without</span>
+         <span class="n">ADM</span> <span class="p">(</span><span class="n">android</span><span class="o">:</span><span class="n">required</span><span class="o">=</span><span class="s">"true"</span><span class="p">)</span> <span class="n">or</span> <span class="n">can</span> <span class="n">work</span> <span class="n">without</span> <span class="n">ADM</span> <span class="p">(</span><span class="n">android</span><span class="o">:</span><span class="n">required</span><span class="o">=</span><span class="s">"false"</span><span class="p">).</span>
+         <span class="n">If</span> <span class="n">you</span> <span class="n">specify</span> <span class="n">android</span><span class="o">:</span><span class="n">required</span><span class="o">=</span><span class="s">"false"</span><span class="p">,</span> <span class="n">your</span> <span class="n">app</span> <span class="n">must</span> <span class="n">degrade</span> <span class="n">gracefully</span> <span class="k">if</span> <span class="n">ADM</span>
+         <span class="n">is</span> <span class="n">unavailable</span><span class="p">.</span> <span class="o">--&gt;</span>
+      <span class="o">&lt;</span><span class="n">amazon</span><span class="o">:</span><span class="n">enable</span><span class="o">-</span><span class="n">feature</span>
+         <span class="n">android</span><span class="o">:</span><span class="n">name</span><span class="o">=</span><span class="s">"com.amazon.device.messaging"</span>
+         <span class="n">android</span><span class="o">:</span><span class="n">required</span><span class="o">=</span><span class="s">"true"</span><span class="o">/&gt;</span>
  
-      &lt;!-- Provide references to the message handler and broadcast receiver for your app here. Replace
-         the names in the service and receiver tags with names appropriate to your package. --&gt;
-      &lt;service
-         android:name="[YOUR SERVICE NAME]"
-         android:exported="false" /&gt;
+      <span class="o">&lt;!--</span> <span class="n">Provide</span> <span class="n">references</span> <span class="n">to</span> <span class="n">the</span> <span class="n">message</span> <span class="n">handler</span> <span class="n">and</span> <span class="n">broadcast</span> <span class="n">receiver</span> <span class="k">for</span> <span class="n">your</span> <span class="n">app</span> <span class="n">here</span><span class="p">.</span> <span class="n">Replace</span>
+         <span class="n">the</span> <span class="n">names</span> <span class="k">in</span> <span class="n">the</span> <span class="n">service</span> <span class="n">and</span> <span class="n">receiver</span> <span class="n">tags</span> <span class="n">with</span> <span class="n">names</span> <span class="n">appropriate</span> <span class="n">to</span> <span class="n">your</span> <span class="n">package</span><span class="p">.</span> <span class="o">--&gt;</span>
+      <span class="o">&lt;</span><span class="n">service</span>
+         <span class="n">android</span><span class="o">:</span><span class="n">name</span><span class="o">=</span><span class="s">"[YOUR SERVICE NAME]"</span>
+         <span class="n">android</span><span class="o">:</span><span class="n">exported</span><span class="o">=</span><span class="s">"false"</span> <span class="o">/&gt;</span>
  
-      &lt;!-- This permission ensures that only ADM can send your app registration broadcasts. --&gt;
-      &lt;receiver
-         android:name="[YOUR RECEIVER NAME]"
-         android:permission="com.amazon.device.messaging.permission.SEND" &gt;
+      <span class="o">&lt;!--</span> <span class="n">This</span> <span class="n">permission</span> <span class="n">ensures</span> <span class="n">that</span> <span class="n">only</span> <span class="n">ADM</span> <span class="n">can</span> <span class="n">send</span> <span class="n">your</span> <span class="n">app</span> <span class="n">registration</span> <span class="n">broadcasts</span><span class="p">.</span> <span class="o">--&gt;</span>
+      <span class="o">&lt;</span><span class="n">receiver</span>
+         <span class="n">android</span><span class="o">:</span><span class="n">name</span><span class="o">=</span><span class="s">"[YOUR RECEIVER NAME]"</span>
+         <span class="n">android</span><span class="o">:</span><span class="n">permission</span><span class="o">=</span><span class="s">"com.amazon.device.messaging.permission.SEND"</span> <span class="o">&gt;</span>
  
-         &lt;!-- To interact with ADM, your app must listen for the following intents. --&gt;
-         &lt;intent-filter&gt;
-         &lt;action android:name="com.amazon.device.messaging.intent.REGISTRATION" /&gt;
-         &lt;action android:name="com.amazon.device.messaging.intent.RECEIVE" /&gt;
+         <span class="o">&lt;!--</span> <span class="n">To</span> <span class="n">interact</span> <span class="n">with</span> <span class="n">ADM</span><span class="p">,</span> <span class="n">your</span> <span class="n">app</span> <span class="n">must</span> <span class="n">listen</span> <span class="k">for</span> <span class="n">the</span> <span class="n">following</span> <span class="n">intents</span><span class="p">.</span> <span class="o">--&gt;</span>
+         <span class="o">&lt;</span><span class="n">intent</span><span class="o">-</span><span class="n">filter</span><span class="o">&gt;</span>
+         <span class="o">&lt;</span><span class="n">action</span> <span class="n">android</span><span class="o">:</span><span class="n">name</span><span class="o">=</span><span class="s">"com.amazon.device.messaging.intent.REGISTRATION"</span> <span class="o">/&gt;</span>
+         <span class="o">&lt;</span><span class="n">action</span> <span class="n">android</span><span class="o">:</span><span class="n">name</span><span class="o">=</span><span class="s">"com.amazon.device.messaging.intent.RECEIVE"</span> <span class="o">/&gt;</span>
  
-         &lt;!-- You must replace the name in the category tag with your app's package name. --&gt;
-         &lt;category android:name="[YOUR PACKAGE NAME]" /&gt;
-         &lt;/intent-filter&gt;
+         <span class="o">&lt;!--</span> <span class="n">You</span> <span class="n">must</span> <span class="n">replace</span> <span class="n">the</span> <span class="n">name</span> <span class="k">in</span> <span class="n">the</span> <span class="n">category</span> <span class="n">tag</span> <span class="n">with</span> <span class="n">your</span> <span class="n">app</span><span class="err">'</span><span class="n">s</span> <span class="n">package</span> <span class="n">name</span><span class="p">.</span> <span class="o">--&gt;</span>
+         <span class="o">&lt;</span><span class="n">category</span> <span class="n">android</span><span class="o">:</span><span class="n">name</span><span class="o">=</span><span class="s">"[YOUR PACKAGE NAME]"</span> <span class="o">/&gt;</span>
+         <span class="o">&lt;/</span><span class="n">intent</span><span class="o">-</span><span class="n">filter</span><span class="o">&gt;</span>
  
-      &lt;/receiver&gt;
-   &lt;/application&gt;
-&lt;/manifest&gt;<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+      <span class="o">&lt;/</span><span class="n">receiver</span><span class="o">&gt;</span>
+   <span class="o">&lt;/</span><span class="n">application</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">manifest</span><span class="o">&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>このようにpermission等を追加します。</p>
 
-<p>そして、<code>api_key.txt</code>という名前でファイルをassetsフォルダに置かなければなりません。このファイルには、先ほどのAPIキーをスペース等なくコピペします。</p>
+<p>そして、<code class="highlighter-rouge">api_key.txt</code>という名前でファイルをassetsフォルダに置かなければなりません。このファイルには、先ほどのAPIキーをスペース等なくコピペします。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -478,82 +482,84 @@
 72
 73
 74
-75</pre></td><td class="code"><pre>public class MyADMMessageHandler extends ADMMessageHandlerBase
-{
-    public static class Receiver extends ADMMessageReceiver
-    {
-        public Receiver()
-        {
-            super(MyADMMessageHandler.class);
-        }
+75</pre></td><td class="code"><pre><span class="n">public</span> <span class="n">class</span> <span class="n">MyADMMessageHandler</span> <span class="n">extends</span> <span class="n">ADMMessageHandlerBase</span>
+<span class="p">{</span>
+    <span class="n">public</span> <span class="k">static</span> <span class="n">class</span> <span class="n">Receiver</span> <span class="n">extends</span> <span class="n">ADMMessageReceiver</span>
+    <span class="p">{</span>
+        <span class="n">public</span> <span class="n">Receiver</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">super</span><span class="p">(</span><span class="n">MyADMMessageHandler</span><span class="p">.</span><span class="n">class</span><span class="p">);</span>
+        <span class="p">}</span>
   
-    // Nothing else is required here; your broadcast receiver automatically
-    // forwards intents to your service for processing.
-    }
+    <span class="c1">// Nothing else is required here; your broadcast receiver automatically
+</span>    <span class="c1">// forwards intents to your service for processing.
+</span>    <span class="p">}</span>
      
-    @Override
-    protected void onRegistered(final String newRegistrationId)
-        {
-        // You start the registration process by calling startRegister() in your Main
-        // Activity. When the registration ID is ready, ADM calls onRegistered() on
-        // your app. Transmit the passed-in registration ID to your server, so your
-        // server can send messages to this app instance. onRegistered() is also
-        // called if your registration ID is rotated or changed for any reason; your
-        // app should pass the new registration ID to your server if this occurs.
-        // Your server needs to be able to handle a registration ID up to 1536 characters
-        // in length.
-  
-        // The following is an example of sending the registration ID to your
-        // server via a header key/value pair over HTTP.
-        URL url = new URL(YOUR_WEBSERVER_URL);
-        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        con.setDoInput(true);
-        con.setUseCaches(false);
-        con.setRequestMethod("POST");
-        con.setRequestProperty("RegistrationId", newRegistrationId);
-        con.getResponse();
-        }
+    <span class="err">@Override</span>
+    <span class="n">protected</span> <span class="kt">void</span> <span class="n">onRegistered</span><span class="p">(</span><span class="n">final</span> <span class="n">String</span> <span class="n">newRegistrationId</span><span class="p">)</span>
+        <span class="p">{</span>
+        <span class="c1">// You start the registration process by calling startRegister() in your Main
+</span>        <span class="c1">// Activity. When the registration ID is ready, ADM calls onRegistered() on
+</span>        <span class="c1">// your app. Transmit the passed-in registration ID to your server, so your
+</span>        <span class="c1">// server can send messages to this app instance. onRegistered() is also
+</span>        <span class="c1">// called if your registration ID is rotated or changed for any reason; your
+</span>        <span class="c1">// app should pass the new registration ID to your server if this occurs.
+</span>        <span class="c1">// Your server needs to be able to handle a registration ID up to 1536 characters
+</span>        <span class="c1">// in length.
+</span>  
+        <span class="c1">// The following is an example of sending the registration ID to your
+</span>        <span class="c1">// server via a header key/value pair over HTTP.
+</span>        <span class="n">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="n">new</span> <span class="n">URL</span><span class="p">(</span><span class="n">YOUR_WEBSERVER_URL</span><span class="p">);</span>
+        <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="p">(</span><span class="n">HttpURLConnection</span><span class="p">)</span> <span class="n">url</span><span class="p">.</span><span class="n">openConnection</span><span class="p">();</span>
+        <span class="n">con</span><span class="p">.</span><span class="n">setDoInput</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+        <span class="n">con</span><span class="p">.</span><span class="n">setUseCaches</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+        <span class="n">con</span><span class="p">.</span><span class="n">setRequestMethod</span><span class="p">(</span><span class="s">"POST"</span><span class="p">);</span>
+        <span class="n">con</span><span class="p">.</span><span class="n">setRequestProperty</span><span class="p">(</span><span class="s">"RegistrationId"</span><span class="p">,</span> <span class="n">newRegistrationId</span><span class="p">);</span>
+        <span class="n">con</span><span class="p">.</span><span class="n">getResponse</span><span class="p">();</span>
+        <span class="p">}</span>
      
-    @Override
-    protected void onUnregistered(final String registrationId)
-    {
-        // If your app is unregistered on this device, inform your server that
-        // this app instance is no longer a valid target for messages.
-    }
+    <span class="err">@Override</span>
+    <span class="n">protected</span> <span class="kt">void</span> <span class="n">onUnregistered</span><span class="p">(</span><span class="n">final</span> <span class="n">String</span> <span class="n">registrationId</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// If your app is unregistered on this device, inform your server that
+</span>        <span class="c1">// this app instance is no longer a valid target for messages.
+</span>    <span class="p">}</span>
      
-    @Override
-    protected void onRegistrationError(final String errorId)
-    {
-        // You should consider a registration error fatal. In response, your app may
-        // degrade gracefully, or you may wish to notify the user that this part of
-        // your app's functionality is not available.
-    }
+    <span class="err">@Override</span>
+    <span class="n">protected</span> <span class="kt">void</span> <span class="n">onRegistrationError</span><span class="p">(</span><span class="n">final</span> <span class="n">String</span> <span class="n">errorId</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// You should consider a registration error fatal. In response, your app may
+</span>        <span class="c1">// degrade gracefully, or you may wish to notify the user that this part of
+</span>        <span class="c1">// your app's functionality is not available.
+</span>    <span class="p">}</span>
  
-    @Override
-    protected void onMessage(final Intent intent)
-    {
-        // Extract the message content from the set of extras attached to
-        // the com.amazon.device.messaging.intent.RECEIVE intent.
- 
-        // Create strings to access the message and timeStamp fields from the JSON data.
-        final String msgKey = getString(R.string.json_data_msg_key);
-        final String timeKey = getString(R.string.json_data_time_key);
+    <span class="err">@Override</span>
+    <span class="n">protected</span> <span class="kt">void</span> <span class="n">onMessage</span><span class="p">(</span><span class="n">final</span> <span class="n">Intent</span> <span class="n">intent</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Extract the message content from the set of extras attached to
+</span>        <span class="c1">// the com.amazon.device.messaging.intent.RECEIVE intent.
+</span> 
+        <span class="c1">// Create strings to access the message and timeStamp fields from the JSON data.
+</span>        <span class="n">final</span> <span class="n">String</span> <span class="n">msgKey</span> <span class="o">=</span> <span class="n">getString</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">json_data_msg_key</span><span class="p">);</span>
+        <span class="n">final</span> <span class="n">String</span> <span class="n">timeKey</span> <span class="o">=</span> <span class="n">getString</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">json_data_time_key</span><span class="p">);</span>
          
-        // Obtain the intent action that will be triggered in onMessage() callback.
-        final String intentAction = getString(R.string.intent_msg_action);
+        <span class="c1">// Obtain the intent action that will be triggered in onMessage() callback.
+</span>        <span class="n">final</span> <span class="n">String</span> <span class="n">intentAction</span> <span class="o">=</span> <span class="n">getString</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">intent_msg_action</span><span class="p">);</span>
  
-        // Obtain the extras that were included in the intent.
-        final Bundle extras = intent.getExtras();
+        <span class="c1">// Obtain the extras that were included in the intent.
+</span>        <span class="n">final</span> <span class="n">Bundle</span> <span class="n">extras</span> <span class="o">=</span> <span class="n">intent</span><span class="p">.</span><span class="n">getExtras</span><span class="p">();</span>
                  
-        // Extract the message and time from the extras in the intent.
-        // ADM makes no guarantees about delivery or the order of messages.
-        // Due to varying network conditions, messages may be delivered more than once.
-        // Your app must be able to handle instances of duplicate messages.
-        final String msg = extras.getString(msgKey);
-        final String time = extras.getString(timeKey);
-    }
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+        <span class="c1">// Extract the message and time from the extras in the intent.
+</span>        <span class="c1">// ADM makes no guarantees about delivery or the order of messages.
+</span>        <span class="c1">// Due to varying network conditions, messages may be delivered more than once.
+</span>        <span class="c1">// Your app must be able to handle instances of duplicate messages.
+</span>        <span class="n">final</span> <span class="n">String</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">extras</span><span class="p">.</span><span class="n">getString</span><span class="p">(</span><span class="n">msgKey</span><span class="p">);</span>
+        <span class="n">final</span> <span class="n">String</span> <span class="n">time</span> <span class="o">=</span> <span class="n">extras</span><span class="p">.</span><span class="n">getString</span><span class="p">(</span><span class="n">timeKey</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>そして、遂にRegistrationId(デバイストークン)を取得し、それを適宜サーバーへ送信です。後は、サーバー側からメッセージをこのトークンを使用して送ることができます。</p>
 
@@ -566,8 +572,9 @@
 <a href="https://developer.amazon.com/appsandservices/apis/engage/device-messaging/tech-docs/04-integrating-your-app-with-adm">Integrating Your App with Amazon Device Messaging</a><br />
 <a href="https://developer.amazon.com/appsandservices/apis/engage/device-messaging/tech-docs/05-requesting-an-access-token">Requesting an Access Token for Amazon Device Messaging</a><br /></p>
 
-<p><hr />
-<a href="https://forums.developer.amazon.com/forums/thread.jspa?threadID=1224">Thread: why do API keys of game circle keep changing when refreshing the web page ?</a></p>
+<hr />
+
+<p><a href="https://forums.developer.amazon.com/forums/thread.jspa?threadID=1224">Thread: why do API keys of game circle keep changing when refreshing the web page ?</a></p>
 
 					</div>
 

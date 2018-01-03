@@ -250,21 +250,21 @@
 
 <p>Linear Regression の一番の目標は、エラー率が最小化された結果を返すことです。図1の赤い線は実際のデータと予想された結果との差（エラー）を表しています。これが最小化されていれば、良い結果ということです。</p>
 
-<p><img src="http://1.bp.blogspot.com/-WzdGWb102-s/U0QqfgjdwwI/AAAAAAAAASM/bzozyUGDYQg/s1600/Screen+Shot+2014-04-08+at+9.31.02+AM.png" alt=""></p>
+<p><img src="http://1.bp.blogspot.com/-WzdGWb102-s/U0QqfgjdwwI/AAAAAAAAASM/bzozyUGDYQg/s1600/Screen+Shot+2014-04-08+at+9.31.02+AM.png" alt="" /></p>
 
 <p>このエラーを計算する方程式は、</p>
 
-<p><img src="http://3.bp.blogspot.com/-yY_5FloScoE/U0QqfufPeGI/AAAAAAAAAR8/HeM63RMUprE/s1600/Screen+Shot+2014-04-08+at+9.19.33+AM.png" alt=""></p>
+<p><img src="http://3.bp.blogspot.com/-yY_5FloScoE/U0QqfufPeGI/AAAAAAAAAR8/HeM63RMUprE/s1600/Screen+Shot+2014-04-08+at+9.19.33+AM.png" alt="" /></p>
 
 <p>です。この J(theta) がエラー。m はサンプル数。x(i) がトレーニングデータ。y(i) がトレーニングデータの正確な結果（ターゲット関数の返り値）。h(theta)が仮説です。h(theta) は、</p>
 
-<p><img src="http://4.bp.blogspot.com/-KaRNZs28k1c/U0QqfuBjgyI/AAAAAAAAASA/GsX4fnXWK_4/s1600/Screen+Shot+2014-04-08+at+9.35.49+AM.png" alt=""></p>
+<p><img src="http://4.bp.blogspot.com/-KaRNZs28k1c/U0QqfuBjgyI/AAAAAAAAASA/GsX4fnXWK_4/s1600/Screen+Shot+2014-04-08+at+9.35.49+AM.png" alt="" /></p>
 
 <p>となります。x （インプット） と h のドット積です。</p>
 
 <p>エラーを最小化するように theta を調整することが、今回の目標です。今回は、Gradient descent というアルゴリズムを使用します。</p>
 
-<p><img src="http://1.bp.blogspot.com/-F1EAkhkA3xk/U0QqgG5L-bI/AAAAAAAAASQ/ERBXZL7Q9jo/s1600/Screen+Shot+2014-04-08+at+9.40.16+AM.png" alt=""></p>
+<p><img src="http://1.bp.blogspot.com/-F1EAkhkA3xk/U0QqgG5L-bI/AAAAAAAAASQ/ERBXZL7Q9jo/s1600/Screen+Shot+2014-04-08+at+9.40.16+AM.png" alt="" /></p>
 
 <p>まず、theta を全て 0 に初期化します。そして、予め決められた回数分、ループを回してこの theta を最適化していきます。毎度、上記の式の通り、theta がアップデートされます。コードの中で、theta の値をアップデートし続けることで、J(theta) (エラー) の値がどんどん小さくなっていきます。J(theta)の値を print 等すれば、イメージがつかめると思います。</p>
 
@@ -272,7 +272,7 @@
 
 <p>Python で実装したコードがこちらです。<a href="http://aimotion.blogspot.com/2011/10/machine-learning-with-python-linear.html">このブログ</a>の作者が実装したものです。解説も分かりやすくとても参考になりました。大きな流れとしては、theta (仮説) を 0 に初期化して、その際の J(theta) （エラー率）を表示します。そして、gradient_descent 関数を呼び出し、実際の学習をし、結果を表示するという感じです。このコードは、ある会社の経営者が、新しいお店を出店したいという時に、現在出店されているお店の売上とその町の人口を使って、予想するというシンプルなものです。より洗練された変数の数が増えたケースもこのブログ記事には、解説されています。</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-python highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -450,17 +450,19 @@
 <span class="c">#Plot the results</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
 <span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">result</span><span class="p">)</span>
-<span class="n">show</span><span class="p">()</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">show</span><span class="p">()</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p><img src="http://3.bp.blogspot.com/-7n6CkqA5l3U/U0Qqgdpc6EI/AAAAAAAAASU/ymL65Xlo0tA/s1600/Screen+Shot+2014-04-08+at+9.46.22+AM.png" alt=""></p>
+<p><img src="http://3.bp.blogspot.com/-7n6CkqA5l3U/U0Qqgdpc6EI/AAAAAAAAASU/ymL65Xlo0tA/s1600/Screen+Shot+2014-04-08+at+9.46.22+AM.png" alt="" /></p>
 
-<hr>
+<hr />
 
 <p>参考</p>
 
-<p><a href="http://aimotion.blogspot.com/2011/10/machine-learning-with-python-linear.html">http://aimotion.blogspot.com/2011/10/machine-learning-with-python-linear.html</a><br />
-<a href="http://openclassroom.stanford.edu/MainFolder/DocumentPage.php?course=MachineLearning&amp;doc=exercises/ex2/ex2.html">http://openclassroom.stanford.edu/MainFolder/DocumentPage.php?course=MachineLearning&amp;doc=exercises/ex2/ex2.html</a></p>
+<p>http://aimotion.blogspot.com/2011/10/machine-learning-with-python-linear.html<br />
+http://openclassroom.stanford.edu/MainFolder/DocumentPage.php?course=MachineLearning&amp;doc=exercises/ex2/ex2.html</p>
 
 					</div>
 

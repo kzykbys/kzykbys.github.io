@@ -244,37 +244,41 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>Recently I&#39;m developing RoR application on Heroku. In this post, I&#39;d like to share how to solve naked domain problem in my environment (Heroku and Goddady ).</p>
+						<p>Recently I’m developing RoR application on Heroku. In this post, I’d like to share how to solve naked domain problem in my environment (Heroku and Goddady ).</p>
 
-<p>Naked domain problem is big concern. Basically, naked domain is like example.com. It doesn&#39;t have www prefix. We sometimes can&#39;t use our website when we access the naked domain without <a href="http://www">www</a>. To solve this problem on Heroku, we should follow some steps. In my case, I got domain from Godaddy. So, I&#39;m gonna show how to do that in this situation.</p>
+<p>Naked domain problem is big concern. Basically, naked domain is like example.com. It doesn’t have www prefix. We sometimes can’t use our website when we access the naked domain without www. To solve this problem on Heroku, we should follow some steps. In my case, I got domain from Godaddy. So, I’m gonna show how to do that in this situation.</p>
 
-<h3 id="set-up-(-heroku-)">Set up ( Heroku )</h3>
+<h3 id="set-up--heroku-">Set up ( Heroku )</h3>
 
 <p>In your command line, type</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2</pre></td><td class="code"><pre><span class="err">$</span> <span class="n">heroku</span> <span class="n">domains</span><span class="ss">:add</span> <span class="n">www</span><span class="p">.</span><span class="nf">example</span><span class="p">.</span><span class="nf">com</span>
-<span class="err">$</span> <span class="n">heroku</span> <span class="n">domains</span><span class="ss">:add</span> <span class="n">example</span><span class="p">.</span><span class="nf">com</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="err">$</span> <span class="n">heroku</span> <span class="n">domains</span><span class="ss">:add</span> <span class="n">example</span><span class="p">.</span><span class="nf">com</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>Also, you can check the result by typing</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2</pre></td><td class="code"><pre><span class="err">$</span> <span class="n">heroku</span> <span class="n">host</span> <span class="n">www</span><span class="p">.</span><span class="nf">example</span><span class="p">.</span><span class="nf">com</span>
-<span class="err">$</span> <span class="n">heroku</span> <span class="n">host</span> <span class="n">example</span><span class="p">.</span><span class="nf">com</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="err">$</span> <span class="n">heroku</span> <span class="n">host</span> <span class="n">example</span><span class="p">.</span><span class="nf">com</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<h3 id="set-up-(-goddady-)">Set up ( Goddady )</h3>
+<h3 id="set-up--goddady-">Set up ( Goddady )</h3>
 
-<p>Ⅰ. &quot;Visit My Account&quot; and &quot;Launch&quot; Domains row</p>
+<p>Ⅰ. “Visit My Account” and “Launch” Domains row</p>
 
 <p>Ⅱ. Choose your domain which you want to solve naked domain problem</p>
 
-<p>Ⅲ. In the &quot;Domain Details&quot;, find &quot;Forwarding&quot; row and click &quot;Manage&quot;</p>
+<p>Ⅲ. In the “Domain Details”, find “Forwarding” row and click “Manage”</p>
 
-<p>Ⅳ. Type like &quot;<a href="http://www.example.com">www.example.com</a>&quot;</p>
+<p>Ⅳ. Type like “www.example.com”</p>
 
-<p>That&#39;s it. After a few minutes, your naked domain problem is solved.</p>
+<p>That’s it. After a few minutes, your naked domain problem is solved.</p>
 
 					</div>
 

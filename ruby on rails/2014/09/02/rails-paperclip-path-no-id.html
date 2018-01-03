@@ -246,22 +246,24 @@
 					<div class="post">
 						<p>Paperclipで画像が保存されるpathや外部から参照されるurlにおいて、独自のアトリビュートを使用する方法。</p>
 
-<h4 id="paperclip.interpolates">Paperclip.interpolates</h4>
+<h4 id="paperclipinterpolates">Paperclip.interpolates</h4>
 
 <p>下記のコードをモデルクラスのファイル等に追加。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4</pre></td><td class="code"><pre><span class="c1"># To use string id for the path/url</span>
 <span class="no">Paperclip</span><span class="p">.</span><span class="nf">interpolates</span> <span class="ss">:lesson_identifer</span> <span class="k">do</span> <span class="o">|</span><span class="n">attachment</span><span class="p">,</span> <span class="n">style</span><span class="o">|</span>
 <span class="s2">"</span><span class="si">#{</span><span class="n">attachment</span><span class="p">.</span><span class="nf">instance</span><span class="p">.</span><span class="nf">lesson_identifer</span><span class="si">}</span><span class="s2">"</span>
-<span class="k">end</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p><code>:lesson_identifer</code> が、path/urlで使いたいモデルのアトリビュート。</p>
+<p><code class="highlighter-rouge">:lesson_identifer</code> が、path/urlで使いたいモデルのアトリビュート。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -275,10 +277,12 @@
                         <span class="ss">:medium</span> <span class="o">=&gt;</span> <span class="s2">"1000x399"</span>
                     <span class="p">},</span>
                     <span class="ss">:path</span> <span class="o">=&gt;</span> <span class="s2">":rails_root/public/images/:class/:lesson_identifer/:attachment/:style.:extension"</span><span class="p">,</span>
-                    <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="s2">"/images/:class/:lesson_identifer/:attachment/:style.:extension"</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+                    <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="s2">"/images/:class/:lesson_identifer/:attachment/:style.:extension"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>そして、<code>:path</code> や <code>:url</code> の中で、上記のように使用できます。</p>
+<p>そして、<code class="highlighter-rouge">:path</code> や <code class="highlighter-rouge">:url</code> の中で、上記のように使用できます。</p>
 
 <h4 id="参考">参考</h4>
 

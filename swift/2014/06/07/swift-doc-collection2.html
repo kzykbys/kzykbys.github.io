@@ -244,47 +244,55 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。  </p>
+						<p>iBooks にある “The Swift Programming Language” の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。</p>
 
 <p>今回は、Collection Types の章の Dictionary に関して。</p>
 
 <h3 id="collection-types">Collection Types</h3>
 
-<h4 id="11.-swing-dictionary">11. Swing Dictionary</h4>
+<h4 id="11-swing-dictionary">11. Swing Dictionary</h4>
 
 <p>Dictionary は Array と違い要素間の順番がなく、hashable key で参照されます。key は、Int や String、Double 等のユニークに表すことができるもの。</p>
 
-<h4 id="12.-dictionary-の宣言">12. Dictionary の宣言</h4>
+<h4 id="12-dictionary-の宣言">12. Dictionary の宣言</h4>
 
 <p>Dictionary タイプは、Dictionary&lt;KeyType, ValueType&gt; と表されます。Dictionary リテラルを使用して、初期化もできます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre>var airports: Dictionary&lt;String, String&gt; = 
-    ["TYO": "Tokyo",
-     "DUB": "Dublin"]<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+3</pre></td><td class="code"><pre><span class="n">var</span> <span class="n">airports</span><span class="o">:</span> <span class="n">Dictionary</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="o">=</span> 
+	<span class="p">[</span><span class="s">"TYO"</span><span class="o">:</span> <span class="s">"Tokyo"</span><span class="p">,</span>
+	 <span class="s">"DUB"</span><span class="o">:</span> <span class="s">"Dublin"</span><span class="p">]</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>よりシンプルに書くには、</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>var airports = ["TYO": "Tokyo", "DUB": "Dublin"]<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">var</span> <span class="n">airports</span> <span class="o">=</span> <span class="p">[</span><span class="s">"TYO"</span><span class="o">:</span> <span class="s">"Tokyo"</span><span class="p">,</span> <span class="s">"DUB"</span><span class="o">:</span> <span class="s">"Dublin"</span><span class="p">]</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<h4 id="13.-dictionry-の要素数">13. Dictionry の要素数</h4>
+<h4 id="13-dictionry-の要素数">13. Dictionry の要素数</h4>
 
 <p>Array と同じように読み込み専用の count プロパティを使用して要素数を調べることができる。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>println("The dictionary of airports contains \(airports.count) items.")<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">println</span><span class="p">(</span><span class="s">"The dictionary of airports contains \(airports.count) items."</span><span class="p">)</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<h4 id="14.-dictionary-の修正/追加">14. Dictionary の修正/追加</h4>
+<h4 id="14-dictionary-の修正追加">14. Dictionary の修正/追加</h4>
 
 <p>Dictionary を修正/追加には、</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre>airports["LHR"] = "London" // add
-airports["LHR"] = "London Heathrow" // update<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="n">airports</span><span class="p">[</span><span class="s">"LHR"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"London"</span> <span class="c1">// add
+</span><span class="n">airports</span><span class="p">[</span><span class="s">"LHR"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"London Heathrow"</span> <span class="c1">// update
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>と、配列のように subscripts を使用して実行する方法があります。また、updateValue(forKey:) メソッドを使用した方法もあります。</p>
 
@@ -292,63 +300,71 @@ airports["LHR"] = "London Heathrow" // update<span class="w">
 
 <p>subscripts を指定する場合と異なるのは、古い値を返り値に取ることです。もし、updateValue(forKey:)で指定したキーと値がなかった場合には nil を返します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre>if let oldValue = airports.updateValue("Dublin International", forKey: "DUB") {
-    println("The old value for DUB was \(oldValue).")
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+3</pre></td><td class="code"><pre><span class="k">if</span> <span class="n">let</span> <span class="n">oldValue</span> <span class="o">=</span> <span class="n">airports</span><span class="p">.</span><span class="n">updateValue</span><span class="p">(</span><span class="s">"Dublin International"</span><span class="p">,</span> <span class="n">forKey</span><span class="o">:</span> <span class="s">"DUB"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">"The old value for DUB was \(oldValue)."</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<h4 id="15.-dictionary-要素の削除">15. Dictionary 要素の削除</h4>
+<h4 id="15-dictionary-要素の削除">15. Dictionary 要素の削除</h4>
 
 <p>Dictionary の要素を削除する方法もいくつかあります。まずは、nil を代入する方法。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
-4</pre></td><td class="code"><pre>airports["APL"] = "Apple International"
-// "Apple International" is not the real airport for APL, so delete it
-airports["APL"] = nil
-// APL has now been removed from the dictionary<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+4</pre></td><td class="code"><pre><span class="n">airports</span><span class="p">[</span><span class="s">"APL"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"Apple International"</span>
+<span class="c1">// "Apple International" is not the real airport for APL, so delete it
+</span><span class="n">airports</span><span class="p">[</span><span class="s">"APL"</span><span class="p">]</span> <span class="o">=</span> <span class="nb">nil</span>
+<span class="c1">// APL has now been removed from the dictionary
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>そして、removeValueForKey()を使用する方法。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
-5</pre></td><td class="code"><pre>if let removedValue = airports.removeValueForKey("DUB") {
-    println("The removed airport's name is \(removedValue).")
-} else {
-    println("The airports dictionary does not contain a value for DUB.")
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+5</pre></td><td class="code"><pre><span class="k">if</span> <span class="n">let</span> <span class="n">removedValue</span> <span class="o">=</span> <span class="n">airports</span><span class="p">.</span><span class="n">removeValueForKey</span><span class="p">(</span><span class="s">"DUB"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">"The removed airport's name is \(removedValue)."</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">"The airports dictionary does not contain a value for DUB."</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>このメソッドは指定したキーが存在すれば削除し、削除された要素の値を返します。もしキーが存在しなかった場合には、nil を返します。そのため、上記のコードのように、if 文と一緒に使用することができます。</p>
 
-<h4 id="16.-dictionary-の-iteration">16. Dictionary の iteration</h4>
+<h4 id="16-dictionary-の-iteration">16. Dictionary の iteration</h4>
 
 <p>Dictionary も簡単に全ての要素にアクセスすることができます。for-in ループでキーと値の tuple を受け取り処理できます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
 6
-7</pre></td><td class="code"><pre>for (airportCode, airportName) in airports {
-    println("\(airportCode): \(airportName)")
-}
-/* Output:
+7</pre></td><td class="code"><pre><span class="k">for</span> <span class="p">(</span><span class="n">airportCode</span><span class="p">,</span> <span class="n">airportName</span><span class="p">)</span> <span class="k">in</span> <span class="n">airports</span> <span class="p">{</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">"\(airportCode): \(airportName)"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="cm">/* Output:
 TYO: Tokyo
 LHR: London Heathrow
-*/<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+*/</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>また、Dictionary の keys/values プロパティを使用して、それぞれ iteration もできます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -361,69 +377,79 @@ LHR: London Heathrow
 11
 12
 13
-14</pre></td><td class="code"><pre>for airportCode in airports.keys {
-    println("Airport code: \(airportCode)")
-}
-/* Output:
+14</pre></td><td class="code"><pre><span class="k">for</span> <span class="n">airportCode</span> <span class="k">in</span> <span class="n">airports</span><span class="p">.</span><span class="n">keys</span> <span class="p">{</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">"Airport code: \(airportCode)"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="cm">/* Output:
 Airport code: TYO
 Airport code: LHR
-*/ 
-for airportName in airports.values {
-    println("Airport name: \(airportName)")
-}
-/* Output:
+*/</span> 
+<span class="k">for</span> <span class="n">airportName</span> <span class="k">in</span> <span class="n">airports</span><span class="p">.</span><span class="n">values</span> <span class="p">{</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">"Airport name: \(airportName)"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="cm">/* Output:
 Airport name: Tokyo
 Airport name: London Heathrow
-*/<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+*/</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<h4 id="17.-dictionary-の-init,-reset">17. Dictionary の init, reset</h4>
+<h4 id="17-dictionary-の-init-reset">17. Dictionary の init, reset</h4>
 
 <p>Dictionary を初期化するには、</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre>var namesOfIntegers = Dictionary&lt;Int, String&gt;()
-// namesOfIntegers is an empty Dictionary&lt;Int, String&gt;<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="n">var</span> <span class="n">namesOfIntegers</span> <span class="o">=</span> <span class="n">Dictionary</span><span class="o">&lt;</span><span class="n">Int</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="c1">// namesOfIntegers is an empty Dictionary&lt;Int, String&gt;
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>リセットするには、: を使用します。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
-5</pre></td><td class="code"><pre>// this is not an array
-namesOfIntegers[16] = "sixteen"
-// namesOfIntegers now contains 1 key-value pair
-namesOfIntegers = [:]
-// namesOfIntegers is once again an empty dictionary of type Int, String<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+5</pre></td><td class="code"><pre><span class="c1">// this is not an array
+</span><span class="n">namesOfIntegers</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="o">=</span> <span class="s">"sixteen"</span>
+<span class="c1">// namesOfIntegers now contains 1 key-value pair
+</span><span class="n">namesOfIntegers</span> <span class="o">=</span> <span class="p">[</span><span class="o">:</span><span class="p">]</span>
+<span class="c1">// namesOfIntegers is once again an empty dictionary of type Int, String
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
-<h4 id="18.-collection-の-mutability">18. Collection の Mutability</h4>
+<h4 id="18-collection-の-mutability">18. Collection の Mutability</h4>
 
 <p>Collection の Mutability は他と同じように var か let を使用して使い分けます。Array と Dictioary の Mutability の性質には少し差があります。</p>
 
 <p>まず、Array を let を使用して Immutable にすると、サイズが変更することができなくなります。つまり、新しく要素を追加したり、削除することができません。しかし、すでに存在している要素の値を変更することはできません。あくまで、要素数を変更することができなくなります。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre>let a = [1, 2, 3]
-a.removeLast() // err
-a[1] = 10 // ok<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+3</pre></td><td class="code"><pre><span class="n">let</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">a</span><span class="p">.</span><span class="n">removeLast</span><span class="p">()</span> <span class="c1">// err
+</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1">// ok
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>それに対して、Dictionary に対して let を使い、Immutable にすると、要素数はもちろん、値を変更することもできません。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
-5</pre></td><td class="code"><pre>let b = [
-    1: "1",
-    2: "2"
-]
-b[1] = "One" // err<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+5</pre></td><td class="code"><pre><span class="n">let</span> <span class="n">b</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mi">1</span><span class="o">:</span> <span class="s">"1"</span><span class="p">,</span>
+    <span class="mi">2</span><span class="o">:</span> <span class="s">"2"</span>
+<span class="p">]</span>
+<span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s">"One"</span> <span class="c1">// err
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>Collection を使用する際、サイズが変更されることがない場合は、let を使用して、Immutable にした方がよいです。このことにより、Swift コンパイラーが最適化されます。</p>
 

@@ -94,18 +94,10 @@ img {
 
 ul, ol  { list-style: none; }
 
-pre {
-	overflow-x: auto;
-}
-
 #social-buttom li {
 	float: left;
 	margin: 10px 5px 20px 0;
 	width: 65px;
-}
-
-#social-buttom ul {
-/*	margin-left: -40px; */
 }
 
 .clear-list {
@@ -360,29 +352,27 @@ pre {
 
 .post pre {
   overflow-x: auto;
-  border: 1px solid #ddd;
-  background-color: #eef;
   padding: 0 .4em;
-  margin-bottom: 24px;
 }
 
 .post ul, .post ol {
-  margin-left: 1.35em;
+	margin-left: 1.35em;
 }
 
 .post code {
-  border: 1px solid #ddd;
-  background-color: #eef;
-  padding: 0 .2em;
+  padding: 0.2em;
 }
 
-.post pre code {
-  border: none;
+.post code pre {
+	border: none;
+}
+
+.post .lineno {
+	border-right: 1px solid #ddd;
 }
 
 /* terminal */
 .post pre.terminal {
-  border: 1px solid #000;
   background-color: #333;
   color: #FFF;
 }

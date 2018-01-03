@@ -252,7 +252,7 @@
 
 <p>今日は FBProfilePictureView を丸くする方法のメモ。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -260,18 +260,20 @@
 6
 7
 8
-9</pre></td><td class="code"><pre>NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-self.profilePhoto.profileID = [ud stringForKey:kFBID];
+9</pre></td><td class="code"><pre><span class="n">NSUserDefaults</span> <span class="o">*</span><span class="n">ud</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSUserDefaults</span> <span class="nf">standardUserDefaults</span><span class="p">];</span>
+<span class="n">self</span><span class="p">.</span><span class="n">profilePhoto</span><span class="p">.</span><span class="n">profileID</span> <span class="o">=</span> <span class="p">[</span><span class="n">ud</span> <span class="nf">stringForKey</span><span class="p">:</span><span class="n">kFBID</span><span class="p">];</span>
 
-// border radius
-[self.profilePhoto.layer setCornerRadius:80.0f];
+<span class="c1">// border radius
+</span><span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">profilePhoto</span><span class="p">.</span><span class="n">layer</span> <span class="nf">setCornerRadius</span><span class="p">:</span><span class="mi">80</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">];</span>
 
-// border
-[self.profilePhoto.layer setBorderColor:[UIColor whiteColor].CGColor];
-[self.profilePhoto.layer setBorderWidth:1.5f];<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="c1">// border
+</span><span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">profilePhoto</span><span class="p">.</span><span class="n">layer</span> <span class="nf">setBorderColor</span><span class="p">:[</span><span class="n">UIColor</span> <span class="nf">whiteColor</span><span class="p">].</span><span class="n">CGColor</span><span class="p">];</span>
+<span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">profilePhoto</span><span class="p">.</span><span class="n">layer</span> <span class="nf">setBorderWidth</span><span class="p">:</span><span class="mi">1</span><span class="p">.</span><span class="mi">5</span><span class="n">f</span><span class="p">];</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p><img src="/images/2014/06/1.png" alt=""></p>
+<p><img src="/images/2014/06/1.png" alt="" /></p>
 
 <p>setCornerRadius で使用し指定して丸くする。これだと、ユーザーによって、プロフィール写真の端っこに顔があったりすると、顔が隠れて、よく分からない写真になりそうですが、とりあえずこんな感じに。いい方法があったら追記します。</p>
 

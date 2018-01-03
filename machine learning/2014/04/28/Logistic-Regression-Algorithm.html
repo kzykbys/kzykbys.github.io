@@ -250,31 +250,31 @@
 
 <p>Logistic Regression は、 Logistic Regression は Perceptron と Linear Regression のちょうど間に位置すると言ってもいいです。Perceptron は、アウトプットとして、+ か - のようにバイナリの結果を返しました。[ h(x] = sign(w(t)x) ] Liner Regression は、実数の値を返しました。[ h(x) = w(t)x ] これらに対して、今回の新しいモデルである Linear Regression は 0 から 1 の範囲の確率を返します。[ h(x) = theta(w(t)x ] ここでの theta関数は、theta(s) = e^s / 1 + e^s と便宜的に、0 から 1 を返すように設定します。（ロジスティクス関数) x が大きくなればなるほど、アウトプットは 1 に近くなります。逆に小さくなればなるほど、0 に近くなります。</p>
 
-<p><img src="http://3.bp.blogspot.com/-hGdelr5rUGA/U1xLvq9htbI/AAAAAAAAASs/Z_kwywA6Uro/s1600/Screen+Shot+2014-04-21+at+11.43.44+AM.png" alt=""></p>
+<p><img src="http://3.bp.blogspot.com/-hGdelr5rUGA/U1xLvq9htbI/AAAAAAAAASs/Z_kwywA6Uro/s1600/Screen+Shot+2014-04-21+at+11.43.44+AM.png" alt="" /></p>
 
 <p>次にコスト関数と、その関数の Gradient を見ていきます。まず、コスト関数は、</p>
 
-<p><img src="http://3.bp.blogspot.com/-fHn7IldvFGQ/U1xL3L4AU6I/AAAAAAAAAS0/xYBGOCW-WPQ/s1600/Screen+Shot+2014-04-26+at+12.10.57+PM.png" alt=""></p>
+<p><img src="http://3.bp.blogspot.com/-fHn7IldvFGQ/U1xL3L4AU6I/AAAAAAAAAS0/xYBGOCW-WPQ/s1600/Screen+Shot+2014-04-26+at+12.10.57+PM.png" alt="" /></p>
 
 <p>その Gradient は、確率的勾配降下法というもので、</p>
 
-<p><img src="http://1.bp.blogspot.com/-pHSHUjS2jwg/U1xL-bDegYI/AAAAAAAAAS8/CCZsoqBu-sk/s1600/Screen+Shot+2014-04-26+at+12.11.49+PM.png" alt=""></p>
+<p><img src="http://1.bp.blogspot.com/-pHSHUjS2jwg/U1xL-bDegYI/AAAAAAAAAS8/CCZsoqBu-sk/s1600/Screen+Shot+2014-04-26+at+12.11.49+PM.png" alt="" /></p>
 
 <p>です。そもそも確率的勾配降下法とは、Linear Regressioの際に使用した、最急降下法をよりシンプルにしたものです。通常の勾配法では、データ分だけパラメータ（w）を更新するために微分する必要があります。しかし、確率的勾配降下法では、データ分の和を計算する過程を省きます。ここでの”確率的”とは、乱数を使い実行の度に結果が異なるということを表現しています。このアルゴリズムを使用し、パラメータの更新式は、</p>
 
-<p><img src="http://1.bp.blogspot.com/-lQ8kkSVfXeI/U1xMFpEuZTI/AAAAAAAAATE/Xm2c1pT38To/s1600/Screen+Shot+2014-04-26+at+12.22.53+PM.png" alt=""></p>
+<p><img src="http://1.bp.blogspot.com/-lQ8kkSVfXeI/U1xMFpEuZTI/AAAAAAAAATE/Xm2c1pT38To/s1600/Screen+Shot+2014-04-26+at+12.22.53+PM.png" alt="" /></p>
 
 <p>となります。</p>
 
 <p>Convex function なので local minimum に収束するこの手法でも global minimum であることが保証されています。また、学習率である eta を少しずつ小さくしていきます。下記のグラフのように、eta が大きいと最適な値を飛ばしてしまい学習が安定せず、小さすぎると非効率です。そのため eta をはじめは 0.1 程度の設定し、学習が進むにつれて小さくするというのが一般的のようです。</p>
 
-<p><img src="http://2.bp.blogspot.com/-mwq-AqGG4h8/U1xMLNLzwPI/AAAAAAAAATM/_KXT1ToLnRc/s1600/Screen+Shot+2014-04-26+at+5.04.25+PM.png" alt=""></p>
+<p><img src="http://2.bp.blogspot.com/-mwq-AqGG4h8/U1xMLNLzwPI/AAAAAAAAATM/_KXT1ToLnRc/s1600/Screen+Shot+2014-04-26+at+5.04.25+PM.png" alt="" /></p>
 
 <h3 id="実装">実装</h3>
 
-<p>Pythonで実装した内容がこちらです。 </p>
+<p>Pythonで実装した内容がこちらです。</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-python highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -386,19 +386,21 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">Y</span><span class="o">==</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">Y</span><span class="o">==</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="s">'x'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'blue'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">Y</span><span class="o">==</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">Y</span><span class="o">==</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="s">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s">'Not admitted'</span><span class="p">,</span> <span class="s">'Admitted'</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p><img src="http://3.bp.blogspot.com/-cLu3UcoILC0/U1xMXAvIyGI/AAAAAAAAATU/IuOpZkAwkio/s1600/Screen+Shot+2014-04-26+at+5.10.27+PM.png" alt=""></p>
+<p><img src="http://3.bp.blogspot.com/-cLu3UcoILC0/U1xMXAvIyGI/AAAAAAAAATU/IuOpZkAwkio/s1600/Screen+Shot+2014-04-26+at+5.10.27+PM.png" alt="" /></p>
 
 <h3 id="参考">参考</h3>
 
-<p><a href="http://gihyo.jp/dev/serial/01/machine-learning/0016">Gihyo.jp : 第16回　最適化のための勾配法</a><br>
-<a href="http://gihyo.jp/dev/serial/01/machine-learning/0018">Gihyo.jp : 第18回　ロジスティック回帰</a><br>
-<a href="http://gihyo.jp/dev/serial/01/machine-learning/0019">Gihyo.jp : 第19回　ロジスティック回帰の学習</a><br>
-<a href="http://gihyo.jp/dev/serial/01/machine-learning/0020">Gihyo.jp : 第20回　ロジスティック回帰の実装</a><br>
-<a href="http://aimotion.blogspot.com/2011/11/machine-learning-with-python-logistic.html">Machine Learning with Python - Logistic Regression</a><br>
-<a href="http://www.amlbook.com/slides/iTunesU_Lecture09_May_01.pdf">Caltech  : Lecture 9 (The Linear Model II )</a>  </p>
+<p><a href="http://gihyo.jp/dev/serial/01/machine-learning/0016">Gihyo.jp : 第16回　最適化のための勾配法</a><br />
+<a href="http://gihyo.jp/dev/serial/01/machine-learning/0018">Gihyo.jp : 第18回　ロジスティック回帰</a><br />
+<a href="http://gihyo.jp/dev/serial/01/machine-learning/0019">Gihyo.jp : 第19回　ロジスティック回帰の学習</a><br />
+<a href="http://gihyo.jp/dev/serial/01/machine-learning/0020">Gihyo.jp : 第20回　ロジスティック回帰の実装</a><br />
+<a href="http://aimotion.blogspot.com/2011/11/machine-learning-with-python-logistic.html">Machine Learning with Python - Logistic Regression</a><br />
+<a href="http://www.amlbook.com/slides/iTunesU_Lecture09_May_01.pdf">Caltech  : Lecture 9 (The Linear Model II )</a></p>
 
 					</div>
 

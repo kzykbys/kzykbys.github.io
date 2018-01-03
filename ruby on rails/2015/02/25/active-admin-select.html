@@ -250,7 +250,7 @@
 
 <p>今回はAjax等を使わず、jsで手軽さを重視して作成しました。管理者画面のような場合はこれで十分な場合も多いのではないでしょうか。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -277,12 +277,13 @@
         "</span>
       <span class="p">}</span>
 <span class="n">f</span><span class="p">.</span><span class="nf">input</span> <span class="ss">:city</span><span class="p">,</span> <span class="ss">collection: </span><span class="no">City</span><span class="p">.</span><span class="nf">all</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">c</span><span class="o">|</span>
-    <span class="p">[</span><span class="n">c</span><span class="p">.</span><span class="nf">name</span><span class="p">,</span> <span class="n">c</span><span class="p">.</span><span class="nf">id</span><span class="p">,</span> <span class="p">{</span><span class="s2">"data-prefecture"</span> <span class="o">=&gt;</span> <span class="n">c</span><span class="p">.</span><span class="nf">prefecture_id</span><span class="p">}]</span>
-<span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
-    
+	<span class="p">[</span><span class="n">c</span><span class="p">.</span><span class="nf">name</span><span class="p">,</span> <span class="n">c</span><span class="p">.</span><span class="nf">id</span><span class="p">,</span> <span class="p">{</span><span class="s2">"data-prefecture"</span> <span class="o">=&gt;</span> <span class="n">c</span><span class="p">.</span><span class="nf">prefecture_id</span><span class="p">}]</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>Active Adminの各モデルのコードにこうやって書いてしまうのはあまり行儀よくないかもですが、とりあえずたくさんある日本全国の市町村から１つの市町村を選択するのは本当に心が折れていたので、だいぶ楽になりました。間違った都道府県を選択してしまうと、ページをリロードしなくてはいけない等問題ありでユーザー用のページにはしっかりと設計しないといけませんが。      </p>
+<p>Active Adminの各モデルのコードにこうやって書いてしまうのはあまり行儀よくないかもですが、とりあえずたくさんある日本全国の市町村から１つの市町村を選択するのは本当に心が折れていたので、だいぶ楽になりました。間違った都道府県を選択してしまうと、ページをリロードしなくてはいけない等問題ありでユーザー用のページにはしっかりと設計しないといけませんが。</p>
 
 <h4 id="参考">参考</h4>
 

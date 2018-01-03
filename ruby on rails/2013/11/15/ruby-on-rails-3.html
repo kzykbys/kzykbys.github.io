@@ -252,14 +252,14 @@
 <p>プロジェクト作成時に、</p>
 
 <blockquote>
-<blockquote>
-<p>$ rails new sample_app --skip-test-unit</p>
-</blockquote>
+  <blockquote>
+    <p>$ rails new sample_app –skip-test-unit</p>
+  </blockquote>
 </blockquote>
 
-<p>この --skip-test-unit オプションは 通常作成される test ディレクトリを作成しなくするためのもの。Ruby on Rails チュートリアルでは RSpec というフレームワークを使ってテストしていくため。RSpec というのがよく分かっていないが、英語ぽくテストを記述することができるらしい。例えば、</p>
+<p>この –skip-test-unit オプションは 通常作成される test ディレクトリを作成しなくするためのもの。Ruby on Rails チュートリアルでは RSpec というフレームワークを使ってテストしていくため。RSpec というのがよく分かっていないが、英語ぽくテストを記述することができるらしい。例えば、</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -267,15 +267,17 @@
 <span class="n">it</span> <span class="s2">"should have the content 'Sample App'"</span> <span class="k">do</span>
  <span class="n">visit</span> <span class="s1">'/static_pages/home'</span>
  <span class="n">expect</span><span class="p">(</span><span class="n">page</span><span class="p">).</span><span class="nf">to</span> <span class="n">have_content</span><span class="p">(</span><span class="s1">'Sample App'</span><span class="p">)</span>
-<span class="k">end</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>まずは、通常の Test::Unitではなく、上記の RSpec を使うために、</p>
 
 <blockquote>
-<blockquote>
-<p>$ rails generate rspec:install</p>
-</blockquote>
+  <blockquote>
+    <p>$ rails generate rspec:install</p>
+  </blockquote>
 </blockquote>
 
 <p>を実行する</p>
@@ -283,19 +285,19 @@
 <p>また、コントローラー作成時に</p>
 
 <blockquote>
-<blockquote>
-<p>$ rails generate controller StaticPages home help --no-test-framework</p>
-</blockquote>
+  <blockquote>
+    <p>$ rails generate controller StaticPages home help –no-test-framework</p>
+  </blockquote>
 </blockquote>
 
-<p>--no-test-framework オプションで、RSpecのテストが自動生成されないようにする。</p>
+<p>–no-test-framework オプションで、RSpecのテストが自動生成されないようにする。</p>
 
 <p>そして、実際にテストを書くために</p>
 
 <blockquote>
-<blockquote>
-<p>$ rails generate integration_test static_pages</p>
-</blockquote>
+  <blockquote>
+    <p>$ rails generate integration_test static_pages</p>
+  </blockquote>
 </blockquote>
 
 <p>により、spec/requestsディレクトリにstatic_pages_spec.rbが生成。このファイルに自分の上記のようなテストを記述していく。</p>
@@ -305,9 +307,9 @@
 <p>今回の例だと、</p>
 
 <blockquote>
-<blockquote>
-<p>$bundle exec respec speck/requests/static_pages.rb</p>
-</blockquote>
+  <blockquote>
+    <p>$bundle exec respec speck/requests/static_pages.rb</p>
+  </blockquote>
 </blockquote>
 
 <p>で実行。 すぐにテストに通過したか確認できる。基本、赤文字は失敗、緑はOK。Test-Driven Development: TDDでは、RED/GREEN/REFACTORというサイクルを回していく。まずテストを書き、まだテストに通過できない（赤）コードを書き直してバグ等潰していく（緑）。そして、開発が進むにつれ汚くなっていくコードをREFACTORしていく。</p>
@@ -315,24 +317,24 @@
 <p>ちなみに、自分の開発環境では、テストを実行しようするとすると、</p>
 
 <blockquote>
-<blockquote>
-<p>Reason: Incompatible library version: nokogiri.bundle requires version 11.0.0 or later</p>
-</blockquote>
+  <blockquote>
+    <p>Reason: Incompatible library version: nokogiri.bundle requires version 11.0.0 or later</p>
+  </blockquote>
 </blockquote>
 
 <p>というエラーが発生した。そこで、</p>
 
 <blockquote>
-<blockquote>
-<p>$ brew update<br />
+  <blockquote>
+    <p>$ brew update<br />
 $ brew uninstall libxml2<br />
-$ brew install libxml2 --with-xml2-config<br />
-$ brew link --force libxml2<br />
+$ brew install libxml2 –with-xml2-config<br />
+$ brew link –force libxml2<br />
 $ brew install libxslt<br />
-$ brew link --force libxslt<br />
-$ bundle config build.nokogiri -- --with-xml2-dir=/usr --with-xslt-dir=/opt/local --with-iconv-dir=/opt/local<br />
+$ brew link –force libxslt<br />
+$ bundle config build.nokogiri – –with-xml2-dir=/usr –with-xslt-dir=/opt/local –with-iconv-dir=/opt/local<br />
 $ bundle install<br /></p>
-</blockquote>
+  </blockquote>
 </blockquote>
 
 <p>を実行すると解決。</p>

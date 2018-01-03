@@ -248,23 +248,29 @@
 
 <h3 id="ルーティン情報の表示">ルーティン情報の表示</h3>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2</pre></td><td class="code"><pre><span class="c1"># routes.rb の情報を表示！！</span>
-<span class="err">$</span> <span class="n">rake</span> <span class="n">routes</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="err">$</span> <span class="n">rake</span> <span class="n">routes</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <h3 id="link_to-の引数">link_to の引数</h3>
 
-<p>よくRoRでリンクを作成するときに &lt;%= link_to “blabla&quot;, blabla %&gt; みたいに使う。一つ目の引数はリンクの文字。二つの引数がURLに関するもの。二つ目の引数にいつも何を渡せばいいのか分からなかった。これは、上記の routes.rb の情報を確認するコマンドを打ち、一番左の prefix のカラムの変数？を渡す。resources :blabla で RESTful なモデルを作成した場合は、型が決まっている。<a href="http://railsdoc.com/references/resources">ドキュメント</a>に詳細あり。
-自分で routes.rb の中で match を作成した時には、as: で自分で指定する。例えば、 </p>
+<p>よくRoRでリンクを作成するときに &lt;%= link_to “blabla”, blabla %&gt; みたいに使う。一つ目の引数はリンクの文字。二つの引数がURLに関するもの。二つ目の引数にいつも何を渡せばいいのか分からなかった。これは、上記の routes.rb の情報を確認するコマンドを打ち、一番左の prefix のカラムの変数？を渡す。resources :blabla で RESTful なモデルを作成した場合は、型が決まっている。<a href="http://railsdoc.com/references/resources">ドキュメント</a>に詳細あり。
+自分で routes.rb の中で match を作成した時には、as: で自分で指定する。例えば、</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">match</span> <span class="s1">'students/:id/q1'</span> <span class="o">=&gt;</span> <span class="s1">'students#q1'</span><span class="p">,</span> <span class="ss">via: </span><span class="s1">'get'</span><span class="p">,</span> <span class="ss">as: </span><span class="s1">'q1'</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">match</span> <span class="s1">'students/:id/q1'</span> <span class="o">=&gt;</span> <span class="s1">'students#q1'</span><span class="p">,</span> <span class="ss">via: </span><span class="s1">'get'</span><span class="p">,</span> <span class="ss">as: </span><span class="s1">'q1'</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>とした時には、studentsコントローラーのq1アクションにアクセスする。この最後の as: がポイントで、これにより&lt;%= link_to ~~~ %&gt;で使える値を指定している。この例ならば、 </p>
+<p>とした時には、studentsコントローラーのq1アクションにアクセスする。この最後の as: がポイントで、これにより&lt;%= link_to ~~~ %&gt;で使える値を指定している。この例ならば、</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="o">&lt;</span><span class="sx">%= link_to "1st Quoter", q1_path(@current_student) %&gt;</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="o">&lt;</span><span class="sx">%= link_to "1st Quoter", q1_path(@current_student) %&gt;
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>q1_path として使える。</p>
 

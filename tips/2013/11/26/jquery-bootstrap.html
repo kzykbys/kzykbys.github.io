@@ -250,7 +250,7 @@
 
 <p>まずは、プログレスバーを用意する必要があります。簡単な例が本家の<a href="http://getbootstrap.com/components/#progress">サイト</a>にあるので、そちらも参考にしてください。</p>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-html highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -260,8 +260,10 @@
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"progress progress-striped active "</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bar"</span> <span class="na">style=</span><span class="s">"width:0%;"</span><span class="nt">&gt;&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>​<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="nt">&lt;/div&gt;</span>​
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>今回は、アメリカの留学生が１学期に取らなくてはならない最低単位数とユーザーの履修予定のクラスの単位数のパーセンテージをバーに表示します。</p>
 
@@ -269,7 +271,7 @@
 
 <p>jQuery を使うのはほとんど初めてだったんですが、意外に簡単にできました。</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -305,17 +307,21 @@
         <span class="nx">$bar</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">percent</span> <span class="o">+</span> <span class="s2">"%"</span><span class="p">);</span>
  
     <span class="p">});</span>
-<span class="c1">//--&gt;&lt;/script&gt;</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="c1">//--&gt;&lt;/script&gt;</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>html側は下記のようになっています。</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-ruby highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3</pre></td><td class="code"><pre><span class="o">&lt;</span><span class="n">div</span> <span class="k">class</span><span class="o">=</span><span class="s2">"span4 col-xs-12 col-sm-6 col-md-3 col-lg-4 thumb"</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">a</span> <span class="k">class</span><span class="o">=</span><span class="s2">"thumbnail"</span> <span class="n">data</span><span class="o">-</span><span class="n">units</span><span class="o">=</span><span class="s2">"4.0"</span><span class="o">&gt;&lt;</span><span class="n">img</span> <span class="k">class</span><span class="o">=</span><span class="s2">"img-responsive"</span> <span class="n">src</span><span class="o">=</span><span class="s2">"http://placehold.it/250x200"</span><span class="o">&gt;&lt;</span><span class="sr">/a&gt;
-&lt;/</span><span class="n">div</span><span class="o">&gt;</span> <span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+&lt;/</span><span class="n">div</span><span class="o">&gt;</span> 
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>まず、&lt;a&gt;タグに data-units という属性を追加しておき、ユーザーが履修したいクラスをクリックします。それらの情報を元に、あとどの程度の単位数を履修するべきか計算させ、新しいクラスがクリックされるたびに、バーを動的に更新しています。</p>
 

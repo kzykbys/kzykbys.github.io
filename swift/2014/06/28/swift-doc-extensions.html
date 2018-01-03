@@ -244,7 +244,7 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。  </p>
+						<p>iBooks にある “The Swift Programming Language” の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。</p>
 
 <p>今回は、Extensions に関して。</p>
 
@@ -252,30 +252,30 @@
 
 <p>Extensions は、既存のクラス・構造体・Enumeration に対して新しい機能を追加します。これは Objective-C のカテゴリのようなものです。</p>
 
-<h4 id="1.-extensions-syntax">1. Extensions Syntax</h4>
+<h4 id="1-extensions-syntax">1. Extensions Syntax</h4>
 
-<p>Extensions は、<code>extension</code> キーワードを使用して宣言されます。また、既存のタイプがプロトコルに準拠するように拡大することもできます。</p>
+<p>Extensions は、<code class="highlighter-rouge">extension</code> キーワードを使用して宣言されます。また、既存のタイプがプロトコルに準拠するように拡大することもできます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-swift highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
-6
-7</pre></td><td class="code"><pre>extension SomeType {
-    // new functionality to add to SomeType goes here
-}
+6</pre></td><td class="code"><pre><span class="kd">extension</span> <span class="kt">SomeType</span> <span class="p">{</span>
+    <span class="c1">// new functionality to add to SomeType goes here</span>
+<span class="p">}</span>
+<span class="kd">extension</span> <span class="kt">SomeType</span><span class="p">:</span> <span class="kt">SomeProtocol</span><span class="p">,</span> <span class="kt">AnotherProtocol</span> <span class="p">{</span>
+    <span class="c1">// implementation of protocol requirements goes here</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-extension SomeType: SomeProtocol, AnotherProtocol {
-    // implementation of protocol requirements goes here
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
-
-<h4 id="2.-computed-プロパティ">2. Computed プロパティ</h4>
+<h4 id="2-computed-プロパティ">2. Computed プロパティ</h4>
 
 <p>Extension は、Computed インスタンスプロパティと Computed タイププロパティを追加することができます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-swift highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -291,34 +291,36 @@ extension SomeType: SomeProtocol, AnotherProtocol {
 14
 15
 16
-17</pre></td><td class="code"><pre>extension Double {
-    var km: Double { return self * 1_000.0 }
-    var m: Double { return self }
-    var cm: Double { return self / 100.0 }
-    var mm: Double { return self / 1_000.0 }
-    var ft: Double { return self / 3.28084 }
-}
-let oneInch = 25.4.mm
-println("One inch is \(oneInch) meters")
-// prints "One inch is 0.0254 meters"
-let threeFeet = 3.ft
-println("Three feet is \(threeFeet) meters")
-// prints "Three feet is 0.914399970739201 meters"
+17</pre></td><td class="code"><pre><span class="kd">extension</span> <span class="kt">Double</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">km</span><span class="p">:</span> <span class="kt">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="k">self</span> <span class="o">*</span> <span class="mi">1_000</span><span class="o">.</span><span class="mi">0</span> <span class="p">}</span>
+    <span class="k">var</span> <span class="nv">m</span><span class="p">:</span> <span class="kt">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="k">self</span> <span class="p">}</span>
+    <span class="k">var</span> <span class="nv">cm</span><span class="p">:</span> <span class="kt">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="k">self</span> <span class="o">/</span> <span class="mf">100.0</span> <span class="p">}</span>
+    <span class="k">var</span> <span class="nv">mm</span><span class="p">:</span> <span class="kt">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="k">self</span> <span class="o">/</span> <span class="mi">1_000</span><span class="o">.</span><span class="mi">0</span> <span class="p">}</span>
+    <span class="k">var</span> <span class="nv">ft</span><span class="p">:</span> <span class="kt">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="k">self</span> <span class="o">/</span> <span class="mf">3.28084</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">let</span> <span class="nv">oneInch</span> <span class="o">=</span> <span class="mf">25.4</span><span class="o">.</span><span class="n">mm</span>
+<span class="nf">println</span><span class="p">(</span><span class="s">"One inch is </span><span class="se">\(</span><span class="n">oneInch</span><span class="se">)</span><span class="s"> meters"</span><span class="p">)</span>
+<span class="c1">// prints "One inch is 0.0254 meters"</span>
+<span class="k">let</span> <span class="nv">threeFeet</span> <span class="o">=</span> <span class="mi">3</span><span class="o">.</span><span class="n">ft</span>
+<span class="nf">println</span><span class="p">(</span><span class="s">"Three feet is </span><span class="se">\(</span><span class="n">threeFeet</span><span class="se">)</span><span class="s"> meters"</span><span class="p">)</span>
+<span class="c1">// prints "Three feet is 0.914399970739201 meters"</span>
 
-let aMarathon = 42.km + 195.m
-println("A marathon is \(aMarathon) meters long")
-// prints "A marathon is 42195.0 meters long"<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="k">let</span> <span class="nv">aMarathon</span> <span class="o">=</span> <span class="mi">42</span><span class="o">.</span><span class="n">km</span> <span class="o">+</span> <span class="mi">195</span><span class="o">.</span><span class="n">m</span>
+<span class="nf">println</span><span class="p">(</span><span class="s">"A marathon is </span><span class="se">\(</span><span class="n">aMarathon</span><span class="se">)</span><span class="s"> meters long"</span><span class="p">)</span>
+<span class="c1">// prints "A marathon is 42195.0 meters long"</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>この例では、Swift の既存 Double タイプに対して、5 つの Computed インスタンスプロパティを追加しています。</p>
 
-<h4 id="3.-initializer">3. Initializer</h4>
+<h4 id="3-initializer">3. Initializer</h4>
 
 <p>Extension は新しい Initializer も追加することができます。新しく Initializer を追加することで、既存の実装にはない新しい Initializer を使用したり、独自のカスタムタイプを引数として使用したりと便利にコーディングできます。しかし、Designvated Initializer と Deinitializer は追加することができません。これらは、常に元のタイプの実装の中になければなりません。</p>
 
 <p>構造体や Enumeration に新しく Initializer を追加する際、もしそのタイプが全ての Stored プロパティに初期値を持っていれば、このデフォルト Initializer と Memberwise Initioaliszer を Extension の中で呼ぶことができます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-swift highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -335,33 +337,35 @@ println("A marathon is \(aMarathon) meters long")
 15
 16
 17
-18</pre></td><td class="code"><pre>struct Size {
-    var width = 0.0, height = 0.0
-}
-struct Point {
-    var x = 0.0, y = 0.0
-}
-struct Rect {
-    var origin = Point()
-    var size = Size()
-}
+18</pre></td><td class="code"><pre><span class="kd">struct</span> <span class="kt">Size</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">width</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="p">}</span>
+<span class="kd">struct</span> <span class="kt">Point</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">x</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="p">}</span>
+<span class="kd">struct</span> <span class="kt">Rect</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">origin</span> <span class="o">=</span> <span class="kt">Point</span><span class="p">()</span>
+    <span class="k">var</span> <span class="nv">size</span> <span class="o">=</span> <span class="kt">Size</span><span class="p">()</span>
+<span class="p">}</span>
 
-extension Rect {
-    init(center: Point, size: Size) {
-        let originX = center.x - (size.width / 2)
-        let originY = center.y - (size.height / 2)
-        self.init(origin: Point(x: originX, y: originY), size: size)
-    }
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="kd">extension</span> <span class="kt">Rect</span> <span class="p">{</span>
+    <span class="nf">init</span><span class="p">(</span><span class="nv">center</span><span class="p">:</span> <span class="kt">Point</span><span class="p">,</span> <span class="nv">size</span><span class="p">:</span> <span class="kt">Size</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">originX</span> <span class="o">=</span> <span class="n">center</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">let</span> <span class="nv">originY</span> <span class="o">=</span> <span class="n">center</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">self</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">origin</span><span class="p">:</span> <span class="kt">Point</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">originX</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="n">originY</span><span class="p">),</span> <span class="nv">size</span><span class="p">:</span> <span class="n">size</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>この Rect 構造体は、デフォルト Initializer (<code>init()</code>) と Memberwise Initializer を使用することができます。全ての Stored プロパティに初期値が設定されているからです。そして、Extension の中で、この Memberwise Initializer を使用しています。</p>
+<p>この Rect 構造体は、デフォルト Initializer (<code class="highlighter-rouge">init()</code>) と Memberwise Initializer を使用することができます。全ての Stored プロパティに初期値が設定されているからです。そして、Extension の中で、この Memberwise Initializer を使用しています。</p>
 
-<h4 id="4.-メソッド">4. メソッド</h4>
+<h4 id="4-メソッド">4. メソッド</h4>
 
 <p>Extension は、新しいインスタンスメソッドとタイプメソッドを追加することができます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-swift highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -381,55 +385,59 @@ extension Rect {
 18
 19
 20
-21</pre></td><td class="code"><pre>extension Int {
-    func repetitions(task: () -&gt; ()) {
-        for i in 0..self {
-            task()
-        }
-    }
-}
-3.repetitions({
-    println("Hello!")
-    })
-// Hello!
-// Hello!
-// Hello!
+21</pre></td><td class="code"><pre><span class="kd">extension</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">repetitions</span><span class="p">(</span><span class="nv">task</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="p">())</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..</span><span class="k">self</span> <span class="p">{</span>
+            <span class="nf">task</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="mi">3</span><span class="o">.</span><span class="nf">repetitions</span><span class="p">({</span>
+    <span class="nf">println</span><span class="p">(</span><span class="s">"Hello!"</span><span class="p">)</span>
+    <span class="p">})</span>
+<span class="c1">// Hello!</span>
+<span class="c1">// Hello!</span>
+<span class="c1">// Hello!</span>
 
-// Using trailing closure syntax
-3.repetitions {
-    println("Goodbye!")
-}
-// Goodbye!
-// Goodbye!
-// Goodbye!<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="c1">// Using trailing closure syntax</span>
+<span class="mi">3</span><span class="o">.</span><span class="n">repetitions</span> <span class="p">{</span>
+    <span class="nf">println</span><span class="p">(</span><span class="s">"Goodbye!"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Goodbye!</span>
+<span class="c1">// Goodbye!</span>
+<span class="c1">// Goodbye!</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>repetitions は 1 つ引数を持っています。これは、引数を持たず、返り値も持たない関数です。</p>
 
-<p>Extension により追加されたインスタンスメソッドは、インスタンス自体に変更を加えることができます。構造体・Enumeration のメソッドが self やそのプロパティを修正する場合には、<code>mutating</code> キーワードを使用しなければなりません。</p>
+<p>Extension により追加されたインスタンスメソッドは、インスタンス自体に変更を加えることができます。構造体・Enumeration のメソッドが self やそのプロパティを修正する場合には、<code class="highlighter-rouge">mutating</code> キーワードを使用しなければなりません。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-swift highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
 6
 7
-8</pre></td><td class="code"><pre>extension Int {
-    mutating func square() {
-        self = self * self
-    }
-}
-var someInt = 3
-someInt.square()
-// someInt is now 9<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+8</pre></td><td class="code"><pre><span class="kd">extension</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">square</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">self</span> <span class="o">=</span> <span class="k">self</span> <span class="o">*</span> <span class="k">self</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">var</span> <span class="nv">someInt</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">someInt</span><span class="o">.</span><span class="nf">square</span><span class="p">()</span>
+<span class="c1">// someInt is now 9</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<h4 id="5.-subscripts">5. Subscripts</h4>
+<h4 id="5-subscripts">5. Subscripts</h4>
 
 <p>Extension は、サブスクリプトを追加することができます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-swift highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -448,35 +456,37 @@ someInt.square()
 17
 18
 19
-20</pre></td><td class="code"><pre>extension Int {
-    subscript(digitIndex: Int) -&gt; Int {
-        var decimalBase = 1
-            for _ in 1...digitIndex {
-                decimalBase *= 10
-            }
-            return (self / decimalBase) % 10
-    }
-}
-746381295[0]
-// returns 5
-746381295[1]
-// returns 9
-746381295[2]
-// returns 2
-746381295[8]
-// returns 7
-746381295[9]
-// returns 0, as if you had requested:
-0746381295[9]<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+20</pre></td><td class="code"><pre><span class="kd">extension</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="nf">subscript</span><span class="p">(</span><span class="nv">digitIndex</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">decimalBase</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mi">1</span><span class="o">...</span><span class="n">digitIndex</span> <span class="p">{</span>
+                <span class="n">decimalBase</span> <span class="o">*=</span> <span class="mi">10</span>
+            <span class="p">}</span>
+            <span class="nf">return</span> <span class="p">(</span><span class="k">self</span> <span class="o">/</span> <span class="n">decimalBase</span><span class="p">)</span> <span class="o">%</span> <span class="mi">10</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="mi">746381295</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1">// returns 5</span>
+<span class="mi">746381295</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="c1">// returns 9</span>
+<span class="mi">746381295</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="c1">// returns 2</span>
+<span class="mi">746381295</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span>
+<span class="c1">// returns 7</span>
+<span class="mi">746381295</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span>
+<span class="c1">// returns 0, as if you had requested:</span>
+<span class="mo">07463</span><span class="mi">81295</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>この例は、Swift の Int タイプに対して、指定された桁の数字を返すサブスクリプトを追加しています。</p>
 
-<h4 id="6.-nested-types">6. Nested Types</h4>
+<h4 id="6-nested-types">6. Nested Types</h4>
 
 <p>Extension は、Nested Type を追加することもできます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-swift highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -491,29 +501,31 @@ someInt.square()
 13
 14
 15
-16</pre></td><td class="code"><pre>extension Character {
-    enum Kind {
-        case Vowel, Consonant, Other
-    }
-    var kind: Kind {
-    switch String(self).lowercaseString {
-    case "a", "e", "i", "o", "u":
-        return .Vowel
-    case "b", "c", "d", "f", "g", "h", "j", "k", "l", "m",
-    "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z":
-        return .Consonant
-    default:
-        return .Other
-        }
-    }
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+16</pre></td><td class="code"><pre><span class="kd">extension</span> <span class="kt">Character</span> <span class="p">{</span>
+    <span class="kd">enum</span> <span class="kt">Kind</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="kt">Vowel</span><span class="p">,</span> <span class="kt">Consonant</span><span class="p">,</span> <span class="kt">Other</span>
+    <span class="p">}</span>
+    <span class="k">var</span> <span class="nv">kind</span><span class="p">:</span> <span class="kt">Kind</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="kt">String</span><span class="p">(</span><span class="k">self</span><span class="p">)</span><span class="o">.</span><span class="n">lowercaseString</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="s">"a"</span><span class="p">,</span> <span class="s">"e"</span><span class="p">,</span> <span class="s">"i"</span><span class="p">,</span> <span class="s">"o"</span><span class="p">,</span> <span class="s">"u"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">.</span><span class="kt">Vowel</span>
+    <span class="k">case</span> <span class="s">"b"</span><span class="p">,</span> <span class="s">"c"</span><span class="p">,</span> <span class="s">"d"</span><span class="p">,</span> <span class="s">"f"</span><span class="p">,</span> <span class="s">"g"</span><span class="p">,</span> <span class="s">"h"</span><span class="p">,</span> <span class="s">"j"</span><span class="p">,</span> <span class="s">"k"</span><span class="p">,</span> <span class="s">"l"</span><span class="p">,</span> <span class="s">"m"</span><span class="p">,</span>
+    <span class="s">"n"</span><span class="p">,</span> <span class="s">"p"</span><span class="p">,</span> <span class="s">"q"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">,</span> <span class="s">"s"</span><span class="p">,</span> <span class="s">"t"</span><span class="p">,</span> <span class="s">"v"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">,</span> <span class="s">"x"</span><span class="p">,</span> <span class="s">"y"</span><span class="p">,</span> <span class="s">"z"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">.</span><span class="kt">Consonant</span>
+    <span class="k">default</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">.</span><span class="kt">Other</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>この例は、Character タイプに対して Enumeration を追加しています。これにより、ある文字がどのような種類のものかを簡単に確認しています。</p>
 
 <p>例えばこのように使用可能です。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-swift highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -529,24 +541,26 @@ someInt.square()
 14
 15
 16
-17</pre></td><td class="code"><pre>func printLetterKinds(word: String) {
-    println("'\(word)' is made up of the following kinds of letters:")
-    for character in word {
-        switch character.kind {
-        case .Vowel:
-            print("vowel ")
-        case .Consonant:
-            print("consonant ")
-        case .Other:
-            print("other ")
-        }
-    }
-    print("\n")
-}
-printLetterKinds("Hello")
-// 'Hello' is made up of the following kinds of letters:
-// consonant vowel consonant consonant vowel<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+17</pre></td><td class="code"><pre><span class="kd">func</span> <span class="nf">printLetterKinds</span><span class="p">(</span><span class="nv">word</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">println</span><span class="p">(</span><span class="s">"'</span><span class="se">\(</span><span class="n">word</span><span class="se">)</span><span class="s">' is made up of the following kinds of letters:"</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">character</span> <span class="k">in</span> <span class="n">word</span> <span class="p">{</span>
+        <span class="k">switch</span> <span class="n">character</span><span class="o">.</span><span class="n">kind</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="o">.</span><span class="kt">Vowel</span><span class="p">:</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"vowel "</span><span class="p">)</span>
+        <span class="k">case</span> <span class="o">.</span><span class="kt">Consonant</span><span class="p">:</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"consonant "</span><span class="p">)</span>
+        <span class="k">case</span> <span class="o">.</span><span class="kt">Other</span><span class="p">:</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"other "</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nf">printLetterKinds</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">)</span>
+<span class="c1">// 'Hello' is made up of the following kinds of letters:</span>
+<span class="c1">// consonant vowel consonant consonant vowel</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>character.kind は、すでに Character.Kind として分かっています。このため、switch 文の中では、単に .Vowel、.Consonant、.Other と書けます。Character.Kind.Vowel と書く必要はありません。</p>
 

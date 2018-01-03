@@ -244,7 +244,7 @@
 		      		<hr class="clear-list"/>
 
 					<div class="post">
-						<p>iBooks にある &quot;The Swift Programming Language&quot; の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。  </p>
+						<p>iBooks にある “The Swift Programming Language” の勉強メモ。Objective-C と C を普段書いている自分から、ちょっと馴染みがないものを特にまとめておきます。目次は <a href="http://blog.kazuya.co/swift/2014/07/01/swift-doc-matome.html">こちら</a>。</p>
 
 <p>今回は、Nested Types に関して。</p>
 
@@ -252,11 +252,11 @@
 
 <p>Enumeration は他のクラスや構造体をサポートする形で使われることが多いです。また、複雑なクラスを助ける形でヘルパークラスを定義するのも便利です。このため、Swift では、Nested Type というものを使用できます。</p>
 
-<h4 id="1.-nested-types-の例">1. Nested Types の例</h4>
+<h4 id="1-nested-types-の例">1. Nested Types の例</h4>
 
 <p>ブラックジャックの例を通してどのように Nested Type が使われるか見ていきます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
@@ -292,61 +292,65 @@
 34
 35
 36
-37</pre></td><td class="code"><pre>struct BlackjackCard {
+37</pre></td><td class="code"><pre><span class="k">struct</span> <span class="n">BlackjackCard</span> <span class="p">{</span>
     
-    // nested Suit enumeration
-    enum Suit: Character {
-        case Spades = "♠", Hearts = "♡", Diamonds = "♢", Clubs = "♣"
-    }
+    <span class="c1">// nested Suit enumeration
+</span>    <span class="k">enum</span> <span class="n">Suit</span><span class="o">:</span> <span class="n">Character</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="n">Spades</span> <span class="o">=</span> <span class="s">"♠"</span><span class="p">,</span> <span class="n">Hearts</span> <span class="o">=</span> <span class="s">"♡"</span><span class="p">,</span> <span class="n">Diamonds</span> <span class="o">=</span> <span class="s">"♢"</span><span class="p">,</span> <span class="n">Clubs</span> <span class="o">=</span> <span class="s">"♣"</span>
+    <span class="err">}</span>
     
-    // nested Rank enumeration
-    enum Rank: Int {
-        case Two = 2, Three, Four, Five, Six, Seven, Eight, Nine, Ten
-        case Jack, Queen, King, Ace
-        struct Values {
-            let first: Int, second: Int?
-        }
-        var values: Values {
-        switch self {
-        case .Ace:
-            return Values(first: 1, second: 11)
-        case .Jack, .Queen, .King:
-            return Values(first: 10, second: nil)
-        default:
-            return Values(first: self.toRaw(), second: nil)
-            }
-        }
-    }
+    <span class="c1">// nested Rank enumeration
+</span>    <span class="k">enum</span> <span class="n">Rank</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="n">Two</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">Three</span><span class="p">,</span> <span class="n">Four</span><span class="p">,</span> <span class="n">Five</span><span class="p">,</span> <span class="n">Six</span><span class="p">,</span> <span class="n">Seven</span><span class="p">,</span> <span class="n">Eight</span><span class="p">,</span> <span class="n">Nine</span><span class="p">,</span> <span class="n">Ten</span>
+        <span class="k">case</span> <span class="n">Jack</span><span class="p">,</span> <span class="n">Queen</span><span class="p">,</span> <span class="n">King</span><span class="p">,</span> <span class="n">Ace</span>
+        <span class="k">struct</span> <span class="n">Values</span> <span class="err">{</span>
+            <span class="n">let</span> <span class="n">first</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">second</span><span class="p">:</span> <span class="n">Int</span><span class="p">?</span>
+        <span class="err">}</span>
+        <span class="n">var</span> <span class="n">values</span><span class="p">:</span> <span class="n">Values</span> <span class="p">{</span>
+        <span class="k">switch</span> <span class="n">self</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="p">.</span><span class="n">Ace</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Values</span><span class="p">(</span><span class="n">first</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">second</span><span class="o">:</span> <span class="mi">11</span><span class="p">)</span>
+        <span class="k">case</span> <span class="p">.</span><span class="n">Jack</span><span class="p">,</span> <span class="p">.</span><span class="n">Queen</span><span class="p">,</span> <span class="p">.</span><span class="n">King</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Values</span><span class="p">(</span><span class="n">first</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span> <span class="n">second</span><span class="o">:</span> <span class="nb">nil</span><span class="p">)</span>
+        <span class="k">default</span><span class="o">:</span>
+            <span class="k">return</span> <span class="n">Values</span><span class="p">(</span><span class="n">first</span><span class="o">:</span> <span class="n">self</span><span class="p">.</span><span class="n">toRaw</span><span class="p">(),</span> <span class="n">second</span><span class="o">:</span> <span class="nb">nil</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
     
-    // BlackjackCard properties and methods
-    let rank: Rank, suit: Suit
-    var description: String {
-    var output = "suit is \(suit.toRaw()),"
-        output += " value is \(rank.values.first)"
-        if let second = rank.values.second {
-            output += " or \(second)"
-        }
-        return output
-    }
-}<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+    <span class="c1">// BlackjackCard properties and methods
+</span>    <span class="n">let</span> <span class="n">rank</span><span class="o">:</span> <span class="n">Rank</span><span class="p">,</span> <span class="n">suit</span><span class="o">:</span> <span class="n">Suit</span>
+    <span class="n">var</span> <span class="n">description</span><span class="o">:</span> <span class="n">String</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">output</span> <span class="o">=</span> <span class="s">"suit is \(suit.toRaw()),"</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="s">" value is \(rank.values.first)"</span>
+        <span class="k">if</span> <span class="n">let</span> <span class="n">second</span> <span class="o">=</span> <span class="n">rank</span><span class="p">.</span><span class="n">values</span><span class="p">.</span><span class="n">second</span> <span class="p">{</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s">" or \(second)"</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">output</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
-<p>この BlackjackCard 構造体は 2 つの Nested Enumeration を持っています。1 つ目は、<code>Suit</code>。これはカードの柄の文字を返します。2 つ目の、<code>Rank</code> は少し複雑です。まずは、2 ~ 10 の場合には、その rowvalue を定義します。さらにこの Enumeration は、Value Nested 構造体を定義しています。これが、2 つのプロパティを持っており、これを返すための Computed プロパティも持っています。</p>
+<p>この BlackjackCard 構造体は 2 つの Nested Enumeration を持っています。1 つ目は、<code class="highlighter-rouge">Suit</code>。これはカードの柄の文字を返します。2 つ目の、<code class="highlighter-rouge">Rank</code> は少し複雑です。まずは、2 ~ 10 の場合には、その rowvalue を定義します。さらにこの Enumeration は、Value Nested 構造体を定義しています。これが、2 つのプロパティを持っており、これを返すための Computed プロパティも持っています。</p>
 
 <p>上記で定義した BlackjackCard 構造体をこのように初期化・参照できます。</p>
 
-<figure class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<div class="language-objective_c highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
 3
 4
 5
-6</pre></td><td class="code"><pre>let theAceOfSpades = BlackjackCard(rank: .Ace, suit: .Spades)
-println("theAceOfSpades: \(theAceOfSpades.description)")
-// prints "theAceOfSpades: suit is ♠, value is 1 or 11"
-
-let heartsSymbol = BlackjackCard.Suit.Hearts.toRaw()
-// heartsSymbol is "♡"<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+6</pre></td><td class="code"><pre><span class="n">let</span> <span class="n">theAceOfSpades</span> <span class="o">=</span> <span class="n">BlackjackCard</span><span class="p">(</span><span class="n">rank</span><span class="o">:</span> <span class="p">.</span><span class="n">Ace</span><span class="p">,</span> <span class="n">suit</span><span class="o">:</span> <span class="p">.</span><span class="n">Spades</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="s">"theAceOfSpades: \(theAceOfSpades.description)"</span><span class="p">)</span>
+<span class="c1">// prints "theAceOfSpades: suit is ♠, value is 1 or 11"
+</span>
+<span class="n">let</span> <span class="n">heartsSymbol</span> <span class="o">=</span> <span class="n">BlackjackCard</span><span class="p">.</span><span class="n">Suit</span><span class="p">.</span><span class="n">Hearts</span><span class="p">.</span><span class="n">toRaw</span><span class="p">()</span>
+<span class="c1">// heartsSymbol is "♡"
+</span></pre></td></tr></tbody></table>
+</div>
+</div>
 
 <p>複雑なクラスがうまく整理できそうです。</p>
 
