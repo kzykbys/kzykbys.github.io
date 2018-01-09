@@ -1,0 +1,611 @@
+    <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>CryptoKittiesで猫を買ってみる</title>
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />        
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <style>
+            #sidr {
+                display: none;
+            }
+        </style>
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/jquery.sidr.dark.css">
+        <link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+
+        <!-- jQuery -->
+<script src="/javascript/jquery-1.11.1.min.js"></script>
+<!-- slide menu -->
+<script src="/javascript/jquery.sidr.min.js"></script>
+<!-- For FB like buttom -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=571082556301479&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    </head>
+    
+    <body>
+    
+        <div id="mobile-sticky-menu">
+    <a class="slide-menu" id="mobile-menu-button" href="#sidr">Menu</a>
+</div>
+
+<div id="sidr">
+    <h4>Category</h4>
+    <ul>
+        
+            <li>
+                <a href="/categories/objective-c">Objective-C</a>
+            </li>
+        
+            <li>
+                <a href="/categories/other">Other</a>
+            </li>
+        
+            <li>
+                <a href="/categories/node-js">Node.js</a>
+            </li>
+        
+            <li>
+                <a href="/categories/ruby-on-rails">Ruby on Rails</a>
+            </li>
+        
+            <li>
+                <a href="/categories/tips">Tips</a>
+            </li>
+        
+            <li>
+                <a href="/categories/html5">HTML5</a>
+            </li>
+        
+            <li>
+                <a href="/categories/algorithms">Algorithms</a>
+            </li>
+        
+            <li>
+                <a href="/categories/machine-learning">Machine Learning</a>
+            </li>
+        
+            <li>
+                <a href="/categories/c">C</a>
+            </li>
+        
+            <li>
+                <a href="/categories/ruby">Ruby</a>
+            </li>
+        
+            <li>
+                <a href="/categories/swift">Swift</a>
+            </li>
+        
+            <li>
+                <a href="/categories/ios">iOS</a>
+            </li>
+        
+            <li>
+                <a href="/categories/books">Books</a>
+            </li>
+        
+            <li>
+                <a href="/categories/kindle">Kindle</a>
+            </li>
+        
+            <li>
+                <a href="/categories/nginx">Nginx</a>
+            </li>
+        
+            <li>
+                <a href="/categories/capistrano">Capistrano</a>
+            </li>
+        
+            <li>
+                <a href="/categories/chef">Chef</a>
+            </li>
+        
+            <li>
+                <a href="/categories/fastlane">fastlane</a>
+            </li>
+        
+            <li>
+                <a href="/categories/blockchain">Blockchain</a>
+            </li>
+        
+    </ul>
+
+    <h4>Archive</h4>
+    <ul>
+        
+            <li>
+                <a href="/2013/08/">2013/08</a>
+            </li>
+        
+            <li>
+                <a href="/2013/09/">2013/09</a>
+            </li>
+        
+            <li>
+                <a href="/2013/11/">2013/11</a>
+            </li>
+        
+            <li>
+                <a href="/2013/12/">2013/12</a>
+            </li>
+        
+            <li>
+                <a href="/2014/01/">2014/01</a>
+            </li>
+        
+            <li>
+                <a href="/2014/03/">2014/03</a>
+            </li>
+        
+            <li>
+                <a href="/2014/04/">2014/04</a>
+            </li>
+        
+            <li>
+                <a href="/2014/05/">2014/05</a>
+            </li>
+        
+            <li>
+                <a href="/2014/06/">2014/06</a>
+            </li>
+        
+            <li>
+                <a href="/2014/07/">2014/07</a>
+            </li>
+        
+            <li>
+                <a href="/2014/08/">2014/08</a>
+            </li>
+        
+            <li>
+                <a href="/2014/09/">2014/09</a>
+            </li>
+        
+            <li>
+                <a href="/2014/10/">2014/10</a>
+            </li>
+        
+            <li>
+                <a href="/2015/02/">2015/02</a>
+            </li>
+        
+            <li>
+                <a href="/2015/07/">2015/07</a>
+            </li>
+        
+            <li>
+                <a href="/2015/08/">2015/08</a>
+            </li>
+        
+            <li>
+                <a href="/2016/01/">2016/01</a>
+            </li>
+        
+            <li>
+                <a href="/2017/12/">2017/12</a>
+            </li>
+        
+            <li>
+                <a href="/2018/01/">2018/01</a>
+            </li>
+        
+    </ul>
+</div>
+
+        <div class="site">
+
+            <!-- title -->
+            <!-- Header -->
+<header>
+<h1><a href="http://blog.kazuya.co/"><img src="/images/title.png" alt="logo" /></a></h1>
+    <hr />
+</header>
+
+            <div id="contents">
+                
+                <div id="main">
+                    <h3 id="post_title"><a href="">CryptoKittiesで猫を買ってみる</a></h3>
+                    <span class="author">
+                        <span class="date">2018-01-09 22:00:00 +0900</span>
+                    </span>
+
+                    <hr />
+                    <div id="social-buttom">
+    <!-- Social Buttoms -->
+    <ul>
+        <li id="hatena-area">
+            <!-- Hatena -->
+            <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-title="CryptoKittiesで猫を買ってみる" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+        </li>		
+        <li id="facebook-area">
+            <!-- FB -->
+            <div class="fb-like" data-href="http://blog.kazuya.co//blockchain/2018/01/09/cryptokitties.html" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+        </li>
+        <li>
+            <!-- Pocket -->
+            <a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
+            <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+        </li>		
+        <li id="twitter-area">
+            <!-- Vertical Twitter -->
+            <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </li>
+    </ul>
+</div>
+
+                      <hr class="clear-list"/>
+
+                    <div class="post">
+                        <p>この記事では、自分と同じように暗号通貨以外のブロックチェーンの応用例として、まずはCryptoKittiesを触ってみたいという方へ向けて、とりあえず最初の1匹目の猫を買うところまでを書きます。</p>
+
+<h3 id="cryptokittiesについて">CryptoKittiesについて</h3>
+
+<p>CryptoKittiesは、2017年11月28日にAxiom Zen（ZenHubを作っている会社）によりリリースされました。Ethereumのネットワーク上で動くブロックチェーン関連技術を使った初めてのゲームアプリケーションです。一時は、Ethereumネットワークトランザクションの11%を占めたアプリです。</p>
+
+<p>ゲームの内容としては凄くシンプルで、しょーもないと言えばしょーもないです。Ethereumのネットワーク上で、猫を売ったり買ったり、時には交配をさせながら、猫を集めて可愛がることができます。1000万円以上で猫が売れたこともあったらしいです。。。</p>
+
+<p>暗号通貨以外にもブロックチェーンの応用例を探している中、興味深かったので触ってみました。</p>
+
+<h3 id="はじめての猫">はじめての猫</h3>
+
+<p>まず、CryptoKittiesで遊ぶには、PC環境にて（スマホだけだと現状NG）ChromeかFirefoxが必要です。</p>
+
+<p>その上で、MetaMaskというデジタルウォレットのプラグインを使います。このプラグインは、下記参考URLから飛んでブラウザに追加すればカンタンに登録できます。登録時に生成されるシードワードは、パスワードを忘れてしまった際の復元に必要なのでどこか安全に保存しておきましょう。普通のウェブサービスのような、「パスワードをお忘れの方はこちら」というメールアドレスからパスワードを再発行する機能はありません。</p>
+
+<p>デジタルウォレットを導入したら、さらに、仮想通貨であるEthereum（ETH）も用意しなければなりません。CryptoKittiesは、Ethereumのメインネットで動いているので、本物のEthereumが必要です。アメリカ在住の方は、MetaMask上でETHを購入できるようですが、日本だと現状できないので bitFlyer等の取引所で入手する必要があります。そして、MetaMaskのアドレスへ購入したETHを送金します。bitFlyerだとメニューの、「入出金」→「ETH ご送付」から送金することができます。しばらく経つと、bitFlyer側でイーサ送付のチェックをし、MetaMaskに反映されます。</p>
+
+<p>これで、基本的な準備は完了です。ここからやっと、CryptoKittiesのサイトで操作をして、猫を買います。</p>
+
+<p>CryptoKitties上での操作はそこまで難しくありません。「Marketplace」から適当に猫を選んで買うだけです。自分は右上のソートして1番安いものを買いました。</p>
+
+<p>購入ボタンを押すと、MetaMaskのポップアップが表示されるので、Gas Limit と Gas Price を入力して「Submit」すれば完了です。右上のパルスアイコンから購入したトランザクションの確認もできます。実際に、Ethereumのネットワークに自分のトランザクションが送信されたことが確認でき楽しいです。</p>
+
+<p><img src="/images/2018/01/2.png" alt="" /></p>
+
+<p>実際のポップアップはこんな感じです。</p>
+
+<h3 id="gasの決め方">Gasの決め方</h3>
+
+<p>上のセクションでサラッと、「Gas Limit と Gas Price を入力して」と書いたのですが、自分はここで少し詰まってしまいました。</p>
+
+<p>そもそも、Gas とはトランザクションを送信したり実行する際に発生する手数料のことです。Gasは、マイナーに払われるものであり、CryptoKittiesの運営元や他のサービスプロバイダーに払われるものではありません。</p>
+
+<p>そして、次に Gas Limit と Gas Price の説明です。ETHの単位ですが、weiという単位があります。これは、etherの最小単位です。1 ether = 10^18 wei です。「Gas Limit」は通常「gwei」という単位で測られます。「gwei」は、恐らくギガweiということで、1 gwei = 10^9 wei です。「Gas Limit」と「Gas Price」の掛け算が、最大で払うことを許容する wei になります。「Gas Limit」は、その名の通りで払っても良い Gas の最大値を指定します。gas も単位であり、最高で払って良い gas 数と 1 gas あたりの値段の2つを指定するということですね。現状、通常のトランザクションは「Gas Limit」を 21,000 に設定することが多いようです。「Gas Limit」は、最大値を指定するので全ての gas が使われるとは限らず、使われなかったものは戻ってきます。</p>
+
+<p>なぜ、etherという単位が既にあるのに、手数料のために新しい単位を導入するのでしょう？これは、同じトランザクション、計算、リクエストは同じコストである必要があるということからのようです。ether は、volatile な存在なので、常に同じコストであることを保証できません。そのため、gas という異なる単位を導入し、gas と ether の交換比率（Gas Price）を指定します。この交換比率を ether の価値の上下によって、動かすことにより、同じコストであることを達成するらしいです。（正直ココらへんがあまりイメージが付いていない。「<a href="https://www.reddit.com/r/ethereum/comments/42gj27/what_is_the_difference_between_ether_and_gas/">What is the difference between ether and gas?</a>」を参考にしていただければ。）</p>
+
+<p>Gasの理解ができたところで、値段を決めるわけですが、マイナーはGasの値段が高いトランザクションから処理していきます。その目安ですが、ETH GAS Stationというサイトに、「Safe Low」「Standard」「Fast」という3つのレベルで基準が示されています。私が見た際には、順に 21gwei, 45gwei, 75gweiとなっていました。</p>
+
+<p>私の場合、GAS Stationの「Standard」レベルにGasを積んでもトランザクションが「Fail」となってしまい、猫が買えませんでした。</p>
+
+<p><img src="/images/2018/01/1.png" alt="" /></p>
+
+<p>このグラフを見るに、今年の1月に Gas Priceが上がっていますね。恐らく、この影響によりGas Priceをそれなりの値段にしないとトランザクションが成功しなかったのだと思います。</p>
+
+<h3 id="終わりに">終わりに</h3>
+
+<p>正直、わざわざお金を払ってイーサを手に入れたり、モバイルでは遊べなかったりと、それなりに暗号通貨関連の知識がある人じゃないと遊べないですが、ブロックチェーン関連技術を使った黎明期のアプリケーションとしては、なかなか面白いんじゃないでしょうか。</p>
+
+<p>CryptoKittiesの実装や運用を参考にしながら、そのうち自分も何か作ってみたい次第。</p>
+
+<h3 id="参考">参考</h3>
+
+<p>・<a href="https://www.cryptokitties.co/">CryptoKitties</a><br />
+・<a href="https://kittysales.herokuapp.com/">CryptoKitties Sales</a><br />
+・<a href="https://metamask.io/">MetaMask</a><br />
+・<a href="https://ethgasstation.info/">ETH Gas Station</a><br />
+・<a href="https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html">What is Gas?</a><br />
+・<a href="https://www.reddit.com/r/ethereum/comments/42gj27/what_is_the_difference_between_ether_and_gas/">What is the difference between ether and gas?</a><br /></p>
+
+                    </div>
+
+                </div>
+
+                <div id="sub">
+                   <div class="side_box">
+   <h3>About</h3>
+      <p class="side_content">
+         <i>Kazuya Kobayashi</i><br />
+         - I'm a once law student trying to be computer geek.<br />
+         - ギークになりたい。<br />
+         <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a>
+      </p>
+</div>
+
+<hr />
+
+<h3>Work</h3>
+   <p class="side_content">
+     <a href="https://itunes.apple.com/app/apple-store/id1260256904?pt=2173979&ct=blog_side_banner&mt=8" onclick="ga('send', 'event', 'iijmio', 'click', 'side_ads');">
+      <img src="/images/iijmio_banner.png" style="margin-bottom:6px;"/>
+      <br />
+     </a>
+   </p>
+<hr />
+
+<h3>Elsewhere</h3>
+   <p class="side_content">
+      <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+      <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+      <a href="https://github.com/kzykbys">Github</a>
+   </p>
+
+<hr />
+
+<h3>Category</h3>
+   <p class="side_content">|
+      
+<a href="/categories/objective-c">Objective-C(11)</a> | 
+<a href="/categories/other">Other(6)</a> | 
+<a href="/categories/node-js">Node.js(1)</a> | 
+<a href="/categories/ruby-on-rails">Ruby on Rails(24)</a> | 
+<a href="/categories/tips">Tips(8)</a> | 
+<a href="/categories/html5">HTML5(8)</a> | 
+<a href="/categories/algorithms">Algorithms(2)</a> | 
+<a href="/categories/machine-learning">Machine Learning(5)</a> | 
+<a href="/categories/c">C(14)</a> | 
+<a href="/categories/ruby">Ruby(5)</a> | 
+<a href="/categories/swift">Swift(34)</a> | 
+<a href="/categories/ios">iOS(6)</a> | 
+<a href="/categories/books">Books(6)</a> | 
+<a href="/categories/kindle">Kindle(3)</a> | 
+<a href="/categories/nginx">Nginx(1)</a> | 
+<a href="/categories/capistrano">Capistrano(1)</a> | 
+<a href="/categories/chef">Chef(2)</a> | 
+<a href="/categories/fastlane">fastlane(1)</a> | 
+<a href="/categories/blockchain">Blockchain(1)</a> | 
+   </p>
+<hr />
+
+<h3>Archive</h3>
+   <p class="side_content">|
+      
+       <a href="/2013/08/">2013/08
+            (2)
+         </a> |
+      
+       <a href="/2013/09/">2013/09
+            (4)
+         </a> |
+      
+       <a href="/2013/11/">2013/11
+            (11)
+         </a> |
+      
+       <a href="/2013/12/">2013/12
+            (21)
+         </a> |
+      
+       <a href="/2014/01/">2014/01
+            (5)
+         </a> |
+      
+       <a href="/2014/03/">2014/03
+            (6)
+         </a> |
+      
+       <a href="/2014/04/">2014/04
+            (7)
+         </a> |
+      
+       <a href="/2014/05/">2014/05
+            (11)
+         </a> |
+      
+       <a href="/2014/06/">2014/06
+            (40)
+         </a> |
+      
+       <a href="/2014/07/">2014/07
+            (5)
+         </a> |
+      
+       <a href="/2014/08/">2014/08
+            (3)
+         </a> |
+      
+       <a href="/2014/09/">2014/09
+            (4)
+         </a> |
+      
+       <a href="/2014/10/">2014/10
+            (9)
+         </a> |
+      
+       <a href="/2015/02/">2015/02
+            (2)
+         </a> |
+      
+       <a href="/2015/07/">2015/07
+            (2)
+         </a> |
+      
+       <a href="/2015/08/">2015/08
+            (3)
+         </a> |
+      
+       <a href="/2016/01/">2016/01
+            (1)
+         </a> |
+      
+       <a href="/2017/12/">2017/12
+            (1)
+         </a> |
+      
+       <a href="/2018/01/">2018/01
+            (2)
+         </a> |
+      
+   </p>
+
+<hr />
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+                <div class="footer">
+           <div class="footer_inner">
+               <div class="contact">
+                   <h4>About</h4>
+                   <p>Kazuya Kobayashi<br />
+                   - I'm a once law student trying to be computer geek.<br />
+                   - ギークになりたい。<br />
+                   <a href="mailto:kzy.kbys@gmail.com?subject=From Blog : &amp;body=Kazuya Kobayashi (小林和也)">kzy.kbys@gmail.com</a></p>
+                   <h4>Elsewhere</h4>
+                   <p>
+                       <a href="https://www.facebook.com/kbys.kzy">Facebook</a><br />
+                       <a href="https://twitter.com/kzy_kbys">Twitter</a><br />
+                       <a href="https://github.com/kzykbys">Github</a>
+                    </p>
+                    <h4>Category</h4>
+                    <p>|
+                        
+                            <a href="/categories/objective-c">Objective-C</a> | 
+                        
+                            <a href="/categories/other">Other</a> | 
+                        
+                            <a href="/categories/node-js">Node.js</a> | 
+                        
+                            <a href="/categories/ruby-on-rails">Ruby on Rails</a> | 
+                        
+                            <a href="/categories/tips">Tips</a> | 
+                        
+                            <a href="/categories/html5">HTML5</a> | 
+                        
+                            <a href="/categories/algorithms">Algorithms</a> | 
+                        
+                            <a href="/categories/machine-learning">Machine Learning</a> | 
+                        
+                            <a href="/categories/c">C</a> | 
+                        
+                            <a href="/categories/ruby">Ruby</a> | 
+                        
+                            <a href="/categories/swift">Swift</a> | 
+                        
+                            <a href="/categories/ios">iOS</a> | 
+                        
+                            <a href="/categories/books">Books</a> | 
+                        
+                            <a href="/categories/kindle">Kindle</a> | 
+                        
+                            <a href="/categories/nginx">Nginx</a> | 
+                        
+                            <a href="/categories/capistrano">Capistrano</a> | 
+                        
+                            <a href="/categories/chef">Chef</a> | 
+                        
+                            <a href="/categories/fastlane">fastlane</a> | 
+                        
+                            <a href="/categories/blockchain">Blockchain</a> | 
+                        
+                    </p>
+                    <h4>Archive</h4>
+                        <p>|
+                        
+                            <a href="/2013/08/">2013/08
+                            </a> | 
+                        
+                            <a href="/2013/09/">2013/09
+                            </a> | 
+                        
+                            <a href="/2013/11/">2013/11
+                            </a> | 
+                        
+                            <a href="/2013/12/">2013/12
+                            </a> | 
+                        
+                            <a href="/2014/01/">2014/01
+                            </a> | 
+                        
+                            <a href="/2014/03/">2014/03
+                            </a> | 
+                        
+                            <a href="/2014/04/">2014/04
+                            </a> | 
+                        
+                            <a href="/2014/05/">2014/05
+                            </a> | 
+                        
+                            <a href="/2014/06/">2014/06
+                            </a> | 
+                        
+                            <a href="/2014/07/">2014/07
+                            </a> | 
+                        
+                            <a href="/2014/08/">2014/08
+                            </a> | 
+                        
+                            <a href="/2014/09/">2014/09
+                            </a> | 
+                        
+                            <a href="/2014/10/">2014/10
+                            </a> | 
+                        
+                            <a href="/2015/02/">2015/02
+                            </a> | 
+                        
+                            <a href="/2015/07/">2015/07
+                            </a> | 
+                        
+                            <a href="/2015/08/">2015/08
+                            </a> | 
+                        
+                            <a href="/2016/01/">2016/01
+                            </a> | 
+                        
+                            <a href="/2017/12/">2017/12
+                            </a> | 
+                        
+                            <a href="/2018/01/">2018/01
+                            </a> | 
+                        
+                    </p>
+               </div>
+           </div>
+           </div>
+
+        <script>
+      $(document).ready(function() {
+        $('#mobile-menu-button').sidr();
+      });
+
+      $('#mobile-menu-button').click(function(e){
+      });
+
+      $('html').click(function(e){
+          $.sidr('close', 'sidr');
+      });
+</script>
+          <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28952627-6', 'kazuya.co');
+  ga('send', 'pageview');
+
+</script>
+
+    </body>
+</html>
