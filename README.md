@@ -1,2 +1,2 @@
-kzykbys.github.io
+blog.kazuya.co
 =================
